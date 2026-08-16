@@ -1,0 +1,44 @@
+# _quarto.yml — p400 Lectures project configuration
+#
+# Shared front matter for all lectures.
+# Per-lecture .qmd files have no YAML frontmatter — all settings come from here.
+#
+# Version tracking here:
+# version: 1.0.0 
+# Changelog:
+# 1.0.0 (YYYY-MM-DD) - Week X, Lecture Y: description
+# 1.0.1 2026-03-15 - Changed directory structure, cleaned up css and moved YAML
+#
+# CSS path is relative to the project root (not individual lecture subfolders).
+# Quarto resolves it correctly when rendering from any subdirectory.
+
+project:
+  type: default
+
+title: "CISP 400 \n Object-Oriented Programming"
+subtitle: "C++"
+author: "Dr. Caleb Fowler"
+
+filters:
+  - plantuml-filter.lua
+
+engine: jupyter
+execute:
+  eval: true
+  echo: true
+
+format:
+  revealjs:
+    margin: 0.05
+    css: styles/styles.css
+    theme: serif
+    slide-number: true
+    navigation-mode: linear
+    transition: slide
+    incremental: false
+    scrollable: false
+    controls: true
+    hash: true
+    history: true
+    title-slide: false
+    footer: "CISP 400 · Fowler"

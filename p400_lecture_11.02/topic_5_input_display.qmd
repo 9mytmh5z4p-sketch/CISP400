@@ -1,0 +1,212 @@
+<!-- Topic 5: Inputting and Displaying Array Data -->
+<!-- Slides 54–67 -->
+
+# Inputting and Displaying Array Data
+<!-- Slide 54 -->
+
+## From User Input to Stored Data {.smaller}
+
++ How can several inputs remain available after they are entered?
+
+::: notes
+Slides 54–67
+:::
+
+<!-- Slide 55 -->
+
+---
+
+## Inputting One Element
+
+```{.cpp}
+cin >> scores[0];
+```
+
++ The subscripted element is the destination for the input value.
++ Later input can target a different index without replacing this value.
+
+<!-- Slide 56 -->
+
+---
+
+## The Fill Loop
+
+| step | selected destination |
+|---:|---|
+| 1 | `scores[0]` |
+| 2 | `scores[1]` |
+| 3 | `scores[2]` |
+| … | … |
+| final | `scores[SIZE - 1]` |
+
++ The loop index chooses where each new value is stored.
+
+<!-- Slide 57 -->
+
+---
+
+## Fill Loop Code
+
+```{.cpp}
+for (int i = 0; i < SIZE; i++)
+{
+    cout << "Enter score " << i + 1 << ": ";
+    cin >> scores[i];
+}
+```
+
+<!-- Slide 58 -->
+
+---
+
+## Indexes and User Labels
+
+| meaning | expression | first value |
+|---|---|---:|
+| array index | `i` | 0 |
+| displayed item number | `i + 1` | 1 |
+
++ Keep zero-based indexing inside the program.
++ Present one-based numbering when it is clearer for the user.
+
+<!-- Slide 59 -->
+
+---
+
+## The Display Loop
+
++ Input stores values during one traversal.
++ A later traversal reads the stored values.
++ The second pass can use different formatting or calculations.
+
+<!-- Slide 60 -->
+
+---
+
+## Display Loop Code
+
+```{.cpp}
+for (int i = 0; i < SIZE; i++)
+{
+    cout << "Score " << i + 1
+         << ": " << scores[i] << '\n';
+}
+```
+
+<!-- Slide 61 -->
+
+---
+
+## The Two-Pass Pattern
+
+```text
+input pass                       display pass
+
+user -> scores[0]                scores[0] -> output
+user -> scores[1]                scores[1] -> output
+user -> scores[2]       then     scores[2] -> output
+user -> ...                      ...
+```
+
++ Storage separates when data is collected from when it is used.
+
+<!-- Slide 62 -->
+
+---
+
+## Partially Filled Arrays
+
+```{.cpp}
+const int CAPACITY = 10;
+int scores[CAPACITY] = {};
+int dataCount = 4;
+```
+
++ Capacity remains ten.
++ Only indexes `0` through `dataCount - 1` contain user data.
+
+<!-- Slide 63 -->
+
+---
+
+## Choosing the Data Count
+
+```{.cpp}
+do
+{
+    cout << "How many scores (0-" << CAPACITY << ")? ";
+    cin >> dataCount;
+}
+while (dataCount < 0 || dataCount > CAPACITY);
+```
+
++ Validation makes the requested count safe to use as a loop bound.
+
+<!-- Slide 64 -->
+
+---
+
+## Stopping at Capacity
+
+```{.cpp}
+for (int i = 0; i < dataCount; i++)
+{
+    cin >> scores[i];
+}
+
+for (int i = 0; i < dataCount; i++)
+{
+    cout << scores[i] << '\n';
+}
+```
+
++ Both loops use the same validated logical count.
+
+<!-- Slide 65 -->
+
+---
+
+## Complete Program {.smaller}
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    const int CAPACITY = 10;
+    int scores[CAPACITY] = {};
+    int dataCount;
+
+    do
+    {
+        cout << "How many scores (0-10)? ";
+        cin >> dataCount;
+    }
+    while (dataCount < 0 || dataCount > CAPACITY);
+
+    for (int i = 0; i < dataCount; i++)
+    {
+        cout << "Enter score " << i + 1 << ": ";
+        cin >> scores[i];
+    }
+
+    for (int i = 0; i < dataCount; i++)
+    {
+        cout << scores[i] << '\n';
+    }
+
+    return 0;
+}
+```
+
+<!-- Slide 66 -->
+
+---
+
+## Summary
+
++ A fill loop writes each input to a selected element.
++ A later display loop uses the same validated count to read only meaningful data.
+
+<!-- Slide 67 -->

@@ -1,0 +1,393 @@
+# Last Time
+
+::: {.incremental}
++ **Relational Operators**
++ **The if Statement**
++ **The cin Fail Problem**
++ **The if/else Statement**
++ **The if/else if Statement**
+:::
+
+::: notes
+Recall that the previous lecture introduced decisions as blocks controlled by yes/no questions. Today extends that model into compact choices, fixed cases, dependent decisions, and range checks.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- The Conditional Operator
+- The switch Statement
+- Nested if Statements
+- Compound Conditions
+- Range Checking
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_conditional_operator.qmd >}}
+{{< include topic_2_switch_statement.qmd >}}
+{{< include topic_3_nested_if_statements.qmd >}}
+{{< include topic_4_compound_conditions.qmd >}}
+{{< include topic_5_range_checking.qmd >}}
+
+---
+
+# Key Takeaways
+
+- The conditional operator is useful for simple value choices.
+- `switch` works best for exact fixed cases.
+- Nested `if` statements are for dependent decisions.
+- Compound conditions and range checks let one decision ask a larger question.
+
+<!-- Slide 49 -->
+
+---
+
+# Next Time
+
+<!-- Slide 50 -->
+
+---
+
+# Appendix
+
+<!-- Slide 51 -->
+
+---
+
+## The Conditional Operator: Good Practices
+
+- Use it for short value choices.
+- Keep both possible values easy to see.
+- Prefer a normal `if/else` when the logic needs multiple statements.
+
+<!-- Slide 52 -->
+
+---
+
+## The Conditional Operator: Common Mistakes
+
+- Nesting several conditional operators in one line.
+- Using it when the goal is to run several statements.
+- Hiding a complex condition inside a compact expression.
+
+<!-- Slide 53 -->
+
+---
+
+## The Conditional Operator: More Examples
+
+```cpp
+string access = loggedIn ? "continue" : "sign in";
+double fee = isMember ? 4.99 : 7.99;
+cout << (passed ? "Pass" : "Try again");
+```
+
+<!-- Slide 54 -->
+
+---
+
+## The Conditional Operator: Practice Problems
+
+- Choose between `"valid"` and `"invalid"` using `?:`.
+- Assign a shipping fee based on whether a customer is a member.
+- Rewrite a one-line `?:` expression as a full `if/else`.
+
+<!-- Slide 55 -->
+
+---
+
+## The Conditional Operator: AI Search Terms
+
+- C++ conditional operator
+- C++ ternary operator
+- C++ question mark colon operator
+- C++ conditional expression readability
+
+<!-- Slide 56 -->
+
+---
+
+## The Conditional Operator: Questions for Reflection
+
+- Is the choice producing one value?
+- Would a reader understand the expression quickly?
+- Would this be clearer as a normal `if/else`?
+
+<!-- Slide 57 -->
+
+---
+
+## The switch Statement: Good Practices
+
+- Use `switch` when one expression is compared to exact cases.
+- Include `break` unless intentional fall-through is clearly wanted.
+- Include `default` for unexpected values.
+
+<!-- Slide 58 -->
+
+---
+
+## The switch Statement: Common Mistakes
+
+- Trying to use ranges in `case` labels.
+- Forgetting `break` and accidentally falling through.
+- Using `switch` when each branch needs a different condition.
+
+<!-- Slide 59 -->
+
+---
+
+## The switch Statement: More Examples
+
+```cpp
+switch (dayCode) {
+case 1:
+    cout << "Monday";
+    break;
+case 2:
+    cout << "Tuesday";
+    break;
+default:
+    cout << "Unknown day";
+}
+```
+
+<!-- Slide 60 -->
+
+---
+
+## The switch Statement: Practice Problems
+
+- Write cases for three shipping codes.
+- Add a `default` branch for an unknown code.
+- Explain what happens if a `break` is missing.
+
+<!-- Slide 61 -->
+
+---
+
+## The switch Statement: AI Search Terms
+
+- C++ switch statement
+- C++ case label
+- C++ switch break fall through
+- C++ switch default branch
+
+<!-- Slide 62 -->
+
+---
+
+## The switch Statement: Questions for Reflection
+
+- Is one expression being checked?
+- Are the choices exact values?
+- What should happen when no case matches?
+
+<!-- Slide 63 -->
+
+---
+
+## Nested if Statements: Good Practices
+
+- Nest only when the second decision depends on the first.
+- Keep nested blocks short.
+- Use indentation that matches the braces.
+
+<!-- Slide 64 -->
+
+---
+
+## Nested if Statements: Common Mistakes
+
+- Nesting when an `if/else if` chain would be clearer.
+- Letting several levels of nesting hide the main path.
+- Putting the inner decision in the wrong branch.
+
+<!-- Slide 65 -->
+
+---
+
+## Nested if Statements: More Examples
+
+```cpp
+if (hasAccount) {
+    if (passwordCorrect) {
+        cout << "Welcome";
+    } else {
+        cout << "Try again";
+    }
+}
+```
+
+<!-- Slide 66 -->
+
+---
+
+## Nested if Statements: Practice Problems
+
+- Identify the outer decision and the inner decision.
+- Decide whether the second question depends on the first.
+- Rewrite a nested decision as plain English.
+
+<!-- Slide 67 -->
+
+---
+
+## Nested if Statements: AI Search Terms
+
+- C++ nested if statement
+- C++ dependent conditional
+- C++ nested if indentation
+- C++ nested if vs else if
+
+<!-- Slide 68 -->
+
+---
+
+## Nested if Statements: Questions for Reflection
+
+- Does the inner question make sense before the outer question is answered?
+- Which branch owns the inner decision?
+- Can the nesting be reduced without changing the meaning?
+
+<!-- Slide 69 -->
+
+---
+
+## Compound Conditions: Good Practices
+
+- Combine conditions that belong to the same decision.
+- Use parentheses when grouping improves readability.
+- Put safety checks before expressions that depend on them.
+
+<!-- Slide 70 -->
+
+---
+
+## Compound Conditions: Common Mistakes
+
+- Using `&&` when either condition should be enough.
+- Using `||` when both conditions are required.
+- Forgetting that `!` reverses the condition that follows it.
+
+<!-- Slide 71 -->
+
+---
+
+## Compound Conditions: More Examples
+
+```cpp
+if (temperature >= 60 && temperature <= 80) {
+    cout << "Comfortable";
+}
+
+if (choice == 'Y' || choice == 'y') {
+    cout << "Continuing";
+}
+```
+
+<!-- Slide 72 -->
+
+---
+
+## Compound Conditions: Practice Problems
+
+- Write a condition that accepts `Y` or `y`.
+- Write a condition that requires a user to be logged in and active.
+- Explain why short-circuit evaluation can protect a division.
+
+<!-- Slide 73 -->
+
+---
+
+## Compound Conditions: AI Search Terms
+
+- C++ logical operators
+- C++ AND OR NOT operators
+- C++ short circuit evaluation
+- C++ compound boolean expressions
+
+<!-- Slide 74 -->
+
+---
+
+## Compound Conditions: Questions for Reflection
+
+- Do both smaller conditions need to be true?
+- Is either condition enough?
+- Does the second condition depend on the first being safe?
+
+<!-- Slide 75 -->
+
+---
+
+## Range Checking: Good Practices
+
+- Decide whether endpoints should count before writing the condition.
+- Use `&&` for inside-range checks.
+- Use `||` for outside-range checks.
+
+<!-- Slide 76 -->
+
+---
+
+## Range Checking: Common Mistakes
+
+- Writing `0 <= score <= 100` as if C++ understood chained comparisons.
+- Using `||` for inside-range checks.
+- Using `&&` for outside-range checks.
+
+<!-- Slide 77 -->
+
+---
+
+## Range Checking: More Examples
+
+```cpp
+if (quantity >= 1 && quantity <= 10) {
+    cout << "Allowed quantity";
+}
+
+if (temperature < 32 || temperature > 100) {
+    cout << "Outside target range";
+}
+```
+
+<!-- Slide 78 -->
+
+---
+
+## Range Checking: Practice Problems
+
+- Write a valid score check for `0` through `100`.
+- Write an invalid score check for values outside `0` through `100`.
+- Decide whether `100` should count as valid in a percent score.
+
+<!-- Slide 79 -->
+
+---
+
+## Range Checking: AI Search Terms
+
+- C++ range checking
+- C++ validate number between two values
+- C++ inclusive exclusive bounds
+- C++ chained comparison error
+
+<!-- Slide 80 -->
+
+---
+
+## Range Checking: Questions for Reflection
+
+- What is the lowest allowed value?
+- What is the highest allowed value?
+- Are the endpoints inside or outside the valid range?
+
+<!-- Slide 81 -->
+

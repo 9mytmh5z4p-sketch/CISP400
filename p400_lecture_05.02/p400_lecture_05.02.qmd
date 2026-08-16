@@ -1,0 +1,245 @@
+# Last Time
+
+::: {.incremental}
++ **Reference Variables**
++ **Pass by Value and Pass by Reference**
++ **Reference Variables as Parameters**
++ **Static Local Variables**
++ **Default Parameters**
++ **Exit**
++ **Menus and Functions**
+:::
+
+::: notes
+Brief recall of lecture 05.01. Students should remember that parameter style controls how data crosses a function boundary, and reference parameters can make caller-owned data change.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Function Overloading
+- Choosing a Parameter Style
+- Function Side Effects
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_function_overloading.qmd >}}
+{{< include topic_2_parameter_style.qmd >}}
+{{< include topic_3_function_side_effects.qmd >}}
+
+---
+
+# Key Takeaways
+
+- Function overloading lets related functions share one name when their parameter lists are different.
+- A function signature is the function name plus the parameter types and count.
+- Parameter style is part of the function contract.
+- Side effects are changes outside a returned value; good function design makes them intentional and traceable.
+
+<!-- Slide 47 -->
+
+---
+
+# Next Time
+
+<!-- Slide 48 -->
+
+---
+
+# Appendix
+
+<!-- Slide 49 -->
+
+---
+
+## Function Overloading: Good Practices
+
+- Overload functions when the operation is conceptually the same.
+- Keep the overload set small enough that each version is easy to predict.
+- Prefer clear parameter lists over clever combinations.
+
+<!-- Slide 50 -->
+
+---
+
+## Function Overloading: Common Mistakes
+
+- Trying to overload by return type alone.
+- Creating overloads whose calls are ambiguous.
+- Reusing the same name for functions that do different jobs.
+
+<!-- Slide 51 -->
+
+---
+
+## Function Overloading: More Examples
+
+```cpp
+void print(int value);
+void print(double value);
+void print(string value);
+```
+
+All three functions share the same name, but the parameter type changes.
+
+<!-- Slide 52 -->
+
+---
+
+## Function Overloading: Practice Problems
+
+1. Write two `total` prototypes with different parameter counts.
+2. Decide whether `double value()` and `int value()` are valid overloads.
+3. Predict which overload is called by `show(4.0)`.
+
+<!-- Slide 53 -->
+
+---
+
+## Function Overloading: AI Search Terms
+
+- "C++ function overloading beginner examples"
+- "C++ function signature overload resolution"
+- "C++ overload return type not enough"
+
+<!-- Slide 54 -->
+
+---
+
+## Function Overloading: Questions for Reflection
+
+- When does one shared function name make code easier to read?
+- Why does the compiler need the parameter list to choose an overload?
+
+<!-- Slide 55 -->
+
+---
+
+## Choosing a Parameter Style: Good Practices
+
+- Use return values for one computed answer.
+- Use non-const references only when changing caller data is part of the contract.
+- Use `const` reference for read-only large data.
+
+<!-- Slide 56 -->
+
+---
+
+## Choosing a Parameter Style: Common Mistakes
+
+- Passing by reference when the function only needs to read.
+- Returning one value while also changing unrelated caller variables.
+- Hiding important data movement inside the function body.
+
+<!-- Slide 57 -->
+
+---
+
+## Choosing a Parameter Style: More Examples
+
+```cpp
+double average(const vector<int>& scores);
+void resetScore(int& score);
+double adjustedScore(double score);
+```
+
+The prototype tells whether data is read, changed, or returned.
+
+<!-- Slide 58 -->
+
+---
+
+## Choosing a Parameter Style: Practice Problems
+
+1. Choose a parameter style for a function that displays a vector.
+2. Choose a style for a function that resets a balance to zero.
+3. Choose a style for a function that computes a sales tax total.
+
+<!-- Slide 59 -->
+
+---
+
+## Choosing a Parameter Style: AI Search Terms
+
+- "C++ pass by value vs reference"
+- "C++ const reference parameter"
+- "C++ function parameter design"
+
+<!-- Slide 60 -->
+
+---
+
+## Choosing a Parameter Style: Questions for Reflection
+
+- How can a prototype warn you that caller data may change?
+- Why is returning a new value often easier to trace than modifying by reference?
+
+<!-- Slide 61 -->
+
+---
+
+## Function Side Effects: Good Practices
+
+- Keep calculation functions return-based when practical.
+- Make intended mutation visible through the parameter list.
+- Avoid hidden state unless the function clearly owns that state.
+
+<!-- Slide 62 -->
+
+---
+
+## Function Side Effects: Common Mistakes
+
+- Changing caller data unexpectedly.
+- Depending on global data when parameters would be clearer.
+- Writing functions that calculate, display, and mutate at the same time.
+
+<!-- Slide 63 -->
+
+---
+
+## Function Side Effects: More Examples
+
+```cpp
+double addTax(double price);
+void addTax(double& price);
+void displayTotal(double total);
+```
+
+These functions have different effects even when their names look related.
+
+<!-- Slide 64 -->
+
+---
+
+## Function Side Effects: Practice Problems
+
+1. Identify the side effect in a function that prints to `cout`.
+2. Identify the side effect in a function with an `int&` parameter.
+3. Rewrite a mutation function so it returns a new value instead.
+
+<!-- Slide 65 -->
+
+---
+
+## Function Side Effects: AI Search Terms
+
+- "C++ function side effects"
+- "pure function vs side effect C++"
+- "C++ reference parameter mutation"
+
+<!-- Slide 66 -->
+
+---
+
+## Function Side Effects: Questions for Reflection
+
+- Which side effects are useful in a menu program?
+- Which side effects make a function harder to test?
+
+<!-- Slide 67 -->

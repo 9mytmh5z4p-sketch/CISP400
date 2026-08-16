@@ -1,0 +1,49 @@
+Slide Number,Topic,Subject,Title,Category,Filename
+1,Course Framing,,CISP 400,Section Divider,
+2,Course Framing,,Agenda,Agenda,
+3,C++ Programming Review,,Old Friends,Connect,
+4,C++ Programming Review,Variables,Variables,Review,
+5,C++ Programming Review,Conditional Statements,4.2 The if statement,Section Divider,
+6,C++ Programming Review,Conditional Statements,if statement,Model,if_statement_flow.png
+7,C++ Programming Review,Conditional Statements,if/else statement,Model,if_else_flow.png
+8,C++ Programming Review,Conditional Statements,if/else if statement,Model,if_else_if_flow.png
+9,C++ Programming Review,Iteration,Iteration,Section Divider,
+10,C++ Programming Review,Iteration,<The Structure of while Loops>,Model,while_loop_flow.png
+11,C++ Programming Review,Iteration,<The Structure of do while Loops>,Model,do_while_loop_flow.png
+12,C++ Programming Review,Iteration,<The Design of for Loops>,Model,for_loop_flow.png
+13,C++ Programming Review,Functions,Functions,Section Divider,
+14,C++ Programming Review,Functions,<Function Prototypes and Return Type>,Anatomy,function_review.cpp
+15,Programming Exercise,,Programming Exercise,Section Divider,
+16,Programming Exercise,,Exercise Goals,Value Added,
+17,Programming Exercise,,Programming Exercise,Transfer,
+18,Programming Exercise,,Programming Exercise Debriefing,Section Divider,
+19,Programming Exercise,,Programming Exercise,Transfer,
+20,Programming Exercise,,<Initial Array Solution>,Complete Example,array_exercise_initial.cpp
+21,Programming Exercise,,<Program Output>,Demonstration,array_exercise_initial.cpp
+22,Programming Exercise,,Programming Exercise,Transfer,
+23,Programming Exercise,,Let’s Look at This Problem as if It Were a Homework Assignment …,Process Pattern,
+24,Programming Exercise,,<Solution Organized by Specifications>,Complete Example,array_exercise_specifications.cpp
+25,Programming Exercise,,Debrief,Review,
+26,Review Wrap-Up,,What’s This Section About?,Opening Question,review_stamp.png
+27,Review Wrap-Up,,Agenda,Agenda,
+28,Next Time,,<Next Time>,Progression Map,next_time.png
+29,Next Time,,Agenda: Ch 10 - Pointers,Progression Map,
+30,Desk Check,,Desk Check,Section Divider,
+31,Desk Check,,Exercise Goals,Value Added,
+32,Desk Check,,Desk Check Exercise,Predict,
+33,Desk Check,,<What’s the Output?>,Predict,desk_check.cpp
+34,Desk Check,,<What’s the Output?>,Demonstration,desk_check.cpp
+35,Coding for Reuse,Coding for Reuse,Coding for Reuse,Section Divider,
+36,Coding for Reuse,Coding for Reuse,Ideas for Writing Reusable Software,Common Practice,
+37,Success Team Bingo,,Success Team Bingo,Section Divider,
+38,Success Team Bingo,,Exercise Goals,Value Added,
+39,Success Team Bingo,,<Success Team Bingo Worksheet>,Image,success_team_bingo.png
+40,Success Team Bingo,,Debrief,Review,
+41,References,,References,Enumerate,
+42,A Logging Function,A Logging Function,A Logging Function,Section Divider,
+43,A Logging Function,A Logging Function,What?,Define,
+44,A Logging Function,A Logging Function,Why?,Value Added,
+45,A Logging Function,A Logging Function,When?/Use Case,Common Practice,
+46,A Logging Function,A Logging Function,How?,Progression Map,
+47,A Logging Function,A Logging Function,Limitations,Boundary,
+48,A Logging Function,A Logging Function,<Basic Logger Implementation With Timestamps>,Complete Example,logger.cpp

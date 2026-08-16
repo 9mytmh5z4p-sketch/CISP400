@@ -1,0 +1,128 @@
+<!-- Topic 6: Exit -->
+<!-- Slides 52-61 -->
+
+# Exit
+<!-- Slide 52 -->
+
+## Return or Stop Everything? {.smaller}
+
++ A normal return leaves one function.
++ `exit()` ends the whole program.
++ That difference matters when tracing control flow.
+
+::: notes
+Slides 52-61
+:::
+
+<!-- Slide 53 -->
+
+---
+
+## Return from a Helper Function
+
+```cpp
+int doubleValue(int number) {
+    return number * 2;
+}
+```
+
+The returned value crosses back to the caller, and execution continues there.
+
+<!-- Slide 54 -->
+
+---
+
+## Return from `main()`
+
+```cpp
+int main() {
+    cout << "Done" << endl;
+    return 0;
+}
+```
+
+Returning from `main()` is the normal way to finish a successful program.
+
+<!-- Slide 55 -->
+
+---
+
+## The `exit()` Function
+
+```cpp
+exit(0);
+exit(1);
+```
+
++ `exit()` terminates the program immediately.
++ The value passed to `exit()` is the program's status code.
++ Code after the call does not continue.
+
+<!-- Slide 56 -->
+
+---
+
+## Including the Header
+
+```cpp
+#include <cstdlib>
+using namespace std;
+```
+
+The `exit()` function is declared in `<cstdlib>`.
+
+<!-- Slide 57 -->
+
+---
+
+## Exit Status Codes
+
+| Code | Meaning |
+|---:|---|
+| `0` | successful completion |
+| nonzero | abnormal termination |
+
+Status codes let the operating system know how the program ended.
+
+<!-- Slide 58 -->
+
+---
+
+## Exit Inside a Function
+
+```cpp
+void requirePositive(int value) {
+    if (value <= 0) {
+        cout << "Fatal error: value must be positive." << endl;
+        exit(1);
+    }
+}
+```
+
+This function stops the program because the program cannot continue safely.
+
+<!-- Slide 59 -->
+
+---
+
+## Boundary Model Contrast
+
++ `return` sends control back through the function boundary.
++ A return value can cross back to the caller.
++ `exit()` does not return through the boundary at all.
+
+::: notes
+[Graphic suggestion: show return as an arrow back to the caller and exit() as a stop marker for the whole program.]
+:::
+
+<!-- Slide 60 -->
+
+---
+
+## Summary
+
++ Use `return` for normal function flow.
++ Use `return 0;` from `main()` for normal program completion.
++ Use `exit()` only when the whole program should stop immediately.
+
+<!-- Slide 61 -->

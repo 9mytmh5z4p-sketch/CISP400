@@ -1,0 +1,42 @@
+Whitelist & Blacklist
+
+---
+
+## Whitelist Approach: Accept Only Specific Values
+
+A whitelist defines exactly which values are acceptable. Continue the loop if input does NOT match any whitelisted value.
+
+```cpp
+string response;
+cout << "Continue? (yes/no): ";
+cin >> response;
+
+while (response != "yes" && response != "no") {
+    cout << "Invalid. Enter yes or no: ";
+    cin >> response;
+}
+```
+
+<!-- Slide 3 -->
+
+---
+
+## Blacklist Approach: Reject Specific Bad Values
+
+A blacklist defines which values are unacceptable. The loop continues as long as the input matches a forbidden value.
+
+```cpp
+string username;
+cout << "Enter a username (cannot be 'admin'): ";
+cin >> username;
+
+while (username == "admin") {
+    cout << "That username is reserved. Try again: ";
+    cin >> username;
+}
+```
+
+
+<!-- Slide 4 -->
+
+---

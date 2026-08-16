@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="p400_lecture_09.01_files/libs/clipboard/clipboard.min.js"></script>
+<script src="p400_lecture_09.01_files/libs/quarto-html/tabby.min.js"></script>
+<script src="p400_lecture_09.01_files/libs/quarto-html/popper.min.js"></script>
+<script src="p400_lecture_09.01_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="p400_lecture_09.01_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="p400_lecture_09.01_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="p400_lecture_09.01_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.26">
+
+  <meta name="author" content="Dr.&nbsp;Caleb Fowler">
+  <title>CISP 400 Object-Oriented Programming</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="p400_lecture_09.01_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="p400_lecture_09.01_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="p400_lecture_09.01_files/libs/revealjs/dist/theme/quarto-99eeafcedac04850354b682963cedae3.css">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <link href="p400_lecture_09.01_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="p400_lecture_09.01_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="p400_lecture_09.01_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="p400_lecture_09.01_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">CISP 400 Object-Oriented Programming</h1>
+  <p class="subtitle">C++</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Dr.&nbsp;Caleb Fowler 
+</div>
+</div>
+</div>
+
+</section>
+<section id="last-time" class="title-slide slide level1 center">
+<h1>Last Time</h1>
+<ul>
+<li class="fragment"><strong>Stuff To Do With A Loop</strong></li>
+<li class="fragment"><strong>Drawing Graphs Using Loops</strong></li>
+<li class="fragment"><strong>Menu-Driven Programming</strong></li>
+</ul>
+<aside class="notes">
+<p>Review loop purpose and menu structure before introducing loop-control shorthand and validation patterns.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 1 -->
+</section>
+
+<section id="todays-agenda" class="title-slide slide level1 center">
+<h1>Today’s Agenda</h1>
+<ul>
+<li>Increment and Decrement Operators</li>
+<li>Break</li>
+<li>Continue</li>
+<li>Input Validation Strategy</li>
+<li>Input Validation</li>
+</ul>
+<aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 2 -->
+<!-- Topic 1: Increment and Decrement Operators -->
+<!-- Slides 3-11 -->
+</section>
+
+<section>
+<section id="increment-and-decrement-operators" class="title-slide slide level1 center">
+<h1>Increment and Decrement Operators</h1>
+<!-- Slide 3 -->
+</section>
+<section id="why-does-i-i-1-have-a-shortcut" class="slide level2 smaller">
+<h2>Why Does <code>i = i + 1</code> Have A Shortcut?</h2>
+<p>Loop code often changes a control variable by exactly one. C++ gives that pattern its own notation because it is so common.</p>
+<aside class="notes">
+<p>Slides 3-11</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 4 -->
+</section>
+<section id="the-operators" class="slide level2">
+<h2>The Operators</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Meaning</th>
+<th>Equivalent statement</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>x++</code></td>
+<td>increase <code>x</code> by 1</td>
+<td><code>x = x + 1</code></td>
+</tr>
+<tr class="even">
+<td><code>++x</code></td>
+<td>increase <code>x</code> by 1</td>
+<td><code>x = x + 1</code></td>
+</tr>
+<tr class="odd">
+<td><code>x--</code></td>
+<td>decrease <code>x</code> by 1</td>
+<td><code>x = x - 1</code></td>
+</tr>
+<tr class="even">
+<td><code>--x</code></td>
+<td>decrease <code>x</code> by 1</td>
+<td><code>x = x - 1</code></td>
+</tr>
+</tbody>
+</table>
+<p>When the operator is alone on a line, prefix and postfix forms leave the variable with the same final value.</p>
+<!-- Slide 5 -->
+</section>
+<section id="the-loop-use-case" class="slide level2">
+<h2>The Loop Use Case</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> i <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb1-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The update expression <code>i++</code> means “move to the next value.” In loop headers, <code>i++</code> is the conventional form students will see most often.</p>
+<!-- Slide 6 -->
+</section>
+<section id="counting-down" class="slide level2">
+<h2>Counting Down</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> lives <span class="op">=</span> <span class="dv">3</span><span class="op">;</span> lives <span class="op">&gt;</span> <span class="dv">0</span><span class="op">;</span> lives<span class="op">--)</span> <span class="op">{</span></span>
+<span id="cb2-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> lives <span class="op">&lt;&lt;</span> <span class="st">" lives remaining"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb2-3"><a href=""></a><span class="op">}</span></span>
+<span id="cb2-4"><a href=""></a></span>
+<span id="cb2-5"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="st">"Game over"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use <code>--</code> when each pass moves the control variable one step downward.</p>
+<!-- Slide 7 -->
+</section>
+<section id="prefix-vs-postfix" class="slide level2">
+<h2>Prefix vs Postfix</h2>
+<p>The difference matters only when the expression’s value is used.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb3-2"><a href=""></a></span>
+<span id="cb3-3"><a href=""></a>cout <span class="op">&lt;&lt;</span> x<span class="op">++</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span>  <span class="co">// prints 5, then x becomes 6</span></span>
+<span id="cb3-4"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="op">++</span>x <span class="op">&lt;&lt;</span> endl<span class="op">;</span>  <span class="co">// x becomes 7, then prints 7</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Avoid mixing increment operators into larger expressions until the order is clear.</p>
+<!-- Slide 8 -->
+</section>
+<section id="compound-assignment" class="slide level2">
+<h2>Compound Assignment</h2>
+<p>Use compound assignment when the step is not exactly one.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Statement</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>x += 5;</code></td>
+<td><code>x = x + 5;</code></td>
+</tr>
+<tr class="even">
+<td><code>x -= 2;</code></td>
+<td><code>x = x - 2;</code></td>
+</tr>
+<tr class="odd">
+<td><code>x *= 3;</code></td>
+<td><code>x = x * 3;</code></td>
+</tr>
+<tr class="even">
+<td><code>x /= 4;</code></td>
+<td><code>x = x / 4;</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>++</code> and <code>--</code> are special cases of this broader shorthand family.</p>
+<!-- Slide 9 -->
+</section>
+<section id="readability-rule" class="slide level2">
+<h2>Readability Rule</h2>
+<p>Prefer the form that makes the loop movement obvious.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> count<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb4-2"><a href=""></a>    <span class="co">// standard one-step loop</span></span>
+<span id="cb4-3"><a href=""></a><span class="op">}</span></span>
+<span id="cb4-4"><a href=""></a></span>
+<span id="cb4-5"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">100</span><span class="op">;</span> i <span class="op">+=</span> <span class="dv">10</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-6"><a href=""></a>    <span class="co">// clearer than ten separate increments</span></span>
+<span id="cb4-7"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Shorthand should make the code easier to scan, not harder to reason about.</p>
+<!-- Slide 10 -->
+</section>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
+<p>Use <code>++</code> and <code>--</code> for one-step movement. Use compound assignment for larger steps, and keep prefix/postfix differences out of complex expressions unless the order matters.</p>
+<!-- Slide 11 -->
+<!-- Topic 2: Break -->
+<!-- Slides 12-20 -->
+</section></section>
+<section>
+<section id="break" class="title-slide slide level1 center">
+<h1>Break</h1>
+<!-- Slide 12 -->
+</section>
+<section id="when-should-a-loop-stop-immediately" class="slide level2 smaller">
+<h2>When Should A Loop Stop Immediately?</h2>
+<p>Most loops stop when the condition becomes false. <code>break</code> gives the loop a second exit point from inside the body.</p>
+<aside class="notes">
+<p>Slides 12-20</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 13 -->
+</section>
+<section id="what-break-does" class="slide level2">
+<h2>What <code>break</code> Does</h2>
+<p><code>break</code> exits the nearest loop immediately. Execution continues after the loop.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">10</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb5-2"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>i <span class="op">==</span> <span class="dv">5</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-3"><a href=""></a>        <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb5-4"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb5-5"><a href=""></a></span>
+<span id="cb5-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> i <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb5-7"><a href=""></a><span class="op">}</span></span>
+<span id="cb5-8"><a href=""></a></span>
+<span id="cb5-9"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="st">"Done"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The output stops at <code>4</code> because the loop exits before printing <code>5</code>.</p>
+<!-- Slide 14 -->
+</section>
+<section id="break-on-a-sentinel" class="slide level2">
+<h2>Break On A Sentinel</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href=""></a><span class="dt">int</span> value<span class="op">;</span></span>
+<span id="cb6-2"><a href=""></a></span>
+<span id="cb6-3"><a href=""></a><span class="cf">while</span> <span class="op">(</span><span class="kw">true</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter a value (-1 to quit): "</span><span class="op">;</span></span>
+<span id="cb6-5"><a href=""></a>    cin <span class="op">&gt;&gt;</span> value<span class="op">;</span></span>
+<span id="cb6-6"><a href=""></a></span>
+<span id="cb6-7"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>value <span class="op">==</span> <span class="op">-</span><span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-8"><a href=""></a>        <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb6-9"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb6-10"><a href=""></a></span>
+<span id="cb6-11"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"You entered "</span> <span class="op">&lt;&lt;</span> value <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb6-12"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This pattern is useful when the loop must read before it knows whether to stop.</p>
+<!-- Slide 15 -->
+</section>
+<section id="break-during-a-search" class="slide level2">
+<h2>Break During A Search</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a><span class="dt">int</span> target <span class="op">=</span> <span class="dv">72</span><span class="op">;</span></span>
+<span id="cb7-2"><a href=""></a><span class="dt">int</span> foundAt <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
+<span id="cb7-3"><a href=""></a></span>
+<span id="cb7-4"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> scores<span class="op">.</span>size<span class="op">();</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb7-5"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>scores<span class="op">.</span>at<span class="op">(</span>i<span class="op">)</span> <span class="op">==</span> target<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-6"><a href=""></a>        foundAt <span class="op">=</span> i<span class="op">;</span></span>
+<span id="cb7-7"><a href=""></a>        <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb7-8"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb7-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Once the target is found, the remaining loop passes cannot improve the answer.</p>
+<!-- Slide 16 -->
+</section>
+<section id="break-exits-one-level" class="slide level2">
+<h2>Break Exits One Level</h2>
+<p>In nested loops, <code>break</code> exits only the loop it is directly inside.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> row <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> row <span class="op">&lt;=</span> <span class="dv">3</span><span class="op">;</span> row<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb8-2"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> col <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> col <span class="op">&lt;=</span> <span class="dv">3</span><span class="op">;</span> col<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb8-3"><a href=""></a>        <span class="cf">if</span> <span class="op">(</span>col <span class="op">==</span> <span class="dv">2</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-4"><a href=""></a>            <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb8-5"><a href=""></a>        <span class="op">}</span></span>
+<span id="cb8-6"><a href=""></a></span>
+<span id="cb8-7"><a href=""></a>        cout <span class="op">&lt;&lt;</span> row <span class="op">&lt;&lt;</span> <span class="st">","</span> <span class="op">&lt;&lt;</span> col <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb8-8"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb8-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The outer loop still continues with the next row.</p>
+<!-- Slide 17 -->
+</section>
+<section id="break-vs-loop-condition" class="slide level2">
+<h2>Break vs Loop Condition</h2>
+<p>Prefer a loop condition when the stopping rule is simple.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href=""></a><span class="cf">while</span> <span class="op">(</span>choice <span class="op">!=</span> <span class="ch">'Q'</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-2"><a href=""></a>    displayMenu<span class="op">();</span></span>
+<span id="cb9-3"><a href=""></a>    cin <span class="op">&gt;&gt;</span> choice<span class="op">;</span></span>
+<span id="cb9-4"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use <code>break</code> when the clearest stopping moment happens inside the loop body.</p>
+<!-- Slide 18 -->
+</section>
+<section id="break-in-a-switch" class="slide level2">
+<h2>Break In A <code>switch</code></h2>
+<p>Inside a <code>switch</code>, <code>break</code> exits the <code>switch</code>, not the surrounding loop.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href=""></a><span class="cf">while</span> <span class="op">(</span>choice <span class="op">!=</span> <span class="ch">'Q'</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-2"><a href=""></a>    cin <span class="op">&gt;&gt;</span> choice<span class="op">;</span></span>
+<span id="cb10-3"><a href=""></a></span>
+<span id="cb10-4"><a href=""></a>    <span class="cf">switch</span> <span class="op">(</span>choice<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-5"><a href=""></a>    <span class="cf">case</span> <span class="ch">'A'</span><span class="op">:</span></span>
+<span id="cb10-6"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Add"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb10-7"><a href=""></a>        <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb10-8"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb10-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This <code>break</code> prevents fall-through to the next case.</p>
+<!-- Slide 19 -->
+</section>
+<section id="summary-1" class="slide level2">
+<h2>Summary</h2>
+<p><code>break</code> stops the nearest loop or switch immediately. Use it when stopping from inside the body is clearer than forcing the exit into the loop condition.</p>
+<!-- Slide 20 -->
+<!-- Topic 3: Continue -->
+<!-- Slides 21-28 -->
+</section></section>
+<section>
+<section id="continue" class="title-slide slide level1 center">
+<h1>Continue</h1>
+<!-- Slide 21 -->
+</section>
+<section id="when-should-a-loop-skip-the-rest-of-this-pass" class="slide level2 smaller">
+<h2>When Should A Loop Skip The Rest Of This Pass?</h2>
+<p><code>continue</code> does not stop the loop. It skips the remaining statements in the current pass and moves to the next condition check.</p>
+<aside class="notes">
+<p>Slides 21-28</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 22 -->
+</section>
+<section id="what-continue-does" class="slide level2">
+<h2>What <code>continue</code> Does</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb11-2"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>i <span class="op">==</span> <span class="dv">3</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-3"><a href=""></a>        <span class="cf">continue</span><span class="op">;</span></span>
+<span id="cb11-4"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb11-5"><a href=""></a></span>
+<span id="cb11-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> i <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb11-7"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The output is <code>1</code>, <code>2</code>, <code>4</code>, and <code>5</code>. The loop keeps running, but the print statement is skipped when <code>i</code> is <code>3</code>.</p>
+<!-- Slide 23 -->
+</section>
+<section id="continue-vs-break" class="slide level2">
+<h2>Continue vs Break</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Statement</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>continue</code></td>
+<td>skip the rest of this pass</td>
+</tr>
+<tr class="even">
+<td><code>break</code></td>
+<td>exit the loop immediately</td>
+</tr>
+</tbody>
+</table>
+<p>Use <code>continue</code> when this value should be ignored but the loop should keep checking later values.</p>
+<!-- Slide 24 -->
+</section>
+<section id="skipping-invalid-items" class="slide level2">
+<h2>Skipping Invalid Items</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href=""></a><span class="dt">int</span> total <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb12-2"><a href=""></a></span>
+<span id="cb12-3"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb12-4"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>score <span class="op">&lt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb12-5"><a href=""></a>        <span class="cf">continue</span><span class="op">;</span></span>
+<span id="cb12-6"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb12-7"><a href=""></a></span>
+<span id="cb12-8"><a href=""></a>    total <span class="op">+=</span> score<span class="op">;</span></span>
+<span id="cb12-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Negative scores are ignored. Valid scores still contribute to the total.</p>
+<!-- Slide 25 -->
+</section>
+<section id="continue-in-a-while-loop" class="slide level2">
+<h2>Continue In A While Loop</h2>
+<p>Update the loop-control variable before <code>continue</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href=""></a><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb13-2"><a href=""></a></span>
+<span id="cb13-3"><a href=""></a><span class="cf">while</span> <span class="op">(</span>i <span class="op">&lt;</span> <span class="dv">10</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-4"><a href=""></a>    i<span class="op">++;</span></span>
+<span id="cb13-5"><a href=""></a></span>
+<span id="cb13-6"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-7"><a href=""></a>        <span class="cf">continue</span><span class="op">;</span></span>
+<span id="cb13-8"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb13-9"><a href=""></a></span>
+<span id="cb13-10"><a href=""></a>    cout <span class="op">&lt;&lt;</span> i <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb13-11"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If the update comes after <code>continue</code>, the loop may never move forward.</p>
+<!-- Slide 26 -->
+</section>
+<section id="when-to-use-continue" class="slide level2">
+<h2>When To Use Continue</h2>
+<ul>
+<li>Skip data that should not be processed.</li>
+<li>Keep the main path less indented.</li>
+<li>Make the “ignore this case” rule explicit.</li>
+</ul>
+<p>Use it sparingly. A simple <code>if</code> statement is often clearer.</p>
+<!-- Slide 27 -->
+</section>
+<section id="summary-2" class="slide level2">
+<h2>Summary</h2>
+<p><code>continue</code> skips the rest of the current loop pass and returns to the next condition check or update step. It is useful for ignoring one case while allowing the loop to keep working.</p>
+<!-- Slide 28 -->
+<!-- Topic 4: Input Validation Strategy -->
+<!-- Slides 29-43 -->
+</section></section>
+<section>
+<section id="input-validation-strategy" class="title-slide slide level1 center">
+<h1>Input Validation Strategy</h1>
+<!-- Slide 29 -->
+</section>
+<section id="what-can-we-trust" class="slide level2 smaller">
+<h2>What Can We Trust?</h2>
+<ul>
+<li>Client input begins outside the program’s control.</li>
+<li>Validation decides when that input is safe enough to use.</li>
+</ul>
+<aside class="notes">
+<p>Slides 3-17</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 30 -->
+</section>
+<section id="why-validate-input" class="slide level2">
+<h2>Why Validate Input?</h2>
+<ul>
+<li>Bad input can corrupt program state.</li>
+<li>It can break calculations or send the program down the wrong branch.</li>
+<li>Validation protects the boundary before the value is trusted.</li>
+</ul>
+<!-- Slide 31 -->
+</section>
+<section id="minimum-validation-behavior" class="slide level2">
+<h2>Minimum Validation Behavior</h2>
+<ul>
+<li>Identify the problem.</li>
+<li>Give a specific correction message.</li>
+<li>Reprompt so the client can fix the value.</li>
+</ul>
+<!-- Slide 32 -->
+</section>
+<section id="where-validation-belongs" class="slide level2">
+<h2>Where Validation Belongs</h2>
+<ul>
+<li>Validate right after input is read.</li>
+<li>Do it before calculations, branches, vectors, or function calls use the value.</li>
+<li>The rest of the program should receive already-checked data.</li>
+</ul>
+<!-- Slide 33 -->
+</section>
+<section id="two-general-strategies" class="slide level2">
+<h2>Two General Strategies</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Strategy</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Allow by default</td>
+<td>Accept most input and reject known bad values</td>
+</tr>
+<tr class="even">
+<td>Deny by default</td>
+<td>Reject everything except known good values</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>[Graphic suggestion: two doors labeled “default open” and “default closed” with a guard checking names.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 34 -->
+</section>
+<section id="deny-by-default" class="slide level2">
+<h2>Deny By Default</h2>
+<ul>
+<li>Deny by default works well when the valid set is small.</li>
+<li>Menus, yes/no prompts, and known commands are strong fits.</li>
+<li>The program accepts only the choices it understands.</li>
+</ul>
+<!-- Slide 35 -->
+</section>
+<section id="allow-by-default" class="slide level2">
+<h2>Allow By Default</h2>
+<ul>
+<li>Allow by default can reject a short list of known bad inputs.</li>
+<li>It is better than no validation when the invalid set is small.</li>
+<li>It is weak when the program needs evidence that the data is correct.</li>
+</ul>
+<!-- Slide 36 -->
+</section>
+<section id="the-gauntlet-of-trust" class="slide level2">
+<h2>The Gauntlet Of Trust</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Check</th>
+<th>Question</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Presence</td>
+<td>Is there data?</td>
+</tr>
+<tr class="even">
+<td>Shape</td>
+<td>Is it the kind of input we need?</td>
+</tr>
+<tr class="odd">
+<td>Range or set</td>
+<td>Is it an expected value?</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/GoT.png" style="width:60.0%"></p>
+</div></div>
+<aside class="notes">
+<p>[Graphic suggestion: three gates labeled presence, shape, and range, with trust increasing after each gate.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 37 -->
+</section>
+<section id="start-with-presence" class="slide level2">
+<h2>Start With Presence</h2>
+<ul>
+<li>Empty input is different from wrong input.</li>
+<li>For full-line input, use <code>getline()</code> so the program can see the whole response.</li>
+<li>A blank string should be handled before checking more specific rules.</li>
+</ul>
+<!-- Slide 38 -->
+</section>
+<section id="check-the-shape" class="slide level2">
+<h2>Check The Shape</h2>
+<ul>
+<li>Shape means the input has the form the program expects.</li>
+<li>A whole number, a nonblank string, and a yes/no answer are different shapes.</li>
+<li>This check comes before asking whether the value is in range.</li>
+</ul>
+<!-- Slide 39 -->
+</section>
+<section id="check-the-range-or-set" class="slide level2">
+<h2>Check The Range Or Set</h2>
+<ul>
+<li>A readable value can still be unacceptable.</li>
+<li>Range checks ask whether a number is between legal bounds.</li>
+<li>Set checks ask whether a value is one of the legal choices.</li>
+</ul>
+<!-- Slide 40 -->
+</section>
+<section id="why-the-error-message-matters" class="slide level2">
+<h2>Why The Error Message Matters</h2>
+<ul>
+<li>“Invalid input” tells the client almost nothing.</li>
+<li>“Enter a whole number from 0 to 100” names the correction.</li>
+<li>Precise feedback reduces repeated mistakes.</li>
+</ul>
+<!-- Slide 41 -->
+</section>
+<section id="broad-to-narrow" class="slide level2">
+<h2>Broad To Narrow</h2>
+<ul>
+<li>First ask whether anything was entered.</li>
+<li>Then ask whether the data has the right shape.</li>
+<li>Then ask whether it meets the specific rule for this program.</li>
+</ul>
+<!-- Slide 42 -->
+</section>
+<section id="summary-3" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li>Validation builds trust in stages.</li>
+<li>Check broad failures first, explain clearly, and reprompt until the program has usable data.</li>
+</ul>
+<!-- Slide 43 -->
+<!-- Topic 5: Input Validation -->
+<!-- Slides 44-57 -->
+</section></section>
+<section>
+<section id="input-validation" class="title-slide slide level1 center">
+<h1>Input Validation</h1>
+<!-- Slide 44 -->
+</section>
+<section id="what-makes-input-safe-to-use" class="slide level2 smaller">
+<h2>What Makes Input Safe To Use?</h2>
+<p>Input validation checks client data before the rest of the program trusts it. The goal is to reject bad input early, explain the problem, and ask again.</p>
+<aside class="notes">
+<p>Slides 44-57</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 45 -->
+</section>
+<section id="validate-at-the-boundary" class="slide level2">
+<h2>Validate At The Boundary</h2>
+<p>The best time to validate input is immediately after reading it.</p>
+<ul>
+<li>The client enters raw data.</li>
+<li>The validation code decides whether the data is acceptable.</li>
+<li>The rest of the program receives data that has already been checked.</li>
+</ul>
+<p>Do not let questionable data travel deeper into the program.</p>
+<!-- Slide 46 -->
+</section>
+<section id="the-minimum-behavior" class="slide level2">
+<h2>The Minimum Behavior</h2>
+<p>A validation loop should do three things.</p>
+<ul>
+<li>State what is wrong.</li>
+<li>Tell the client what valid input looks like.</li>
+<li>Reprompt until the input is usable.</li>
+</ul>
+<p>“Invalid input” is rarely enough. A useful message teaches the client how to recover.</p>
+<!-- Slide 47 -->
+</section>
+<section id="range-validation" class="slide level2">
+<h2>Range Validation</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href=""></a><span class="dt">int</span> score<span class="op">;</span></span>
+<span id="cb14-2"><a href=""></a></span>
+<span id="cb14-3"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter a score (0-100): "</span><span class="op">;</span></span>
+<span id="cb14-4"><a href=""></a>cin <span class="op">&gt;&gt;</span> score<span class="op">;</span></span>
+<span id="cb14-5"><a href=""></a></span>
+<span id="cb14-6"><a href=""></a><span class="cf">while</span> <span class="op">(</span>score <span class="op">&lt;</span> <span class="dv">0</span> <span class="op">||</span> score <span class="op">&gt;</span> <span class="dv">100</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb14-7"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Score must be between 0 and 100. Try again: "</span><span class="op">;</span></span>
+<span id="cb14-8"><a href=""></a>    cin <span class="op">&gt;&gt;</span> score<span class="op">;</span></span>
+<span id="cb14-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The loop condition describes bad data. The loop stops when the value is acceptable.</p>
+<!-- Slide 48 -->
+</section>
+<section id="set-validation" class="slide level2">
+<h2>Set Validation</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href=""></a><span class="dt">char</span> answer<span class="op">;</span></span>
+<span id="cb15-2"><a href=""></a></span>
+<span id="cb15-3"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="st">"Continue? (Y/N): "</span><span class="op">;</span></span>
+<span id="cb15-4"><a href=""></a>cin <span class="op">&gt;&gt;</span> answer<span class="op">;</span></span>
+<span id="cb15-5"><a href=""></a></span>
+<span id="cb15-6"><a href=""></a><span class="cf">while</span> <span class="op">(</span>answer <span class="op">!=</span> <span class="ch">'Y'</span> <span class="op">&amp;&amp;</span> answer <span class="op">!=</span> <span class="ch">'N'</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb15-7"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter Y or N: "</span><span class="op">;</span></span>
+<span id="cb15-8"><a href=""></a>    cin <span class="op">&gt;&gt;</span> answer<span class="op">;</span></span>
+<span id="cb15-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use set validation when the legal values are specific choices rather than a continuous range.</p>
+<!-- Slide 49 -->
+</section>
+<section id="the-priming-read" class="slide level2">
+<h2>The Priming Read</h2>
+<p>A <code>while</code> validation loop needs a first value to test.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href=""></a>cin <span class="op">&gt;&gt;</span> value<span class="op">;</span>                 <span class="co">// priming read</span></span>
+<span id="cb16-2"><a href=""></a></span>
+<span id="cb16-3"><a href=""></a><span class="cf">while</span> <span class="op">(</span>value is invalid<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Try again: "</span><span class="op">;</span></span>
+<span id="cb16-5"><a href=""></a>    cin <span class="op">&gt;&gt;</span> value<span class="op">;</span>             <span class="co">// replacement read</span></span>
+<span id="cb16-6"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Without the priming read, the first condition check has no meaningful input value.</p>
+<!-- Slide 50 -->
+</section>
+<section id="validate-before-processing" class="slide level2">
+<h2>Validate Before Processing</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href=""></a><span class="dt">int</span> count<span class="op">;</span></span>
+<span id="cb17-2"><a href=""></a></span>
+<span id="cb17-3"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="st">"How many scores (1-30)? "</span><span class="op">;</span></span>
+<span id="cb17-4"><a href=""></a>cin <span class="op">&gt;&gt;</span> count<span class="op">;</span></span>
+<span id="cb17-5"><a href=""></a></span>
+<span id="cb17-6"><a href=""></a><span class="cf">while</span> <span class="op">(</span>count <span class="op">&lt;</span> <span class="dv">1</span> <span class="op">||</span> count <span class="op">&gt;</span> <span class="dv">30</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb17-7"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter a count from 1 to 30: "</span><span class="op">;</span></span>
+<span id="cb17-8"><a href=""></a>    cin <span class="op">&gt;&gt;</span> count<span class="op">;</span></span>
+<span id="cb17-9"><a href=""></a><span class="op">}</span></span>
+<span id="cb17-10"><a href=""></a></span>
+<span id="cb17-11"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> count<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb17-12"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Score "</span> <span class="op">&lt;&lt;</span> i <span class="op">&lt;&lt;</span> <span class="st">": "</span><span class="op">;</span></span>
+<span id="cb17-13"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The loop that uses <code>count</code> should not run until <code>count</code> has been validated.</p>
+<!-- Slide 51 -->
+</section>
+<section id="type-failure-is-different" class="slide level2">
+<h2>Type Failure Is Different</h2>
+<p>Range validation assumes the extraction succeeded. If the client types <code>abc</code> for an integer, <code>cin</code> enters a failed state.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href=""></a><span class="cf">while</span> <span class="op">(!(</span>cin <span class="op">&gt;&gt;</span> age<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb18-2"><a href=""></a>    cin<span class="op">.</span>clear<span class="op">();</span></span>
+<span id="cb18-3"><a href=""></a>    cin<span class="op">.</span>ignore<span class="op">(</span><span class="dv">10000</span><span class="op">,</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">);</span></span>
+<span id="cb18-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter a whole-number age: "</span><span class="op">;</span></span>
+<span id="cb18-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Recover from type failure before applying ordinary range checks.</p>
+<!-- Slide 52 -->
+</section>
+<section id="simple-validation" class="slide level2">
+<h2>Simple Validation</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href=""></a><span class="dt">int</span> age<span class="op">;</span></span>
+<span id="cb19-2"><a href=""></a></span>
+<span id="cb19-3"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter your age (1-120): "</span><span class="op">;</span></span>
+<span id="cb19-4"><a href=""></a></span>
+<span id="cb19-5"><a href=""></a><span class="cf">while</span> <span class="op">(!(</span>cin <span class="op">&gt;&gt;</span> age<span class="op">)</span> <span class="op">||</span> age <span class="op">&lt;</span> <span class="dv">1</span> <span class="op">||</span> age <span class="op">&gt;</span> <span class="dv">120</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb19-6"><a href=""></a>    cin<span class="op">.</span>clear<span class="op">();</span></span>
+<span id="cb19-7"><a href=""></a>    cin<span class="op">.</span>ignore<span class="op">(</span><span class="dv">10000</span><span class="op">,</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">);</span></span>
+<span id="cb19-8"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter a whole-number age from 1 to 120: "</span><span class="op">;</span></span>
+<span id="cb19-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This combines type recovery with range validation in one loop.</p>
+<!-- Slide 53 -->
+</section>
+<section id="the-gauntlet-of-trust-1" class="slide level2">
+<h2>The Gauntlet of Trust</h2>
+
+<!-- Slide 54 -->
+<img data-src="images/GoT_diagram.png" class="r-stretch"></section>
+<section id="complex-validation" class="slide level2">
+<h2>Complex Validation</h2>
+
+<!-- Slide 55 -->
+<img data-src="images/inpval.png" class="r-stretch"></section>
+<section id="complex-validation-code-and-output" class="slide level2">
+<h2>Complex Validation: Code and Output</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/inpval.png"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/output.png"></p>
+</div></div>
+<!-- Slide 56 -->
+</section>
+<section id="summary-4" class="slide level2">
+<h2>Summary</h2>
+<p>Input validation protects the program boundary. Read the value, reject invalid data with a specific message, reprompt, and only process the value after it passes the check.</p>
+<!-- Slide 57 -->
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="key-takeaways" class="title-slide slide level1 center">
+<h1>Key Takeaways</h1>
+<ul>
+<li><code>++</code>, <code>--</code>, and compound assignment make loop updates easier to read.</li>
+<li><code>break</code> exits the nearest loop or switch immediately.</li>
+<li><code>continue</code> skips the rest of the current loop pass but keeps the loop running.</li>
+<li>Validation strategy decides what a program must check before it trusts input.</li>
+<li>Input validation protects the program boundary before client data is trusted.</li>
+</ul>
+<!-- Slide 58 -->
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="next-time" class="title-slide slide level1 center">
+<h1>Next Time</h1>
+<ul>
+<li>More input validation practice</li>
+<li>Validation helpers</li>
+<li>Validation in menu-driven programs</li>
+</ul>
+<!-- Slide 59 -->
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="appendix" class="title-slide slide level1 center">
+<h1>Appendix</h1>
+<!-- Slide 60 -->
+</section>
+<section id="increment-and-decrement-operators-good-practices" class="slide level2">
+<h2>Increment and Decrement Operators: Good Practices</h2>
+<ul>
+<li>Use <code>i++</code> in ordinary for-loop update expressions.</li>
+<li>Use <code>+=</code> or <code>-=</code> when the loop moves by more than one.</li>
+<li>Keep increment and decrement statements easy to see.</li>
+</ul>
+<!-- Slide 61 -->
+</section>
+<section id="increment-and-decrement-operators-common-mistakes" class="slide level2">
+<h2>Increment and Decrement Operators: Common Mistakes</h2>
+<ul>
+<li>Assuming <code>x++</code> and <code>++x</code> produce the same value inside a larger expression.</li>
+<li>Incrementing the wrong variable in a nested or multi-variable loop.</li>
+<li>Forgetting that <code>++</code> always changes the value by exactly one.</li>
+</ul>
+<!-- Slide 62 -->
+</section>
+<section id="increment-and-decrement-operators-more-examples" class="slide level2">
+<h2>Increment and Decrement Operators: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="dv">20</span><span class="op">;</span> i <span class="op">+=</span> <span class="dv">2</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb20-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> i <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
+<span id="cb20-3"><a href=""></a><span class="op">}</span></span>
+<span id="cb20-4"><a href=""></a></span>
+<span id="cb20-5"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">10</span><span class="op">;</span> i <span class="op">&gt;=</span> <span class="dv">0</span><span class="op">;</span> i<span class="op">--)</span> <span class="op">{</span></span>
+<span id="cb20-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> i <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
+<span id="cb20-7"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 63 -->
+</section>
+<section id="increment-and-decrement-operators-practice-problems" class="slide level2">
+<h2>Increment and Decrement Operators: Practice Problems</h2>
+<ul>
+<li>Rewrite <code>i = i + 1</code> using the increment operator.</li>
+<li>Trace <code>int x = 3; cout &lt;&lt; x++ &lt;&lt; " " &lt;&lt; x;</code>.</li>
+<li>Write a loop that counts from <code>100</code> down to <code>0</code> by tens.</li>
+</ul>
+<!-- Slide 64 -->
+</section>
+<section id="increment-and-decrement-operators-ai-search-terms" class="slide level2">
+<h2>Increment and Decrement Operators: AI Search Terms</h2>
+<ul>
+<li>C++ increment decrement operators</li>
+<li>C++ postfix vs prefix increment</li>
+<li>C++ compound assignment operators</li>
+<li>C++ for loop update expression</li>
+</ul>
+<!-- Slide 65 -->
+</section>
+<section id="increment-and-decrement-operators-questions-for-reflection" class="slide level2">
+<h2>Increment and Decrement Operators: Questions for Reflection</h2>
+<ul>
+<li>When does shorthand make code easier to read?</li>
+<li>Why does prefix vs postfix not matter in a standalone statement?</li>
+<li>What loop steps cannot be expressed with <code>++</code> or <code>--</code>?</li>
+</ul>
+<!-- Slide 66 -->
+</section>
+<section id="break-good-practices" class="slide level2">
+<h2>Break: Good Practices</h2>
+<ul>
+<li>Keep the reason for <code>break</code> close to the <code>break</code> statement.</li>
+<li>Prefer a clear loop condition when it expresses the exit naturally.</li>
+<li>Use <code>break</code> in searches when the answer is already found.</li>
+</ul>
+<!-- Slide 67 -->
+</section>
+<section id="break-common-mistakes" class="slide level2">
+<h2>Break: Common Mistakes</h2>
+<ul>
+<li>Assuming one <code>break</code> exits every nested loop.</li>
+<li>Confusing <code>break</code> in a <code>switch</code> with <code>break</code> in a loop.</li>
+<li>Using many scattered <code>break</code> statements when one loop condition would be clearer.</li>
+</ul>
+<!-- Slide 68 -->
+</section>
+<section id="break-more-examples" class="slide level2">
+<h2>Break: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb21-1"><a href=""></a><span class="dt">int</span> value<span class="op">;</span></span>
+<span id="cb21-2"><a href=""></a><span class="dt">int</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb21-3"><a href=""></a></span>
+<span id="cb21-4"><a href=""></a><span class="cf">while</span> <span class="op">(</span>cin <span class="op">&gt;&gt;</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb21-5"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>value <span class="op">&lt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb21-6"><a href=""></a>        <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb21-7"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb21-8"><a href=""></a></span>
+<span id="cb21-9"><a href=""></a>    count<span class="op">++;</span></span>
+<span id="cb21-10"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 69 -->
+</section>
+<section id="break-practice-problems" class="slide level2">
+<h2>Break: Practice Problems</h2>
+<ul>
+<li>Stop reading numbers when the client enters <code>0</code>.</li>
+<li>Search a vector and stop at the first negative value.</li>
+<li>Explain what happens when <code>break</code> appears inside a <code>switch</code> inside a loop.</li>
+</ul>
+<!-- Slide 70 -->
+</section>
+<section id="break-ai-search-terms" class="slide level2">
+<h2>Break: AI Search Terms</h2>
+<ul>
+<li>C++ break statement loop</li>
+<li>C++ break in switch statement</li>
+<li>C++ sentinel loop break</li>
+<li>C++ stop loop when found</li>
+</ul>
+<!-- Slide 71 -->
+</section>
+<section id="break-questions-for-reflection" class="slide level2">
+<h2>Break: Questions for Reflection</h2>
+<ul>
+<li>Where does execution go immediately after <code>break</code>?</li>
+<li>Would the loop be clearer with the stopping rule in the condition?</li>
+<li>What makes a <code>break</code> statement easy or hard to trust?</li>
+</ul>
+<!-- Slide 72 -->
+</section>
+<section id="continue-good-practices" class="slide level2">
+<h2>Continue: Good Practices</h2>
+<ul>
+<li>Use <code>continue</code> for early skip cases.</li>
+<li>Keep loop-control updates before <code>continue</code> in while loops.</li>
+<li>Prefer a plain <code>if</code> when it reads more directly.</li>
+</ul>
+<!-- Slide 73 -->
+</section>
+<section id="continue-common-mistakes" class="slide level2">
+<h2>Continue: Common Mistakes</h2>
+<ul>
+<li>Confusing <code>continue</code> with <code>break</code>.</li>
+<li>Placing <code>continue</code> before the loop-control variable changes.</li>
+<li>Hiding too much logic after multiple <code>continue</code> statements.</li>
+</ul>
+<!-- Slide 74 -->
+</section>
+<section id="continue-more-examples" class="slide level2">
+<h2>Continue: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb22-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> value <span class="op">:</span> values<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb22-2"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>value <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb22-3"><a href=""></a>        <span class="cf">continue</span><span class="op">;</span></span>
+<span id="cb22-4"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb22-5"><a href=""></a></span>
+<span id="cb22-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="dv">100</span> <span class="op">/</span> value <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb22-7"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 75 -->
+</section>
+<section id="continue-practice-problems" class="slide level2">
+<h2>Continue: Practice Problems</h2>
+<ul>
+<li>Print only odd numbers from <code>1</code> to <code>20</code> using <code>continue</code>.</li>
+<li>Skip blank names in a list of names.</li>
+<li>Rewrite a <code>continue</code> example using an <code>if</code> statement instead.</li>
+</ul>
+<!-- Slide 76 -->
+</section>
+<section id="continue-ai-search-terms" class="slide level2">
+<h2>Continue: AI Search Terms</h2>
+<ul>
+<li>C++ continue statement loop</li>
+<li>C++ continue vs break</li>
+<li>C++ skip iteration with continue</li>
+<li>C++ continue while loop infinite loop</li>
+</ul>
+<!-- Slide 77 -->
+</section>
+<section id="continue-questions-for-reflection" class="slide level2">
+<h2>Continue: Questions for Reflection</h2>
+<ul>
+<li>What code is skipped after <code>continue</code>?</li>
+<li>Why can <code>continue</code> be risky in a while loop?</li>
+<li>Would an <code>if</code> statement be clearer in this case?</li>
+</ul>
+<!-- Slide 78 -->
+</section>
+<section id="input-validation-strategy-good-practices" class="slide level2">
+<h2>Input Validation Strategy: Good Practices</h2>
+<ul>
+<li>Validate from broadest condition to narrowest condition.</li>
+<li>Give a specific error message and reprompt.</li>
+<li>Keep invalid input from reaching the rest of the program.</li>
+</ul>
+<!-- Slide 79 -->
+</section>
+<section id="input-validation-strategy-common-mistakes" class="slide level2">
+<h2>Input Validation Strategy: Common Mistakes</h2>
+<ul>
+<li>Checking range before checking whether the input is the right type.</li>
+<li>Printing a generic error message when the client needs a specific correction.</li>
+<li>Using a value before the program has decided it is safe.</li>
+</ul>
+<!-- Slide 80 -->
+</section>
+<section id="input-validation-strategy-more-examples" class="slide level2">
+<h2>Input Validation Strategy: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb23-1"><a href=""></a>string name<span class="op">;</span></span>
+<span id="cb23-2"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="st">"Name: "</span><span class="op">;</span></span>
+<span id="cb23-3"><a href=""></a>getline<span class="op">(</span>cin<span class="op">,</span> name<span class="op">);</span></span>
+<span id="cb23-4"><a href=""></a></span>
+<span id="cb23-5"><a href=""></a><span class="cf">while</span> <span class="op">(</span>name<span class="op">.</span>empty<span class="op">())</span> <span class="op">{</span></span>
+<span id="cb23-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Name cannot be blank. Try again: "</span><span class="op">;</span></span>
+<span id="cb23-7"><a href=""></a>    getline<span class="op">(</span>cin<span class="op">,</span> name<span class="op">);</span></span>
+<span id="cb23-8"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 81 -->
+</section>
+<section id="input-validation-strategy-practice-problems" class="slide level2">
+<h2>Input Validation Strategy: Practice Problems</h2>
+<ul>
+<li>Validate that a menu choice is between <code>1</code> and <code>4</code>.</li>
+<li>Validate that a password is not blank and has at least seven characters.</li>
+<li>Validate that a percent is between <code>0</code> and <code>100</code>.</li>
+</ul>
+<!-- Slide 82 -->
+</section>
+<section id="input-validation-strategy-ai-search-terms" class="slide level2">
+<h2>Input Validation Strategy: AI Search Terms</h2>
+<ul>
+<li>C++ input validation strategy</li>
+<li>C++ getline empty string validation</li>
+<li>C++ range validation loop</li>
+<li>C++ allow by default deny by default validation</li>
+</ul>
+<!-- Slide 83 -->
+</section>
+<section id="input-validation-strategy-questions-for-reflection" class="slide level2">
+<h2>Input Validation Strategy: Questions for Reflection</h2>
+<ul>
+<li>What is the first thing that could be wrong with this input?</li>
+<li>What message would help the client fix the mistake?</li>
+<li>Where does the program first trust the data?</li>
+</ul>
+<!-- Slide 84 -->
+</section>
+<section id="input-validation-good-practices" class="slide level2">
+<h2>Input Validation: Good Practices</h2>
+<ul>
+<li>Validate immediately after input.</li>
+<li>Write the loop condition in terms of invalid data.</li>
+<li>Give an error message that names the valid range or choices.</li>
+</ul>
+<!-- Slide 85 -->
+</section>
+<section id="input-validation-common-mistakes" class="slide level2">
+<h2>Input Validation: Common Mistakes</h2>
+<ul>
+<li>Processing the value before validation finishes.</li>
+<li>Forgetting to read a replacement value inside the loop.</li>
+<li>Treating type failure and range failure as the same problem.</li>
+</ul>
+<!-- Slide 86 -->
+</section>
+<section id="input-validation-more-examples" class="slide level2">
+<h2>Input Validation: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb24-1"><a href=""></a><span class="dt">int</span> month<span class="op">;</span></span>
+<span id="cb24-2"><a href=""></a></span>
+<span id="cb24-3"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="st">"Month (1-12): "</span><span class="op">;</span></span>
+<span id="cb24-4"><a href=""></a>cin <span class="op">&gt;&gt;</span> month<span class="op">;</span></span>
+<span id="cb24-5"><a href=""></a></span>
+<span id="cb24-6"><a href=""></a><span class="cf">while</span> <span class="op">(</span>month <span class="op">&lt;</span> <span class="dv">1</span> <span class="op">||</span> month <span class="op">&gt;</span> <span class="dv">12</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb24-7"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Month must be 1 through 12: "</span><span class="op">;</span></span>
+<span id="cb24-8"><a href=""></a>    cin <span class="op">&gt;&gt;</span> month<span class="op">;</span></span>
+<span id="cb24-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 87 -->
+</section>
+<section id="input-validation-practice-problems" class="slide level2">
+<h2>Input Validation: Practice Problems</h2>
+<ul>
+<li>Validate a quantity from <code>1</code> to <code>99</code>.</li>
+<li>Validate a menu choice of <code>A</code>, <code>D</code>, or <code>Q</code>.</li>
+<li>Explain why <code>score &lt; 0 &amp;&amp; score &gt; 100</code> is the wrong invalid condition.</li>
+</ul>
+<!-- Slide 88 -->
+</section>
+<section id="input-validation-ai-search-terms" class="slide level2">
+<h2>Input Validation: AI Search Terms</h2>
+<ul>
+<li>C++ input validation while loop</li>
+<li>C++ validate integer range</li>
+<li>C++ cin fail clear ignore</li>
+<li>C++ input validation menu choice</li>
+</ul>
+<!-- Slide 89 -->
+</section>
+<section id="input-validation-questions-for-reflection" class="slide level2">
+<h2>Input Validation: Questions for Reflection</h2>
+<ul>
+<li>What does the program know after the validation loop exits?</li>
+<li>What error message would help the client fix the input?</li>
+<li>Where should validation happen in a larger program?</li>
+</ul>
+<!-- Slide 90 -->
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>CISP 400 · Fowler</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="p400_lecture_09.01_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="p400_lecture_09.01_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="p400_lecture_09.01_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="p400_lecture_09.01_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="p400_lecture_09.01_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="p400_lecture_09.01_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="p400_lecture_09.01_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="p400_lecture_09.01_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="p400_lecture_09.01_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="p400_lecture_09.01_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

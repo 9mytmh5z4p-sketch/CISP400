@@ -1,0 +1,122 @@
+<!-- Topic 2: The switch Statement -->
+<!-- Slides 11-19 -->
+
+# The switch Statement
+<!-- Slide 11 -->
+
+## Choosing From Fixed Cases {.smaller}
+
+- A `switch` statement chooses among fixed exact values.
+- It is useful when one expression is compared against several known cases.
+
+::: notes
+Slides 11-19
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## The Shape of a switch Statement
+
+```cpp
+switch (category) {
+case 'A':
+    cout << "Excellent";
+    break;
+default:
+    cout << "Unrecognized category";
+}
+```
+
+<!-- Slide 13 -->
+
+---
+
+## switch vs. if/else if
+
+| Use `switch` when... | Use `if/else if` when... |
+|---|---|
+| One expression is checked | Different expressions are checked |
+| Cases are exact values | Conditions use ranges |
+| The choices are discrete | The choices need relational tests |
+
+<!-- Slide 14 -->
+
+---
+
+## case Labels Match Exact Values
+
+```cpp
+case 1:
+case 'A':
+case true:
+```
+
+`case` labels are exact matches. They do not test ranges like `score >= 90`.
+
+<!-- Slide 15 -->
+
+---
+
+## break Controls Fall-Through
+
+```cpp
+case 'A':
+    cout << "Excellent";
+    break;
+case 'B':
+    cout << "Good";
+    break;
+```
+
+Without `break`, execution continues into the next case.
+
+<!-- Slide 16 -->
+
+---
+
+## default Handles Everything Else
+
+```cpp
+default:
+    cout << "Unknown category";
+```
+
+The `default` branch handles values that do not match any listed case.
+
+<!-- Slide 17 -->
+
+---
+
+## Category Code Example
+
+```cpp
+char shippingCode;
+cin >> shippingCode;
+
+switch (shippingCode) {
+case 'S':
+    cout << "Standard shipping";
+    break;
+case 'E':
+    cout << "Express shipping";
+    break;
+case 'P':
+    cout << "Pickup";
+    break;
+default:
+    cout << "Unknown shipping code";
+}
+```
+
+<!-- Slide 18 -->
+
+---
+
+## Summary
+
+- `switch` is best when one expression is compared against a fixed set of exact values.
+- Use `if/else if` when the decision depends on ranges or different questions.
+
+<!-- Slide 19 -->

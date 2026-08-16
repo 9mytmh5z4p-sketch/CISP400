@@ -1,0 +1,491 @@
+<!-- Topic 2: Pseudodynamic Memory - Heap -->
+<!-- Slides 22–50 -->
+
+# Pseudodynamic Memory - Heap
+<!-- Slide 22 -->
+
+## When Fixed Capacity Is Not Enough {.smaller}
+
+- What if the program should ask for the array length when it runs?
+- Heap allocation removes the compile-time capacity wall, but the allocation still has a fixed length once created.
+
+::: notes
+Slides 22–50
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## Two Flavors
+
+- Stack flavor: a fixed-capacity array is declared as a local variable.
+- **Heap flavor:** an array is allocated on the heap after the program knows the requested length.
+
+The heap flavor is more flexible at program start, but it introduces ownership and cleanup responsibilities.
+
+<!-- Slide 24 -->
+
+---
+
+## Scalar Ownership Review
+
+1. Allocate with `new`.
+2. Use the object through its pointer.
+3. Release it with `delete`.
+4. Set the pointer to `nullptr` when it remains in scope.
+
+**Invariant:** one owner, one matching release.
+
+<!-- Slide 25 -->
+
+---
+
+## One Dynamically Allocated Value
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int* score = new int;
+    *score = 92;
+    cout << *score << '\n';
+
+    delete score;
+    score = nullptr;
+    return 0;
+}
+```
+
+<!-- Slide 26 -->
+
+---
+
+## From One Value to Many
+
+```{.cpp}
+int* oneScore = new int;
+int* manyScores = new int[count];
+```
+
+The second allocation reserves `count` contiguous `int` elements on the heap.
+
+::: notes
+[Graphic suggestion: two stack pointer variables, one pointing to a scalar heap cell and one to an array block.]
+:::
+
+<!-- Slide 27 -->
+
+---
+
+## Scalar Versus Array Allocation
+
+| Allocation | Access | Matching release |
+|---|---|---|
+| `new int` | `*pointer` | `delete pointer` |
+| `new int[count]` | `pointer[index]` | `delete[] pointer` |
+
+The bracket form is part of the allocation contract.
+
+<!-- Slide 28 -->
+
+---
+
+## Why the Brackets Matter
+
+```{.cpp}
+int* value = new int;
+int* values = new int[10];
+
+delete value;
+delete[] values;
+```
+
+Mixing scalar and array release forms causes undefined behavior.
+
+<!-- Slide 29 -->
+
+---
+
+## Pointer on the Stack, Array on the Heap
+
+- The pointer variable has its own storage and scope.
+- The heap array remains allocated until its owner releases it.
+- Losing the pointer does not release the array.
+
+::: notes
+[Graphic suggestion: stack frame containing `values` and `length`, with an arrow to a heap block. Label the pointer and allocation lifetimes separately.]
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## Validate Before Allocating
+
+```{.cpp}
+cout << "How many scores? ";
+cin >> length;
+
+while (length < 0)
+{
+    cout << "Enter zero or more: ";
+    cin >> length;
+}
+```
+
+No allocation should occur until the requested length satisfies the program contract.
+
+<!-- Slide 31 -->
+
+---
+
+## Zero Elements Means No Allocation
+
+```{.cpp}
+int* scores = nullptr;
+
+if (length > 0)
+    scores = new int[length];
+```
+
+`nullptr` clearly represents “no array.” Both `delete[] nullptr` and guarded traversal are safe.
+
+<!-- Slide 32 -->
+
+---
+
+## Allocate the Requested Length
+
+```{.cpp}
+int* scores = new int[length];
+
+for (int index = 0; index < length; index++)
+    scores[index] = 0;
+```
+
+The allocated length is fixed for the lifetime of this allocation.
+
+<!-- Slide 33 -->
+
+---
+
+## Read and Display Values
+
+```{.cpp}
+for (int i = 0; i < length; i++)
+{
+    cout << "Score " << i + 1 << ": ";
+    cin >> scores[i];
+}
+
+for (int i = 0; i < length; i++)
+    cout << scores[i] << ' ';
+cout << '\n';
+```
+
+**Boundary:** every subscript must remain below `length`.
+
+<!-- Slide 34 -->
+
+---
+
+## Complete Heap-Allocated Array Program {.smaller}
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int length;
+    cout << "How many temperatures? ";
+    cin >> length;
+
+    if (length <= 0)
+        return 0;
+
+    double* temperatures = new double[length];
+    for (int i = 0; i < length; i++)
+    {
+        cout << "Temperature " << i + 1 << ": ";
+        cin >> temperatures[i];
+    }
+
+    for (int i = 0; i < length; i++)
+        cout << temperatures[i] << '\n';
+
+    delete[] temperatures;
+    temperatures = nullptr;
+    return 0;
+}
+```
+
+<!-- Slide 35 -->
+
+---
+
+## Three Meanings of Size
+
+- **Requested length:** input proposed by the user.
+- **Allocated length:** elements reserved by the successful `new[]` expression.
+- **Logical length:** elements the program currently treats as valid.
+
+In the heap pseudodynamic pattern, these values usually become the same after validation.
+
+<!-- Slide 36 -->
+
+---
+
+## Pass Pointer and Length Together
+
+```{.cpp}
+void display(const int values[], int length);
+double average(const int values[], int length);
+```
+
+The pointer carries an address. The length carries the boundary contract.
+
+<!-- Slide 37 -->
+
+---
+
+## Compute Through a Pointer {.smaller}
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+double average(const int values[], int length);
+
+int main()
+{
+    int length = 4;
+    int* values = new int[length]{10, 20, 30, 40};
+    cout << average(values, length) << '\n';
+    delete[] values;
+    values = nullptr;
+    return 0;
+}
+
+double average(const int values[], int length)
+{
+    if (length == 0)
+        return 0.0;
+
+    int total = 0;
+    for (int i = 0; i < length; i++)
+        total += values[i];
+    return static_cast<double>(total) / length;
+}
+```
+
+<!-- Slide 38 -->
+
+---
+
+## Where Are the Bounds?
+
+- A raw pointer does not know the array length.
+- `values[length]` is already one element beyond the allocation.
+- An out-of-bounds read or write causes undefined behavior.
+
+<!-- Slide 39 -->
+
+---
+
+## One Element Too Far
+
+```{.cpp}
+int* values = new int[3]{4, 8, 12};
+
+cout << values[2] << '\n';  // Last valid element
+cout << values[3] << '\n';  // Outside the allocation
+
+delete[] values;
+```
+
+**Predict:** is any particular output guaranteed for the second statement?
+
+<!-- Slide 40 -->
+
+---
+
+## Preserve the Base Address
+
+```{.cpp}
+int* values = new int[4]{3, 6, 9, 12};
+int* cursor = values;
+
+cursor++;
+cout << *cursor << '\n';
+
+delete[] values;
+values = nullptr;
+```
+
+The owning pointer retains the address returned by `new[]`.
+
+<!-- Slide 41 -->
+
+---
+
+## Traverse Without Losing Ownership
+
+```{.cpp}
+int* cursor = values;
+int* end = values + length;
+
+while (cursor != end)
+{
+    cout << *cursor << '\n';
+    cursor++;
+}
+```
+
+`cursor` moves; `values` continues to own the base address.
+
+<!-- Slide 42 -->
+
+---
+
+## Losing the Only Pointer
+
+```{.cpp}
+int* values = new int[10];
+values = nullptr;
+```
+
+The allocation still exists, but its address is gone. It can no longer be released.
+
+::: notes
+[Graphic suggestion: heap block with its ownership arrow removed while the pointer now holds `nullptr`.]
+:::
+
+<!-- Slide 43 -->
+
+---
+
+## Cleanup Before Every Return
+
+```{.cpp}
+int* values = new int[length];
+
+if (!readValues(values, length))
+{
+    delete[] values;
+    values = nullptr;
+    return 1;
+}
+
+delete[] values;
+values = nullptr;
+return 0;
+```
+
+Each exit path must honor the ownership invariant.
+
+<!-- Slide 44 -->
+
+---
+
+## One Cleanup Path
+
+```{.cpp}
+int result = 0;
+int* values = new int[length];
+
+if (!readValues(values, length))
+    result = 1;
+else
+    display(values, length);
+
+delete[] values;
+values = nullptr;
+return result;
+```
+
+One release point makes manual ownership easier to audit.
+
+<!-- Slide 45 -->
+
+---
+
+## Automatic Array Ownership
+
+```{.cpp}
+#include <memory>
+using namespace std;
+
+unique_ptr<int[]> values = make_unique<int[]>(length);
+values[0] = 42;
+```
+
+The smart pointer releases its array automatically when its lifetime ends.
+
+<!-- Slide 46 -->
+
+---
+
+## Managed Heap Array {.smaller}
+
+```{.cpp}
+#include <iostream>
+#include <memory>
+using namespace std;
+
+int main()
+{
+    int length;
+    cout << "How many values? ";
+    cin >> length;
+
+    if (length <= 0)
+        return 0;
+
+    unique_ptr<int[]> values = make_unique<int[]>(length);
+    for (int i = 0; i < length; i++)
+        cin >> values[i];
+
+    for (int i = 0; i < length; i++)
+        cout << values[i] << '\n';
+    return 0;
+}
+```
+
+<!-- Slide 47 -->
+
+---
+
+## Lifetime Versus Bounds Safety
+
+`unique_ptr<Type[]>` provides:
+
+- Automatic release with the correct array form
+- Exclusive ownership
+- Subscript access
+
+It does not store length or check whether an index is valid.
+
+<!-- Slide 48 -->
+
+---
+
+## Still Pseudodynamic
+
+- The array length can be chosen at runtime.
+- Once the heap block is allocated, that block does not change size.
+- To change the size, the program must allocate a different block and move the data it wants to keep.
+
+<!-- Slide 49 -->
+
+---
+
+## Summary
+
+- Heap pseudodynamic memory uses `new[]` to choose array length at runtime.
+- The allocation has a fixed size until it is released, so ownership and bounds must be tracked explicitly.
+
+<!-- Slide 50 -->

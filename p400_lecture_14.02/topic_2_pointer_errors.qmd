@@ -1,0 +1,373 @@
+<!-- Topic 2: Pointer Errors, Memory Leaks, and Dangling Pointers -->
+<!-- Slides 19–42 -->
+
+# Pointer Errors, Memory Leaks, and Dangling Pointers
+<!-- Slide 19 -->
+
+## What Happens When the Pointer Outlives Its Target? {.smaller}
+
++ A pointer can retain an address after the object at that address is gone.
++ The address looks ordinary, but dereferencing it is no longer valid.
+
+::: notes
+Slides 19–42
+[Graphic suggestion: a pointer arrow ending at a faded, crossed-out object.]
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## A Map of Pointer Failures
+
+| Failure area | Question |
+|---|---|
+| Initialization | Does the pointer hold a known address? |
+| Lifetime | Is the target still alive? |
+| Ownership | Who must release the allocation? |
+| Deallocation | Is the release operation valid and correctly matched? |
+
+<!-- Slide 21 -->
+
+---
+
+## Leaks and Dangling Pointers Are Opposites
+
++ **Memory leak:** live allocation, but no usable pointer can reach it.
++ **Dangling pointer:** pointer remains, but its target is no longer alive.
+
+::: notes
+[Graphic suggestion: side-by-side panels—an unreachable live block and an arrow aimed at a dead block.]
+:::
+
+<!-- Slide 22 -->
+
+---
+
+## Why Results Seem Unpredictable
+
++ Undefined behavior removes the language's guarantees.
++ A broken program may crash, print plausible output, or appear to work.
++ Successful output does not prove that the access was valid.
+
+<!-- Slide 23 -->
+
+---
+
+## Three Questions Before Dereferencing
+
+1. Was the pointer initialized to a known address?
+2. Is the pointed-to object still alive?
+3. Does the pointer refer to the object the program intends to access?
+
+<!-- Slide 24 -->
+
+---
+
+## Wild Pointers
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+int main() {
+    int* score;
+    cout << *score << "\n"; // undefined behavior
+    return 0;
+}
+```
+
+::: notes
+Pause before revealing the final comment. Ask which of the three dereference checks fails.
+[Graphic suggestion: score containing question marks instead of a known address.]
+:::
+
+<!-- Slide 25 -->
+
+---
+
+## Null Pointer Dereference
+
+```{.cpp}
+int* score = nullptr;
+
+if (score != nullptr) {
+    cout << *score << "\n";
+}
+```
+
++ `nullptr` represents a deliberate no-object state.
++ It must be checked before dereferencing.
+
+<!-- Slide 26 -->
+
+---
+
+## Returning a Local Address {.smaller}
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+int* makeScore();
+
+int main() {
+    int* score = makeScore();
+    cout << *score << "\n"; // dangling pointer
+    return 0;
+}
+
+int* makeScore() {
+    int localScore = 95;
+    return &localScore;
+} // localScore dies here
+```
+
+<!-- Slide 27 -->
+
+---
+
+## Use After Scope
+
+```{.cpp}
+int* selected = nullptr;
+
+{
+    int score = 88;
+    selected = &score;
+} // score's lifetime ends
+
+cout << *selected << "\n"; // undefined behavior
+```
+
+::: notes
+[Graphic suggestion: nested scope box disappearing while selected retains its address.]
+:::
+
+<!-- Slide 28 -->
+
+---
+
+## Use After delete
+
+```{.cpp}
+int* score = new int{95};
+delete score;
+
+cout << *score << "\n"; // target is dead
+
+score = nullptr;
+```
+
++ `delete` invalidates access through every pointer to that allocation.
+
+<!-- Slide 29 -->
+
+---
+
+## Aliasing Spreads Dangling Pointers
+
+```{.cpp}
+int* owner = new int{95};
+int* alias = owner;
+
+delete owner;
+owner = nullptr;
+
+cout << *alias << "\n"; // alias still dangles
+```
+
+::: notes
+[Graphic suggestion: owner and alias both point to one allocation; delete crosses out the allocation, then owner becomes null while alias remains.]
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## Why nullptr Does Not Solve Everything
+
++ Setting the deleting pointer to `nullptr` prevents reuse through that variable.
++ Other aliases are not changed automatically.
++ The real requirement is that no pointer access an object after its lifetime ends.
+
+<!-- Slide 31 -->
+
+---
+
+## Double Deletion
+
+```{.cpp}
+int* score = new int{95};
+
+delete score;
+delete score; // undefined behavior
+```
+
++ One allocation must be released exactly once.
+
+<!-- Slide 32 -->
+
+---
+
+## Deleting Non-Dynamic Memory
+
+```{.cpp}
+int score = 95;
+int* pointer = &score;
+
+delete pointer; // score was not created by new
+```
+
++ `delete` requires an address produced by a matching `new` expression.
+
+::: notes
+[Graphic suggestion: stack object labeled automatic contrasted with heap object labeled dynamic.]
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## What Is a Memory Leak?
+
++ A dynamic allocation remains alive.
++ The program has lost every pointer that could release it.
++ Repeating the loss consumes more memory over time.
+
+::: notes
+[Graphic suggestion: a live heap block with no incoming arrows.]
+:::
+
+<!-- Slide 34 -->
+
+---
+
+## Overwriting the Only Pointer
+
+```{.cpp}
+int* score = new int{80};
+
+score = new int{95}; // first allocation is leaked
+
+delete score;
+score = nullptr;
+```
+
+::: notes
+Pause before revealing the comment. Ask which allocation remains reachable.
+:::
+
+<!-- Slide 35 -->
+
+---
+
+## Leaks Across Repeated Calls
+
+```{.cpp}
+for (int i = 0; i < 1000; i++) {
+    int* sample = new int{i};
+    cout << *sample << "\n";
+    // No delete: one leaked int per iteration.
+}
+```
+
++ Small leaks become large when placed on repeated paths.
+
+<!-- Slide 36 -->
+
+---
+
+## Leaks Through Early Returns
+
+```{.cpp}
+int* score = new int{95};
+
+if (!(cin >> *score)) {
+    return 1; // cleanup is skipped
+}
+
+delete score;
+score = nullptr;
+```
+
++ Every exit path must preserve the cleanup contract.
+
+<!-- Slide 37 -->
+
+---
+
+## Conditional Cleanup Is Fragile
+
+```{.cpp}
+int* score = new int{95};
+
+if (!(cin >> *score)) {
+    delete score;
+    return 1;
+}
+
+cout << *score << "\n";
+delete score;
+score = nullptr;
+```
+
++ Manual ownership duplicates cleanup across control paths.
+
+<!-- Slide 38 -->
+
+---
+
+## Ownership Must Be Singular and Visible
+
+| Role | Responsibility |
+|---|---|
+| Owner | Releases the allocation exactly once |
+| Borrower | Uses the object only while it remains alive |
+| Alias | Never assumes ownership merely because it has the address |
+
+<!-- Slide 39 -->
+
+---
+
+## Repairing a Broken Program {.smaller}
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+int main() {
+    int* score = new int{95};
+    int* observer = score;
+
+    cout << *observer << "\n";
+
+    delete score;
+    score = nullptr;
+    observer = nullptr;
+    return 0;
+}
+```
+
+<!-- Slide 40 -->
+
+---
+
+## Safety Checklist
+
++ Initialize every pointer to a known address or `nullptr`.
++ Dereference only while the intended target is alive.
++ Keep ownership unambiguous and distinguish owners from observers.
++ Match each allocation with exactly one correct release.
+
+<!-- Slide 41 -->
+
+---
+
+## Summary
+
++ Pointer validity depends on initialization, lifetime, and bounds.
++ Leaks lose access to live storage; dangling pointers retain access to dead storage.
++ Manual ownership makes every control path responsible for correct cleanup.
+
+<!-- Slide 42 -->

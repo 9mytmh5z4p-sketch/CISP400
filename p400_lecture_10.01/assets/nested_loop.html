@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nested loops — execution trace</title>
+<style>
+:root {
+  --surface:       hsl(0 0% 97%);
+  --surface-2:     hsl(0 0% 93%);
+  --border:        hsl(0 0% 0% / 0.12);
+  --border-em:     hsl(0 0% 0% / 0.28);
+  --text:          hsl(0 0% 10%);
+  --text-muted:    hsl(0 0% 45%);
+  --accent-i:      hsl(220 78% 52%);
+  --accent-i-dim:  hsl(220 78% 52% / 0.10);
+  --accent-i-fg:   hsl(0 0% 100%);
+  --accent-j:      hsl(160 65% 36%);
+  --accent-j-dim:  hsl(160 65% 36% / 0.10);
+  --accent-j-fg:   hsl(0 0% 100%);
+  --cell-done:     hsl(220 78% 52% / 0.08);
+  --cell-done-txt: hsl(220 40% 40%);
+  --cell-active:   hsl(220 78% 52%);
+  --cell-active-fg:hsl(0 0% 100%);
+  --row-active:    hsl(220 78% 52% / 0.04);
+  --stat-bg:       hsl(0 0% 94%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface:       hsl(0 0% 14%);
+    --surface-2:     hsl(0 0% 20%);
+    --border:        hsl(0 0% 100% / 0.10);
+    --border-em:     hsl(0 0% 100% / 0.22);
+    --text:          hsl(0 0% 90%);
+    --text-muted:    hsl(0 0% 52%);
+    --accent-i:      hsl(220 80% 66%);
+    --accent-i-dim:  hsl(220 80% 66% / 0.13);
+    --accent-i-fg:   hsl(0 0% 8%);
+    --accent-j:      hsl(160 60% 52%);
+    --accent-j-dim:  hsl(160 60% 52% / 0.13);
+    --accent-j-fg:   hsl(0 0% 8%);
+    --cell-done:     hsl(220 80% 66% / 0.10);
+    --cell-done-txt: hsl(220 60% 72%);
+    --cell-active:   hsl(220 70% 60%);
+    --cell-active-fg:hsl(0 0% 8%);
+    --row-active:    hsl(220 80% 66% / 0.06);
+    --stat-bg:       hsl(0 0% 18%);
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background: transparent;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px 8px;
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ── stat bar ── */
+.stat-bar {
+  display: flex;
+  gap: 0;
+  flex-shrink: 0;
+  border: 0.5px solid var(--border-em);
+  background: var(--stat-bg);
+}
+
+.stat {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 8px;
+  font-size: 11.5px;
+}
+
+.stat + .stat {
+  border-left: 0.5px solid var(--border-em);
+}
+
+.stat-label {
+  color: var(--text-muted);
+}
+
+.stat-val {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.15s;
+}
+
+.stat-val.is-i   { color: var(--accent-i); }
+.stat-val.is-j   { color: var(--accent-j); }
+.stat-val.is-off { color: var(--text-muted); }
+
+/* ── main columns ── */
+.cols {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+  min-height: 0;
+}
+
+.panel {
+  border: 0.5px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.code-panel  { flex: 3; background: var(--surface); }
+.right-panel { flex: 2; background: var(--surface); display: flex; flex-direction: column; gap: 0; }
+
+.panel-head {
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  border-bottom: 0.5px solid var(--border);
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+/* ── code ── */
+.code-body {
+  overflow-y: auto;
+  padding: 5px 0;
+  flex: 1;
+}
+
+.cl {
+  display: flex;
+  align-items: baseline;
+  padding: 0 8px;
+  line-height: 1.85;
+  transition: background 0.12s;
+  font-family: "Cascadia Code", "SF Mono", "Fira Code", Consolas, monospace;
+  font-size: 11.5px;
+}
+
+.cl.hl-i {
+  background: var(--accent-i-dim);
+  border-left: 2px solid var(--accent-i);
+  padding-left: 6px;
+}
+
+.cl.hl-j {
+  background: var(--accent-j-dim);
+  border-left: 2px solid var(--accent-j);
+  padding-left: 6px;
+}
+
+.ln {
+  min-width: 18px;
+  margin-right: 10px;
+  text-align: right;
+  font-size: 10px;
+  color: var(--text-muted);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.lc { white-space: pre; }
+
+/* ── var display ── */
+.var-section {
+  padding: 8px 10px 6px;
+  border-bottom: 0.5px solid var(--border);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.var-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.var-name {
+  color: var(--text-muted);
+  min-width: 50px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.vboxes {
+  display: flex;
+  gap: 2px;
+}
+
+.vbox {
+  width: 20px;
+  height: 20px;
+  border: 0.5px solid var(--border-em);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--text-muted);
+  background: var(--surface);
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  font-variant-numeric: tabular-nums;
+}
+
+.vbox.active-i {
+  background: var(--accent-i);
+  color: var(--accent-i-fg);
+  border-color: var(--accent-i);
+  font-weight: 500;
+}
+
+.vbox.active-j {
+  background: var(--accent-j);
+  color: var(--accent-j-fg);
+  border-color: var(--accent-j);
+  font-weight: 500;
+}
+
+.exec-count {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.exec-val {
+  font-weight: 500;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.exec-bar {
+  display: flex;
+  gap: 1px;
+}
+
+.exec-pip {
+  width: 6px;
+  height: 6px;
+  border: 0.5px solid var(--border-em);
+  background: var(--surface);
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.exec-pip.done {
+  background: var(--accent-i);
+  border-color: var(--accent-i);
+}
+
+/* ── grid ── */
+.grid-section {
+  flex: 1;
+  padding: 8px 10px 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.grid-axis-label {
+  font-size: 9.5px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 3px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.grid-table {
+  display: grid;
+  grid-template-columns: 16px repeat(4, 1fr);
+  grid-template-rows: 14px repeat(4, 1fr);
+  gap: 2px;
+  flex: 1;
+}
+
+.grid-col-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9.5px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.grid-row-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9.5px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.grid-cell {
+  border: 0.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 400;
+  color: transparent;
+  background: var(--surface-2);
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  font-variant-numeric: tabular-nums;
+}
+
+.grid-cell.row-active {
+  background: var(--row-active);
+}
+
+.grid-cell.done {
+  background: var(--cell-done);
+  color: var(--cell-done-txt);
+  border-color: var(--border);
+}
+
+.grid-cell.active {
+  background: var(--cell-active);
+  color: var(--cell-active-fg);
+  border-color: var(--cell-active);
+  font-weight: 500;
+}
+
+/* ── description ── */
+.desc {
+  border: 0.5px solid var(--border);
+  background: var(--surface);
+  padding: 7px 10px;
+  font-size: 12px;
+  flex-shrink: 0;
+  min-height: 50px;
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  line-height: 1.45;
+}
+
+.desc-tag {
+  font-weight: 500;
+  color: var(--accent-i);
+  flex-shrink: 0;
+  padding-top: 1px;
+  transition: color 0.15s;
+}
+
+/* ── nav ── */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.btn {
+  background: var(--surface);
+  border: 0.5px solid var(--border-em);
+  color: var(--text);
+  padding: 4px 16px;
+  font-size: 12px;
+  font-family: inherit;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.btn:hover:not(:disabled) { background: var(--surface-2); }
+.btn:disabled { color: var(--text-muted); cursor: default; }
+
+.ctr {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+</style>
+</head>
+<body>
+
+<!-- stat bar -->
+<div class="stat-bar">
+  <div class="stat">
+    <span class="stat-label">outer</span>
+    <span class="stat-val is-i" id="stat-i">i = —</span>
+  </div>
+  <div class="stat">
+    <span class="stat-label">inner</span>
+    <span class="stat-val is-j" id="stat-j">j = —</span>
+  </div>
+  <div class="stat">
+    <span class="stat-label">body executions</span>
+    <span class="stat-val" id="stat-exec">0 / 16</span>
+  </div>
+</div>
+
+<!-- main columns -->
+<div class="cols">
+
+  <!-- code panel -->
+  <div class="panel code-panel">
+    <div class="panel-head">source</div>
+    <div class="code-body" id="code-body"></div>
+  </div>
+
+  <!-- right panel: var display + grid -->
+  <div class="panel right-panel">
+
+    <div class="panel-head">loop state</div>
+
+    <!-- variable boxes -->
+    <div class="var-section">
+      <div class="var-row">
+        <span class="var-name">outer  i</span>
+        <div class="vboxes" id="i-boxes"></div>
+      </div>
+      <div class="var-row">
+        <span class="var-name">inner  j</span>
+        <div class="vboxes" id="j-boxes"></div>
+      </div>
+      <div class="var-row" style="margin-top:2px">
+        <span class="var-name">body</span>
+        <div class="exec-count">
+          <span class="exec-val" id="exec-val">0</span>
+          <span>/ 16</span>
+          <div class="exec-bar" id="exec-bar"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- grid -->
+    <div class="grid-section">
+      <div class="grid-axis-label">multiplication table (i × j)</div>
+      <div class="grid-table" id="grid"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- description -->
+<div class="desc">
+  <span class="desc-tag" id="desc-tag"></span>
+  <span id="desc-text"></span>
+</div>
+
+<!-- nav -->
+<div class="nav">
+  <button class="btn" id="btn-prev" onclick="go(-1)">← prev</button>
+  <span class="ctr" id="ctr"></span>
+  <button class="btn" id="btn-next" onclick="go(+1)">next →</button>
+</div>
+
+<script>
+const N = 4; // grid dimension (1..N)
+
+const CODE_LINES = [
+  'for (int i = 1; i <= 4; i++) {',
+  '    for (int j = 1; j <= 4; j++) {',
+  '        cout << setw(4) << i * j;',
+  '    }',
+  '    cout << "\\n";',
+  '}',
+];
+
+// hl: array of {line, loop} where loop is 'i' or 'j'
+const STEPS = [
+  {
+    tag:   'Outer loop initializes — i = 1',
+    hl:    [{l:1, loop:'i'}],
+    i: 1,  j: null,  execs: 0,
+    active: null,
+    filled: [],
+    desc:  'The outer for loop starts. i is set to 1. The condition i \u2264 4 is true — the outer body begins.',
+  },
+  {
+    tag:   'Inner loop initializes — j = 1',
+    hl:    [{l:2, loop:'j'}],
+    i: 1,  j: 1,  execs: 0,
+    active: null,
+    filled: [],
+    desc:  'Entering the outer body. The inner for loop starts. j is set to 1. The condition j \u2264 4 is true.',
+  },
+  {
+    tag:   'Body: i=1, j=1 \u2192 1\u00d71 = 1',
+    hl:    [{l:3, loop:'j'}],
+    i: 1,  j: 1,  execs: 1,
+    active: [1,1],
+    filled: [[1,1]],
+    desc:  'The body executes. cout prints 1\u00d71 = 1. j++ \u2192 j = 2. Condition j \u2264 4 \u2014 true.',
+  },
+  {
+    tag:   'Body: i=1, j=2 \u2192 1\u00d72 = 2',
+    hl:    [{l:3, loop:'j'}],
+    i: 1,  j: 2,  execs: 2,
+    active: [1,2],
+    filled: [[1,1],[1,2]],
+    desc:  'j = 2. Body executes: 1\u00d72 = 2. j++ \u2192 j = 3. Condition j \u2264 4 \u2014 true.',
+  },
+  {
+    tag:   'Body: i=1, j=3 \u2192 1\u00d73 = 3',
+    hl:    [{l:3, loop:'j'}],
+    i: 1,  j: 3,  execs: 3,
+    active: [1,3],
+    filled: [[1,1],[1,2],[1,3]],
+    desc:  'j = 3. Body executes: 1\u00d73 = 3. j++ \u2192 j = 4. Condition j \u2264 4 \u2014 true.',
+  },
+  {
+    tag:   'Body: i=1, j=4 \u2192 1\u00d74 = 4',
+    hl:    [{l:3, loop:'j'}],
+    i: 1,  j: 4,  execs: 4,
+    active: [1,4],
+    filled: [[1,1],[1,2],[1,3],[1,4]],
+    desc:  'j = 4. Body executes: 1\u00d74 = 4. j++ \u2192 j = 5. Condition j \u2264 4 \u2014 false. Inner loop exits.',
+  },
+  {
+    tag:   'Inner loop exits \u2014 row 1 complete',
+    hl:    [{l:4, loop:'j'}, {l:5, loop:'i'}],
+    i: 1,  j: null,  execs: 4,
+    active: null,
+    filled: [[1,1],[1,2],[1,3],[1,4]],
+    desc:  'j = 5 fails j \u2264 4. Inner loop exits. cout << "\\n" prints a newline. i++ \u2192 i = 2. Condition i \u2264 4 \u2014 true.',
+  },
+  {
+    tag:   'Row 2 \u2014 inner loop runs 4 times (i = 2)',
+    hl:    [{l:2, loop:'j'}, {l:3, loop:'j'}],
+    i: 2,  j: null,  execs: 8,
+    active: null,
+    filled: [[1,1],[1,2],[1,3],[1,4],[2,1],[2,2],[2,3],[2,4]],
+    desc:  'i = 2. The inner loop runs all 4 iterations: 2, 4, 6, 8. Row 2 complete. i++ \u2192 i = 3.',
+  },
+  {
+    tag:   'Row 3 \u2014 inner loop runs 4 times (i = 3)',
+    hl:    [{l:2, loop:'j'}, {l:3, loop:'j'}],
+    i: 3,  j: null,  execs: 12,
+    active: null,
+    filled: [[1,1],[1,2],[1,3],[1,4],[2,1],[2,2],[2,3],[2,4],[3,1],[3,2],[3,3],[3,4]],
+    desc:  'i = 3. The inner loop runs 4 more iterations: 3, 6, 9, 12. Row 3 complete. i++ \u2192 i = 4.',
+  },
+  {
+    tag:   'Row 4 \u2014 inner loop runs 4 times (i = 4)',
+    hl:    [{l:2, loop:'j'}, {l:3, loop:'j'}],
+    i: 4,  j: null,  execs: 16,
+    active: null,
+    filled: [[1,1],[1,2],[1,3],[1,4],[2,1],[2,2],[2,3],[2,4],[3,1],[3,2],[3,3],[3,4],[4,1],[4,2],[4,3],[4,4]],
+    desc:  'i = 4. Final 4 iterations: 4, 8, 12, 16. Row 4 complete. i++ \u2192 i = 5.',
+  },
+  {
+    tag:   'Outer loop exits \u2014 4 \u00d7 4 = 16 total executions',
+    hl:    [{l:6, loop:'i'}],
+    i: null,  j: null,  execs: 16,
+    active: null,
+    filled: [[1,1],[1,2],[1,3],[1,4],[2,1],[2,2],[2,3],[2,4],[3,1],[3,2],[3,3],[3,4],[4,1],[4,2],[4,3],[4,4]],
+    desc:  'i = 5 fails i \u2264 4. The outer loop exits. The inner body ran outer \u00d7 inner = 4 \u00d7 4 = 16 times total.',
+  },
+];
+
+// ── build code panel ──
+const cb = document.getElementById('code-body');
+CODE_LINES.forEach((line, idx) => {
+  const row = document.createElement('div');
+  row.className = 'cl';
+  row.id = 'l' + (idx + 1);
+  row.innerHTML =
+    `<span class="ln">${idx + 1}</span>` +
+    `<span class="lc">${esc(line) || '\u00a0'}</span>`;
+  cb.appendChild(row);
+});
+
+// ── build variable boxes ──
+['i', 'j'].forEach(v => {
+  const container = document.getElementById(v + '-boxes');
+  for (let k = 1; k <= N; k++) {
+    const box = document.createElement('div');
+    box.className = 'vbox';
+    box.id = v + '-box-' + k;
+    box.textContent = k;
+    container.appendChild(box);
+  }
+});
+
+// ── build exec bar ──
+const execBar = document.getElementById('exec-bar');
+for (let k = 0; k < N * N; k++) {
+  const pip = document.createElement('div');
+  pip.className = 'exec-pip';
+  pip.id = 'pip-' + k;
+  execBar.appendChild(pip);
+}
+
+// ── build grid ──
+const gridEl = document.getElementById('grid');
+
+// corner
+const corner = document.createElement('div');
+gridEl.appendChild(corner);
+
+// column headers (j = 1..4)
+for (let j = 1; j <= N; j++) {
+  const h = document.createElement('div');
+  h.className = 'grid-col-head';
+  h.id = 'col-head-' + j;
+  h.textContent = j;
+  gridEl.appendChild(h);
+}
+
+// rows
+for (let i = 1; i <= N; i++) {
+  // row header
+  const rh = document.createElement('div');
+  rh.className = 'grid-row-head';
+  rh.id = 'row-head-' + i;
+  rh.textContent = i;
+  gridEl.appendChild(rh);
+
+  // cells
+  for (let j = 1; j <= N; j++) {
+    const cell = document.createElement('div');
+    cell.className = 'grid-cell';
+    cell.id = 'cell-' + i + '-' + j;
+    cell.textContent = i * j;
+    gridEl.appendChild(cell);
+  }
+}
+
+function esc(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+let cur = 0;
+
+function render() {
+  const s = STEPS[cur];
+
+  // stat bar
+  const iVal = s.i !== null ? 'i = ' + s.i : 'i = —';
+  const jVal = s.j !== null ? 'j = ' + s.j : 'j = —';
+  document.getElementById('stat-i').textContent = iVal;
+  document.getElementById('stat-j').textContent = jVal;
+  document.getElementById('stat-i').className = 'stat-val ' + (s.i !== null ? 'is-i' : 'is-off');
+  document.getElementById('stat-j').className = 'stat-val ' + (s.j !== null ? 'is-j' : 'is-off');
+  document.getElementById('stat-exec').textContent = s.execs + ' / ' + (N * N);
+
+  // code highlights — clear all, then apply
+  CODE_LINES.forEach((_, idx) => {
+    const el = document.getElementById('l' + (idx + 1));
+    el.classList.remove('hl-i', 'hl-j');
+  });
+  s.hl.forEach(({l, loop}) => {
+    const el = document.getElementById('l' + l);
+    if (el) el.classList.add(loop === 'i' ? 'hl-i' : 'hl-j');
+  });
+
+  // scroll first highlighted line into view
+  if (s.hl.length) {
+    document.getElementById('l' + s.hl[0].l)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+
+  // variable boxes
+  for (let k = 1; k <= N; k++) {
+    const ib = document.getElementById('i-box-' + k);
+    const jb = document.getElementById('j-box-' + k);
+    ib.classList.toggle('active-i', s.i === k);
+    jb.classList.toggle('active-j', s.j === k);
+  }
+
+  // exec bar + count
+  document.getElementById('exec-val').textContent = s.execs;
+  for (let k = 0; k < N * N; k++) {
+    document.getElementById('pip-' + k).classList.toggle('done', k < s.execs);
+  }
+
+  // grid cells
+  const filledSet = new Set(s.filled.map(([ri, rj]) => ri + '-' + rj));
+  const activeKey = s.active ? s.active[0] + '-' + s.active[1] : null;
+  const curI = s.i;
+
+  for (let i = 1; i <= N; i++) {
+    for (let j = 1; j <= N; j++) {
+      const key = i + '-' + j;
+      const el = document.getElementById('cell-' + key);
+      const isActive = key === activeKey;
+      const isDone   = filledSet.has(key) && !isActive;
+      const inRow    = (i === curI) && !isActive && !isDone;
+      el.classList.toggle('active',     isActive);
+      el.classList.toggle('done',       isDone);
+      el.classList.toggle('row-active', inRow);
+    }
+  }
+
+  // description
+  const tagEl = document.getElementById('desc-tag');
+  tagEl.textContent = s.tag;
+  // color the tag based on dominant loop
+  const hasI = s.hl.some(h => h.loop === 'i');
+  const hasJ = s.hl.some(h => h.loop === 'j');
+  tagEl.style.color = hasJ ? 'var(--accent-j)' : 'var(--accent-i)';
+
+  document.getElementById('desc-text').textContent = s.desc;
+
+  // nav
+  document.getElementById('btn-prev').disabled = (cur === 0);
+  document.getElementById('btn-next').disabled = (cur === STEPS.length - 1);
+  document.getElementById('ctr').textContent = `step ${cur + 1} of ${STEPS.length}`;
+}
+
+function go(dir) {
+  const n = cur + dir;
+  if (n >= 0 && n < STEPS.length) { cur = n; render(); }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(+1);
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   go(-1);
+});
+
+render();
+</script>
+</body>
+</html>

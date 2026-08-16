@@ -1,0 +1,337 @@
+# Last Time
+
+::: {.incremental}
++ **Pseudodynamic Memory**
++ **Dynamic Memory and Dynamic Arrays**
+:::
+
+::: notes
+Recall capacity versus logical size, runtime allocation, ownership, cleanup, and allocate-copy-release-transfer resizing.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Structures
+- Arrays of Structures
+- Binary Records
+- Abstract Data Types — Part 1
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_structures.qmd >}}
+{{< include topic_2_arrays_of_structures.qmd >}}
+{{< include topic_3_binary_records.qmd >}}
+{{< include topic_4_abstract_data_types.qmd >}}
+
+---
+
+# Key Takeaways
+
+- Structures define complete record types from related members.
+- Arrays of structures keep each record intact through searching, sorting, storage, and resizing.
+- Fixed-size binary records enable direct access but depend on a controlled file layout.
+- An ADT is defined by values, operations, and contracts rather than one representation.
+
+<!-- Slide 136 -->
+
+---
+
+# Next Time
+
+- Abstract Data Types — Part 2
+- Object-Oriented Programming
+- Introduction to Classes
+
+<!-- Slide 137 -->
+
+---
+
+# Appendix
+
+<!-- Slide 138 -->
+
+---
+
+## Structures: Good Practices
+
+- Define a structure before prototypes that use it.
+- Give types noun names and members clear domain names.
+- Use default member initializers for safe starting values.
+- Pass read-only records by `const` reference.
+
+<!-- Slide 139 -->
+
+---
+
+## Structures: Common Mistakes
+
+- Omitting the semicolon after the closing brace
+- Writing `Employee.name` instead of `worker.name`
+- Assuming aggregate values map by name rather than declaration order
+- Passing a large read-only record by value accidentally
+
+<!-- Slide 140 -->
+
+---
+
+## Structures: More Examples
+
+```cpp
+struct Point { double x = 0.0; double y = 0.0; };
+struct Date { int month = 1; int day = 1; int year = 2000; };
+struct Book { string title; string author; double price = 0.0; };
+```
+
+<!-- Slide 141 -->
+
+---
+
+## Structures: Practice Problems
+
+1. Define a `Product` structure with an ID, description, price, and quantity.
+2. Write a function that returns the inventory value of one product.
+3. Add a nested `Date` member representing the last restock date.
+4. Compare the sizes of two equivalent structures with different member orders.
+
+<!-- Slide 142 -->
+
+---
+
+## Structures: AI Search Terms
+
+- C++ aggregate initialization
+- C++ default member initializer struct
+- C++ struct padding alignment
+- C++ pointer to struct arrow operator
+- C++ pass struct by const reference
+
+<!-- Slide 143 -->
+
+---
+
+## Structures: Questions for Reflection
+
+- When should several variables become one record?
+- Which members determine whether two records represent the same entity?
+- Why can member order affect both initialization and memory layout?
+
+<!-- Slide 144 -->
+
+---
+
+## Arrays of Structures: Good Practices
+
+- Keep capacity and logical size as separate values.
+- Search by stable identifiers rather than display names.
+- Swap or shift complete records instead of coordinating individual members.
+- Use `const Employee&` in range-based loops that only read.
+
+<!-- Slide 145 -->
+
+---
+
+## Arrays of Structures: Common Mistakes
+
+- Writing `staff.name[i]` instead of `staff[i].name`
+- Traversing to capacity when only `count` records are valid
+- Tracking a maximum value but losing the record index
+- Updating `count` before confirming an append or removal succeeded
+
+<!-- Slide 146 -->
+
+---
+
+## Arrays of Structures: More Examples
+
+```cpp
+struct City {
+    string name;
+    int population;
+};
+
+City cities[] {
+    {"Sacramento", 526384},
+    {"Roseville", 154817}
+};
+```
+
+<!-- Slide 147 -->
+
+---
+
+## Arrays of Structures: Practice Problems
+
+1. Find the least expensive product in an inventory array.
+2. Sort students by grade while keeping names attached.
+3. Remove a record by ID while preserving a packed valid range.
+4. Resize a dynamic array of records and append one new record.
+
+<!-- Slide 148 -->
+
+---
+
+## Arrays of Structures: AI Search Terms
+
+- C++ array of structs
+- C++ search array of records
+- C++ sort structs by member
+- C++ logical size versus capacity
+- C++ range for const reference struct
+
+<!-- Slide 149 -->
+
+---
+
+## Arrays of Structures: Questions for Reflection
+
+- Why is an index often more useful than a copied search result?
+- What invariant does a packed pseudodynamic record array maintain?
+- When would `vector<Employee>` be preferable to a dynamic array?
+
+<!-- Slide 150 -->
+
+---
+
+## Binary Records: Good Practices
+
+- Use fixed-size, trivially copyable disk-record types.
+- Validate indexes before calculating offsets.
+- Check every read and write operation.
+- Store a format version when records must survive program changes.
+
+<!-- Slide 151 -->
+
+---
+
+## Binary Records: Common Mistakes
+
+- Writing `string` objects or pointers as raw bytes
+- Confusing human record numbers with zero-based indexes
+- Seeking while the stream remains in a failed state
+- Assuming binary files are encrypted or portable
+
+<!-- Slide 152 -->
+
+---
+
+## Binary Records: More Examples
+
+```cpp
+struct SensorRecord {
+    int sensorID;
+    long timestamp;
+    double reading;
+    bool active;
+};
+
+static_assert(is_trivially_copyable<SensorRecord>::value,
+              "Raw record required");
+```
+
+<!-- Slide 153 -->
+
+---
+
+## Binary Records: Practice Problems
+
+1. Calculate the byte offset for record index 12.
+2. Write a function that reports the number of complete records in a file.
+3. Update one sensor reading in place.
+4. Design a tombstone strategy and describe how deleted slots are reused.
+
+<!-- Slide 154 -->
+
+---
+
+## Binary Records: AI Search Terms
+
+- C++ binary file fixed size records
+- C++ seekg seekp record offset
+- C++ trivially copyable serialization
+- C++ struct padding binary file
+- binary file format versioning
+
+<!-- Slide 155 -->
+
+---
+
+## Binary Records: Questions for Reflection
+
+- Which assumptions make raw record access possible?
+- Why can a harmless source-code change invalidate an old binary file?
+- When should a program use a defined portable format instead?
+
+<!-- Slide 156 -->
+
+---
+
+## Abstract Data Types — Part 1: Good Practices
+
+- Define the values and operations before choosing representation.
+- State invariants and failure behavior explicitly.
+- Keep client code dependent on operations rather than members.
+- Treat representation choices as replaceable decisions.
+
+<!-- Slide 157 -->
+
+---
+
+## Abstract Data Types — Part 1: Common Mistakes
+
+- Treating ADT as another name for `class`
+- Confusing a data structure with the behavior it implements
+- Omitting failure behavior from an operation’s contract
+- Calling members private without identifying the invariant being protected
+
+<!-- Slide 158 -->
+
+---
+
+## Abstract Data Types — Part 1: More Examples
+
+| ADT | Possible Operations | Possible Representation |
+|---|---|---|
+| Queue | enqueue, dequeue, front | Array or vector |
+| Set | insert, erase, contains | Array or tree |
+| Date | advance, compare, format | Three integers or day count |
+
+<!-- Slide 159 -->
+
+---
+
+## Abstract Data Types — Part 1: Practice Problems
+
+1. Specify the values and operations of a `BankAccount` ADT.
+2. State an invariant for a bounded stack.
+3. Write preconditions and postconditions for `withdraw`.
+4. Propose two representations for a date and compare their tradeoffs.
+
+<!-- Slide 160 -->
+
+---
+
+## Abstract Data Types — Part 1: AI Search Terms
+
+- abstract data type values operations
+- ADT versus data structure
+- representation invariant programming
+- precondition postcondition contract
+- abstraction versus encapsulation
+
+<!-- Slide 161 -->
+
+---
+
+## Abstract Data Types — Part 1: Questions for Reflection
+
+- What should clients know about a type, and what should remain replaceable?
+- Why does observable behavior matter more than source-code secrecy?
+- Which limitation of public structures will classes address next?
+
+<!-- Slide 162 -->

@@ -1,0 +1,269 @@
+# Last Time
+
+::: {.incremental}
++ **Why Pointers?**
++ **Addresses and Pointer Variables**
++ **Dereferencing Pointers**
++ **Arrays and Pointers**
++ **Pointer Arithmetic and Comparison**
++ **Pointer Safety**
++ **Choosing Direct Access, References, or Pointers**
+:::
+
+::: notes
+Recall that a pointer stores a typed address, dereferencing accesses its target, and array expressions often produce a pointer to the first element. This lecture concentrates on what decay discards, how programs represent absence, and how pointer parameters express function-boundary contracts.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Array Decay
+- Null Pointers
+- Passing Pointers
+
+::: notes
+The lecture moves from array-to-pointer conversion, to deliberate no-object states, to pointer parameters as interface design.
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_array_decay.qmd >}}
+{{< include topic_2_null_pointers.qmd >}}
+{{< include topic_3_passing_pointers.qmd >}}
+
+---
+
+# Key Takeaways
+
+- Array decay gives functions access to elements but not the array's extent
+- `nullptr` represents intentional absence and must have a documented meaning
+- Passing a pointer copies an address, while dereferencing it may share access to caller-owned data
+- Use the least powerful parameter style that expresses the function's contract
+
+<!-- Slide 73 -->
+
+---
+
+# Next Time
+
+- Heap and stack storage
+- Dynamic allocation with `new` and `delete`
+- Pointer errors, memory leaks, and dangling pointers
+- Smart pointers and ownership
+
+<!-- Slide 74 -->
+
+---
+
+# Appendix
+
+<!-- Slide 75 -->
+
+---
+
+## Array Decay: Good Practices
+
+- Pair every raw array pointer with an explicit size or end pointer
+- Use `const` for read-only access
+- Prefer containers when the size should travel with the data
+
+<!-- Slide 76 -->
+
+---
+
+## Array Decay: Common Mistakes
+
+- Expecting brackets in a function parameter to preserve the array size
+- Using `sizeof` on an array parameter to count caller elements
+- Passing a pointer with a size that exceeds the actual range
+
+<!-- Slide 77 -->
+
+---
+
+## Array Decay: More Examples
+
+```{.cpp}
+double average(const int* begin, const int* end) {
+    int total = 0;
+    int count = 0;
+    for (const int* ptr = begin; ptr != end; ptr++) {
+        total += *ptr;
+        count++;
+    }
+    return count == 0 ? 0.0 : static_cast<double>(total) / count;
+}
+```
+
+<!-- Slide 78 -->
+
+---
+
+## Array Decay: Practice Problems
+
+1. Write a function that receives a C-style array and its logical size, then returns its largest value.
+2. Rewrite that function to receive begin and end pointers.
+3. Explain why the function cannot recover the caller's array extent from the pointer alone.
+
+<!-- Slide 79 -->
+
+---
+
+## Array Decay: AI Search Terms
+
+- C++ array-to-pointer conversion
+- C++ array parameter decay
+- C++ pointer and size interface
+- C++ reference to array preserve size
+- C++ multidimensional array decay
+
+<!-- Slide 80 -->
+
+---
+
+## Array Decay: Questions for Reflection
+
+- Which parts of an array's type survive decay?
+- When is pointer-plus-size clearer than begin-and-end pointers?
+- What guarantee does a container reference preserve that a raw pointer cannot?
+
+<!-- Slide 81 -->
+
+---
+
+## Null Pointers: Good Practices
+
+- Initialize every optional pointer with a valid address or `nullptr`
+- Test nullable pointers before `*ptr` and `ptr->member`
+- Prefer references when a function requires an object
+
+<!-- Slide 82 -->
+
+---
+
+## Null Pointers: Common Mistakes
+
+- Treating an uninitialized pointer as though it were null
+- Assuming non-null automatically means live and in bounds
+- Using `nullptr` without documenting what absence means
+
+<!-- Slide 83 -->
+
+---
+
+## Null Pointers: More Examples
+
+```{.cpp}
+const int* chooseLarger(const int* first, const int* second) {
+    if (first == nullptr) return second;
+    if (second == nullptr) return first;
+    return *first >= *second ? first : second;
+}
+```
+
+<!-- Slide 84 -->
+
+---
+
+## Null Pointers: Practice Problems
+
+1. Write a search function that returns `nullptr` when a value is absent.
+2. Call the function and print either the matching index or `not found`.
+3. Redesign a required pointer parameter as a reference parameter.
+
+<!-- Slide 85 -->
+
+---
+
+## Null Pointers: AI Search Terms
+
+- C++ nullptr type-safe null pointer
+- C++ nullable pointer parameter
+- C++ pointer Boolean conversion
+- C++ nullptr overload resolution
+- C++ null pointer versus dangling pointer
+
+<!-- Slide 86 -->
+
+---
+
+## Null Pointers: Questions for Reflection
+
+- When should absence be represented by `nullptr`?
+- Why does a null check establish less than full pointer validity?
+- How does a nullable pointer change a function's contract for its caller?
+
+<!-- Slide 87 -->
+
+---
+
+## Passing Pointers: Good Practices
+
+- Use `const` when the function should not modify the pointed-to object
+- Check nullable parameters before dereferencing
+- Prefer references when the target is required
+
+<!-- Slide 88 -->
+
+---
+
+## Passing Pointers: Common Mistakes
+
+- Forgetting that the pointer parameter itself is a local copy
+- Changing `ptr` when the intended change was `*ptr`
+- Returning the address of a local variable
+
+<!-- Slide 89 -->
+
+---
+
+## Passing Pointers: More Examples
+
+```{.cpp}
+bool getFirstPositive(const int* values, int size, int* result) {
+    for (int i = 0; i < size; i++) {
+        if (values[i] > 0) {
+            if (result != nullptr) {
+                *result = values[i];
+            }
+            return true;
+        }
+    }
+    return false;
+}
+```
+
+<!-- Slide 90 -->
+
+---
+
+## Passing Pointers: Practice Problems
+
+1. Write a function that receives `const int* value` and prints it only when non-null.
+2. Write a function that receives `int* value` and sets the target to zero when non-null.
+3. Explain when the same function would be clearer with an `int&` parameter.
+
+<!-- Slide 91 -->
+
+---
+
+## Passing Pointers: AI Search Terms
+
+- C++ pointer parameters
+- C++ pointer passed by value
+- C++ const pointer parameter
+- C++ nullable pointer parameter
+- C++ output parameter pointer
+
+<!-- Slide 92 -->
+
+---
+
+## Passing Pointers: Questions for Reflection
+
+- What changes when a function assigns to `ptr` instead of `*ptr`?
+- What responsibilities does a caller accept when passing a pointer?
+- How does the function signature reveal whether a parameter is required, optional, read-only, or writable?
+
+<!-- Slide 93 -->

@@ -1,0 +1,449 @@
+<!-- Topic 1: File I/O -->
+<!-- Slides 3-29 -->
+
+# File I/O
+<!-- Slide 3 -->
+
+## Data That Outlasts The Program {.smaller}
+
+- Variables disappear when the program ends.
+- Files let a program save data, load it later, and share it with other programs.
+
+::: notes
+Slides 3-29
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Files As Streams
+
+- `cin` reads from the keyboard.
+- `cout` writes to the terminal.
+- File streams use the same idea, but the stream is connected to a file.
+
+The operators are familiar: `>>` extracts data, and `<<` inserts data.
+
+<!-- Slide 5 -->
+
+---
+
+## The File I/O Process
+
+1. Include `<fstream>`.
+2. Declare a file stream object.
+3. Open the file.
+4. Check that the open worked.
+5. Read or write data.
+6. Close the file.
+
+Every file program follows this pattern.
+
+<!-- Slide 6 -->
+
+---
+
+## The fstream Library
+
+| Type | Direction | Common Use |
+|---|---|---|
+| `ifstream` | input | read from a file |
+| `ofstream` | output | write to a file |
+| `fstream` | input and output | read and write with one stream |
+
+Use the narrowest stream type that matches the job.
+
+<!-- Slide 7 -->
+
+---
+
+## Writing To A File
+
+```cpp
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+int main() {
+    ofstream outFile("scores.txt");
+
+    outFile << "Alice " << 95 << endl;
+    outFile << "Bob " << 87 << endl;
+
+    outFile.close();
+    return 0;
+}
+```
+
+::: notes
+By default, `ofstream` creates the file if it does not exist and overwrites it if it already exists.
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Checking That A File Opened
+
+```cpp
+ifstream inFile("scores.txt");
+
+if (!inFile.is_open()) {
+    cerr << "Error: could not open scores.txt" << endl;
+    return 1;
+}
+```
+
+File code should check the stream before trusting it.
+
+<!-- Slide 9 -->
+
+---
+
+## Where Is The File?
+
+- `"scores.txt"` is a relative path.
+- It is resolved from the program's working directory.
+- That may not be the same folder as the `.cpp` file.
+
+When a file does not open, check both the file name and where the program is running.
+
+<!-- Slide 10 -->
+
+---
+
+## Overwrite And Append
+
+```cpp
+ofstream fresh("log.txt");
+fresh << "Program started" << endl;
+fresh.close();
+
+ofstream later("log.txt", ios::app);
+later << "Program ended" << endl;
+later.close();
+```
+
+| Mode | Behavior |
+|---|---|
+| default output | overwrite the file |
+| `ios::app` | add new data at the end |
+
+<!-- Slide 11 -->
+
+---
+
+## Reading From A File
+
+```cpp
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+int main() {
+    ifstream inFile("scores.txt");
+    string name;
+    int score;
+
+    while (inFile >> name >> score) {
+        cout << name << ": " << score << endl;
+    }
+
+    inFile.close();
+    return 0;
+}
+```
+
+The stream advances automatically as each value is read.
+
+<!-- Slide 12 -->
+
+---
+
+## Design The File Before The Loop
+
+Before writing the read loop, write down a small example file.
+
+```text
+Alice 95
+Bob 87
+Carol 91
+```
+
+The example answers two questions: what does one record look like, and how does the reader know when to stop?
+
+<!-- Slide 13 -->
+
+---
+
+## The File Format Is A Contract
+
+- The writer and reader must agree on the record shape.
+- They must also agree on the stopping rule.
+- A correct read loop matches the file's contract.
+
+Changing the file format means changing the code that reads it.
+
+<!-- Slide 14 -->
+
+---
+
+## Pattern 1: Read Until Extraction Fails
+
+```cpp
+int score;
+vector<int> scores;
+
+while (inFile >> score) {
+    scores.push_back(score);
+}
+```
+
+Use this when every remaining token in the file is data.
+
+::: notes
+This is usually better than `while (!inFile.eof())` because it tests the read itself.
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## Why Not `eof()` First?
+
+```cpp
+while (!inFile.eof()) {
+    inFile >> score;
+    scores.push_back(score);
+}
+```
+
+`eof()` becomes true only after a read attempts to pass the end. Test the extraction instead of predicting it.
+
+<!-- Slide 16 -->
+
+---
+
+## Pattern 2: First Value Is A Count
+
+```text
+3
+Alice 95
+Bob 87
+Carol 91
+```
+
+```cpp
+int count;
+inFile >> count;
+
+for (int i = 0; i < count; i++) {
+    inFile >> name >> score;
+    cout << name << ": " << score << endl;
+}
+```
+
+Use this when the file declares how many records follow.
+
+<!-- Slide 17 -->
+
+---
+
+## Pattern 3: Sentinel Value Ends The Data
+
+```text
+91
+78
+84
+-1
+```
+
+```cpp
+int score;
+inFile >> score;
+
+while (score != -1) {
+    scores.push_back(score);
+    inFile >> score;
+}
+```
+
+The sentinel must be a value that cannot be valid data.
+
+<!-- Slide 18 -->
+
+---
+
+## Pattern 4: One Record Per Line
+
+```cpp
+string line;
+
+while (getline(inFile, line)) {
+    if (line != "") {
+        cout << line << endl;
+    }
+}
+```
+
+Line-controlled files work well when each record may contain spaces or optional fields.
+
+<!-- Slide 19 -->
+
+---
+
+## Choosing A Reading Pattern
+
+| File Design | Loop Shape |
+|---|---|
+| all tokens are data | read until extraction fails |
+| first value is record count | counted `for` loop |
+| special value marks the end | sentinel loop |
+| one logical record per line | `getline` loop |
+
+Choose the loop after you know how the file is constructed.
+
+<!-- Slide 20 -->
+
+---
+
+## When Reading Stops Early
+
+- End of file is normal.
+- A wrong data type is a format error.
+- Both can make extraction fail.
+
+If the loop stops before all expected records are read, inspect the file format before changing the loop.
+
+<!-- Slide 21 -->
+
+---
+
+## Writing A Vector
+
+```cpp
+vector<int> scores = {91, 78, 84, 95};
+ofstream outFile("scores.txt");
+
+for (int score : scores) {
+    outFile << score << endl;
+}
+
+outFile.close();
+```
+
+One value per line is easy to write, easy to read, and easy to inspect.
+
+<!-- Slide 22 -->
+
+---
+
+## Reading A Vector
+
+```cpp
+vector<int> scores;
+ifstream inFile("scores.txt");
+int score;
+
+while (inFile >> score) {
+    scores.push_back(score);
+}
+
+inFile.close();
+```
+
+The vector grows as the file provides values.
+
+<!-- Slide 23 -->
+
+---
+
+## Round Trip Pattern
+
+1. Build data in memory.
+2. Write the data to a file.
+3. Close the output stream.
+4. Open an input stream.
+5. Read the data back into memory.
+
+Round trips are a useful way to test whether the write format and read loop agree.
+
+<!-- Slide 24 -->
+
+---
+
+## Writing Records As Text
+
+```cpp
+ofstream outFile("students.txt");
+
+outFile << "Alice " << 95 << endl;
+outFile << "Bob " << 87 << endl;
+outFile << "Carol " << 91 << endl;
+
+outFile.close();
+```
+
+A record is one grouped unit of data. Here, each record has a name and a score.
+
+<!-- Slide 25 -->
+
+---
+
+## Reading Records As Text
+
+```cpp
+ifstream inFile("students.txt");
+string name;
+int score;
+
+while (inFile >> name >> score) {
+    cout << name << " earned " << score << endl;
+}
+
+inFile.close();
+```
+
+The extraction order must match the file's field order.
+
+<!-- Slide 26 -->
+
+---
+
+## CSV Files
+
+```cpp
+ofstream outFile("students.csv");
+
+outFile << "name,score" << endl;
+outFile << "Alice,95" << endl;
+outFile << "Bob,87" << endl;
+
+outFile.close();
+```
+
+CSV files are plain text files with comma-separated fields. Spreadsheet programs can read them.
+
+<!-- Slide 27 -->
+
+---
+
+## Common Practices
+
+- Check that every file opened before reading or writing.
+- Design the file format before designing the loop.
+- Match the loop pattern to the file's stopping rule.
+- Keep text formats simple enough to inspect by eye.
+
+<!-- Slide 28 -->
+
+---
+
+## Summary
+
+- File I/O is stream I/O connected to persistent storage.
+- The read loop must match the file's format contract.
+- Clear file formats make programs easier to test and debug.
+
+<!-- Slide 29 -->

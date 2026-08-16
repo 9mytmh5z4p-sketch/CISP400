@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Signed vs Unsigned Overflow</title>
+<style>
+html { font-size: 200%; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  display: grid;
+  grid-template-columns: 1fr 72px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 6px 6px 8px;
+  gap: 5px;
+  overflow: hidden;
+}
+
+.status-bar {
+  background: #1e293b;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 0.50rem;
+  font-weight: 600;
+  color: #94a3b8;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  transition: color 0.3s;
+}
+
+.panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  flex: 1;
+  min-height: 0;
+}
+
+.panel {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  overflow: hidden;
+}
+
+.panel-label {
+  font-size: 0.40rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #334155;
+  flex-shrink: 0;
+}
+
+.panel-label.signed-label  { color: #93c5fd; border-bottom-color: #3b82f6; }
+.panel-label.unsigned-label { color: #4ade80; border-bottom-color: #16a34a; }
+
+/* Type badge */
+.type-line {
+  font-family: 'Courier New', monospace;
+  font-size: 0.44rem;
+  color: #64748b;
+  flex-shrink: 0;
+}
+.type-line span { color: #34d399; }
+
+/* Value display */
+.value-display {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.value-box {
+  background: #0f172a;
+  border: 2px solid #334155;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  text-align: center;
+  min-width: 80%;
+  transition: background 0.4s, border-color 0.4s, color 0.4s;
+}
+
+.value-box.near-max {
+  background: #422006;
+  border-color: #d97706;
+  color: #fcd34d;
+}
+
+.value-box.at-max {
+  background: #431407;
+  border-color: #ef4444;
+  color: #fca5a5;
+}
+
+.value-box.overflow-ub {
+  background: #1a0000;
+  border-color: #dc2626;
+  color: #ef4444;
+  animation: flash 0.5s ease-in-out;
+}
+
+.value-box.wrapped {
+  background: #052e16;
+  border-color: #16a34a;
+  color: #4ade80;
+}
+
+.value-box.normal-signed {
+  background: #172554;
+  border-color: #3b82f6;
+  color: #93c5fd;
+}
+
+.value-box.normal-unsigned {
+  background: #052e16;
+  border-color: #16a34a;
+  color: #86efac;
+}
+
+@keyframes flash {
+  0%   { opacity: 1; }
+  25%  { opacity: 0.3; }
+  50%  { opacity: 1; }
+  75%  { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.label-line {
+  font-size: 0.36rem;
+  color: #64748b;
+  text-align: center;
+}
+
+.warn-box {
+  background: #1a0000;
+  border: 1px solid #dc2626;
+  border-radius: 5px;
+  padding: 4px 8px;
+  font-size: 0.38rem;
+  color: #ef4444;
+  font-weight: 700;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.warn-box.visible { opacity: 1; }
+
+.ok-box {
+  background: #052e16;
+  border: 1px solid #16a34a;
+  border-radius: 5px;
+  padding: 4px 8px;
+  font-size: 0.38rem;
+  color: #4ade80;
+  font-weight: 700;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.ok-box.visible { opacity: 1; }
+
+/* Code strip */
+.code-strip {
+  font-family: 'Courier New', monospace;
+  font-size: 0.38rem;
+  background: #0f172a;
+  border-radius: 4px;
+  padding: 4px 6px;
+  color: #475569;
+  flex-shrink: 0;
+  transition: color 0.3s, background 0.3s;
+}
+.code-strip.active {
+  background: #1d3461;
+  color: #f8fafc;
+}
+.code-strip .kw { color: #7dd3fc; }
+.code-strip .ty { color: #34d399; }
+.code-strip .nu { color: #fbbf24; }
+
+/* Controls */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 8px;
+  border-left: 1px solid #1e293b;
+  background: #0a1120;
+}
+
+.btn {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  background: #1e293b;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 12px 7px;
+  font-size: 0.36rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  width: 100%;
+  text-align: center;
+}
+.btn:hover { background: #334155; color: #e2e8f0; }
+.btn.primary { background: #1d3461; color: #93c5fd; border-color: #3b82f6; }
+.btn.primary:hover { background: #1e40af; }
+</style>
+</head>
+<body>
+
+<div class="content">
+  <div class="status-bar" id="status">Press Step or Play to begin.</div>
+
+  <div class="panels">
+
+    <!-- Signed panel -->
+    <div class="panel">
+      <div class="panel-label signed-label">Signed — <code>short</code></div>
+      <div class="type-line">Range: −32,768 to <span>+32,767</span></div>
+      <div class="value-display">
+        <div class="code-strip" id="s-code"><span class="ty">short</span> s = <span class="nu" id="s-code-val">32764</span>;</div>
+        <div class="value-box normal-signed" id="s-box">32,764</div>
+        <div class="label-line" id="s-label">value</div>
+        <div class="warn-box" id="s-warn">⚠ UNDEFINED BEHAVIOR</div>
+      </div>
+    </div>
+
+    <!-- Unsigned panel -->
+    <div class="panel">
+      <div class="panel-label unsigned-label">Unsigned — <code>unsigned short</code></div>
+      <div class="type-line">Range: 0 to <span>+65,535</span></div>
+      <div class="value-display">
+        <div class="code-strip" id="u-code"><span class="ty">unsigned short</span> u = <span class="nu" id="u-code-val">65532</span>;</div>
+        <div class="value-box normal-unsigned" id="u-box">65,532</div>
+        <div class="label-line" id="u-label">value</div>
+        <div class="ok-box" id="u-ok">✓ wraps to 0 — well-defined</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="controls">
+  <button class="btn primary" id="btn-play">▶ Play</button>
+  <button class="btn"         id="btn-step">Step</button>
+  <button class="btn"         id="btn-reset">Reset</button>
+</div>
+
+<script>
+function fmt(n) {
+  return n.toLocaleString();
+}
+
+const STATES = [
+  {
+    status: "Step 1 — Both variables are near their maximum values.",
+    sVal: 32764, sClass: "normal-signed", sLabel: "well within range",
+    uVal: 65532, uClass: "normal-unsigned", uLabel: "well within range",
+    sWarn: false, uOk: false, codeActive: false
+  },
+  {
+    status: "Step 2 — Incrementing both. Getting close to the maximum.",
+    sVal: 32765, sClass: "normal-signed", sLabel: "getting close to max",
+    uVal: 65533, uClass: "normal-unsigned", uLabel: "getting close to max",
+    sWarn: false, uOk: false, codeActive: false
+  },
+  {
+    status: "Step 3 — One step away from the maximum for both types.",
+    sVal: 32766, sClass: "near-max", sLabel: "one step from MAX",
+    uVal: 65534, uClass: "near-max", uLabel: "one step from MAX",
+    sWarn: false, uOk: false, codeActive: false
+  },
+  {
+    status: "Step 4 — At the maximum. The next increment is the critical moment.",
+    sVal: 32767, sClass: "at-max", sLabel: "⚠ at SHRT_MAX",
+    uVal: 65535, uClass: "at-max", uLabel: "⚠ at USHRT_MAX",
+    sWarn: false, uOk: false, codeActive: true
+  },
+  {
+    status: "Step 5 — s++ on signed: UNDEFINED BEHAVIOR. u++ on unsigned: wraps to 0.",
+    sVal: "???", sClass: "overflow-ub", sLabel: "OVERFLOW — undefined behavior",
+    uVal: 0, uClass: "wrapped", uLabel: "wraps to 0 — well-defined ✓",
+    sWarn: true, uOk: true, codeActive: true
+  }
+];
+
+let cur = -1, playing = false, timer = null;
+
+function render(s) {
+  document.getElementById('status').textContent = s.status;
+
+  // Signed
+  const sBox = document.getElementById('s-box');
+  sBox.textContent = typeof s.sVal === 'number' ? fmt(s.sVal) : s.sVal;
+  sBox.className = 'value-box ' + s.sClass;
+  document.getElementById('s-label').textContent = s.sLabel;
+  document.getElementById('s-code-val').textContent = typeof s.sVal === 'number' ? s.sVal : '???';
+  document.getElementById('s-warn').classList.toggle('visible', s.sWarn);
+
+  // Unsigned
+  const uBox = document.getElementById('u-box');
+  uBox.textContent = fmt(s.uVal);
+  uBox.className = 'value-box ' + s.uClass;
+  document.getElementById('u-label').textContent = s.uLabel;
+  document.getElementById('u-code-val').textContent = s.uVal;
+  document.getElementById('u-ok').classList.toggle('visible', s.uOk);
+
+  // Code strips
+  const active = s.codeActive;
+  document.getElementById('s-code').className = 'code-strip' + (active ? ' active' : '');
+  document.getElementById('u-code').className = 'code-strip' + (active ? ' active' : '');
+}
+
+function setPlaying(on) {
+  playing = on;
+  document.getElementById('btn-play').textContent = on ? '⏸ Pause' : '▶ Play';
+  if (on) {
+    timer = setInterval(() => {
+      advance();
+      if (cur >= STATES.length - 1) setPlaying(false);
+    }, 1500);
+  } else {
+    clearInterval(timer); timer = null;
+  }
+}
+
+function advance() {
+  if (cur >= STATES.length - 1) { reset(); return; }
+  cur++;
+  render(STATES[cur]);
+  if (cur === STATES.length - 1) setPlaying(false);
+}
+
+function reset() {
+  setPlaying(false);
+  cur = -1;
+  document.getElementById('status').textContent = 'Press Step or Play to begin.';
+  document.getElementById('s-box').textContent = '32,764';
+  document.getElementById('s-box').className = 'value-box normal-signed';
+  document.getElementById('s-label').textContent = 'value';
+  document.getElementById('s-code-val').textContent = '32764';
+  document.getElementById('s-code').className = 'code-strip';
+  document.getElementById('s-warn').classList.remove('visible');
+  document.getElementById('u-box').textContent = '65,532';
+  document.getElementById('u-box').className = 'value-box normal-unsigned';
+  document.getElementById('u-label').textContent = 'value';
+  document.getElementById('u-code-val').textContent = '65532';
+  document.getElementById('u-code').className = 'code-strip';
+  document.getElementById('u-ok').classList.remove('visible');
+}
+
+document.getElementById('btn-play').addEventListener('click', () => setPlaying(!playing));
+document.getElementById('btn-step').addEventListener('click', advance);
+document.getElementById('btn-reset').addEventListener('click', reset);
+</script>
+</body>
+</html>

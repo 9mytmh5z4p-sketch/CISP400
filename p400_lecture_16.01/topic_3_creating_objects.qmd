@@ -1,0 +1,93 @@
+<!-- Topic 3: Creating and Using Objects -->
+<!-- Total slides: 4 -->
+
+# Creating and Using Objects
+
+---
+
+## Three decisions before you write a class {.smaller}
+
++ What **data** does this type need? — becomes the private members.
++ What **operations** should it support? — becomes the public member functions.
++ What should be **visible** to outside code and what should stay hidden? — the public/private split.
+
+::: notes
+Total slides: 4
+This is 7.4, framed as a review extension of 7.3. Students have seen the Point class; now they think like designers. The three-question framework scales to any class they'll ever write. Walk through it before showing code.
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## Creating and using objects {.smaller}
+
+```{.cpp}
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Book {
+public:
+    string title;
+    void setTitle(string t)  { title = t; }
+    string getTitle() const  { return title; }
+};
+```
+
+::: notes
+Book is a class with one private-ish member (left public here for simplicity) and two inline methods. Students have seen this shape before with structs — the difference is methods instead of plain member access.
+:::
+
+<!-- Slide 2 -->
+
+---
+
+## Objects interacting {.smaller}
+
+```{.cpp}
+class Book {
+public:
+    string title;
+    void setTitle(string t)  { title = t; }
+    string getTitle() const  { return title; }
+};
+
+class Library {
+public:
+    Book books[10];
+    int  count = 0;
+    void addBook(const Book& b)  { books[count++] = b; }
+    void showBooks() const {
+        for (int i = 0; i < count; i++)
+            cout << "- " << books[i].getTitle() << "\n";
+    }
+};
+
+int main() {
+    Book b1, b2;
+    b1.setTitle("C++ for Beginners");
+    b2.setTitle("Learn Programming with C++");
+
+    Library lib;
+    lib.addBook(b1);
+    lib.addBook(b2);
+    lib.showBooks();
+    return 0;
+}
+```
+
+::: notes
+Library holds an array of Book objects and a count. addBook stores a Book; showBooks loops and calls getTitle() on each element. This is the interacting-objects pattern: one class uses another as a building block. main() creates both book objects and the library in the same scope — no cross-slide dependency.
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Summary {.smaller}
+
++ Create objects the same way you create any variable: `ClassName variableName;`
++ Objects interact by passing each other as arguments and calling each other's public methods.
+
+<!-- Slide 4 -->

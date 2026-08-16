@@ -1,0 +1,176 @@
+# Last Time
+
+::: {.incremental}
++ **Multidimensional Arrays**
++ **C-Style Arrays and C-Strings**
++ **`std::array`**
+:::
+
+::: notes
+Recall that variables occupy storage and arrays place elements contiguously. Pointers make those storage locations available to the running program.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Introduction to Pointers and Their Value in Modern Programming
+- Initializing and Using Pointers
+
+::: notes
+Begin with the reason pointers remain useful, then build the mechanics of safe scalar pointer use.
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_pointer_introduction.qmd >}}
+{{< include topic_2_pointer_use.qmd >}}
+
+---
+
+# Key Takeaways
+
+- A pointer is a typed variable that stores an address
+- Dereferencing follows that address to read or modify a live target
+- Initialize pointers with a valid address or `nullptr`
+- Modern C++ uses raw pointers selectively and prefers higher-level tools when possible
+
+<!-- Slide 34 -->
+
+---
+
+# Next Time
+
+- Arrays and pointers
+- Pointer arithmetic and comparison
+- Choosing direct access, references, or pointers
+
+<!-- Slide 35 -->
+
+---
+
+# Appendix
+
+<!-- Slide 36 -->
+
+---
+
+## Introduction to Pointers: Good Practices
+
+- Begin with the object and explain why its address must become program data
+- Use raw pointers only when address semantics clearly serve the design
+
+<!-- Slide 37 -->
+
+---
+
+## Introduction to Pointers: Common Mistakes
+
+- Treating a pointer as though it stores the target object
+- Assuming modern C++ uses raw pointers as the default ownership tool
+
+<!-- Slide 38 -->
+
+---
+
+## Introduction to Pointers: More Examples
+
+- Select one of several counters while the program runs
+- Receive non-owning access to an object managed elsewhere
+
+<!-- Slide 39 -->
+
+---
+
+## Introduction to Pointers: Practice Problems
+
+1. Draw a pointer variable, its stored address, and its target as three separate parts.
+2. Identify a situation that requires runtime target selection.
+
+<!-- Slide 40 -->
+
+---
+
+## Introduction to Pointers: AI Search Terms
+
+- C++ pointer indirection memory model
+- modern C++ raw pointer non-owning access
+- raw pointers versus smart pointers C++
+
+<!-- Slide 41 -->
+
+---
+
+## Introduction to Pointers: Questions for Reflection
+
+- What capability does an address provide beyond a variable name?
+- Why should raw pointers not be the default tool for every variable relationship?
+
+<!-- Slide 42 -->
+
+---
+
+## Initializing and Using Pointers: Good Practices
+
+- Declare one pointer per statement
+- Initialize immediately with a valid address or `nullptr`
+- Verify the target is valid and live before dereferencing
+
+<!-- Slide 43 -->
+
+---
+
+## Initializing and Using Pointers: Common Mistakes
+
+```{.cpp}
+int* ptr;
+*ptr = 10;
+```
+
+- `ptr` is uninitialized, so dereferencing it has undefined behavior
+
+<!-- Slide 44 -->
+
+---
+
+## Initializing and Using Pointers: More Examples
+
+```{.cpp}
+string first = "Ada";
+string second = "Grace";
+string* selected = &first;
+
+selected = &second;
+cout << *selected << "\n";
+```
+
+<!-- Slide 45 -->
+
+---
+
+## Initializing and Using Pointers: Practice Problems
+
+1. Declare and initialize a pointer to a `double` variable.
+2. Predict the target after a pointer is reseated and dereferenced.
+3. Explain why a dangling pointer is different from `nullptr`.
+
+<!-- Slide 46 -->
+
+---
+
+## Initializing and Using Pointers: AI Search Terms
+
+- C++ address-of and dereference operators
+- C++ nullptr versus dangling pointer
+- C++ pointer reseating versus indirect assignment
+
+<!-- Slide 47 -->
+
+---
+
+## Initializing and Using Pointers: Questions for Reflection
+
+- What changes in `ptr = &value` compared with `*ptr = value`?
+- What must be true before a pointer can be safely dereferenced?
+
+<!-- Slide 48 -->

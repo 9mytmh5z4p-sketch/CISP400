@@ -1,0 +1,127 @@
+<!-- Topic 4: Static Local Variables -->
+<!-- Slides 32-41 -->
+
+# Static Local Variables
+<!-- Slide 32 -->
+
+## Can a Local Variable Remember? {.smaller}
+
++ Ordinary local variables are recreated each time a function runs.
++ Sometimes a function needs to keep small internal state.
++ A static local variable keeps its value between calls.
+
+::: notes
+Slides 32-41
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## Ordinary Locals Reset Each Call
+
+```cpp
+void countCall() {
+    int count = 0;
+    count++;
+    cout << count << endl;
+}
+```
+
+Every call creates a new `count`, so the output is always `1`.
+
+<!-- Slide 34 -->
+
+---
+
+## The `static` Keyword
+
+```cpp
+void countCall() {
+    static int count = 0;
+    count++;
+    cout << count << endl;
+}
+```
+
+`count` is initialized once and keeps its value for the rest of the program run.
+
+<!-- Slide 35 -->
+
+---
+
+## Static Local Trace
+
+| Function Call | `count` Before `++` | Output |
+|---:|---:|---:|
+| 1 | 0 | 1 |
+| 2 | 1 | 2 |
+| 3 | 2 | 3 |
+
+The variable remembers the result of the previous call.
+
+<!-- Slide 36 -->
+
+---
+
+## Scope vs. Lifetime
+
++ Scope asks where a name can be used.
++ Lifetime asks how long the stored value exists.
++ A static local has local scope but program-long lifetime.
+
+This is the key difference from an ordinary local variable.
+
+<!-- Slide 37 -->
+
+---
+
+## Stack Frame Model Contrast
+
++ Ordinary locals are part of a function call's stack frame.
++ The frame disappears when the function returns.
++ Static locals are not recreated each time the frame appears.
+
+::: notes
+[Graphic suggestion: show repeated countCall() stack frames using one shared static count box outside the frame.]
+:::
+
+<!-- Slide 38 -->
+
+---
+
+## Function Call Counter Example
+
+```cpp
+int nextCallNumber() {
+    static int callNumber = 0;
+    callNumber++;
+    return callNumber;
+}
+```
+
+The function owns the counter, but callers can receive the next value.
+
+<!-- Slide 39 -->
+
+---
+
+## When Static Locals Are Useful
+
++ Counting how many times a function has run.
++ Remembering a small setting controlled by the function.
++ Performing one-time setup inside a helper function.
+
+Use static locals for function-owned state, not shared program-wide data.
+
+<!-- Slide 40 -->
+
+---
+
+## Summary
+
++ Static local variables keep their values between function calls.
++ Their names remain visible only inside the function.
++ They provide internal memory without exposing a global variable.
+
+<!-- Slide 41 -->

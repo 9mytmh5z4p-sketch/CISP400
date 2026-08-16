@@ -1,0 +1,383 @@
+<!-- Topic 2: Random Access Files -->
+<!-- Slides 17–36 -->
+
+# Random Access Files
+<!-- Slide 17 -->
+
+## Updating One Stored Value {.smaller}
+
++ A file contains 10,000 scores
++ One score changes
++ Must the program read and rewrite all 10,000 values?
+
+::: notes
+Slides 17–36
+:::
+
+<!-- Slide 18 -->
+
+---
+
+## Sequential and Random Access
+
+| Sequential access | Random access |
+|---|---|
+| Processes values in order | Jumps to a calculated position |
+| Position advances automatically | Program moves the position explicitly |
+| Natural for text and variable-length data | Natural for fixed-size binary data |
+
+Random access avoids processing unrelated values before reaching the target.
+
+<!-- Slide 19 -->
+
+---
+
+## File Position Markers
+
+A file stream tracks where its next operation will occur.
+
++ The **get position** identifies where the next read begins
++ The **put position** identifies where the next write begins
++ Each successful operation advances its position by the number of bytes processed
+
+::: notes
+[Graphic suggestion: a row of equal-width file blocks with separate get and put arrows positioned above two different blocks]
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## Opening a Binary File
+
+```{.cpp}
+ifstream input("scores.bin", ios::binary);
+
+ofstream output("scores.bin", ios::binary);
+
+fstream file("scores.bin",
+    ios::in | ios::out | ios::binary);
+```
+
++ `ios::binary` preserves bytes exactly as written
++ `ios::in | ios::out` permits an existing file to be read and updated
++ Always verify that the stream opened successfully
+
+<!-- Slide 21 -->
+
+---
+
+## Seek Origins
+
+Every seek uses an offset and an origin.
+
+| Origin | Offset begins at |
+|---|---|
+| `ios::beg` | Beginning of the file |
+| `ios::cur` | Current position |
+| `ios::end` | End of the file |
+
+Positive offsets move forward. Negative offsets move backward when the origin permits it.
+
+<!-- Slide 22 -->
+
+---
+
+## Moving the Read Position
+
+```{.cpp}
+ifstream input("scores.bin", ios::binary);
+
+input.seekg(0, ios::beg);   // beginning
+input.seekg(16, ios::beg);  // byte 16
+input.seekg(-8, ios::end);  // eight bytes before the end
+```
+
+::: notes
+seekg moves the get position used by the next read. The offset is measured in bytes, not values or lines.
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## Finding the Read Position
+
+```{.cpp}
+ifstream input("scores.bin", ios::binary);
+
+input.seekg(0, ios::end);
+streamoff fileSize = input.tellg();
+
+cout << "File size: " << fileSize << " bytes\n";
+
+input.seekg(0, ios::beg);
+```
+
+::: notes
+tellg reports the current get position. Seeking to the end before calling tellg determines the file size.
+:::
+
+<!-- Slide 24 -->
+
+---
+
+## Read and Write Positions
+
+| Operation | Position | Purpose |
+|---|---|---|
+| `seekg(offset, origin)` | Get | Move the next read |
+| `tellg()` | Get | Report the read position |
+| `seekp(offset, origin)` | Put | Move the next write |
+| `tellp()` | Put | Report the write position |
+
+The letters suggest the direction: **g**et data and **p**ut data.
+
+<!-- Slide 25 -->
+
+---
+
+## Why Text Records Vary
+
+```text
+8
+125
+42
+```
+
++ The values occupy different numbers of characters
++ Line endings also consume bytes
++ The location of one value depends on the lengths of all earlier values
+
+Text is easy to inspect, but its variable widths prevent a simple index-to-offset formula.
+
+<!-- Slide 26 -->
+
+---
+
+## Fixed-Size Binary Values
+
+Suppose every stored score is a `double`.
+
+```text
+score 0     score 1     score 2     score 3
+8 bytes     8 bytes     8 bytes     8 bytes
+```
+
+Every value occupies `sizeof(double)` bytes, so the location of any index is predictable.
+
+::: notes
+[Graphic suggestion: four equal-width blocks labeled by index, with byte offsets 0, 8, 16, and 24 beneath them]
+:::
+
+<!-- Slide 27 -->
+
+---
+
+## Writing Binary Values
+
+```{.cpp}
+double score = 91.5;
+
+output.write(
+    reinterpret_cast<const char*>(&score),
+    sizeof(score)
+);
+```
+
++ `write()` copies a specified number of bytes
++ `&score` supplies the address of the value
++ The cast exposes those bytes through the pointer type required by `write()`
+
+::: notes
+Treat reinterpret_cast here as the standard adapter required by the binary stream interface. Pointer mechanics are covered later in the course.
+:::
+
+<!-- Slide 28 -->
+
+---
+
+## The Offset Formula
+
+For equal-size values:
+
+```text
+byte offset = index × sizeof(value type)
+```
+
+For `double` values:
+
+| Index | Calculation | Byte offset |
+|---:|---:|---:|
+| 0 | `0 × 8` | 0 |
+| 1 | `1 × 8` | 8 |
+| 4 | `4 × 8` | 32 |
+
+Always use `sizeof`; do not hardcode the byte count.
+
+<!-- Slide 29 -->
+
+---
+
+## Reading One Value
+
+```{.cpp}
+int index = 4;
+double score;
+
+input.seekg(index * sizeof(double), ios::beg);
+input.read(
+    reinterpret_cast<char*>(&score),
+    sizeof(score)
+);
+```
+
+::: notes
+Move the get position, then read the bytes into a variable. Index 4 selects the fifth stored value because indexing begins at zero.
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## Reading One Value: Complete Code
+
+```{.cpp}
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+int main() {
+    ifstream input("scores.bin", ios::binary);
+    if (!input.is_open()) {
+        cerr << "Could not open scores.bin\n";
+        return 1;
+    }
+
+    int index = 4;
+    double score;
+    input.seekg(index * sizeof(double), ios::beg);
+    input.read(reinterpret_cast<char*>(&score), sizeof(score));
+
+    if (input) {
+        cout << "Score: " << score << "\n";
+    }
+
+    input.close();
+    return 0;
+}
+```
+
+::: notes
+The stream check after read detects an invalid offset, a shortened file, or another read failure.
+:::
+
+<!-- Slide 31 -->
+
+---
+
+## Replacing One Value
+
+```{.cpp}
+int index = 4;
+double replacement = 96.0;
+
+file.seekp(index * sizeof(double), ios::beg);
+file.write(
+    reinterpret_cast<const char*>(&replacement),
+    sizeof(replacement)
+);
+```
+
+::: notes
+Move the put position, then overwrite exactly one value. The bytes before and after that value remain unchanged.
+:::
+
+<!-- Slide 32 -->
+
+---
+
+## Replacing One Value: Complete Code
+
+```{.cpp}
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+int main() {
+    fstream file("scores.bin",
+        ios::in | ios::out | ios::binary);
+
+    if (!file.is_open()) {
+        cerr << "Could not open scores.bin\n";
+        return 1;
+    }
+
+    int index = 4;
+    double replacement = 96.0;
+    file.seekp(index * sizeof(double), ios::beg);
+    file.write(reinterpret_cast<const char*>(&replacement),
+               sizeof(replacement));
+
+    if (!file) {
+        cerr << "The update failed\n";
+    }
+
+    file.close();
+    return 0;
+}
+```
+
+::: notes
+Opening with both ios::in and ios::out permits an existing file to be updated without truncating it.
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## Validating the Position
+
+```{.cpp}
+input.seekg(0, ios::end);
+streamoff fileSize = input.tellg();
+int valueCount = fileSize / sizeof(double);
+
+if (index < 0 || index >= valueCount) {
+    cerr << "Index is outside the file\n";
+    return 1;
+}
+```
+
+::: notes
+Derive the number of values from the file size and reject invalid indices before seeking. Check the stream again after every binary read or write.
+:::
+
+<!-- Slide 34 -->
+
+---
+
+## Choosing an Access Pattern
+
+| Need | Access pattern |
+|---|---|
+| Human-readable records | Sequential text |
+| Variable-length records | Sequential text |
+| Process every stored value | Sequential access |
+| Jump directly to a fixed-size value | Random-access binary |
+| Replace one fixed-size value in place | Random-access binary |
+
+Choose the file format and access pattern together; each constrains the other.
+
+<!-- Slide 35 -->
+
+---
+
+## Summary
+
++ `seekg()` and `seekp()` move the next read or write position
++ `tellg()` and `tellp()` report the current positions
++ Fixed-size binary values make `index × sizeof(type)` predictable
++ Validate the index and stream state before using file data
+
+<!-- Slide 36 -->

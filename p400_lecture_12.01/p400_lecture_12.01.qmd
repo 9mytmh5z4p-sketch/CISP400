@@ -1,0 +1,213 @@
+# Last Time
+
+::: {.incremental}
++ **Introduction to Arrays**
++ **Array Initialization**
++ **Indexing Array Elements**
++ **Traversing Arrays**
++ **Inputting and Displaying Array Data**
++ **Arrays vs. Vectors**
++ **Performance — Arrays vs. Vectors**
+:::
+
+::: notes
+Recall fixed-size arrays, valid index ranges, traversal patterns, input and display loops, and the practical tradeoffs between arrays and vectors.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Arrays with Functions
+- Array Algorithms
+- Parallel Arrays
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_arrays_functions.qmd >}}
+{{< include topic_2_array_algorithms.qmd >}}
+{{< include topic_3_parallel_arrays.qmd >}}
+
+---
+
+# Key Takeaways
+
+- Built-in arrays decay at function boundaries, so functions receive an address and need a separate logical size
+- Array algorithms combine traversal with accumulators, trackers, sentinels, or coordinated swaps
+- Parallel arrays represent one record through a shared index that must remain synchronized
+
+---
+
+# Next Time
+
+---
+
+# Appendix
+
+---
+
+## Arrays with Functions: Good Practices
+
+- Pass the logical size with every built-in array parameter
+- Use `const` for read-only access
+- Choose names that make mutation visible
+
+---
+
+## Arrays with Functions: Common Mistakes
+
+- Assuming the function receives a copy of the array
+- Expecting a bracketed parameter size to be enforced
+- Using `sizeof` on a decayed array parameter
+
+---
+
+## Arrays with Functions: More Examples
+
+```{.cpp}
+int countMatches(const int values[], int size, int target) {
+    int count = 0;
+    for (int i = 0; i < size; i++) {
+        if (values[i] == target) {
+            count++;
+        }
+    }
+    return count;
+}
+```
+
+---
+
+## Arrays with Functions: Practice Problems
+
+- Write `contains` to return whether a target appears in an array
+- Write `clampToZero` to replace every negative element with zero
+- State the correct parameter contract for each function
+
+---
+
+## Arrays with Functions: AI Search Terms
+
+- C++ built-in array function parameter decay
+- C++ const array parameter and size
+- C++ sizeof array inside function
+
+---
+
+## Arrays with Functions: Questions for Reflection
+
+- What information disappears when an array crosses a function boundary?
+- How does `const` improve a function contract?
+- When should a function receive one element instead of the whole array?
+
+---
+
+## Array Algorithms: Good Practices
+
+- State empty-array behavior before implementing an algorithm
+- Seed extrema from the first valid element
+- Return an index when the caller needs an element's location
+
+---
+
+## Array Algorithms: Common Mistakes
+
+- Initializing a maximum tracker to zero
+- Reading index `size`
+- Overwriting a value before preserving it during a swap
+
+---
+
+## Array Algorithms: More Examples
+
+```{.cpp}
+int countAbove(const int values[], int size, int threshold) {
+    int count = 0;
+    for (int i = 0; i < size; i++) {
+        if (values[i] > threshold) {
+            count++;
+        }
+    }
+    return count;
+}
+```
+
+---
+
+## Array Algorithms: Practice Problems
+
+- Return the index of the smallest element
+- Count how many elements fall within an inclusive range
+- Trace two bubble-sort passes by hand
+
+---
+
+## Array Algorithms: AI Search Terms
+
+- C++ array accumulator tracker sentinel patterns
+- C++ linear search return index
+- C++ bubble sort shrinking inner bound
+
+---
+
+## Array Algorithms: Questions for Reflection
+
+- Why does a search usually return an index instead of a Boolean?
+- Which algorithms require a nonempty array?
+- What changes when an algorithm mutates its input?
+
+---
+
+## Parallel Arrays: Good Practices
+
+- Use one capacity and one logical size
+- Pass and traverse all related arrays together
+- Return indexes when selecting complete records
+
+---
+
+## Parallel Arrays: Common Mistakes
+
+- Moving one field without moving the others
+- Looping to capacity instead of logical size
+- Using different indexes for related fields
+
+---
+
+## Parallel Arrays: More Examples
+
+```{.cpp}
+void markPerfect(const int scores[], bool perfect[], int size) {
+    for (int i = 0; i < size; i++) {
+        perfect[i] = scores[i] == 100;
+    }
+}
+```
+
+---
+
+## Parallel Arrays: Practice Problems
+
+- Display only records whose attendance value is true
+- Find a name and update the score at the matching index
+- Sort names and scores together by descending score
+
+---
+
+## Parallel Arrays: AI Search Terms
+
+- C++ parallel arrays shared index
+- C++ sort parallel arrays together
+- parallel arrays versus array of structs
+
+---
+
+## Parallel Arrays: Questions for Reflection
+
+- What invariant connects the arrays?
+- Why is an index more useful than a copied maximum value?
+- When does a structure become the clearer design?

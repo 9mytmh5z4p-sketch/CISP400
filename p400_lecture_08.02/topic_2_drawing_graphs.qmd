@@ -1,0 +1,209 @@
+<!-- Topic 2: Drawing Graphs Using Loops -->
+<!-- Slides 18-31 -->
+
+# Drawing Graphs Using Loops
+<!-- Slide 18 -->
+
+## Can A Loop Draw? {.smaller}
+
+- A loop can draw by repeating output.
+- Each pass prints one symbol, one row, or one labeled value.
+
+::: notes
+Slides 18-31
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## What Should The Graph Show?
+
+- A graph should make a comparison easier to see.
+- Decide what the viewer should compare before choosing labels or scale.
+- The loop prints the pattern; the design decides the meaning.
+
+<!-- Slide 20 -->
+
+---
+
+## One Symbol At A Time
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int count = 1; count <= 10; count++) {
+        cout << '*';
+    }
+
+    cout << endl;
+    return 0;
+}
+```
+
+<!-- Slide 21 -->
+
+---
+
+## Drawing One Bar
+
+```cpp
+int value = 7;
+
+for (int mark = 1; mark <= value; mark++) {
+    cout << '#';
+}
+
+cout << endl;
+```
+
+::: notes
+[Graphic suggestion: Show the number 7 turning into seven repeated marks.]
+:::
+
+<!-- Slide 22 -->
+
+---
+
+## Adding A Label
+
+```cpp
+cout << "Monday    ";
+
+for (int mark = 1; mark <= 7; mark++) {
+    cout << '#';
+}
+
+cout << endl;
+```
+
+The label tells the viewer what the repeated symbols represent.
+
+<!-- Slide 23 -->
+
+---
+
+## Graph From Data
+
+```cpp
+int sales;
+
+cout << "Enter sales for Monday: ";
+cin >> sales;
+
+cout << "Monday    ";
+for (int mark = 1; mark <= sales; mark++) {
+    cout << '#';
+}
+cout << endl;
+```
+
+<!-- Slide 24 -->
+
+---
+
+## Graph From A Formula
+
+```cpp
+int speed = 40;
+int totalHours = 3;
+
+for (int hour = 1; hour <= totalHours; hour++) {
+    int distance = speed * hour;
+    cout << hour << " hr ";
+
+    for (int mark = 1; mark <= distance / 10; mark++) {
+        cout << '#';
+    }
+
+    cout << " " << distance << " miles" << endl;
+}
+```
+
+<!-- Slide 25 -->
+
+---
+
+## Collect, Then Display
+
+```cpp
+vector<int> sales(3);
+
+for (int day = 0; day < sales.size(); day++) {
+    cout << "Sales for day " << day + 1 << ": ";
+    cin >> sales[day];
+}
+
+cout << "\nSales\n";
+for (int day = 0; day < sales.size(); day++) {
+    cout << "Day " << day + 1 << " ";
+    for (int mark = 1; mark <= sales[day]; mark++) {
+        cout << '#';
+    }
+    cout << endl;
+}
+```
+
+The first loop collects the complete data set. The second loop displays the results as one graph.
+
+<!-- Slide 26 -->
+
+---
+
+## Scaling The Bar
+
+- Raw values may be too large to print one symbol per unit.
+- A scale factor lets one symbol represent several units.
+- Example: one `#` can represent `10` miles, dollars, or votes.
+
+<!-- Slide 27 -->
+
+---
+
+## Graph Shape Comes From Loop Structure
+
+| Loop Role | Graph Role |
+|---|---|
+| Outer loop | Chooses the next row or category |
+| Inner loop | Prints repeated symbols for that row |
+| Counter | Controls length, position, or label |
+
+<!-- Slide 28 -->
+
+---
+
+## Nested Loops For Graphs
+
+```cpp
+for (int row = 1; row <= 4; row++) {
+    for (int col = 1; col <= row; col++) {
+        cout << '*';
+    }
+    cout << endl;
+}
+```
+
+The outer loop starts a new row. The inner loop prints the symbols in that row.
+
+<!-- Slide 29 -->
+
+---
+
+## Readable Terminal Graphs
+
+- Keep labels aligned.
+- Use one symbol consistently.
+- Print the numeric value when the bar length is approximate.
+
+<!-- Slide 30 -->
+
+---
+
+## Summary
+
+- Terminal graphs are repeated output with a purpose.
+- Choose the comparison first, then use loop structure to print it clearly.
+
+<!-- Slide 31 -->

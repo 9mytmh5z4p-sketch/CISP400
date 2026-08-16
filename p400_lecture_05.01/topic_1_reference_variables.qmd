@@ -1,0 +1,123 @@
+<!-- Topic 1: Reference Variables -->
+<!-- Slides 3-11 -->
+
+# Reference Variables
+<!-- Slide 3 -->
+
+## One Variable, Two Names? {.smaller}
+
++ Can two names refer to the same stored value?
++ A reference lets an existing variable have another name.
++ That idea matters before we use references in function parameter lists.
+
+::: notes
+Slides 3-11
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Last Lecture Model Check
+
++ Ordinary local variables live in the stack frame for one function call.
++ Ordinary pass-by-value parameters receive copies.
++ A function boundary usually separates caller storage from function storage.
+
+::: notes
+[Graphic suggestion: show two stack frames, main() and changeValue(), each with its own integer box.]
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## What Is a Reference?
+
+```cpp
+int score = 90;
+int& scoreRef = score;
+```
+
++ `scoreRef` is another name for `score`.
++ It does not create a second integer value.
++ Both names refer to the same stored data.
+
+<!-- Slide 6 -->
+
+---
+
+## Reference Syntax
+
+```cpp
+int score = 90;
+int& scoreRef = score;
+```
+
++ The `&` marks `scoreRef` as a reference.
++ A reference must be initialized when it is declared.
++ The initializer is the variable the reference will name.
+
+<!-- Slide 7 -->
+
+---
+
+## Changing Through Either Name
+
+```cpp
+int score = 90;
+int& scoreRef = score;
+
+scoreRef = 95;
+cout << score << endl;
+
+score = 100;
+cout << scoreRef << endl;
+```
+
+Both output statements read the same stored value through different names.
+
+<!-- Slide 8 -->
+
+---
+
+## A Reference Is Not Reseated
+
+```cpp
+int first = 10;
+int second = 20;
+int& alias = first;
+
+alias = second;
+```
+
+After the assignment, `first` becomes `20`. The reference still names `first`.
+
+<!-- Slide 9 -->
+
+---
+
+## Stack Frame View of a Reference
+
+| Name | Stored Value |
+|---|---:|
+| `score` | 90 |
+| `scoreRef` | alias for `score` |
+
+A reference is best traced as another name pointing to existing storage.
+
+::: notes
+[Graphic suggestion: show one storage box labeled score with a second label scoreRef attached to the same box.]
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## Summary
+
++ A reference gives an existing variable another name.
++ Changing the value through either name changes the same storage.
++ References prepare us for parameters that work directly with caller variables.
+
+<!-- Slide 11 -->

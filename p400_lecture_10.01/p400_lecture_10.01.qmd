@@ -1,0 +1,177 @@
+# Last Time
+
+::: {.incremental}
++ **Increment and Decrement Operators**
++ **Break**
++ **Continue**
++ **Input Validation Strategy**
++ **Input Validation**
+:::
+
+::: notes
+Review validation as a boundary check before introducing files, then contrast validation with assertions later in the lecture.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- File I/O
+- Assertions
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_file_io.qmd >}}
+{{< include topic_2_assertions.qmd >}}
+
+---
+
+# Key Takeaways
+
+- File I/O uses familiar stream operations, but the data persists beyond the program run.
+- A file's format is a contract: record shape and stopping rule determine the read loop.
+- Use validation for expected bad input and assertions for programmer assumptions that should never be false.
+
+<!-- Slide 46 -->
+
+---
+
+# Next Time
+
+- Arrays
+- Fixed-size collections
+- Array traversal
+
+<!-- Slide 47 -->
+
+---
+
+# Appendix
+
+<!-- Slide 48 -->
+
+---
+
+## File I/O: Good Practices
+
+- Check that a file opened before reading from it or writing to it.
+- Write down a sample file before writing the read loop.
+- Keep text file formats simple enough to inspect by eye.
+
+<!-- Slide 49 -->
+
+---
+
+## File I/O: Common Mistakes
+
+- Assuming the file is in the same folder as the source code.
+- Using `while (!inFile.eof())` instead of testing extraction.
+- Changing the write format without updating the read loop.
+
+<!-- Slide 50 -->
+
+---
+
+## File I/O: More Examples
+
+- A score file with one integer per line.
+- A roster file whose first value is the number of students.
+- A log file opened with `ios::app` to preserve earlier entries.
+
+<!-- Slide 51 -->
+
+---
+
+## File I/O: Practice Problems
+
+1. Write a vector of integers to a file, one value per line.
+2. Read the file back into a new vector and print the values.
+3. Create a file where the first value is a count, then read exactly that many records.
+
+<!-- Slide 52 -->
+
+---
+
+## File I/O: AI Search Terms
+
+- `c++ ifstream ofstream example`
+- `c++ read file while extraction succeeds`
+- `c++ write vector to text file`
+- `c++ ios app append file`
+
+<!-- Slide 53 -->
+
+---
+
+## File I/O: Questions for Reflection
+
+- How does the file tell the program when to stop reading?
+- What makes a file format easy to debug by eye?
+- Why is a failed extraction different from a normal end of file?
+
+<!-- Slide 54 -->
+
+---
+
+## Assertions: Good Practices
+
+- Assert assumptions that should already be true.
+- Keep assertion expressions simple and free of side effects.
+- Use assertions near the code that depends on the assumption.
+
+<!-- Slide 55 -->
+
+---
+
+## Assertions: Common Mistakes
+
+- Using `assert` to handle normal user input errors.
+- Depending on an assertion to perform required work.
+- Fixing the assertion failure instead of finding the bad state that caused it.
+
+<!-- Slide 56 -->
+
+---
+
+## Assertions: More Examples
+
+- Assert that a denominator is not zero before division.
+- Assert that an index is inside vector bounds before using it.
+- Assert that two parallel vectors have the same size after loading data.
+
+<!-- Slide 57 -->
+
+---
+
+## Assertions: Practice Problems
+
+1. Add an assertion to a function that receives an index and a vector size.
+2. Convert an invalid `assert` on user input into a validation loop.
+3. Add an invariant check after reading names and scores into parallel vectors.
+
+<!-- Slide 58 -->
+
+---
+
+## Assertions: AI Search Terms
+
+- `c++ assert cassert`
+- `c++ assertion vs input validation`
+- `c++ precondition invariant assert`
+- `c++ NDEBUG disable assert`
+
+<!-- Slide 59 -->
+
+---
+
+## Assertions: Questions for Reflection
+
+- What is the difference between a client mistake and a programmer mistake?
+- Why should assertion expressions avoid side effects?
+- What should you investigate first when an assertion fails?
+
+<!-- Slide 60 -->

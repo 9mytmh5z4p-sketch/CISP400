@@ -1,0 +1,106 @@
+<!-- Topic 1: Two-Dimensional Arrays -->
+<!-- Total slides: 6 -->
+
+# Two-Dimensional Arrays
+
+---
+
+## An array of arrays? {.smaller}
+
+- A 2D array organizes data into rows and columns
+- Two indices: row first, column second
+
+::: notes
+Total slides: 6
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## Declaration and indexing
+
+```{.cpp}
+int grid[3][4];       // 3 rows, 4 columns
+
+grid[0][0] = 1;       // row 0, column 0
+grid[2][3] = 99;      // row 2, column 3
+```
+
+- First bracket is the row count; second is the column count
+- Valid row indices: `0` to `rows - 1`; valid column indices: `0` to `cols - 1`
+
+::: notes
+[Graphic suggestion: a 3×4 grid with row indices (0–2) labeled on the left and column indices (0–3) labeled across the top; cell [2][3] highlighted]
+:::
+
+<!-- Slide 2 -->
+
+---
+
+## Initialization
+
+```{.cpp}
+int grid[3][3] = {
+    {1, 2, 3},    // row 0
+    {4, 5, 6},    // row 1
+    {7, 8, 9}     // row 2
+};
+
+int zeros[3][3] = {};   // all elements zero
+```
+
+- Each inner brace initializes one row
+- Partial initialization zero-fills remaining elements, same as 1D arrays
+
+<!-- Slide 3 -->
+
+---
+
+## Traversal with nested loops
+
+```{.cpp}
+const int ROWS = 3;
+const int COLS = 3;
+int grid[ROWS][COLS] = {{1,2,3},{4,5,6},{7,8,9}};
+
+for (int row = 0; row < ROWS; row++) {
+    for (int col = 0; col < COLS; col++) {
+        cout << grid[row][col] << " ";
+    }
+    cout << "\n";
+}
+```
+
+- Outer loop steps through rows; inner loop steps through columns
+- Name your loop variables `row` and `col` — `i` and `j` obscure the intent
+
+<!-- Slide 4 -->
+
+---
+
+## Row-major storage
+
+Elements are stored row by row in memory:
+
+```
+grid[0][0]  grid[0][1]  grid[0][2]  grid[1][0]  grid[1][1]  ...
+```
+
+- `grid[r][c]` is at memory offset `r * COLS + c` from the start
+- Always traverse row-by-row (outer loop on rows) — column-major traversal skips around in memory and is slower
+
+::: notes
+[Graphic suggestion: a 3×3 grid on the left with cells labeled by [row][col], and a flattened horizontal sequence on the right showing the same cells laid out in row-major order, with a bracket showing row 0, row 1, row 2 sections]
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## Summary
+
+- Declare a 2D array as `type name[rows][cols]`; access elements with `[row][col]`
+- Traverse with nested loops, outer on rows and inner on columns; row-major traversal is faster than column-major
+
+<!-- Slide 6 -->

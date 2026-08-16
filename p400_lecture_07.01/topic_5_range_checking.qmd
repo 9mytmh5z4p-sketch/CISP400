@@ -1,0 +1,111 @@
+<!-- Topic 5: Range Checking -->
+<!-- Slides 40-48 -->
+
+# Range Checking
+<!-- Slide 40 -->
+
+## Inside or Outside the Range {.smaller}
+
+- Range checking asks whether a value belongs between two boundaries.
+- The boundaries may be included or excluded depending on the problem.
+
+::: notes
+Slides 40-48
+:::
+
+<!-- Slide 41 -->
+
+---
+
+## Checking Inside a Range
+
+```cpp
+if (score >= 0 && score <= 100) {
+    cout << "Valid score";
+}
+```
+
+Inside-range checks usually need both boundary comparisons to be true.
+
+<!-- Slide 42 -->
+
+---
+
+## Why Inside Uses AND
+
+For a score to be valid:
+
+- It must be at least `0`.
+- It must be at most `100`.
+- Both facts must be true at the same time.
+
+<!-- Slide 43 -->
+
+---
+
+## Checking Outside a Range
+
+```cpp
+if (score < 0 || score > 100) {
+    cout << "Invalid score";
+}
+```
+
+Outside-range checks usually need only one boundary problem to be true.
+
+<!-- Slide 44 -->
+
+---
+
+## Why Outside Uses OR
+
+For a score to be invalid:
+
+- It can be below `0`.
+- It can be above `100`.
+- Either problem is enough to reject the score.
+
+<!-- Slide 45 -->
+
+---
+
+## Boundary Values Matter
+
+| Condition | Are `0` and `100` valid? |
+|---|---|
+| `score >= 0 && score <= 100` | yes |
+| `score > 0 && score < 100` | no |
+
+Inclusive operators include the endpoints. Exclusive operators leave them out.
+
+<!-- Slide 46 -->
+
+---
+
+## Score Evaluation Example
+
+```cpp
+if (score < 0 || score > 100) {
+    cout << "Invalid score";
+} else if (score >= 90) {
+    cout << "A";
+} else if (score >= 80) {
+    cout << "B";
+} else {
+    cout << "Keep working";
+}
+```
+
+The range check protects the category logic that follows.
+
+<!-- Slide 47 -->
+
+---
+
+## Summary
+
+- Inside-range checks use `&&`.
+- Outside-range checks use `||`.
+- Decide whether boundary values should count before writing the operators.
+
+<!-- Slide 48 -->

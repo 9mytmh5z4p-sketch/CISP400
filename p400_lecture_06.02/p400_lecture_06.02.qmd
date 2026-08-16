@@ -1,0 +1,396 @@
+# Last Time
+
+::: {.incremental}
++ **Very Brief Review of Static**
++ **Design Patterns**
++ **Singleton Pattern**
++ **Strategy Pattern**
+:::
+
+::: notes
+Recall that the previous lecture used static local state to motivate reusable design patterns. Today shifts from design choices at the program level to choices made while the program is running.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Relational Operators
+- The if Statement
+- The cin Fail Problem
+- The if/else Statement
+- The if/else if Statement
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_relational_operators.qmd >}}
+{{< include topic_2_if_statement.qmd >}}
+{{< include topic_3_cin_fail_problem.qmd >}}
+{{< include topic_4_if_else_statement.qmd >}}
+{{< include topic_5_if_else_if_statement.qmd >}}
+
+---
+
+# Key Takeaways
+
+- Relational expressions ask yes/no questions that evaluate to boolean values.
+- `if` statements run code only when a condition is true.
+- `if/else` and `if/else if` structures choose among mutually exclusive paths.
+- Input failure can be detected with `cin.fail()`, but detection and recovery are separate steps.
+
+<!-- Slide 51 -->
+
+---
+
+# Next Time
+
+<!-- Slide 52 -->
+
+---
+
+# Appendix
+
+<!-- Slide 53 -->
+
+---
+
+## Relational Operators: Good Practices
+
+- Use relational expressions that read like clear questions.
+- Prefer explicit comparisons such as `score >= 70` over clever expressions that hide the condition.
+- When comparing floating-point values, decide what difference is small enough to count as equal.
+
+<!-- Slide 54 -->
+
+---
+
+## Relational Operators: Common Mistakes
+
+- Using `=` when the intent is comparison.
+- Writing chained comparisons such as `0 < score < 100` as if C++ handled them like algebra.
+- Comparing floating-point values for exact equality when the calculation may produce rounding differences.
+
+<!-- Slide 55 -->
+
+---
+
+## Relational Operators: More Examples
+
+```cpp
+age >= 21
+choice == 1
+temperature < 32
+balance != 0
+```
+
+Each expression asks one yes/no question.
+
+<!-- Slide 56 -->
+
+---
+
+## Relational Operators: Practice Problems
+
+- Write a condition that is true when `score` is at least 90.
+- Write a condition that is true when `choice` is not 0.
+- Write a condition that is true when `temperature` is below freezing.
+
+<!-- Slide 57 -->
+
+---
+
+## Relational Operators: AI Search Terms
+
+- C++ relational operators
+- C++ equality vs assignment
+- C++ floating point comparison tolerance
+- C++ boolean expressions
+
+<!-- Slide 58 -->
+
+---
+
+## Relational Operators: Questions for Reflection
+
+- What question is the expression asking?
+- What values make the expression true?
+- Would this comparison still work if the value came from a floating-point calculation?
+
+<!-- Slide 59 -->
+
+---
+
+## The if Statement: Good Practices
+
+- Put the condition in parentheses and the controlled code in braces.
+- Keep the condition focused on one question when possible.
+- Use an `if` statement when the action is optional.
+
+<!-- Slide 60 -->
+
+---
+
+## The if Statement: Common Mistakes
+
+- Writing a condition that does not match the intended question.
+- Forgetting that code outside the braces always runs.
+- Making the block do too many unrelated things.
+
+<!-- Slide 61 -->
+
+---
+
+## The if Statement: More Examples
+
+```cpp
+if (hours > 40) {
+    cout << "Overtime may apply";
+}
+
+if (denominator != 0) {
+    quotient = numerator / denominator;
+}
+```
+
+<!-- Slide 62 -->
+
+---
+
+## The if Statement: Practice Problems
+
+- Write an `if` statement that prints a warning when `speed` is greater than 65.
+- Write an `if` statement that prints a message when `balance` is less than 0.
+- Write an `if` statement that protects division by checking the denominator first.
+
+<!-- Slide 63 -->
+
+---
+
+## The if Statement: AI Search Terms
+
+- C++ if statement syntax
+- C++ if statement braces
+- C++ conditional execution
+- C++ guard condition
+
+<!-- Slide 64 -->
+
+---
+
+## The if Statement: Questions for Reflection
+
+- What condition controls the block?
+- What happens when the condition is false?
+- Which statements are inside the decision, and which statements always run?
+
+<!-- Slide 65 -->
+
+---
+
+## The cin Fail Problem: Good Practices
+
+- Check input before using the value in later calculations.
+- Treat failure detection and failure recovery as separate steps.
+- Give the user a specific message about what kind of input was expected.
+
+<!-- Slide 66 -->
+
+---
+
+## The cin Fail Problem: Common Mistakes
+
+- Assuming `cin.fail()` fixes the stream.
+- Trying to keep reading after the stream has entered a failed state.
+- Repeating a prompt without clearing the bad input first.
+
+<!-- Slide 67 -->
+
+---
+
+## The cin Fail Problem: More Examples
+
+```cpp
+int quantity;
+cin >> quantity;
+
+if (cin.fail()) {
+    cout << "Quantity must be a whole number.";
+}
+```
+
+This detects the problem. A complete recovery also clears the stream and removes the bad input.
+
+<!-- Slide 68 -->
+
+---
+
+## The cin Fail Problem: Practice Problems
+
+- Identify what kind of input would make `cin >> age` fail.
+- Write the condition that checks whether the last input operation failed.
+- Describe the difference between detecting failure and recovering from failure.
+
+<!-- Slide 69 -->
+
+---
+
+## The cin Fail Problem: AI Search Terms
+
+- C++ cin.fail
+- C++ input stream failed state
+- C++ clear cin ignore bad input
+- C++ input validation basics
+
+<!-- Slide 70 -->
+
+---
+
+## The cin Fail Problem: Questions for Reflection
+
+- What type was `cin` trying to read?
+- What input would fail that extraction?
+- What should the program do before asking for input again?
+
+<!-- Slide 71 -->
+
+---
+
+## The if/else Statement: Good Practices
+
+- Use `if/else` when the two outcomes exclude each other.
+- Let `else` mean "everything that did not satisfy the `if` condition."
+- Keep both branches parallel when they represent matching outcomes.
+
+<!-- Slide 72 -->
+
+---
+
+## The if/else Statement: Common Mistakes
+
+- Writing a second opposite condition when `else` already covers it.
+- Using two separate `if` statements for a choice that must select only one path.
+- Putting shared code in both branches instead of after the decision.
+
+<!-- Slide 73 -->
+
+---
+
+## The if/else Statement: More Examples
+
+```cpp
+if (age >= 21) {
+    cout << "Admit";
+} else {
+    cout << "Do not admit";
+}
+```
+
+Only one of these messages can print.
+
+<!-- Slide 74 -->
+
+---
+
+## The if/else Statement: Practice Problems
+
+- Write an `if/else` that prints pass when `score >= 70` and retry otherwise.
+- Explain why two separate `if` statements are not the best fit for a yes/no choice.
+- Identify which branch runs when the condition is false.
+
+<!-- Slide 75 -->
+
+---
+
+## The if/else Statement: AI Search Terms
+
+- C++ if else statement
+- C++ mutually exclusive branches
+- C++ else block
+- C++ two way selection
+
+<!-- Slide 76 -->
+
+---
+
+## The if/else Statement: Questions for Reflection
+
+- Are these outcomes mutually exclusive?
+- What does the `else` represent?
+- Is there any code that should happen after both branches?
+
+<!-- Slide 77 -->
+
+---
+
+## The if/else if Statement: Good Practices
+
+- Put the most specific conditions before broader conditions when order matters.
+- Use a final `else` when the program needs a default path.
+- Keep each branch focused on one category.
+
+<!-- Slide 78 -->
+
+---
+
+## The if/else if Statement: Common Mistakes
+
+- Placing a broad condition first and blocking later branches.
+- Repeating conditions that are already excluded by earlier branches.
+- Using an `if/else if` chain when independent checks would be clearer.
+
+<!-- Slide 79 -->
+
+---
+
+## The if/else if Statement: More Examples
+
+```cpp
+if (score >= 90) {
+    letter = 'A';
+} else if (score >= 80) {
+    letter = 'B';
+} else if (score >= 70) {
+    letter = 'C';
+} else {
+    letter = 'F';
+}
+```
+
+The first true branch wins.
+
+<!-- Slide 80 -->
+
+---
+
+## The if/else if Statement: Practice Problems
+
+- Write a chain that classifies a temperature as hot, warm, cool, or cold.
+- Explain why the order of grade checks matters.
+- Decide whether a scenario needs `if`, `if/else`, or `if/else if`.
+
+<!-- Slide 81 -->
+
+---
+
+## The if/else if Statement: AI Search Terms
+
+- C++ else if chain
+- C++ multi way selection
+- C++ condition order matters
+- C++ if else if vs switch
+
+<!-- Slide 82 -->
+
+---
+
+## The if/else if Statement: Questions for Reflection
+
+- What categories are possible?
+- Are the categories mutually exclusive?
+- Which condition should be checked first?
+
+<!-- Slide 83 -->

@@ -1,0 +1,117 @@
+# Last Time
+
+::: {.incremental}
++ **Binary Search**
++ **std::array**
++ **Passing Arrays, std::array, and Vectors to Functions**
++ **Parallel Arrays**
+:::
+
+::: notes
+12.01 recap. Binary search: O(log N), requires sorted array, low/high/mid pattern. std::array: fixed-size, no pointer decay, .size() and .at(). Three-type comparison: int[] vs array<T,N> vs vector. Passing: int[] decays (pass size separately), std::array and vector by const ref. Parallel arrays: shared index, same SIZE constant.
+:::
+
+---
+
+# Today's Agenda
+
+- Two-Dimensional Arrays
+- Arrays with Three or More Dimensions
+- Lab — Array-Backed Stack
+
+::: notes
+
+:::
+
+{{< include topic_1_two_dimensional.qmd >}}
+{{< include topic_2_three_dimensions.qmd >}}
+{{< include topic_3_stack_lab.qmd >}}
+
+---
+
+# Key Takeaways
+
+- Declare 2D arrays as `type name[rows][cols]`; traverse with nested loops, outer on rows
+- Row-major storage means row-by-row traversal is faster than column-by-column
+- A stack API (push/pop/peek/isFull/isEmpty) built on an array is a first example of separating behavior from storage
+
+---
+
+# Next Time
+
+---
+
+# Appendix
+
+---
+
+## Two-Dimensional Arrays: Good Practices
+
+---
+
+## Two-Dimensional Arrays: Common Mistakes
+
+---
+
+## Two-Dimensional Arrays: More Examples
+
+---
+
+## Two-Dimensional Arrays: Practice Problems
+
+---
+
+## Two-Dimensional Arrays: AI Search Terms
+
+---
+
+## Two-Dimensional Arrays: Questions for Reflection
+
+---
+
+## Arrays with Three or More Dimensions: Good Practices
+
+---
+
+## Arrays with Three or More Dimensions: Common Mistakes
+
+---
+
+## Arrays with Three or More Dimensions: More Examples
+
+---
+
+## Arrays with Three or More Dimensions: Practice Problems
+
+---
+
+## Arrays with Three or More Dimensions: AI Search Terms
+
+---
+
+## Arrays with Three or More Dimensions: Questions for Reflection
+
+---
+
+## Lab — Array-Backed Stack: Good Practices
+
+---
+
+## Lab — Array-Backed Stack: Common Mistakes
+
+---
+
+## Lab — Array-Backed Stack: More Examples
+
+---
+
+## Lab — Array-Backed Stack: Practice Problems
+
+---
+
+## Lab — Array-Backed Stack: AI Search Terms
+
+---
+
+## Lab — Array-Backed Stack: Questions for Reflection
+

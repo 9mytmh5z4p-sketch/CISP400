@@ -1,0 +1,528 @@
+<!-- Topic 3: Smart Pointers -->
+<!-- Slides 43–75 -->
+
+# Smart Pointers
+<!-- Slide 43 -->
+
+## Can Ownership Clean Up After Itself? {.smaller}
+
++ Manual cleanup fails when an exit path forgets `delete`.
++ Smart pointers make ownership part of an object's automatic lifetime.
+
+::: notes
+Slides 43–75
+[Graphic suggestion: a scope closing and a managed allocation being released automatically.]
+:::
+
+<!-- Slide 44 -->
+
+---
+
+## Smart Pointers Are Objects
+
++ A smart pointer stores an address and manages an ownership policy.
++ Dereference syntax still provides access to the pointed-to object.
++ The smart-pointer object's lifetime controls its cleanup behavior.
+
+<!-- Slide 45 -->
+
+---
+
+## The Smart-Pointer Map
+
+| Type | Ownership model | Default use |
+|---|---|---|
+| `unique_ptr` | One owner | Preferred dynamic ownership |
+| `shared_ptr` | Multiple owners | Genuine shared lifetime |
+| `weak_ptr` | Non-owning observer | Observe shared storage safely |
+
+<!-- Slide 46 -->
+
+---
+
+## Required Header
+
+```{.cpp}
+#include <iostream>
+#include <memory>
+#include <utility>
+using namespace std;
+```
+
++ Smart pointers and their creation helpers are declared in `<memory>`; `move` is declared in `<utility>`.
+
+<!-- Slide 47 -->
+
+---
+
+## What Is RAII?
+
++ Resource Acquisition Is Initialization ties a resource to an object's lifetime.
++ Construction acquires or receives the resource.
++ Destruction releases it automatically when the object leaves scope.
+
+::: notes
+[Graphic suggestion: timeline labeled construction, use, scope exit, automatic release.]
+:::
+
+<!-- Slide 48 -->
+
+---
+
+## Raw Ownership vs. Managed Ownership
+
+::: {.columns}
+::: {.column width="50%"}
+```{.cpp}
+int* raw = new int{42};
+cout << *raw << "\n";
+delete raw;
+raw = nullptr;
+```
+:::
+
+::: {.column width="50%"}
+```{.cpp}
+unique_ptr<int> managed =
+    make_unique<int>(42);
+cout << *managed << "\n";
+```
+:::
+:::
+
+<!-- Slide 49 -->
+
+---
+
+## Empty Smart Pointers
+
+```{.cpp}
+unique_ptr<int> score;
+
+if (score) {
+    cout << *score << "\n";
+}
+
+if (score == nullptr) {
+    cout << "No score\n";
+}
+```
+
+<!-- Slide 50 -->
+
+---
+
+## Introducing unique_ptr
+
+```{.cpp}
+unique_ptr<int> score(new int{95});
+```
+
++ `score` is the sole owner of the dynamic `int`.
++ Destruction of `score` releases the allocation.
++ Direct use of `new` is valid here, but a helper is preferred.
+
+<!-- Slide 51 -->
+
+---
+
+## Creating with make_unique
+
+```{.cpp}
+unique_ptr<int> score = make_unique<int>(95);
+```
+
++ `make_unique` creates the object and returns its owner.
++ The allocation is never exposed as an unowned raw pointer.
+
+<!-- Slide 52 -->
+
+---
+
+## Using a unique_ptr
+
+```{.cpp}
+unique_ptr<int> score = make_unique<int>(95);
+
+cout << *score << "\n";
+*score += 5;
+cout << *score << "\n";
+```
+
++ Dereferencing accesses the managed object, not the smart pointer itself.
+
+<!-- Slide 53 -->
+
+---
+
+## Automatic Cleanup at Scope Exit
+
+```{.cpp}
+void showScore() {
+    unique_ptr<int> score = make_unique<int>(95);
+    cout << *score << "\n";
+} // score is destroyed; the int is released
+```
+
+::: notes
+[Graphic suggestion: owner and allocation both disappear at the closing brace.]
+:::
+
+<!-- Slide 54 -->
+
+---
+
+## A Complete unique_ptr Example {.smaller}
+
+```{.cpp}
+#include <iostream>
+#include <memory>
+using namespace std;
+
+int main() {
+    unique_ptr<double> temperature =
+        make_unique<double>(98.6);
+
+    cout << *temperature << "\n";
+    *temperature = 101.3;
+    cout << *temperature << "\n";
+
+    return 0;
+} // automatic cleanup
+```
+
+<!-- Slide 55 -->
+
+---
+
+## move Means Ownership Transfer
+
++ A move transfers a resource instead of duplicating it.
++ The destination becomes the owner.
++ The source becomes empty but remains a valid smart-pointer object.
+
+::: notes
+[Graphic suggestion: ownership badge moving from source to destination while one allocation remains.]
+:::
+
+<!-- Slide 56 -->
+
+---
+
+## Why Copying Is Disabled
+
+```{.cpp}
+unique_ptr<int> first = make_unique<int>(42);
+
+// unique_ptr<int> second = first;
+// Error: copying would create two unique owners.
+```
+
++ The compiler prevents a double-ownership state.
+
+<!-- Slide 57 -->
+
+---
+
+## Transferring Ownership with move
+
+```{.cpp}
+unique_ptr<int> first = make_unique<int>(42);
+unique_ptr<int> second = move(first);
+
+cout << *second << "\n";
+```
+
+::: notes
+Pause before the move. Ask which variable should own the allocation afterward.
+:::
+
+<!-- Slide 58 -->
+
+---
+
+## State After a Move
+
+```{.cpp}
+unique_ptr<int> first = make_unique<int>(42);
+unique_ptr<int> second = move(first);
+
+cout << boolalpha;
+cout << "first owns: " << static_cast<bool>(first) << "\n";
+cout << "second owns: " << static_cast<bool>(second) << "\n";
+```
+
+<!-- Slide 59 -->
+
+---
+
+## Passing unique_ptr to Functions {.smaller}
+
+```{.cpp}
+void printValue(const unique_ptr<int>& value);
+void consume(unique_ptr<int> value);
+
+int main() {
+    unique_ptr<int> score = make_unique<int>(95);
+    printValue(score);       // borrow the owner
+    consume(move(score));   // transfer ownership
+}
+```
+
++ The parameter style reveals whether ownership stays or moves.
+
+<!-- Slide 60 -->
+
+---
+
+## Returning a unique_ptr {.smaller}
+
+```{.cpp}
+#include <iostream>
+#include <memory>
+using namespace std;
+
+unique_ptr<int> makeScore(int value);
+
+int main() {
+    unique_ptr<int> score = makeScore(95);
+    cout << *score << "\n";
+    return 0;
+}
+
+unique_ptr<int> makeScore(int value) {
+    return make_unique<int>(value);
+}
+```
+
+<!-- Slide 61 -->
+
+---
+
+## Replacing a Managed Object
+
+```{.cpp}
+unique_ptr<int> score = make_unique<int>(80);
+
+score.reset(new int{95});
+cout << *score << "\n";
+
+score.reset(); // release and become empty
+```
+
++ `reset` releases the previous managed object before taking a new one.
+
+<!-- Slide 62 -->
+
+---
+
+## Borrowing the Raw Address
+
+```{.cpp}
+unique_ptr<int> owner = make_unique<int>(95);
+int* observer = owner.get();
+
+cout << *observer << "\n";
+```
+
++ `get()` does not transfer ownership.
++ The observer is valid only while the owner keeps the object alive.
+
+<!-- Slide 63 -->
+
+---
+
+## Releasing Ownership Manually
+
+```{.cpp}
+unique_ptr<int> owner = make_unique<int>(95);
+int* raw = owner.release();
+
+delete raw;
+raw = nullptr;
+```
+
++ `release()` returns the address without deleting the object.
++ Manual cleanup responsibility immediately returns.
+
+<!-- Slide 64 -->
+
+---
+
+## Introducing shared_ptr
+
+```{.cpp}
+shared_ptr<int> first = make_shared<int>(95);
+shared_ptr<int> second = first;
+```
+
++ Both smart pointers own the same object.
++ A reference count records how many shared owners remain.
+
+<!-- Slide 65 -->
+
+---
+
+## Creating with make_shared
+
+```{.cpp}
+shared_ptr<double> temperature =
+    make_shared<double>(98.6);
+
+cout << *temperature << "\n";
+cout << temperature.use_count() << "\n";
+```
+
++ Prefer `make_shared` when shared ownership is required.
+
+<!-- Slide 66 -->
+
+---
+
+## Copying Shared Ownership
+
+```{.cpp}
+shared_ptr<int> first = make_shared<int>(95);
+cout << first.use_count() << "\n"; // 1
+
+shared_ptr<int> second = first;
+cout << first.use_count() << "\n"; // 2
+cout << second.use_count() << "\n"; // 2
+```
+
+::: notes
+[Graphic suggestion: two owners pointing to one allocation and one control block labeled count 2.]
+:::
+
+<!-- Slide 67 -->
+
+---
+
+## When Shared Storage Is Released
+
+```{.cpp}
+shared_ptr<int> first = make_shared<int>(95);
+
+{
+    shared_ptr<int> second = first;
+    cout << first.use_count() << "\n"; // 2
+}
+
+cout << first.use_count() << "\n"; // 1
+```
+
++ The allocation is released when the final shared owner is destroyed.
+
+<!-- Slide 68 -->
+
+---
+
+## The Cost of Shared Ownership
+
++ A control block stores ownership information and the reference count.
++ Copies must update that count.
++ Use `shared_ptr` only when the design truly requires multiple owners.
+
+<!-- Slide 69 -->
+
+---
+
+## Shared-Ownership Cycles
+
++ Owner A can keep Owner B alive while Owner B keeps Owner A alive.
++ Neither reference count reaches zero.
++ The cycle leaks even though every link uses `shared_ptr`.
+
+::: notes
+Keep this conceptual because classes have not yet been developed in depth.
+[Graphic suggestion: two objects joined by circular owning arrows, each count held above zero.]
+:::
+
+<!-- Slide 70 -->
+
+---
+
+## Why weak_ptr Exists
+
++ `weak_ptr` observes an object managed by `shared_ptr`.
++ Observation does not increase the shared reference count.
++ A weak link can break an ownership cycle.
+
+::: notes
+[Graphic suggestion: replace one owning arrow in the cycle with a dashed observer arrow.]
+:::
+
+<!-- Slide 71 -->
+
+---
+
+## Locking a weak_ptr
+
+```{.cpp}
+shared_ptr<int> owner = make_shared<int>(95);
+weak_ptr<int> observer = owner;
+
+if (shared_ptr<int> access = observer.lock()) {
+    cout << *access << "\n";
+}
+```
+
++ `lock()` returns temporary shared ownership if the object still exists.
+
+<!-- Slide 72 -->
+
+---
+
+## Choosing a Pointer Type
+
+| Need | Prefer |
+|---|---|
+| No dynamic lifetime | Direct object |
+| Temporary guaranteed access | Reference |
+| Nullable non-owning access | Raw pointer |
+| One dynamic owner | `unique_ptr` |
+| Genuine shared ownership | `shared_ptr` |
+| Observe shared storage | `weak_ptr` |
+
+<!-- Slide 73 -->
+
+---
+
+## Modern Ownership Rewrite {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+```{.cpp}
+int* score = new int{95};
+if (!(cin >> *score)) {
+    delete score;
+    return 1;
+}
+cout << *score << "\n";
+delete score;
+```
+:::
+
+::: {.column width="50%"}
+```{.cpp}
+unique_ptr<int> score =
+    make_unique<int>(95);
+if (!(cin >> *score)) {
+    return 1;
+}
+cout << *score << "\n";
+```
+:::
+:::
+
+<!-- Slide 74 -->
+
+---
+
+## Summary
+
++ Prefer `unique_ptr` for dynamic ownership and explicit ownership transfer.
++ Use `shared_ptr` only for genuine shared lifetime.
++ Use `weak_ptr` to observe shared storage without extending its lifetime.
+
+<!-- Slide 75 -->

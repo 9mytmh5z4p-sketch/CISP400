@@ -1,0 +1,149 @@
+<!-- Topic 2: Array Initialization -->
+<!-- Slides 13–24 -->
+
+# Array Initialization
+<!-- Slide 13 -->
+
+## Starting with Known Values {.smaller}
+
++ What should every position contain when the array is created?
+
+::: notes
+Slides 13–24
+:::
+
+<!-- Slide 14 -->
+
+---
+
+## Full Initialization
+
+```{.cpp}
+int scores[5] = {91, 84, 78, 96, 88};
+```
+
++ Five positions receive five values.
++ Values are stored in the order written.
+
+<!-- Slide 15 -->
+
+---
+
+## Initialization Layout
+
+```{.cpp}
+int scores[5] = {91, 84, 78, 96, 88};
+```
+
+| position | first | second | third | fourth | fifth |
+|---|---:|---:|---:|---:|---:|
+| value | 91 | 84 | 78 | 96 | 88 |
+
+<!-- Slide 16 -->
+
+---
+
+## Partial Initialization
+
+```{.cpp}
+int scores[5] = {91, 84};
+```
+
+| position | first | second | third | fourth | fifth |
+|---|---:|---:|---:|---:|---:|
+| value | 91 | 84 | 0 | 0 | 0 |
+
++ Missing trailing values are initialized to zero.
+
+<!-- Slide 17 -->
+
+---
+
+## Zero Initialization
+
+```{.cpp}
+int scores[5] = {};
+```
+
+| value | 0 | 0 | 0 | 0 | 0 |
+|---|---:|---:|---:|---:|---:|
+
++ Empty braces initialize every element to zero.
+
+<!-- Slide 18 -->
+
+---
+
+## Inferred Size
+
+```{.cpp}
+int scores[] = {91, 84, 78, 96, 88};
+```
+
++ The compiler counts the initializer values.
++ The resulting capacity is five and remains fixed.
+
+<!-- Slide 19 -->
+
+---
+
+## Uninitialized Arrays
+
+```{.cpp}
+int scores[5];
+```
+
++ A local array declared this way has indeterminate element values.
++ Reading any element before assigning it a value is unsafe.
+
+<!-- Slide 20 -->
+
+---
+
+## Initializer Count
+
+```{.cpp}
+int first[5] = {4, 8};             // allowed: remaining values are zero
+int second[3] = {4, 8, 15, 16};   // error: too many initializers
+```
+
++ The initializer list may contain at most the declared capacity.
+
+<!-- Slide 21 -->
+
+---
+
+## Initialization Happens Once
+
+```{.cpp}
+int scores[3] = {70, 80, 90};
+
+// scores = {75, 85, 95};  // array assignment is not allowed
+```
+
++ Braces initialize the array as it is created.
++ Later changes target individual elements.
+
+<!-- Slide 22 -->
+
+---
+
+## Choosing an Initialization Form
+
+| Need | Form |
+|---|---|
+| Known starting values | Full initializer list |
+| Known prefix, zero remainder | Partial initializer list |
+| All zeros | Empty braces |
+| Capacity matches supplied values | Inferred size |
+
+<!-- Slide 23 -->
+
+---
+
+## Summary
+
++ Initializer lists assign values from left to right.
++ Missing trailing values become zero, excess values are rejected, and uninitialized local elements must not be read.
+
+<!-- Slide 24 -->

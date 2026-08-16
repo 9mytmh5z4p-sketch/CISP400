@@ -1,0 +1,379 @@
+# Last Time
+
+::: {.incremental}
++ **cout**
++ **cin**
++ **Output Manipulators**
++ **Terminal Color Codes**
++ **Table Architectures**
+:::
+
+::: notes
+Brief recall of lecture 02.02. Students should remember that terminal programs communicate through input and output streams, and that formatted output can make information easier to read. This lecture turns those mechanics into planning models for software design.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Advanced cin
+- Dates and Random Numbers
+- IPO Models
+- Execution Trace Models
+- Terminal Charts and Graphs
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_advanced_cin.qmd >}}
+{{< include topic_2_dates_random.qmd >}}
+{{< include topic_3_ipo_models.qmd >}}
+{{< include topic_4_execution_trace.qmd >}}
+{{< include topic_5_terminal_charts.qmd >}}
+
+---
+
+# Key Takeaways
+
+- `cin >>` stops at whitespace; `getline` reads a whole line.
+- Failed numeric input must be cleared before the stream can be used again.
+- Time can provide a changing value, and random numbers need a seed and range formula.
+- IPO models plan a program before code; execution traces inspect code after it exists.
+- Terminal charts are structured output designed for quick comparison.
+
+<!-- Slide 67 -->
+
+---
+
+# Next Time
+
+- Functions
+- Function calls and parameters
+- Local variables in functions
+
+<!-- Slide 68 -->
+
+---
+
+# Appendix
+
+<!-- Slide 69 -->
+
+---
+
+## Advanced cin: Good Practices
+
+- Use `cin >>` for simple single-token values.
+- Use `getline` when spaces are part of the input.
+- Clear failed input before reading again.
+
+<!-- Slide 70 -->
+
+---
+
+## Advanced cin: Common Mistakes
+
+- Expecting `cin >>` to read a full name.
+- Mixing `cin >>` and `getline` without handling the leftover newline.
+- Trying another read after a failed numeric extraction without clearing the stream.
+
+<!-- Slide 71 -->
+
+---
+
+## Advanced cin: More Examples
+
+```cpp
+string city;
+int population;
+
+cout << "Population: ";
+cin >> population;
+cin.ignore(1000, '\n');
+
+cout << "City name: ";
+getline(cin, city);
+```
+
+<!-- Slide 72 -->
+
+---
+
+## Advanced cin: Practice Problems
+
+1. Read a user's full name with `getline`.
+2. Read an age with `cin >>`, then read a full address with `getline`.
+3. Show what remains in the stream when a user types two words into a `cin >>` read.
+
+<!-- Slide 73 -->
+
+---
+
+## Advanced cin: AI Search Terms
+
+- "C++ getline after cin ignore"
+- "C++ cin fail state clear ignore"
+- "C++ cin whitespace extraction"
+
+<!-- Slide 74 -->
+
+---
+
+## Advanced cin: Questions for Reflection
+
+- Why does `cin >>` stop at spaces?
+- Why does a failed read affect the next read?
+- When is a full-line read the better design choice?
+
+<!-- Slide 75 -->
+
+---
+
+## Dates and Random Numbers: Good Practices
+
+- Seed the random-number generator once near the start of the program.
+- Use clear variable names such as `raw`, `roll`, and `now`.
+- Keep range formulas visible until the pattern is familiar.
+
+<!-- Slide 76 -->
+
+---
+
+## Dates and Random Numbers: Common Mistakes
+
+- Calling `srand(time(0))` repeatedly before every random number.
+- Forgetting the `+ 1` when the desired range starts at 1.
+- Treating a timestamp as a formatted calendar date.
+
+<!-- Slide 77 -->
+
+---
+
+## Dates and Random Numbers: More Examples
+
+```cpp
+int card = rand() % 13 + 1;
+int coin = rand() % 2;
+int percent = rand() % 101;
+```
+
+<!-- Slide 78 -->
+
+---
+
+## Dates and Random Numbers: Practice Problems
+
+1. Generate a random number from 1 through 10.
+2. Generate a random number from 0 through 4.
+3. Print the current timestamp, then use it as a random seed.
+
+<!-- Slide 79 -->
+
+---
+
+## Dates and Random Numbers: AI Search Terms
+
+- "C++ time 0 timestamp"
+- "C++ srand time rand beginner"
+- "C++ rand modulo range"
+
+<!-- Slide 80 -->
+
+---
+
+## Dates and Random Numbers: Questions for Reflection
+
+- Why does the same seed create the same random sequence?
+- Why is a raw random number usually not the final value a program needs?
+
+<!-- Slide 81 -->
+
+---
+
+## IPO Models: Good Practices
+
+- Start with the output the program must produce.
+- Identify only the inputs needed for that output.
+- Name processing as a clear calculation or transformation.
+
+<!-- Slide 82 -->
+
+---
+
+## IPO Models: Common Mistakes
+
+- Listing code statements before understanding the output.
+- Treating every variable as an input.
+- Skipping processing because the calculation feels obvious.
+
+<!-- Slide 83 -->
+
+---
+
+## IPO Models: More Examples
+
+| Problem | Input | Processing | Output |
+|---|---|---|---|
+| rectangle area | length, width | length * width | area |
+| greeting | name | combine text and name | message |
+
+<!-- Slide 84 -->
+
+---
+
+## IPO Models: Practice Problems
+
+1. Create an IPO table for calculating sales tax.
+2. Create an IPO table for printing a greeting.
+3. Create an IPO table for rolling a die.
+
+<!-- Slide 85 -->
+
+---
+
+## IPO Models: AI Search Terms
+
+- "IPO model programming input processing output"
+- "software design IPO chart"
+- "beginner programming problem decomposition"
+
+<!-- Slide 86 -->
+
+---
+
+## IPO Models: Questions for Reflection
+
+- Why might identifying output first make inputs easier to find?
+- How does an IPO table reduce guessing while coding?
+
+<!-- Slide 87 -->
+
+---
+
+## Execution Trace Models: Good Practices
+
+- Trace statements in the order they execute.
+- Record output exactly when it happens.
+- Update only the variable values that change.
+
+<!-- Slide 88 -->
+
+---
+
+## Execution Trace Models: Common Mistakes
+
+- Writing what you expect instead of what the code says.
+- Skipping assignments because they look simple.
+- Recording final output before the `cout` statement runs.
+
+<!-- Slide 89 -->
+
+---
+
+## Execution Trace Models: More Examples
+
+```cpp
+int x = 2;
+int y = x + 5;
+x = y - 1;
+cout << x;
+```
+
+Trace `x`, `y`, and output after each statement.
+
+<!-- Slide 90 -->
+
+---
+
+## Execution Trace Models: Practice Problems
+
+1. Trace three assignment statements.
+2. Trace a program that reads one input value.
+3. Trace the raw and bounded values in a random-number example.
+
+<!-- Slide 91 -->
+
+---
+
+## Execution Trace Models: AI Search Terms
+
+- "program execution trace table"
+- "desk checking code variables output"
+- "trace table beginner programming"
+
+<!-- Slide 92 -->
+
+---
+
+## Execution Trace Models: Questions for Reflection
+
+- Why is tracing different from reading code casually?
+- What kinds of bugs become easier to see in a trace?
+
+<!-- Slide 93 -->
+
+---
+
+## Terminal Charts and Graphs: Good Practices
+
+- Choose labels before writing output statements.
+- Keep columns aligned.
+- Use a simple scale for bars.
+
+<!-- Slide 94 -->
+
+---
+
+## Terminal Charts and Graphs: Common Mistakes
+
+- Using uneven spacing between rows.
+- Choosing a scale that exaggerates or hides differences.
+- Mixing exact values and visual bars without clear labels.
+
+<!-- Slide 95 -->
+
+---
+
+## Terminal Charts and Graphs: More Examples
+
+```text
+Books      ####
+Games      ##
+Snacks     ######
+```
+
+Each `#` can represent one item, five items, or another stated unit.
+
+<!-- Slide 96 -->
+
+---
+
+## Terminal Charts and Graphs: Practice Problems
+
+1. Print a three-row bar chart by hand.
+2. Add a numeric column beside each bar.
+3. Redesign a plain list as a small table.
+
+<!-- Slide 97 -->
+
+---
+
+## Terminal Charts and Graphs: AI Search Terms
+
+- "C++ terminal bar chart cout"
+- "C++ formatted table output setw"
+- "ASCII chart beginner programming"
+
+<!-- Slide 98 -->
+
+---
+
+## Terminal Charts and Graphs: Questions for Reflection
+
+- When is a visual bar clearer than only a number?
+- What makes a terminal display easy to scan?
+
+<!-- Slide 99 -->

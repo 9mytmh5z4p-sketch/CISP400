@@ -1,0 +1,287 @@
+<!-- Topic 1: Stringstream -->
+<!-- Slides 3–16 -->
+
+# Stringstream
+<!-- Slide 3 -->
+
+## Text into Typed Values {.smaller}
+
+```{.cpp}
+string input = "42 3.5";
+```
+
++ How can we extract `42` as an `int` and `3.5` as a `double`?
+
+::: notes
+Slides 3–16
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## The `<sstream>` Library
+
+Include `<sstream>` to create streams connected to strings.
+
+| Type | Direction | Primary use |
+|---|---|---|
+| `istringstream` | Input | Extract values from text |
+| `ostringstream` | Output | Build formatted text |
+| `stringstream` | Input and output | Read and write the same buffer |
+
+<!-- Slide 5 -->
+
+---
+
+## The Stream Model
+
+The operators stay the same; only the source or destination changes.
+
+| Stream | Connected to | Read with | Write with |
+|---|---|---|---|
+| `cin` / `cout` | Console | `>>` | `<<` |
+| `ifstream` / `ofstream` | File | `>>` | `<<` |
+| String streams | `string` buffer | `>>` | `<<` |
+
+::: notes
+[Graphic suggestion: three streams connected to a console, file, and string buffer while sharing the same insertion and extraction operators]
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Reading Tokens from a String
+
+```{.cpp}
+#include <sstream>
+#include <string>
+using namespace std;
+
+string text = "42 3.5";
+istringstream input(text);
+
+int count;
+double price;
+
+input >> count >> price;
+```
+
+Extraction converts each token to the type of its destination variable.
+
+<!-- Slide 7 -->
+
+---
+
+## Parsing a Complete Line
+
+`getline()` captures the entire line. An `istringstream` then extracts individual values from that line.
+
+```{.cpp}
+string line;
+getline(cin, line);
+
+istringstream input(line);
+string name;
+int attempts;
+double average;
+
+input >> name >> attempts >> average;
+```
+
+::: notes
+This separates collecting input from interpreting it.
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Parsing Code
+
+```{.cpp}
+#include <iostream>
+#include <sstream>
+#include <string>
+using namespace std;
+
+int main() {
+    string line = "Ava 4 91.5";
+    istringstream input(line);
+
+    string name;
+    int attempts;
+    double average;
+
+    if (input >> name >> attempts >> average) {
+        cout << name << " completed " << attempts
+             << " attempts with an average of " << average << "\n";
+    }
+
+    return 0;
+}
+```
+
+::: notes
+The condition succeeds only if all three extractions succeed. The values are converted according to the destination variable types.
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Checking Extraction
+
+```{.cpp}
+int quantity;
+double price;
+
+if (input >> quantity >> price) {
+    cout << "Valid values\n";
+} else {
+    cout << "Expected an integer and a decimal value\n";
+}
+```
+
+::: notes
+Successful extraction leaves the stream usable. Missing or incompatible input places the stream in a failed state.
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## Formatting a String
+
+```{.cpp}
+ostringstream output;
+
+output << "Order " << orderNumber
+       << ": " << quantity << " items";
+
+string message = output.str();
+```
+
+::: notes
+An ostringstream collects output in memory instead of displaying it immediately. The str member function returns the formatted contents as a string.
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## Formatting Code
+
+```{.cpp}
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+#include <string>
+using namespace std;
+
+int main() {
+    int orderNumber = 27;
+    double total = 84.5;
+    ostringstream output;
+
+    output << "Order " << orderNumber << ": $"
+           << fixed << setprecision(2) << total;
+
+    string message = output.str();
+    cout << message << "\n";
+
+    return 0;
+}
+```
+
+::: notes
+Formatting manipulators work because an output string stream follows the same rules as cout and an ofstream.
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Delimited Fields
+
+```{.cpp}
+string record = "Ava,91.5,A";
+istringstream input(record);
+
+string name;
+string scoreText;
+string grade;
+
+getline(input, name, ',');
+getline(input, scoreText, ',');
+getline(input, grade, ',');
+```
+
+::: notes
+The three-argument form of getline stops at a chosen delimiter. Each call consumes its delimiter before the next field is read.
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## Delimited Parsing Code
+
+```{.cpp}
+#include <iostream>
+#include <sstream>
+#include <string>
+using namespace std;
+
+int main() {
+    string record = "Ava,91.5,A";
+    istringstream fields(record);
+    string name, scoreText, grade;
+
+    getline(fields, name, ',');
+    getline(fields, scoreText, ',');
+    getline(fields, grade, ',');
+
+    istringstream scoreInput(scoreText);
+    double score;
+
+    if (scoreInput >> score) {
+        cout << name << " earned " << grade
+             << " with " << score << "\n";
+    }
+
+    return 0;
+}
+```
+
+::: notes
+This handles a simple comma-delimited record. Full CSV permits quoted commas and requires a dedicated parser.
+:::
+
+<!-- Slide 14 -->
+
+---
+
+## Choosing a String Stream
+
+| Need | Choose |
+|---|---|
+| Convert text into typed values | `istringstream` |
+| Combine values into formatted text | `ostringstream` |
+| Read and write one string buffer | `stringstream` |
+
+Choose the narrowest stream type that matches the direction of data movement.
+
+<!-- Slide 15 -->
+
+---
+
+## Summary
+
++ String streams apply familiar stream operators to an in-memory string
++ Use extraction and stream state to parse typed values
++ Use insertion and `.str()` to build formatted text
++ Use delimited `getline()` when fields are separated by a known character
+
+<!-- Slide 16 -->

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bubble Sort — Step Through</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 24px 14px;
+    gap: 14px;
+    min-height: 100vh;
+  }
+
+  /* ── Controls (top) ──────────────────────────── */
+  .controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  button {
+    padding: 8px 20px;
+    border-radius: 7px;
+    border: none;
+    font-size: 0.87rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+    letter-spacing: 0.04em;
+  }
+  #btn-step { background: #1d4ed8; color: #f8fafc; }
+  #btn-step:hover:not(:disabled) { background: #2563eb; }
+  #btn-step:disabled { background: #1e293b; color: #334155; cursor: not-allowed; }
+
+  #btn-play { background: #0f3a1f; color: #4ade80; border: 1px solid #16a34a; }
+  #btn-play:hover:not(:disabled) { background: #14532d; }
+  #btn-play:disabled { background: #1e293b; color: #334155; border-color: #334155; cursor: not-allowed; }
+
+  #btn-reset { background: transparent; color: #64748b; border: 1px solid #334155; }
+  #btn-reset:hover { color: #94a3b8; border-color: #475569; }
+
+  /* ── Code block ─────────────────────────────── */
+  .code-block {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 13px 22px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.88rem;
+    line-height: 1.72;
+    width: 100%;
+    max-width: 680px;
+  }
+
+  .cl { color: #1e3a5f; transition: color 0.2s, background 0.2s; border-radius: 3px; padding: 1px 4px; }
+  .cl.on  { color: #f8fafc; background: #1d3461; }
+  .cl.dim { color: #1e293b; }
+  .kw { color: #7dd3fc; } .ty { color: #34d399; }
+  .cm { color: #334155; } .op { color: #fb923c; }
+
+  /* ── Array ───────────────────────────────────── */
+  .array-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    width: 100%;
+    max-width: 680px;
+  }
+
+  .pass-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Courier New', monospace;
+    font-size: 0.78rem;
+  }
+  #pass-label { color: #64748b; }
+  #sorted-label { color: #16a34a; transition: color 0.3s; }
+
+  .array-row { display: flex; gap: 0; }
+
+  .cw {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .cell {
+    width: 96px;
+    height: 64px;
+    border: 2px solid #334155;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', monospace;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #64748b;
+    background: #1e293b;
+    transition: all 0.3s ease;
+    margin-right: -2px;
+    position: relative;
+    z-index: 1;
+  }
+  .cell:first-child { border-radius: 8px 0 0 8px; }
+  .cell:last-child  { border-radius: 0 8px 8px 0; margin-right: 0; }
+
+  /* left of comparison pair — orange */
+  .cell.left {
+    background: #431407; border-color: #ea580c; color: #fdba74;
+    z-index: 3; transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(234,88,12,0.45);
+  }
+  /* right of comparison pair — blue */
+  .cell.right {
+    background: #172554; border-color: #3b82f6; color: #93c5fd;
+    z-index: 3; transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(59,130,246,0.4);
+  }
+  /* just-swapped — both go orange-gold */
+  .cell.swapped {
+    background: #422006; border-color: #d97706; color: #fcd34d;
+    z-index: 4; transform: translateY(-5px);
+    box-shadow: 0 0 26px rgba(217,119,6,0.55);
+  }
+  /* sorted region */
+  .cell.sorted {
+    background: #052e16; border-color: #16a34a; color: #4ade80;
+    z-index: 1; transform: none;
+    box-shadow: none;
+  }
+  /* the one element that just landed in place */
+  .cell.new-sorted {
+    background: #14532d; border-color: #22c55e; color: #86efac;
+    z-index: 2; transform: translateY(-3px);
+    box-shadow: 0 0 22px rgba(34,197,94,0.5);
+  }
+  /* fully done */
+  .cell.done { background: #052e16; border-color: #16a34a; color: #4ade80; }
+
+  .idx-lbl {
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    color: #334155;
+    transition: color 0.3s;
+  }
+  .cw.left   .idx-lbl { color: #ea580c; font-weight: 600; }
+  .cw.right  .idx-lbl { color: #3b82f6; font-weight: 600; }
+  .cw.swapped .idx-lbl { color: #d97706; font-weight: 600; }
+  .cw.sorted .idx-lbl, .cw.new-sorted .idx-lbl { color: #16a34a; }
+  .cw.done   .idx-lbl { color: #16a34a; }
+
+  /* swap arrows */
+  .swap-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+    max-width: 680px;
+    height: 18px;
+    position: relative;
+  }
+  .swap-arrow {
+    width: 96px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #d97706;
+    opacity: 0;
+    transition: opacity 0.25s;
+    margin-right: -2px;
+  }
+  .swap-arrow.visible { opacity: 1; }
+
+  /* ── Comparison box ──────────────────────────── */
+  .cmp-box {
+    width: 100%;
+    max-width: 680px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 12px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: 52px;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .cmp-box.yes  { border-color: #d97706; background: #1c1002; }
+  .cmp-box.no   { border-color: #334155; }
+  .cmp-box.done { border-color: #16a34a; background: #052e16; }
+
+  .cmp-lbl { font-size: 0.67rem; letter-spacing: 0.09em; color: #64748b; white-space: nowrap; }
+  .cmp-expr { font-family: 'Courier New', monospace; font-size: 0.98rem; color: #e2e8f0; flex: 1; }
+  .cmp-badge {
+    font-size: 0.87rem; font-weight: 700;
+    padding: 3px 13px; border-radius: 20px;
+    white-space: nowrap; transition: all 0.25s;
+  }
+  .cmp-badge.yes     { background: #422006; color: #fbbf24; }
+  .cmp-badge.no      { background: #1e293b; color: #64748b; }
+  .cmp-badge.neutral { background: #1e293b; color: #475569; }
+  .cmp-badge.done    { background: #052e16; color: #4ade80; }
+
+  /* ── State panel ─────────────────────────────── */
+  .state-row {
+    display: flex;
+    gap: 28px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 680px;
+  }
+  .si { display: flex; flex-direction: column; gap: 2px; }
+  .sl { font-size: 0.66rem; letter-spacing: 0.09em; color: #64748b; font-family: 'Segoe UI', sans-serif; }
+  .sv { color: #e2e8f0; transition: color 0.25s; }
+  .sv.orange { color: #fb923c; }
+  .sv.blue   { color: #60a5fa; }
+  .sv.green  { color: #4ade80; }
+
+  /* ── Status bar ──────────────────────────────── */
+  #status {
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    color: #475569;
+    height: 16px;
+    transition: color 0.3s;
+  }
+  #status.swap { color: #fbbf24; }
+  #status.done { color: #4ade80; }
+  #status.pass { color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<!-- Controls — top -->
+<div class="controls">
+  <button id="btn-reset">Reset</button>
+  <button id="btn-step">Step →</button>
+  <button id="btn-play">▶ Play</button>
+</div>
+
+<!-- Code -->
+<div class="code-block">
+  <div class="cl" id="cl-outer"><span class="kw">for</span> (<span class="ty">int</span> pass = 0; pass &lt; SIZE - 1; pass++) {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// N-1 passes</span></div>
+  <div class="cl" id="cl-inner">&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for</span> (<span class="ty">int</span> i = 0; i &lt; SIZE - 1 - pass; i++) {&nbsp;<span class="cm">// shrink each pass</span></div>
+  <div class="cl" id="cl-if">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if</span> (scores[i] <span class="op">&gt;</span> scores[i + 1]) {</div>
+  <div class="cl" id="cl-temp">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ty">int</span> temp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = scores[i];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// save scores[i]</span></div>
+  <div class="cl" id="cl-a">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scores[i]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = scores[i + 1];<span class="cm">// overwrite with right</span></div>
+  <div class="cl" id="cl-b">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scores[i + 1] = temp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// put saved into right</span></div>
+  <div class="cl" id="cl-if-close">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+  <div class="cl" id="cl-inner-close">&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+  <div class="cl" id="cl-outer-close">}</div>
+</div>
+
+<!-- Array -->
+<div class="array-wrap">
+  <div class="pass-bar">
+    <span id="pass-label">—</span>
+    <span id="sorted-label">—</span>
+  </div>
+  <div class="array-row" id="array-row"></div>
+  <div class="swap-indicator" id="swap-row"></div>
+</div>
+
+<!-- Comparison -->
+<div class="cmp-box" id="cmp-box">
+  <span class="cmp-lbl">COMPARISON</span>
+  <span class="cmp-expr" id="cmp-expr">—</span>
+  <span class="cmp-badge neutral" id="cmp-badge">—</span>
+</div>
+
+<!-- State panel -->
+<div class="state-row">
+  <div class="si"><span class="sl">PASS</span><span class="sv" id="sv-pass">—</span></div>
+  <div class="si"><span class="sl">i</span><span class="sv orange" id="sv-i">—</span></div>
+  <div class="si"><span class="sl">scores[i]</span><span class="sv orange" id="sv-left">—</span></div>
+  <div class="si"><span class="sl">scores[i+1]</span><span class="sv blue" id="sv-right">—</span></div>
+  <div class="si"><span class="sl">SWAPS THIS PASS</span><span class="sv green" id="sv-swaps">—</span></div>
+</div>
+
+<!-- Status -->
+<div id="status">Press Step or Play to begin</div>
+
+<script>
+  const INITIAL = [62, 95, 78, 91, 84];
+  const SIZE = INITIAL.length;
+  const ALL_CODE = ['cl-outer','cl-inner','cl-if','cl-temp','cl-a','cl-b','cl-if-close','cl-inner-close','cl-outer-close'];
+
+  // ── Pre-compute all states ─────────────────────
+  function buildStates() {
+    const arr = [...INITIAL];
+    const states = [];
+
+    for (let pass = 0; pass < SIZE - 1; pass++) {
+      let swapsThisPass = 0;
+
+      for (let i = 0; i < SIZE - 1 - pass; i++) {
+        const l = arr[i], r = arr[i + 1];
+        const swap = l > r;
+
+        states.push({
+          phase: 'compare', pass, i,
+          arr: [...arr], l, r, swap,
+          sortedFrom: SIZE - pass,
+          swapsThisPass
+        });
+
+        if (swap) {
+          [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+          swapsThisPass++;
+          states.push({
+            phase: 'swapped', pass, i,
+            arr: [...arr], l: arr[i], r: arr[i + 1], swap: true,
+            sortedFrom: SIZE - pass,
+            swapsThisPass
+          });
+        }
+      }
+
+      states.push({
+        phase: 'pass-done', pass,
+        arr: [...arr],
+        sortedFrom: SIZE - pass - 1,
+        swapsThisPass,
+        newlySortedIdx: SIZE - pass - 1
+      });
+    }
+
+    states.push({ phase: 'done', arr: [...arr], sortedFrom: 0, swapsThisPass: 0 });
+    return states;
+  }
+
+  const STATES = buildStates();
+  let cur = -1;
+  let timer = null;
+
+  // ── Build DOM ──────────────────────────────────
+  const arrayRow = document.getElementById('array-row');
+  const swapRow  = document.getElementById('swap-row');
+
+  INITIAL.forEach((_, idx) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'cw'; wrap.id = `cw-${idx}`;
+    const cell = document.createElement('div');
+    cell.className = 'cell'; cell.id = `cell-${idx}`;
+    const lbl = document.createElement('div');
+    lbl.className = 'idx-lbl'; lbl.textContent = `[${idx}]`;
+    wrap.appendChild(cell); wrap.appendChild(lbl);
+    arrayRow.appendChild(wrap);
+
+    const arrow = document.createElement('div');
+    arrow.className = 'swap-arrow'; arrow.id = `arrow-${idx}`;
+    arrow.textContent = '⇄';
+    swapRow.appendChild(arrow);
+  });
+
+  // ── Render ─────────────────────────────────────
+  function render(s) {
+    // Values + cell classes
+    s.arr.forEach((val, idx) => {
+      const cell = document.getElementById(`cell-${idx}`);
+      const wrap = document.getElementById(`cw-${idx}`);
+      cell.textContent = val;
+
+      let cls = 'cell', wcls = 'cw';
+
+      if (s.phase === 'done') {
+        cls += ' done'; wcls += ' done';
+      } else if (idx >= s.sortedFrom) {
+        if (s.phase === 'pass-done' && idx === s.newlySortedIdx) {
+          cls += ' new-sorted'; wcls += ' new-sorted';
+        } else {
+          cls += ' sorted'; wcls += ' sorted';
+        }
+      } else if (s.phase === 'compare') {
+        if (idx === s.i)     { cls += ' left';  wcls += ' left';  }
+        else if (idx === s.i + 1) { cls += ' right'; wcls += ' right'; }
+      } else if (s.phase === 'swapped') {
+        if (idx === s.i || idx === s.i + 1) { cls += ' swapped'; wcls += ' swapped'; }
+      }
+
+      cell.className = cls;
+      wrap.className = wcls;
+    });
+
+    // Swap arrows
+    INITIAL.forEach((_, idx) => {
+      const arrow = document.getElementById(`arrow-${idx}`);
+      arrow.className = 'swap-arrow' +
+        (s.phase === 'swapped' && (idx === s.i || idx === s.i + 1) ? ' visible' : '');
+    });
+
+    // Code lines
+    ALL_CODE.forEach(id => document.getElementById(id).className = 'cl dim');
+    const on = (...ids) => ids.forEach(id => document.getElementById(id).className = 'cl on');
+
+    if (s.phase === 'compare') {
+      on('cl-outer','cl-inner','cl-if','cl-if-close','cl-inner-close','cl-outer-close');
+    } else if (s.phase === 'swapped') {
+      on('cl-outer','cl-inner','cl-if','cl-temp','cl-a','cl-b','cl-if-close','cl-inner-close','cl-outer-close');
+    } else if (s.phase === 'pass-done') {
+      on('cl-outer','cl-inner-close','cl-outer-close');
+    } else if (s.phase === 'done') {
+      ALL_CODE.forEach(id => document.getElementById(id).className = 'cl dim');
+    }
+
+    // Comparison box
+    const cmpBox  = document.getElementById('cmp-box');
+    const cmpExpr = document.getElementById('cmp-expr');
+    const cmpBadge = document.getElementById('cmp-badge');
+
+    if (s.phase === 'compare') {
+      cmpBox.className   = 'cmp-box ' + (s.swap ? 'yes' : 'no');
+      cmpExpr.textContent = `scores[${s.i}] (${s.l}) > scores[${s.i+1}] (${s.r})`;
+      cmpBadge.textContent = s.swap ? 'Yes — swap' : 'No — skip';
+      cmpBadge.className   = 'cmp-badge ' + (s.swap ? 'yes' : 'no');
+    } else if (s.phase === 'swapped') {
+      cmpBox.className   = 'cmp-box yes';
+      cmpExpr.textContent = `Swapped → [${s.arr.join(', ')}]`;
+      cmpBadge.textContent = 'Swapped ⇄';
+      cmpBadge.className   = 'cmp-badge yes';
+    } else if (s.phase === 'pass-done') {
+      const locked = SIZE - s.sortedFrom;
+      cmpBox.className   = 'cmp-box no';
+      cmpExpr.textContent = `Pass ${s.pass} complete — ${locked} element${locked>1?'s':''} in final position`;
+      cmpBadge.textContent = s.swapsThisPass + ' swap' + (s.swapsThisPass !== 1 ? 's' : '');
+      cmpBadge.className   = 'cmp-badge no';
+    } else if (s.phase === 'done') {
+      cmpBox.className   = 'cmp-box done';
+      cmpExpr.textContent = `Sorted: [${s.arr.join(', ')}]`;
+      cmpBadge.textContent = '✓ Done';
+      cmpBadge.className   = 'cmp-badge done';
+    } else {
+      cmpBox.className   = 'cmp-box';
+      cmpExpr.textContent = '—';
+      cmpBadge.textContent = '—';
+      cmpBadge.className   = 'cmp-badge neutral';
+    }
+
+    // State panel
+    const passStr  = s.phase === 'done' ? 'done' : (s.phase === 'pass-done' ? String(s.pass) : String(s.pass));
+    document.getElementById('sv-pass').textContent  = s.phase === 'done' ? '—' : String(s.pass);
+    document.getElementById('sv-i').textContent     = (s.phase === 'compare' || s.phase === 'swapped') ? String(s.i) : '—';
+    document.getElementById('sv-left').textContent  = (s.phase === 'compare' || s.phase === 'swapped') ? String(s.l) : '—';
+    document.getElementById('sv-right').textContent = (s.phase === 'compare' || s.phase === 'swapped') ? String(s.r) : '—';
+    document.getElementById('sv-swaps').textContent = s.phase === 'done' ? '—' : String(s.swapsThisPass);
+
+    // Pass label & sorted label
+    document.getElementById('pass-label').textContent =
+      s.phase === 'done' ? 'scores' : `scores  [pass ${s.pass}]`;
+    const sortedCount = SIZE - s.sortedFrom;
+    document.getElementById('sorted-label').textContent =
+      sortedCount > 0 ? `${sortedCount} sorted ✓` : '0 sorted';
+    document.getElementById('sorted-label').style.color =
+      sortedCount > 0 ? '#16a34a' : '#334155';
+
+    // Status bar
+    const bar = document.getElementById('status');
+    if (s.phase === 'compare') {
+      bar.textContent = s.swap
+        ? `Pass ${s.pass}, i=${s.i}: ${s.l} > ${s.r} — swap needed`
+        : `Pass ${s.pass}, i=${s.i}: ${s.l} > ${s.r} — already in order, skip`;
+      bar.className = s.swap ? 'swap' : '';
+    } else if (s.phase === 'swapped') {
+      bar.textContent = `Swapped scores[${s.i}] and scores[${s.i+1}]`;
+      bar.className = 'swap';
+    } else if (s.phase === 'pass-done') {
+      bar.textContent = `Pass ${s.pass} complete`;
+      bar.className = 'pass';
+    } else if (s.phase === 'done') {
+      bar.textContent = 'Array fully sorted';
+      bar.className = 'done';
+    }
+  }
+
+  // ── Controls ───────────────────────────────────
+  function advance() {
+    if (cur >= STATES.length - 1) { reset(); return; }
+    cur++;
+    render(STATES[cur]);
+    if (cur === STATES.length - 1) stopPlay();
+  }
+
+  let playing = false;
+
+  function setPlaying(on) {
+    playing = on;
+    document.getElementById('btn-play').textContent = on ? '⏸ Pause' : '▶ Play';
+    if (on) {
+      timer = setInterval(() => {
+        advance();
+        if (cur >= STATES.length - 1) setPlaying(false);
+      }, 850);
+    } else {
+      clearInterval(timer); timer = null;
+    }
+  }
+
+  function reset() {
+    setPlaying(false);
+    cur = -1;
+    INITIAL.forEach((val, idx) => {
+      document.getElementById(`cell-${idx}`).className = 'cell';
+      document.getElementById(`cell-${idx}`).textContent = val;
+      document.getElementById(`cw-${idx}`).className = 'cw';
+      document.getElementById(`arrow-${idx}`).className = 'swap-arrow';
+    });
+    ALL_CODE.forEach(id => document.getElementById(id).className = 'cl');
+    document.getElementById('cmp-box').className = 'cmp-box';
+    document.getElementById('cmp-expr').textContent = '—';
+    document.getElementById('cmp-badge').textContent = '—';
+    document.getElementById('cmp-badge').className = 'cmp-badge neutral';
+    document.getElementById('sv-pass').textContent  = '—';
+    document.getElementById('sv-i').textContent     = '—';
+    document.getElementById('sv-left').textContent  = '—';
+    document.getElementById('sv-right').textContent = '—';
+    document.getElementById('sv-swaps').textContent = '—';
+    document.getElementById('pass-label').textContent = 'scores';
+    document.getElementById('sorted-label').textContent = '0 sorted';
+    document.getElementById('sorted-label').style.color = '#334155';
+    document.getElementById('status').textContent = 'Press Step or Play to begin';
+    document.getElementById('status').className = '';
+  }
+
+  document.getElementById('btn-step').addEventListener('click', advance);
+  document.getElementById('btn-play').addEventListener('click', () => setPlaying(!playing));
+  document.getElementById('btn-reset').addEventListener('click', reset);
+</script>
+</body>
+</html>

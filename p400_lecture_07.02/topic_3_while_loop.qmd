@@ -1,0 +1,117 @@
+<!-- Topic 3: The while Loop -->
+<!-- Slides 20-29 -->
+
+# The while Loop
+<!-- Slide 20 -->
+
+## When Might the Work Happen Zero Times? {.smaller}
+
+- A `while` loop checks the condition before the body runs.
+- Use it when the program may need to skip the repeated work entirely.
+
+::: notes
+Slides 20-29
+:::
+
+<!-- Slide 21 -->
+
+---
+
+## The Shape of a while Loop
+
+```cpp
+while (condition) {
+    statement;
+    statement;
+}
+```
+
+The condition is tested first. If it is true, the body runs.
+
+<!-- Slide 22 -->
+
+---
+
+## while Loop Control Flow
+
+![](images/while_loop.png){fig-alt="Control flow for a while loop" width="52%"}
+
+<!-- Slide 23 -->
+
+---
+
+## while in IPO
+
+| IPO Part | Example |
+|---|---|
+| Input | Get or already have a value |
+| Process | Repeat while the condition is true |
+| Output | Show each result or the final result |
+
+The loop belongs to the processing design.
+
+<!-- Slide 24 -->
+
+---
+
+## A First while Example
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int count = 1;
+
+    while (count <= 3) {
+        cout << count << endl;
+        count++;
+    }
+
+    return 0;
+}
+```
+
+<!-- Slide 25 -->
+
+---
+
+## Trace the Control Variable
+
+| Pass | `count` Before Test | Test | `count` After Update |
+|---:|---:|---|---:|
+| 1 | 1 | true | 2 |
+| 2 | 2 | true | 3 |
+| 3 | 3 | true | 4 |
+| 4 | 4 | false | 4 |
+
+<!-- Slide 26 -->
+
+---
+
+## The Stop Condition
+
+- The loop stops when the condition becomes false.
+- In the example, `count <= 3` becomes false when `count` reaches `4`.
+- The update is what moves the loop toward stopping.
+
+<!-- Slide 27 -->
+
+---
+
+## Unknown Repetition
+
+- `while` is useful when the number of passes is not known ahead of time.
+- The program keeps checking whether more work is needed.
+- The loop might run many times, once, or not at all.
+
+<!-- Slide 28 -->
+
+---
+
+## Summary
+
+- A `while` loop tests first.
+- Use it when repetition depends on a condition that may already be false.
+
+<!-- Slide 29 -->

@@ -1,0 +1,325 @@
+<!-- Topic 2: Initializing and Using Pointers -->
+<!-- Slides 14–33 -->
+
+# Initializing and Using Pointers
+<!-- Slide 14 -->
+
+## How Does a Pointer Reach a Variable? {.smaller}
+
+- The target already has an address
+- How do we obtain that address and store it safely?
+
+::: notes
+Slides 14–33
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## The Address Operator
+
+```{.cpp}
+int score = 88;
+
+cout << &score << "\n";
+```
+
+- Unary `&` produces the address of an object
+- Printed addresses are implementation-controlled identifiers, not meaningful numbers to interpret
+
+<!-- Slide 16 -->
+
+---
+
+## Declaring a Pointer Variable
+
+```{.cpp}
+int* scorePtr;
+```
+
+| Part | Meaning |
+|---|---|
+| `int` | target type |
+| `*` | pointer declarator |
+| `scorePtr` | pointer variable name |
+
+<!-- Slide 17 -->
+
+---
+
+## Match the Pointer to the Target
+
+```{.cpp}
+int score = 88;
+double average = 91.5;
+
+int* scorePtr = &score;
+// int* wrongPtr = &average; // incompatible target type
+```
+
+<!-- Slide 18 -->
+
+---
+
+## Declare One Pointer at a Time
+
+```{.cpp}
+int* first, second;
+```
+
+- `first` is an `int` pointer
+- `second` is an ordinary `int`
+
+```{.cpp}
+int* first;
+int* second;
+```
+
+<!-- Slide 19 -->
+
+---
+
+## Initialize With an Address
+
+```{.cpp}
+int score = 88;
+int* scorePtr = &score;
+```
+
+| Expression | Meaning |
+|---|---|
+| `&score` | address of `score` |
+| `scorePtr` | address stored in the pointer |
+
+::: notes
+[Graphic suggestion: show separate cells for score and scorePtr, then draw the stored address as an arrow from scorePtr to score.]
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## Initialize With `nullptr`
+
+```{.cpp}
+int* selected = nullptr;
+```
+
+- `nullptr` deliberately represents no target
+- Use it when a valid target is not yet available
+- In modern C++, prefer `nullptr` over `NULL` or `0`
+
+<!-- Slide 21 -->
+
+---
+
+## Valid, Null, or Indeterminate?
+
+| Pointer state | Meaning | Dereference? |
+|---|---|---|
+| valid address | identifies a live target | yes |
+| `nullptr` | deliberately identifies no target | no |
+| uninitialized | indeterminate value | no |
+
+- Reading or dereferencing an uninitialized pointer has undefined behavior
+
+<!-- Slide 22 -->
+
+---
+
+## What Does Dereferencing Mean?
+
+```{.cpp}
+int score = 88;
+int* scorePtr = &score;
+
+cout << *scorePtr << "\n";
+```
+
+- Unary `*` follows the stored address to the target
+- Here, `*` is dereference—not multiplication or declaration syntax
+
+<!-- Slide 23 -->
+
+---
+
+## Four Related Expressions
+
+```{.cpp}
+int value = 88;
+int* ptr = &value;
+```
+
+| Expression | Result |
+|---|---|
+| `value` | target value |
+| `&value` | target address |
+| `ptr` | stored address |
+| `*ptr` | value reached through `ptr` |
+
+<!-- Slide 24 -->
+
+---
+
+## Reading Through a Pointer
+
+```{.cpp}
+int score = 88;
+int* scorePtr = &score;
+
+cout << *scorePtr << "\n";
+```
+
+`scorePtr` → address of `score` → `88`
+
+::: notes
+Trace three distinct facts: the pointer's stored address, the target's value, and whether dereferencing is valid.
+:::
+
+<!-- Slide 25 -->
+
+---
+
+## Writing Through a Pointer
+
+```{.cpp}
+int score = 88;
+int* scorePtr = &score;
+
+*scorePtr = 95;
+cout << score << "\n";
+```
+
+- `score` changes from `88` to `95`
+- `scorePtr` continues to store the same address
+
+<!-- Slide 26 -->
+
+---
+
+## Predict the State
+
+```{.cpp}
+int points = 10;
+int* ptr = &points;
+
+*ptr = 14;
+points += 3;
+```
+
+- What is `points`?
+- What is `*ptr`?
+- Has the address stored in `ptr` changed?
+
+::: notes
+Answer: points and *ptr are both 17. ptr still stores the address of points.
+:::
+
+<!-- Slide 27 -->
+
+---
+
+## Changing the Target
+
+```{.cpp}
+int first = 10;
+int second = 20;
+int* ptr = &first;
+
+ptr = &second;
+```
+
+- `ptr = &second;` changes the target
+- `*ptr = 25;` would change the current target's value
+
+<!-- Slide 28 -->
+
+---
+
+## One Operation, Runtime Choice
+
+```{.cpp}
+int regularPrice = 40;
+int salePrice = 28;
+bool saleIsActive = true;
+
+int* selected = &regularPrice;
+if (saleIsActive) {
+    selected = &salePrice;
+}
+
+*selected -= 5;
+```
+
+<!-- Slide 29 -->
+
+---
+
+## Check Before Dereferencing
+
+```{.cpp}
+int* selected = nullptr;
+
+if (selected != nullptr) {
+    cout << *selected << "\n";
+}
+```
+
+- A null check prevents dereferencing the no-target state
+- Non-null is necessary, but the target must also still be alive
+
+<!-- Slide 30 -->
+
+---
+
+## When a Target Disappears
+
+```{.cpp}
+int* ptr = nullptr;
+
+{
+    int temporary = 42;
+    ptr = &temporary;
+} // temporary's lifetime ends
+```
+
+- `ptr` is now dangling: it contains an address but has no live target
+- A null pointer and a dangling pointer are different invalid states
+
+<!-- Slide 31 -->
+
+---
+
+## A Complete Pointer Lifecycle
+
+```{.cpp}
+int first = 10;
+int second = 20;
+int* selected = &first;
+
+*selected += 5;
+selected = &second;
+
+if (selected != nullptr) {
+    *selected += 5;
+}
+
+selected = nullptr;
+```
+
+::: notes
+Trace: selected starts at first; first becomes 15; selected is reseated to second; second becomes 25; selected is reset to the deliberate no-target state.
+:::
+
+<!-- Slide 32 -->
+
+---
+
+## Initializing and Using Pointers: Summary
+
+- Initialize every pointer with a valid address or `nullptr`
+- Dereference only when the pointer identifies a compatible, live target
+- Distinguish changing a pointer's target from changing the target's value
+
+<!-- Slide 33 -->

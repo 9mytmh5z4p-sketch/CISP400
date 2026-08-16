@@ -1,0 +1,312 @@
+<!-- Topic 2: Vectors of Objects -->
+<!-- Total slides: 13 -->
+
+# Vectors of Objects
+
+---
+
+## The gradebook problem {.smaller}
+
+You are writing a gradebook. You know there will be students — but you do not know how many until the semester starts. A static array requires a size at compile time: too small and it crashes; too large and you waste memory. A `vector<Student>` starts empty and grows with every `push_back`, no guessing required.
+
+::: notes
+Total slides: 13
+This replaces the abstract "why vector beats array" intro with a concrete scenario students recognize. The decision point is: do you know the size at compile time? If yes, a static array is fine. If no, use a vector. The rest of this section shows vector<Student> replacing Student roster[SIZE] everywhere they appeared in topic 1.
+[Option to revisit: extend the gradebook framing to show enrollment/withdrawal (erase), late additions (push_back mid-semester), and size queries (roster.size() vs SIZE). Deferred to keep this a motivating slide.]
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## Declaring and adding objects {.smaller}
+
+```{.cpp}
+#include <vector>
+using namespace std;
+
+class Student {
+public:
+    string name;
+    int    grade = 0;
+    void   setName(string n)  { name = n; }
+    void   setGrade(int g)    { grade = g; }
+    string getName()  const   { return name; }
+    int    getGrade() const   { return grade; }
+};
+
+int main() {
+    vector<Student> roster;        // no size needed at declaration
+
+    Student s;
+    s.setName("Alice");  s.setGrade(92);  roster.push_back(s);
+    s.setName("Bob");    s.setGrade(85);  roster.push_back(s);
+    s.setName("Carol");  s.setGrade(97);  roster.push_back(s);
+
+    cout << "Roster size: " << roster.size() << "\n";
+    return 0;
+}
+```
+
+<!-- Slide 2 -->
+
+---
+
+## Looping — index vs. range-for {.smaller}
+
+```{.cpp}
+// Index loop — use when you need the position
+for (int i = 0; i < roster.size(); i++)
+    cout << i + 1 << ". " << roster[i].getName()
+         << " — " << roster[i].getGrade() << "\n";
+
+// Range-for — use when you only need the value
+for (const Student& s : roster)
+    cout << s.getName() << ": " << s.getGrade() << "\n";
+```
+
+::: notes
+const Student& avoids copying the object on each iteration — important habit when objects are larger than primitives. The & is "pass by reference inside the loop"; const ensures the loop body cannot accidentally modify roster elements.
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Finding the top student {.smaller}
+
+```{.cpp}
+// Max-tracker with a vector — same logic as with a static array
+int best = 0;
+for (int i = 1; i < roster.size(); i++)
+    if (roster[i].getGrade() > roster[best].getGrade()) best = i;
+
+cout << "Top student: " << roster[best].getName()
+     << " with " << roster[best].getGrade() << "\n";
+
+// Dynamic growth: read from user until "done"
+string name;
+while (cin >> name && name != "done") {
+    int g;  cin >> g;
+    Student tmp;  tmp.setName(name);  tmp.setGrade(g);
+    roster.push_back(tmp);
+}
+```
+
+::: notes
+The max-tracker code is identical to the static array version — only the declaration changed. The second block shows the real advantage of vector: students can enter as many records as they want without pre-allocating a size.
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Upgrading Student with constructors {.smaller}
+
+```{.cpp}
+class Student {
+private:
+    string name;
+    int    grade;
+public:
+    Student()                { name = "Unknown"; grade = 0; }
+    Student(string n, int g) { name = n; grade = g; }
+    void   print() const     { cout << name << ": " << grade << "\n"; }
+    string getName()  const  { return name; }
+    int    getGrade() const  { return grade; }
+};
+```
+
++ The default constructor lets `vector<Student> v(n)` pre-allocate elements and is required by many STL operations.
++ The parameterized constructor lets each `push_back` create a fully initialized object in a single expression.
+
+::: notes
+Same class as topic 1 — consistency is intentional. Students should recognize that the class definition does not change based on whether it lives in an array or a vector. The container is the only thing that differs.
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## push_back with constructor calls {.smaller}
+
+```{.cpp}
+vector<Student> roster;
+
+roster.push_back(Student("Alice", 92));
+roster.push_back(Student("Bob",   85));
+roster.push_back(Student("Carol", 97));
+roster.push_back(Student("Dan",   78));
+
+cout << "Roster size: " << roster.size() << "\n";   // 4
+```
+
++ Each `push_back` receives a fully constructed temporary — no setter chain, no partially initialized state.
++ Compare to slide 2: this replaces the reused `s` variable and three setter calls per element.
+
+::: notes
+The temporary Student created inside push_back is copy-constructed into the vector. This is the idiomatic pattern when data is known at compile time. For larger programs, emplace_back avoids the extra copy entirely — but that is a topic for CISP 400.
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Dynamic input with constructors {.smaller}
+
+```{.cpp}
+vector<Student> roster;
+string name;
+int    grade;
+
+while (cin >> name && name != "done") {
+    cin >> grade;
+    roster.push_back(Student(name, grade));   // construct and add in one line
+}
+
+cout << roster.size() << " students entered.\n";
+```
+
++ The vector grows automatically with each `push_back` — no SIZE constant needed.
++ The constructor call inside `push_back` creates a complete object from user input without a temporary variable.
+
+::: notes
+This is the cleaner version of the dynamic input loop from slide 4. The temporary Student variable tmp is gone — Student(name, grade) creates the object inline and push_back moves it into the vector. Students often find this satisfying to compare against the old approach.
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## Using Print() instead of getters {.smaller}
+
+```{.cpp}
+// Index loop with print()
+for (int i = 0; i < roster.size(); i++)
+    roster[i].print();
+
+// Range-for with print() — cleaner for display
+for (const Student& s : roster)
+    s.print();
+
+// Max-tracker still uses getters — Print() is for output only
+int best = 0;
+for (int i = 1; i < (int)roster.size(); i++)
+    if (roster[i].getGrade() > roster[best].getGrade()) best = i;
+
+roster[best].print();   // display the winner
+```
+
+::: notes
+print() and getters serve different purposes: print() is for human-readable output; getters are for logic that needs to inspect a value. The max-tracker must compare grades, so it uses getGrade(). The final display uses print(). Students should understand when each is appropriate.
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## What belongs in the class? {.smaller}
+
++ **Display logic** belongs in the class — `print()` keeps output format in one place; `main` just calls it.
++ **Comparison logic** belongs in the class — an object knows its own data better than `main` does.
++ Collection-level operations — looping, searching, sorting — belong outside the class, where the collection lives.
+
+::: notes
+Keep it simple. The roster loop in main is fine; the grade comparison inside that loop is a candidate for the class. Same principle as topic 1 — repeated here because students need to internalize it across both container types.
+[Option to revisit: add printAsWinner() to show richer self-description ("Alice wins with 97") vs. generic print(). Deferred to keep this slide simple.]
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Const correctness {.smaller}
+
+```{.cpp}
+// This compiles:
+for (const Student& s : roster)
+    s.print();          // print() is marked const — OK
+
+// If print() were NOT marked const:
+// error: passing 'const Student' as 'this' discards qualifiers
+```
+
++ `const Student& s` avoids copying the object and promises not to modify it.
++ The compiler enforces that promise — only methods marked `const` are callable on a `const` object.
++ Marking every read-only method `const` is not optional style — it is what makes `const` references usable.
+
+::: notes
+Keep it simple. The same principle as topic 1. The range-for pattern is the most common place students first encounter const&, so this slide cements the connection between the two `const` keywords.
+[Option to revisit: show a mutating method called on a const reference to produce and explain the exact compiler error.]
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## Passing a roster to a function {.smaller}
+
+```{.cpp}
+void printRoster(const vector<Student>& roster) {
+    for (const Student& s : roster)
+        s.print();
+}
+
+int main() {
+    vector<Student> roster;
+    roster.push_back(Student("Alice", 92));
+    roster.push_back(Student("Bob",   85));
+    roster.push_back(Student("Carol", 97));
+    printRoster(roster);
+}
+```
+
++ `const vector<Student>&` — the function reads the vector without copying it or modifying it.
++ No size parameter needed; the vector already knows its own length via `.size()`.
+
+::: notes
+Motivating slide. The contrast with the array version (topic 1) is instructive: no size argument, no decay to a pointer, same const& protection. Worth noting: passing by value would copy every object in the vector — the & prevents that.
+[Option to revisit: show a mutable version void sortRoster(vector<Student>& roster) that modifies the collection. Deferred to keep this motivating rather than comprehensive.]
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## The class as a collaborator {.smaller}
+
+```{.cpp}
+// Before: main compares grades directly
+if (roster[i].getGrade() > roster[best].getGrade()) best = i;
+
+// After: the class does the comparison
+class Student {
+public:
+    bool isBetterThan(const Student& other) const {
+        return grade > other.grade;
+    }
+};
+
+// main becomes readable
+if (roster[i].isBetterThan(roster[best])) best = i;
+```
+
++ `isBetterThan` moves the comparison rule into the class — if "better" changes, you update one method, not every loop.
++ The method is `const` because it reads but does not change; the parameter is `const Student&` for the same reason.
+
+::: notes
+Same slide as topic 1 — repeated intentionally. The pattern applies equally to arrays and vectors; seeing it twice reinforces that it is a class design principle, not a container-specific trick.
+[Option to revisit: printAsWinner() printing "Alice wins with 97". Also: isBetterThan with std::max_element. Both deferred for CISP 400.]
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Summary {.smaller}
+
++ `vector<ClassName>` grows dynamically — declare it empty, add objects with `.push_back()`.
++ Use constructor calls inside `push_back` to create fully initialized objects without setter chains or temporary variables.
++ Keep display logic in `print()` and comparison logic in methods like `isBetterThan` — main should orchestrate, not compute.
+
+<!-- Slide 13 -->

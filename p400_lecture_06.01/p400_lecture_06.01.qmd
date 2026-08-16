@@ -1,0 +1,249 @@
+![](images/comic.png){fig-align="center" width="38%"}
+
+<!-- Slide 1 -->
+
+---
+
+# Last Time
+
+::: {.incremental}
++ **Choosing a Parameter Style**
++ **Function Side Effects**
++ **Static Local Variables**
+:::
+
+::: notes
+Brief recall from function design. Students should remember that scope, lifetime, and side effects affect how predictable a function is.
+:::
+
+<!-- Slide 2 -->
+
+---
+
+# Today's Agenda
+
+- Very Brief Review of Static
+- Design Patterns
+- Singleton Pattern
+
+::: notes
+
+:::
+
+<!-- Slide 3 -->
+
+{{< include topic_1_static_review.qmd >}}
+{{< include topic_2_design_patterns.qmd >}}
+{{< include topic_3_singleton_pattern.qmd >}}
+
+---
+
+# Key Takeaways
+
+- Design patterns name recurring design choices.
+- Static local storage can support a larger design rule, but it is not the design itself.
+- Singleton controls access to one shared resource.
+
+<!-- Slide 32 -->
+
+---
+
+# Next Time
+
+<!-- Slide 33 -->
+
+---
+
+# Appendix
+
+<!-- Slide 34 -->
+
+---
+
+## Very Brief Review of Static: Good Practices
+
+- Use `static` local variables when a function intentionally needs memory between calls.
+- Keep the remembered state small and easy to explain.
+- Prefer visible parameters and return values when state does not need to persist.
+
+<!-- Slide 35 -->
+
+---
+
+## Very Brief Review of Static: Common Mistakes
+
+- Treating `static` as a shortcut for avoiding parameters.
+- Forgetting that previous calls affect the next call.
+- Assuming local scope means short lifetime.
+
+<!-- Slide 36 -->
+
+---
+
+## Very Brief Review of Static: More Examples
+
+```cpp
+int nextId() {
+    static int id = 1000;
+    id++;
+    return id;
+}
+```
+
+Each call returns a new value because `id` keeps its previous value.
+
+<!-- Slide 37 -->
+
+---
+
+## Very Brief Review of Static: Practice Problems
+
+1. Predict the output of a function that increments a `static int count`.
+2. Rewrite a static counter so the caller owns the counter instead.
+3. Explain the difference between scope and lifetime in one sentence.
+
+<!-- Slide 38 -->
+
+---
+
+## Very Brief Review of Static: AI Search Terms
+
+- "C++ static local variable lifetime"
+- "C++ scope vs lifetime static local"
+- "C++ function remembers value between calls"
+
+<!-- Slide 39 -->
+
+---
+
+## Very Brief Review of Static: Questions for Reflection
+
+- When does hidden function memory make a program clearer?
+- When does hidden function memory make a program harder to debug?
+
+<!-- Slide 40 -->
+
+---
+
+## Design Patterns: Good Practices
+
+- Start by naming the design problem.
+- Use a pattern when it clarifies the structure of the solution.
+- Explain the tradeoff every time you explain the pattern.
+
+<!-- Slide 41 -->
+
+---
+
+## Design Patterns: Common Mistakes
+
+- Choosing a pattern before understanding the problem.
+- Treating patterns as recipes with fixed code.
+- Adding structure that does not make the program easier to reason about.
+
+<!-- Slide 42 -->
+
+---
+
+## Design Patterns: More Examples
+
+| Pattern idea | Recurring problem |
+|---|---|
+| Singleton | exactly one shared resource |
+| Adapter | make one interface fit another |
+| Template Method | keep a stable process with replaceable steps |
+
+<!-- Slide 43 -->
+
+---
+
+## Design Patterns: Practice Problems
+
+1. Name a repeated design problem in a program you have written.
+2. Decide whether that problem needs a named pattern or ordinary functions.
+3. For one pattern, identify the problem, structure, and tradeoff.
+
+<!-- Slide 44 -->
+
+---
+
+## Design Patterns: AI Search Terms
+
+- "Christopher Alexander pattern language software design"
+- "Gang of Four design patterns beginner"
+- "design pattern problem structure tradeoff"
+
+<!-- Slide 45 -->
+
+---
+
+## Design Patterns: Questions for Reflection
+
+- Why is a shared vocabulary useful for design?
+- What can go wrong when a pattern name becomes more important than the problem?
+
+<!-- Slide 46 -->
+
+---
+
+## Singleton Pattern: Good Practices
+
+- Use Singleton only when the single-resource rule is part of the problem.
+- Keep the shared resource focused on one responsibility.
+- Make shared state easy to find and explain.
+
+<!-- Slide 47 -->
+
+---
+
+## Singleton Pattern: Common Mistakes
+
+- Using Singleton as a disguised global variable.
+- Storing unrelated program data in one shared resource.
+- Ignoring the testing cost of hidden shared state.
+
+<!-- Slide 48 -->
+
+---
+
+## Singleton Pattern: More Examples
+
+```cpp
+string& logFileName() {
+    static string fileName = "program.log";
+    return fileName;
+}
+```
+
+A log file name is a small example because the program may want one coordinated output path.
+
+<!-- Slide 49 -->
+
+---
+
+## Singleton Pattern: Practice Problems
+
+1. Decide whether a report counter should use one shared value.
+2. List one reason a settings file name might need exactly one shared access point.
+3. List one reason a settings value might not belong in a Singleton.
+
+<!-- Slide 50 -->
+
+---
+
+## Singleton Pattern: AI Search Terms
+
+- "C++ Singleton static local value"
+- "Singleton pattern tradeoffs shared state"
+- "Singleton disguised global variable"
+
+<!-- Slide 51 -->
+
+---
+
+## Singleton Pattern: Questions for Reflection
+
+- What does Singleton make easier?
+- What does Singleton hide from the caller?
+
+<!-- Slide 52 -->

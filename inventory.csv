@@ -1,0 +1,202 @@
+lecture,week,section,Subject,emphasis,time_budget,optional,notes
+,,,,,,,
+p400_lecture_01.01,1,exercise,Coding Exercise 1-1,standard,10,no,first complete program from scratch; apply SFH/include/namespace/main/variables/cout; type by hand not copy-paste
+p400_lecture_01.01,1,structure,The main() Function,high,10,no,entry point; int main() declaration anatomy; return int to OS; curly braces define block; block scope and lifetime; statements execute top to bottom; semicolons; return 0
+p400_lecture_01.01,1,vocabulary,Common Elements,high,10,no,identifiers (programmer-named); reserved words (compiler-owned); literals (fixed data); comments (compiler-ignored); three error types; whole-line vs end-of-line comments
+p400_lecture_01.01,1,structure,Parts of a C++ Program,high,8,no,two-part mental model: top matter + main(); same structure every program; canonical intro.cpp example; pattern holds across programs
+p400_lecture_01.01,1,overview,Course Overview,high,12,no,structured programming philosophy; why programming; fun/challenging/economic/transferable; teaching thinking has changed GenAI; C++ layers and where p400 fits; SP vs OOP; write code lots of it
+p400_lecture_01.01,1,structure,Top Matter,high,12,no,SFH four-line template; #include directive and preprocessor; #include <iostream> provides cout/cin/endl; angle brackets vs quotes; C-style .h headers; using namespace std
+p400_lecture_01.02,1,operators,Arithmetic Operators,high,12,no,"5 operators (+,-,*,/,%); integer division truncation; float division; division by zero compiler silent; modulus remainder uses; order of precedence; associativity left-to-right; cmath header"
+p400_lecture_01.02,1,types,Data Types,high,15,no,why multiple types; int family (8 variants sizes ranges); unsigned integers risk; float/double/long double precision; char and ASCII; string class; bool true/false stored as 1/0; void incomplete type; auto C++11
+p400_lecture_01.02,1,variables,Variables and Assignment,high,15,no,variable as named typed memory location; declaration vs initialization; assignment operator (not equals); 5 init forms (default/direct/const/value/list); naming rules; variables are nouns; declaration+init visualization
+p400_lecture_02.01,1,data_types,Overflow and Underflow,standard,12,no,signed overflow undefined behavior; unsigned overflow well-defined wrapping; numeric_limits<T>; 4 worked examples; detection before arithmetic; safeAdd pattern; float underflow to zero
+p400_lecture_02.01,1,compilation,How the Compiler Works,standard,10,no,preprocessing/compilation/linking pipeline; plantuml stage diagram; reading errors by stage; translation units; declarations vs definitions
+p400_lecture_02.01,1,compilation,The Symbol Table,standard,8,no,compiler identifier record: name/type/scope/address; type checking; undeclared/redeclaration/type-mismatch errors — NOTE: scope and shadow variables belong in the functions section; Function overloading slide deferred to function overloading topic
+p400_lecture_02.01,1,data_types,Data Type Conversion and Casting,standard,14,no,type coercion vs casting; data type ranking table; 3 coercion rules; promotion/demotion; books-per-month integer division example; static_cast preferred; C-style and functional forms to avoid; implicit vs explicit table
+p400_lecture_02.01,1,data_types,Fixed-Width Integers and size_t,standard,9,no,<cstdint> exact-width types; platform-dependent size problem; int8_t through uint64_t table; size_t for indexes and sizeof results; fast/least variants brief
+p400_lecture_02.01,1,data_types,Determining Variable Size,standard,6,no,sizeof operator compile-time evaluation; typical sizes table; why sizes vary; print all type sizes program — NOTE: sizeof array idiom deferred to array topic (11.02); sizeof struct padding deferred to struct topic (15.02)
+p400_lecture_02.01,1,data_types,Signed vs Unsigned Variables,standard,9,no,two's complement sign bit; unsigned all-bits magnitude; range table; when to use each; mixing signed/unsigned silently converts; -Wsign-compare warning; overflow behavior differs
+p400_lecture_02.02,1,terminal_io,cout,standard,8,no,standard output stream from <iostream>; insertion operator; text literals vs variable values; chaining output; multiple cout statements build one visible output; endl and newline; prompts
+p400_lecture_02.02,1,terminal_io,cin,standard,8,no,standard input stream from <iostream>; extraction operator; prompt-then-read pattern; type matching; multiple values; whitespace behavior; failed state when wrong data type is entered
+p400_lecture_02.02,1,formatting,Output Manipulators,standard,8,no,<iomanip>; setw; left and right alignment; fixed; setprecision; sticky vs one-time settings; setfill; boolalpha; showpoint; scientific; hex dec oct
+p400_lecture_02.02,1,formatting,Terminal Color Codes,standard,8,no,ANSI escape codes; common foreground colors; reset with NORM; named const string color codes; meaningful color usage
+p400_lecture_02.02,1,formatting,Table Architectures,standard,8,no,terminal tables; column widths; text vs numeric alignment; header and row consistency; separator lines
+p400_lecture_03.01,2,formatting,Terminal Charts and Graphs,standard,,no,terminal displays using formatted output; simple tables and charts; trim old source to avoid vector/for-each assumptions
+p400_lecture_03.01,2,design,Execution Trace Models,standard,,no,desk-check model for tracing variables and statements in execution order; predict output and state changes
+p400_lecture_03.01,2,design,IPO Models,standard,,no,software design model: inputs processing outputs; translate problem statements into program structure before coding
+p400_lecture_03.01,2,utilities,Dates and Random Numbers,standard,,no,current time; srand seed from time; rand; bounded random ranges; simple simulation examples
+p400_lecture_03.01,2,input,Advanced cin,standard,,no,full-line input with getline; whitespace problem after cin >>; cin.ignore; fail-state clearing; input validation patterns
+p400_lecture_03.02,2,data_structures,Vectors,standard,,no,first data structure; vector as ordered typed container; include <vector>; declaration and initialization; vector IPO model
+p400_lecture_03.02,2,data_structures,Vector Operations,standard,,no,push_back; pop_back; size; back; interactive push/pop visualization; loading scalar variables into vectors; storing formula results; beginner vector examples with IPO and execution trace
+p400_lecture_03.02,2,iteration,Range-Based For Loops,standard,,no,for each syntax; read every value in a vector; execution trace; loop variable copy; loop body scope
+p400_lecture_04.01,2,architecture,Modular Programming,high,,no,programs as named pieces; main as coordinator; function-centered architecture; functions preserve IPO capability while reorganizing processing; execution trace enters and exits functions
+p400_lecture_04.01,2,functions,Coding Functions,high,,no,function prototypes above main; definitions below main; function calls; call order; functions calling functions; no nested function definitions
+p400_lecture_04.01,2,functions,Passing Data to a Function,high,,no,parameters receive data; arguments provide data; argument-to-parameter copying; multiple parameters; order and types matter; parameters are local
+p400_lecture_04.01,2,functions,Returning Data from a Function,high,,no,return type; return statement; storing returned values; using returned values directly; one value comes back; returned data and stack frame model
+p400_lecture_04.01,2,functions,Void Functions,standard,,no,void return type; action-only functions; display helpers; return in void function; decision framework for void vs return value
+p400_lecture_07.01,4,validation,Input Validation with Vectors,standard,,no,validating before adding to vectors; handling invalid input; validating existing vector data; common patterns
+p400_lecture_07.01,4,vectors,Multi-Dimensional Vectors,standard,,no,2D vector declaration; rows and columns; element access; nested iteration; common use cases
+p400_lecture_07.01,4,operators,The Conditional Operator,standard,,no,ternary operator syntax; simple if/else replacement; nested conditional caution; practical applications
+p400_lecture_07.01,4,exercise,Code This: Coffee Shop Order Processor,standard,,no,coding activity using automated menu processing and vector-backed order data
+p400_lecture_07.01,4,menus,Menu-Driven Programs,high,,no,user choice menus; display menu; read choice; process choice; vector-processing menu examples
+p400_lecture_07.01,4,menus,Program Menu Architectures,standard,,no,numeric menus; alphabetic menus; alphanumeric menus; comparison of menu styles; switch implementation
+p400_lecture_07.01,4,menus,Using Functions with Menus,standard,,no,function organization for menus; display-menu function; action handlers; complete menu program structure
+p400_lecture_07.01,4,menus,For-Each Loops and Menu-Driven Programs,standard,,no,limitations of for-each loops in menus; when index access is needed; menu-driven vector requirements
+p400_lecture_07.01,4,conditionals,The Switch Statement,high,,no,switch syntax; case labels; break; fall-through; comparison with if/else chains
+p400_lecture_07.02,4,exercise,Code This: Complete Example,standard,,no,coding activity applying vector safety; comparisons; STL tools; and parallel vector patterns
+p400_lecture_07.02,4,vectors,Parallel Vectors,standard,,no,related data stored in separate vectors; shared index as link; where for-each falls short
+p400_lecture_07.02,4,stl,STL Tools for Vectors,standard,,no,iterators; sort; find; min_element; max_element; fill; accumulate
+p400_lecture_07.02,4,vectors,Comparing Vector Elements,standard,,no,manual element-by-element comparison; built-in vector operators; lexicographic comparison
+p400_lecture_07.02,4,vectors,Checking if a Vector is Empty,standard,,no,empty method; size comparison; choosing the clearer emptiness check
+p400_lecture_07.02,4,vectors,Vector Bounds and Safety,high,,no,out-of-bounds access; undefined behavior; bracket operator vs at method; exceptions; defensive size checks
+p400_lecture_09.02,9,patterns,Core Loop Patterns,standard,,no,Taxonomy: control / state tracking / structural; four purposes of loops; removed from summer schedule
+p400_lecture_09.02,9,patterns,Control Patterns,standard,,no,Sentinel loop (priming read); flag-controlled loop; input validation loop (do-while); removed from summer schedule
+p400_lecture_09.02,9,patterns,State Tracking Patterns,standard,,no,Counter; accumulator (init to zero); max/min tracker (init to first element); removed from summer schedule
+p400_lecture_09.02,9,review,Review of Menu-Driven Programs,standard,,no,do-while + dispatcher pattern; light input validation before dispatch; continue to reprompt; removed from summer schedule
+p400_lecture_09.02,9,exercise,Coding Exercise — Nested Loops,standard,,no,Multiplication table 5×5; setw for alignment; nested for loops; removed from summer schedule
+p400_lecture_09.02,9,iteration,Nested Loops,standard,,no,Outer × inner iteration count; execution trace; 2D problems; keep to two levels; removed from summer schedule
+p400_lecture_09.02,9,patterns,Structural Patterns,standard,,no,Range-for vs index loop; default to range-for; index loop when position matters; removed from summer schedule
+p400_lecture_11.01,6,file_io,File I/O,standard,,no,fstream library; ofstream/ifstream/fstream; open/close; is_open(); sequential read and write; EOF detection; seekg/seekp/tellg/tellp; seek origins
+p400_lecture_11.01,6,file_io,Random Access,standard,,no,seekg/seekp/tellg/tellp; fixed-size numeric values; Nth value formula (N × sizeof(type)); binary mode; reinterpret_cast; no structs; revisit after structs
+p400_lecture_11.01,6,lab,Sequential File I/O Lab,standard,,no,write vector to file; read file back into vector; round-trip exercise
+p400_lecture_11.02,6,arrays,Introduction to Arrays,standard,,no,fixed-size stack-allocated collection; array vs vector structural contrast; declaration syntax; size must be compile-time constant — NOTE: include sizeof array idiom (sizeof(arr)/sizeof(arr[0])) here; deferred from 02.01
+p400_lecture_11.02,6,arrays,Array Initialization,standard,,no,initializer list (full and partial); zero-initialization with = {}; size inference; uninitialized arrays hold garbage
+p400_lecture_11.02,6,arrays,Accessing Array Elements in Loops,standard,,no,subscript operator; index-based for loop; range-for; which to use decision framework; bounds risk
+p400_lecture_11.02,6,arrays,Inputting and Displaying Array Data,standard,,no,two-pass pattern: fill loop then display loop; i+1 in prompts for 1-based user labels
+p400_lecture_11.02,6,arrays,Vectors vs. Arrays,standard,,no,side-by-side comparison; bounds safety; .at() vs []; when to use each
+p400_lecture_11.02,6,arrays,Performance — Vectors vs. Arrays,standard,,yes,stack vs heap allocation; overhead; when the difference matters; embedded and real-time contexts
+p400_lecture_12.01,6,arrays,Arrays with Functions,high,,no,array decay; explicit logical size; sizeof scope limitation; ignored parameter bounds; const read-only contract; caller-visible mutation; scalar versus whole-array parameters
+p400_lecture_12.01,6,arrays,Array Algorithms,high,,no,traversal patterns; sum and average; empty-array contracts; min/max trackers; linear search and -1 sentinel; O(N); bubble sort; in-place mutation
+p400_lecture_12.01,6,arrays,Parallel Arrays,high,,no,shared index invariant; common capacity and logical size; multi-array function parameters; search by key; track record indexes; coordinated swaps and sorting; transition to structs
+p400_lecture_12.02,12,arrays,Arrays with Three or More Dimensions,standard,5,yes,same bracket/loop pattern extended to 3 dimensions; 3D arrays rare in practice; removed from summer schedule
+p400_lecture_12.02,12,arrays,Two-Dimensional Arrays,standard,12,no,type name[rows][cols]; row/col indexing; nested-brace initialization; nested-loop traversal with row+col variable names; row-major storage and traversal efficiency; removed from summer schedule
+p400_lecture_12.02,12,lab,Lab — Array-Backed Stack,standard,20,no,push/pop/peek/isFull/isEmpty; top index (-1 sentinel); by-ref vs by-value top parameter; first API design exercise; function prototypes; removed from summer schedule
+p400_lecture_13.01,6,arrays,Comparing All Three Types,standard,,no,int[] vs std::array vs vector; storage/STL/decay comparison table; decision framework
+p400_lecture_13.01,6,arrays,Two-Dimensional Arrays,standard,,no,type name[rows][cols]; nested loop traversal; row-major storage; outer loop on rows for cache efficiency
+p400_lecture_13.01,6,arrays,Arrays with Three or More Dimensions,standard,,yes,same bracket/loop pattern extended; 3D arrays rare in practice
+p400_lecture_13.01,6,arrays,std::array,standard,,no,array<T N> declaration; member functions (.size .at .front .back); passes by reference without decay; compatible with STL algorithms
+p400_lecture_13.01,6,arrays,C-Strings,standard,12,no,char array + '\0' terminator; literal initialization; cin >> stops at whitespace; strlen/strcpy/strcmp/strcat from <cstring>; C-string vs std::string comparison
+p400_lecture_13.01,6,arrays,Passing to Functions,standard,,no,int[] decays — pass size separately; std::array by const ref — size in type; vector by const ref — .size() available
+p400_lecture_13.01,6,arrays,Binary Search,standard,,no,low/high/mid index pattern; halves search space each step; O(log N) vs O(N) linear; requires sorted array
+p400_lecture_13.01,6,lab,Lab — Array-Backed Stack,standard,,no,push/pop/peek/isFull/isEmpty; top index (-1 sentinel); array decay in function params; first API design exercise
+p400_lecture_13.02,7,pointers,Pointer Variables,high,10,no,int* declaration; assigning with &; dereferencing with *; modifying through pointer; full example with prototype
+p400_lecture_13.02,7,pointers,The Address Operator,standard,8,no,& returns address of variable; cout prints hex; &arr[i] spaced by sizeof(int); &arr[0] == arr
+p400_lecture_13.02,7,pointers,Array-Pointer Relationship,standard,8,no,array name decays to &arr[0]; arr[i] == *(arr+i); subscript is syntactic sugar for pointer arithmetic
+p400_lecture_13.02,7,pointers,Pointer Arithmetic,standard,8,no,ptr+1 advances by sizeof element; traversal with ptr++ and sentinel; equivalence with index loop
+p400_lecture_13.02,7,pointers,Initializing Pointers,standard,6,no,nullptr (C++11); wild pointer; dangling pointer; always initialize; check before dereferencing
+p400_lecture_13.02,7,pointers,Comparing Pointers,standard,5,no,< > == != compare addresses; one-past-end sentinel pattern; meaningful only within same array
+p400_lecture_13.02,7,pointers,VLAs & G++,standard,5,yes,C99 legal; GCC extension in C++; stack allocation; no .size() or STL; prefer vector for dynamic size
+p400_lecture_13.02,7,pointers,Closer Look — Arrays & Memory,standard,8,no,contiguous storage; address advances by element size; arr address == &arr[0]; out-of-bounds reads wrong memory silently
+p400_lecture_14.01,14,pointers,Array Decay,high,,no,array-to-pointer conversion; function parameter decay; lost size information; sizeof behavior; explicit size and begin/end contracts; many C++ examples
+p400_lecture_14.01,14,pointers,Null Pointers,high,,no,nullptr as deliberate no-object state; initialization; comparison; guarded dereference; nullable parameters and return values; many C++ examples
+p400_lecture_14.01,14,pointers,Passing Pointers,high,,no,pointer parameters across function boundaries; read-only pointer parameters; caller-visible mutation through dereference; nullable parameters; output-style pointer parameters; contrast with references; no dynamic allocation
+p400_lecture_14.02,7,exercises,What's the Output?,standard,10,no,two exercises on reference aliasing and pointer reseating; answer in speaker notes
+p400_lecture_14.02,7,dynamic_memory,Dynamic Arrays,standard,10,no,new int[n] for runtime-sized arrays; delete[] must match new[]; complete example with sum/average
+p400_lecture_14.02,7,dynamic_memory,new and delete,high,12,no,scalar heap allocation; new returns pointer; delete releases; set nullptr after delete; nothrow pattern
+p400_lecture_14.02,14,pointer_safety,"Pointer Errors, Memory Leaks, and Dangling Pointers",high,,no,wild and out-of-bounds pointers; use-after-scope and use-after-free; lost ownership; leaks; double deletion; prevention; many C++ examples; teach after new and delete
+p400_lecture_14.02,14,memory,Smart Pointers,high,,no,RAII and ownership; unique_ptr; move semantics; shared_ptr and reference counts; weak_ptr overview; make_unique and make_shared; many C++ examples; teach after new and delete
+p400_lecture_14.02,7,dynamic_memory,Heap vs. Stack,high,8,no,automatic vs manual allocation; scope-bound vs persistent lifetime; size limits; stack vs heap comparison table
+p400_lecture_14.02,7,dynamic_memory,Reference Variables — Review,standard,8,no,ref as alias vs pointer as address; must initialize; cannot reseat; when to use each
+p400_lecture_15.01,7,dynamic_memory,Pseudodynamic Arrays,standard,10,no,size fixed via compile-time constant — not truly resizable at runtime; 14-02b.cpp sales array; transition: a step closer but not there yet
+p400_lecture_15.01,7,review,Review — new and delete,standard,10,no,scalar and array forms; new/new[] matched with delete/delete[]; 5-step algorithm; quick-check fragment slide; 14-02a.cpp
+p400_lecture_15.01,7,dynamic_memory,Dynamic Arrays,high,20,no,true resize via temp pointer; 6-step pattern: adjust size → new[] temp → copy → delete[] old → swing pointer → nullptr; 14-02c.cpp; two interactive HTML visualizations (increase and decrease)
+p400_lecture_15.01,7,lab,Programming Activity — Pet Ages,standard,15,no,students implement resizable short* pet ages array from scratch; start with 1 element; add N then delete N; print after each resize; 14-02d.cpp; solution slide hidden (data-visibility=hidden)
+p400_lecture_15.02,8,exercises,What's the Output?,standard,8,no,Score struct with initialization list + member assignment + pass-by-reference; addBonus modifies via reference; integer division trap
+p400_lecture_15.02,8,oop,Structures,high,20,no,struct declaration anatomy; Employee running example; two-column visualization; dot notation; initialization list vs member-by-member
+p400_lecture_15.02,8,exercises,Fill In the Missing Code,standard,8,no,Employee struct + printEmployee function body; students fill 3 cout lines using dot notation; ~33 lines total
+p400_lecture_15.02,8,lab,Programming Task — Student Roster,standard,12,no,Student struct; static array of 5; read name+grade from user; print all records; no dynamic allocation
+p400_lecture_15.02,8,oop,Arrays of Structures,standard,10,no,StructType array[n] syntax; roster[i].member two-step access; max-tracker loop over array of structs — NOTE: include sizeof struct padding (char + int = 8 not 5; alignment; member reordering) here; deferred from 02.01
+p400_lecture_15.02,8,oop,Abstract Data Types,high,5,no,ADT concept; Table of Variables placing struct alongside scalar/array/class; motivation for composite types
+p400_lecture_16.01,8,exercises,Fill In the Missing Code,standard,10,no,BankAccount class; fill in printSummary() using private members; outside definition with :: ; final lecture capstone
+p400_lecture_16.01,8,oop,Object-Oriented Programming,high,8,no,paradigm shift from procedural; bank/cookie-cutter analogies; class = blueprint / object = instance
+p400_lecture_16.01,8,oop,Defining Member Functions,high,12,no,inline vs outside definition; :: scope resolution; StopLight example; accessor/mutator pattern
+p400_lecture_16.01,8,oop,Creating and Using Objects,standard,8,no,three design decisions; Book/Library interacting objects; ClassName variableName declaration syntax
+p400_lecture_16.01,8,oop,Introduction to Classes,high,12,no,class vs struct; private/public access specifiers; class anatomy two-column; Point canonical example
+p400_lecture_16.02,8,oop,Destructor,standard,8,no,~ClassName() syntax; no parameters no return type; runs at scope exit or delete; heap cleanup; RAII intro
+p400_lecture_16.02,8,oop,Constructor Overloading,standard,8,no,multiple constructors with different parameter lists; same rules as function overloading; default + parameterized pattern
+p400_lecture_16.02,8,oop,Parameterized Constructor,high,12,no,parameters initialize members at creation; before/after setter chain comparison; works with arrays and vectors; constructor validation
+p400_lecture_16.02,8,oop,Default Constructor,standard,8,no,implicit default provided by C++; disappears when any constructor is defined; explicit default to restore it; most vexing parse
+p400_lecture_16.02,8,oop,What is a Constructor,high,8,no,same name as class; no return type; automatic invocation; replaces setter-chain pattern; partially-initialized object problem
+p400_lecture_17.01,8,oop,Vectors of Objects,standard,15,no,vector<ClassName> declaration; push_back objects; range-for with const ref; .size() vs static SIZE; dynamic growth from user input
+p400_lecture_17.01,8,oop,Arrays of Objects,standard,10,no,ClassName array[n]; array[i].method() two-step access; max-tracker loop with getters; moved from 16.01
+p400_lecture_04.02,2,design,Function Contracts,high,,no,function promise between caller and function; inputs; result or action; caller responsibilities; function responsibilities; prototype before code
+p400_lecture_04.02,2,design,Function Boundary Model,high,,no,controlled data exchange; parameters move data in; return values move data back; local details stay inside; hidden data flow avoided
+p400_lecture_04.02,2,vectors,Passing Vectors,high,,no,vector parameters; caller vector vs parameter copy; reading vector contents in functions; returning vectors; counter example passing one element at a time
+p400_lecture_04.02,2,scope,Scope,high,,no,prior scope knowledge applied to modular design; function scope; parameters as local names; globals break function contracts
+p400_lecture_04.02,2,scope,Shadow Variables,standard,,no,inner declaration hides outer name; loop shadowing; function and nested block examples; closest visible declaration wins
+p400_lecture_04.02,2,memory,Stack Frame Model,high,,no,function call workspace; main frame; called function frames; parameters and local variables in frames; return removes frame; explains scope and shadowing
+p400_lecture_05.01,3,references,Reference Variables,high,10,no,references as aliases; initialization required; cannot reseat; connected to stack frame model from 04.02
+p400_lecture_05.01,3,references,Pass by Value and Pass by Reference,high,12,no,value parameters copy across the boundary; reference parameters alias caller-owned storage; swap example; boundary model update
+p400_lecture_05.01,3,references,Reference Variables as Parameters,high,10,no,reference marker in prototypes and definitions; call syntax looks ordinary; variables required for non-const reference parameters
+p400_lecture_05.01,3,memory,Static Local Variables,standard,9,no,static local lifetime; local scope but program-long stored value; call counter example; stack frame contrast
+p400_lecture_05.01,3,functions,Default Parameters,standard,8,no,default argument values in prototypes; right-to-left rule; formatting helper examples; overloading deferred
+p400_lecture_05.01,3,functions,Exit,standard,7,no,exit from cstdlib; status codes; terminates program instead of returning through function boundary
+p400_lecture_05.01,3,menus,Menus and Functions,high,14,no,display menu; read choice; dispatch; action helpers; reference parameters in menu actions; default parameters in display helpers
+p400_lecture_05.02,3,functions,Function Overloading,high,,no,multiple functions with same name; signatures differ by parameter types or count; overload resolution; three full example programs for display area and reports
+p400_lecture_05.02,3,design,Choosing a Parameter Style,high,,no,decision framework for pass by value return values pass by reference and const reference; prototypes reveal data movement across the function boundary
+p400_lecture_05.02,3,functions,Function Side Effects,standard,,no,side effects as changes beyond return values; visible reference mutation; hidden state through global or static data; intentional and traceable function design
+p400_lecture_06.01,3,memory,Very Brief Review of Static,brief bridge,4,no,static local variables as a bridge to persistent state and Singleton; consequence framing rather than reteaching
+p400_lecture_06.01,3,design,Design Patterns,high,14,no,patterns as named reusable design knowledge; Christopher Alexander; pattern language; Gang of Four; problem structure tradeoff framing
+p400_lecture_06.01,3,patterns,Singleton Pattern,high,12,no,one shared instance and controlled access; static local instance shape; settings example; convenience vs hidden shared state
+p400_lecture_06.01,3,patterns,Strategy Pattern,high,12,no,interchangeable behavior behind stable caller logic; conditional logic smell; discount rule example; contrast with Singleton
+p400_lecture_06.02,3,operators,Relational Operators,standard,,no,operator table; boolean results; equality vs assignment; common comparison shapes; floating-point comparison failure case; tolerance-based fix with abs
+p400_lecture_06.02,3,conditionals,The if Statement,high,,no,one-way selection; condition evaluated before action; if flowchart image; zero-check example from instructor lecture; guard condition for bad inputs; reading conditions aloud
+p400_lecture_06.02,3,input,The cin Fail Problem,standard,,no,wrong data type causes failed extraction; cin.fail detects failure; detecting is not fixing; clear and ignore as first recovery pattern
+p400_lecture_06.02,3,conditionals,The if/else Statement,high,,no,two-way mutually exclusive selection; if/else flowchart image; zero-divisor divide-or-error example; nightclub age example; avoid opposite retest
+p400_lecture_06.02,3,conditionals,The if/else if Statement,high,,no,multi-way mutually exclusive selection; if/else-if flowchart image; top-to-bottom evaluation; grade-category example from instructor lecture; default else; order matters
+p400_lecture_07.01,4,operators,The Conditional Operator,standard,7 min,no,compact two-way expression form; readability limits; avoid nested ternary tricks
+p400_lecture_07.01,4,conditionals,The switch Statement,high,9 min,no,exact fixed cases; case labels; break; default; contrasted with if/else if
+p400_lecture_07.01,4,conditionals,Nested if Statements,high,10 min,no,dependent decisions; nested if vs if/else if; shipping fee discount and access examples
+p400_lecture_07.01,4,conditionals,Compound Conditions,high,10 min,no,logical AND OR NOT; short-circuit evaluation; reading compound conditions aloud
+p400_lecture_07.01,4,validation,Range Checking,high,8 min,no,inside range with AND; outside range with OR; score evaluation boundaries
+p400_lecture_07.02,4,iteration,Why Iteration Matters,high,7 min,no,iteration as controlled repetition; programming vs coding framing; loops extend IPO by repeating process work
+p400_lecture_07.02,4,iteration,Loop Anatomy and Program Control,high,10 min,no,range-based for contrast; loop condition; control variable; body; entry vs exit conditions; Table of Variables tracing
+p400_lecture_07.02,4,iteration,The while Loop,high,10 min,no,entry-condition loop; zero-pass possibility; unknown repetition; counter trace with stopping condition
+p400_lecture_07.02,4,iteration,The do-while Loop,standard,8 min,no,exit-condition loop; one guaranteed pass; prompts menus and light validation use cases; semicolon syntax
+p400_lecture_07.02,4,iteration,The for Loop,high,10 min,no,counted repetition; initialization condition update header; distance-by-hour example; contrast with range-based for
+p400_lecture_07.02,4,iteration,Choosing a Loop,high,8 min,no,decision framework across range-based for counted for while and do-while based on what controls repetition
+p400_lecture_08.01,4,iteration,Nested Loops,high,,no,outer loop and inner loop roles; inner loop restarts; row-column model; tracing; rectangles and triangles; loop order; nested totals; shallow nesting
+p400_lecture_08.01,4,vectors,Multi-Dimensional Vectors,high,,no,vector of vectors; rows first; include vector; sized grids; initializer lists; grid[row][col]; traversal; display; input; row and column totals; jagged vectors; shape assumptions
+p400_lecture_08.02,4,iteration,Stuff To Do With A Loop,high,,no,counters; running totals; sentinels; flags; searches; max/min trackers; output-builder loops
+p400_lecture_08.02,4,iteration,Drawing Graphs Using Loops,high,,no,terminal graph output; labels; scaling; graph from data vs graph from formula; nested loops for rows and repeated symbols
+p400_lecture_08.02,4,menus,Menu-Driven Programming,high,,no,do-while menu shell; quit choice as sentinel; if/else-if and switch dispatch; numeric vs alphanumeric menus; function-based actions
+p400_lecture_09.01,5,operators,Increment and Decrement Operators,standard,,no,++ and -- for one-step loop updates; prefix vs postfix only matters when expression value is used; compound assignment for larger steps
+p400_lecture_09.01,5,iteration,Break,standard,,no,immediate exit from nearest loop or switch; sentinel loops; search loops; switch break vs loop break
+p400_lecture_09.01,5,iteration,Continue,standard,,no,skip current loop pass; contrast with break; while-loop update caution; use sparingly for early skip cases
+p400_lecture_09.01,5,validation,Input Validation Strategy,high,,no,broad-to-narrow validation decisions; presence shape and range-or-set checks; allow-by-default vs deny-by-default; specific error messages
+p400_lecture_09.01,5,validation,Input Validation,high,,no,validate at input boundary; range and set validation; priming read; type failure vs range failure; specific error messages
+p400_lecture_10.01,5,file_io,File I/O,high,,no,fstream streams; open/check/read/write/close; relative paths; overwrite vs append; design file format before read loop; extraction-to-failure; count-first; sentinel; line-controlled files; vector and record round trips
+p400_lecture_10.01,5,debugging,Assertions,standard,,no,assert from cassert; validation vs assertion; preconditions; invariants; assertion failure tracing; avoid client input and side effects; assertions can be disabled
+p400_lecture_11.01,6,file_io,Stringstream,standard,,no,istringstream for typed extraction; ostringstream for formatting; stream state; delimited getline; simple delimited records only
+p400_lecture_11.02,6,arrays,Indexing Array Elements,high,,no,zero-based positions; index versus value; subscript reads and writes; valid range 0 through SIZE-1; negative and out-of-bounds indexes; named capacity; sizeof element-count scope limitation
+p400_lecture_13.01,13,arrays,Multidimensional Arrays,high,,no,multidimensional vector bridge; fixed rectangular shape; named dimensions; row and column indexing; partial initialization; nested traversal; row and column processing; row-major storage; function parameters; three dimensions
+p400_lecture_13.01,13,arrays,C-Style Arrays and C-Strings,standard,,no,built-in array terminology; char arrays; null terminator; capacity versus length; sizeof versus strlen; sentinel traversal; vowel count; uppercase conversion; reversal; getline; strcmp; strcpy; strcat; C-string versus string
+p400_lecture_13.01,13,arrays,std::array,standard,,no,modern fixed-size C++ alternative; size in type; size and checked access; range traversal; const-reference parameters; value semantics; standard algorithms; contiguous storage; data interop; nested std::array; choice framework
+p400_lecture_13.02,13,pointers,Why Pointers?,high,,no,symbol table bridge; addresses as programmable data; runtime selection; indirect modification; traversal and subranges
+p400_lecture_13.02,13,pointers,Addresses and Pointer Variables,high,,no,address operator; typed pointer declarations; initialization; nullptr; reseating; reference syntax contrast
+p400_lecture_13.02,13,pointers,Dereferencing Pointers,high,,no,read and write through a pointer; aliasing; runtime target selection; guarded dereference
+p400_lecture_13.02,13,pointers,Arrays and Pointers,high,,no,contiguous storage; array-to-pointer conversion; subscript equivalence; subranges; function-boundary decay
+p400_lecture_13.02,13,pointers,Pointer Arithmetic and Comparison,high,,no,scaled movement; begin/end ranges; one-past sentinel; pointer search; distance within one array
+p400_lecture_13.02,13,pointers,Pointer Safety,high,,no,initialization; null; lifetime; dangling pointers; bounds; vector address invalidation
+p400_lecture_13.02,13,pointers,"Choosing Direct Access, References, or Pointers",high,,no,decision framework; same problem in three access styles; capability costs; prefer higher-level tools
+p400_lecture_15.01,15,memory,Pseudodynamic Memory,high,,no,course term; fixed-capacity array with runtime logical length; capacity requested length and logical length; validation; append and remove within capacity; many C++ examples; supersedes older 15.01 pseudodynamic entry
+p400_lecture_15.01,15,dynamic_memory,Dynamic Memory and Dynamic Arrays,high,,no,scalar ownership bridge; new[] and delete[] matching; runtime-sized arrays; bounds and base address; leaks and cleanup; unique_ptr<Type[]>; resize by allocate-copy-release-transfer; vector decision; many C++ examples; supersedes misplaced 14.02 dynamic-array entry and older 15.01 dynamic-array entry
+p400_lecture_15.01,15,memory,Pseudodynamic Memory - Heap,high,,no,heap flavor of pseudodynamic memory; runtime requested length; new[] and delete[] matching; pointer and length contract; base address preservation; bounds and cleanup; unique_ptr<Type[]> manages lifetime but not size
+p400_lecture_15.01,15,dynamic_memory,Dynamic Memory,high,,no,true dynamic memory built around rdaa.cpp; array changes size in response to data operations; grow and shrink by allocate copy release transfer; append remove and resize patterns; cost of repeated resizing
+p400_lecture_13.02,13,pointers,Introduction to Pointers and Their Value in Modern Programming,high,,no,symbol table bridge; typed addresses as runtime data; indirection; runtime target selection; modern raw pointers as selective non-owning tools; smart pointers and containers positioned but deferred; supersedes the older detailed 13.02 schedule
+p400_lecture_13.02,13,pointers,Initializing and Using Pointers,high,,no,address operator; typed declaration; valid address or nullptr initialization; dereference for read and write; reseating; null checks; uninitialized and dangling states; scalar pointers only; supersedes the older detailed 13.02 schedule
+p400_lecture_14.02,14,pointers,Arrays and Pointers,high,,no,contiguous storage; array-to-pointer conversion; subscript equivalence; subranges; function-boundary decay; moved from 13.02 by instructor approval
+p400_lecture_14.02,14,pointers,Pointer Arithmetic,high,,no,scaled movement; begin and end ranges; one-past sentinel; traversal; distance within one array; moved from 13.02 by instructor approval
+p400_lecture_14.02,14,pointers,Pointer Comparison,high,,no,address equality and ordering within one array; pointer search; one-past boundaries; moved from 13.02 by instructor approval
+p400_lecture_14.02,14,pointers,"Choosing Direct Access, References, or Pointers",high,,no,full decision framework; same problem in three access styles; capability costs; prefer higher-level tools; moved from 13.02 by instructor approval
+p400_lecture_15.02,15,data_structures,Structures,high,,no,rebuild supersedes earlier 15.02 structures entry; generic syntax; declaration and member access; aggregate and default initialization; copying; comparison; value and reference parameters; returning records; nested structures; arrays within structures; pointers and arrow notation; sizeof padding and alignment; many C++ examples
+p400_lecture_15.02,15,data_structures,Arrays of Structures,high,,no,rebuild supersedes earlier 15.02 arrays entry; index then member model; initialization; traversal; function parameters; search update maximum sort append remove; capacity and logical size; static dynamic and smart arrays; text files; many C++ examples
+p400_lecture_15.02,15,file_io,Binary Records,high,,no,fixed-size trivially copyable disk records; binary read and write; offsets; seekg seekp tellg; direct access and in-place updates; append tombstones and partial records; padding portability and format versioning; many C++ examples
+p400_lecture_15.02,15,design,Abstract Data Types - Part 1,high,,no,values operations and observable behavior; interface versus implementation; Time and Stack examples; contracts invariants preconditions and postconditions; data structure contrast; exposed-state limitation; bridge to ADT Part 2 and classes in 16.01
+p400_lecture_16.01,16,oop,Abstract Data Types - Part 2,high,,no,resume from 15.02 exposed-state limitation; abstraction versus encapsulation; private representation; public operations; constructors and valid initial state; member functions; class-enforced invariants; transition into object-oriented programming
+p400_lecture_01.02,1,review,Variables,standard,2,no,authoritative PDF rebuild; brief variables review; supersedes seeded Variables and Assignment entry
+p400_lecture_01.02,1,conditionals,Conditional Statements,standard,8,no,authoritative PDF rebuild; review conditional execution and multi-way selection
+p400_lecture_01.02,1,iteration,Iteration,standard,8,no,authoritative PDF rebuild; review repetition with while do-while and for loops
+p400_lecture_01.02,1,functions,Functions,standard,5,no,authoritative PDF rebuild; review function declarations calls parameters and return values
+p400_lecture_01.02,1,design,Coding for Reuse,standard,5,no,authoritative PDF rebuild; preserve raw input; prefer error state or exceptions; component testing; constants over literals
+p400_lecture_01.02,1,logging,A Logging Function,standard,12,no,authoritative PDF rebuild; disk-based troubleshooting history; function-based append logger; chrono timing; resource-use limitation

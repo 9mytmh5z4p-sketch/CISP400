@@ -1,0 +1,270 @@
+<!-- Topic 3: Dynamic Memory -->
+<!-- Slides 51–68 -->
+
+# Dynamic Memory
+<!-- Slide 51 -->
+
+## When the Data Changes the Size {.smaller}
+
+- Heap pseudodynamic memory chooses a size when the allocation is created.
+- Truly dynamic memory changes allocation size as the program's data changes.
+
+The program does not ask the user for a new length each time. The data operation itself creates the need for a different array size.
+
+::: notes
+Slides 51–68
+This topic is organized around `rdaa.cpp`, the real dynamically allocated array example.
+:::
+
+<!-- Slide 52 -->
+
+---
+
+## rdaa.cpp {.smaller}
+
+```{.cpp}
+{{< include assets/rdaa.cpp >}}
+```
+
+This file is the complete example that the next slides dissect.
+
+<!-- Slide 53 -->
+
+---
+
+## The rdaa.cpp Story
+
+1. Build an array with one value.
+2. Add a second value by creating a larger array.
+3. Remove a value by creating a smaller array.
+
+Each size change is really a new allocation plus a transfer of the values that still matter.
+
+<!-- Slide 54 -->
+
+---
+
+## Start With One Element
+
+```{.cpp}
+int* pInt = nullptr;
+int size = 1;
+
+pInt = new int[size];
+pInt[0] = 10;
+```
+
+At this moment, `pInt` owns a heap array with exactly one element.
+
+<!-- Slide 55 -->
+
+---
+
+## Grow in Response to New Data
+
+```{.cpp}
+int* pTemp = nullptr;
+size++;
+pTemp = new int[size];
+
+pTemp[0] = pInt[0];
+pTemp[1] = 20;
+```
+
+The new value `20` requires a larger array. The old value is copied before ownership changes.
+
+<!-- Slide 56 -->
+
+---
+
+## Transfer Ownership After Copy
+
+```{.cpp}
+delete[] pInt;
+pInt = pTemp;
+pTemp = nullptr;
+```
+
+`pInt` becomes the owner of the larger array only after the old array has been released.
+
+<!-- Slide 57 -->
+
+---
+
+## Shrink When Data Is Removed
+
+```{.cpp}
+size--;
+pTemp = new int[size];
+pTemp[0] = pInt[0];
+
+delete[] pInt;
+pInt = pTemp;
+pTemp = nullptr;
+```
+
+Removing data from the right means the retained values fit in a smaller allocation.
+
+<!-- Slide 58 -->
+
+---
+
+## Finish the Ownership Contract
+
+```{.cpp}
+delete[] pInt;
+pInt = nullptr;
+```
+
+After the final print, `pInt` still owns a heap allocation. The program should release that last array before it ends.
+
+<!-- Slide 59 -->
+
+---
+
+## Trace the Size Changes
+
+| Moment | Owner | Size | Stored values |
+|---|---|---:|---|
+| Start | `pInt` | 1 | `10` |
+| After grow | `pInt` | 2 | `10 20` |
+| After shrink | `pInt` | 1 | `10` |
+
+**Predict:** what would print after each stage?
+
+<!-- Slide 60 -->
+
+---
+
+## Why Resizing Needs a New Array
+
+- An existing allocation cannot grow or shrink in place through C++ syntax.
+- Resizing means allocating a different block and preserving the desired values.
+- Ownership transfers only after the copy succeeds.
+
+<!-- Slide 61 -->
+
+---
+
+## The Resize Algorithm
+
+1. Decide the new length from the data operation.
+2. Allocate a temporary array.
+3. Copy the elements that still belong.
+4. Release the old array.
+5. Point the owner to the new array.
+6. Update the tracked length.
+
+<!-- Slide 62 -->
+
+---
+
+## How Many Elements Should Be Copied?
+
+```{.cpp}
+int copyCount = oldLength;
+if (newLength < oldLength)
+    copyCount = newLength;
+```
+
+The general rule is `min(oldLength, newLength)`.
+
+<!-- Slide 63 -->
+
+---
+
+## Add One Element {.smaller}
+
+```{.cpp}
+void append(int*& values, int& length, int value)
+{
+    int* temporary = new int[length + 1];
+
+    for (int i = 0; i < length; i++)
+        temporary[i] = values[i];
+
+    temporary[length] = value;
+    delete[] values;
+    values = temporary;
+    temporary = nullptr;
+    length++;
+}
+```
+
+Both pointer and length use reference parameters because the function changes the caller's state.
+
+<!-- Slide 64 -->
+
+---
+
+## Remove the Last Element
+
+```{.cpp}
+bool removeLast(int*& values, int& length)
+{
+    if (length == 0)
+        return false;
+
+    int* temporary = nullptr;
+    if (length > 1)
+        temporary = new int[length - 1];
+
+    for (int i = 0; i < length - 1; i++)
+        temporary[i] = values[i];
+
+    delete[] values;
+    values = temporary;
+    length--;
+    return true;
+}
+```
+
+<!-- Slide 65 -->
+
+---
+
+## Resize to Any Length {.smaller}
+
+```{.cpp}
+void resize(int*& values, int& length, int newLength)
+{
+    if (newLength < 0 || newLength == length)
+        return;
+
+    int* temporary = nullptr;
+    if (newLength > 0)
+        temporary = new int[newLength]{};
+
+    int copyCount = length;
+    if (newLength < length)
+        copyCount = newLength;
+
+    for (int i = 0; i < copyCount; i++)
+        temporary[i] = values[i];
+
+    delete[] values;
+    values = temporary;
+    length = newLength;
+}
+```
+
+<!-- Slide 66 -->
+
+---
+
+## The Cost of Resizing
+
+- Allocating a new block requires work proportional to the requested storage.
+- Copying retained elements takes O(N) time.
+- Growing by one element repeatedly can perform many unnecessary copies.
+
+<!-- Slide 67 -->
+
+---
+
+## Summary
+
+- Dynamic memory changes the allocation when the program's data requires a different size.
+- A resize is allocate, copy, release, transfer ownership, and update length.
+
+<!-- Slide 68 -->

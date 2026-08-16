@@ -1,0 +1,136 @@
+<!-- Topic 3: Nested if Statements -->
+<!-- Slides 20-29 -->
+
+# Nested if Statements
+<!-- Slide 20 -->
+
+## A Decision Inside a Decision {.smaller}
+
+- A nested `if` statement places one conditional inside another conditional block.
+- The inner decision only matters after the outer decision has selected a path.
+
+::: notes
+Slides 20-29
+:::
+
+<!-- Slide 21 -->
+
+---
+
+## When the Second Test Depends on the First
+
+- Test another condition only if the first condition is true.
+- Test another condition only if the first condition is false.
+- That dependency is the reason to nest.
+
+<!-- Slide 22 -->
+
+---
+
+## Nested if vs. if/else if
+
+| Structure | Question Shape |
+|---|---|
+| `if/else if` | Which one category applies? |
+| Nested `if` | After this branch, what else must be checked? |
+
+Nested decisions are dependent. `if/else if` chains are usually categories at the same level.
+
+<!-- Slide 23 -->
+
+---
+
+## Reading the Indentation
+
+```cpp
+if (isMember) {
+    if (orderTotal >= 50) {
+        cout << "Free shipping";
+    } else {
+        cout << "Member shipping rate";
+    }
+}
+```
+
+Indentation shows that the order-total decision belongs inside the member decision.
+
+<!-- Slide 24 -->
+
+---
+
+## Shipping Fee Example
+
+```cpp
+if (isMember) {
+    if (orderTotal >= 50) {
+        shipping = 0.00;
+    } else {
+        shipping = 4.99;
+    }
+} else {
+    shipping = 7.99;
+}
+```
+
+The order total matters only after the program knows the customer is a member.
+
+<!-- Slide 25 -->
+
+---
+
+## Discount Eligibility Example
+
+```cpp
+if (accountActive) {
+    if (purchaseAmount >= 100) {
+        discountRate = 0.10;
+    } else {
+        discountRate = 0.00;
+    }
+} else {
+    cout << "Account inactive";
+}
+```
+
+The purchase amount matters only if the account is active.
+
+<!-- Slide 26 -->
+
+---
+
+## Access Level Example
+
+```cpp
+if (loggedIn) {
+    if (role == "admin") {
+        cout << "Full access";
+    } else {
+        cout << "Standard access";
+    }
+} else {
+    cout << "Please log in";
+}
+```
+
+The role check only makes sense after the program knows the user is logged in.
+
+<!-- Slide 27 -->
+
+---
+
+## Keep Nesting Shallow
+
+- One level of nesting is usually easy to read.
+- Multiple levels can hide the main path through the program.
+- If the code becomes hard to follow, reconsider the design.
+
+<!-- Slide 28 -->
+
+---
+
+## Summary
+
+- A nested `if` is useful when the next question depends on the answer to the first question.
+- Use indentation and small blocks to make the dependency visible.
+
+<!-- Slide 29 -->

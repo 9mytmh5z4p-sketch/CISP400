@@ -1,0 +1,250 @@
+<!-- Topic 1: new and delete -->
+<!-- Slides 3–18 -->
+
+# new and delete
+<!-- Slide 3 -->
+
+## How Can a Program Request Memory While It Is Running? {.smaller}
+
++ What if the amount of data is known only after the program starts?
++ What if the data must remain alive beyond the block that creates it?
+
+::: notes
+Slides 3–18
+[Graphic suggestion: a program requesting a new labeled block from a pool of available memory.]
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Why This Matters
+
++ Runtime decisions can determine whether and when an object is needed.
++ Some data must remain alive after the creating function returns.
++ Automatic storage alone cannot express every required lifetime.
+
+<!-- Slide 5 -->
+
+---
+
+## Automatic Storage Has a Boundary
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+void showScore();
+
+int main() {
+    showScore();
+    return 0;
+}
+
+void showScore() {
+    int score = 92;
+    cout << score << "\n";
+} // score's lifetime ends here
+```
+
+::: notes
+[Graphic suggestion: a stack frame appearing for showScore and disappearing at the closing brace.]
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Dynamic Storage Has a Different Lifetime
+
+```{.cpp}
+int* score = new int{92};
+
+// The allocation remains alive until delete.
+cout << *score << "\n";
+
+delete score;
+score = nullptr;
+```
+
++ The pointer has scope; the allocation has a separately controlled lifetime.
+
+<!-- Slide 7 -->
+
+---
+
+## Allocating One Value
+
+```{.cpp}
+int* score = new int;
+```
+
++ `new int` reserves enough dynamic storage for one `int`.
++ `new` returns the address of that storage.
++ `score` stores the returned address.
+
+::: notes
+[Graphic suggestion: stack variable score containing an arrow to one int-sized heap block.]
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Initializing During Allocation
+
+```{.cpp}
+int* a = new int;      // indeterminate value
+int* b = new int();    // value-initialized to 0
+int* c = new int{42};  // initialized to 42
+```
+
++ Braced initialization makes the intended starting value explicit.
+
+<!-- Slide 9 -->
+
+---
+
+## Using the Allocation
+
+```{.cpp}
+int* score = new int{92};
+
+cout << *score << "\n";
+*score = 97;
+cout << *score << "\n";
+```
+
++ Dereferencing accesses the dynamically stored object.
+
+<!-- Slide 10 -->
+
+---
+
+## A Complete Scalar Example {.smaller}
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+int main() {
+    double* temperature = new double{98.6};
+
+    cout << "Temperature: " << *temperature << "\n";
+    *temperature = 101.3;
+    cout << "Updated: " << *temperature << "\n";
+
+    delete temperature;
+    temperature = nullptr;
+    return 0;
+}
+```
+
+<!-- Slide 11 -->
+
+---
+
+## What Does delete Do?
+
++ `delete` ends the dynamically allocated object's lifetime.
++ The storage becomes available for reuse.
++ The pointer variable still exists and still contains the old address.
+
+```{.cpp}
+delete temperature;
+temperature = nullptr;
+```
+
+<!-- Slide 12 -->
+
+---
+
+## Following the Addresses
+
+| Moment | Pointer | Dynamic object |
+|---|---|---|
+| After `new` | Holds allocated address | Alive |
+| After `delete` | Still holds old address | Dead |
+| After `nullptr` assignment | Holds no address | Dead |
+
+::: notes
+[Graphic suggestion: three memory-state panels corresponding to the table rows.]
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## Allocation Inside a Function {.smaller}
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+double* readTemperature();
+
+int main() {
+    double* value = readTemperature();
+    cout << *value << "\n";
+    delete value;
+    value = nullptr;
+    return 0;
+}
+
+double* readTemperature() {
+    double* result = new double;
+    cin >> *result;
+    return result;
+}
+```
+
+<!-- Slide 14 -->
+
+---
+
+## Who Owns the Allocation?
+
++ `readTemperature` creates the allocation.
++ Returning the pointer transfers cleanup responsibility to `main`.
++ The owner must eventually call the matching deallocation operation.
+
+::: notes
+[Graphic suggestion: ownership label moving from readTemperature's result pointer to main's value pointer.]
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## The Scalar Lifetime Pattern
+
+| Step | C++ operation |
+|---|---|
+| Allocate and initialize | `int* value = new int{5};` |
+| Access the object | `cout << *value;` |
+| Release the object | `delete value;` |
+| Mark the pointer empty | `value = nullptr;` |
+
+<!-- Slide 16 -->
+
+---
+
+## The Ownership Contract
+
+For every dynamic allocation, identify:
+
++ The pointer that owns the allocation
++ Any pointers that merely borrow access
++ The exact point where the owner releases it
+
+<!-- Slide 17 -->
+
+---
+
+## Summary
+
++ `new` creates dynamic storage whose lifetime is controlled explicitly.
++ `delete` releases one scalar allocation.
++ Runtime flexibility comes with an ownership and cleanup obligation.
+
+<!-- Slide 18 -->

@@ -1,0 +1,33 @@
+<!-- Topic 5: Instructor Role -->
+<!-- Slides 25–27 -->
+
+---
+
+<h1 style="display:none">Instructor Role</h1>
+
+![Instructor as guide](images/instructor_guide.png){fig-align="center" width="42%"}
+
+<!-- Slide 25 -->
+
+## Why Should We Listen to You?
+
++ Employed as a programmer.
++ Employed as a Nw engineer.
++ Several published papers (in peer reviewed journals) in the field of AI.
++ 20+ years teaching programming.
+
+::: notes
+Slides 25–27
+:::
+
+<!-- Slide 26 -->
+
+---
+
+## Why Don’t You Get Back to Me Right Away?
+
++ Other classes
++ Department activities
++ College activities
+
+<!-- Slide 27 -->

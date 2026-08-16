@@ -1,0 +1,19 @@
+<!-- Topic 2: Coding for Reuse -->
+<!-- Slides 35–36 -->
+
+# Coding for Reuse
+<!-- Slide 35 -->
+
+## Ideas for Writing Reusable Software {.smaller}
+
+- Save all user input until the next input. Do not transform raw data; you may need it in the future.
+- Returning an error code is problematic because it forces the computer to take action at the return. Better to set a class error state and check that. Also consider exceptions.
+- Component testing gives you confidence that everything works and that you did not break anything.
+- Choose `const` values over literals.
+
+::: notes
+Slides 35–36
+These are the source PDF's four reuse recommendations. Preserve their phrasing and scope for the later completeness review.
+:::
+
+<!-- Slide 36 -->

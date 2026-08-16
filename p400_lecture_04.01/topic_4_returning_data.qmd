@@ -1,0 +1,168 @@
+<!-- Topic 4: Returning Data from a Function -->
+<!-- Slides 39-48 -->
+
+# Returning Data from a Function
+<!-- Slide 39 -->
+
+## Functions Can Send Data Back {.smaller}
+
++ Parameters move data into a function.
++ A return value sends one result back to the caller.
++ This completes the basic data-flow pattern for functions.
+
+::: notes
+Slides 39-48
+:::
+
+<!-- Slide 40 -->
+
+---
+
+## Return Type
+
+```cpp
+int add(int first, int second) {
+    return first + second;
+}
+```
+
++ `int` is the return type.
++ It tells C++ what kind of value comes back.
+
+<!-- Slide 41 -->
+
+---
+
+## The Return Statement
+
+```cpp
+return first + second;
+```
+
++ `return` sends a value back to the caller.
++ The function ends when the return statement runs.
++ The returned value replaces the function call.
+
+<!-- Slide 42 -->
+
+---
+
+## Store the Returned Value
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int add(int first, int second);
+
+int main() {
+    int total = add(3, 4);
+    cout << total << endl;
+    return 0;
+}
+
+int add(int first, int second) {
+    return first + second;
+}
+```
+
+The variable `total` stores the value returned by `add()`.
+
+<!-- Slide 43 -->
+
+---
+
+## Use the Returned Value Directly
+
+```cpp
+cout << add(3, 4) << endl;
+
+int result = add(10, add(2, 3));
+```
+
++ A returned value can be printed directly.
++ A returned value can be used inside a larger expression.
+
+<!-- Slide 44 -->
+
+---
+
+## Return Type Must Match
+
+```cpp
+int getWholeNumber() {
+    return 42;
+}
+
+string getName() {
+    return "Maya";
+}
+```
+
+The value after `return` must be compatible with the function's return type.
+
+<!-- Slide 45 -->
+
+---
+
+## One Value Comes Back
+
++ A normal return statement sends one value back.
++ That value may be stored, printed, or used in another expression.
++ Later tools give us other ways to communicate more data.
+
+<!-- Slide 46 -->
+
+---
+
+## Returned Data on the Stack
+
+```{=html}
+<div class="stack-demo" id="return-stack-demo">
+  <div class="stack-controls">
+    <button onclick="returnStackStep(0)">1. call</button>
+    <button onclick="returnStackStep(1)">2. calculate</button>
+    <button onclick="returnStackStep(2)">3. return value</button>
+    <button onclick="returnStackStep(3)">4. continue</button>
+  </div>
+  <div class="stack-area">
+    <div class="stack-label">Call stack</div>
+    <div class="stack-frame frame-main">main()<br><span id="main-result">result = ?</span></div>
+    <div class="stack-frame frame-helper" id="return-add">add(3, 4)<br>first = 3<br>second = 4</div>
+  </div>
+  <p id="return-stack-caption">main() calls add(3, 4).</p>
+</div>
+
+<script>
+function returnStackStep(step) {
+  const add = document.getElementById("return-add");
+  const result = document.getElementById("main-result");
+  const caption = document.getElementById("return-stack-caption");
+  add.style.display = step <= 2 ? "block" : "none";
+  add.classList.toggle("is-running", step === 1);
+  result.textContent = step >= 3 ? "result = 7" : "result = ?";
+  caption.textContent = [
+    "The add() frame receives copies of both arguments.",
+    "The function calculates first + second inside its stack frame.",
+    "return sends 7 back to the caller.",
+    "The add() frame is gone, and main() stores the returned value."
+  ][step];
+}
+</script>
+```
+
+::: notes
+[Graphic suggestion: show the return value leaving the function frame before the frame disappears.]
+:::
+
+<!-- Slide 47 -->
+
+---
+
+## Summary
+
++ A return value lets a function compute an answer.
++ The return type tells C++ what kind of answer comes back.
++ The caller decides what to do with the returned value.
+
+<!-- Slide 48 -->

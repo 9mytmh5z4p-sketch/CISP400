@@ -1,0 +1,76 @@
+<!-- Topic 1: What is a Constructor -->
+<!-- Total slides: 4 -->
+
+# What is a Constructor
+
+---
+
+## The problem with setters {.smaller}
+
+After writing a class, every object creation looks the same: declare, then call a chain of setters. Is there a better way to initialize an object at the moment it is born?
+
+::: notes
+Total slides: 4
+Students have been writing Student s; s.setName("Alice"); s.setGrade(92); since 16.01. The constructor is the answer to the question this pattern raises: why can't initialization happen at the declaration itself? Frame this as solving a real annoyance they have already felt.
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## The setter chain problem {.smaller}
+
+```{.cpp}
+// Current pattern — three lines to get one usable object
+Student alice;
+alice.setName("Alice");
+alice.setGrade(92);
+
+// With a constructor — one line, object ready immediately
+Student alice("Alice", 92);
+```
+
++ Every setter call is a chance for the object to exist in a partially initialized state.
++ A constructor guarantees all members are set before any other code can touch the object.
+
+::: notes
+The partially-initialized object is a real bug source: if code between the declaration and the last setter call reads from the object, it sees garbage or defaults. The constructor closes that window entirely.
+:::
+
+<!-- Slide 2 -->
+
+---
+
+## Constructor anatomy {.smaller}
+
+```{.cpp}
+class Student {
+private:
+    string name;
+    int    grade;
+public:
+    Student(string n, int g) {   // constructor: same name as class, no return type
+        name  = n;
+        grade = g;
+    }
+};
+```
+
++ **Same name as the class** — no exceptions.
++ **No return type** — not even `void`.
++ **Called automatically** — the moment an object is declared, the matching constructor runs.
+
+::: notes
+The no-return-type rule trips students up. It is not void — void means the function exists but returns nothing. A constructor has no return type specification at all. The compiler enforces this: a function with the class name and a return type is not a constructor.
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Summary {.smaller}
+
++ A constructor is a special member function with the same name as the class and no return type — it runs automatically when an object is created.
++ It replaces the setter chain by guaranteeing full initialization at the moment of declaration.
+
+<!-- Slide 4 -->

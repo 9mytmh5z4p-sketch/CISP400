@@ -1,0 +1,383 @@
+# Last Time
+
+::: {.incremental}
++ **Object-Oriented Programming**
++ **Introduction to Classes**
++ **Creating and Using Objects**
++ **Defining Member Functions**
++ **Fill In the Missing Code**
+:::
+
+::: notes
+1. **Object-Oriented Programming**: Paradigm shift from procedural; class = blueprint, object = instance; structured vs. OOP contrast images.
+2. **Introduction to Classes**: class vs struct; private by default; visibility modifiers; public/private access specifiers; class anatomy with Point example.
+3. **Creating and Using Objects**: Three design decisions (data/operations/visibility); Book and Library interacting-objects example.
+4. **Defining Member Functions**: Methods defined; inline vs. outside definition with ::; StopLight example; accessors (const getters) and mutators (validating setters).
+5. **Fill In the Missing Code**: BankAccount class; students filled in printSummary() using private members from inside a member function.
+:::
+
+---
+
+# Today's Agenda
+
+- What is a Constructor
+- Default Constructor
+- Parameterized Constructor
+- Constructor Overloading
+- Destructor
+
+::: notes
+
+:::
+
+{{< include topic_1_what_is_constructor.qmd >}}
+{{< include topic_2_default_constructor.qmd >}}
+{{< include topic_3_parameterized_constructor.qmd >}}
+{{< include topic_4_constructor_overloading.qmd >}}
+{{< include topic_5_destructor.qmd >}}
+
+---
+
+# Key Takeaways
+
+- A constructor has the same name as the class, no return type, and runs automatically at object creation
+- C++ provides a free default constructor only when you define no constructors — once you define any, write the default explicitly if you still need it
+- Parameterized constructors replace the setter chain and guarantee full initialization at the point of declaration
+- A destructor (`~ClassName()`) runs automatically when an object goes out of scope or is deleted
+
+---
+
+# Next Time
+
+::: notes
+Next lecture (17.01): Arrays of Objects and Vectors of Objects — students will apply constructors immediately by creating Student arrays and vectors using the parameterized constructor rather than setter chains.
+:::
+
+---
+
+# Appendix
+
+---
+
+## What is a Constructor: Good Practices
+
+- Always initialize every member in the constructor body — an object should never leave its constructor in a partially initialized state.
+- Name constructor parameters to make call sites readable: `Student("Alice", 92)` is clear only if the constructor signature documents that order.
+- Keep the constructor body short; if initialization logic is complex, delegate to a private helper method.
+
+---
+
+## What is a Constructor: Common Mistakes
+
+- Writing a return type on a constructor — even `void` — turns it into a regular member function with the same name; it will not run at object creation.
+- Confusing the constructor parameter names with the member names — if both are `name`, the assignment `name = name` does nothing useful; use distinct names or the `this->` prefix.
+- Assuming the constructor is called again when you assign one object to another — assignment is not construction; the constructor only runs at the point of declaration.
+
+---
+
+## What is a Constructor: More Examples
+
+```cpp
+class Rectangle {
+private:
+    double width;
+    double height;
+public:
+    Rectangle(double w, double h) { width = w; height = h; }
+    double area()   const         { return width * height; }
+    double perimeter() const      { return 2 * (width + height); }
+};
+
+int main() {
+    Rectangle r(4.0, 7.5);
+    cout << "Area: "      << r.area()      << "\n";   // 30
+    cout << "Perimeter: " << r.perimeter() << "\n";   // 23
+}
+```
+
+---
+
+## What is a Constructor: Practice Problems
+
+1. Write a `Circle` class with a private `double radius`. Add a constructor that sets the radius and a method that returns the area. Create two circles and print both areas.
+2. What compile error do you get if you add a return type to a constructor? Try it and read the message.
+3. Rewrite the `BankAccount` class from lecture 16.01 to use a constructor instead of `setOwner` and `setBalance`.
+4. What is the value of an uninitialized `int` member after an empty constructor body `{}`? Write a test to find out.
+
+---
+
+## What is a Constructor: AI Search Terms
+
+- "C++ constructor syntax no return type"
+- "C++ constructor automatic invocation"
+- "C++ constructor vs setter initialization"
+- "C++ constructor same name as class"
+- "C++ partially constructed object"
+
+---
+
+## What is a Constructor: Questions for Reflection
+
+- Why does C++ prohibit a return type on constructors rather than simply ignoring any returned value?
+- What problems does a partially-initialized object cause that a constructor prevents?
+- How does knowing that a constructor always runs change the way you design a class interface?
+
+---
+
+## Default Constructor: Good Practices
+
+- Always write an explicit default constructor when you also define parameterized constructors — the implicit one disappears and `ClassName obj;` will stop compiling.
+- Use in-class member initializers (`int grade = 0;`) as a first line of defense; the default constructor body can then remain empty.
+- Name the default state meaningfully — `"Unknown"` or `0` — so a default-constructed object is recognizably incomplete rather than silently garbage.
+
+---
+
+## Default Constructor: Common Mistakes
+
+- Defining a parameterized constructor and then being surprised that `ClassName arr[n];` no longer compiles — array declarations call the default constructor for every element.
+- Writing `Student s();` to call the default constructor — this is parsed as a function prototype, not an object declaration; write `Student s;` with no parentheses.
+- Relying on zero-initialization of `string` members in the implicit default without understanding that `int` and `double` members may contain garbage on some compilers without in-class initializers.
+
+---
+
+## Default Constructor: More Examples
+
+```cpp
+class Point {
+private:
+    double x;
+    double y;
+public:
+    Point()             { x = 0.0; y = 0.0; }      // explicit default
+    Point(double a, double b) { x = a; y = b; }    // parameterized
+
+    double getX() const { return x; }
+    double getY() const { return y; }
+};
+
+Point origin;           // default  — (0, 0)
+Point p(3.0, 4.0);      // parameterized — (3, 4)
+Point grid[10];         // ten default-constructed Points — all (0, 0)
+```
+
+---
+
+## Default Constructor: Practice Problems
+
+1. Add a parameterized constructor to a class that previously had none. Verify that `ClassName obj;` now fails to compile. Then restore it by writing an explicit default.
+2. Write a `Counter` class with a default constructor that sets count to 0 and an `increment()` method. Declare an array of 5 counters and increment each one twice.
+3. What does `Student s();` declare? How would you verify this without running the program?
+4. Add in-class initializers to every member of a class and leave the default constructor body empty `{}`. Does the behavior match your explicit assignments? Why?
+
+---
+
+## Default Constructor: AI Search Terms
+
+- "C++ default constructor implicit"
+- "C++ default constructor disappears when defined"
+- "C++ most vexing parse Student s()"
+- "C++ in-class member initializer"
+- "C++ array of objects default constructor"
+
+---
+
+## Default Constructor: Questions for Reflection
+
+- Why does C++ withdraw the implicit default constructor rather than keeping it alongside user-defined constructors?
+- How does the "most vexing parse" (`ClassName obj()`) demonstrate that C++ grammar rules have real-world consequences?
+- When would you intentionally omit a default constructor — making zero-argument construction a compile error?
+
+---
+
+## Parameterized Constructor: Good Practices
+
+- List parameters in the same order that callers will naturally think about them — `Student(name, grade)` reads left-to-right like a form field.
+- Validate inputs in the constructor body the same way a setter would — the constructor is the first place to enforce class invariants.
+- When creating arrays or vectors of objects with parameterized constructors, use initialization lists to keep declarations compact and readable.
+
+---
+
+## Parameterized Constructor: Common Mistakes
+
+- Passing arguments in the wrong order — `Student(92, "Alice")` compiles if the types match a different constructor, silently storing the grade as a name.
+- Forgetting that `vector<Student> v(5)` requires a default constructor — it tries to create 5 default-constructed elements, not 5 uninitialized slots.
+- Shadowing member names with parameter names: `void Student(string name, int grade) { name = name; }` assigns the parameter to itself; use distinct names.
+
+---
+
+## Parameterized Constructor: More Examples
+
+```cpp
+// Constructor with validation
+class Temperature {
+private:
+    double degrees;
+public:
+    Temperature(double d) {
+        degrees = (d < -273.15) ? -273.15 : d;   // clamp to absolute zero
+    }
+    double get() const { return degrees; }
+};
+
+// Vector populated with constructor calls
+vector<Student> roster;
+roster.push_back(Student("Alice", 92));
+roster.push_back(Student("Bob",   85));
+roster.push_back(Student("Carol", 97));
+```
+
+---
+
+## Parameterized Constructor: Practice Problems
+
+1. Add a parameterized constructor to the `BankAccount` class from lecture 16.01. Replace the `setOwner`/`setBalance` calls in `main` with constructor calls.
+2. Write a `Date` class with `int month, day, year` members and a constructor that validates month (1–12) and day (1–31). Clamp invalid inputs rather than crashing.
+3. Populate a `vector<Student>` of five students using push_back with inline constructor calls. Print the roster using a range-for loop.
+4. What happens if you call `vector<Student> v(3)` and `Student` has only a parameterized constructor? Try it and read the error.
+
+---
+
+## Parameterized Constructor: AI Search Terms
+
+- "C++ parameterized constructor arguments"
+- "C++ constructor initialization vs setter"
+- "C++ constructor validation class invariant"
+- "C++ vector push_back constructor call"
+- "C++ constructor parameter order convention"
+
+---
+
+## Parameterized Constructor: Questions for Reflection
+
+- Why is initialization in the constructor body preferable to relying on setters called immediately after construction?
+- How does moving validation into the constructor change the guarantees you can make about an object once it exists?
+- What is the relationship between a constructor and the concept of a class invariant?
+
+---
+
+## Constructor Overloading: Good Practices
+
+- Always pair a parameterized constructor with an explicit default constructor — code that creates arrays or default-initializes objects will break otherwise.
+- Keep the number of constructors small; if you find yourself writing many variations, consider whether default parameter values would reduce duplication.
+- Document what each constructor represents — a zero-argument constructor should produce a meaningful "empty" state, not silent garbage.
+
+---
+
+## Constructor Overloading: Common Mistakes
+
+- Defining two constructors that are ambiguous for a given call — `Student(string)` and `Student(string, int = 0)` both match `Student("Alice")` and the compiler will reject the ambiguity.
+- Writing a default constructor that leaves members uninitialized — `Student() {}` with no assignments means name is empty and grade is garbage on some compilers.
+- Expecting constructor overloading to work differently from function overloading — the same resolution rules apply; when in doubt, trace through the argument types manually.
+
+---
+
+## Constructor Overloading: More Examples
+
+```cpp
+class Point {
+private:
+    double x, y;
+public:
+    Point()                   { x = 0; y = 0; }        // origin
+    Point(double a, double b) { x = a; y = b; }        // specific location
+    Point(double a)           { x = a; y = a; }        // diagonal (x == y)
+
+    double getX() const { return x; }
+    double getY() const { return y; }
+};
+
+Point origin;         // (0, 0)
+Point p(3.0, 4.0);    // (3, 4)
+Point diag(5.0);      // (5, 5)
+```
+
+---
+
+## Constructor Overloading: Practice Problems
+
+1. Add three constructors to a `Rectangle` class: one default (1×1), one that takes width only (square), and one that takes both width and height. Verify all three work.
+2. Create a `Student` class with a default and parameterized constructor. Declare an array of 4 students using the default, then overwrite two elements with parameterized Students.
+3. Write two constructors that the compiler considers ambiguous. What error do you get? How would you resolve it?
+4. Can two constructors with the same number of parameters but different types coexist? Write an example and test it.
+
+---
+
+## Constructor Overloading: AI Search Terms
+
+- "C++ constructor overloading multiple constructors"
+- "C++ default constructor explicit"
+- "C++ constructor ambiguity overloading"
+- "C++ constructor default parameter values"
+- "C++ class multiple constructor definitions"
+
+---
+
+## Constructor Overloading: Questions for Reflection
+
+- Why is it important that a default-constructed object represent a meaningful state rather than leaving members unset?
+- How do you decide whether to write separate overloaded constructors versus one constructor with default argument values?
+- What would happen to array initialization (`ClassName arr[n]`) if no default constructor existed in a class with overloaded constructors?
+
+---
+
+## Destructor: Good Practices
+
+- If a class allocates heap memory with `new`, always write a destructor that calls `delete` — forgetting it leaks memory every time an object is destroyed.
+- For classes that only hold value-type members (strings, ints, vectors), the compiler-provided implicit destructor is sufficient; do not write an empty one.
+- Never call the destructor directly — let the runtime invoke it at the correct moment; calling it manually can cause a double-free crash.
+
+---
+
+## Destructor: Common Mistakes
+
+- Forgetting to write a destructor for a class that heap-allocates — the memory is leaked every time an object goes out of scope or is deleted.
+- Writing a destructor that calls `delete` on a pointer that was never initialized or was already freed — always set pointers to `nullptr` after deletion.
+- Trying to overload the destructor — there is exactly one destructor per class; no parameters, no overloads.
+
+---
+
+## Destructor: More Examples
+
+```cpp
+// Destructor releasing heap memory
+class DynamicArray {
+private:
+    int* data;
+    int  size;
+public:
+    DynamicArray(int n) { size = n; data = new int[n]; }
+    ~DynamicArray()     { delete[] data; data = nullptr; }
+    int  getSize() const { return size; }
+};
+
+{
+    DynamicArray arr(100);   // allocates 100 ints on the heap
+}                            // ~DynamicArray() runs here — memory freed automatically
+```
+
+---
+
+## Destructor: Practice Problems
+
+1. Add a destructor to the `DynamicArray` class above that prints "freed [n] elements" before calling `delete[]`. Verify it prints at scope exit.
+2. Write a class that opens a file in its constructor and closes it in its destructor. What guarantee does this give you about the file handle?
+3. What happens if you allocate a `DynamicArray` with `new` and never call `delete`? What does that mean for the destructor?
+4. Write a class with no heap allocation. Does adding an empty destructor change the program's behavior? What does the compiler generate if you omit it?
+
+---
+
+## Destructor: AI Search Terms
+
+- "C++ destructor tilde syntax"
+- "C++ destructor called scope exit"
+- "C++ destructor delete heap memory"
+- "C++ RAII resource acquisition is initialization"
+- "C++ destructor vs delete"
+
+---
+
+## Destructor: Questions for Reflection
+
+- Why is it safer to release resources in a destructor than to require callers to call a `cleanup()` method explicitly?
+- How does the RAII pattern (acquire in constructor, release in destructor) change how you think about resource ownership?
+- What would happen to the program in the `DynamicArray` example if the destructor were never called? How would you detect the leak?

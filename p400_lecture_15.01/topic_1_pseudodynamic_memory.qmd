@@ -1,0 +1,309 @@
+<!-- Topic 1: Pseudodynamic Memory -->
+<!-- Slides 3–21 -->
+
+# Pseudodynamic Memory
+<!-- Slide 3 -->
+
+## Fixed Storage, Variable Use? {.smaller}
+
+- Can a fixed array use a length chosen when the program starts?
+- What remains fixed, and what is allowed to change?
+
+::: notes
+Slides 3–21
+Pseudodynamic memory is course terminology, not a standard C++ term.
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Two Flavors
+
+- **Stack flavor:** a fixed-capacity array is declared as a local variable.
+- Heap flavor: an array is allocated on the heap after the program knows the requested length.
+
+Both patterns separate physical storage from the logical length the program is currently using.
+
+<!-- Slide 5 -->
+
+---
+
+## Capacity Versus Logical Length
+
+- **Capacity** is the number of elements physically reserved.
+- **Logical length** is the number of elements currently treated as valid.
+- The logical length may change, but it must stay between `0` and `CAPACITY`.
+
+::: notes
+[Graphic suggestion: ten array cells with six marked active and four marked unused.]
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Three Meanings of Size
+
+| Term | Meaning | Example |
+|---|---|---:|
+| Capacity | Physical slots in the array | 100 |
+| Requested length | Amount the user asks to use | 8 |
+| Logical length | Valid elements after validation | 8 |
+
+The requested length becomes the logical length only when it fits the capacity.
+
+<!-- Slide 7 -->
+
+---
+
+## The Stack Pattern
+
+```{.cpp}
+const int CAPACITY = 100;
+double sales[CAPACITY] = {};
+int length;
+
+cout << "Number of sales values: ";
+cin >> length;
+```
+
+The allocation is fixed at compile time. The program chooses how much of it to use at runtime.
+
+<!-- Slide 8 -->
+
+---
+
+## Steps for the Stack Pattern
+
+1. Validate the requested length.
+2. Initialize only active elements.
+
+The next two slides show the two required steps before the array is safe to process.
+
+<!-- Slide 9 -->
+
+---
+
+## Validate the Requested Length
+
+```{.cpp}
+while (length < 0 || length > CAPACITY)
+{
+    cout << "Enter a length from 0 to " << CAPACITY << ": ";
+    cin >> length;
+}
+```
+
+**Boundary:** valid indexes will be `0` through `length - 1`.
+
+<!-- Slide 10 -->
+
+---
+
+## Initialize Only Active Elements
+
+```{.cpp}
+for (int index = 0; index < length; index++)
+{
+    cout << "Sale " << index + 1 << ": ";
+    cin >> sales[index];
+}
+```
+
+The loop follows logical length, not physical capacity.
+
+<!-- Slide 11 -->
+
+---
+
+## Display Only Active Elements
+
+```{.cpp}
+for (int index = 0; index < length; index++)
+{
+    cout << sales[index] << '\n';
+}
+```
+
+**Predict:** if `length` is 4, how many values appear when capacity is 100?
+
+<!-- Slide 12 -->
+
+---
+
+## Complete Fixed-Capacity Program {.smaller}
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    const int CAPACITY = 10;
+    int scores[CAPACITY] = {};
+    int length;
+
+    cout << "How many scores? ";
+    cin >> length;
+    while (length < 0 || length > CAPACITY)
+    {
+        cout << "Enter 0 through " << CAPACITY << ": ";
+        cin >> length;
+    }
+
+    for (int i = 0; i < length; i++)
+    {
+        cout << "Score " << i + 1 << ": ";
+        cin >> scores[i];
+    }
+
+    for (int i = 0; i < length; i++)
+        cout << scores[i] << ' ';
+    cout << '\n';
+    return 0;
+}
+```
+
+<!-- Slide 13 -->
+
+---
+
+## Make the Contract Visible
+
+```{.cpp}
+void display(const int values[], int length);
+double average(const int values[], int length);
+```
+
+- The array parameter provides access to the storage.
+- `length` identifies the valid range.
+- Capacity is needed only by operations that may add elements.
+
+<!-- Slide 14 -->
+
+---
+
+## Compute with Active Elements {.smaller}
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+double average(const int values[], int length);
+
+int main()
+{
+    const int CAPACITY = 8;
+    int values[CAPACITY] = {12, 18, 24, 30};
+    int length = 4;
+
+    cout << average(values, length) << '\n';
+    return 0;
+}
+
+double average(const int values[], int length)
+{
+    if (length == 0)
+        return 0.0;
+
+    int total = 0;
+    for (int i = 0; i < length; i++)
+        total += values[i];
+    return static_cast<double>(total) / length;
+}
+```
+
+<!-- Slide 15 -->
+
+---
+
+## Change Use, Not Allocation
+
+```{.cpp}
+length = 3;  // Three elements are logically active
+length = 6;  // Six elements are logically active
+```
+
+Changing `length` does not create or destroy array cells. Newly activated cells must receive valid values before use.
+
+<!-- Slide 16 -->
+
+---
+
+## Add at the Logical End
+
+```{.cpp}
+bool append(int values[], int& length, int capacity, int value)
+{
+    if (length == capacity)
+        return false;
+
+    values[length] = value;
+    length++;
+    return true;
+}
+```
+
+**Invariant:** `0 <= length && length <= capacity`.
+
+<!-- Slide 17 -->
+
+---
+
+## Remove the Last Element
+
+```{.cpp}
+bool removeLast(int& length)
+{
+    if (length == 0)
+        return false;
+
+    length--;
+    return true;
+}
+```
+
+The stored bits may remain, but that cell is no longer logically valid.
+
+<!-- Slide 18 -->
+
+---
+
+## Trace the Boundary
+
+```{.cpp}
+const int CAPACITY = 5;
+int values[CAPACITY] = {4, 7, 9};
+int length = 3;
+
+append(values, length, CAPACITY, 12);
+removeLast(length);
+```
+
+**Predict:** after both calls, what is `length`, and which indexes are valid?
+
+::: notes
+[Graphic suggestion: before/after array cells with a bold boundary at length.]
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## The Capacity Wall
+
+- Appending works only while unused physical slots remain.
+- A request beyond capacity cannot be satisfied by changing logical length.
+- Runtime allocation removes the predetermined capacity, but adds ownership duties.
+
+<!-- Slide 20 -->
+
+---
+
+## Summary
+
+- Pseudodynamic memory uses fixed capacity with a runtime logical length.
+- Every operation preserves `0 <= length <= capacity` and accesses only valid indexes.
+
+<!-- Slide 21 -->

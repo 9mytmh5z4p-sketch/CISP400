@@ -1,0 +1,191 @@
+<!-- Topic 3: Lab — Array-Backed Stack -->
+<!-- Total slides: 10 -->
+
+# Lab — Array-Backed Stack
+
+---
+
+## Can we build a stack from an array? {.smaller}
+
+- A stack is a LIFO collection: the last item pushed is the first item popped
+- An array provides the storage; functions provide the interface
+
+::: notes
+Total slides: 10
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## What is a stack?
+
+Five operations define a stack:
+
+- `push` — add a value to the top
+- `pop` — remove and return the top value
+- `peek` — read the top value without removing it
+- `isFull` — is there room for another push?
+- `isEmpty` — is there anything to pop?
+
+::: notes
+[Graphic suggestion: vertical stack diagram with labeled arrows — push pointing down onto the top, pop pointing up off the top, peek pointing right at the top element without disturbing it]
+:::
+
+<!-- Slide 2 -->
+
+---
+
+## The data
+
+```{.cpp}
+const int MAX = 10;
+
+int stack[MAX];
+int top = -1;       // -1 means the stack is empty
+```
+
+- `top` tracks the index of the current top element
+- When `top == -1` the stack is empty; when `top == MAX - 1` it is full
+- Every function receives `stack` and `top` as parameters — there are no globals
+
+<!-- Slide 3 -->
+
+---
+
+## Function signatures
+
+```{.cpp}
+bool isFull(int top);
+bool isEmpty(int top);
+void push(int stack[], int& top, int value);
+int  pop(int stack[], int& top);
+int  peek(int stack[], int top);
+```
+
+- `top` is passed by reference to `push` and `pop` — they change it
+- `top` is passed by value to `peek`, `isFull`, and `isEmpty` — read-only
+
+<!-- Slide 4 -->
+
+---
+
+## Task — implement push and isFull
+
+```{.cpp}
+bool isFull(int top) {
+    // your code here
+}
+
+void push(int stack[], int& top, int value) {
+    // your code here
+}
+```
+
+Work with your partner. Five minutes.
+
+<!-- Slide 5 -->
+
+---
+
+## Solution — push and isFull
+
+```{.cpp}
+bool isFull(int top) {
+    return top == MAX - 1;
+}
+
+void push(int stack[], int& top, int value) {
+    if (isFull(top)) return;
+    stack[++top] = value;   // increment top, then store
+}
+```
+
+<!-- Slide 6 -->
+
+---
+
+## Task — pop, peek, and isEmpty
+
+```{.cpp}
+bool isEmpty(int top) {
+    // your code here
+}
+
+int pop(int stack[], int& top) {
+    // your code here
+}
+
+int peek(int stack[], int top) {
+    // your code here
+}
+```
+
+Five minutes.
+
+<!-- Slide 7 -->
+
+---
+
+## Solution — pop, peek, and isEmpty
+
+```{.cpp}
+bool isEmpty(int top) {
+    return top == -1;
+}
+
+int pop(int stack[], int& top) {
+    if (isEmpty(top)) return -1;
+    return stack[top--];    // return value, then decrement
+}
+
+int peek(int stack[], int top) {
+    return stack[top];
+}
+```
+
+<!-- Slide 8 -->
+
+---
+
+## Putting it together
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+const int MAX = 10;
+
+bool isFull(int top);
+bool isEmpty(int top);
+void push(int stack[], int& top, int value);
+int  pop(int stack[], int& top);
+int  peek(int stack[], int top);
+
+int main() {
+    int stack[MAX];
+    int top = -1;
+
+    push(stack, top, 10);
+    push(stack, top, 20);
+    push(stack, top, 30);
+
+    cout << peek(stack, top) << "\n";   // 30
+    cout << pop(stack, top)  << "\n";   // 30
+    cout << pop(stack, top)  << "\n";   // 20
+    return 0;
+}
+
+// ... function definitions from slides above
+```
+
+<!-- Slide 9 -->
+
+---
+
+## Summary
+
+- A stack uses an array for storage and a `top` index to track the current top element
+- The five-function API (push, pop, peek, isFull, isEmpty) is a first example of separating behavior from data
+
+<!-- Slide 10 -->

@@ -1,0 +1,156 @@
+<!-- Topic 7: Performance — Arrays vs. Vectors -->
+<!-- Slides 83–96 -->
+
+# Performance — Arrays vs. Vectors
+<!-- Slide 83 -->
+
+## Are Arrays Faster? {.smaller}
+
++ The honest answer depends on which work is being measured.
+
+::: notes
+Slides 83–96
+:::
+
+<!-- Slide 84 -->
+
+---
+
+## Contiguous Storage
+
+| Array elements | Vector elements |
+|---|---|
+| Adjacent in memory | Adjacent in memory |
+| Efficient sequential traversal | Efficient sequential traversal |
+| Good cache locality | Good cache locality |
+
++ Both containers provide contiguous element storage.
+
+<!-- Slide 85 -->
+
+---
+
+## Element Access Cost
+
+```{.cpp}
+arrayValues[i]
+vectorValues[i]
+```
+
++ With valid indexes, both bracket expressions locate an element directly.
++ Equivalent optimized loops commonly produce equivalent machine work.
+
+<!-- Slide 86 -->
+
+---
+
+## Where the Difference Begins
+
++ A typical local raw array stores its elements with the function’s automatic data.
++ A vector object tracks its element storage, size, and capacity.
++ The vector normally obtains its element storage through dynamic allocation.
+
+::: notes
+“Stack” and “heap” are common implementation terms, not storage guarantees imposed by the C++ language standard.
+:::
+
+<!-- Slide 87 -->
+
+---
+
+## Allocation and Growth
+
++ Creating vector storage may require a dynamic allocation.
++ Growing beyond capacity may allocate a larger block and move existing elements.
++ A fixed raw array never reallocates because its capacity never changes.
+
+<!-- Slide 88 -->
+
+---
+
+## Fixed-Size Vectors
+
+```{.cpp}
+int dataCount;
+cin >> dataCount;
+
+vector<int> values(dataCount);
+```
+
++ Constructing the vector at its final size performs one initial allocation.
++ It avoids repeated growth while retaining runtime sizing.
+
+<!-- Slide 89 -->
+
+---
+
+## Large Collections
+
++ Automatic storage is usually limited.
++ A very large local raw array can exhaust that space.
++ A vector’s dynamically allocated element storage is often the safer design for large collections.
+
+<!-- Slide 90 -->
+
+---
+
+## What Optimizers Remove
+
++ Release builds remove much loop and abstraction overhead.
++ Simple array and vector traversals may compile to nearly identical instructions.
++ Debug-build timing does not predict optimized performance.
+
+<!-- Slide 91 -->
+
+---
+
+## Benchmarking the Right Work
+
++ Time construction separately from traversal.
++ Repeat enough work to reduce timer noise.
++ Use optimized builds and realistic data sizes.
++ Prevent unused results from being optimized away.
+
+<!-- Slide 92 -->
+
+---
+
+## Equivalent Work
+
+| Unfair comparison | Equivalent comparison |
+|---|---|
+| uninitialized array vs. zero-initialized vector | initialize both the same way |
+| array `[]` vs. vector `.at()` | compare `[]` with `[]` |
+| fixed array vs. repeatedly growing vector | give both final storage once |
+
+<!-- Slide 93 -->
+
+---
+
+## When Performance Matters
+
++ Embedded systems with strict memory limits.
++ Real-time systems with allocation restrictions.
++ Measured hot paths that dominate total runtime.
++ Interfaces that require fixed raw storage.
+
+<!-- Slide 94 -->
+
+---
+
+## Choose for Design First
+
++ Begin with the container whose size and safety contract fits the problem.
++ Measure the real program before trading clarity or flexibility for assumed speed.
++ Optimize only the cost that measurements identify.
+
+<!-- Slide 95 -->
+
+---
+
+## Summary
+
++ Arrays are not universally faster than vectors.
++ Allocation and growth create the main difference; equivalent access and traversal often cost the same after optimization.
+
+<!-- Slide 96 -->

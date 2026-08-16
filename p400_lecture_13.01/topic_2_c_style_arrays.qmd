@@ -1,0 +1,310 @@
+<!-- Topic 2: C-Style Arrays and C-Strings -->
+<!-- Slides 24–45 -->
+
+# C-Style Arrays and C-Strings
+<!-- Slide 24 -->
+
+## The Arrays We Already Know? {.smaller}
+
+- `int scores[10]` is a C-style array
+- The name distinguishes it from modern C++ containers
+
+::: notes
+Slides 24–45
+:::
+
+<!-- Slide 25 -->
+
+---
+
+## Three Array Families
+
+| Structure | Size | Interface |
+|---|---|---|
+| C-style array | Fixed at compile time | Built-in syntax |
+| `std::array` | Fixed at compile time | Container interface |
+| `vector` | Runtime and resizable | Container interface |
+
+<!-- Slide 26 -->
+
+---
+
+## Why Keep the Name?
+
+- C++ inherited `type name[size]` arrays from C
+- They remain useful for C-compatible and low-level interfaces
+- In modern C++, the name signals a more limited contract than `std::array`
+
+<!-- Slide 27 -->
+
+---
+
+## Character Arrays
+
+```{.cpp}
+char initials[4] = {'P', '3', '6', '0'};
+```
+
+- Each element stores one character
+- An ordinary character array is not automatically a string
+
+<!-- Slide 28 -->
+
+---
+
+## A String Needs a Terminator
+
+```{.cpp}
+char course[5] = {'P', '3', '6', '0', '\0'};
+```
+
+- `\0` marks the end of a C-string
+- `\0`, `'0'`, and `nullptr` mean different things
+
+<!-- Slide 29 -->
+
+---
+
+## Initializing a C-String
+
+```{.cpp}
+char course[] = "P400";
+
+char sameCourse[5] = {
+    'P', '3', '6', '0', '\0'
+};
+```
+
+- A string literal adds the terminator
+- The first array therefore contains five elements
+
+<!-- Slide 30 -->
+
+---
+
+## Capacity and Length
+
+```{.cpp}
+char name[20] = "Ada";
+```
+
+- Capacity: 20 character positions
+- Length: 3 characters before `\0`
+- Unused capacity allows the text to grow
+
+<!-- Slide 31 -->
+
+---
+
+## `sizeof` Versus `strlen`
+
+```{.cpp}
+char name[20] = "Ada";
+
+cout << sizeof(name) << "\n";  // Array capacity in bytes
+cout << strlen(name) << "\n";  // Number of characters
+```
+
+- `sizeof` reports the array storage in this scope
+- `strlen` counts characters before the terminator
+
+<!-- Slide 32 -->
+
+---
+
+## Processing Until `\0`
+
+```{.cpp}
+for (int index = 0; text[index] != '\0'; index++) {
+    cout << text[index] << "\n";
+}
+```
+
+- The terminator is the loop sentinel
+- The loop does not need to visit unused capacity
+
+<!-- Slide 33 -->
+
+---
+
+## Counting Vowels
+
+```{.cpp}
+int countVowels(const char text[]) {
+    int count = 0;
+
+    for (int i = 0; text[i] != '\0'; i++) {
+        char letter = tolower(text[i]);
+        if (letter == 'a' || letter == 'e' || letter == 'i' ||
+            letter == 'o' || letter == 'u') {
+            count++;
+        }
+    }
+
+    return count;
+}
+```
+
+<!-- Slide 34 -->
+
+---
+
+## Converting to Uppercase
+
+```{.cpp}
+void convertToUpper(char text[]) {
+    for (int i = 0; text[i] != '\0'; i++) {
+        text[i] = toupper(text[i]);
+    }
+}
+```
+
+- The function changes the caller's character array
+- The terminator remains in place
+
+<!-- Slide 35 -->
+
+---
+
+## Reversing a C-String
+
+```{.cpp}
+void reverseText(char text[]) {
+    int left = 0;
+    int right = strlen(text) - 1;
+
+    while (left < right) {
+        char temp = text[left];
+        text[left] = text[right];
+        text[right] = temp;
+        left++;
+        right--;
+    }
+}
+```
+
+<!-- Slide 36 -->
+
+---
+
+## Reading C-Strings
+
+```{.cpp}
+const int CAPACITY = 80;
+char title[CAPACITY] = {};
+
+cin.getline(title, CAPACITY);
+```
+
+- `cin >> title` stops at whitespace
+- `cin.getline` can read spaces and receives the destination capacity
+
+<!-- Slide 37 -->
+
+---
+
+## Measuring C-Strings
+
+```{.cpp}
+#include <cstring>
+
+char message[] = "Hello";
+cout << strlen(message) << "\n";
+```
+
+- `strlen` returns the number of characters before `\0`
+- The terminator is not included in the length
+
+<!-- Slide 38 -->
+
+---
+
+## Comparing C-Strings
+
+```{.cpp}
+int result = strcmp(first, second);
+
+if (result == 0) {
+    cout << "The text matches\n";
+}
+```
+
+- Negative means `first` comes before `second`
+- Zero means equal; positive means `first` comes after `second`
+
+<!-- Slide 39 -->
+
+---
+
+## Copying and Combining
+
+```{.cpp}
+char destination[30] = {};
+
+strcpy(destination, "Programming");
+strcat(destination, " 360");
+```
+
+- `strcpy` replaces the destination text
+- `strcat` appends to it
+- The destination must have enough capacity for the result and `\0`
+
+<!-- Slide 40 -->
+
+---
+
+## Crossing a Function Boundary
+
+```{.cpp}
+void readTitle(char title[], int capacity) {
+    cin.getline(title, capacity);
+}
+```
+
+- A C-style array parameter does not retain its capacity
+- Pass capacity when the function may write into the array
+
+<!-- Slide 41 -->
+
+---
+
+## C-Strings and `string`
+
+| C-string | `string` |
+|---|---|
+| `char[]` plus `\0` | Class that manages its storage |
+| Capacity managed manually | Grows when needed |
+| `<cstring>` functions | Member functions and operators |
+| Needed by some C interfaces | Preferred for new C++ text |
+
+<!-- Slide 42 -->
+
+---
+
+## Where C-Style Arrays Still Appear
+
+- Existing C and C++ libraries
+- Embedded and low-level systems with strict storage requirements
+- Fixed multidimensional arrays
+- Interfaces that exchange raw buffers
+
+<!-- Slide 43 -->
+
+---
+
+## The Tradeoff
+
+- C-style arrays provide fixed, contiguous storage with minimal machinery
+- They do not know their own size or provide a container interface
+- Prefer a modern C++ container unless compatibility requires the built-in form
+
+<!-- Slide 44 -->
+
+---
+
+## Summary
+
+- Previously studied built-in arrays are C-style arrays
+- A C-string adds a `\0` convention that requires explicit capacity and length management
+
+<!-- Slide 45 -->

@@ -1,0 +1,137 @@
+<!-- Topic 1: Introduction to Pointers and Their Value in Modern Programming -->
+<!-- Slides 3–13 -->
+
+# Introduction to Pointers and Their Value in Modern Programming
+<!-- Slide 3 -->
+
+## When Does a Name Stop Being Enough? {.smaller}
+
+- A variable name identifies one object
+- What if the program must choose the object while it is running?
+
+::: notes
+Slides 3–13
+Ask students to imagine one operation that might update either of two counters. The operation is fixed, but its target is not.
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## From Symbol Table to Runtime Data
+
+| Source code | Compiler knowledge | Runtime storage |
+|---|---|---|
+| `score` | name, type, scope, address | `88` |
+
+- A name lets the compiler locate an object
+- A pointer makes an object's address available to the running program
+
+::: notes
+[Graphic suggestion: extend the familiar symbol-table model with an arrow from the address field into a pointer variable.]
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## What Is a Pointer?
+
+- A **pointer** is a typed variable whose value is a memory address
+- The object at that address is the pointer's **target** or **pointee**
+- Using the address to reach the target is **indirection**
+
+<!-- Slide 6 -->
+
+---
+
+## The Pointer Model
+
+| Pointer variable | Stored value | Target variable |
+|---|---|---|
+| `selected` | address of `score` | `score = 88` |
+
+`selected` → address → `score`
+
+- The pointer has its own storage, separate from its target
+
+::: notes
+[Graphic suggestion: draw two memory cells. The selected cell contains an arrow-shaped address that leads to the score cell.]
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## Why Store an Address?
+
+- Select an existing object while the program runs
+- Read or modify that object indirectly
+- Describe positions and ranges in contiguous data
+- Work with libraries and resources whose locations are provided at runtime
+
+<!-- Slide 8 -->
+
+---
+
+## One Operation, Different Targets
+
+| Before selection | Runtime choice | After operation |
+|---|---|---|
+| `regular = 40` | target `regular` | `regular = 35` |
+| `sale = 28` | target `sale` | `sale = 23` |
+
+- The operation stays the same while the selected target changes
+
+::: notes
+Keep this example conceptual. Topic 2 supplies the C++ syntax and execution trace.
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Where Do Pointers Fit in Modern C++?
+
+- Raw pointers commonly express non-owning access or library interoperability
+- Smart pointers express ownership of dynamically allocated resources
+- Containers such as `vector` usually replace manually managed arrays
+- Pointers remain foundational to arrays, iterators, dynamic memory, and polymorphism
+
+<!-- Slide 10 -->
+
+---
+
+## Pointers Are Not the Default
+
+| Need | Prefer |
+|---|---|
+| Store a value | ordinary variable |
+| Require another name for an existing object | reference |
+| Represent address semantics or no target | pointer |
+
+- Use the highest-level tool that clearly expresses the design
+
+<!-- Slide 11 -->
+
+---
+
+## Capability Comes With Responsibility
+
+A pointer may be used only when it identifies:
+
+- An object of the expected type
+- An object whose lifetime has not ended
+- A location within the operation's permitted boundary
+
+<!-- Slide 12 -->
+
+---
+
+## Introduction to Pointers: Summary
+
+- Pointers store typed addresses and provide indirect access to objects
+- Address semantics enable runtime flexibility but add validity and lifetime responsibilities
+- Modern C++ uses raw pointers selectively and prefers higher-level ownership and container tools
+
+<!-- Slide 13 -->

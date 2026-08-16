@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #faf8f5;
+    color: #1a1a1a;
+    font-family: Georgia, 'Times New Roman', serif;
+    display: grid;
+    grid-template-columns: 1fr 88px;
+    min-height: 100vh;
+    font-size: 15px;
+  }
+
+  #content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 16px 16px 58px;
+    gap: 10px;
+  }
+
+  /* ── Code panel ── */
+  #code-panel {
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 8px 14px;
+    line-height: 1.5;
+    font-size: 0.83em;
+    border: 1px solid #d0d0d0;
+    font-family: 'Courier New', monospace;
+  }
+  .code-line {
+    padding: 1px 6px;
+    border-radius: 3px;
+    white-space: pre;
+    transition: background 0.25s, color 0.25s, border-left 0.25s;
+    border-left: 3px solid transparent;
+  }
+  .code-line.dim { color: #c0c0c0; }
+  .code-line.active {
+    background: #fff8e1;
+    border-left: 3px solid #d97706;
+    color: #1a1a1a;
+  }
+  .kw  { color: #7c3aed; }
+  .fn  { color: #1d4ed8; }
+  .num { color: #b45309; }
+  .cm  { color: #9ca3af; font-style: italic; }
+
+  /* ── Memory diagram ── */
+  #memory {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .frame-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .frame-label {
+    font-size: 0.72em;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: Georgia, serif;
+  }
+
+  .frame {
+    border: 2px solid #2563a8;
+    border-radius: 8px;
+    padding: 9px 16px;
+    background: #ffffff;
+    min-width: 172px;
+    transition: border-color 0.3s, background 0.3s, opacity 0.3s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .frame.dead {
+    border-color: #dc2626;
+    background: #fef2f2;
+    opacity: 0.7;
+  }
+  .frame.hidden { opacity: 0; pointer-events: none; }
+
+  .frame-title {
+    font-size: 0.78em;
+    font-weight: bold;
+    color: #1e40af;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+    transition: color 0.3s;
+    font-family: Georgia, serif;
+  }
+  .frame-title.dead { color: #dc2626; }
+
+  .var-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.80em;
+    margin: 2px 0;
+    gap: 20px;
+    font-family: 'Courier New', monospace;
+  }
+  .var-name  { color: #0369a1; }
+  .var-value { color: #166534; transition: color 0.3s; }
+  .var-value.ptr  { color: #92400e; font-weight: bold; }
+  .var-value.dead { color: #dc2626; }
+  .var-value.dim  { color: #d1d5db; }
+  .var-addr  { font-size: 0.75em; color: #9ca3af; }
+
+  /* Arrow connector */
+  #arrow-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 68px;
+    opacity: 0;
+    transition: opacity 0.35s;
+  }
+  #arrow-area.visible { opacity: 1; }
+  #arrow-row {
+    display: flex;
+    align-items: center;
+  }
+  #arrow-shaft {
+    height: 2px;
+    width: 48px;
+    background: #92400e;
+    transition: background 0.3s;
+  }
+  #arrow-shaft.dead { background: #dc2626; }
+  #arrow-head {
+    width: 0; height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 11px solid #92400e;
+    transition: border-left-color 0.3s;
+  }
+  #arrow-head.dead { border-left-color: #dc2626; }
+
+  /* ── Status bar ── */
+  #status {
+    background: #f3f4f6;
+    border-radius: 6px;
+    padding: 7px 14px;
+    font-size: 0.80em;
+    text-align: center;
+    color: #374151;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s, color 0.3s;
+    line-height: 1.45;
+    border: 1px solid #e5e7eb;
+    font-family: Georgia, serif;
+  }
+  #status.warn {
+    background: #fef2f2;
+    color: #dc2626;
+    font-weight: bold;
+    border-color: #fca5a5;
+  }
+  #status code {
+    background: #f3f4f6;
+    border: 1px solid #d1d5db;
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95em;
+    color: #7c3aed;
+  }
+  #status.warn code {
+    background: #fee2e2;
+    border-color: #fca5a5;
+    color: #dc2626;
+  }
+
+  /* ── Controls ── */
+  #controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 12px 8px 58px;
+    border-left: 1px solid #e5e7eb;
+    background: #faf8f5;
+  }
+  button {
+    width: 68px;
+    padding: 8px 0;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.78em;
+    font-family: Georgia, serif;
+    cursor: pointer;
+    background: #f3f4f6;
+    color: #374151;
+    transition: background 0.15s;
+  }
+  button:hover { background: #e5e7eb; }
+  #btn-play {
+    background: #2563a8;
+    color: #ffffff;
+    border-color: #1d4ed8;
+    font-weight: bold;
+  }
+  #btn-play:hover { background: #1d4ed8; }
+
+  #step-counter {
+    font-size: 0.72em;
+    color: #9ca3af;
+    text-align: center;
+    font-family: Georgia, serif;
+  }
+</style>
+</head>
+<body>
+
+<div id="content">
+
+  <div id="code-panel">
+    <div class="code-line" id="ln0"><span class="kw">int</span>* <span class="fn">broken</span>() {</div>
+    <div class="code-line" id="ln1">    <span class="kw">int</span> x = <span class="num">42</span>;</div>
+    <div class="code-line" id="ln2">    <span class="kw">return</span> &amp;x;  <span class="cm">// address of a local variable!</span></div>
+    <div class="code-line" id="ln3">}</div>
+    <div class="code-line" id="ln4">&nbsp;</div>
+    <div class="code-line" id="ln5"><span class="kw">int</span> <span class="fn">main</span>() {</div>
+    <div class="code-line" id="ln6">    <span class="kw">int</span>* p = <span class="fn">broken</span>();</div>
+    <div class="code-line" id="ln7">    cout &lt;&lt; *p &lt;&lt; <span class="num">"\n"</span>;  <span class="cm">// ← what happens here?</span></div>
+    <div class="code-line" id="ln8">    <span class="kw">return</span> <span class="num">0</span>;</div>
+    <div class="code-line" id="ln9">}</div>
+  </div>
+
+  <div id="memory">
+    <div class="frame-wrap">
+      <div class="frame-label">Stack</div>
+      <div class="frame" id="main-frame">
+        <div class="frame-title" id="main-title">main()</div>
+        <div class="var-row">
+          <span class="var-name">p</span>
+          <span class="var-value dim" id="p-value">—</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="arrow-area">
+      <div id="arrow-row">
+        <div id="arrow-shaft"></div>
+        <div id="arrow-head"></div>
+      </div>
+    </div>
+
+    <div class="frame-wrap">
+      <div class="frame-label" id="right-label">&nbsp;</div>
+      <div class="frame hidden" id="broken-frame">
+        <div class="frame-title" id="broken-title">broken()</div>
+        <div class="var-row">
+          <span class="var-name" id="x-name">x</span>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;">
+            <span class="var-value" id="x-value">42</span>
+            <span class="var-addr" id="x-addr">0x7ff4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="status"></div>
+
+</div>
+
+<div id="controls">
+  <button id="btn-play">▶ Play</button>
+  <button id="btn-step">Step ›</button>
+  <button id="btn-reset">↺ Reset</button>
+  <div id="step-counter">0 / 4</div>
+</div>
+
+<script>
+  const STATES = [
+    {
+      highlight: 6,
+      pValue: '—', pStyle: 'dim',
+      showBroken: false, brokenDead: false,
+      arrowVisible: false, arrowDead: false,
+      xValue: '42', xDead: false,
+      statusHTML: '<code>main()</code> begins — <code>p</code> is declared; <code>broken()</code> is about to be called.',
+      warn: false
+    },
+    {
+      highlight: 1,
+      pValue: '—', pStyle: 'dim',
+      showBroken: true, brokenDead: false,
+      arrowVisible: false, arrowDead: false,
+      xValue: '42', xDead: false,
+      statusHTML: '<code>broken()</code> is called — a new stack frame is pushed and <code>x = 42</code> is stored at address <code>0x7ff4</code>.',
+      warn: false
+    },
+    {
+      highlight: 2,
+      pValue: '0x7ff4', pStyle: 'ptr',
+      showBroken: true, brokenDead: false,
+      arrowVisible: true, arrowDead: false,
+      xValue: '42', xDead: false,
+      statusHTML: '<code>return &amp;x</code> — the address of <code>x</code> is returned and stored in <code>p</code>.',
+      warn: false
+    },
+    {
+      highlight: 6,
+      pValue: '0x7ff4', pStyle: 'ptr',
+      showBroken: true, brokenDead: true,
+      arrowVisible: true, arrowDead: true,
+      xValue: '???', xDead: true,
+      statusHTML: '<code>broken()</code> returns — its stack frame is <strong>destroyed</strong>. <code>x</code> no longer exists, but <code>p</code> still holds its address.',
+      warn: false
+    },
+    {
+      highlight: 7,
+      pValue: '0x7ff4', pStyle: 'ptr',
+      showBroken: true, brokenDead: true,
+      arrowVisible: true, arrowDead: true,
+      xValue: '???', xDead: true,
+      statusHTML: '⚠ <code>*p</code> reads from destroyed memory — <strong>UNDEFINED BEHAVIOR</strong>. The program may crash, print garbage, or appear to work by accident.',
+      warn: true
+    }
+  ];
+
+  const TOTAL = STATES.length - 1;
+  let cur = 0, playing = false, timer = null;
+
+  const lines       = document.querySelectorAll('.code-line');
+  const pValueEl    = document.getElementById('p-value');
+  const brokenFrame = document.getElementById('broken-frame');
+  const brokenTitle = document.getElementById('broken-title');
+  const arrowArea   = document.getElementById('arrow-area');
+  const arrowShaft  = document.getElementById('arrow-shaft');
+  const arrowHead   = document.getElementById('arrow-head');
+  const xValueEl    = document.getElementById('x-value');
+  const xAddrEl     = document.getElementById('x-addr');
+  const statusEl    = document.getElementById('status');
+  const counterEl   = document.getElementById('step-counter');
+  const btnPlay     = document.getElementById('btn-play');
+
+  function render(s) {
+    lines.forEach((ln, i) => {
+      ln.classList.remove('active', 'dim');
+      ln.classList.add(i === s.highlight ? 'active' : 'dim');
+    });
+
+    pValueEl.textContent = s.pValue;
+    pValueEl.className = 'var-value ' + s.pStyle;
+
+    if (s.showBroken) {
+      brokenFrame.classList.remove('hidden');
+      brokenFrame.classList.toggle('dead', s.brokenDead);
+      brokenTitle.textContent = s.brokenDead ? '☠ destroyed' : 'broken()';
+      brokenTitle.className = 'frame-title' + (s.brokenDead ? ' dead' : '');
+      xValueEl.textContent = s.xValue;
+      xValueEl.className = 'var-value' + (s.xDead ? ' dead' : '');
+      xAddrEl.style.visibility = s.xDead ? 'hidden' : 'visible';
+    } else {
+      brokenFrame.classList.add('hidden');
+    }
+
+    arrowArea.classList.toggle('visible', s.arrowVisible);
+    arrowShaft.classList.toggle('dead', s.arrowDead);
+    arrowHead.classList.toggle('dead', s.arrowDead);
+
+    statusEl.innerHTML = s.statusHTML;
+    statusEl.className = s.warn ? 'warn' : '';
+
+    counterEl.textContent = cur + ' / ' + TOTAL;
+  }
+
+  function advance() {
+    if (cur >= TOTAL) { reset(); return; }
+    cur++;
+    render(STATES[cur]);
+  }
+
+  function reset() {
+    cur = 0;
+    render(STATES[0]);
+  }
+
+  function setPlaying(on) {
+    playing = on;
+    btnPlay.textContent = on ? '⏸ Pause' : '▶ Play';
+    if (on) {
+      timer = setInterval(() => {
+        advance();
+        if (cur >= TOTAL) setPlaying(false);
+      }, 1200);
+    } else {
+      clearInterval(timer); timer = null;
+    }
+  }
+
+  btnPlay.addEventListener('click', () => setPlaying(!playing));
+  document.getElementById('btn-step').addEventListener('click', () => { setPlaying(false); advance(); });
+  document.getElementById('btn-reset').addEventListener('click', () => { setPlaying(false); reset(); });
+
+  render(STATES[0]);
+</script>
+</body>
+</html>

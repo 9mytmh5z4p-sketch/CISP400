@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="p400_lecture_13.02_files/libs/clipboard/clipboard.min.js"></script>
+<script src="p400_lecture_13.02_files/libs/quarto-html/tabby.min.js"></script>
+<script src="p400_lecture_13.02_files/libs/quarto-html/popper.min.js"></script>
+<script src="p400_lecture_13.02_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="p400_lecture_13.02_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="p400_lecture_13.02_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="p400_lecture_13.02_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.26">
+
+  <meta name="author" content="Dr.&nbsp;Caleb Fowler">
+  <title>CISP 400 Object-Oriented Programming</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="p400_lecture_13.02_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="p400_lecture_13.02_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="p400_lecture_13.02_files/libs/revealjs/dist/theme/quarto-99eeafcedac04850354b682963cedae3.css">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <link href="p400_lecture_13.02_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="p400_lecture_13.02_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="p400_lecture_13.02_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="p400_lecture_13.02_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">CISP 400 Object-Oriented Programming</h1>
+  <p class="subtitle">C++</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Dr.&nbsp;Caleb Fowler 
+</div>
+</div>
+</div>
+
+</section>
+<section id="last-time" class="title-slide slide level1 center">
+<h1>Last Time</h1>
+<ul>
+<li class="fragment"><strong>Multidimensional Arrays</strong></li>
+<li class="fragment"><strong>C-Style Arrays and C-Strings</strong></li>
+<li class="fragment"><strong><code>std::array</code></strong></li>
+</ul>
+<aside class="notes">
+<p>Recall that variables occupy storage and arrays place elements contiguously. Pointers make those storage locations available to the running program.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 1 -->
+</section>
+
+<section id="todays-agenda" class="title-slide slide level1 center">
+<h1>Today’s Agenda</h1>
+<ul>
+<li>Introduction to Pointers and Their Value in Modern Programming</li>
+<li>Initializing and Using Pointers</li>
+</ul>
+<aside class="notes">
+<p>Begin with the reason pointers remain useful, then build the mechanics of safe scalar pointer use.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 2 -->
+<!-- Topic 1: Introduction to Pointers and Their Value in Modern Programming -->
+<!-- Slides 3–13 -->
+</section>
+
+<section>
+<section id="introduction-to-pointers-and-their-value-in-modern-programming" class="title-slide slide level1 center">
+<h1>Introduction to Pointers and Their Value in Modern Programming</h1>
+<!-- Slide 3 -->
+</section>
+<section id="when-does-a-name-stop-being-enough" class="slide level2 smaller">
+<h2>When Does a Name Stop Being Enough?</h2>
+<ul>
+<li>A variable name identifies one object</li>
+<li>What if the program must choose the object while it is running?</li>
+</ul>
+<aside class="notes">
+<p>Slides 3–13 Ask students to imagine one operation that might update either of two counters. The operation is fixed, but its target is not.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 4 -->
+</section>
+<section id="from-symbol-table-to-runtime-data" class="slide level2">
+<h2>From Symbol Table to Runtime Data</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Source code</th>
+<th>Compiler knowledge</th>
+<th>Runtime storage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>score</code></td>
+<td>name, type, scope, address</td>
+<td><code>88</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>A name lets the compiler locate an object</li>
+<li>A pointer makes an object’s address available to the running program</li>
+</ul>
+<aside class="notes">
+<p>[Graphic suggestion: extend the familiar symbol-table model with an arrow from the address field into a pointer variable.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 5 -->
+</section>
+<section id="what-is-a-pointer" class="slide level2">
+<h2>What Is a Pointer?</h2>
+<ul>
+<li>A <strong>pointer</strong> is a typed variable whose value is a memory address</li>
+<li>The object at that address is the pointer’s <strong>target</strong> or <strong>pointee</strong></li>
+<li>Using the address to reach the target is <strong>indirection</strong></li>
+</ul>
+<!-- Slide 6 -->
+</section>
+<section id="the-pointer-model" class="slide level2">
+<h2>The Pointer Model</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Pointer variable</th>
+<th>Stored value</th>
+<th>Target variable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>selected</code></td>
+<td>address of <code>score</code></td>
+<td><code>score = 88</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>selected</code> → address → <code>score</code></p>
+<ul>
+<li>The pointer has its own storage, separate from its target</li>
+</ul>
+<aside class="notes">
+<p>[Graphic suggestion: draw two memory cells. The selected cell contains an arrow-shaped address that leads to the score cell.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 7 -->
+</section>
+<section id="why-store-an-address" class="slide level2">
+<h2>Why Store an Address?</h2>
+<ul>
+<li>Select an existing object while the program runs</li>
+<li>Read or modify that object indirectly</li>
+<li>Describe positions and ranges in contiguous data</li>
+<li>Work with libraries and resources whose locations are provided at runtime</li>
+</ul>
+<!-- Slide 8 -->
+</section>
+<section id="one-operation-different-targets" class="slide level2">
+<h2>One Operation, Different Targets</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Before selection</th>
+<th>Runtime choice</th>
+<th>After operation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>regular = 40</code></td>
+<td>target <code>regular</code></td>
+<td><code>regular = 35</code></td>
+</tr>
+<tr class="even">
+<td><code>sale = 28</code></td>
+<td>target <code>sale</code></td>
+<td><code>sale = 23</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The operation stays the same while the selected target changes</li>
+</ul>
+<aside class="notes">
+<p>Keep this example conceptual. Topic 2 supplies the C++ syntax and execution trace.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 9 -->
+</section>
+<section id="where-do-pointers-fit-in-modern-c" class="slide level2">
+<h2>Where Do Pointers Fit in Modern C++?</h2>
+<ul>
+<li>Raw pointers commonly express non-owning access or library interoperability</li>
+<li>Smart pointers express ownership of dynamically allocated resources</li>
+<li>Containers such as <code>vector</code> usually replace manually managed arrays</li>
+<li>Pointers remain foundational to arrays, iterators, dynamic memory, and polymorphism</li>
+</ul>
+<!-- Slide 10 -->
+</section>
+<section id="pointers-are-not-the-default" class="slide level2">
+<h2>Pointers Are Not the Default</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Need</th>
+<th>Prefer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Store a value</td>
+<td>ordinary variable</td>
+</tr>
+<tr class="even">
+<td>Require another name for an existing object</td>
+<td>reference</td>
+</tr>
+<tr class="odd">
+<td>Represent address semantics or no target</td>
+<td>pointer</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Use the highest-level tool that clearly expresses the design</li>
+</ul>
+<!-- Slide 11 -->
+</section>
+<section id="capability-comes-with-responsibility" class="slide level2">
+<h2>Capability Comes With Responsibility</h2>
+<p>A pointer may be used only when it identifies:</p>
+<ul>
+<li>An object of the expected type</li>
+<li>An object whose lifetime has not ended</li>
+<li>A location within the operation’s permitted boundary</li>
+</ul>
+<!-- Slide 12 -->
+</section>
+<section id="introduction-to-pointers-summary" class="slide level2">
+<h2>Introduction to Pointers: Summary</h2>
+<ul>
+<li>Pointers store typed addresses and provide indirect access to objects</li>
+<li>Address semantics enable runtime flexibility but add validity and lifetime responsibilities</li>
+<li>Modern C++ uses raw pointers selectively and prefers higher-level ownership and container tools</li>
+</ul>
+<!-- Slide 13 -->
+<!-- Topic 2: Initializing and Using Pointers -->
+<!-- Slides 14–33 -->
+</section></section>
+<section>
+<section id="initializing-and-using-pointers" class="title-slide slide level1 center">
+<h1>Initializing and Using Pointers</h1>
+<!-- Slide 14 -->
+</section>
+<section id="how-does-a-pointer-reach-a-variable" class="slide level2 smaller">
+<h2>How Does a Pointer Reach a Variable?</h2>
+<ul>
+<li>The target already has an address</li>
+<li>How do we obtain that address and store it safely?</li>
+</ul>
+<aside class="notes">
+<p>Slides 14–33</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 15 -->
+</section>
+<section id="the-address-operator" class="slide level2">
+<h2>The Address Operator</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a><span class="dt">int</span> score <span class="op">=</span> <span class="dv">88</span><span class="op">;</span></span>
+<span id="cb1-2"><a href=""></a></span>
+<span id="cb1-3"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="op">&amp;</span>score <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Unary <code>&amp;</code> produces the address of an object</li>
+<li>Printed addresses are implementation-controlled identifiers, not meaningful numbers to interpret</li>
+</ul>
+<!-- Slide 16 -->
+</section>
+<section id="declaring-a-pointer-variable" class="slide level2">
+<h2>Declaring a Pointer Variable</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a><span class="dt">int</span><span class="op">*</span> scorePtr<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Part</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>int</code></td>
+<td>target type</td>
+</tr>
+<tr class="even">
+<td><code>*</code></td>
+<td>pointer declarator</td>
+</tr>
+<tr class="odd">
+<td><code>scorePtr</code></td>
+<td>pointer variable name</td>
+</tr>
+</tbody>
+</table>
+<!-- Slide 17 -->
+</section>
+<section id="match-the-pointer-to-the-target" class="slide level2">
+<h2>Match the Pointer to the Target</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a><span class="dt">int</span> score <span class="op">=</span> <span class="dv">88</span><span class="op">;</span></span>
+<span id="cb3-2"><a href=""></a><span class="dt">double</span> average <span class="op">=</span> <span class="fl">91.5</span><span class="op">;</span></span>
+<span id="cb3-3"><a href=""></a></span>
+<span id="cb3-4"><a href=""></a><span class="dt">int</span><span class="op">*</span> scorePtr <span class="op">=</span> <span class="op">&amp;</span>score<span class="op">;</span></span>
+<span id="cb3-5"><a href=""></a><span class="co">// int* wrongPtr = &amp;average; // incompatible target type</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 18 -->
+</section>
+<section id="declare-one-pointer-at-a-time" class="slide level2">
+<h2>Declare One Pointer at a Time</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href=""></a><span class="dt">int</span><span class="op">*</span> first<span class="op">,</span> second<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>first</code> is an <code>int</code> pointer</li>
+<li><code>second</code> is an ordinary <code>int</code></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a><span class="dt">int</span><span class="op">*</span> first<span class="op">;</span></span>
+<span id="cb5-2"><a href=""></a><span class="dt">int</span><span class="op">*</span> second<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 19 -->
+</section>
+<section id="initialize-with-an-address" class="slide level2">
+<h2>Initialize With an Address</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href=""></a><span class="dt">int</span> score <span class="op">=</span> <span class="dv">88</span><span class="op">;</span></span>
+<span id="cb6-2"><a href=""></a><span class="dt">int</span><span class="op">*</span> scorePtr <span class="op">=</span> <span class="op">&amp;</span>score<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Expression</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&amp;score</code></td>
+<td>address of <code>score</code></td>
+</tr>
+<tr class="even">
+<td><code>scorePtr</code></td>
+<td>address stored in the pointer</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>[Graphic suggestion: show separate cells for score and scorePtr, then draw the stored address as an arrow from scorePtr to score.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 20 -->
+</section>
+<section id="initialize-with-nullptr" class="slide level2">
+<h2>Initialize With <code>nullptr</code></h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a><span class="dt">int</span><span class="op">*</span> selected <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>nullptr</code> deliberately represents no target</li>
+<li>Use it when a valid target is not yet available</li>
+<li>In modern C++, prefer <code>nullptr</code> over <code>NULL</code> or <code>0</code></li>
+</ul>
+<!-- Slide 21 -->
+</section>
+<section id="valid-null-or-indeterminate" class="slide level2">
+<h2>Valid, Null, or Indeterminate?</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Pointer state</th>
+<th>Meaning</th>
+<th>Dereference?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>valid address</td>
+<td>identifies a live target</td>
+<td>yes</td>
+</tr>
+<tr class="even">
+<td><code>nullptr</code></td>
+<td>deliberately identifies no target</td>
+<td>no</td>
+</tr>
+<tr class="odd">
+<td>uninitialized</td>
+<td>indeterminate value</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Reading or dereferencing an uninitialized pointer has undefined behavior</li>
+</ul>
+<!-- Slide 22 -->
+</section>
+<section id="what-does-dereferencing-mean" class="slide level2">
+<h2>What Does Dereferencing Mean?</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a><span class="dt">int</span> score <span class="op">=</span> <span class="dv">88</span><span class="op">;</span></span>
+<span id="cb8-2"><a href=""></a><span class="dt">int</span><span class="op">*</span> scorePtr <span class="op">=</span> <span class="op">&amp;</span>score<span class="op">;</span></span>
+<span id="cb8-3"><a href=""></a></span>
+<span id="cb8-4"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>scorePtr <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Unary <code>*</code> follows the stored address to the target</li>
+<li>Here, <code>*</code> is dereference—not multiplication or declaration syntax</li>
+</ul>
+<!-- Slide 23 -->
+</section>
+<section id="four-related-expressions" class="slide level2">
+<h2>Four Related Expressions</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href=""></a><span class="dt">int</span> value <span class="op">=</span> <span class="dv">88</span><span class="op">;</span></span>
+<span id="cb9-2"><a href=""></a><span class="dt">int</span><span class="op">*</span> ptr <span class="op">=</span> <span class="op">&amp;</span>value<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Expression</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>value</code></td>
+<td>target value</td>
+</tr>
+<tr class="even">
+<td><code>&amp;value</code></td>
+<td>target address</td>
+</tr>
+<tr class="odd">
+<td><code>ptr</code></td>
+<td>stored address</td>
+</tr>
+<tr class="even">
+<td><code>*ptr</code></td>
+<td>value reached through <code>ptr</code></td>
+</tr>
+</tbody>
+</table>
+<!-- Slide 24 -->
+</section>
+<section id="reading-through-a-pointer" class="slide level2">
+<h2>Reading Through a Pointer</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href=""></a><span class="dt">int</span> score <span class="op">=</span> <span class="dv">88</span><span class="op">;</span></span>
+<span id="cb10-2"><a href=""></a><span class="dt">int</span><span class="op">*</span> scorePtr <span class="op">=</span> <span class="op">&amp;</span>score<span class="op">;</span></span>
+<span id="cb10-3"><a href=""></a></span>
+<span id="cb10-4"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>scorePtr <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>scorePtr</code> → address of <code>score</code> → <code>88</code></p>
+<aside class="notes">
+<p>Trace three distinct facts: the pointer’s stored address, the target’s value, and whether dereferencing is valid.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 25 -->
+</section>
+<section id="writing-through-a-pointer" class="slide level2">
+<h2>Writing Through a Pointer</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href=""></a><span class="dt">int</span> score <span class="op">=</span> <span class="dv">88</span><span class="op">;</span></span>
+<span id="cb11-2"><a href=""></a><span class="dt">int</span><span class="op">*</span> scorePtr <span class="op">=</span> <span class="op">&amp;</span>score<span class="op">;</span></span>
+<span id="cb11-3"><a href=""></a></span>
+<span id="cb11-4"><a href=""></a><span class="op">*</span>scorePtr <span class="op">=</span> <span class="dv">95</span><span class="op">;</span></span>
+<span id="cb11-5"><a href=""></a>cout <span class="op">&lt;&lt;</span> score <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>score</code> changes from <code>88</code> to <code>95</code></li>
+<li><code>scorePtr</code> continues to store the same address</li>
+</ul>
+<!-- Slide 26 -->
+</section>
+<section id="predict-the-state" class="slide level2">
+<h2>Predict the State</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href=""></a><span class="dt">int</span> points <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb12-2"><a href=""></a><span class="dt">int</span><span class="op">*</span> ptr <span class="op">=</span> <span class="op">&amp;</span>points<span class="op">;</span></span>
+<span id="cb12-3"><a href=""></a></span>
+<span id="cb12-4"><a href=""></a><span class="op">*</span>ptr <span class="op">=</span> <span class="dv">14</span><span class="op">;</span></span>
+<span id="cb12-5"><a href=""></a>points <span class="op">+=</span> <span class="dv">3</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>What is <code>points</code>?</li>
+<li>What is <code>*ptr</code>?</li>
+<li>Has the address stored in <code>ptr</code> changed?</li>
+</ul>
+<aside class="notes">
+<p>Answer: points and *ptr are both 17. ptr still stores the address of points.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 27 -->
+</section>
+<section id="changing-the-target" class="slide level2">
+<h2>Changing the Target</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href=""></a><span class="dt">int</span> first <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb13-2"><a href=""></a><span class="dt">int</span> second <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></span>
+<span id="cb13-3"><a href=""></a><span class="dt">int</span><span class="op">*</span> ptr <span class="op">=</span> <span class="op">&amp;</span>first<span class="op">;</span></span>
+<span id="cb13-4"><a href=""></a></span>
+<span id="cb13-5"><a href=""></a>ptr <span class="op">=</span> <span class="op">&amp;</span>second<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>ptr = &amp;second;</code> changes the target</li>
+<li><code>*ptr = 25;</code> would change the current target’s value</li>
+</ul>
+<!-- Slide 28 -->
+</section>
+<section id="one-operation-runtime-choice" class="slide level2">
+<h2>One Operation, Runtime Choice</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href=""></a><span class="dt">int</span> regularPrice <span class="op">=</span> <span class="dv">40</span><span class="op">;</span></span>
+<span id="cb14-2"><a href=""></a><span class="dt">int</span> salePrice <span class="op">=</span> <span class="dv">28</span><span class="op">;</span></span>
+<span id="cb14-3"><a href=""></a><span class="dt">bool</span> saleIsActive <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb14-4"><a href=""></a></span>
+<span id="cb14-5"><a href=""></a><span class="dt">int</span><span class="op">*</span> selected <span class="op">=</span> <span class="op">&amp;</span>regularPrice<span class="op">;</span></span>
+<span id="cb14-6"><a href=""></a><span class="cf">if</span> <span class="op">(</span>saleIsActive<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb14-7"><a href=""></a>    selected <span class="op">=</span> <span class="op">&amp;</span>salePrice<span class="op">;</span></span>
+<span id="cb14-8"><a href=""></a><span class="op">}</span></span>
+<span id="cb14-9"><a href=""></a></span>
+<span id="cb14-10"><a href=""></a><span class="op">*</span>selected <span class="op">-=</span> <span class="dv">5</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 29 -->
+</section>
+<section id="check-before-dereferencing" class="slide level2">
+<h2>Check Before Dereferencing</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href=""></a><span class="dt">int</span><span class="op">*</span> selected <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb15-2"><a href=""></a></span>
+<span id="cb15-3"><a href=""></a><span class="cf">if</span> <span class="op">(</span>selected <span class="op">!=</span> <span class="kw">nullptr</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb15-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="op">*</span>selected <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb15-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>A null check prevents dereferencing the no-target state</li>
+<li>Non-null is necessary, but the target must also still be alive</li>
+</ul>
+<!-- Slide 30 -->
+</section>
+<section id="when-a-target-disappears" class="slide level2">
+<h2>When a Target Disappears</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href=""></a><span class="dt">int</span><span class="op">*</span> ptr <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb16-2"><a href=""></a></span>
+<span id="cb16-3"><a href=""></a><span class="op">{</span></span>
+<span id="cb16-4"><a href=""></a>    <span class="dt">int</span> temporary <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb16-5"><a href=""></a>    ptr <span class="op">=</span> <span class="op">&amp;</span>temporary<span class="op">;</span></span>
+<span id="cb16-6"><a href=""></a><span class="op">}</span> <span class="co">// temporary's lifetime ends</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>ptr</code> is now dangling: it contains an address but has no live target</li>
+<li>A null pointer and a dangling pointer are different invalid states</li>
+</ul>
+<!-- Slide 31 -->
+</section>
+<section id="a-complete-pointer-lifecycle" class="slide level2">
+<h2>A Complete Pointer Lifecycle</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href=""></a><span class="dt">int</span> first <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb17-2"><a href=""></a><span class="dt">int</span> second <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></span>
+<span id="cb17-3"><a href=""></a><span class="dt">int</span><span class="op">*</span> selected <span class="op">=</span> <span class="op">&amp;</span>first<span class="op">;</span></span>
+<span id="cb17-4"><a href=""></a></span>
+<span id="cb17-5"><a href=""></a><span class="op">*</span>selected <span class="op">+=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb17-6"><a href=""></a>selected <span class="op">=</span> <span class="op">&amp;</span>second<span class="op">;</span></span>
+<span id="cb17-7"><a href=""></a></span>
+<span id="cb17-8"><a href=""></a><span class="cf">if</span> <span class="op">(</span>selected <span class="op">!=</span> <span class="kw">nullptr</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb17-9"><a href=""></a>    <span class="op">*</span>selected <span class="op">+=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb17-10"><a href=""></a><span class="op">}</span></span>
+<span id="cb17-11"><a href=""></a></span>
+<span id="cb17-12"><a href=""></a>selected <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>Trace: selected starts at first; first becomes 15; selected is reseated to second; second becomes 25; selected is reset to the deliberate no-target state.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 32 -->
+</section>
+<section id="initializing-and-using-pointers-summary" class="slide level2">
+<h2>Initializing and Using Pointers: Summary</h2>
+<ul>
+<li>Initialize every pointer with a valid address or <code>nullptr</code></li>
+<li>Dereference only when the pointer identifies a compatible, live target</li>
+<li>Distinguish changing a pointer’s target from changing the target’s value</li>
+</ul>
+<!-- Slide 33 -->
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="key-takeaways" class="title-slide slide level1 center">
+<h1>Key Takeaways</h1>
+<ul>
+<li>A pointer is a typed variable that stores an address</li>
+<li>Dereferencing follows that address to read or modify a live target</li>
+<li>Initialize pointers with a valid address or <code>nullptr</code></li>
+<li>Modern C++ uses raw pointers selectively and prefers higher-level tools when possible</li>
+</ul>
+<!-- Slide 34 -->
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="next-time" class="title-slide slide level1 center">
+<h1>Next Time</h1>
+<ul>
+<li>Arrays and pointers</li>
+<li>Pointer arithmetic and comparison</li>
+<li>Choosing direct access, references, or pointers</li>
+</ul>
+<!-- Slide 35 -->
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="appendix" class="title-slide slide level1 center">
+<h1>Appendix</h1>
+<!-- Slide 36 -->
+</section>
+<section id="introduction-to-pointers-good-practices" class="slide level2">
+<h2>Introduction to Pointers: Good Practices</h2>
+<ul>
+<li>Begin with the object and explain why its address must become program data</li>
+<li>Use raw pointers only when address semantics clearly serve the design</li>
+</ul>
+<!-- Slide 37 -->
+</section>
+<section id="introduction-to-pointers-common-mistakes" class="slide level2">
+<h2>Introduction to Pointers: Common Mistakes</h2>
+<ul>
+<li>Treating a pointer as though it stores the target object</li>
+<li>Assuming modern C++ uses raw pointers as the default ownership tool</li>
+</ul>
+<!-- Slide 38 -->
+</section>
+<section id="introduction-to-pointers-more-examples" class="slide level2">
+<h2>Introduction to Pointers: More Examples</h2>
+<ul>
+<li>Select one of several counters while the program runs</li>
+<li>Receive non-owning access to an object managed elsewhere</li>
+</ul>
+<!-- Slide 39 -->
+</section>
+<section id="introduction-to-pointers-practice-problems" class="slide level2">
+<h2>Introduction to Pointers: Practice Problems</h2>
+<ol type="1">
+<li>Draw a pointer variable, its stored address, and its target as three separate parts.</li>
+<li>Identify a situation that requires runtime target selection.</li>
+</ol>
+<!-- Slide 40 -->
+</section>
+<section id="introduction-to-pointers-ai-search-terms" class="slide level2">
+<h2>Introduction to Pointers: AI Search Terms</h2>
+<ul>
+<li>C++ pointer indirection memory model</li>
+<li>modern C++ raw pointer non-owning access</li>
+<li>raw pointers versus smart pointers C++</li>
+</ul>
+<!-- Slide 41 -->
+</section>
+<section id="introduction-to-pointers-questions-for-reflection" class="slide level2">
+<h2>Introduction to Pointers: Questions for Reflection</h2>
+<ul>
+<li>What capability does an address provide beyond a variable name?</li>
+<li>Why should raw pointers not be the default tool for every variable relationship?</li>
+</ul>
+<!-- Slide 42 -->
+</section>
+<section id="initializing-and-using-pointers-good-practices" class="slide level2">
+<h2>Initializing and Using Pointers: Good Practices</h2>
+<ul>
+<li>Declare one pointer per statement</li>
+<li>Initialize immediately with a valid address or <code>nullptr</code></li>
+<li>Verify the target is valid and live before dereferencing</li>
+</ul>
+<!-- Slide 43 -->
+</section>
+<section id="initializing-and-using-pointers-common-mistakes" class="slide level2">
+<h2>Initializing and Using Pointers: Common Mistakes</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href=""></a><span class="dt">int</span><span class="op">*</span> ptr<span class="op">;</span></span>
+<span id="cb18-2"><a href=""></a><span class="op">*</span>ptr <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>ptr</code> is uninitialized, so dereferencing it has undefined behavior</li>
+</ul>
+<!-- Slide 44 -->
+</section>
+<section id="initializing-and-using-pointers-more-examples" class="slide level2">
+<h2>Initializing and Using Pointers: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href=""></a>string first <span class="op">=</span> <span class="st">"Ada"</span><span class="op">;</span></span>
+<span id="cb19-2"><a href=""></a>string second <span class="op">=</span> <span class="st">"Grace"</span><span class="op">;</span></span>
+<span id="cb19-3"><a href=""></a>string<span class="op">*</span> selected <span class="op">=</span> <span class="op">&amp;</span>first<span class="op">;</span></span>
+<span id="cb19-4"><a href=""></a></span>
+<span id="cb19-5"><a href=""></a>selected <span class="op">=</span> <span class="op">&amp;</span>second<span class="op">;</span></span>
+<span id="cb19-6"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>selected <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 45 -->
+</section>
+<section id="initializing-and-using-pointers-practice-problems" class="slide level2">
+<h2>Initializing and Using Pointers: Practice Problems</h2>
+<ol type="1">
+<li>Declare and initialize a pointer to a <code>double</code> variable.</li>
+<li>Predict the target after a pointer is reseated and dereferenced.</li>
+<li>Explain why a dangling pointer is different from <code>nullptr</code>.</li>
+</ol>
+<!-- Slide 46 -->
+</section>
+<section id="initializing-and-using-pointers-ai-search-terms" class="slide level2">
+<h2>Initializing and Using Pointers: AI Search Terms</h2>
+<ul>
+<li>C++ address-of and dereference operators</li>
+<li>C++ nullptr versus dangling pointer</li>
+<li>C++ pointer reseating versus indirect assignment</li>
+</ul>
+<!-- Slide 47 -->
+</section>
+<section id="initializing-and-using-pointers-questions-for-reflection" class="slide level2">
+<h2>Initializing and Using Pointers: Questions for Reflection</h2>
+<ul>
+<li>What changes in <code>ptr = &amp;value</code> compared with <code>*ptr = value</code>?</li>
+<li>What must be true before a pointer can be safely dereferenced?</li>
+</ul>
+<!-- Slide 48 -->
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>CISP 400 · Fowler</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="p400_lecture_13.02_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="p400_lecture_13.02_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="p400_lecture_13.02_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="p400_lecture_13.02_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="p400_lecture_13.02_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="p400_lecture_13.02_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="p400_lecture_13.02_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="p400_lecture_13.02_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="p400_lecture_13.02_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="p400_lecture_13.02_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

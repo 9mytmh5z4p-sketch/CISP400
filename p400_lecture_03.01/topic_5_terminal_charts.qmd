@@ -1,0 +1,126 @@
+<!-- Topic 5: Terminal Charts and Graphs -->
+<!-- Slides 57-66 -->
+
+# Terminal Charts and Graphs
+<!-- Slide 57 -->
+
+## When Output Becomes a Display {.smaller}
+
++ How can plain terminal output become something easier to scan?
++ Terminal charts use labels, spacing, and repeated characters to show simple data.
+
+::: notes
+Slides 57-66
+:::
+
+<!-- Slide 58 -->
+
+---
+
+## Chart as Design Problem
+
+An output display still starts with IPO.
+
+| Input | Processing | Output |
+|---|---|---|
+| labels, values | choose scale and spacing | chart or table |
+
+The chart is planned before it is printed.
+
+<!-- Slide 59 -->
+
+---
+
+## Bar Charts With Characters
+
+A terminal bar chart uses repeated characters to represent quantity.
+
+```text
+Apples  #####
+Oranges ###
+```
+
+The longer bar represents the larger value.
+
+<!-- Slide 60 -->
+
+---
+
+## One Bar by Hand
+
+```cpp
+cout << left << setw(10) << "Apples"
+     << "#####" << endl;
+```
+
+Start with one correct row before building a larger display.
+
+<!-- Slide 61 -->
+
+---
+
+## Several Bars by Repetition
+
+```cpp
+cout << left << setw(10) << "Apples"  << "#####" << endl;
+cout << left << setw(10) << "Oranges" << "###"   << endl;
+cout << left << setw(10) << "Pears"   << "####"  << endl;
+```
+
+Each row follows the same output pattern.
+
+<!-- Slide 62 -->
+
+---
+
+## Tables as Charts
+
+Tables are charts when their layout helps the reader compare values.
+
+```text
+Item        Qty
+Apples        5
+Oranges       3
+Pears         4
+```
+
+Alignment turns separate lines into one display.
+
+<!-- Slide 63 -->
+
+---
+
+## A Small Sales Display
+
+```text
+Sales Display
+Item        Qty  Bar
+Apples        5  #####
+Oranges       3  ###
+Pears         4  ####
+```
+
+The table gives exact values; the bars make comparison fast.
+
+<!-- Slide 64 -->
+
+---
+
+## Common Practices
+
++ Keep labels aligned.
++ Choose a simple scale.
++ Use the same row pattern throughout the display.
++ Make the chart readable before making it clever.
+
+<!-- Slide 65 -->
+
+---
+
+## Summary
+
++ Terminal charts are planned output.
++ Labels, spacing, and repeated symbols carry the meaning.
++ A good display makes the important comparison visible.
+
+<!-- Slide 66 -->

@@ -1,0 +1,448 @@
+# Last Time
+
+::: {.incremental}
++ **Modular Programming**
++ **Coding Functions**
++ **Passing Data to a Function**
++ **Returning Data from a Function**
++ **Void Functions**
+:::
+
+::: notes
+Brief recall of lecture 04.01. Students should remember that functions give names to pieces of processing, parameters move data into a function, and return values send one answer back.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Function Contracts
+- Function Boundary Model
+- Passing Vectors
+- Scope
+- Shadow Variables
+- Stack Frame Model
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_function_contracts.qmd >}}
+{{< include topic_2_function_boundary.qmd >}}
+{{< include topic_3_passing_vectors.qmd >}}
+{{< include topic_4_scope.qmd >}}
+{{< include topic_5_shadow_variables.qmd >}}
+{{< include topic_6_stack_frame.qmd >}}
+
+---
+
+# Key Takeaways
+
+- A function contract tells the caller what a function needs and what it promises to do.
+- A function boundary keeps caller responsibilities and function responsibilities separate.
+- Vectors can cross function boundaries through parameters and return values.
+- Scope controls where a name is visible.
+- Shadow variables hide another visible name and can make a trace misleading.
+- Stack frames explain why function variables are temporary, local, and separate.
+
+<!-- Slide 73 -->
+
+---
+
+# Next Time
+
+- Function practice with references
+- Function overloading
+- Static local variables
+
+<!-- Slide 74 -->
+
+---
+
+# Appendix
+
+<!-- Slide 75 -->
+
+---
+
+## Function Contracts: Good Practices
+
+- Write the prototype before writing the function body.
+- Use a name that describes the promised action or result.
+- Keep the parameter list limited to data the function actually needs.
+
+<!-- Slide 76 -->
+
+---
+
+## Function Contracts: Common Mistakes
+
+- Naming a function after implementation details instead of purpose.
+- Giving a function hidden dependencies that do not appear in the prototype.
+- Mixing unrelated jobs into one function.
+
+<!-- Slide 77 -->
+
+---
+
+## Function Contracts: More Examples
+
+```cpp
+double average(vector<int> scores);
+void displayScores(vector<int> scores);
+vector<int> getScores();
+```
+
+Each prototype gives the caller a different promise.
+
+<!-- Slide 78 -->
+
+---
+
+## Function Contracts: Practice Problems
+
+1. Write a prototype for a function that displays a course title.
+2. Write a prototype for a function that calculates the larger of two numbers.
+3. Identify the caller responsibility and function responsibility in `double average(vector<int> scores);`.
+
+<!-- Slide 79 -->
+
+---
+
+## Function Contracts: AI Search Terms
+
+- "C++ function contract beginner"
+- "C++ function prototype parameters return value"
+- "C++ modular function design"
+
+<!-- Slide 80 -->
+
+---
+
+## Function Contracts: Questions for Reflection
+
+- Why can a prototype tell you a lot before you read the function body?
+- What makes a function promise unclear?
+
+<!-- Slide 81 -->
+
+---
+
+## Function Boundary Model: Good Practices
+
+- Pass data into a function through parameters.
+- Send one answer back with a return value when the caller needs a result.
+- Keep temporary details inside the function body.
+
+<!-- Slide 82 -->
+
+---
+
+## Function Boundary Model: Common Mistakes
+
+- Expecting a local variable inside a function to be visible in `main()`.
+- Passing more data than the function needs.
+- Hiding important data flow through global variables.
+
+<!-- Slide 83 -->
+
+---
+
+## Function Boundary Model: More Examples
+
+```cpp
+int total(vector<int> scores);
+void displayTotal(int total);
+bool isPassing(int score);
+```
+
+The boundary is visible in each parameter list and return type.
+
+<!-- Slide 84 -->
+
+---
+
+## Function Boundary Model: Practice Problems
+
+1. Draw the boundary around a function definition.
+2. Mark which values cross into the function.
+3. Mark which value crosses back to the caller.
+
+<!-- Slide 85 -->
+
+---
+
+## Function Boundary Model: AI Search Terms
+
+- "C++ function parameter boundary"
+- "C++ local variable function scope"
+- "C++ function return value caller"
+
+<!-- Slide 86 -->
+
+---
+
+## Function Boundary Model: Questions for Reflection
+
+- Why is hidden data flow hard to debug?
+- How does a clear boundary make a function easier to trust?
+
+<!-- Slide 87 -->
+
+---
+
+## Passing Vectors: Good Practices
+
+- Pass a vector when the function needs the collection as a whole.
+- Pass one element at a time when each call only needs one value.
+- Return a vector when the function creates a collection for the caller.
+
+<!-- Slide 88 -->
+
+---
+
+## Passing Vectors: Common Mistakes
+
+- Forgetting `#include <vector>`.
+- Passing a whole vector when the function only needs one value.
+- Expecting a pass-by-value parameter to change the caller's vector.
+
+<!-- Slide 89 -->
+
+---
+
+## Passing Vectors: More Examples
+
+```cpp
+int countPassing(vector<int> scores);
+void displayName(string name);
+vector<string> getNames();
+```
+
+The parameter type should match the data each function needs.
+
+<!-- Slide 90 -->
+
+---
+
+## Passing Vectors: Practice Problems
+
+1. Decide whether `displayScore` should receive one `int` or a `vector<int>`.
+2. Write a prototype for a function that returns a vector of prices.
+3. Trace whether a vector parameter is the same variable as the caller's vector.
+
+<!-- Slide 91 -->
+
+---
+
+## Passing Vectors: AI Search Terms
+
+- "C++ pass vector to function"
+- "C++ return vector from function"
+- "C++ range based for pass element to function"
+
+<!-- Slide 92 -->
+
+---
+
+## Passing Vectors: Questions for Reflection
+
+- When is passing a whole vector clearer than passing one element?
+- Why does the function contract matter more when the data is a collection?
+
+<!-- Slide 93 -->
+
+---
+
+## Scope: Good Practices
+
+- Declare variables close to where they are used.
+- Pass data through parameters instead of depending on global variables.
+- Keep temporary variables inside the function that needs them.
+
+<!-- Slide 94 -->
+
+---
+
+## Scope: Common Mistakes
+
+- Trying to use a variable after its block has ended.
+- Assuming a parameter name is visible in the caller.
+- Making a variable global only because a function needs it.
+
+<!-- Slide 95 -->
+
+---
+
+## Scope: More Examples
+
+```cpp
+void displayDouble(int number) {
+    int doubled = number * 2;
+    cout << doubled << endl;
+}
+```
+
+`number` and `doubled` belong to `displayDouble()`.
+
+<!-- Slide 96 -->
+
+---
+
+## Scope: Practice Problems
+
+1. Mark where a loop variable is visible.
+2. Mark where a function parameter is visible.
+3. Rewrite a global variable example using a parameter.
+
+<!-- Slide 97 -->
+
+---
+
+## Scope: AI Search Terms
+
+- "C++ function scope local variables"
+- "C++ parameters local variables"
+- "C++ global variables beginner"
+
+<!-- Slide 98 -->
+
+---
+
+## Scope: Questions for Reflection
+
+- Why does modular design depend on local names?
+- When does making a variable visible in more places make the program harder to understand?
+
+<!-- Slide 99 -->
+
+---
+
+## Shadow Variables: Good Practices
+
+- Use different names when two variables mean different things.
+- Watch for declarations inside nested blocks.
+- Prefer names that describe the role of the value.
+
+<!-- Slide 100 -->
+
+---
+
+## Shadow Variables: Common Mistakes
+
+- Declaring a new variable when you meant to update an existing one.
+- Reusing a parameter name inside the same function.
+- Assuming the outer variable changed because the visible name changed.
+
+<!-- Slide 101 -->
+
+---
+
+## Shadow Variables: More Examples
+
+```cpp
+int count = 0;
+
+for (int count : scores) {
+    cout << count << endl;
+}
+```
+
+The loop variable hides the outer `count` inside the loop.
+
+<!-- Slide 102 -->
+
+---
+
+## Shadow Variables: Practice Problems
+
+1. Circle every declaration in a short program.
+2. Draw boxes around each scope.
+3. Identify which declaration each variable use refers to.
+
+<!-- Slide 103 -->
+
+---
+
+## Shadow Variables: AI Search Terms
+
+- "C++ shadow variable"
+- "C++ name hiding local variable"
+- "C++ -Wshadow warning"
+
+<!-- Slide 104 -->
+
+---
+
+## Shadow Variables: Questions for Reflection
+
+- Why can a shadow variable compile but still be wrong?
+- Why does the closest visible declaration win?
+
+<!-- Slide 105 -->
+
+---
+
+## Stack Frame Model: Good Practices
+
+- Trace one active function call at a time.
+- Put parameters and local variables in the frame where they belong.
+- Remove a frame when its function returns.
+
+<!-- Slide 106 -->
+
+---
+
+## Stack Frame Model: Common Mistakes
+
+- Keeping a local variable alive after the function returns.
+- Treating a parameter as the caller's variable.
+- Forgetting that each function call gets its own frame.
+
+<!-- Slide 107 -->
+
+---
+
+## Stack Frame Model: More Examples
+
+```cpp
+int square(int number) {
+    int result = number * number;
+    return result;
+}
+```
+
+`number` and `result` live in the `square()` frame.
+
+<!-- Slide 108 -->
+
+---
+
+## Stack Frame Model: Practice Problems
+
+1. Draw the stack before a function call.
+2. Add a frame for the called function.
+3. Remove the frame and write the returned value in the caller.
+
+<!-- Slide 109 -->
+
+---
+
+## Stack Frame Model: AI Search Terms
+
+- "C++ stack frame beginner"
+- "C++ call stack function parameters"
+- "C++ local variables stack frame"
+
+<!-- Slide 110 -->
+
+---
+
+## Stack Frame Model: Questions for Reflection
+
+- How do stack frames explain why local variables disappear?
+- How does the stack frame model make scope easier to trace?
+
+<!-- Slide 111 -->

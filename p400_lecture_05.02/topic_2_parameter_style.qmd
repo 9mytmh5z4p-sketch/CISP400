@@ -1,0 +1,241 @@
+<!-- Topic 2: Choosing a Parameter Style -->
+<!-- Slides 18-32 -->
+
+# Choosing a Parameter Style
+<!-- Slide 18 -->
+
+## What Should Cross the Boundary? {.smaller}
+
++ Should the function receive a copy?
++ Should it work with caller-owned storage?
++ Should it return a new result?
+
+::: notes
+Slides 18-32
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## The Four Main Styles
+
+| Style | What it communicates |
+|---|---|
+| pass by value | the function receives a copy |
+| return value | the function sends back one result |
+| pass by reference | the function may update caller data |
+| pass by const reference | the function reads larger data without copying |
+
+<!-- Slide 20 -->
+
+---
+
+## Style 1: Pass by Value
+
+```cpp
+void showAdjusted(int score);
+```
+
++ Use pass by value when the function needs data but should not change the caller's variable.
++ The parameter is local to the function.
++ Changes inside the function stay inside the function.
+
+<!-- Slide 21 -->
+
+---
+
+## Example Program: Value Parameters {.smaller}
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void showAdjusted(int score);
+
+int main() {
+    int quizScore = 72;
+    showAdjusted(quizScore);
+    cout << "Original: " << quizScore << endl;
+    return 0;
+}
+
+void showAdjusted(int score) {
+    score = score + 5;
+    cout << "Adjusted copy: " << score << endl;
+}
+```
+
+<!-- Slide 22 -->
+
+---
+
+## Style 2: Return a New Value
+
+```cpp
+double addTax(double price);
+```
+
++ Use a return value when the function computes one clear answer.
++ The caller decides whether to store, display, or ignore that answer.
++ The original argument does not need to change.
+
+<!-- Slide 23 -->
+
+---
+
+## Example Program: Returning a Result {.smaller}
+
+```cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+double addTax(double price);
+
+int main() {
+    double price = 20.00;
+    double total = addTax(price);
+    cout << fixed << setprecision(2);
+    cout << "Price: " << price << endl;
+    cout << "Total: " << total << endl;
+    return 0;
+}
+
+double addTax(double price) {
+    return price * 1.0825;
+}
+```
+
+<!-- Slide 24 -->
+
+---
+
+## Style 3: Pass by Reference
+
+```cpp
+void applyDiscount(double& price);
+```
+
++ Use non-const reference when the function is supposed to update caller-owned data.
++ The `&` makes the parameter an alias for the caller's variable.
++ The prototype warns that the argument may change.
+
+<!-- Slide 25 -->
+
+---
+
+## Example Program: Updating Caller Data {.smaller}
+
+```cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+void applyDiscount(double& price);
+
+int main() {
+    double price = 40.00;
+    applyDiscount(price);
+    cout << fixed << setprecision(2);
+    cout << "Discounted price: " << price << endl;
+    return 0;
+}
+
+void applyDiscount(double& price) {
+    price = price * 0.90;
+}
+```
+
+<!-- Slide 26 -->
+
+---
+
+## Style 4: Pass by Const Reference
+
+```cpp
+double average(const vector<int>& scores);
+```
+
++ Use `const` reference for read-only larger data.
++ The function avoids copying the whole object.
++ `const` prevents accidental changes inside the function.
+
+<!-- Slide 27 -->
+
+---
+
+## Example Program: Reading a Vector {.smaller}
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+double average(const vector<int>& scores);
+
+int main() {
+    vector<int> scores = {90, 84, 96};
+    cout << "Average: " << average(scores) << endl;
+    return 0;
+}
+
+double average(const vector<int>& scores) {
+    int total = 0;
+    for (int score : scores) {
+        total = total + score;
+    }
+    return static_cast<double>(total) / scores.size();
+}
+```
+
+<!-- Slide 28 -->
+
+---
+
+## Decision Table
+
+| Need | Style |
+|---|---|
+| read a small value | pass by value |
+| compute one answer | return value |
+| update caller data | pass by reference |
+| read large data safely | pass by const reference |
+
+<!-- Slide 29 -->
+
+---
+
+## Reading the Prototype
+
+```cpp
+double totalCost(double price, double taxRate);
+void resetBalance(double& balance);
+void displayScores(const vector<int>& scores);
+```
+
++ The return type shows whether an answer comes back.
++ The `&` shows whether caller storage may be involved.
++ The `const` marker shows read-only intent.
+
+<!-- Slide 30 -->
+
+---
+
+## Common Practices
+
++ Prefer return values for one computed answer.
++ Use non-const references only when mutation is part of the contract.
++ Use `const` reference for read-only large objects such as vectors and strings.
+
+<!-- Slide 31 -->
+
+---
+
+## Summary
+
++ Parameter style is part of the function's promise.
++ Choose the style that makes data movement obvious.
++ A clear prototype helps the caller trace what can change.
+
+<!-- Slide 32 -->

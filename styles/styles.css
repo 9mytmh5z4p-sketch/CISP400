@@ -1,0 +1,172 @@
+/*
+  p400 Lecture Styles
+  version: 04.07.00
+  Changelog:
+  04.07.00 (2026-06-09) - Set standard slide body text to 28px.
+  04.06.00 (2026-06-08) - Remove H2 negative title lift for full-height browser stability.
+  04.05.00 (2026-06-08) - Use a stable H2 title lift tuned for full-height browser viewports.
+  04.04.00 (2026-06-08) - Make H2 title lift responsive to browser viewport height.
+  04.03.00 (2026-06-06) - Center H2 slide headers.
+  04.02.00 (2026-06-06) - Move H2 slide headers up and increase header/content spacing.
+  04.01.00 (2026-06-06) - Switch global color palette to Navy + Coral.
+  04.00.00 (2026-06-06) - Apply Ink + Teal global color palette.
+  03.06.00 (2026-06-06) - Remove extra post-table separator after restoring final row borders.
+  03.05.00 (2026-06-06) - Preserve table gridlines through the final row.
+  03.04.00 (2026-06-06) - Strengthen table gridlines and separate following content.
+  03.03.00 (2026-06-06) - Add light gray table gridlines.
+  03.02.00 (2026-06-06) - Underline H2 content slide titles.
+  03.01.00 (2026-03-15) - Center-justify H1 section title slides.
+  03.00.00 (2026-03-15) - Minimal. Logo, code highlights, white C++ blocks. Everything else: defaults.
+  02.00.00 (2026-03-15) - Rebuilt from defaults.
+  01.00.00 (2026-02-03) - Initial version.
+*/
+
+/* ===== Global palette: Navy + Coral ============================ */
+:root {
+  --p400-bg: #f8fafc;
+  --p400-text: #111827;
+  --p400-heading: #1e3a5f;
+  --p400-accent: #c2410c;
+  --p400-secondary: #0f766e;
+  --p400-border: #cbd5e1;
+  --p400-code-bg: #ffffff;
+  --p400-highlight-bg: #fff7ed;
+  --p400-body-font-size: 28px;
+
+  --r-background-color: var(--p400-bg);
+  --r-main-color: var(--p400-text);
+  --r-heading-color: var(--p400-heading);
+  --r-link-color: var(--p400-accent);
+  --r-link-color-hover: #9a3412;
+  --r-selection-background-color: var(--p400-accent);
+  --r-selection-color: #ffffff;
+}
+
+.reveal-viewport {
+  background: var(--p400-bg);
+  background-color: var(--p400-bg);
+}
+
+.reveal {
+  color: var(--p400-text);
+}
+
+.reveal a {
+  color: var(--p400-accent);
+}
+
+.reveal a:hover {
+  color: #9a3412;
+}
+
+/* ===== Body text: readable without competing with titles ======= */
+.reveal .slide p,
+.reveal .slide li,
+.reveal .slide table {
+  font-size: var(--p400-body-font-size);
+}
+
+
+/* ===== H1 section title slides: centered ======================= */
+.reveal h1 {
+  text-align: center;
+  color: var(--p400-heading);
+}
+
+/* ===== H2 content slide titles: underlined ===================== */
+.reveal h2 {
+  color: var(--p400-heading);
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 18px;
+  text-decoration: underline;
+  text-decoration-color: var(--p400-accent);
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.14em;
+}
+
+/* ===== Tables: light gridlines ================================= */
+.reveal table {
+  border-collapse: collapse;
+  margin-bottom: 0.8em;
+}
+
+.reveal table th,
+.reveal table td {
+  border: 1.5px solid var(--p400-border);
+}
+
+.reveal table tbody tr:last-child th,
+.reveal table tbody tr:last-child td {
+  border-bottom: 1.5px solid var(--p400-border);
+}
+
+.reveal table th {
+  color: var(--p400-heading);
+  background-color: #eef5f5;
+}
+
+
+/* ===== Logo — bottom-left of viewport ========================== */
+.reveal::before {
+  content: '';
+  position: fixed;
+  bottom: 15px;
+  left: 40px;
+  width: 70px;
+  height: 70px;
+  background: url('../img/stacked-logo.svg') no-repeat center;
+  background-size: contain;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+
+/* ===== C++ code blocks: white background ======================= */
+.reveal pre.sourceCode.cpp,
+.reveal pre.sourceCode.cpp code {
+  background-color: var(--p400-code-bg);
+  color: var(--p400-text);
+}
+
+.reveal pre.sourceCode.cpp {
+  border: 1px solid var(--p400-border);
+}
+
+
+/* ===== Hide copy button on exercise slides ===================== */
+.reveal .no-copy button.code-copy-button,
+.reveal .no-copy .code-copy-button {
+  display: none !important;
+}
+
+
+/* ===== Slide images: auto-scale to fit slide =================== */
+.reveal section img {
+  max-width: 90%;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+
+/* ===== Code line highlighting ================================== */
+.reveal pre .line-highlight {
+  background-color: var(--p400-highlight-bg);
+  display: block;
+  width: 100%;
+}
+
+.reveal pre .line-highlight .hljs-ln-numbers {
+  font-weight: bold;
+  color: var(--p400-accent);
+}
+
+.reveal .highlight-line {
+  background-color: var(--p400-highlight-bg);
+  border-left: 5px solid var(--p400-accent);
+  padding-left: 0.5em;
+}

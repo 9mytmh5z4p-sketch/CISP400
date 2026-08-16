@@ -1,0 +1,573 @@
+<!-- Topic 2: Arrays of Structures -->
+<!-- Slides 34–71 -->
+
+# Arrays of Structures
+<!-- Slide 34 -->
+
+## How Do We Store Many Employees? {.smaller}
+
++ One `Employee` variable stores one complete record.
++ What should store an entire workforce?
+
+::: notes
+Slides 34–71
+:::
+
+<!-- Slide 35 -->
+
+---
+
+## An Array Can Store User-Defined Types
+
+```cpp
+int scores[5];
+Employee staff[5];
+```
+
++ Every element has the same type.
++ Each `staff` element is one complete `Employee`.
+
+<!-- Slide 36 -->
+
+---
+
+## Generic Syntax
+
+```cpp
+StructType arrayName[SIZE];
+```
+
++ `StructType` determines the members in every element.
++ `SIZE` determines the fixed capacity.
+
+<!-- Slide 37 -->
+
+---
+
+## Declaring an Employee Array
+
+```cpp
+const int SIZE = 5;
+Employee staff[SIZE];
+```
+
+<!-- Slide 38 -->
+
+---
+
+## Two Operations, One Expression
+
+```cpp
+staff[i].name
+```
+
+1. `staff[i]` selects one `Employee`.
+2. `.name` selects that employee’s name.
+
+<!-- Slide 39 -->
+
+---
+
+## What Does This Expression Select?
+
+```cpp
+staff
+staff[i]
+staff[i].hourlyRate
+```
+
++ The entire array
++ One complete record
++ One member of one record
+
+<!-- Slide 40 -->
+
+---
+
+## Initializing the Entire Array
+
+```cpp
+Employee staff[] {
+    {104, "Ana Ruiz", 27.50},
+    {205, "Ben Lee", 31.25},
+    {307, "Cam Wu", 24.75}
+};
+```
+
+<!-- Slide 41 -->
+
+---
+
+## Default and Partial Initialization
+
+```cpp
+const int CAPACITY = 5;
+
+Employee staff[CAPACITY] {
+    {104, "Ana Ruiz", 27.50},
+    {205, "Ben Lee", 31.25}
+};
+```
+
++ Remaining elements receive their member defaults.
++ `CAPACITY` counts available slots; a separate `count` tracks valid records.
+
+<!-- Slide 42 -->
+
+---
+
+## Displaying Every Record
+
+```cpp
+for (int i = 0; i < SIZE; i++) {
+    cout << staff[i].employeeID << "  "
+         << staff[i].name << "  $"
+         << staff[i].hourlyRate << '\n';
+}
+```
+
+<!-- Slide 43 -->
+
+---
+
+## Reading Records from Input
+
+```cpp
+for (int i = 0; i < SIZE; i++) {
+    cout << "Employee " << i + 1 << '\n';
+    cout << "ID: ";
+    cin >> staff[i].employeeID;
+    cin.ignore();
+    cout << "Name: ";
+    getline(cin, staff[i].name);
+    cout << "Rate: ";
+    cin >> staff[i].hourlyRate;
+}
+```
+
+<!-- Slide 44 -->
+
+---
+
+## Names and `getline` Inside a Record Loop
+
+```cpp
+cin >> staff[i].employeeID;
+cin.ignore(1000, '\n');
+getline(cin, staff[i].name);
+cin >> staff[i].hourlyRate;
+```
+
++ Remove the pending newline before reading a full name.
+
+<!-- Slide 45 -->
+
+---
+
+## Passing an Array of Structures
+
+```cpp
+void printStaff(const Employee staff[], int size);
+void giveRaises(Employee staff[], int size, double amount);
+```
+
++ Pass the logical size separately.
+
+<!-- Slide 46 -->
+
+---
+
+## Reading Records in a Function
+
+```cpp
+void printStaff(const Employee staff[], int size) {
+    for (int i = 0; i < size; i++) {
+        cout << staff[i].employeeID << "  "
+             << staff[i].name << "  $"
+             << staff[i].hourlyRate << '\n';
+    }
+}
+```
+
+<!-- Slide 47 -->
+
+---
+
+## Modifying Records in a Function
+
+```cpp
+void giveRaises(Employee staff[], int size,
+                double amount) {
+    for (int i = 0; i < size; i++) {
+        staff[i].hourlyRate += amount;
+    }
+}
+```
+
+<!-- Slide 48 -->
+
+---
+
+## Searching by a Member
+
+```cpp
+int findEmployee(const Employee staff[], int size,
+                 int targetID) {
+    for (int i = 0; i < size; i++) {
+        if (staff[i].employeeID == targetID)
+            return i;
+    }
+    return -1;
+}
+```
+
+<!-- Slide 49 -->
+
+---
+
+## Returning the Matching Index
+
+```cpp
+int position = findEmployee(staff, count, 205);
+
+if (position != -1) {
+    cout << staff[position].name << '\n';
+}
+```
+
++ The index identifies the original record inside the array.
+
+<!-- Slide 50 -->
+
+---
+
+## Updating One Matching Record
+
+```cpp
+int position = findEmployee(staff, count, targetID);
+
+if (position == -1) {
+    cout << "Employee not found\n";
+} else {
+    staff[position].hourlyRate = newRate;
+}
+```
+
+<!-- Slide 51 -->
+
+---
+
+## Finding the Largest Member Value
+
+```cpp
+int highestPaid(const Employee staff[], int size) {
+    int highest = 0;
+
+    for (int i = 1; i < size; i++) {
+        if (staff[i].hourlyRate >
+            staff[highest].hourlyRate)
+            highest = i;
+    }
+    return highest;
+}
+```
+
++ Precondition: `size > 0`.
+
+<!-- Slide 52 -->
+
+---
+
+## Why Track the Index?
+
++ The largest rate belongs to a complete employee record.
++ The index preserves access to the employee’s ID, name, and rate.
++ The invariant: `highest` identifies the best record seen so far.
+
+<!-- Slide 53 -->
+
+---
+
+## Swapping Complete Records
+
+```cpp
+Employee temp = staff[left];
+staff[left] = staff[right];
+staff[right] = temp;
+```
+
++ Every member moves with its record.
+
+<!-- Slide 54 -->
+
+---
+
+## Sorting by One Member
+
+```cpp
+for (int end = size - 1; end > 0; end--) {
+    for (int i = 0; i < end; i++) {
+        if (staff[i].hourlyRate >
+            staff[i + 1].hourlyRate) {
+            Employee temp = staff[i];
+            staff[i] = staff[i + 1];
+            staff[i + 1] = temp;
+        }
+    }
+}
+```
+
+<!-- Slide 55 -->
+
+---
+
+## Sorting by Another Member
+
+```cpp
+if (staff[i].name > staff[i + 1].name) {
+    Employee temp = staff[i];
+    staff[i] = staff[i + 1];
+    staff[i + 1] = temp;
+}
+```
+
++ The comparison chooses the ordering; the swap moves whole records.
+
+<!-- Slide 56 -->
+
+---
+
+## Parallel Arrays Versus Record Arrays
+
+```cpp
+int employeeIDs[SIZE];
+string names[SIZE];
+double rates[SIZE];
+
+Employee staff[SIZE];
+```
+
++ Parallel arrays depend on a shared-index invariant.
++ A record array makes that relationship explicit.
+
+<!-- Slide 57 -->
+
+---
+
+## Dynamic Arrays of Structures
+
+```cpp
+int size;
+cin >> size;
+
+Employee* staff = new Employee[size];
+
+// Use staff[0] through staff[size - 1].
+
+delete[] staff;
+staff = nullptr;
+```
+
+<!-- Slide 58 -->
+
+---
+
+## Smart Ownership of a Record Array
+
+```cpp
+#include <memory>
+
+unique_ptr<Employee[]> staff =
+    make_unique<Employee[]>(size);
+
+staff[0].name = "Ana Ruiz";
+```
+
++ Smart ownership manages lifetime, not logical size.
+
+<!-- Slide 59 -->
+
+---
+
+## Resizing Moves Complete Records
+
+```cpp
+Employee* larger = new Employee[newSize];
+
+for (int i = 0; i < oldSize; i++)
+    larger[i] = staff[i];
+
+delete[] staff;
+staff = larger;
+larger = nullptr;
+```
+
+<!-- Slide 60 -->
+
+---
+
+## Static Array, Dynamic Array, or `vector`?
+
+| Need | Usual Choice |
+|---|---|
+| Fixed compile-time capacity | Static array |
+| One runtime size | Smart dynamic array |
+| Automatic resizing | `vector<Employee>` |
+| Manual ownership practice | Raw dynamic array |
+
+<!-- Slide 61 -->
+
+---
+
+## Writing Records to a File
+
+```cpp
+void saveStaff(const Employee staff[], int size,
+               const string& filename) {
+    ofstream output(filename);
+    for (int i = 0; i < size; i++) {
+        output << staff[i].employeeID << '\t'
+               << staff[i].name << '\t'
+               << staff[i].hourlyRate << '\n';
+    }
+}
+```
+
+<!-- Slide 62 -->
+
+---
+
+## Reading Records from a File
+
+```cpp
+int count = 0;
+
+while (count < CAPACITY &&
+       input >> staff[count].employeeID) {
+    input.ignore();
+    getline(input, staff[count].name, '\t');
+    input >> staff[count].hourlyRate;
+    count++;
+}
+```
+
+<!-- Slide 63 -->
+
+---
+
+## Employee Directory Operations
+
+```cpp
+int findEmployee(const Employee staff[], int size,
+                 int targetID);
+void printStaff(const Employee staff[], int size);
+bool addEmployee(Employee staff[], int& count,
+                 int capacity, const Employee& worker);
+bool removeEmployee(Employee staff[], int& count,
+                    int targetID);
+```
+
++ Small functions coordinate one shared record array.
+
+<!-- Slide 64 -->
+
+---
+
+## Capacity Versus Logical Size
+
+```cpp
+const int CAPACITY = 100;
+Employee staff[CAPACITY];
+int count = 0;
+```
+
++ `CAPACITY` is the number of available slots.
++ `count` is the number of valid records.
++ Valid records occupy indexes `0` through `count - 1`.
+
+<!-- Slide 65 -->
+
+---
+
+## Appending a Record
+
+```cpp
+bool addEmployee(Employee staff[], int& count,
+                 int capacity, const Employee& worker) {
+    if (count >= capacity)
+        return false;
+
+    staff[count] = worker;
+    count++;
+    return true;
+}
+```
+
+<!-- Slide 66 -->
+
+---
+
+## Removing a Record
+
+```cpp
+for (int i = position; i < count - 1; i++) {
+    staff[i] = staff[i + 1];
+}
+count--;
+```
+
++ Shifting preserves a packed valid range.
+
+<!-- Slide 67 -->
+
+---
+
+## Range-Based Traversal
+
+```cpp
+for (Employee worker : staff) { }
+for (Employee& worker : staff) { }
+for (const Employee& worker : staff) { }
+```
+
++ Copy, writable alias, and read-only alias are different contracts.
+
+<!-- Slide 68 -->
+
+---
+
+## Pointer View of an Element
+
+```cpp
+cout << staff[i].name << '\n';
+cout << (staff + i)->name << '\n';
+```
+
++ Both expressions select the same member.
++ Subscript notation is normally clearer.
+
+<!-- Slide 69 -->
+
+---
+
+## Counting Static Elements with `sizeof`
+
+```cpp
+Employee staff[5];
+int size = sizeof(staff) / sizeof(staff[0]);
+```
+
++ This works only where `staff` is still an array.
++ An array parameter has already converted to a pointer.
+
+<!-- Slide 70 -->
+
+---
+
+## Arrays of Structures Summary
+
++ Index first to select a record; use dot notation to select its member.
++ Established search, sort, append, remove, and resize patterns work with complete records.
++ Keep capacity, logical size, and ownership responsibilities explicit.
+
+<!-- Slide 71 -->

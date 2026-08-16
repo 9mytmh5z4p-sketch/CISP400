@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Max — Step Through</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 24px 16px;
+    gap: 18px;
+    min-height: 100vh;
+  }
+
+  /* ── Controls (top) ──────────────────────────── */
+  .controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  button {
+    padding: 9px 22px;
+    border-radius: 7px;
+    border: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+    letter-spacing: 0.04em;
+  }
+
+  #btn-step {
+    background: #1d4ed8;
+    color: #f8fafc;
+  }
+  #btn-step:hover:not(:disabled) { background: #2563eb; }
+  #btn-step:disabled { background: #1e293b; color: #334155; cursor: not-allowed; }
+
+  #btn-play {
+    background: #0f3a1f;
+    color: #4ade80;
+    border: 1px solid #16a34a;
+  }
+  #btn-play:hover:not(:disabled) { background: #14532d; }
+  #btn-play:disabled { background: #1e293b; color: #334155; border-color: #334155; cursor: not-allowed; }
+
+  #btn-reset {
+    background: transparent;
+    color: #64748b;
+    border: 1px solid #334155;
+  }
+  #btn-reset:hover { color: #94a3b8; border-color: #475569; }
+
+  /* ── Code block ─────────────────────────────── */
+  .code-block {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 16px 24px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.92rem;
+    line-height: 1.75;
+    width: 100%;
+    max-width: 620px;
+  }
+
+  .code-line { color: #475569; transition: color 0.25s, background 0.25s; border-radius: 4px; padding: 0 4px; }
+  .code-line.active { color: #f8fafc; background: #1d3461; }
+  .code-line.dim    { color: #1e293b; }
+
+  .kw  { color: #7dd3fc; }
+  .ty  { color: #34d399; }
+  .num { color: #fbbf24; }
+  .fn  { color: #c084fc; }
+  .str { color: #f87171; }
+  .op  { color: #fb923c; }
+
+  /* ── Array ───────────────────────────────────── */
+  .array-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 620px;
+  }
+
+  .array-meta {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: #64748b;
+  }
+
+  .array-row {
+    display: flex;
+    gap: 0;
+  }
+
+  .cell-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .cell {
+    width: 96px;
+    height: 68px;
+    border: 2px solid #334155;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', monospace;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #94a3b8;
+    background: #1e293b;
+    transition: all 0.35s ease;
+    position: relative;
+    margin-right: -2px;
+  }
+
+  .cell:first-child { border-radius: 8px 0 0 8px; }
+  .cell:last-child  { border-radius: 0 8px 8px 0; margin-right: 0; }
+
+  /* current i being compared — orange */
+  .cell.current {
+    background: #431407;
+    border-color: #ea580c;
+    color: #fdba74;
+    z-index: 3;
+    box-shadow: 0 0 22px rgba(234, 88, 12, 0.45);
+    transform: translateY(-4px);
+  }
+
+  /* current max — green */
+  .cell.is-max {
+    background: #052e16;
+    border-color: #16a34a;
+    color: #4ade80;
+    z-index: 2;
+    box-shadow: 0 0 22px rgba(22, 163, 74, 0.4);
+  }
+
+  /* seed phase — max cell lifts too */
+  .cell.is-max.seed {
+    transform: translateY(-4px);
+  }
+
+  /* new max update flash */
+  .cell.new-max {
+    background: #14532d;
+    border-color: #22c55e;
+    color: #86efac;
+    z-index: 4;
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.6);
+    transform: translateY(-4px);
+  }
+
+  /* visited (past, not max) */
+  .cell.visited {
+    background: #0f172a;
+    border-color: #1e293b;
+    color: #334155;
+  }
+
+  .index-label {
+    font-family: 'Courier New', monospace;
+    font-size: 0.72rem;
+    color: #334155;
+    transition: color 0.3s;
+  }
+
+  .cell-wrapper.current .index-label { color: #ea580c; font-weight: 600; }
+  .cell-wrapper.is-max  .index-label { color: #16a34a; font-weight: 600; }
+  .cell-wrapper.new-max .index-label { color: #22c55e; font-weight: 700; }
+
+  /* ── Comparison display ──────────────────────── */
+  .comparison-box {
+    width: 100%;
+    max-width: 620px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-height: 58px;
+    transition: border-color 0.3s;
+  }
+
+  .comparison-box.yes { border-color: #16a34a; background: #052e16; }
+  .comparison-box.no  { border-color: #374151; }
+
+  .cmp-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: #64748b;
+    font-family: 'Segoe UI', sans-serif;
+    white-space: nowrap;
+  }
+
+  .cmp-expr {
+    font-family: 'Courier New', monospace;
+    font-size: 1.05rem;
+    color: #e2e8f0;
+    flex: 1;
+  }
+
+  .cmp-result {
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 20px;
+    transition: all 0.3s;
+    white-space: nowrap;
+  }
+  .cmp-result.yes { background: #14532d; color: #4ade80; }
+  .cmp-result.no  { background: #1e293b; color: #64748b; }
+  .cmp-result.neutral { background: #1e293b; color: #475569; }
+
+  /* ── State panel ─────────────────────────────── */
+  .state-panel {
+    display: flex;
+    gap: 32px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 14px 28px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.05rem;
+    width: 100%;
+    max-width: 620px;
+  }
+
+  .state-item { display: flex; flex-direction: column; gap: 3px; }
+  .state-label { font-size: 0.68rem; letter-spacing: 0.09em; color: #64748b; font-family: 'Segoe UI', sans-serif; }
+  .state-val { color: #e2e8f0; transition: color 0.3s; }
+  .state-val.green { color: #4ade80; }
+  .state-val.orange { color: #fb923c; }
+
+  /* ── Done banner ─────────────────────────────── */
+  #status-bar {
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    color: #64748b;
+    height: 18px;
+    transition: color 0.3s;
+  }
+  #status-bar.done { color: #4ade80; }
+  #status-bar.update { color: #fbbf24; }
+</style>
+</head>
+<body>
+
+<!-- Controls — top -->
+<div class="controls">
+  <button id="btn-reset">Reset</button>
+  <button id="btn-step">Step →</button>
+  <button id="btn-play">▶ Play</button>
+</div>
+
+<!-- Code -->
+<div class="code-block">
+  <div class="code-line" id="cl-seed">
+    <span class="ty">int</span> max = scores[<span class="num">0</span>];
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span style="color:#334155">// seed with first element</span>
+  </div>
+  <div style="height:3px"></div>
+  <div class="code-line" id="cl-for">
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="num">1</span>; i &lt; SIZE; i++) {
+  </div>
+  <div class="code-line" id="cl-if">
+    &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if</span> (scores[i] <span class="op">&gt;</span> max) {
+  </div>
+  <div class="code-line" id="cl-update">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max = scores[i];
+  </div>
+  <div class="code-line" id="cl-close">
+    &nbsp;&nbsp;&nbsp;&nbsp;}
+  </div>
+  <div class="code-line" id="cl-end">}</div>
+</div>
+
+<!-- Array -->
+<div class="array-section">
+  <div class="array-meta">
+    <span>scores</span>
+    <span id="meta-right" style="color:#334155">—</span>
+  </div>
+  <div class="array-row" id="array-row"></div>
+</div>
+
+<!-- Comparison -->
+<div class="comparison-box" id="cmp-box">
+  <span class="cmp-label">COMPARISON</span>
+  <span class="cmp-expr" id="cmp-expr">—</span>
+  <span class="cmp-result neutral" id="cmp-result">—</span>
+</div>
+
+<!-- State -->
+<div class="state-panel">
+  <div class="state-item">
+    <span class="state-label">MAX</span>
+    <span class="state-val green" id="disp-max">—</span>
+  </div>
+  <div class="state-item">
+    <span class="state-label">LOOP VAR i</span>
+    <span class="state-val orange" id="disp-i">—</span>
+  </div>
+  <div class="state-item">
+    <span class="state-label">scores[i]</span>
+    <span class="state-val" id="disp-val">—</span>
+  </div>
+</div>
+
+<!-- Status -->
+<div id="status-bar">Press Step or Play to begin</div>
+
+<script>
+  const values   = [91, 78, 84, 95, 62];
+  const SIZE     = values.length;
+
+  // Steps: each describes the full UI state after advancing
+  const steps = [
+    // 0 — seed
+    { phase: 'seed',    maxIdx: 0, curIdx: null, maxVal: 91, i: null,
+      expr: '—',        result: null,
+      status: 'Seeded: max = scores[0] = 91',
+      codeLines: ['cl-seed'] },
+    // 1 — i=1: 78 > 91? No
+    { phase: 'compare', maxIdx: 0, curIdx: 1, maxVal: 91, i: 1,
+      expr: 'scores[1] (78) > max (91)',  result: false,
+      status: '78 > 91 → No, max stays 91',
+      codeLines: ['cl-for','cl-if'] },
+    // 2 — i=2: 84 > 91? No
+    { phase: 'compare', maxIdx: 0, curIdx: 2, maxVal: 91, i: 2,
+      expr: 'scores[2] (84) > max (91)',  result: false,
+      status: '84 > 91 → No, max stays 91',
+      codeLines: ['cl-for','cl-if'] },
+    // 3 — i=3: 95 > 91? Yes → update
+    { phase: 'update',  maxIdx: 3, curIdx: 3, maxVal: 95, i: 3,
+      expr: 'scores[3] (95) > max (91)',  result: true,
+      status: '95 > 91 → Yes!  max = 95',
+      codeLines: ['cl-for','cl-if','cl-update'] },
+    // 4 — i=4: 62 > 95? No
+    { phase: 'compare', maxIdx: 3, curIdx: 4, maxVal: 95, i: 4,
+      expr: 'scores[4] (62) > max (95)',  result: false,
+      status: '62 > 95 → No, max stays 95',
+      codeLines: ['cl-for','cl-if'] },
+    // 5 — done
+    { phase: 'done',    maxIdx: 3, curIdx: null, maxVal: 95, i: null,
+      expr: '—',        result: null,
+      status: 'Loop complete — max = 95',
+      codeLines: ['cl-end'] },
+  ];
+
+  let stepIdx    = -1;
+  let playTimer  = null;
+  const allLines = ['cl-seed','cl-for','cl-if','cl-update','cl-close','cl-end'];
+
+  // Build array cells
+  const arrayRow = document.getElementById('array-row');
+  values.forEach((v, i) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'cell-wrapper';
+    wrap.id = `wrap-${i}`;
+
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    cell.id = `cell-${i}`;
+    cell.textContent = v;
+
+    const lbl = document.createElement('div');
+    lbl.className = 'index-label';
+    lbl.textContent = `scores[${i}]`;
+
+    wrap.appendChild(cell);
+    wrap.appendChild(lbl);
+    arrayRow.appendChild(wrap);
+  });
+
+  function applyStep(s) {
+    // Code lines
+    allLines.forEach(id => {
+      document.getElementById(id).className = 'code-line dim';
+    });
+    s.codeLines.forEach(id => {
+      document.getElementById(id).className = 'code-line active';
+    });
+    if (s.phase === 'compare' || s.phase === 'update') {
+      document.getElementById('cl-close').className = 'code-line active';
+    }
+    if (s.phase === 'done') {
+      document.getElementById('cl-end').className = 'code-line active';
+    }
+
+    // Array cells
+    values.forEach((_, i) => {
+      const wrap = document.getElementById(`wrap-${i}`);
+      const cell = document.getElementById(`cell-${i}`);
+      wrap.className = 'cell-wrapper';
+      cell.className = 'cell';
+
+      if (s.phase === 'seed' && i === 0) {
+        wrap.classList.add('is-max', 'seed');
+        cell.classList.add('is-max', 'seed');
+      } else if (s.phase !== 'seed' && i === s.curIdx && s.phase === 'update') {
+        wrap.classList.add('new-max');
+        cell.classList.add('new-max');
+      } else if (i === s.maxIdx && i !== s.curIdx) {
+        wrap.classList.add('is-max');
+        cell.classList.add('is-max');
+      } else if (i === s.curIdx) {
+        wrap.classList.add('current');
+        cell.classList.add('current');
+      } else if (s.curIdx !== null && i < s.curIdx && i !== s.maxIdx) {
+        cell.classList.add('visited');
+      } else if (s.phase === 'done' && i !== s.maxIdx) {
+        cell.classList.add('visited');
+      }
+    });
+
+    // Comparison box
+    const cmpBox    = document.getElementById('cmp-box');
+    const cmpExpr   = document.getElementById('cmp-expr');
+    const cmpResult = document.getElementById('cmp-result');
+    cmpBox.className = 'comparison-box';
+
+    if (s.result === true) {
+      cmpBox.classList.add('yes');
+      cmpExpr.textContent   = s.expr;
+      cmpResult.textContent = 'Yes — update!';
+      cmpResult.className   = 'cmp-result yes';
+    } else if (s.result === false) {
+      cmpExpr.textContent   = s.expr;
+      cmpResult.textContent = 'No — skip';
+      cmpResult.className   = 'cmp-result no';
+    } else {
+      cmpExpr.textContent   = '—';
+      cmpResult.textContent = '—';
+      cmpResult.className   = 'cmp-result neutral';
+    }
+
+    // State panel
+    document.getElementById('disp-max').textContent = s.maxVal;
+    document.getElementById('disp-i').textContent   = s.i !== null ? s.i : '—';
+    document.getElementById('disp-val').textContent = s.curIdx !== null ? values[s.curIdx] : '—';
+
+    // Meta right
+    document.getElementById('meta-right').textContent =
+      s.phase === 'done' ? 'max = 95 ✓' : `max = ${s.maxVal}`;
+    document.getElementById('meta-right').style.color =
+      s.phase === 'done' ? '#4ade80' : '#64748b';
+
+    // Status bar
+    const bar = document.getElementById('status-bar');
+    bar.textContent = s.status;
+    bar.className = s.phase === 'done' ? 'done' :
+                    s.phase === 'update' ? 'update' : '';
+  }
+
+  function advance() {
+    if (stepIdx >= steps.length - 1) { reset(); return; }
+    stepIdx++;
+    applyStep(steps[stepIdx]);
+    if (stepIdx === steps.length - 1) stopPlay();
+  }
+
+  function reset() {
+    stopPlay();
+    stepIdx = -1;
+
+    allLines.forEach(id => {
+      document.getElementById(id).className = 'code-line';
+    });
+    values.forEach((_, i) => {
+      document.getElementById(`wrap-${i}`).className = 'cell-wrapper';
+      document.getElementById(`cell-${i}`).className = 'cell';
+    });
+
+    document.getElementById('cmp-expr').textContent   = '—';
+    document.getElementById('cmp-result').textContent = '—';
+    document.getElementById('cmp-result').className   = 'cmp-result neutral';
+    document.getElementById('cmp-box').className      = 'comparison-box';
+
+    document.getElementById('disp-max').textContent = '—';
+    document.getElementById('disp-i').textContent   = '—';
+    document.getElementById('disp-val').textContent = '—';
+
+    document.getElementById('meta-right').textContent = '—';
+    document.getElementById('meta-right').style.color = '#334155';
+
+    document.getElementById('status-bar').textContent = 'Press Step or Play to begin';
+    document.getElementById('status-bar').className = '';
+  }
+
+  function startPlay() {
+    document.getElementById('btn-play').textContent = '⏸ Pause';
+    document.getElementById('btn-play').onclick = stopPlay;
+    playTimer = setInterval(() => {
+      advance();
+      if (stepIdx >= steps.length - 1) stopPlay();
+    }, 1000);
+  }
+
+  function stopPlay() {
+    clearInterval(playTimer);
+    playTimer = null;
+    document.getElementById('btn-play').textContent = '▶ Play';
+    document.getElementById('btn-play').onclick = startPlay;
+  }
+
+  document.getElementById('btn-step').onclick  = advance;
+  document.getElementById('btn-play').onclick  = startPlay;
+  document.getElementById('btn-reset').onclick = reset;
+</script>
+</body>
+</html>

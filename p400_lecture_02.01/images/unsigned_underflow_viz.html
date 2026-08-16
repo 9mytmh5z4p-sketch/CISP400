@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Unsigned Underflow</title>
+<style>
+html { font-size: 200%; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  display: grid;
+  grid-template-columns: 1fr 72px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 6px 6px 8px;
+  gap: 5px;
+  overflow: hidden;
+}
+
+.status-bar {
+  background: #1e293b;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 0.50rem;
+  font-weight: 600;
+  color: #94a3b8;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.main-panel {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-height: 0;
+}
+
+.panel-label {
+  font-size: 0.40rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #4ade80;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #16a34a;
+  flex-shrink: 0;
+}
+
+.type-line {
+  font-family: 'Courier New', monospace;
+  font-size: 0.44rem;
+  color: #64748b;
+  flex-shrink: 0;
+}
+.type-line span { color: #34d399; }
+
+/* Code strip */
+.code-strip {
+  font-family: 'Courier New', monospace;
+  font-size: 0.46rem;
+  background: #0f172a;
+  border-radius: 5px;
+  padding: 5px 8px;
+  color: #475569;
+  flex-shrink: 0;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+  border: 1px solid transparent;
+}
+.code-strip.active {
+  background: #1d3461;
+  border-color: #3b82f6;
+  color: #f8fafc;
+}
+.ty  { color: inherit; }
+.kw  { color: inherit; }
+.nu  { color: inherit; }
+.code-strip.active .ty { color: #34d399; }
+.code-strip.active .kw { color: #7dd3fc; }
+.code-strip.active .nu { color: #fbbf24; }
+
+/* Counter display — large central number */
+.counter-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.counter-box {
+  background: #0f172a;
+  border: 2px solid #16a34a;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-family: 'Courier New', monospace;
+  font-size: 1.0rem;
+  font-weight: 700;
+  color: #4ade80;
+  text-align: center;
+  min-width: 55%;
+  transition: background 0.4s, border-color 0.4s, color 0.4s, font-size 0.2s;
+}
+
+.counter-box.at-zero {
+  background: #431407;
+  border-color: #ea580c;
+  color: #fdba74;
+}
+
+.counter-box.wrapped {
+  background: #052e16;
+  border-color: #16a34a;
+  color: #86efac;
+  font-size: 0.65rem;
+  animation: pop 0.4s ease-out;
+}
+
+@keyframes pop {
+  0%   { transform: scale(0.85); opacity: 0.3; }
+  60%  { transform: scale(1.08); }
+  100% { transform: scale(1.0);  opacity: 1; }
+}
+
+.counter-label {
+  font-size: 0.40rem;
+  color: #64748b;
+  text-align: center;
+  font-style: italic;
+}
+
+.counter-label.highlight {
+  color: #fbbf24;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.counter-label.ok {
+  color: #4ade80;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Wrap arrow */
+.wrap-arrow {
+  font-size: 0.55rem;
+  color: #16a34a;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.5s;
+  text-align: center;
+}
+.wrap-arrow.visible { opacity: 1; }
+
+/* Explanation box */
+.explain-box {
+  background: #052e16;
+  border: 1px solid #16a34a;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 0.40rem;
+  color: #4ade80;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.4s;
+  flex-shrink: 0;
+}
+.explain-box.visible { opacity: 1; }
+
+/* Controls */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 8px;
+  border-left: 1px solid #1e293b;
+  background: #0a1120;
+}
+
+.btn {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  background: #1e293b;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 12px 7px;
+  font-size: 0.36rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  width: 100%;
+  text-align: center;
+}
+.btn:hover { background: #334155; color: #e2e8f0; }
+.btn.primary { background: #1d3461; color: #93c5fd; border-color: #3b82f6; }
+.btn.primary:hover { background: #1e40af; }
+</style>
+</head>
+<body>
+
+<div class="content">
+  <div class="status-bar" id="status">Press Step or Play to begin.</div>
+
+  <div class="main-panel">
+    <div class="panel-label">Unsigned — <code>unsigned short</code></div>
+    <div class="type-line">Range: 0 to <span>65,535</span> &nbsp;|&nbsp; No negative values</div>
+
+    <div class="code-strip" id="code-line">
+      <span class="ty">unsigned short</span> u = <span class="nu" id="code-val">3</span>;
+      <span style="margin-left:8px; color: inherit;" id="code-op"></span>
+    </div>
+
+    <div class="counter-area">
+      <div class="counter-box" id="counter-box">3</div>
+      <div class="counter-label" id="counter-label">value of u</div>
+      <div class="wrap-arrow" id="wrap-arrow">↑ wraps from 0 back to 65,535</div>
+    </div>
+
+    <div class="explain-box" id="explain-box">
+      u-- when u == 0: result is (0 − 1) mod 65,536 = 65,535 &nbsp;✓ well-defined
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <button class="btn primary" id="btn-play">▶ Play</button>
+  <button class="btn"         id="btn-step">Step</button>
+  <button class="btn"         id="btn-reset">Reset</button>
+</div>
+
+<script>
+const STATES = [
+  {
+    status: "Step 1 — u starts at 3. A positive value, no issues.",
+    val: "3", boxClass: "", label: "value of u", labelClass: "",
+    codeVal: "3", codeOp: "", codeActive: false,
+    wrap: false, explain: false
+  },
+  {
+    status: "Step 2 — u-- brings u to 2.",
+    val: "2", boxClass: "", label: "value of u", labelClass: "",
+    codeVal: "2", codeOp: "  // u--", codeActive: true,
+    wrap: false, explain: false
+  },
+  {
+    status: "Step 3 — u-- brings u to 1.",
+    val: "1", boxClass: "", label: "value of u", labelClass: "",
+    codeVal: "1", codeOp: "  // u--", codeActive: true,
+    wrap: false, explain: false
+  },
+  {
+    status: "Step 4 — u-- brings u to 0. One more decrement and something interesting happens.",
+    val: "0", boxClass: "at-zero", label: "⚠ at zero — decrement again?", labelClass: "highlight",
+    codeVal: "0", codeOp: "  // u--", codeActive: true,
+    wrap: false, explain: false
+  },
+  {
+    status: "Step 5 — u-- when u == 0: wraps to 65,535. Well-defined for unsigned types.",
+    val: "65,535", boxClass: "wrapped", label: "wraps to USHRT_MAX — well-defined ✓", labelClass: "ok",
+    codeVal: "65,535", codeOp: "  // u-- → wraps!", codeActive: true,
+    wrap: true, explain: true
+  }
+];
+
+let cur = -1, playing = false, timer = null;
+
+function render(s) {
+  document.getElementById('status').textContent = s.status;
+  const box = document.getElementById('counter-box');
+  box.textContent = s.val;
+  box.className = 'counter-box ' + s.boxClass;
+  const lbl = document.getElementById('counter-label');
+  lbl.textContent = s.label;
+  lbl.className = 'counter-label ' + s.labelClass;
+  document.getElementById('code-val').textContent = s.codeVal;
+  document.getElementById('code-op').textContent = s.codeOp;
+  document.getElementById('code-line').className = 'code-strip' + (s.codeActive ? ' active' : '');
+  document.getElementById('wrap-arrow').classList.toggle('visible', s.wrap);
+  document.getElementById('explain-box').classList.toggle('visible', s.explain);
+}
+
+function setPlaying(on) {
+  playing = on;
+  document.getElementById('btn-play').textContent = on ? '⏸ Pause' : '▶ Play';
+  if (on) {
+    timer = setInterval(() => {
+      advance();
+      if (cur >= STATES.length - 1) setPlaying(false);
+    }, 1400);
+  } else {
+    clearInterval(timer); timer = null;
+  }
+}
+
+function advance() {
+  if (cur >= STATES.length - 1) { reset(); return; }
+  cur++;
+  render(STATES[cur]);
+  if (cur === STATES.length - 1) setPlaying(false);
+}
+
+function reset() {
+  setPlaying(false);
+  cur = -1;
+  document.getElementById('status').textContent = 'Press Step or Play to begin.';
+  const box = document.getElementById('counter-box');
+  box.textContent = '3';
+  box.className = 'counter-box';
+  const lbl = document.getElementById('counter-label');
+  lbl.textContent = 'value of u';
+  lbl.className = 'counter-label';
+  document.getElementById('code-val').textContent = '3';
+  document.getElementById('code-op').textContent = '';
+  document.getElementById('code-line').className = 'code-strip';
+  document.getElementById('wrap-arrow').classList.remove('visible');
+  document.getElementById('explain-box').classList.remove('visible');
+}
+
+document.getElementById('btn-play').addEventListener('click', () => setPlaying(!playing));
+document.getElementById('btn-step').addEventListener('click', advance);
+document.getElementById('btn-reset').addEventListener('click', reset);
+</script>
+</body>
+</html>

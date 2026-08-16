@@ -1,0 +1,272 @@
+<!-- Topic 3: Parallel Arrays -->
+<!-- Slides 38–56 -->
+
+# Parallel Arrays
+<!-- Slide 38 -->
+
+## Can One Index Describe a Whole Record? {.smaller}
+
++ Separate arrays can store separate attributes
++ A shared index connects the attributes for one entity
+
+::: notes
+Slides 38–56
+:::
+
+<!-- Slide 39 -->
+
+---
+
+## A Parallel-Array Dataset
+
+| Index | `names` | `scores` | `present` |
+|---:|---|---:|---|
+| 0 | Ada | 91 | true |
+| 1 | Linus | 78 | false |
+| 2 | Grace | 95 | true |
+
+At index `2`, every value describes Grace.
+
+::: notes
+[Graphic suggestion: draw three horizontal arrays with vertical alignment bands connecting elements that share each index.]
+:::
+
+<!-- Slide 40 -->
+
+---
+
+## Declaring Parallel Arrays
+
+```{.cpp}
+const int CAPACITY = 5;
+
+string names[CAPACITY];
+int scores[CAPACITY];
+bool present[CAPACITY];
+```
+
++ Every array uses the same capacity
++ Each position has the same meaning across all arrays
+
+<!-- Slide 41 -->
+
+---
+
+## Capacity and Logical Size
+
+| Name | Meaning |
+|---|---|
+| `CAPACITY` | Maximum number of records the arrays can hold |
+| `size` | Number of records currently stored |
+
+All loops use the same logical `size`, not the full capacity.
+
+<!-- Slide 42 -->
+
+---
+
+## The Shared-Index Contract
+
+For every active index `i`:
+
++ `names[i]` identifies the entity
++ `scores[i]` stores that entity's score
++ `present[i]` stores that entity's attendance
+
+If one array moves without the others, the dataset becomes incorrect.
+
+<!-- Slide 43 -->
+
+---
+
+## Filling the Arrays Together
+
+```{.cpp}
+for (int i = 0; i < size; i++) {
+    cout << "Name: ";
+    cin >> names[i];
+    cout << "Score: ";
+    cin >> scores[i];
+    cout << "Present (1 or 0): ";
+    cin >> present[i];
+}
+```
+
+<!-- Slide 44 -->
+
+---
+
+## Traversing Related Data
+
+```{.cpp}
+for (int i = 0; i < size; i++) {
+    cout << names[i] << " "
+         << scores[i] << " "
+         << present[i] << "\n";
+}
+```
+
++ One loop controls every array
++ The index selects one complete logical record
+
+<!-- Slide 45 -->
+
+---
+
+## Passing Parallel Arrays to a Function
+
+```{.cpp}
+void displayRecords(const string names[],
+                    const int scores[],
+                    const bool present[],
+                    int size);
+```
+
++ Pass every required field array
++ Pass one shared logical size
++ Use `const` when the function only reads records
+
+<!-- Slide 46 -->
+
+---
+
+## Displaying Records
+
+```{.cpp}
+void displayRecords(const string names[],
+                    const int scores[],
+                    const bool present[],
+                    int size) {
+    for (int i = 0; i < size; i++) {
+        cout << names[i] << " "
+             << scores[i] << " "
+             << present[i] << "\n";
+    }
+}
+```
+
+<!-- Slide 47 -->
+
+---
+
+## Searching One Array
+
+```{.cpp}
+int index = findName(names, size, targetName);
+```
+
++ Search `names` for the requested student
++ Keep the returned index
++ Use that index only when it is not `-1`
+
+<!-- Slide 48 -->
+
+---
+
+## Using the Matching Index
+
+```{.cpp}
+if (index != -1) {
+    cout << names[index] << "\n";
+    cout << scores[index] << "\n";
+    cout << present[index] << "\n";
+}
+```
+
+The search result locates the entire logical record, not only the matched name.
+
+<!-- Slide 49 -->
+
+---
+
+## Finding the Best Record
+
++ Initialize `bestIndex` to `0`
++ Compare each `scores[i]` with `scores[bestIndex]`
++ Return the index of the highest score
+
+An index preserves access to every related field.
+
+<!-- Slide 50 -->
+
+---
+
+## Best-Record Function
+
+```{.cpp}
+int findHighestIndex(const int scores[], int size) {
+    int bestIndex = 0;
+
+    for (int i = 1; i < size; i++) {
+        if (scores[i] > scores[bestIndex]) {
+            bestIndex = i;
+        }
+    }
+
+    return bestIndex;
+}
+```
+
+<!-- Slide 51 -->
+
+---
+
+## Moving One Record
+
+```{.cpp}
+swap(scores[i], scores[i + 1]);
+swap(names[i], names[i + 1]);
+swap(present[i], present[i + 1]);
+```
+
+Moving only the scores would attach them to the wrong names.
+
+<!-- Slide 52 -->
+
+---
+
+## Sorting Parallel Arrays
+
+```{.cpp}
+for (int pass = 0; pass < size - 1; pass++) {
+    for (int i = 0; i < size - 1 - pass; i++) {
+        if (scores[i] > scores[i + 1]) {
+            swap(scores[i], scores[i + 1]);
+            swap(names[i], names[i + 1]);
+            swap(present[i], present[i + 1]);
+        }
+    }
+}
+```
+
+<!-- Slide 53 -->
+
+---
+
+## When Parallel Arrays Work Well
+
++ The dataset is small and fixed-capacity
++ Every operation uses the same logical size
++ Only a few attributes must stay aligned
++ The shared-index contract remains easy to inspect
+
+<!-- Slide 54 -->
+
+---
+
+## Where the Design Strains
+
++ Every new field adds another parameter and coordinated operation
++ Sorting or moving records requires updating every array
++ A structure can package all fields for one entity into a single value
+
+<!-- Slide 55 -->
+
+---
+
+## Summary
+
++ Parallel arrays use one shared index to connect related values
++ Capacity, logical size, traversal, and movement must remain synchronized
+
+<!-- Slide 56 -->

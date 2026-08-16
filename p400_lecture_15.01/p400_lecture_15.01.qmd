@@ -1,0 +1,258 @@
+# Last Time
+
+::: {.incremental}
++ **Scalar Dynamic Allocation**
++ **Heap and Stack Memory**
++ **Pointer Ownership**
+:::
+
+::: notes
+Recall the allocate–use–release model for one dynamically allocated value.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Pseudodynamic Memory
+- Pseudodynamic Memory - Heap
+- Dynamic Memory
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_pseudodynamic_memory.qmd >}}
+{{< include topic_2_pseudodynamic_memory_heap.qmd >}}
+{{< include topic_3_dynamic_memory.qmd >}}
+
+---
+
+# Key Takeaways
+
+- Pseudodynamic storage separates fixed capacity from runtime logical length.
+- Heap pseudodynamic arrays use `new[]` and the matching `delete[]` form.
+- Raw heap arrays do not track their length or check their bounds.
+- Dynamic memory changes allocation size by allocating, copying, releasing, transferring ownership, and updating length.
+- `unique_ptr<Type[]>` manages lifetime; `vector` is normally the safer resizable sequence.
+
+<!-- Slide 69 -->
+
+# Next Time
+
+Structures and composite data.
+
+<!-- Slide 70 -->
+
+# Appendix
+
+<!-- Slide 71 -->
+
+## Pseudodynamic Memory: Good Practices
+
+- Give capacity and logical length different names.
+- Validate requested length before using it.
+- Pass logical length with the array and capacity to operations that may append.
+
+<!-- Slide 72 -->
+
+---
+
+## Pseudodynamic Memory: Common Mistakes
+
+- Treating every capacity slot as valid data
+- Allowing logical length to exceed capacity
+- Growing logical length without initializing newly active elements
+
+<!-- Slide 73 -->
+
+---
+
+## Pseudodynamic Memory: More Examples
+
+```{.cpp}
+bool contains(const int values[], int length, int target)
+{
+    for (int i = 0; i < length; i++)
+        if (values[i] == target)
+            return true;
+    return false;
+}
+```
+
+<!-- Slide 74 -->
+
+---
+
+## Pseudodynamic Memory: Practice Problems
+
+1. Write `insertAtEnd` for a fixed array with logical length.
+2. Write `removeAt` and shift later elements left.
+3. Trace capacity and logical length after five operations.
+
+<!-- Slide 75 -->
+
+---
+
+## Pseudodynamic Memory: AI Search Terms
+
+- C++ fixed capacity array logical size
+- C++ partially filled array
+- C++ array capacity versus length
+- C++ array append with size variable
+
+<!-- Slide 76 -->
+
+---
+
+## Pseudodynamic Memory: Questions for Reflection
+
+- Which operations need capacity as a parameter?
+- Why can shrinking logical length occur without moving data?
+- When is a fixed maximum an acceptable design constraint?
+
+<!-- Slide 77 -->
+
+---
+
+## Pseudodynamic Memory - Heap: Good Practices
+
+- Match `new[]` with `delete[]`.
+- Preserve an owning pointer to the allocation's base address.
+- Keep length beside the pointer and release ownership on every exit path.
+- Prefer automatic ownership and standard containers in application code.
+
+<!-- Slide 78 -->
+
+---
+
+## Pseudodynamic Memory - Heap: Common Mistakes
+
+- Mixing scalar and array release forms
+- Losing the only owning pointer
+- Accessing outside `0` through `length - 1`
+- Assuming the pointer knows how many elements were allocated
+
+<!-- Slide 79 -->
+
+---
+
+## Pseudodynamic Memory - Heap: More Examples
+
+```{.cpp}
+int* clone(const int source[], int length)
+{
+    if (length == 0)
+        return nullptr;
+
+    int* copy = new int[length];
+    for (int i = 0; i < length; i++)
+        copy[i] = source[i];
+    return copy;
+}
+```
+
+The caller receives ownership of the returned allocation.
+
+<!-- Slide 80 -->
+
+---
+
+## Pseudodynamic Memory - Heap: Practice Problems
+
+1. Allocate a heap array using a validated requested length.
+2. Pass a heap array and length to a display function.
+3. Rewrite a raw heap-array program with `unique_ptr<int[]>`.
+
+<!-- Slide 81 -->
+
+---
+
+## Pseudodynamic Memory - Heap: AI Search Terms
+
+- C++ dynamic array new delete array
+- C++ preserve base pointer delete array
+- C++ unique_ptr array make_unique bounds
+- C++ heap array length parameter
+
+<!-- Slide 82 -->
+
+---
+
+## Pseudodynamic Memory - Heap: Questions for Reflection
+
+- Why is a heap array still fixed-size after allocation?
+- Which responsibilities appear when storage moves from stack to heap?
+- Which responsibilities disappear when raw storage becomes a `vector`?
+
+<!-- Slide 83 -->
+
+---
+
+## Dynamic Memory: Good Practices
+
+- Keep old and new arrays alive during copying.
+- Transfer ownership only after the retained values have been copied.
+- Update the stored length after the owning pointer points to the new allocation.
+
+<!-- Slide 84 -->
+
+---
+
+## Dynamic Memory: Common Mistakes
+
+- Updating length before the copy uses the old boundary
+- Deleting the old array before copying retained values
+- Forgetting that repeated one-element growth performs repeated copying
+
+<!-- Slide 85 -->
+
+---
+
+## Dynamic Memory: More Examples
+
+```{.cpp}
+int* temporary = new int[length + 1];
+for (int i = 0; i < length; i++)
+    temporary[i] = values[i];
+
+temporary[length] = newValue;
+delete[] values;
+values = temporary;
+length++;
+```
+
+<!-- Slide 86 -->
+
+---
+
+## Dynamic Memory: Practice Problems
+
+1. Trace the output of `rdaa.cpp` after each printed loop.
+2. Convert the grow step into an `append` function.
+3. Add a second append and count how many values are copied.
+
+<!-- Slide 87 -->
+
+---
+
+## Dynamic Memory: AI Search Terms
+
+- C++ resize raw dynamic array
+- C++ append to dynamic array new delete
+- C++ dynamic array allocate copy delete pattern
+- C++ vector versus raw dynamic array
+
+<!-- Slide 88 -->
+
+---
+
+## Dynamic Memory: Questions for Reflection
+
+- Why does changing data require a different allocation?
+- When do two heap arrays exist at the same time?
+- Why is `vector` the normal application-level version of this idea?
+
+<!-- Slide 89 -->

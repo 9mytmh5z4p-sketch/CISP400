@@ -1,0 +1,299 @@
+<!-- Topic 2: Array Algorithms -->
+<!-- Slides 18–37 -->
+
+# Array Algorithms
+<!-- Slide 18 -->
+
+## What Can One Traversal Discover? {.smaller}
+
++ A total or average
++ A minimum, maximum, or matching position
++ A new arrangement of the elements
+
+::: notes
+Slides 18–37
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## From Loop Pattern to Algorithm
+
+An **algorithm** is a repeatable sequence of steps that solves a category of problems.
+
+| Pattern | State carried through the loop |
+|---|---|
+| Aggregate | Accumulator |
+| Track | Best value or index so far |
+| Search | Match position or sentinel |
+| Sort | Boundary between sorted and unsorted data |
+
+<!-- Slide 20 -->
+
+---
+
+## The Traversal Shape
+
+```{.cpp}
+for (int i = 0; i < size; i++) {
+    // Process values[i]
+}
+```
+
++ Start at index `0`
++ Stop before the logical size
++ Update algorithm state once per visited element
+
+<!-- Slide 21 -->
+
+---
+
+## Computing a Sum
+
+```{.cpp}
+int sumArray(const int values[], int size) {
+    int total = 0;
+
+    for (int i = 0; i < size; i++) {
+        total += values[i];
+    }
+
+    return total;
+}
+```
+
+<!-- Slide 22 -->
+
+---
+
+## Computing an Average
+
+```{.cpp}
+double averageArray(const int values[], int size) {
+    int total = sumArray(values, size);
+    return static_cast<double>(total) / size;
+}
+```
+
++ Reuse the sum algorithm instead of duplicating its loop
++ Convert before division to preserve the fractional result
++ Require `size > 0` as part of the function contract
+
+<!-- Slide 23 -->
+
+---
+
+## What If the Array Is Empty?
+
+| Algorithm | Empty-array behavior |
+|---|---|
+| Sum | Return `0` |
+| Search | Return `-1` |
+| Sort | Do nothing |
+| Average | Requires at least one element |
+| Minimum or maximum | Requires at least one element |
+
+Preconditions belong in the function contract.
+
+<!-- Slide 24 -->
+
+---
+
+## Finding a Minimum or Maximum
+
++ Seed the tracker with `values[0]`
++ Begin comparisons at index `1`
++ Replace the tracker whenever a better value appears
+
+Avoid arbitrary seeds such as `0`; an all-negative array would break a maximum tracker initialized that way.
+
+<!-- Slide 25 -->
+
+---
+
+## Maximum Function
+
+```{.cpp}
+int findMaximum(const int values[], int size) {
+    int maximum = values[0];
+
+    for (int i = 1; i < size; i++) {
+        if (values[i] > maximum) {
+            maximum = values[i];
+        }
+    }
+
+    return maximum;
+}
+```
+
+<!-- Slide 26 -->
+
+---
+
+## Searching for a Value
+
+```{.cpp}
+values[i] == target
+```
+
++ A match ends the search
++ Reaching `size` means no match exists
++ The matching index preserves the value's location
+
+<!-- Slide 27 -->
+
+---
+
+## Representing “Not Found”
+
+Valid indexes begin at `0`, so `-1` can represent no matching position.
+
+```{.cpp}
+int position = linearSearch(scores, size, target);
+
+if (position == -1) {
+    cout << "Not found\n";
+}
+```
+
+<!-- Slide 28 -->
+
+---
+
+## Linear Search Function
+
+```{.cpp}
+int linearSearch(const int values[], int size, int target) {
+    for (int i = 0; i < size; i++) {
+        if (values[i] == target) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+```
+
+<!-- Slide 29 -->
+
+---
+
+## How Much Work Does Search Do?
+
+| Situation | Comparisons for `N` elements |
+|---|---:|
+| Target is first | 1 |
+| Target is near the middle | About `N / 2` |
+| Target is last or absent | `N` |
+
+Linear search grows in direct proportion to the array size: **O(N)**.
+
+<!-- Slide 30 -->
+
+---
+
+## Sorting by Neighbor Comparisons
+
+Bubble sort repeats two actions:
+
++ Compare adjacent elements
++ Swap them when the left value is larger
+
+After one complete pass, the largest unsorted value has moved to the end of the unsorted region.
+
+<!-- Slide 31 -->
+
+---
+
+## Why Swapping Needs Temporary Storage
+
+```{.cpp}
+int temp = values[i];
+values[i] = values[i + 1];
+values[i + 1] = temp;
+```
+
+The temporary variable preserves the first value before its array position is overwritten.
+
+<!-- Slide 32 -->
+
+---
+
+## One Bubble Sort Pass
+
+| Comparison | Array state |
+|---|---|
+| Start | `5  3  8  1` |
+| Compare 5 and 3 | `3  5  8  1` |
+| Compare 5 and 8 | `3  5  8  1` |
+| Compare 8 and 1 | `3  5  1  8` |
+
+The value `8` is now in its final position.
+
+::: notes
+[Graphic suggestion: animate the active adjacent pair and move the larger value one cell to the right after each comparison.]
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## Repeating the Pass
+
+```{.cpp}
+for (int pass = 0; pass < size - 1; pass++) {
+    for (int i = 0; i < size - 1 - pass; i++) {
+        // Compare values[i] and values[i + 1]
+    }
+}
+```
+
++ The outer loop counts completed passes
++ The inner bound shrinks because the largest remaining values are already placed
+
+<!-- Slide 34 -->
+
+---
+
+## Bubble Sort Function
+
+```{.cpp}
+void bubbleSort(int values[], int size) {
+    for (int pass = 0; pass < size - 1; pass++) {
+        for (int i = 0; i < size - 1 - pass; i++) {
+            if (values[i] > values[i + 1]) {
+                int temp = values[i];
+                values[i] = values[i + 1];
+                values[i + 1] = temp;
+            }
+        }
+    }
+}
+```
+
+<!-- Slide 35 -->
+
+---
+
+## What Does Each Algorithm Promise?
+
+| Algorithm | Result | Mutates array? | Precondition |
+|---|---|---:|---|
+| Sum | Total | No | None |
+| Average | Mean | No | Nonempty |
+| Maximum | Largest value | No | Nonempty |
+| Linear search | Index or `-1` | No | None |
+| Bubble sort | Sorted elements | Yes | None |
+
+<!-- Slide 36 -->
+
+---
+
+## Summary
+
++ Accumulators, trackers, and sentinels turn traversal into reusable algorithms
++ Search reports a position; in-place sorting changes the caller's array
+
+<!-- Slide 37 -->

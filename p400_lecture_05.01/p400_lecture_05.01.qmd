@@ -1,0 +1,518 @@
+# Last Time
+
+::: {.incremental}
++ **Function Contracts**
++ **Function Boundary Model**
++ **Passing Vectors**
++ **Scope**
++ **Shadow Variables**
++ **Stack Frame Model**
+:::
+
+::: notes
+Brief recall of lecture 04.02. Students should remember that function boundaries control data movement, scope controls visibility, and stack frames explain separate function storage.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Reference Variables
+- Pass by Value and Pass by Reference
+- Reference Variables as Parameters
+- Static Local Variables
+- Default Parameters
+- Exit
+- Menus and Functions
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_reference_variables.qmd >}}
+{{< include topic_2_pass_by_reference.qmd >}}
+{{< include topic_3_reference_parameters.qmd >}}
+{{< include topic_4_static_local_variables.qmd >}}
+{{< include topic_5_default_parameters.qmd >}}
+{{< include topic_6_exit.qmd >}}
+{{< include topic_7_menus_functions.qmd >}}
+
+---
+
+# Key Takeaways
+
+- A reference gives an existing variable another name.
+- Pass by reference lets a function work with caller-owned storage.
+- Static local variables keep function-owned state between calls.
+- Default parameters make common function calls shorter.
+- `exit()` terminates the program instead of returning to a caller.
+- Menu programs are clearer when display, input, dispatch, and actions are separate functions.
+
+<!-- Slide 75 -->
+
+---
+
+# Next Time
+
+- Function overloading
+- Choosing a parameter style
+- Function side effects
+
+<!-- Slide 76 -->
+
+---
+
+# Appendix
+
+<!-- Slide 77 -->
+
+---
+
+## Reference Variables: Good Practices
+
+- Initialize a reference at the point of declaration.
+- Use references when alias behavior is intentional and useful.
+- Trace the original variable and the reference as one shared stored value.
+
+<!-- Slide 78 -->
+
+---
+
+## Reference Variables: Common Mistakes
+
+- Thinking a reference creates a second independent variable.
+- Trying to declare a reference without initializing it.
+- Expecting an assignment to make a reference point to a different variable.
+
+<!-- Slide 79 -->
+
+---
+
+## Reference Variables: More Examples
+
+```cpp
+int count = 5;
+int& total = count;
+
+total++;
+cout << count << endl;
+```
+
+Both names refer to the same integer.
+
+<!-- Slide 80 -->
+
+---
+
+## Reference Variables: Practice Problems
+
+1. Declare an integer variable and a reference to it.
+2. Predict the output after changing the value through the reference.
+3. Explain why a reference must be initialized.
+
+<!-- Slide 81 -->
+
+---
+
+## Reference Variables: AI Search Terms
+
+- "C++ reference variable alias"
+- "C++ reference must be initialized"
+- "C++ reference variable beginner example"
+
+<!-- Slide 82 -->
+
+---
+
+## Reference Variables: Questions for Reflection
+
+- Why is aliasing different from copying?
+- What makes references useful for function parameters?
+
+<!-- Slide 83 -->
+
+---
+
+## Pass by Value and Pass by Reference: Good Practices
+
+- Use pass by value when the function only needs a copy.
+- Use pass by reference when the caller's variable must change.
+- Check the prototype before tracing a function call.
+
+<!-- Slide 84 -->
+
+---
+
+## Pass by Value and Pass by Reference: Common Mistakes
+
+- Expecting pass by value to change the caller's variable.
+- Missing the `&` in the parameter list.
+- Forgetting that a reference parameter can modify caller-owned data.
+
+<!-- Slide 85 -->
+
+---
+
+## Pass by Value and Pass by Reference: More Examples
+
+```cpp
+void doubleCopy(int number);
+void doubleOriginal(int& number);
+```
+
+The first prototype receives a copy. The second receives an alias.
+
+<!-- Slide 86 -->
+
+---
+
+## Pass by Value and Pass by Reference: Practice Problems
+
+1. Predict whether `void change(int value);` changes the caller's variable.
+2. Predict whether `void change(int& value);` changes the caller's variable.
+3. Write a function that sets a caller's integer to zero.
+
+<!-- Slide 87 -->
+
+---
+
+## Pass by Value and Pass by Reference: AI Search Terms
+
+- "C++ pass by value vs pass by reference"
+- "C++ reference parameter beginner"
+- "C++ swap function reference parameters"
+
+<!-- Slide 88 -->
+
+---
+
+## Pass by Value and Pass by Reference: Questions for Reflection
+
+- Why is pass by value safer by default?
+- Why does swapping two caller variables require reference parameters?
+
+<!-- Slide 89 -->
+
+---
+
+## Reference Variables as Parameters: Good Practices
+
+- Put the `&` in both the prototype and definition.
+- Read the prototype before assuming a call cannot change its argument.
+- Use clear parameter names that describe the caller data being updated.
+
+<!-- Slide 90 -->
+
+---
+
+## Reference Variables as Parameters: Common Mistakes
+
+- Adding `&` in the definition but not the prototype.
+- Looking only at the function call and missing reference behavior.
+- Passing a literal to a non-const reference parameter.
+
+<!-- Slide 91 -->
+
+---
+
+## Reference Variables as Parameters: More Examples
+
+```cpp
+void readScore(int& score);
+void updateBalance(double& balance);
+void getPoint(double& x, double& y);
+```
+
+Each prototype signals that caller data may be updated.
+
+<!-- Slide 92 -->
+
+---
+
+## Reference Variables as Parameters: Practice Problems
+
+1. Mark every reference parameter in a list of prototypes.
+2. Write a prototype for a function that reads a user's age into a caller variable.
+3. Explain why `getPoint(3.0, 4.0);` would not work with non-const reference parameters.
+
+<!-- Slide 93 -->
+
+---
+
+## Reference Variables as Parameters: AI Search Terms
+
+- "C++ reference parameter prototype"
+- "C++ non const reference parameter variable"
+- "C++ function parameter ampersand"
+
+<!-- Slide 94 -->
+
+---
+
+## Reference Variables as Parameters: Questions for Reflection
+
+- Why does the call syntax hide reference behavior?
+- What responsibility does a prototype have when a parameter is a reference?
+
+<!-- Slide 95 -->
+
+---
+
+## Static Local Variables: Good Practices
+
+- Use static locals only for state owned by one function.
+- Keep the variable name local when outside code should not access it.
+- Trace the value across calls instead of resetting it each call.
+
+<!-- Slide 96 -->
+
+---
+
+## Static Local Variables: Common Mistakes
+
+- Expecting a static local to reset every time the function runs.
+- Treating static locals as a replacement for clear data flow.
+- Confusing local scope with short lifetime.
+
+<!-- Slide 97 -->
+
+---
+
+## Static Local Variables: More Examples
+
+```cpp
+int nextId() {
+    static int id = 1000;
+    id++;
+    return id;
+}
+```
+
+The function keeps the next identifier internally.
+
+<!-- Slide 98 -->
+
+---
+
+## Static Local Variables: Practice Problems
+
+1. Predict the output from three calls to a function with `static int count = 0;`.
+2. Explain why code outside the function cannot use the static local name.
+3. Rewrite an ordinary local counter as a static local counter.
+
+<!-- Slide 99 -->
+
+---
+
+## Static Local Variables: AI Search Terms
+
+- "C++ static local variable lifetime"
+- "C++ static local counter function"
+- "C++ scope vs lifetime static local"
+
+<!-- Slide 100 -->
+
+---
+
+## Static Local Variables: Questions for Reflection
+
+- Why might a static local be safer than a global variable?
+- When would remembering state inside a function make tracing harder?
+
+<!-- Slide 101 -->
+
+---
+
+## Default Parameters: Good Practices
+
+- Put required parameters before defaulted parameters.
+- Put default values in the prototype.
+- Use defaults for common cases that make the function easier to call.
+
+<!-- Slide 102 -->
+
+---
+
+## Default Parameters: Common Mistakes
+
+- Placing a required parameter after a defaulted parameter.
+- Repeating default values in both the prototype and definition.
+- Using defaults to hide unclear function design.
+
+<!-- Slide 103 -->
+
+---
+
+## Default Parameters: More Examples
+
+```cpp
+void printTitle(string title, char underline = '=');
+void displayMoney(double amount, int decimals = 2);
+void pause(string message = "Press enter to continue.");
+```
+
+Each default describes the common call.
+
+<!-- Slide 104 -->
+
+---
+
+## Default Parameters: Practice Problems
+
+1. Identify which prototypes use valid default parameter order.
+2. Write a function prototype for a divider line with default symbol and length.
+3. Predict which values are used in `printLine('*');`.
+
+<!-- Slide 105 -->
+
+---
+
+## Default Parameters: AI Search Terms
+
+- "C++ default parameters prototype"
+- "C++ default arguments right to left"
+- "C++ default parameter examples"
+
+<!-- Slide 106 -->
+
+---
+
+## Default Parameters: Questions for Reflection
+
+- Why do default values belong in the caller-facing prototype?
+- When does an optional argument make a function easier to read?
+
+<!-- Slide 107 -->
+
+---
+
+## Exit: Good Practices
+
+- Prefer normal `return` flow when the program can continue.
+- Use `exit()` only for program-level termination.
+- Include `<cstdlib>` when using `exit()`.
+
+<!-- Slide 108 -->
+
+---
+
+## Exit: Common Mistakes
+
+- Using `exit()` as a shortcut instead of designing normal control flow.
+- Expecting code after `exit()` to run.
+- Confusing a helper function return with ending the whole program.
+
+<!-- Slide 109 -->
+
+---
+
+## Exit: More Examples
+
+```cpp
+void requireFileOpen(bool opened) {
+    if (!opened) {
+        cout << "Could not open file." << endl;
+        exit(1);
+    }
+}
+```
+
+The function ends the program when a critical requirement fails.
+
+<!-- Slide 110 -->
+
+---
+
+## Exit: Practice Problems
+
+1. Mark which statements return to a caller and which end the program.
+2. Explain the difference between `return 0;` and `exit(0);`.
+3. Write a guard function that exits when a number is negative.
+
+<!-- Slide 111 -->
+
+---
+
+## Exit: AI Search Terms
+
+- "C++ exit function cstdlib"
+- "C++ return vs exit"
+- "C++ exit status code 0 1"
+
+<!-- Slide 112 -->
+
+---
+
+## Exit: Questions for Reflection
+
+- Why should `exit()` be rare in beginner programs?
+- What information does a status code communicate outside the program?
+
+<!-- Slide 113 -->
+
+---
+
+## Menus and Functions: Good Practices
+
+- Give each menu responsibility a clear function.
+- Keep `main()` focused on coordination.
+- Use prototypes to sketch the menu architecture before coding details.
+
+<!-- Slide 114 -->
+
+---
+
+## Menus and Functions: Common Mistakes
+
+- Putting all menu output, input, and action code inside `main()`.
+- Letting one action function do several unrelated jobs.
+- Forgetting that actions may need reference parameters to update caller state.
+
+<!-- Slide 115 -->
+
+---
+
+## Menus and Functions: More Examples
+
+```cpp
+void displayMenu();
+int getChoice();
+void processChoice(int choice, double& balance);
+void addDeposit(double& balance);
+void showBalance(double balance);
+```
+
+These prototypes separate the menu's major responsibilities.
+
+<!-- Slide 116 -->
+
+---
+
+## Menus and Functions: Practice Problems
+
+1. List three functions for a calculator menu program.
+2. Decide which menu functions should return a value.
+3. Write a prototype for a menu action that updates a caller's total.
+
+<!-- Slide 117 -->
+
+---
+
+## Menus and Functions: AI Search Terms
+
+- "C++ menu driven program functions"
+- "C++ do while menu switch functions"
+- "C++ menu program reference parameter"
+
+<!-- Slide 118 -->
+
+---
+
+## Menus and Functions: Questions for Reflection
+
+- Why does a menu program become easier to change when each job has its own function?
+- Which menu responsibilities belong in `main()` and which should move to helpers?
+
+<!-- Slide 119 -->

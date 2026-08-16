@@ -1,0 +1,40 @@
+Term,Definition
+Agenda,A slide that previews the instructional topics for the entire lecture
+Anatomy,A slide that labels the parts of a syntax form or process or expression or concept
+Appendix - AI Search Terms,An appendix slide that gives students useful search phrases for independent review or AI assisted study
+Appendix - Common Mistakes,An appendix slide that lists frequent errors students should learn to recognize and avoid
+Appendix - Good Practices,An appendix slide that reinforces recommended habits or conventions
+Appendix - More Examples,An appendix slide that provides additional examples beyond the main lecture sequence
+Appendix - Practice,An appendix slide that gives students practice tasks or prompts
+Appendix - Reflection,An appendix slide that asks students to reason about meaning or design choices or consequences
+Boundary,A slide that identifies limits or edge cases or valid uses or invalid uses of a concept
+Checklist,A slide that gives students a short set of checks to apply before or during programming
+Common Practice,A slide that identifies the usual or preferred way to apply a concept in ordinary programming
+Complete Example,A slide that shows a complete program that models syntax use. This will execute if copied and pasted into a compiler.
+Connect,A slide that links new material to knowledge students already have
+Contrast,A slide that distinguishes two related ideas or approaches or states or failure modes
+Decision Point,"A slide that helps students decide when to use one tool or design or programming approach instead of another. Example: Choose among a fixed array, raw dynamic array, unique_ptr<Type[]>, and vector."
+Define,A slide that introduces essential vocabulary or meaning or conceptual identity
+Demonstration,A slide that shows a concept operating in a focused code example or short scenario
+Enumerate,"A slide that lists the major parts or forms or choices or categories before examining them in detail. These slides do not typically have definitions. Furthermore, the points enumerated in the slide often become section dividers when the material is presented.."
+Error Example,A slide that shows incorrect code or an invalid state so students can diagnose what went wrong
+Invariant,A slide that states a condition that must remain true for the program or concept to stay valid
+Model,A slide that gives students a mental model or visual representation of how something works
+Opening Question,A slide that frames a topic around a motivating question students should be able to answer by the end
+Ownership Model,A slide that explains who is responsible for managing access or lifetime or cleanup of a resource
+Predict,A slide that asks students to anticipate an output or state change or ownership change or error before the answer is revealed
+Process Pattern,A slide that presents a repeatable sequence of steps for applying a concept correctly
+Progression Map,A slide that shows how the current material prepares students for upcoming material
+Review,A slide that recalls prior topics needed for the current lecture
+Section Divider,A slide that marks the beginning of a major lecture section or appendix section
+Setup,A slide that introduces required headers or tools or syntax setup or environmental requirements before examples can run
+Summary,A slide that condenses the most important ideas from a topic or lecture
+Trace,A slide that follows program state or memory state or ownership or execution through a sequence
+Transfer,A slide that applies an idea in a new context or repeated use situation. Example: Adapt a dynamically allocated score array into a dynamically allocated temperature array.
+Value Added,A slide that explains why a topic matters and what new programming capability it gives students
+Visualization,An interactive demonstration of some specific phenomona or topic.
+Image,An image of some material.
+Partial Example,A slide that shows a program fragment that models use in context. This will not execute if copied and pasted into a compiler.
+Before/After,"Compare program state surrounding an operation.
+Example: Show the original allocation and the larger replacement allocation after resizing."
+Code Include,

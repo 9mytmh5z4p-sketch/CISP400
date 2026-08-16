@@ -1,0 +1,66 @@
+
+Starting python3 kernel...Done
+
+Executing 'test-plantuml.quarto_ipynb'
+
+[1mpandoc --verbose[22m
+  to: html
+  output-file: test-plantuml.html
+  standalone: true
+  section-divs: true
+  html-math-method: mathjax
+  wrap: none
+  default-image-extension: png
+  variables: {}
+  
+[1mmetadata[22m
+  document-css: false
+  link-citations: true
+  date-format: long
+  lang: en
+  title: PlantUML Test
+  
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/template.patched from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/template.patched
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/metadata.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/metadata.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/styles.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/styles.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-block.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-block.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-metadata.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-metadata.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-block.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-block.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-metadata.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-metadata.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-block.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-block.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-metadata.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-metadata.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-block.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-block.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-metadata.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-metadata.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-block.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-block.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-metadata.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-metadata.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-block.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-block.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-metadata.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-metadata.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-block.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-block.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-metadata.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-metadata.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-block.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-block.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-metadata.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-metadata.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-block.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-block.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-metadata.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/title-metadata.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/_title-meta-author.html
+[INFO] Loaded /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/toc.html from /var/folders/s_/hq2qs0c90xl_gfl22m6cg3240000gn/T/quarto-sessiona2133e2e3713edf1/84defa63eacdfd89/57b91f6c009c9f01/toc.html
+[INFO] Running filter /Applications/quarto/share/filters/main.lua
+[INFO] Completed filter /Applications/quarto/share/filters/main.lua in 20 ms
+Output created: test-plantuml.html
+

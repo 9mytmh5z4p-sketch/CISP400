@@ -1,0 +1,33 @@
+<!-- Topic 4: Class Expectations -->
+<!-- Slides 21–24 -->
+
+# Class Expectations
+
+<!-- Slide 21 -->
+
+## Textbook
+
++ We are going to do something different ….
+
+::: notes
+Slides 21–24
+:::
+
+<!-- Slide 22 -->
+
+---
+
+<h2 style="display:none">Student Responsibility</h2>
+
++ Remember — it is your choice to be here.
++ This is not high school — you are responsible for your performance.
+
+<!-- Slide 23 -->
+
+---
+
+## Not Me
+
+![Fountain of Knowledge](images/fountain_of_knowledge.png){fig-align="center" width="42%"}
+
+<!-- Slide 24 -->

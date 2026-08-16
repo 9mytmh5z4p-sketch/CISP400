@@ -1,0 +1,253 @@
+# Last Time
+
+::: {.incremental}
++ **Array Decay**
++ **Null Pointers**
+:::
+
+::: notes
+Recall that array parameters lose size information and that nullptr represents a deliberate no-object state. This lecture adds explicit lifetime and ownership.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- `new` and `delete`
+- Pointer Errors, Memory Leaks, and Dangling Pointers
+- Smart Pointers
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_new_delete.qmd >}}
+{{< include topic_2_pointer_errors.qmd >}}
+{{< include topic_3_smart_pointers.qmd >}}
+
+---
+
+# Key Takeaways
+
+- Dynamic allocation separates an object's lifetime from the scope that creates it.
+- Raw ownership requires valid access, correct bounds, and exactly one matching release.
+- `unique_ptr` makes single ownership automatic; shared ownership requires deliberate use of `shared_ptr` and `weak_ptr`.
+
+<!-- Slide 76 -->
+
+---
+
+# Next Time
+
+- Dynamic Arrays with `new[]` and `delete[]`
+- Resizing Dynamic Arrays Safely
+
+<!-- Slide 77 -->
+
+---
+
+# Appendix
+
+<!-- Slide 78 -->
+
+---
+
+## new and delete: Good Practices
+
+- Initialize allocations immediately when possible.
+- Preserve one clear owning pointer for each scalar allocation.
+- Place the matching release near the end of the owner's responsibility.
+
+<!-- Slide 79 -->
+
+---
+
+## new and delete: Common Mistakes
+
+- Calling `delete` more than once for the same allocation
+- Forgetting cleanup on an early return
+- Treating the pointer's scope as the allocation's lifetime
+
+<!-- Slide 80 -->
+
+---
+
+## new and delete: More Examples
+
+```{.cpp}
+char* makeGrade(char value) {
+    return new char{value};
+}
+
+char* grade = makeGrade('A');
+cout << *grade << "\n";
+delete grade;
+grade = nullptr;
+```
+
+<!-- Slide 81 -->
+
+---
+
+## new and delete: Practice Problems
+
+1. Allocate one `double`, assign a value, print it, and release it.
+2. Allocate one `double`, modify it through its pointer, and release it.
+3. Label the owner and cleanup point in a function-return example.
+
+<!-- Slide 82 -->
+
+---
+
+## new and delete: AI Search Terms
+
+- C++ dynamic allocation lifetime
+- C++ scalar new and delete examples
+- C++ ownership raw pointer examples
+
+<!-- Slide 83 -->
+
+---
+
+## new and delete: Questions for Reflection
+
+- Why does the pointer's lifetime differ from the allocation's lifetime?
+- Why must one owner be responsible for releasing a scalar allocation?
+
+<!-- Slide 84 -->
+
+---
+
+## Pointer Errors: Good Practices
+
+- Check initialization, lifetime, and bounds before dereferencing.
+- Keep owners distinct from borrowers.
+- Test failure and early-return paths, not only the successful path.
+
+<!-- Slide 85 -->
+
+---
+
+## Pointer Errors: Common Mistakes
+
+- Assuming a non-null address must still be valid
+- Nulling one alias and assuming every alias changed
+- Confusing an observing alias with a second owner
+
+<!-- Slide 86 -->
+
+---
+
+## Pointer Errors: More Examples
+
+```{.cpp}
+int* owner = new int{42};
+int* observer = owner;
+
+cout << *observer << "\n";
+delete owner;
+owner = nullptr;
+observer = nullptr;
+```
+
+<!-- Slide 87 -->
+
+---
+
+## Pointer Errors: Practice Problems
+
+1. Identify the first invalid operation in a use-after-scope trace.
+2. Repair a loop that leaks one allocation per iteration.
+3. Rewrite an example so one pointer remains the clear owner.
+
+<!-- Slide 88 -->
+
+---
+
+## Pointer Errors: AI Search Terms
+
+- C++ dangling pointer use after free
+- C++ memory leak early return
+- AddressSanitizer C++ heap use after free
+- LeakSanitizer C++ memory leaks
+
+<!-- Slide 89 -->
+
+---
+
+## Pointer Errors: Questions for Reflection
+
+- Why can undefined behavior appear to produce correct output?
+- How are a leak and a dangling pointer opposites?
+- Why does aliasing complicate cleanup?
+
+<!-- Slide 90 -->
+
+---
+
+## Smart Pointers: Good Practices
+
+- Prefer `make_unique` and single ownership by default.
+- Transfer `unique_ptr` ownership explicitly with `move`.
+- Use `shared_ptr` only when multiple owners are part of the design.
+
+<!-- Slide 91 -->
+
+---
+
+## Smart Pointers: Common Mistakes
+
+- Dereferencing an empty or moved-from smart pointer
+- Copying a `unique_ptr` instead of transferring it with `move`
+- Using `release()` without immediately establishing a new owner
+
+<!-- Slide 92 -->
+
+---
+
+## Smart Pointers: More Examples
+
+```{.cpp}
+unique_ptr<int> first = make_unique<int>(10);
+unique_ptr<int> second = make_unique<int>(20);
+
+second = move(first);
+
+cout << *second << "\n";
+cout << boolalpha << static_cast<bool>(first) << "\n";
+```
+
+<!-- Slide 93 -->
+
+---
+
+## Smart Pointers: Practice Problems
+
+1. Rewrite a raw scalar allocation using `make_unique`.
+2. Trace two `shared_ptr` copies and record the count after each scope ends.
+3. Choose an ownership type for three short program designs.
+
+<!-- Slide 94 -->
+
+---
+
+## Smart Pointers: AI Search Terms
+
+- C++ RAII unique_ptr ownership
+- C++ move unique_ptr function parameter
+- C++ shared_ptr reference count weak_ptr cycle
+- C++ smart pointer custom deleter
+
+<!-- Slide 95 -->
+
+---
+
+## Smart Pointers: Questions for Reflection
+
+- What guarantee does `unique_ptr` add that a raw pointer lacks?
+- When is shared ownership genuinely necessary?
+- Why must `weak_ptr` be locked before access?
+
+<!-- Slide 96 -->

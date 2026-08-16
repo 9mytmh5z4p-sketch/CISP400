@@ -1,0 +1,125 @@
+<!-- Topic 5: The for Loop -->
+<!-- Slides 40-49 -->
+
+# The for Loop
+<!-- Slide 40 -->
+
+## When Do We Know the Count? {.smaller}
+
+- A `for` loop is a natural fit for counted repetition.
+- Use it when the program knows the number of passes or the numeric range to visit.
+
+::: notes
+Slides 40-49
+:::
+
+<!-- Slide 41 -->
+
+---
+
+## The Shape of a for Loop
+
+```cpp
+for (initialization; condition; update) {
+    statement;
+    statement;
+}
+```
+
+The header gathers the counter setup, the test, and the update in one place.
+
+<!-- Slide 42 -->
+
+---
+
+## for Loop Control Flow
+
+![](images/for_loop.png){fig-alt="Control flow for a for loop" width="54%"}
+
+<!-- Slide 43 -->
+
+---
+
+## for in IPO
+
+| IPO Part | Example |
+|---|---|
+| Input | Read `speed` and `totalHours` |
+| Process | Calculate distance once per hour |
+| Output | Display the hour and distance |
+
+The count is known before the repeated processing begins.
+
+<!-- Slide 44 -->
+
+---
+
+## The Header Controls the Counter
+
+```cpp
+for (int hour = 1; hour <= totalHours; hour++) {
+    int distance = speed * hour;
+    cout << hour << " " << distance << endl;
+}
+```
+
+The counter starts at `1`, continues through `totalHours`, and changes by `1` each pass.
+
+<!-- Slide 45 -->
+
+---
+
+## Distance by Hour
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int speed = 40;
+    int totalHours = 3;
+
+    for (int hour = 1; hour <= totalHours; hour++) {
+        int distance = speed * hour;
+        cout << hour << " " << distance << endl;
+    }
+
+    return 0;
+}
+```
+
+<!-- Slide 46 -->
+
+---
+
+## Trace the Counter
+
+| `hour` | `speed` | `distance = speed * hour` |
+|---:|---:|---:|
+| 1 | 40 | 40 |
+| 2 | 40 | 80 |
+| 3 | 40 | 120 |
+| 4 | 40 | stop |
+
+<!-- Slide 47 -->
+
+---
+
+## for vs. Range-Based for
+
+| Use counted `for` when... | Use range-based `for` when... |
+|---|---|
+| The position matters | Each item is enough |
+| A numeric range matters | The collection controls the passes |
+| You need a counter value | You do not need an index |
+
+<!-- Slide 48 -->
+
+---
+
+## Summary
+
+- A `for` loop packages counter setup, test, and update in the header.
+- Use it when the repetition is naturally counted.
+
+<!-- Slide 49 -->

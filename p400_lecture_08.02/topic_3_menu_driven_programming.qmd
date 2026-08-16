@@ -1,0 +1,257 @@
+<!-- Topic 3: Menu-Driven Programming -->
+<!-- Slides 32-49 -->
+
+# Menu-Driven Programming
+<!-- Slide 32 -->
+
+## Why Menus Need Loops {.smaller}
+
+- A menu gives the client a set of choices.
+- A useful menu usually comes back after each action.
+
+::: notes
+Slides 32-49
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## The Menu Cycle
+
+| Step | Responsibility |
+|---|---|
+| Display | Show choices clearly |
+| Input | Read the client's choice |
+| Dispatch | Run the selected action |
+| Repeat | Return to the menu unless quitting |
+
+<!-- Slide 34 -->
+
+---
+
+## A Menu Needs A Quit Choice
+
+- One option should mean "stop the menu."
+- That quit option works like a sentinel.
+- The program repeats while the choice is not the quit value.
+
+<!-- Slide 35 -->
+
+---
+
+## The Basic Menu Shell
+
+```cpp
+int choice;
+
+do {
+    cout << "1. Display graph" << endl;
+    cout << "2. Clear data" << endl;
+    cout << "0. Quit" << endl;
+    cout << "Choice: ";
+    cin >> choice;
+
+    // Dispatch happens here.
+} while (choice != 0);
+```
+
+<!-- Slide 36 -->
+
+---
+
+## Dispatching The Choice
+
+- Dispatch means connecting a menu choice to the code that handles it.
+- The menu reads the choice.
+- The dispatch logic decides what action runs.
+
+<!-- Slide 37 -->
+
+---
+
+## Dispatch With if / else if
+
+```cpp
+if (choice == 1) {
+    cout << "Display graph" << endl;
+}
+else if (choice == 2) {
+    cout << "Clear data" << endl;
+}
+else if (choice == 0) {
+    cout << "Goodbye" << endl;
+}
+else {
+    cout << "Unknown choice" << endl;
+}
+```
+
+<!-- Slide 38 -->
+
+---
+
+## Dispatch With switch
+
+```cpp
+switch (choice) {
+case 1:
+    cout << "Display graph" << endl;
+    break;
+case 2:
+    cout << "Clear data" << endl;
+    break;
+case 0:
+    cout << "Goodbye" << endl;
+    break;
+default:
+    cout << "Unknown choice" << endl;
+}
+```
+
+<!-- Slide 39 -->
+
+---
+
+## Numeric Menus
+
+- Numeric menus use choices such as `1`, `2`, `3`, and `0`.
+- They are easy to order and easy to use with `switch`.
+- They can become harder to remember as the menu grows.
+
+<!-- Slide 40 -->
+
+---
+
+## Alphanumeric Menus
+
+- Alphanumeric menus use choices such as `A`, `D`, `Q`, or `1A`.
+- Letters can make the action easier to remember.
+- Mixed choices can be useful, but they require clear prompts.
+
+<!-- Slide 41 -->
+
+---
+
+## Choosing A Menu Style
+
+| Style | Strong Fit |
+|---|---|
+| Numeric | Short ordered menus |
+| Letter | Action names such as add, delete, quit |
+| Alphanumeric | Grouped commands or larger menus |
+
+<!-- Slide 42 -->
+
+---
+
+## Keeping Actions Separate
+
+- The menu should coordinate the program.
+- Action code belongs in functions when it grows beyond a few lines.
+- This keeps `main` readable.
+
+<!-- Slide 43 -->
+
+---
+
+## Functions As Menu Actions
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void displayGraph();
+void clearData();
+void showSummary();
+
+int main() {
+    int choice;
+
+    do {
+        cout << "1. Display graph\n2. Clear data\n3. Summary\n0. Quit\n";
+        cin >> choice;
+
+        if (choice == 1) {
+            displayGraph();
+        }
+        else if (choice == 2) {
+            clearData();
+        }
+        else if (choice == 3) {
+            showSummary();
+        }
+    } while (choice != 0);
+
+    return 0;
+}
+```
+
+<!-- Slide 44 -->
+
+---
+
+## Menu Action Definitions
+
+```cpp
+void displayGraph() {
+    cout << "Displaying graph..." << endl;
+}
+
+void clearData() {
+    cout << "Clearing data..." << endl;
+}
+
+void showSummary() {
+    cout << "Showing summary..." << endl;
+}
+```
+
+Function names should read like the action the menu performs.
+
+<!-- Slide 45 -->
+
+---
+
+## Menu State
+
+- Useful menus usually operate on data that lasts across choices.
+- The data may be totals, graph values, account balances, or settings.
+- The menu loop keeps the program alive while that state changes.
+
+<!-- Slide 46 -->
+
+---
+
+## Menu-Driven Graph Program
+
+| Choice | Action |
+|---:|---|
+| 1 | Enter graph data |
+| 2 | Display graph |
+| 3 | Clear data |
+| 0 | Quit |
+
+The menu controls when each part of the graph program runs.
+
+<!-- Slide 47 -->
+
+---
+
+## Common Practices
+
+- Use clear labels for each option.
+- Use one quit choice.
+- Separate display, input, dispatch, and action code.
+
+<!-- Slide 48 -->
+
+---
+
+## Summary
+
+- A menu is repeated program control.
+- The loop keeps interaction going; dispatch chooses the action.
+- Functions keep the menu from becoming the whole program.
+
+<!-- Slide 49 -->

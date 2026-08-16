@@ -1,0 +1,120 @@
+<!-- Topic 2: Introduction to Classes -->
+<!-- Total slides: 6 -->
+
+# Introduction to Classes
+
+---
+
+## A struct that knows how to act {.smaller}
+
++ A `class` is like a `struct` — it groups related data under one type name.
++ The key differences: class members are **private by default**, and a class can contain *functions* alongside its data.
+
+::: notes
+Total slides: 5
+Students know struct from 16.01. Class is the next step: same composite type concept, but with access control and member functions built in. The private-by-default rule is the single most important structural difference to hammer.
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## Class anatomy {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+```{.cpp}
+class Point {
+private:
+    int x;
+    int y;
+
+public:
+    void setX(int val);
+    void setY(int val);
+    int  getX() const;
+    int  getY() const;
+};
+```
+:::
+::: {.column width="50%"}
+- `class` — keyword; creates a new type
+- `Point` — the type name; use it like `int` or `string`
+- `private:` — these members are hidden from outside code
+- `public:` — these members are visible to callers
+- `};` — closing brace **must** have a semicolon
+:::
+:::
+
+::: notes
+Walk through each labeled part deliberately. The private/public split is the new concept relative to struct. Convention: data goes in private; functions external code needs go in public.
+:::
+
+<!-- Slide 2 -->
+
+---
+
+## Visibility Modifiers {.smaller}
+
+```{.cpp}
+Point p;
+
+p.x = 10;       // compile error — x is private
+p.setX(10);     // OK — setX() is public
+```
+
++ **Access modifiers** determine what parts of the object are visible from the outside — `private` hides members from all outside code; `public` exposes them.
+
+::: notes
+Private means the outside world cannot read or write that member directly. Public methods are the controlled interface. This is encapsulation: the object decides how its data is accessed. Struct members are public by default — that's the only syntactic difference between struct and class in C++.
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## {background-image="images/access.png" background-size="contain" background-position="center" background-repeat="no-repeat"}
+
+<!-- Slide 4 -->
+
+---
+
+## A complete example {.smaller}
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+class Point {
+private:
+    int x = 15;
+    int y = 33;
+public:
+    void Print() {
+        cout << "Object is located at " << x << ", " << y << "\n";
+    }
+};
+
+int main() {
+    Point widget1;
+    widget1.Print();   // Object is located at 15, 33
+    return 0;
+}
+```
+
+::: notes
+Copy and run.
+Modify: 1) private and public and rerun. Discuss classes private by default.
+2) change class to struct and rerun. Discuss structs public by default.
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## Summary {.smaller}
+
++ A class groups data (`private`) and behavior (`public`) under one type name.
++ Outside code interacts only through the public interface — the class controls its own data.
+
+<!-- Slide 6 -->

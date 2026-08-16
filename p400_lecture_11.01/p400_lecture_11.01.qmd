@@ -1,0 +1,185 @@
+# Last Time
+
+::: {.incremental}
++ **File I/O**
++ **Sequential Reads and Writes**
++ **Stream State**
+:::
+
+::: notes
+Recall that file streams use the same insertion and extraction operators as cin and cout. Sequential operations automatically advance the stream position.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Stringstream
+- Random Access Files
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_stringstream.qmd >}}
+{{< include topic_2_random_access_files.qmd >}}
+
+---
+
+# Key Takeaways
+
++ String streams parse and format text using familiar stream operators
++ Stream state reports whether typed extraction succeeded
++ Random access moves directly to a calculated byte position
++ Fixed-size binary values make index-based offsets predictable
+
+<!-- Slide 37 -->
+
+---
+
+# Next Time
+
+<!-- Slide 38 -->
+
+---
+
+# Appendix
+
+<!-- Slide 39 -->
+
+---
+
+## Stringstream: Good Practices
+
++ Use `istringstream` for parsing and `ostringstream` for formatting
++ Check stream state before using extracted values
++ Keep input collection separate from interpretation
+
+<!-- Slide 40 -->
+
+---
+
+## Stringstream: Common Mistakes
+
++ Assuming extraction succeeded without checking the stream
++ Expecting `>>` to preserve spaces inside a field
++ Treating a simple delimiter split as a complete CSV parser
+
+<!-- Slide 41 -->
+
+---
+
+## Stringstream: More Examples
+
+```{.cpp}
+string text = "18 72.5 true";
+istringstream input(text);
+
+int age;
+double weight;
+bool active;
+
+input >> age >> weight >> boolalpha >> active;
+```
+
+<!-- Slide 42 -->
+
+---
+
+## Stringstream: Practice Problems
+
+1. Parse a line containing a product name, quantity, and price.
+2. Build a receipt line with a fixed two-decimal total.
+3. Split a pipe-delimited record into three fields.
+
+<!-- Slide 43 -->
+
+---
+
+## Stringstream: AI Search Terms
+
++ C++ `istringstream` parse typed values
++ C++ `ostringstream` build formatted string
++ C++ `getline` custom delimiter stringstream
++ C++ check string stream extraction failure
+
+<!-- Slide 44 -->
+
+---
+
+## Stringstream: Questions for Reflection
+
++ Why separate reading a complete line from parsing its values?
++ When is `getline()` more appropriate than `>>`?
++ What information does stream state provide?
+
+<!-- Slide 45 -->
+
+---
+
+## Random Access Files: Good Practices
+
++ Open random-access data with `ios::binary`
++ Calculate offsets with `sizeof` rather than a hardcoded width
++ Validate the requested index and check every file operation
+
+<!-- Slide 46 -->
+
+---
+
+## Random Access Files: Common Mistakes
+
++ Using `seekg()` before a write or `seekp()` before a read
++ Calculating offsets for variable-length text records
++ Opening an update stream in a mode that truncates the file
+
+<!-- Slide 47 -->
+
+---
+
+## Random Access Files: More Examples
+
+Read the final stored `double`:
+
+```{.cpp}
+input.seekg(-static_cast<streamoff>(sizeof(double)), ios::end);
+
+double lastScore;
+input.read(reinterpret_cast<char*>(&lastScore),
+           sizeof(lastScore));
+```
+
+<!-- Slide 48 -->
+
+---
+
+## Random Access Files: Practice Problems
+
+1. Determine how many `int` values are stored in a binary file.
+2. Read the value at an index supplied by the user.
+3. Replace the final `double` without changing earlier values.
+
+<!-- Slide 49 -->
+
+---
+
+## Random Access Files: AI Search Terms
+
++ C++ binary file `seekg` and `seekp`
++ C++ `tellg` determine binary file size
++ C++ random access fixed-size values
++ C++ `fstream` update binary file without truncating
+
+<!-- Slide 50 -->
+
+---
+
+## Random Access Files: Questions for Reflection
+
++ Why must values have a fixed width for index-based offsets?
++ What is the difference between the get and put positions?
++ When is sequential text preferable to random-access binary data?
+
+<!-- Slide 51 -->

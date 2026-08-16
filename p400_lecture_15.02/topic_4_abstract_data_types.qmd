@@ -1,0 +1,346 @@
+<!-- Topic 4: Abstract Data Types — Part 1 -->
+<!-- Slides 107–135 -->
+
+# Abstract Data Types — Part 1
+<!-- Slide 107 -->
+
+## What Have We Really Been Building? {.smaller}
+
++ Are structures only grouped variables, or are they the beginning of a new programming vocabulary?
+
+::: notes
+Slides 107–135
+:::
+
+<!-- Slide 108 -->
+
+---
+
+## A Type Answers Two Questions
+
+1. What values can exist?
+2. What operations can be performed on those values?
+
++ Representation is one possible way to support those answers.
+
+<!-- Slide 109 -->
+
+---
+
+## Abstract Data Type
+
++ An abstract data type defines a set of values and the permitted operations on those values.
++ Its definition emphasizes observable behavior rather than one implementation.
++ “Abstract” means deliberately focused, not vague.
+
+<!-- Slide 110 -->
+
+---
+
+## ADT Is Not C++ Syntax
+
++ `struct` and `class` are C++ language mechanisms.
++ Arrays and vectors are storage mechanisms.
++ An ADT is a design description that can have multiple implementations.
++ A data structure implements storage; an ADT specifies behavior.
+
+<!-- Slide 111 -->
+
+---
+
+## Interface and Implementation
+
+| Interface | Implementation |
+|---|---|
+| Available operations | Stored members |
+| Required inputs | Algorithms |
+| Results and failure behavior | Supporting data structures |
+
+<!-- Slide 112 -->
+
+---
+
+## The Client’s View
+
+```cpp
+Time meeting = makeTime(14, 30, 0);
+advanceSecond(meeting);
+printTime(meeting);
+```
+
++ Client code asks for operations without managing the algorithm itself.
+
+<!-- Slide 113 -->
+
+---
+
+## The Implementer’s View
+
+```cpp
+struct Time {
+    int hour;
+    int minute;
+    int second;
+};
+
+void advanceSecond(Time& time);
+```
+
++ The implementer chooses storage and preserves valid transitions.
+
+<!-- Slide 114 -->
+
+---
+
+## A `Time` ADT
+
++ Values represent times from `00:00:00` through `23:59:59`.
++ Operations create, inspect, display, compare, and advance times.
++ Every operation must leave the value valid.
+
+<!-- Slide 115 -->
+
+---
+
+## Representation with a Structure
+
+```cpp
+struct Time {
+    int hour = 0;
+    int minute = 0;
+    int second = 0;
+};
+```
+
+<!-- Slide 116 -->
+
+---
+
+## Operations with Free Functions
+
+```cpp
+Time makeTime(int hour, int minute, int second);
+bool isValid(const Time& time);
+void advanceSecond(Time& time);
+void printTime(const Time& time);
+```
+
++ Related function names form an informal interface.
+
+<!-- Slide 117 -->
+
+---
+
+## Invariant, Precondition, and Postcondition
+
++ An **invariant** must hold for every valid value.
++ A **precondition** must hold before an operation begins.
++ A **postcondition** states what the operation guarantees afterward.
+
+<!-- Slide 118 -->
+
+---
+
+## Preserving a Valid State
+
+```cpp
+void advanceSecond(Time& time) {
+    time.second++;
+    if (time.second == 60) {
+        time.second = 0;
+        time.minute++;
+    }
+    if (time.minute == 60) {
+        time.minute = 0;
+        time.hour = (time.hour + 1) % 24;
+    }
+}
+```
+
+<!-- Slide 119 -->
+
+---
+
+## Changing the Representation
+
+```cpp
+struct Time {
+    int secondsSinceMidnight;
+};
+```
+
++ Which client statements should need to change if the operations remain stable?
+
+<!-- Slide 120 -->
+
+---
+
+## Stable Operations, Replaceable Representation
+
++ Clients depend on operation names and contracts.
++ Implementers can improve storage or algorithms behind those operations.
++ Direct member access makes representation changes spread through the program.
+
+<!-- Slide 121 -->
+
+---
+
+## A Stack as an ADT
+
++ `push` adds one value to the top.
++ `pop` removes the top value.
++ `top` observes the top value.
++ `isEmpty` reports whether a top value exists.
+
+<!-- Slide 122 -->
+
+---
+
+## Same ADT, Different Implementations
+
+```cpp
+struct ArrayStack {
+    int values[100];
+    int size;
+};
+
+struct VectorStack {
+    vector<int> values;
+};
+```
+
++ Both can provide the same stack behavior.
+
+<!-- Slide 123 -->
+
+---
+
+## Public Members Break the Boundary
+
+```cpp
+Time meeting = makeTime(14, 30, 0);
+
+meeting.hour = 83;
+meeting.minute = -12;
+```
+
++ Client code can bypass every validating operation.
+
+<!-- Slide 124 -->
+
+---
+
+## Free Functions Cannot Enforce Exclusive Access
+
++ Free functions can encourage correct transitions.
++ Public structure members remain directly writable.
++ Documentation describes the boundary but cannot enforce it.
+
+<!-- Slide 125 -->
+
+---
+
+## What We Can Do Before Classes
+
++ Give operations clear names and contracts.
++ Validate proposed state transitions.
++ Minimize direct member access in client code.
++ State invariants beside the type definition.
+
+<!-- Slide 126 -->
+
+---
+
+## The Exposed-State Problem
+
++ A public structure cannot prevent clients from bypassing its operations.
++ Part 1 can describe the boundary but cannot enforce it.
+
+<!-- Slide 127 -->
+
+---
+
+## “Abstract” Does Not Mean Vague
+
++ Abstraction keeps the details needed to use a value correctly.
++ It postpones details that clients do not need.
++ The interface must still specify precise behavior.
+
+<!-- Slide 128 -->
+
+---
+
+## Data Structure Versus ADT
+
+| Data Structure | Abstract Data Type |
+|---|---|
+| Organizes stored data | Specifies values and behavior |
+| Array or vector | Stack or queue |
+| Implementation choice | Client-facing contract |
+
+<!-- Slide 129 -->
+
+---
+
+## You Already Use ADTs
+
++ `string` provides text operations without exposing its character storage strategy.
++ `vector` provides indexed, resizable sequence behavior.
++ Streams provide formatted input and output without exposing device details.
+
+<!-- Slide 130 -->
+
+---
+
+## Kinds of Operations
+
++ **Creators** produce new valid values.
++ **Observers** report information without changing a value.
++ **Modifiers** replace one valid state with another.
+
+<!-- Slide 131 -->
+
+---
+
+## The Contract Includes Failure Behavior
+
++ What happens when `pop` is called on an empty stack?
++ What happens when `makeTime` receives hour 99?
++ Rejecting, reporting, or substituting a value are different contracts.
+
+<!-- Slide 132 -->
+
+---
+
+## A Contract for `makeTime`
+
++ Preconditions: the supplied hour, minute, and second are in range.
++ Postcondition: the returned `Time` represents exactly those values.
++ Failure behavior must be chosen and documented.
+
+<!-- Slide 133 -->
+
+---
+
+## What Classes Will Add
+
++ Private representation
++ Controlled public operations
++ Automatic initialization
++ A language-enforced abstraction boundary
+
+::: notes
+ADT Part 2 in 16.01 begins from this exposed-state problem.
+:::
+
+<!-- Slide 134 -->
+
+---
+
+## ADT Part 1 Summary
+
++ An ADT is defined by its values, operations, and contracts.
++ Structures and free functions can model an ADT but cannot enforce its boundary.
++ ADT Part 2 will use classes to protect representation and valid state.
+
+<!-- Slide 135 -->

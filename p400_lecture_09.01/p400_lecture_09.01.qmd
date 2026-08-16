@@ -1,0 +1,402 @@
+# Last Time
+
+::: {.incremental}
++ **Stuff To Do With A Loop**
++ **Drawing Graphs Using Loops**
++ **Menu-Driven Programming**
+:::
+
+::: notes
+Review loop purpose and menu structure before introducing loop-control shorthand and validation patterns.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Increment and Decrement Operators
+- Break
+- Continue
+- Input Validation Strategy
+- Input Validation
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_increment_decrement.qmd >}}
+{{< include topic_2_break.qmd >}}
+{{< include topic_3_continue.qmd >}}
+{{< include topic_4_input_validation_strategy.qmd >}}
+{{< include topic_5_input_validation.qmd >}}
+
+---
+
+# Key Takeaways
+
+- `++`, `--`, and compound assignment make loop updates easier to read.
+- `break` exits the nearest loop or switch immediately.
+- `continue` skips the rest of the current loop pass but keeps the loop running.
+- Validation strategy decides what a program must check before it trusts input.
+- Input validation protects the program boundary before client data is trusted.
+
+<!-- Slide 58 -->
+
+---
+
+# Next Time
+
+- More input validation practice
+- Validation helpers
+- Validation in menu-driven programs
+
+<!-- Slide 59 -->
+
+---
+
+# Appendix
+
+<!-- Slide 60 -->
+
+---
+
+## Increment and Decrement Operators: Good Practices
+
+- Use `i++` in ordinary for-loop update expressions.
+- Use `+=` or `-=` when the loop moves by more than one.
+- Keep increment and decrement statements easy to see.
+
+<!-- Slide 61 -->
+
+---
+
+## Increment and Decrement Operators: Common Mistakes
+
+- Assuming `x++` and `++x` produce the same value inside a larger expression.
+- Incrementing the wrong variable in a nested or multi-variable loop.
+- Forgetting that `++` always changes the value by exactly one.
+
+<!-- Slide 62 -->
+
+---
+
+## Increment and Decrement Operators: More Examples
+
+```cpp
+for (int i = 2; i <= 20; i += 2) {
+    cout << i << " ";
+}
+
+for (int i = 10; i >= 0; i--) {
+    cout << i << " ";
+}
+```
+
+<!-- Slide 63 -->
+
+---
+
+## Increment and Decrement Operators: Practice Problems
+
+- Rewrite `i = i + 1` using the increment operator.
+- Trace `int x = 3; cout << x++ << " " << x;`.
+- Write a loop that counts from `100` down to `0` by tens.
+
+<!-- Slide 64 -->
+
+---
+
+## Increment and Decrement Operators: AI Search Terms
+
+- C++ increment decrement operators
+- C++ postfix vs prefix increment
+- C++ compound assignment operators
+- C++ for loop update expression
+
+<!-- Slide 65 -->
+
+---
+
+## Increment and Decrement Operators: Questions for Reflection
+
+- When does shorthand make code easier to read?
+- Why does prefix vs postfix not matter in a standalone statement?
+- What loop steps cannot be expressed with `++` or `--`?
+
+<!-- Slide 66 -->
+
+---
+
+## Break: Good Practices
+
+- Keep the reason for `break` close to the `break` statement.
+- Prefer a clear loop condition when it expresses the exit naturally.
+- Use `break` in searches when the answer is already found.
+
+<!-- Slide 67 -->
+
+---
+
+## Break: Common Mistakes
+
+- Assuming one `break` exits every nested loop.
+- Confusing `break` in a `switch` with `break` in a loop.
+- Using many scattered `break` statements when one loop condition would be clearer.
+
+<!-- Slide 68 -->
+
+---
+
+## Break: More Examples
+
+```cpp
+int value;
+int count = 0;
+
+while (cin >> value) {
+    if (value < 0) {
+        break;
+    }
+
+    count++;
+}
+```
+
+<!-- Slide 69 -->
+
+---
+
+## Break: Practice Problems
+
+- Stop reading numbers when the client enters `0`.
+- Search a vector and stop at the first negative value.
+- Explain what happens when `break` appears inside a `switch` inside a loop.
+
+<!-- Slide 70 -->
+
+---
+
+## Break: AI Search Terms
+
+- C++ break statement loop
+- C++ break in switch statement
+- C++ sentinel loop break
+- C++ stop loop when found
+
+<!-- Slide 71 -->
+
+---
+
+## Break: Questions for Reflection
+
+- Where does execution go immediately after `break`?
+- Would the loop be clearer with the stopping rule in the condition?
+- What makes a `break` statement easy or hard to trust?
+
+<!-- Slide 72 -->
+
+---
+
+## Continue: Good Practices
+
+- Use `continue` for early skip cases.
+- Keep loop-control updates before `continue` in while loops.
+- Prefer a plain `if` when it reads more directly.
+
+<!-- Slide 73 -->
+
+---
+
+## Continue: Common Mistakes
+
+- Confusing `continue` with `break`.
+- Placing `continue` before the loop-control variable changes.
+- Hiding too much logic after multiple `continue` statements.
+
+<!-- Slide 74 -->
+
+---
+
+## Continue: More Examples
+
+```cpp
+for (int value : values) {
+    if (value == 0) {
+        continue;
+    }
+
+    cout << 100 / value << endl;
+}
+```
+
+<!-- Slide 75 -->
+
+---
+
+## Continue: Practice Problems
+
+- Print only odd numbers from `1` to `20` using `continue`.
+- Skip blank names in a list of names.
+- Rewrite a `continue` example using an `if` statement instead.
+
+<!-- Slide 76 -->
+
+---
+
+## Continue: AI Search Terms
+
+- C++ continue statement loop
+- C++ continue vs break
+- C++ skip iteration with continue
+- C++ continue while loop infinite loop
+
+<!-- Slide 77 -->
+
+---
+
+## Continue: Questions for Reflection
+
+- What code is skipped after `continue`?
+- Why can `continue` be risky in a while loop?
+- Would an `if` statement be clearer in this case?
+
+<!-- Slide 78 -->
+
+---
+
+## Input Validation Strategy: Good Practices
+
+- Validate from broadest condition to narrowest condition.
+- Give a specific error message and reprompt.
+- Keep invalid input from reaching the rest of the program.
+
+<!-- Slide 79 -->
+
+---
+
+## Input Validation Strategy: Common Mistakes
+
+- Checking range before checking whether the input is the right type.
+- Printing a generic error message when the client needs a specific correction.
+- Using a value before the program has decided it is safe.
+
+<!-- Slide 80 -->
+
+---
+
+## Input Validation Strategy: More Examples
+
+```cpp
+string name;
+cout << "Name: ";
+getline(cin, name);
+
+while (name.empty()) {
+    cout << "Name cannot be blank. Try again: ";
+    getline(cin, name);
+}
+```
+
+<!-- Slide 81 -->
+
+---
+
+## Input Validation Strategy: Practice Problems
+
+- Validate that a menu choice is between `1` and `4`.
+- Validate that a password is not blank and has at least seven characters.
+- Validate that a percent is between `0` and `100`.
+
+<!-- Slide 82 -->
+
+---
+
+## Input Validation Strategy: AI Search Terms
+
+- C++ input validation strategy
+- C++ getline empty string validation
+- C++ range validation loop
+- C++ allow by default deny by default validation
+
+<!-- Slide 83 -->
+
+---
+
+## Input Validation Strategy: Questions for Reflection
+
+- What is the first thing that could be wrong with this input?
+- What message would help the client fix the mistake?
+- Where does the program first trust the data?
+
+<!-- Slide 84 -->
+
+---
+
+## Input Validation: Good Practices
+
+- Validate immediately after input.
+- Write the loop condition in terms of invalid data.
+- Give an error message that names the valid range or choices.
+
+<!-- Slide 85 -->
+
+---
+
+## Input Validation: Common Mistakes
+
+- Processing the value before validation finishes.
+- Forgetting to read a replacement value inside the loop.
+- Treating type failure and range failure as the same problem.
+
+<!-- Slide 86 -->
+
+---
+
+## Input Validation: More Examples
+
+```cpp
+int month;
+
+cout << "Month (1-12): ";
+cin >> month;
+
+while (month < 1 || month > 12) {
+    cout << "Month must be 1 through 12: ";
+    cin >> month;
+}
+```
+
+<!-- Slide 87 -->
+
+---
+
+## Input Validation: Practice Problems
+
+- Validate a quantity from `1` to `99`.
+- Validate a menu choice of `A`, `D`, or `Q`.
+- Explain why `score < 0 && score > 100` is the wrong invalid condition.
+
+<!-- Slide 88 -->
+
+---
+
+## Input Validation: AI Search Terms
+
+- C++ input validation while loop
+- C++ validate integer range
+- C++ cin fail clear ignore
+- C++ input validation menu choice
+
+<!-- Slide 89 -->
+
+---
+
+## Input Validation: Questions for Reflection
+
+- What does the program know after the validation loop exits?
+- What error message would help the client fix the input?
+- Where should validation happen in a larger program?
+
+<!-- Slide 90 -->

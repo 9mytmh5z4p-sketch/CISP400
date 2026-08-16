@@ -1,0 +1,202 @@
+<!-- Topic 1: Modular Programming -->
+<!-- Slides 3-14 -->
+
+# Modular Programming
+<!-- Slide 3 -->
+
+## Programs as Pieces {.smaller}
+
++ How can we make a program easier to understand before we read every line?
++ Modular programming breaks a program into named pieces.
++ Each piece handles one part of the larger job.
+
+::: notes
+Slides 3-14
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## What Changes When Code Grows?
+
++ A short `main()` is easy to scan.
++ A long `main()` can hide the program's structure inside many details.
++ Bugs become harder to isolate when all processing happens in one place.
+
+<!-- Slide 5 -->
+
+---
+
+## One Job Per Piece
+
++ A module should have a clear job.
++ In beginner C++, our modules are usually functions.
++ A function name should describe the work the function performs.
+
+<!-- Slide 6 -->
+
+---
+
+## Main as Coordinator
+
+```cpp
+int main() {
+    displayTitle();
+    readScores();
+    calculateAverage();
+    displayResults();
+
+    return 0;
+}
+```
+
+`main()` should show the program's outline before the implementation details.
+
+<!-- Slide 7 -->
+
+---
+
+## Function-Centered Architecture
+
++ Structured C++ programs are often organized around functions.
++ Data is stored in variables.
++ Processing is grouped into functions that can call other functions.
+
+<!-- Slide 8 -->
+
+---
+
+## Functions and the IPO Model
+
+| Input | Processing | Output |
+|---|---|---|
+| scores typed by user | calculate total and average | printed report |
+
+Functions do not change what the program can do. They reorganize where the processing is written.
+
+<!-- Slide 9 -->
+
+---
+
+## Functions and the Execution Trace
+
+| Step | Location | What Happens |
+|---:|---|---|
+| 1 | `main()` | Program reaches a function call |
+| 2 | function | Processing happens inside the function |
+| 3 | `main()` | Execution returns to the next line |
+
+An execution trace now follows control into and out of functions.
+
+<!-- Slide 10 -->
+
+---
+
+## Before and After
+
+::: {.columns}
+::: {.column width="50%"}
+
+```cpp
+int main() {
+    cout << "Grade Report\n";
+    cout << "-------------\n";
+    cout << "Score: " << score << endl;
+    cout << "Average: " << avg << endl;
+    return 0;
+}
+```
+
+:::
+::: {.column width="50%"}
+
+```cpp
+int main() {
+    displayHeader();
+    displayScore(score);
+    displayAverage(avg);
+
+    return 0;
+}
+```
+
+:::
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## Function Call on the Stack
+
+```{=html}
+<div class="stack-demo" id="single-stack-demo">
+  <div class="stack-controls">
+    <button onclick="singleStackStep(0)">1. main starts</button>
+    <button onclick="singleStackStep(1)">2. call function</button>
+    <button onclick="singleStackStep(2)">3. function runs</button>
+    <button onclick="singleStackStep(3)">4. return</button>
+  </div>
+  <div class="stack-area">
+    <div class="stack-label">Call stack</div>
+    <div class="stack-frame frame-main">main()</div>
+    <div class="stack-frame frame-helper" id="single-helper">displayHeader()</div>
+  </div>
+  <p id="single-stack-caption">The program begins in main().</p>
+</div>
+
+<style>
+.stack-demo { font-size: 0.78em; }
+.stack-controls { display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 0.8rem; flex-wrap: wrap; }
+.stack-controls button { font-size: 0.72em; padding: 0.25rem 0.5rem; }
+.stack-area { width: 44%; min-width: 320px; margin: 0 auto; border: 2px solid #444; border-top: none; padding: 0.5rem; min-height: 220px; display: flex; flex-direction: column-reverse; gap: 0.5rem; }
+.stack-label { text-align: center; font-weight: bold; border-top: 2px solid #444; padding-top: 0.35rem; }
+.stack-frame { border: 2px solid #26547c; background: #eef6fb; padding: 0.8rem; text-align: center; font-family: monospace; }
+.frame-helper { background: #fff5d6; border-color: #a15c00; display: none; }
+.frame-helper.is-running { background: #fff7ed; border-color: #c2410c; border-width: 4px; box-shadow: inset 0 0 0 3px #fed7aa; }
+.stack-demo p { text-align: center; margin-top: 0.7rem; }
+</style>
+
+<script>
+function singleStackStep(step) {
+  const helper = document.getElementById("single-helper");
+  const caption = document.getElementById("single-stack-caption");
+  const captions = [
+    "main() is the only active function.",
+    "The helper function gets its own stack frame.",
+    "main() waits while the helper function runs.",
+    "The helper frame disappears, and execution continues in main()."
+  ];
+  helper.style.display = step >= 1 && step <= 2 ? "block" : "none";
+  helper.classList.toggle("is-running", step === 2);
+  caption.textContent = captions[step];
+}
+</script>
+```
+
+::: notes
+[Graphic suggestion: if the HTML control is not available in the exported format, replace this with four still frames showing the helper stack frame appearing and disappearing.]
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Common Practices
+
++ Use verb-based function names, such as `displayMenu()` or `calculateTotal()`.
++ Keep each function focused on one clear job.
++ Put function prototypes above `main()` and function definitions below `main()`.
+
+<!-- Slide 13 -->
+
+---
+
+## Summary
+
++ Modular programming breaks a program into named pieces.
++ Functions reorganize processing without changing the IPO model.
++ A clear `main()` helps the reader see the program's structure first.
+
+<!-- Slide 14 -->

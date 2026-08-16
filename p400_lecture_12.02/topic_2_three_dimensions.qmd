@@ -1,0 +1,49 @@
+<!-- Topic 2: Arrays with Three or More Dimensions -->
+<!-- Total slides: 3 -->
+
+# Arrays with Three or More Dimensions
+
+---
+
+## Does the pattern extend? {.smaller}
+
+- Yes — each additional bracket adds one more level of nesting
+- Three indices: layer, row, column
+
+::: notes
+Total slides: 3
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## Declaration, access, and traversal
+
+```{.cpp}
+int cube[2][3][4];          // 2 layers, 3 rows, 4 columns
+
+cube[0][1][2] = 99;         // layer 0, row 1, column 2
+
+for (int l = 0; l < 2; l++) {
+    for (int r = 0; r < 3; r++) {
+        for (int c = 0; c < 4; c++) {
+            cube[l][r][c] = l * 12 + r * 4 + c;
+        }
+    }
+}
+```
+
+- Each additional dimension requires one more nested loop
+- The pattern is mechanical — the mental model is the hard part
+
+<!-- Slide 2 -->
+
+---
+
+## Summary
+
+- Higher-dimensional arrays follow the same declaration and access pattern — add brackets, add loops
+- In practice, 3D arrays are rare; most multi-dimensional needs are handled with 2D arrays or vectors of vectors
+
+<!-- Slide 3 -->

@@ -1,0 +1,207 @@
+<!-- Topic 3: Function Side Effects -->
+<!-- Slides 33-46 -->
+
+# Function Side Effects
+<!-- Slide 33 -->
+
+## What Else Changed? {.smaller}
+
++ After a function call, what parts of the program might be different?
++ A return value is only one kind of result.
++ Some functions also perform actions or change existing data.
+
+::: notes
+Slides 33-46
+:::
+
+<!-- Slide 34 -->
+
+---
+
+## What Is a Side Effect?
+
++ A side effect is a change or action beyond returning a value.
++ Printing, reading input, and changing caller data are side effects.
++ Side effects are not automatically bad, but they must be intentional.
+
+<!-- Slide 35 -->
+
+---
+
+## Common Side Effects
+
++ Displaying output with `cout`.
++ Reading input with `cin`.
++ Modifying reference parameters.
++ Changing global or static data.
++ Writing to files or stopping the program.
+
+<!-- Slide 36 -->
+
+---
+
+## Return Value vs. Side Effect
+
+```cpp
+double addTax(double price);
+void addTax(double& price);
+```
+
++ The first function returns a new value.
++ The second function changes caller-owned data.
++ The names are similar, but the contracts are different.
+
+<!-- Slide 37 -->
+
+---
+
+## Example Program: Returning a Value {.smaller}
+
+```cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+double addTax(double price);
+
+int main() {
+    double price = 25.00;
+    double total = addTax(price);
+    cout << fixed << setprecision(2);
+    cout << "Original: " << price << endl;
+    cout << "Total: " << total << endl;
+    return 0;
+}
+
+double addTax(double price) {
+    return price * 1.0825;
+}
+```
+
+<!-- Slide 38 -->
+
+---
+
+## Example Program: Modifying by Reference {.smaller}
+
+```cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+void addTax(double& price);
+
+int main() {
+    double price = 25.00;
+    addTax(price);
+    cout << fixed << setprecision(2);
+    cout << "Updated: " << price << endl;
+    return 0;
+}
+
+void addTax(double& price) {
+    price = price * 1.0825;
+}
+```
+
+<!-- Slide 39 -->
+
+---
+
+## Visible Side Effects in Prototypes
+
+```cpp
+void updateScore(int& score);
+int adjustedScore(int score);
+```
+
++ A non-const reference parameter signals possible mutation.
++ A return type signals that a value comes back.
++ Read the prototype before assuming what a function changes.
+
+<!-- Slide 40 -->
+
+---
+
+## Hidden Side Effects
+
+```cpp
+int totalCalls = 0;
+
+void recordCall() {
+    totalCalls++;
+}
+```
+
++ The function changes data that is not in the parameter list.
++ The call site does not show what data may change.
++ Hidden side effects are harder to trace.
+
+<!-- Slide 41 -->
+
+---
+
+## Example Program: Hidden State {.smaller}
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int nextCallNumber();
+
+int main() {
+    cout << nextCallNumber() << endl;
+    cout << nextCallNumber() << endl;
+    cout << nextCallNumber() << endl;
+    return 0;
+}
+
+int nextCallNumber() {
+    static int callNumber = 0;
+    callNumber++;
+    return callNumber;
+}
+```
+
+<!-- Slide 42 -->
+
+---
+
+## When Side Effects Are Useful
+
++ Output functions should display something.
++ Input functions should read something.
++ Menu actions often update caller-owned program state.
++ Reference parameters are useful when mutation is the point.
+
+<!-- Slide 43 -->
+
+---
+
+## When Side Effects Cause Trouble
+
++ A function changes data the caller did not expect.
++ The same call gives different results because hidden state changed.
++ One function calculates, prints, and mutates data at the same time.
+
+<!-- Slide 44 -->
+
+---
+
+## Common Practices
+
++ Keep calculation functions return-based when possible.
++ Make mutation visible with reference parameters.
++ Avoid hidden state unless the function clearly owns that state.
+
+<!-- Slide 45 -->
+
+---
+
+## Summary
+
++ A side effect is a change outside the return value.
++ Useful side effects make program actions possible.
++ Good function design makes side effects intentional and traceable.
+
+<!-- Slide 46 -->

@@ -1,0 +1,53 @@
+<!-- Topic 1: Very Brief Review of Static -->
+<!-- Slides 4-7 -->
+
+# Very Brief Review of Static
+<!-- Slide 4 -->
+
+## What Does Static Remember? {.smaller}
+
++ A `static` local variable is created once.
++ It keeps its value between function calls.
++ The name is still visible only inside that function.
+
+::: notes
+Slides 4-7
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## Static Local Example {.smaller}
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+void showCount();
+
+int main() {
+    showCount();
+    showCount();
+    showCount();
+    return 0;
+}
+
+void showCount() {
+    static int count = 0;
+    count++;
+    cout << count << endl;
+}
+```
+
+<!-- Slide 6 -->
+
+---
+
+## Bridge to Patterns
+
++ `static` is a mechanism, not the main design idea.
++ It can make one stored value available through one controlled function.
++ Singleton uses that idea to describe a larger design choice.
+
+<!-- Slide 7 -->

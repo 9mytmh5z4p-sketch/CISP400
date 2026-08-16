@@ -1,0 +1,246 @@
+# Last Time
+
+::: {.incremental}
++ **Advanced cin**
++ **Dates and Random Numbers**
++ **IPO Models**
++ **Execution Trace Models**
++ **Terminal Charts and Graphs**
+:::
+
+::: notes
+Brief recall of lecture 03.01. Students should remember that IPO models plan a program before code, execution traces inspect code after it exists, and formatted terminal output can make data easier to read.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Vectors
+- Vector Operations
+- Range-Based For Loops
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_vectors.qmd >}}
+{{< include topic_2_vector_operations.qmd >}}
+{{< include topic_4_range_based_for.qmd >}}
+
+---
+
+# Key Takeaways
+
+- A vector stores many related values of the same type under one name.
+- `push_back`, `pop_back`, and `size` change or inspect the vector.
+- Range-based `for` is the beginner-friendly way to read every value.
+- IPO models and execution traces help explain why the vector exists and how it changes.
+
+<!-- Slide 40 -->
+
+---
+
+# Next Time
+
+- More practice with range-based loops
+- Inputting vector data
+- Processing vector contents
+
+<!-- Slide 41 -->
+
+---
+
+# Appendix
+
+<!-- Slide 42 -->
+
+---
+
+## Vectors: Good Practices
+
+- Use plural names for vectors, such as `scores`, `names`, or `items`.
+- Choose the vector element type before choosing the variable name.
+- Use vectors when values belong together as one ordered group.
+
+<!-- Slide 43 -->
+
+---
+
+## Vectors: Common Mistakes
+
+- Forgetting `#include <vector>`.
+- Mixing different value types in one vector.
+- Treating the vector as a single value instead of a container.
+
+<!-- Slide 44 -->
+
+---
+
+## Vectors: More Examples
+
+```cpp
+vector<int> scores = {90, 85, 100};
+vector<double> prices = {1.25, 2.50, 4.99};
+vector<string> names = {"Maya", "Ari", "Chen"};
+```
+
+<!-- Slide 45 -->
+
+---
+
+## Vectors: Practice Problems
+
+1. Declare a vector named `ages` that stores integers.
+2. Declare a vector named `prices` with three starting values.
+3. Describe an IPO model for a program that stores three names.
+
+<!-- Slide 46 -->
+
+---
+
+## Vectors: AI Search Terms
+
+- "C++ vector beginner"
+- "C++ include vector"
+- "C++ vector initialization"
+
+<!-- Slide 47 -->
+
+---
+
+## Vectors: Questions for Reflection
+
+- Why is a vector more useful than three separate variables?
+- Why must every value in one vector have the same type?
+
+<!-- Slide 48 -->
+
+---
+
+## Vector Operations: Good Practices
+
+- Use `push_back` when values are discovered one at a time.
+- Check `size()` before reading from a vector.
+- Remember that `pop_back()` removes the last value.
+
+<!-- Slide 49 -->
+
+---
+
+## Vector Operations: Common Mistakes
+
+- Expecting `pop_back()` to print or return the removed value.
+- Calling `pop_back()` on an empty vector.
+- Forgetting that `size()` changes after adding or removing values.
+
+<!-- Slide 50 -->
+
+---
+
+## Vector Operations: More Examples
+
+```cpp
+vector<string> names;
+
+names.push_back("Maya");
+names.push_back("Ari");
+
+cout << names.size() << endl;
+```
+
+<!-- Slide 51 -->
+
+---
+
+## Vector Operations: Practice Problems
+
+1. Trace a vector after three `push_back` statements.
+2. Trace a vector after one `pop_back` statement.
+3. Write an IPO model for storing three prices.
+
+<!-- Slide 52 -->
+
+---
+
+## Vector Operations: AI Search Terms
+
+- "C++ vector push_back"
+- "C++ vector pop_back"
+- "C++ vector size"
+
+<!-- Slide 53 -->
+
+---
+
+## Vector Operations: Questions for Reflection
+
+- Why does `push_back` add to the end instead of the beginning?
+- How does an execution trace help explain vector changes?
+
+<!-- Slide 54 -->
+
+---
+
+## Range-Based For Loops: Good Practices
+
+- Use range-based `for` when reading every value.
+- Give the vector a plural name and the loop variable a singular name.
+- Keep the repeated action inside the loop body.
+
+<!-- Slide 55 -->
+
+---
+
+## Range-Based For Loops: Common Mistakes
+
+- Forgetting the colon between the loop variable and the vector.
+- Expecting the loop variable to exist after the loop ends.
+- Expecting changes to the copied loop variable to change the vector.
+
+<!-- Slide 56 -->
+
+---
+
+## Range-Based For Loops: More Examples
+
+```cpp
+vector<double> prices = {1.25, 2.50, 4.99};
+
+for (double price : prices) {
+    cout << "$" << price << endl;
+}
+```
+
+<!-- Slide 57 -->
+
+---
+
+## Range-Based For Loops: Practice Problems
+
+1. Read a range-based loop out loud in English.
+2. Write a loop that prints every name in `names`.
+3. Trace the loop variable for `{10, 20, 30}`.
+
+<!-- Slide 58 -->
+
+---
+
+## Range-Based For Loops: AI Search Terms
+
+- "C++ range based for loop"
+- "C++ for each vector"
+- "C++ loop variable scope"
+
+<!-- Slide 59 -->
+
+---
+
+## Range-Based For Loops: Questions for Reflection
+
+- Why is range-based `for` easier for every value?
+- Why is the loop variable unavailable after the loop body?
+
+<!-- Slide 60 -->

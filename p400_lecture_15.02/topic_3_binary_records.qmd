@@ -1,0 +1,495 @@
+<!-- Topic 3: Binary Records -->
+<!-- Slides 72–106 -->
+
+# Binary Records
+<!-- Slide 72 -->
+
+## Can We Read the 500th Record Directly? {.smaller}
+
++ A text file normally requires reading earlier records first.
++ Can a fixed-size record turn a file into random-access storage?
+
+::: notes
+Slides 72–106
+:::
+
+<!-- Slide 73 -->
+
+---
+
+## A File as an Array of Records
+
+| Record 0 | Record 1 | Record 2 | Record 3 |
+|---|---|---|---|
+| same bytes | same bytes | same bytes | same bytes |
+
++ Equal-sized slots make a record’s starting position calculable.
+
+<!-- Slide 74 -->
+
+---
+
+## Fixed Size Is the Key Invariant
+
+```cpp
+byteOffset = recordIndex * sizeof(Record);
+```
+
++ Every stored record must occupy exactly `sizeof(Record)` bytes.
++ Record indexes begin at zero.
+
+<!-- Slide 75 -->
+
+---
+
+## Designing a Disk Record
+
+```cpp
+struct EmployeeRecord {
+    int employeeID;
+    char name[40];
+    double hourlyRate;
+    bool active;
+};
+```
+
++ Fixed-size members keep every record the same size.
+
+<!-- Slide 76 -->
+
+---
+
+## Why Not Store `string` Directly?
+
+```cpp
+struct UnsafeRecord {
+    int employeeID;
+    string name;
+};
+```
+
++ A `string` object contains management state; its characters may live elsewhere.
++ Raw bytes do not reconstruct that external storage.
+
+<!-- Slide 77 -->
+
+---
+
+## Memory Record Versus Disk Record
+
+```cpp
+struct Employee {
+    int employeeID;
+    string name;
+    double hourlyRate;
+};
+
+struct EmployeeRecord {
+    int employeeID;
+    char name[40];
+    double hourlyRate;
+    bool active;
+};
+```
+
++ The convenient program representation need not match the storage representation.
+
+<!-- Slide 78 -->
+
+---
+
+## Opening a Binary File
+
+```cpp
+ofstream output("employees.dat", ios::binary);
+ifstream input("employees.dat", ios::binary);
+
+fstream file("employees.dat",
+             ios::in | ios::out | ios::binary);
+```
+
+<!-- Slide 79 -->
+
+---
+
+## Writing One Record
+
+```cpp
+EmployeeRecord worker {104, "Ana Ruiz", 27.50, true};
+
+output.write(
+    reinterpret_cast<const char*>(&worker),
+    sizeof(worker)
+);
+```
+
+<!-- Slide 80 -->
+
+---
+
+## Writing an Array of Records
+
+```cpp
+for (int i = 0; i < count; i++) {
+    output.write(
+        reinterpret_cast<const char*>(&staff[i]),
+        sizeof(staff[i])
+    );
+}
+```
+
+<!-- Slide 81 -->
+
+---
+
+## Reading One Record
+
+```cpp
+EmployeeRecord worker {};
+
+input.read(
+    reinterpret_cast<char*>(&worker),
+    sizeof(worker)
+);
+
+if (input)
+    cout << worker.name << '\n';
+```
+
+<!-- Slide 82 -->
+
+---
+
+## Reading Until the File Ends
+
+```cpp
+EmployeeRecord worker {};
+
+while (input.read(
+           reinterpret_cast<char*>(&worker),
+           sizeof(worker))) {
+    cout << worker.employeeID << "  "
+         << worker.name << '\n';
+}
+```
+
+<!-- Slide 83 -->
+
+---
+
+## Reading an Entire Record File
+
+```cpp
+int count = 0;
+
+while (count < CAPACITY &&
+       input.read(
+           reinterpret_cast<char*>(&staff[count]),
+           sizeof(staff[count]))) {
+    count++;
+}
+```
+
+<!-- Slide 84 -->
+
+---
+
+## The Record Offset Formula
+
+```cpp
+streamoff offset =
+    static_cast<streamoff>(recordIndex) *
+    sizeof(EmployeeRecord);
+```
+
++ Human record 1 corresponds to index 0.
+
+<!-- Slide 85 -->
+
+---
+
+## Seeking to a Record
+
+```cpp
+input.seekg(offset, ios::beg);
+```
+
++ `seekg` moves the get position used for reading.
++ `ios::beg` makes the offset relative to the file’s beginning.
+
+<!-- Slide 86 -->
+
+---
+
+## Reading One Selected Record
+
+```cpp
+input.seekg(offset, ios::beg);
+input.read(
+    reinterpret_cast<char*>(&worker),
+    sizeof(worker)
+);
+
+if (input)
+    cout << worker.name << '\n';
+```
+
+<!-- Slide 87 -->
+
+---
+
+## How Many Records Are in the File?
+
+```cpp
+input.seekg(0, ios::end);
+streamoff fileSize = input.tellg();
+int recordCount = -1;
+
+if (fileSize >= 0 &&
+    fileSize % sizeof(EmployeeRecord) == 0) {
+    recordCount = static_cast<int>(
+        fileSize / sizeof(EmployeeRecord));
+}
+input.seekg(0, ios::beg);
+```
+
++ `-1` reports an invalid or incomplete record file.
+
+<!-- Slide 88 -->
+
+---
+
+## Valid Record Boundaries
+
+```cpp
+if (recordIndex < 0 || recordIndex >= recordCount) {
+    cout << "Invalid record number\n";
+} else {
+    // Seek and read.
+}
+```
+
++ Valid indexes are `0` through `recordCount - 1`.
+
+<!-- Slide 89 -->
+
+---
+
+## Updating a Record in Place
+
+```cpp
+worker.hourlyRate = 30.00;
+
+file.seekp(offset, ios::beg);
+file.write(
+    reinterpret_cast<const char*>(&worker),
+    sizeof(worker)
+);
+```
+
+<!-- Slide 90 -->
+
+---
+
+## Input and Output Cursors
+
+| Operation | Cursor |
+|---|---|
+| `read`, `seekg`, `tellg` | Get position |
+| `write`, `seekp`, `tellp` | Put position |
+
++ Clear failed stream state before attempting another seek.
+
+<!-- Slide 91 -->
+
+---
+
+## Organizing a Record Program
+
+```cpp
+int recordCount(ifstream& input);
+bool readRecord(ifstream& input, int index,
+                EmployeeRecord& worker);
+bool updateRecord(fstream& file, int index,
+                  const EmployeeRecord& worker);
+void printRecord(const EmployeeRecord& worker);
+```
+
++ Each function owns one file-positioning responsibility.
+
+<!-- Slide 92 -->
+
+---
+
+## Padding Becomes Part of the File
+
+```cpp
+cout << sizeof(EmployeeRecord) << '\n';
+```
+
++ Raw binary output includes compiler-inserted padding.
++ Changing member order can change the bytes and record size.
+
+<!-- Slide 93 -->
+
+---
+
+## The Same Program Must Read the File
+
++ The reader must agree on member types, sizes, order, and padding.
++ Compiler, platform, architecture, and byte order can change those details.
++ Raw records are safest within one controlled program environment.
+
+<!-- Slide 94 -->
+
+---
+
+## Pointers Must Never Be Serialized This Way
+
+```cpp
+struct BadRecord {
+    int employeeID;
+    char* name;
+};
+```
+
++ The stored address is meaningless in a later process.
+
+<!-- Slide 95 -->
+
+---
+
+## Raw Binary Versus Defined File Formats
+
+| Raw object bytes | Defined field format |
+|---|---|
+| Quick in one environment | Portable by design |
+| Layout dependent | Layout explicitly specified |
+| Difficult to evolve | Can include versions |
+
+<!-- Slide 96 -->
+
+---
+
+## Safety Before Raw Serialization
+
++ Confirm that the record is trivially copyable.
++ Define fixed-size text fields and failure behavior.
++ Plan for partial records, deletion, and format changes.
+
+<!-- Slide 97 -->
+
+---
+
+## Binary Does Not Mean Secret
+
++ Binary mode reads and writes bytes without text translation.
++ It does not encrypt the data.
++ It does not guarantee compression.
++ Anyone who knows the layout can interpret the records.
+
+<!-- Slide 98 -->
+
+---
+
+## Only Trivially Copyable Records
+
+```cpp
+#include <type_traits>
+
+static_assert(
+    is_trivially_copyable<EmployeeRecord>::value,
+    "EmployeeRecord cannot be written as raw bytes"
+);
+```
+
+<!-- Slide 99 -->
+
+---
+
+## Safe Fixed-Size Text Fields
+
+```cpp
+#include <cstring>
+
+strncpy(record.name, sourceName.c_str(),
+        sizeof(record.name) - 1);
+record.name[sizeof(record.name) - 1] = '\0';
+string restoredName = record.name;
+```
+
++ Reserve one byte for the null terminator.
++ Overlong source names are intentionally truncated.
+
+<!-- Slide 100 -->
+
+---
+
+## Appending One Record
+
+```cpp
+ofstream output("employees.dat",
+                ios::binary | ios::app);
+
+output.write(
+    reinterpret_cast<const char*>(&worker),
+    sizeof(worker)
+);
+```
+
+<!-- Slide 101 -->
+
+---
+
+## Short and Corrupted Records
+
+```cpp
+input.read(reinterpret_cast<char*>(&worker),
+           sizeof(worker));
+
+if (input.gcount() != sizeof(worker)) {
+    cout << "Incomplete record\n";
+}
+```
+
+<!-- Slide 102 -->
+
+---
+
+## Deleting a Record Is Different
+
++ Rewrite the remaining records into a replacement file; or
++ set an `active` member to `false` and reuse the slot later.
++ A tombstone preserves fixed offsets but leaves unused slots.
+
+<!-- Slide 103 -->
+
+---
+
+## Changing the Structure Changes the Format
+
++ Adding, removing, reordering, or resizing a member changes the record layout.
++ Store a format version when files must outlive one program build.
++ Convert old records rather than interpreting them with a new layout.
+
+<!-- Slide 104 -->
+
+---
+
+## When Should We Use Binary Records?
+
++ Use them for fixed-layout local data under controlled conditions.
++ Use an explicitly defined format when files must survive program changes or move between systems.
++ Never assume raw serialization is universally portable.
+
+<!-- Slide 105 -->
+
+---
+
+## Binary Records Summary
+
++ Equal-sized records make byte offsets and direct access possible.
++ Raw serialization requires a fixed, trivially copyable layout.
++ Portability, validation, deletion, and format evolution remain explicit design responsibilities.
+
+<!-- Slide 106 -->

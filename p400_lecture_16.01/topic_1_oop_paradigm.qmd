@@ -1,0 +1,95 @@
+<!-- Topic 1: Object-Oriented Programming -->
+<!-- Total slides: 8 -->
+
+# Object-Oriented Programming
+
+---
+
+## Procedural vs. object-oriented {.smaller}
+
++ **Procedural**: organize code around *actions* — functions that receive data and produce results.
++ **Object-oriented**: organize code around *things* — objects that own their own data and know how to operate on it.
+
+::: notes
+Total slides: 8
+Bank account example: procedural thinks in verbs (withdraw, deposit, transfer); OOP thinks in nouns (Customer, Account, Money). Same program, completely different organizing lens. This paradigm shift is the core of what students are stepping into.
+[Graphic suggestion: Two-column diagram — left shows person silhouette with action arrows labeled withdraw/deposit/transfer; right shows same person surrounded by Customer, Account, Money objects circling her.]
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## {background-image="images/structured_programming.png" background-size="contain" background-position="center" background-repeat="no-repeat"}
+
+<!-- Slide 2 -->
+
+---
+
+## The class is the blueprint {.smaller}
+
++ A **class** defines a new type — it specifies what data it holds and what operations it supports.
++ An **object** is one specific instance created from that class — like a cookie cut from a cutter.
+
+::: notes
+Cookie cutter analogy: one class definition (the cutter) stamps out as many objects (cookies) as you need. Each object is independent — same shape, its own data.
+[Graphic suggestion: Cookie cutter labeled "the class" pointing to two cookie shapes labeled "the objects."]
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## {background-image="images/oop.png" background-size="contain" background-position="center" background-repeat="no-repeat"}
+
+<!-- Slide 4 -->
+
+---
+
+## One class, many objects {.smaller}
+
+```{.cpp}
+class Car {
+    // members defined here
+};
+
+Car mustang;   // Green, Ford, Mustang, Gasoline
+Car prius;     // Red, Toyota, Prius, Electric
+Car golf;      // Blue, Volkswagen, Golf, Diesel
+```
+
+::: notes
+Same class, three distinct objects — each holding different data. This mirrors what students already know from scalars: int x; int y; is the same type with different values. The class is declared once; objects are created as needed.
+[Graphic suggestion: Car class at top with arrows down to three car icons (green/red/blue), each labeled with make/model/fuel.]
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## {background-image="images/similar_objects.png" background-size="contain" background-position="center" background-repeat="no-repeat"}
+
+::: {.absolute top=30 left=0 width="100%" style="text-align: center; font-size: 0.4em; font-weight: 700;"}
+A class is a blueprint for many similar objects.
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## {background-image="images/diff_objects.png" background-size="contain" background-position="center" background-repeat="no-repeat"}
+
+::: {.absolute top=30 left=0 width="100%" style="text-align: center; font-size: 0.4em; font-weight: 700;"}
+A class can also turn out different but related objects.
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## Summary {.smaller}
+
++ OOP organizes programs around objects — things that own their own data and behavior.
++ Declare a class once; create as many objects as needed — just like any other type.
+
+<!-- Slide 8 -->

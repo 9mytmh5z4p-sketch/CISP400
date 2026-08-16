@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu-driven program — execution trace</title>
+<style>
+:root {
+  --surface:        hsl(0 0% 97%);
+  --surface-2:      hsl(0 0% 93%);
+  --border:         hsl(0 0% 0% / 0.12);
+  --border-em:      hsl(0 0% 0% / 0.28);
+  --text:           hsl(0 0% 10%);
+  --text-muted:     hsl(0 0% 45%);
+  --accent:         hsl(220 78% 52%);
+  --accent-dim:     hsl(220 78% 52% / 0.10);
+  --phase-on-bg:    hsl(220 78% 52%);
+  --phase-on-fg:    hsl(0 0% 100%);
+  --phase-off-bg:   hsl(0 0% 94%);
+  --phase-off-fg:   hsl(0 0% 45%);
+  --term-bg:        hsl(0 0% 13%);
+  --term-fg:        hsl(0 0% 82%);
+  --term-border:    hsl(0 0% 0% / 0.4);
+  --term-head-fg:   hsl(0 0% 40%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface:        hsl(0 0% 14%);
+    --surface-2:      hsl(0 0% 20%);
+    --border:         hsl(0 0% 100% / 0.10);
+    --border-em:      hsl(0 0% 100% / 0.22);
+    --text:           hsl(0 0% 90%);
+    --text-muted:     hsl(0 0% 52%);
+    --accent:         hsl(220 80% 68%);
+    --accent-dim:     hsl(220 80% 68% / 0.12);
+    --phase-on-bg:    hsl(220 70% 60%);
+    --phase-on-fg:    hsl(0 0% 8%);
+    --phase-off-bg:   hsl(0 0% 18%);
+    --phase-off-fg:   hsl(0 0% 48%);
+    --term-bg:        hsl(0 0% 8%);
+    --term-fg:        hsl(0 0% 80%);
+    --term-border:    hsl(0 0% 100% / 0.10);
+    --term-head-fg:   hsl(0 0% 38%);
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background: transparent;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px 8px;
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ── phase strip ── */
+.phases {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.phase {
+  flex: 1;
+  text-align: center;
+  padding: 5px 4px;
+  font-size: 11px;
+  font-weight: 400;
+  border: 0.5px solid var(--border-em);
+  background: var(--phase-off-bg);
+  color: var(--phase-off-fg);
+  transition: background 0.15s, color 0.15s;
+  user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.phase + .phase { border-left: none; }
+
+.phase.active {
+  background: var(--phase-on-bg);
+  color: var(--phase-on-fg);
+  font-weight: 500;
+}
+
+/* ── two-column area ── */
+.cols {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+  min-height: 0;
+}
+
+.panel {
+  border: 0.5px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.code-panel { flex: 3; background: var(--surface); }
+.term-panel  { flex: 2; background: var(--term-bg); border-color: var(--term-border); }
+
+.panel-head {
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  border-bottom: 0.5px solid var(--border);
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+.term-panel .panel-head {
+  border-bottom-color: var(--term-border);
+  color: var(--term-head-fg);
+}
+
+/* ── code lines ── */
+.code-body {
+  overflow-y: auto;
+  padding: 5px 0;
+  flex: 1;
+}
+
+.cl {
+  display: flex;
+  align-items: baseline;
+  padding: 0 8px;
+  line-height: 1.80;
+  transition: background 0.12s;
+  font-family: "Cascadia Code", "SF Mono", "Fira Code", Consolas, monospace;
+  font-size: 11.5px;
+}
+
+.cl.hl {
+  background: var(--accent-dim);
+  border-left: 2px solid var(--accent);
+  padding-left: 6px;
+}
+
+.ln {
+  min-width: 18px;
+  margin-right: 10px;
+  text-align: right;
+  font-size: 10px;
+  color: var(--text-muted);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.lc { white-space: pre; }
+
+/* ── terminal ── */
+.term-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 10px;
+  font-family: "Cascadia Code", "SF Mono", Consolas, monospace;
+  font-size: 11px;
+  color: var(--term-fg);
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.cursor {
+  display: inline-block;
+  width: 7px;
+  height: 1.1em;
+  background: var(--term-fg);
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ── description ── */
+.desc {
+  border: 0.5px solid var(--border);
+  background: var(--surface);
+  padding: 7px 10px;
+  font-size: 12px;
+  flex-shrink: 0;
+  min-height: 50px;
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  line-height: 1.45;
+}
+
+.desc-tag {
+  font-weight: 500;
+  color: var(--accent);
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+
+/* ── nav ── */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.btn {
+  background: var(--surface);
+  border: 0.5px solid var(--border-em);
+  color: var(--text);
+  padding: 4px 16px;
+  font-size: 12px;
+  font-family: inherit;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.btn:hover:not(:disabled) { background: var(--surface-2); }
+.btn:disabled { color: var(--text-muted); cursor: default; }
+
+.ctr {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+</style>
+</head>
+<body>
+
+<div class="phases" id="phase-bar"></div>
+
+<div class="cols">
+  <div class="panel code-panel">
+    <div class="panel-head">source</div>
+    <div class="code-body" id="code-body"></div>
+  </div>
+  <div class="panel term-panel">
+    <div class="panel-head">program output</div>
+    <div class="term-body" id="term-body"></div>
+  </div>
+</div>
+
+<div class="desc">
+  <span class="desc-tag" id="desc-tag"></span>
+  <span id="desc-text"></span>
+</div>
+
+<div class="nav">
+  <button class="btn" id="btn-prev" onclick="go(-1)">← prev</button>
+  <span class="ctr" id="ctr"></span>
+  <button class="btn" id="btn-next" onclick="go(+1)">next →</button>
+</div>
+
+<script>
+const PHASE_LABELS = ['the loop', 'menu display', 'the prompt', 'input validation', 'the dispatcher'];
+const PHASE_IDS    = ['loop',     'display',      'prompt',    'validate',         'dispatch'];
+
+const CODE_LINES = [
+  'int choice;',
+  'do {',
+  '    displayMenu();',
+  '    cout << "Choice: ";',
+  '    cin >> choice;',
+  '',
+  '    if (choice < 1 || choice > 4) {',
+  '        cout << "Invalid. Enter 1\u20134.\\n";',
+  '        continue;',
+  '    }',
+  '',
+  '    dispatch(choice);',
+  '',
+  '} while (choice != 4);',
+];
+
+const STEPS = [
+  {
+    phase: 'loop',
+    tag:   'The loop begins',
+    hl:    [2],
+    desc:  'The do-while loop starts. The body always runs before the condition is checked — the menu will display at least once.',
+    out:   '',
+    cursor: false,
+  },
+  {
+    phase: 'display',
+    tag:   'Menu display — iteration 1',
+    hl:    [3],
+    desc:  'displayMenu() prints the options. This happens at the top of every pass through the loop body.',
+    out:   '=== Main Menu ===\n1. Add number\n2. Show total\n3. Reset\n4. Quit',
+    cursor: false,
+  },
+  {
+    phase: 'prompt',
+    tag:   'Waiting for input',
+    hl:    [4, 5],
+    desc:  'The prompt prints and cin blocks. Nothing else happens until the user types a value and presses Enter.',
+    out:   '=== Main Menu ===\n1. Add number\n2. Show total\n3. Reset\n4. Quit\nChoice: ',
+    cursor: true,
+  },
+  {
+    phase: 'prompt',
+    tag:   'User enters 9',
+    hl:    [5],
+    desc:  'cin reads 9 into choice. Execution moves to the validation check.',
+    out:   '=== Main Menu ===\n1. Add number\n2. Show total\n3. Reset\n4. Quit\nChoice: 9',
+    cursor: false,
+  },
+  {
+    phase: 'validate',
+    tag:   'Validation fails — 9 is out of range',
+    hl:    [7, 8, 9],
+    desc:  '9 < 1 || 9 > 4 is true. The error message prints and continue fires — the dispatcher is never reached.',
+    out:   '=== Main Menu ===\n1. Add number\n2. Show total\n3. Reset\n4. Quit\nChoice: 9\nInvalid. Enter 1\u20134.',
+    cursor: false,
+  },
+  {
+    phase: 'loop',
+    tag:   'continue — back to the top',
+    hl:    [2],
+    desc:  'continue jumps to the top of the do-while body. The while condition has not been checked — the loop has not exited.',
+    out:   '...\nChoice: 9\nInvalid. Enter 1\u20134.',
+    cursor: false,
+  },
+  {
+    phase: 'display',
+    tag:   'Menu display — iteration 2',
+    hl:    [3],
+    desc:  'The loop body starts again. The menu re-displays for a fresh attempt.',
+    out:   '...\n\n=== Main Menu ===\n1. Add number\n2. Show total\n3. Reset\n4. Quit',
+    cursor: false,
+  },
+  {
+    phase: 'prompt',
+    tag:   'User enters 2',
+    hl:    [4, 5],
+    desc:  'cin reads 2 into choice. Execution moves to the validation check.',
+    out:   '...\n\n=== Main Menu ===\n...\nChoice: 2',
+    cursor: false,
+  },
+  {
+    phase: 'validate',
+    tag:   'Validation passes — 2 is in range',
+    hl:    [7],
+    desc:  '2 < 1 || 2 > 4 is false. The if-body is skipped. Execution falls through to the dispatcher.',
+    out:   '...\n\nChoice: 2',
+    cursor: false,
+  },
+  {
+    phase: 'dispatch',
+    tag:   'Dispatcher routes choice 2',
+    hl:    [12],
+    desc:  'dispatch(2) calls showTotal(). The selected action executes.',
+    out:   '...\n\nChoice: 2\nTotal: 0',
+    cursor: false,
+  },
+  {
+    phase: 'loop',
+    tag:   'Condition checked — 2 \u2260 4, loop continues',
+    hl:    [14],
+    desc:  'The while condition is evaluated. choice (2) \u2260 4 is true — the loop body runs again.',
+    out:   '...\n\nChoice: 2\nTotal: 0',
+    cursor: false,
+  },
+  {
+    phase: 'prompt',
+    tag:   'User enters 4 — the exit sentinel',
+    hl:    [4, 5],
+    desc:  'After re-displaying the menu, cin reads 4 into choice. Validation must still pass.',
+    out:   '...\n\n=== Main Menu ===\n...\nChoice: 4',
+    cursor: false,
+  },
+  {
+    phase: 'validate',
+    tag:   'Validation passes — 4 is in range',
+    hl:    [7],
+    desc:  '4 is within 1\u20134. Validation passes. Execution reaches the dispatcher.',
+    out:   '...\n\nChoice: 4',
+    cursor: false,
+  },
+  {
+    phase: 'dispatch',
+    tag:   'Dispatcher routes choice 4 — quit action',
+    hl:    [12],
+    desc:  'dispatch(4) runs the quit action.',
+    out:   '...\n\nChoice: 4\nGoodbye.',
+    cursor: false,
+  },
+  {
+    phase: 'loop',
+    tag:   'Condition checked — 4 = 4, loop exits',
+    hl:    [14],
+    desc:  'The while condition is evaluated. choice (4) \u2260 4 is false — the loop terminates. Execution continues past the do-while.',
+    out:   '...\n\nChoice: 4\nGoodbye.',
+    cursor: false,
+  },
+];
+
+// ── build phase bar ──
+const bar = document.getElementById('phase-bar');
+PHASE_IDS.forEach((id, i) => {
+  const el = document.createElement('div');
+  el.className = 'phase';
+  el.id = 'ph-' + id;
+  el.textContent = PHASE_LABELS[i];
+  bar.appendChild(el);
+});
+
+// ── build code panel ──
+const cb = document.getElementById('code-body');
+CODE_LINES.forEach((line, i) => {
+  const row = document.createElement('div');
+  row.className = 'cl';
+  row.id = 'l' + (i + 1);
+  row.innerHTML =
+    `<span class="ln">${i + 1}</span>` +
+    `<span class="lc">${esc(line) || '\u00a0'}</span>`;
+  cb.appendChild(row);
+});
+
+function esc(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+let cur = 0;
+
+function render() {
+  const s = STEPS[cur];
+
+  // phase strip
+  PHASE_IDS.forEach(id => {
+    document.getElementById('ph-' + id).classList.toggle('active', id === s.phase);
+  });
+
+  // code highlights
+  CODE_LINES.forEach((_, i) => {
+    document.getElementById('l' + (i + 1)).classList.toggle('hl', s.hl.includes(i + 1));
+  });
+
+  // scroll first highlighted line into view
+  if (s.hl.length) {
+    document.getElementById('l' + s.hl[0])?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+
+  // terminal
+  const tb = document.getElementById('term-body');
+  if (s.cursor) {
+    tb.innerHTML = esc(s.out) + '<span class="cursor"></span>';
+  } else {
+    tb.textContent = s.out;
+  }
+  tb.scrollTop = tb.scrollHeight;
+
+  // description
+  document.getElementById('desc-tag').textContent  = s.tag;
+  document.getElementById('desc-text').textContent = s.desc;
+
+  // nav
+  document.getElementById('btn-prev').disabled = (cur === 0);
+  document.getElementById('btn-next').disabled = (cur === STEPS.length - 1);
+  document.getElementById('ctr').textContent   = `step ${cur + 1} of ${STEPS.length}`;
+}
+
+function go(dir) {
+  const n = cur + dir;
+  if (n >= 0 && n < STEPS.length) { cur = n; render(); }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(+1);
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   go(-1);
+});
+
+render();
+</script>
+</body>
+</html>

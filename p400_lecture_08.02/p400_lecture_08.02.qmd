@@ -1,0 +1,268 @@
+# Last Time
+
+::: {.incremental}
++ **Nested Loops**
++ **Multi-Dimensional Vectors**
+:::
+
+::: notes
+Recall how nested loops coordinate repeated work and how multi-dimensional vectors organize data by row and column.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Stuff To Do With A Loop
+- Drawing Graphs Using Loops
+- Menu-Driven Programming
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_loop_patterns.qmd >}}
+{{< include topic_2_drawing_graphs.qmd >}}
+{{< include topic_3_menu_driven_programming.qmd >}}
+
+---
+
+# Key Takeaways
+
+- Loop patterns name the problem before the syntax.
+- Terminal graphs are repeated output with labels, scale, and structure.
+- Menu-driven programs use loops to keep interaction going.
+
+<!-- Slide 50 -->
+
+---
+
+# Next Time
+
+- Input validation with loops
+- Specific error messages
+- Reprompting until input is usable
+
+<!-- Slide 51 -->
+
+---
+
+# Appendix
+
+<!-- Slide 52 -->
+
+---
+
+## Stuff To Do With A Loop: Good Practices
+
+- Name the purpose of the loop before writing it.
+- Initialize counters, totals, flags, and trackers before the loop.
+- Make the loop move toward stopping.
+
+<!-- Slide 53 -->
+
+---
+
+## Stuff To Do With A Loop: Common Mistakes
+
+- Updating a counter in the wrong place can change how many times the loop runs.
+- Processing a sentinel value as real data changes the result.
+- Initializing a max or min tracker to an arbitrary value can hide real data.
+
+<!-- Slide 54 -->
+
+---
+
+## Stuff To Do With A Loop: More Examples
+
+```cpp
+int total = 0;
+int count = 0;
+int value;
+
+while (cin >> value) {
+    total += value;
+    count++;
+}
+```
+
+This loop combines a running total with a counter.
+
+<!-- Slide 55 -->
+
+---
+
+## Stuff To Do With A Loop: Practice Problems
+
+- Count how many entered numbers are positive.
+- Add sales values until the client enters `-1`.
+- Find the largest of five quiz scores.
+
+<!-- Slide 56 -->
+
+---
+
+## Stuff To Do With A Loop: AI Search Terms
+
+- C++ counter loop examples
+- C++ sentinel value loop
+- C++ running total accumulator
+- C++ max tracker loop
+
+<!-- Slide 57 -->
+
+---
+
+## Stuff To Do With A Loop: Questions for Reflection
+
+- What value changes each pass?
+- What condition stops the loop?
+- What pattern best describes the loop's purpose?
+
+<!-- Slide 58 -->
+
+---
+
+## Drawing Graphs Using Loops: Good Practices
+
+- Decide what comparison the graph should show.
+- Keep labels aligned and symbols consistent.
+- Scale large values so the graph fits the screen.
+
+<!-- Slide 59 -->
+
+---
+
+## Drawing Graphs Using Loops: Common Mistakes
+
+- Printing raw values can make bars too long.
+- Leaving off labels makes the graph hard to read.
+- Mixing symbols can make the output look accidental.
+
+<!-- Slide 60 -->
+
+---
+
+## Drawing Graphs Using Loops: More Examples
+
+```cpp
+for (int row = 1; row <= 5; row++) {
+    cout << row << " ";
+    for (int mark = 1; mark <= row; mark++) {
+        cout << '*';
+    }
+    cout << endl;
+}
+```
+
+This graph grows one symbol longer on each row.
+
+<!-- Slide 61 -->
+
+---
+
+## Drawing Graphs Using Loops: Practice Problems
+
+- Draw a bar for each day of the week.
+- Scale miles traveled so one `#` represents ten miles.
+- Print a triangle with five rows.
+
+<!-- Slide 62 -->
+
+---
+
+## Drawing Graphs Using Loops: AI Search Terms
+
+- C++ terminal bar chart loop
+- C++ nested loops pattern output
+- C++ console graph scale factor
+- C++ print histogram with loops
+
+<!-- Slide 63 -->
+
+---
+
+## Drawing Graphs Using Loops: Questions for Reflection
+
+- What does each symbol represent?
+- Which loop prints rows?
+- Which loop prints repeated symbols within a row?
+
+<!-- Slide 64 -->
+
+---
+
+## Menu-Driven Programming: Good Practices
+
+- Use a clear quit option.
+- Keep the menu cycle easy to read.
+- Move larger actions into functions.
+
+<!-- Slide 65 -->
+
+---
+
+## Menu-Driven Programming: Common Mistakes
+
+- Forgetting `break` in a `switch` can run the next case.
+- Mixing menu display and action code makes the program hard to change.
+- A menu with no quit path traps the client.
+
+<!-- Slide 66 -->
+
+---
+
+## Menu-Driven Programming: More Examples
+
+```cpp
+char choice;
+
+do {
+    cout << "A. Add\nD. Display\nQ. Quit\n";
+    cin >> choice;
+
+    switch (choice) {
+    case 'A':
+        cout << "Add" << endl;
+        break;
+    case 'D':
+        cout << "Display" << endl;
+        break;
+    }
+} while (choice != 'Q');
+```
+
+<!-- Slide 67 -->
+
+---
+
+## Menu-Driven Programming: Practice Problems
+
+- Build a menu with options to add, display, and quit.
+- Rewrite a numeric menu as a letter menu.
+- Move each menu action into its own function.
+
+<!-- Slide 68 -->
+
+---
+
+## Menu-Driven Programming: AI Search Terms
+
+- C++ do while menu
+- C++ switch menu example
+- C++ menu driven program functions
+- C++ numeric vs letter menu
+
+<!-- Slide 69 -->
+
+---
+
+## Menu-Driven Programming: Questions for Reflection
+
+- What choice stops the menu?
+- Which part of the code dispatches the action?
+- What data should persist between menu choices?
+
+<!-- Slide 70 -->

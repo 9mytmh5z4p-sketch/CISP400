@@ -1,0 +1,165 @@
+<!-- Topic 4: Defining Member Functions -->
+<!-- Total slides: 7 -->
+
+# Defining Member Functions
+
+---
+
+## What is a method? {.smaller}
+
++ A **method** is a function that belongs to a class — it is always called on an object and has direct access to all of the class's private members.
++ Methods define what an object can *do*; data members define what an object *knows*.
++ Syntax: `object.methodName(arguments)` — the dot ties the call to a specific object instance.
+
+<!-- Slide 1 -->
+
+---
+
+## Inline or outside the class? {.smaller}
+
++ **Inline**: the function body is written *inside* the class definition — compact, good for short functions.
++ **Outside**: the class lists a *prototype* only; the body is defined below using `ClassName::methodName()`.
+
+::: notes
+Total slides: 5
+Both forms compile and run identically — this is a style and organization choice. Small getters and setters are typically inline. Longer methods are defined outside to keep the class definition readable as an interface summary.
+:::
+
+<!-- Slide 2 -->
+
+---
+
+## Inline definition {.smaller}
+
+```{.cpp}
+class StopLight {
+private:
+    bool isPowered = false;
+public:
+    bool getState() const { return isPowered; }  // inline — body here
+    void powerOn();                              // prototype only
+    void powerOff();                             // prototype only
+};
+```
+
+::: notes
+getState() is short enough to live inline. powerOn() and powerOff() are declared with prototypes — their bodies will be written outside. The class definition now reads like a clean public interface.
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Outside definition {.smaller}
+
+```{.cpp}
+class StopLight {
+private:
+    bool isPowered = false;
+public:
+    bool getState() const { return isPowered; }  // inline — body here
+    void powerOn();                              // prototype only
+    void powerOff();                             // prototype only
+};
+
+void StopLight::powerOn() {
+    isPowered = true;
+}
+
+void StopLight::powerOff() {
+    isPowered = false;
+}
+
+int main() {
+    StopLight bidwell;
+    bidwell.powerOn();
+    cout << bidwell.getState() << "\n";   // 1
+    bidwell.powerOff();
+    cout << bidwell.getState() << "\n";   // 0
+    return 0;
+}
+```
+
+::: notes
+The :: is the scope resolution operator. It tells the compiler which class this function belongs to. Without it, powerOn() would be a free function, not a member — and it wouldn't have access to isPowered.
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Accessors (getters) {.smaller}
+
+An accessor reads a private member without changing the object. Mark every accessor `const`.
+
+```{.cpp}
+class Temperature {
+private: double degrees = 0.0;
+public:  double getDegrees() const  { return degrees; }
+};
+
+class Person {
+private: string name;
+public:  string getName()   const   { return name; }
+};
+
+class Counter {
+private: int count = 0;
+public:  int  getCount()    const   { return count; }
+         bool isEmpty()     const   { return count == 0; }  // derived fact
+};
+
+class BankAccount {
+private: double balance = 0.0;
+public:  double getBalance() const  { return balance; }
+         bool   isOverdrawn() const { return balance < 0.0; }
+};
+```
+
+<!-- Slide 5 -->
+
+---
+
+## Mutators (setters) {.smaller}
+
+A mutator modifies a private member. Setters can validate before storing — this is the value of keeping data private.
+
+```{.cpp}
+class Temperature {
+private: double degrees = 0.0;
+public:  void setDegrees(double d)  { degrees = d; }              // simple assign
+};
+
+class Person {
+private: string name;
+public:  void setName(string n)     { name = n.empty() ? "Unknown" : n; }
+};
+
+class Counter {
+private: int count = 0;
+public:  void increment()           { count++; }                  // no parameter needed
+         void reset()               { count = 0; }
+         void setCount(int c)       { if (c >= 0) count = c; }   // reject negatives
+};
+
+class BankAccount {
+private: double balance = 0.0;
+public:  void deposit(double amt)   { if (amt > 0) balance += amt; }
+         void withdraw(double amt)  { if (amt > 0 && amt <= balance) balance -= amt; }
+};
+```
+
+::: notes
+Key distinction: the setter decides whether to accept a value — the caller cannot write directly to balance or count, so garbage data can't slip in. This is the payoff for keeping members private.
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Summary {.smaller}
+
++ Member functions can be defined inline (inside the class body) or outside using `ClassName::method()`.
++ Accessors (getters) read private data — always `const`. Mutators (setters) modify it and can validate before storing.
+
+<!-- Slide 7 -->

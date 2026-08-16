@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stack &amp; Heap Memory</title>
+<style>
+html { font-size: 200%; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #f1f5f9;
+  color: #1e293b;
+  display: grid;
+  grid-template-columns: 1fr 60px;
+  height: 100vh;
+  overflow: hidden;
+  padding-right: 72px;
+}
+
+/* ── Content column ─────────────────────────────────────────── */
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 6px 6px 8px;
+  gap: 5px;
+  overflow: hidden;
+}
+
+/* ── Status bar ─────────────────────────────────────────────── */
+.status-bar {
+  background: #1e293b;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #94a3b8;
+  transition: color 0.3s, background 0.3s;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Three-column panel row ─────────────────────────────────── */
+.panels {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 5px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ── Shared panel base ──────────────────────────────────────── */
+.panel {
+  border-radius: 8px;
+  padding: 7px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.panel-label {
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  margin-bottom: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Code panel ─────────────────────────────────────────────── */
+.code-panel {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+}
+
+.code-panel .panel-label {
+  color: #64748b;
+  border-bottom-color: #e2e8f0;
+  text-align: left;
+}
+
+.code-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.code-line {
+  font-family: 'Courier New', monospace;
+  font-size: 0.78rem;
+  line-height: 1.8;
+  color: #94a3b8;
+  padding: 0 5px;
+  border-radius: 3px;
+  transition: color 0.3s, background 0.3s;
+  white-space: nowrap;
+}
+
+.code-line.active {
+  color: #1e293b;
+  background: #fef9c3;
+}
+
+.kw  { color: #2563eb; }
+.ty  { color: #059669; }
+.num { color: #d97706; }
+.fn  { color: #7c3aed; }
+.op  { color: #dc2626; }
+
+/* ── Stack panel ────────────────────────────────────────────── */
+.stack-panel {
+  background: #f0fdf4;
+  border: 2px solid #4ade80;
+}
+
+.stack-panel .panel-label {
+  color: #15803d;
+  border-bottom-color: #4ade80;
+}
+
+/* ── Heap panel ─────────────────────────────────────────────── */
+.heap-panel {
+  background: #eff6ff;
+  border: 2px solid #60a5fa;
+}
+
+.heap-panel .panel-label {
+  color: #1d4ed8;
+  border-bottom-color: #60a5fa;
+}
+
+/* ── Memory cells ───────────────────────────────────────────── */
+.mem-cell {
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.35s ease;
+  min-height: 26px;
+  gap: 4px;
+}
+
+.cell-name { opacity: 0.65; flex-shrink: 0; font-size: 0.67rem; }
+.cell-val  { font-weight: 700; text-align: right; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.cell-frame {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  font-size: 0.62rem;
+  font-weight: 700;
+  justify-content: center;
+}
+
+.cell-var {
+  background: #dcfce7;
+  border: 1px solid #4ade80;
+  color: #15803d;
+}
+
+.cell-ptr {
+  background: #dbeafe;
+  border: 1px solid #60a5fa;
+  color: #1d4ed8;
+}
+
+.cell-ptr-active {
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  color: #92400e;
+  box-shadow: 0 0 6px rgba(245,158,11,0.35);
+}
+
+.cell-ptr-dangling {
+  background: #fee2e2;
+  border: 1px dashed #f87171;
+  color: #b91c1c;
+}
+
+.cell-ptr-null {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #94a3b8;
+}
+
+.cell-heap {
+  background: #dbeafe;
+  border: 1px solid #60a5fa;
+  color: #1d4ed8;
+}
+
+.cell-heap-active {
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  color: #92400e;
+  box-shadow: 0 0 8px rgba(245,158,11,0.4);
+}
+
+.cell-heap-freed {
+  background: #fef2f2;
+  border: 1px dashed #fca5a5;
+  color: #fca5a5;
+  font-style: italic;
+}
+
+.mem-empty {
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
+  color: #cbd5e1;
+  text-align: center;
+  padding: 8px 0;
+}
+
+/* ── Controls sidebar ───────────────────────────────────────── */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 4px;
+  border-left: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #64748b;
+  border-radius: 6px;
+  padding: 6px 2px;
+  font-size: 0.62rem;
+  cursor: pointer;
+  width: 48px;
+  text-align: center;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  line-height: 1.4;
+  user-select: none;
+}
+
+.btn:hover { background: #f1f5f9; color: #1e293b; border-color: #94a3b8; }
+
+#btn-play {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+}
+#btn-play:hover { background: #1d4ed8; }
+</style>
+</head>
+<body>
+
+<div class="content">
+  <div class="status-bar" id="status">Ready — press Step or Play to begin.</div>
+
+  <div class="panels">
+    <!-- Code -->
+    <div class="panel code-panel">
+      <div class="panel-label">Code</div>
+      <div class="code-lines" id="code-lines"></div>
+    </div>
+
+    <!-- Stack -->
+    <div class="panel stack-panel">
+      <div class="panel-label">Stack</div>
+      <div id="stack-cells"></div>
+    </div>
+
+    <!-- Heap -->
+    <div class="panel heap-panel">
+      <div class="panel-label">Heap</div>
+      <div id="heap-cells"></div>
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <button class="btn" id="btn-play">▶ Play</button>
+  <button class="btn" id="btn-step">Step →</button>
+  <button class="btn" id="btn-reset">↺ Reset</button>
+</div>
+
+<script>
+const CODE = [
+  `<span class="ty">int</span> x = <span class="num">10</span>;`,
+  `<span class="ty">int*</span> p = <span class="kw">new</span> <span class="ty">int</span>(<span class="num">42</span>);`,
+  `<span class="fn">cout</span> <span class="op"><<</span> <span class="op">*</span>p;`,
+  `<span class="kw">delete</span> p;`,
+  `p = <span class="kw">nullptr</span>;`,
+  `<span class="kw">return</span> <span class="num">0</span>;`,
+];
+
+function buildStates() {
+  return [
+    { line: -1, stack: [], heap: [],
+      status: 'Ready — press Step or Play to begin.', color: '#94a3b8', bg: '#1e293b' },
+    { line: -1, stack: [{ type: 'frame', name: 'main()', val: '' }], heap: [],
+      status: 'main() is called — a stack frame is pushed.', color: '#e2e8f0', bg: '#334155' },
+    { line: 0,
+      stack: [{ type: 'frame', name: 'main()', val: '' }, { type: 'var', name: 'x', val: '10' }],
+      heap: [],
+      status: 'int x = 10 — local variable allocated on the stack.', color: '#bbf7d0', bg: '#14532d' },
+    { line: 1,
+      stack: [{ type: 'frame', name: 'main()', val: '' }, { type: 'var', name: 'x', val: '10' }, { type: 'ptr', name: 'p', val: '→ 0xa8f0' }],
+      heap: [{ type: 'heap', addr: '0xa8f0', val: '42' }],
+      status: 'new int(42) — heap block at 0xa8f0; p stores that address.', color: '#bfdbfe', bg: '#1e3a5f' },
+    { line: 2,
+      stack: [{ type: 'frame', name: 'main()', val: '' }, { type: 'var', name: 'x', val: '10' }, { type: 'ptr-active', name: 'p', val: '→ 0xa8f0' }],
+      heap: [{ type: 'heap-active', addr: '0xa8f0', val: '42' }],
+      status: '*p dereferences p — reads 42 from the heap.', color: '#fde68a', bg: '#78350f' },
+    { line: 3,
+      stack: [{ type: 'frame', name: 'main()', val: '' }, { type: 'var', name: 'x', val: '10' }, { type: 'ptr-dangling', name: 'p', val: '→ 0xa8f0 ⚠' }],
+      heap: [{ type: 'heap-freed', addr: '0xa8f0', val: 'freed' }],
+      status: 'delete p — heap released. p is now a dangling pointer.', color: '#fecaca', bg: '#7f1d1d' },
+    { line: 4,
+      stack: [{ type: 'frame', name: 'main()', val: '' }, { type: 'var', name: 'x', val: '10' }, { type: 'ptr-null', name: 'p', val: 'nullptr' }],
+      heap: [],
+      status: 'p = nullptr — dangling pointer nulled. Heap is clear.', color: '#bbf7d0', bg: '#14532d' },
+    { line: 5, stack: [], heap: [],
+      status: 'return 0 — stack frame released. x and p are gone.', color: '#e2e8f0', bg: '#334155' },
+  ];
+}
+
+const STATES = buildStates();
+let cur = -1, playing = false, timer = null;
+
+function renderCode(activeLine) {
+  document.getElementById('code-lines').innerHTML = CODE.map((html, i) =>
+    `<div class="${i === activeLine ? 'code-line active' : 'code-line'}">${html}</div>`
+  ).join('');
+}
+
+function cellClass(type) {
+  return ({ frame:'cell-frame', var:'cell-var', ptr:'cell-ptr',
+    'ptr-active':'cell-ptr-active', 'ptr-dangling':'cell-ptr-dangling',
+    'ptr-null':'cell-ptr-null', heap:'cell-heap', 'heap-active':'cell-heap-active',
+    'heap-freed':'cell-heap-freed' })[type] || 'cell-var';
+}
+
+function renderStack(cells) {
+  const el = document.getElementById('stack-cells');
+  el.innerHTML = !cells.length ? '<div class="mem-empty">(empty)</div>'
+    : cells.map(c => c.type === 'frame'
+      ? `<div class="mem-cell cell-frame">${c.name}</div>`
+      : `<div class="mem-cell ${cellClass(c.type)}"><span class="cell-name">${c.name}</span><span class="cell-val">${c.val}</span></div>`
+    ).join('');
+}
+
+function renderHeap(cells) {
+  const el = document.getElementById('heap-cells');
+  el.innerHTML = !cells.length ? '<div class="mem-empty">(empty)</div>'
+    : cells.map(c =>
+      `<div class="mem-cell ${cellClass(c.type)}"><span class="cell-name">${c.addr}</span><span class="cell-val">${c.val}</span></div>`
+    ).join('');
+}
+
+function render(state) {
+  renderCode(state.line);
+  renderStack(state.stack);
+  renderHeap(state.heap);
+  const s = document.getElementById('status');
+  s.textContent = state.status;
+  s.style.color = state.color;
+  s.style.background = state.bg;
+}
+
+function setPlaying(on) {
+  playing = on;
+  document.getElementById('btn-play').textContent = on ? '⏸ Pause' : '▶ Play';
+  if (on) {
+    timer = setInterval(() => { advance(); if (cur >= STATES.length - 1) setPlaying(false); }, 1300);
+  } else { clearInterval(timer); timer = null; }
+}
+
+function advance() {
+  if (cur >= STATES.length - 1) { doReset(); return; }
+  cur++;
+  render(STATES[cur]);
+  if (cur === STATES.length - 1) setPlaying(false);
+}
+
+function doReset() {
+  setPlaying(false); cur = -1;
+  renderCode(-1); renderStack([]); renderHeap([]);
+  const s = document.getElementById('status');
+  s.textContent = 'Ready — press Step or Play to begin.';
+  s.style.color = '#94a3b8';
+  s.style.background = '#1e293b';
+}
+
+document.getElementById('btn-play').addEventListener('click', () => setPlaying(!playing));
+document.getElementById('btn-step').addEventListener('click', advance);
+document.getElementById('btn-reset').addEventListener('click', doReset);
+
+doReset();
+</script>
+</body>
+</html>

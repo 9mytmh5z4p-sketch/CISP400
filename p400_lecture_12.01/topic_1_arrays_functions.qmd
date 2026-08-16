@@ -1,0 +1,225 @@
+<!-- Topic 1: Arrays with Functions -->
+<!-- Slides 3–17 -->
+
+# Arrays with Functions
+<!-- Slide 3 -->
+
+## What Crosses the Function Boundary? {.smaller}
+
++ Pass one element when a function needs one value
++ Pass the array when a function needs the collection
+
+::: notes
+Slides 3–17
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Array Parameter Syntax
+
+```{.cpp}
+void displayScores(const int scores[], int size);
+void addBonus(int scores[], int size, int bonus);
+```
+
++ The brackets mark an array parameter
++ The separate `size` parameter controls traversal
++ `const` marks a read-only array contract
+
+<!-- Slide 5 -->
+
+---
+
+## The Array Is Not Copied
+
++ A scalar argument gives the function its own value
++ An array argument gives the function access to the caller's elements
++ Writing through the parameter changes the original array
+
+::: notes
+[Graphic suggestion: show a caller array with one arrow from the function parameter to the first element. Contrast it with a separate copied scalar value.]
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Array Decay
+
+When a built-in array crosses a function boundary, it **decays** into a pointer to its first element.
+
+| At the call site | Inside the function |
+|---|---|
+| Complete array | Address of element `0` |
+| Element count known from declaration | Element count unavailable |
+| `sizeof` reports all element bytes | `sizeof` reports pointer bytes |
+
+<!-- Slide 7 -->
+
+---
+
+## Where Did the Size Go?
+
+```{.cpp}
+void displayScores(const int scores[], int size) {
+    for (int i = 0; i < size; i++) {
+        cout << scores[i] << "\n";
+    }
+}
+```
+
+::: notes
+The function can access elements through the address, but the address carries no element count. The caller must provide the logical size.
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## `sizeof` Inside and Outside a Function
+
+```{.cpp}
+int scores[5] = {91, 78, 84, 95, 62};
+
+int count = sizeof(scores) / sizeof(scores[0]);
+displayScores(scores, count);
+```
+
++ The count expression works where `scores` is declared
++ After decay, the parameter is no longer a complete array
+
+<!-- Slide 9 -->
+
+---
+
+## Does the Declared Size Matter?
+
+```{.cpp}
+void process(int values[]);
+void process(int values[5]);
+void process(int* values);
+```
+
+The `5` does not enforce the argument's size. Pass the logical size separately.
+
+<!-- Slide 10 -->
+
+---
+
+## Read-Only Array Parameters
+
+```{.cpp}
+int findMaximum(const int values[], int size);
+```
+
++ `const` prevents assignments to array elements inside the function
++ It communicates that the function observes rather than modifies
++ Use it for display, aggregation, and search functions
+
+<!-- Slide 11 -->
+
+---
+
+## Displaying an Array
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+void displayScores(const int scores[], int size);
+
+int main() {
+    int scores[4] = {91, 78, 84, 95};
+    displayScores(scores, 4);
+    return 0;
+}
+
+void displayScores(const int scores[], int size) {
+    for (int i = 0; i < size; i++) {
+        cout << scores[i] << "\n";
+    }
+}
+```
+
+<!-- Slide 12 -->
+
+---
+
+## Modifying an Array
+
+```{.cpp}
+void addBonus(int scores[], int size, int bonus);
+```
+
++ No `const` means the function may write to elements
++ The caller sees every change because the elements were not copied
++ The function name should make the mutation clear
+
+<!-- Slide 13 -->
+
+---
+
+## Updating Every Element
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+void addBonus(int scores[], int size, int bonus);
+
+int main() {
+    int scores[4] = {70, 75, 80, 85};
+    addBonus(scores, 4, 5);
+    cout << scores[0] << " " << scores[3] << "\n";
+    return 0;
+}
+
+void addBonus(int scores[], int size, int bonus) {
+    for (int i = 0; i < size; i++) {
+        scores[i] += bonus;
+    }
+}
+```
+
+::: notes
+The output is 75 90. Trace one assignment back to the same indexed element in the caller's array.
+:::
+
+<!-- Slide 14 -->
+
+---
+
+## One Element or the Whole Array?
+
+| Call | Function receives | Typical purpose |
+|---|---|---|
+| `classify(scores[i])` | One copied `int` | Analyze one score |
+| `displayScores(scores, size)` | Access to all elements | Read the collection |
+| `addBonus(scores, size, 5)` | Access to all elements | Modify the collection |
+
+<!-- Slide 15 -->
+
+---
+
+## Choosing the Parameter Contract
+
+| Function needs to... | Parameter style |
+|---|---|
+| Use one value | `int value` |
+| Read an array | `const int values[], int size` |
+| Modify an array | `int values[], int size` |
+
+The prototype should reveal the function's data movement before anyone reads its body.
+
+<!-- Slide 16 -->
+
+---
+
+## Summary
+
++ Built-in arrays decay at the function boundary, so pass the size separately
++ Use `const` for read-only access; omit it only when caller-visible mutation is intentional
+
+<!-- Slide 17 -->

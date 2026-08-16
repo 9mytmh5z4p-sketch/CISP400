@@ -1,0 +1,321 @@
+<!-- Topic 1: Multidimensional Arrays -->
+<!-- Slides 3–23 -->
+
+# Multidimensional Arrays
+<!-- Slide 3 -->
+
+## Remember Vector Grids? {.smaller}
+
+- Rows held vectors
+- Columns held values inside each row
+
+::: notes
+Slides 3–23
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## A Familiar Shape
+
+```{.cpp}
+vector<vector<int>> vectorGrid = {
+    {8, 6, 7},
+    {5, 3, 0}
+};
+
+int arrayGrid[2][3] = {
+    {8, 6, 7},
+    {5, 3, 0}
+};
+```
+
+::: notes
+Both structures use grid[row][column]. The important change is the storage contract, not the mental model.
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## The Same Shape, a Fixed Contract
+
+| Property | Multidimensional vector | Multidimensional array |
+|---|---|---|
+| Shape | Can change at runtime | Fixed at compile time |
+| Rows | May have different lengths | Always rectangular |
+| Access | `grid[row][col]` | `grid[row][col]` |
+| Storage | Separate vector objects | One contiguous block |
+
+<!-- Slide 6 -->
+
+---
+
+## Rows and Columns
+
+| | Column 0 | Column 1 | Column 2 |
+|---|---:|---:|---:|
+| Row 0 | `grid[0][0]` | `grid[0][1]` | `grid[0][2]` |
+| Row 1 | `grid[1][0]` | `grid[1][1]` | `grid[1][2]` |
+
+::: notes
+[Graphic suggestion: highlight one cell and trace its row index first, then its column index.]
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## Declaring a Two-Dimensional Array
+
+```{.cpp}
+const int ROWS = 2;
+const int COLS = 3;
+
+int grid[ROWS][COLS];
+```
+
+- `ROWS` is the number of arrays
+- `COLS` is the number of elements in each row
+
+<!-- Slide 8 -->
+
+---
+
+## Named Dimensions
+
+```{.cpp}
+const int DAYS = 7;
+const int HOURS = 24;
+
+double temperatures[DAYS][HOURS];
+```
+
+- Dimensions must be compile-time constants
+- Names keep declarations and loops synchronized
+
+<!-- Slide 9 -->
+
+---
+
+## Valid Index Ranges
+
+- Valid rows: `0` through `ROWS - 1`
+  - `grid[0]` is the first row
+  - `grid[ROWS - 1]` is the last row
+- Valid columns: `0` through `COLS - 1`
+  - Each row has the same column range
+
+<!-- Slide 10 -->
+
+---
+
+## Initializing a Grid
+
+```{.cpp}
+int grid[2][3] = {
+    {8, 6, 7},
+    {5, 3, 0}
+};
+```
+
+- Each inner brace initializes one row
+- Values inside that brace fill columns from left to right
+
+<!-- Slide 11 -->
+
+---
+
+## Partial Initialization
+
+```{.cpp}
+int grid[2][3] = {
+    {8, 6},
+    {5}
+};
+```
+
+| | Column 0 | Column 1 | Column 2 |
+|---|---:|---:|---:|
+| Row 0 | 8 | 6 | 0 |
+| Row 1 | 5 | 0 | 0 |
+
+<!-- Slide 12 -->
+
+---
+
+## Reading and Writing Elements
+
+```{.cpp}
+int score = grid[1][2];
+
+grid[0][1] = 42;
+grid[1][2]++;
+```
+
+- Both subscripts identify one element
+- That element behaves like an ordinary variable
+
+<!-- Slide 13 -->
+
+---
+
+## Traversing Every Element
+
+```{.cpp}
+for (int row = 0; row < ROWS; row++) {
+    for (int col = 0; col < COLS; col++) {
+        cout << grid[row][col] << " ";
+    }
+    cout << "\n";
+}
+```
+
+<!-- Slide 14 -->
+
+---
+
+## Displaying a Grid
+
+```{.cpp}
+void displayGrid(const int grid[][COLS], int rows) {
+    for (int row = 0; row < rows; row++) {
+        for (int col = 0; col < COLS; col++) {
+            cout << setw(4) << grid[row][col];
+        }
+        cout << "\n";
+    }
+}
+```
+
+::: notes
+The complete program declares the function prototype above main and defines the function below main.
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## Processing Rows
+
+```{.cpp}
+for (int row = 0; row < ROWS; row++) {
+    int total = 0;
+
+    for (int col = 0; col < COLS; col++) {
+        total += grid[row][col];
+    }
+
+    cout << "Row " << row << ": " << total << "\n";
+}
+```
+
+<!-- Slide 16 -->
+
+---
+
+## Processing Columns
+
+```{.cpp}
+for (int col = 0; col < COLS; col++) {
+    int total = 0;
+
+    for (int row = 0; row < ROWS; row++) {
+        total += grid[row][col];
+    }
+
+    cout << "Column " << col << ": " << total << "\n";
+}
+```
+
+<!-- Slide 17 -->
+
+---
+
+## Rectangular and Jagged Shapes
+
+```{.cpp}
+int fixedGrid[3][4];
+
+vector<vector<int>> jaggedGrid = {
+    {1, 2},
+    {3, 4, 5, 6},
+    {7}
+};
+```
+
+- A built-in multidimensional array is rectangular
+- A vector of vectors can be jagged
+
+<!-- Slide 18 -->
+
+---
+
+## Memory Is Still Linear
+
+```text
+grid[0][0]  grid[0][1]  grid[0][2]  grid[1][0]  grid[1][1]  grid[1][2]
+```
+
+- C++ stores one complete row, then the next row
+- Row-first traversal follows that storage order
+
+::: notes
+[Graphic suggestion: flatten a 2-by-3 table into a six-cell memory strip with matching colors.]
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## Passing a Grid to a Function
+
+```{.cpp}
+const int COLS = 3;
+
+void displayGrid(const int grid[][COLS], int rows);
+```
+
+- The first dimension may be passed separately
+- The compiler needs every remaining dimension to locate an element
+
+<!-- Slide 20 -->
+
+---
+
+## Beyond Two Dimensions
+
+```{.cpp}
+const int FLOORS = 4;
+const int ROWS = 3;
+const int COLS = 5;
+
+int seats[FLOORS][ROWS][COLS] = {};
+seats[2][1][4] = 1;
+```
+
+- Add one subscript and one loop for each dimension
+- The same indexing pattern continues
+
+<!-- Slide 21 -->
+
+---
+
+## Choosing the Right Shape
+
+- Use a multidimensional array when every dimension is fixed and rectangular
+- Use a vector grid when dimensions must change at runtime
+  - A vector of vectors may also represent jagged rows
+- Choose dimensions that match the problem: row and column, floor and seat, or layer and pixel
+
+<!-- Slide 22 -->
+
+---
+
+## Summary
+
+- Multidimensional arrays extend familiar indexing with one subscript per dimension
+- Named dimensions, nested loops, and row-major traversal keep the shape explicit
+
+<!-- Slide 23 -->

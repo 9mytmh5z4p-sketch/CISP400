@@ -1,0 +1,383 @@
+# Last Time
+
+::: {.incremental}
++ **Vectors**
++ **Vector Operations**
++ **Index Notation**
++ **Range-Based For Loops**
++ **Choosing Access Style**
+:::
+
+::: notes
+Brief recall of lecture 03.02. Students should remember that vectors group related values, index notation reaches one known position, and range-based for loops process every value in a collection.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Modular Programming
+- Coding Functions
+- Passing Data to a Function
+- Returning Data from a Function
+- Void Functions
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_modular_programming.qmd >}}
+{{< include topic_2_coding_functions.qmd >}}
+{{< include topic_3_passing_data.qmd >}}
+{{< include topic_4_returning_data.qmd >}}
+{{< include topic_5_void_functions.qmd >}}
+
+---
+
+# Key Takeaways
+
+- Modular programming organizes a program into named pieces.
+- Functions reorganize processing without changing the IPO model.
+- A function prototype tells the compiler a function exists before it is called.
+- Parameters receive data from arguments.
+- Return values send one answer back to the caller.
+- `void` functions perform actions without returning a value.
+
+<!-- Slide 58 -->
+
+---
+
+# Next Time
+
+- Function practice with vectors
+- Scope across function calls
+- Memory model for function execution
+
+<!-- Slide 59 -->
+
+---
+
+# Appendix
+
+<!-- Slide 60 -->
+
+---
+
+## Modular Programming: Good Practices
+
+- Let `main()` show the program outline.
+- Give each function one clear job.
+- Use function names that describe actions.
+
+<!-- Slide 61 -->
+
+---
+
+## Modular Programming: Common Mistakes
+
+- Moving code into functions without making the program easier to read.
+- Creating one large helper function that replaces one large `main()`.
+- Choosing names that describe implementation details instead of purpose.
+
+<!-- Slide 62 -->
+
+---
+
+## Modular Programming: More Examples
+
+```cpp
+displayTitle();
+readInput();
+calculateResult();
+displayResult();
+```
+
+The function calls make the program structure visible.
+
+<!-- Slide 63 -->
+
+---
+
+## Modular Programming: Practice Problems
+
+1. List three function names for a program that prints a receipt.
+2. Identify which part of an IPO model would likely move into a calculation function.
+3. Rewrite a long `main()` outline as four function calls.
+
+<!-- Slide 64 -->
+
+---
+
+## Modular Programming: AI Search Terms
+
+- "C++ modular programming beginner"
+- "C++ function centered design"
+- "C++ main function coordinator"
+
+<!-- Slide 65 -->
+
+---
+
+## Modular Programming: Questions for Reflection
+
+- Why does modular code make a program easier to read?
+- Why do functions reorganize processing without changing the IPO model?
+
+<!-- Slide 66 -->
+
+---
+
+## Coding Functions: Good Practices
+
+- Put prototypes above `main()`.
+- Put function definitions below `main()`.
+- Keep prototype and definition signatures consistent.
+
+<!-- Slide 67 -->
+
+---
+
+## Coding Functions: Common Mistakes
+
+- Forgetting the semicolon after a prototype.
+- Calling a function before the compiler has seen a declaration.
+- Defining a function inside another function.
+
+<!-- Slide 68 -->
+
+---
+
+## Coding Functions: More Examples
+
+```cpp
+void displayMenu();
+void displayLine();
+
+int main() {
+    displayMenu();
+    displayLine();
+    return 0;
+}
+```
+
+<!-- Slide 69 -->
+
+---
+
+## Coding Functions: Practice Problems
+
+1. Write a prototype for `displayHeader`.
+2. Identify the function call in a short program.
+3. Move a function definition from above `main()` to below `main()` and add a prototype.
+
+<!-- Slide 70 -->
+
+---
+
+## Coding Functions: AI Search Terms
+
+- "C++ function prototype"
+- "C++ function definition"
+- "C++ function call order"
+
+<!-- Slide 71 -->
+
+---
+
+## Coding Functions: Questions for Reflection
+
+- Why does the compiler need a function prototype?
+- Why is calling a function different from defining it?
+
+<!-- Slide 72 -->
+
+---
+
+## Passing Data to a Function: Good Practices
+
+- Use parameter names that describe the data received.
+- Keep parameter order predictable.
+- Pass only the data the function needs.
+
+<!-- Slide 73 -->
+
+---
+
+## Passing Data to a Function: Common Mistakes
+
+- Swapping argument order.
+- Giving one type for multiple parameters.
+- Trying to use a parameter outside its function.
+
+<!-- Slide 74 -->
+
+---
+
+## Passing Data to a Function: More Examples
+
+```cpp
+void printScore(string name, int score);
+void displayPrice(string item, double price);
+void repeatMessage(string message, int times);
+```
+
+Each parameter has its own type and name.
+
+<!-- Slide 75 -->
+
+---
+
+## Passing Data to a Function: Practice Problems
+
+1. Identify the arguments in `greet("Maya")`.
+2. Identify the parameters in `void greet(string person)`.
+3. Write a function call for `displayPrice(string item, double price)`.
+
+<!-- Slide 76 -->
+
+---
+
+## Passing Data to a Function: AI Search Terms
+
+- "C++ parameters and arguments"
+- "C++ function parameter order"
+- "C++ local parameter variable"
+
+<!-- Slide 77 -->
+
+---
+
+## Passing Data to a Function: Questions for Reflection
+
+- Why does a parameter make a function more reusable?
+- Why does argument order matter?
+
+<!-- Slide 78 -->
+
+---
+
+## Returning Data from a Function: Good Practices
+
+- Choose a return type before writing the function body.
+- Return a value that matches the declared type.
+- Store the returned value when the program needs it later.
+
+<!-- Slide 79 -->
+
+---
+
+## Returning Data from a Function: Common Mistakes
+
+- Forgetting to return a value from a non-void function.
+- Returning a value with the wrong type.
+- Calling a value-returning function and ignoring the result.
+
+<!-- Slide 80 -->
+
+---
+
+## Returning Data from a Function: More Examples
+
+```cpp
+int add(int first, int second);
+double calculateAverage(int total, int count);
+string makeLabel(string name);
+```
+
+The return type appears before the function name.
+
+<!-- Slide 81 -->
+
+---
+
+## Returning Data from a Function: Practice Problems
+
+1. Write a function prototype for a function that returns a `double`.
+2. Store the result of `add(4, 5)` in a variable.
+3. Explain what value replaces the call `add(4, 5)`.
+
+<!-- Slide 82 -->
+
+---
+
+## Returning Data from a Function: AI Search Terms
+
+- "C++ return value"
+- "C++ function return type"
+- "C++ return statement beginner"
+
+<!-- Slide 83 -->
+
+---
+
+## Returning Data from a Function: Questions for Reflection
+
+- Why does a function's return type matter?
+- What should the caller do with a returned value?
+
+<!-- Slide 84 -->
+
+---
+
+## Void Functions: Good Practices
+
+- Use `void` for functions that perform actions.
+- Name void functions with action verbs.
+- Keep display and menu helpers focused.
+
+<!-- Slide 85 -->
+
+---
+
+## Void Functions: Common Mistakes
+
+- Trying to store the result of a void function.
+- Returning a value from a void function.
+- Using `void` when the caller needs an answer.
+
+<!-- Slide 86 -->
+
+---
+
+## Void Functions: More Examples
+
+```cpp
+void displayHeader();
+void printLine();
+void showMenu();
+```
+
+These functions do work, but they do not send a value back.
+
+<!-- Slide 87 -->
+
+---
+
+## Void Functions: Practice Problems
+
+1. Decide whether `calculateTax` should be `void` or value-returning.
+2. Decide whether `displayMenu` should be `void` or value-returning.
+3. Write a call to `displayHeader()`.
+
+<!-- Slide 88 -->
+
+---
+
+## Void Functions: AI Search Terms
+
+- "C++ void function"
+- "C++ return in void function"
+- "C++ void vs return value"
+
+<!-- Slide 89 -->
+
+---
+
+## Void Functions: Questions for Reflection
+
+- Why can a void function still be useful?
+- How do you decide between `void` and a return value?
+
+<!-- Slide 90 -->

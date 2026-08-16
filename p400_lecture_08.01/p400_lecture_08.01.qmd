@@ -1,0 +1,191 @@
+# Last Time
+
+::: {.incremental}
++ **Why Iteration Matters**
++ **Loop Anatomy and Program Control**
++ **The while Loop**
++ **The do-while Loop**
++ **The for Loop**
++ **Choosing a Loop**
+:::
+
+::: notes
+Recall why programs use iteration, how loop control works, and how to choose a loop before using nested loops to represent two-dimensional structure.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Nested Loops
+- Multi-Dimensional Vectors
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_nested_loops.qmd >}}
+{{< include topic_2_multi_dimensional_vectors.qmd >}}
+
+---
+
+# Key Takeaways
+
+- Nested loops represent repeated work inside repeated work.
+- Row-column thinking gives nested loops a concrete structure.
+- Multi-dimensional vectors store table-like data as a vector of rows.
+
+<!-- Slide 38 -->
+
+---
+
+# Next Time
+
+- Processing row-column data
+- Searching and summarizing 2D structures
+
+<!-- Slide 39 -->
+
+---
+
+# Appendix
+
+<!-- Slide 40 -->
+
+---
+
+## Nested Loops: Good Practices
+
+- Name loop variables for their roles.
+- Keep the inner loop focused on one repeated task.
+- Trace one outer pass before tracing the whole structure.
+
+<!-- Slide 41 -->
+
+---
+
+## Nested Loops: Common Mistakes
+
+- Forgetting that the inner loop starts over for each outer pass.
+- Reusing the same loop variable name in both loops.
+- Assuming total passes without checking whether the inner loop count changes.
+
+<!-- Slide 42 -->
+
+---
+
+## Nested Loops: More Examples
+
+```cpp
+for (int student = 1; student <= 3; student++) {
+    for (int score = 1; score <= 4; score++) {
+        cout << "Student " << student << ", score " << score << endl;
+    }
+}
+```
+
+<!-- Slide 43 -->
+
+---
+
+## Nested Loops: Practice Problems
+
+- Print a 4-by-6 rectangle of `#` symbols.
+- Print a right triangle with seven rows.
+- Count how many times the inner loop runs in a 5-by-3 structure.
+
+<!-- Slide 44 -->
+
+---
+
+## Nested Loops: AI Search Terms
+
+- C++ nested loops row column
+- C++ nested loop trace
+- C++ print rectangle nested loops
+- C++ nested loops totals
+
+<!-- Slide 45 -->
+
+---
+
+## Nested Loops: Questions for Reflection
+
+- What does the outer loop represent?
+- What does the inner loop complete?
+- Does the inner loop count stay the same on every outer pass?
+
+<!-- Slide 46 -->
+
+---
+
+## Multi-Dimensional Vectors: Good Practices
+
+- Treat the outer vector as rows.
+- Use `grid[row].size()` when rows may have different lengths.
+- Check shape assumptions before using `grid[0].size()`.
+
+<!-- Slide 47 -->
+
+---
+
+## Multi-Dimensional Vectors: Common Mistakes
+
+- Forgetting `#include <vector>`.
+- Reversing row and column indexes.
+- Assuming every row has the same number of columns.
+
+<!-- Slide 48 -->
+
+---
+
+## Multi-Dimensional Vectors: More Examples
+
+```cpp
+vector<vector<int>> seats = {
+    {1, 1, 0},
+    {0, 1, 1}
+};
+
+for (int row = 0; row < seats.size(); row++) {
+    for (int col = 0; col < seats[row].size(); col++) {
+        cout << seats[row][col] << " ";
+    }
+    cout << endl;
+}
+```
+
+<!-- Slide 49 -->
+
+---
+
+## Multi-Dimensional Vectors: Practice Problems
+
+- Create a 3-by-4 vector of integers.
+- Fill every cell from input.
+- Print the total for each row.
+
+<!-- Slide 50 -->
+
+---
+
+## Multi-Dimensional Vectors: AI Search Terms
+
+- C++ vector of vectors
+- C++ 2D vector rows columns
+- C++ traverse vector of vectors
+- C++ row totals 2D vector
+
+<!-- Slide 51 -->
+
+---
+
+## Multi-Dimensional Vectors: Questions for Reflection
+
+- What does the first index select?
+- What does the second index select?
+- Is this grid rectangular or jagged?
+
+<!-- Slide 52 -->

@@ -1,0 +1,156 @@
+<!-- Topic 2: Break -->
+<!-- Slides 12-20 -->
+
+# Break
+<!-- Slide 12 -->
+
+## When Should A Loop Stop Immediately? {.smaller}
+
+Most loops stop when the condition becomes false. `break` gives the loop a second exit point from inside the body.
+
+::: notes
+Slides 12-20
+:::
+
+<!-- Slide 13 -->
+
+---
+
+
+## What `break` Does
+
+`break` exits the nearest loop immediately. Execution continues after the loop.
+
+```cpp
+for (int i = 1; i <= 10; i++) {
+    if (i == 5) {
+        break;
+    }
+
+    cout << i << endl;
+}
+
+cout << "Done" << endl;
+```
+
+The output stops at `4` because the loop exits before printing `5`.
+
+<!-- Slide 14 -->
+
+---
+
+
+## Break On A Sentinel
+
+```cpp
+int value;
+
+while (true) {
+    cout << "Enter a value (-1 to quit): ";
+    cin >> value;
+
+    if (value == -1) {
+        break;
+    }
+
+    cout << "You entered " << value << endl;
+}
+```
+
+This pattern is useful when the loop must read before it knows whether to stop.
+
+<!-- Slide 15 -->
+
+---
+
+
+## Break During A Search
+
+```cpp
+int target = 72;
+int foundAt = -1;
+
+for (int i = 0; i < scores.size(); i++) {
+    if (scores.at(i) == target) {
+        foundAt = i;
+        break;
+    }
+}
+```
+
+Once the target is found, the remaining loop passes cannot improve the answer.
+
+<!-- Slide 16 -->
+
+---
+
+
+## Break Exits One Level
+
+In nested loops, `break` exits only the loop it is directly inside.
+
+```cpp
+for (int row = 1; row <= 3; row++) {
+    for (int col = 1; col <= 3; col++) {
+        if (col == 2) {
+            break;
+        }
+
+        cout << row << "," << col << endl;
+    }
+}
+```
+
+The outer loop still continues with the next row.
+
+<!-- Slide 17 -->
+
+---
+
+
+## Break vs Loop Condition
+
+Prefer a loop condition when the stopping rule is simple.
+
+```cpp
+while (choice != 'Q') {
+    displayMenu();
+    cin >> choice;
+}
+```
+
+Use `break` when the clearest stopping moment happens inside the loop body.
+
+<!-- Slide 18 -->
+
+---
+
+
+## Break In A `switch`
+
+Inside a `switch`, `break` exits the `switch`, not the surrounding loop.
+
+```cpp
+while (choice != 'Q') {
+    cin >> choice;
+
+    switch (choice) {
+    case 'A':
+        cout << "Add" << endl;
+        break;
+    }
+}
+```
+
+This `break` prevents fall-through to the next case.
+
+<!-- Slide 19 -->
+
+---
+
+
+## Summary
+
+`break` stops the nearest loop or switch immediately. Use it when stopping from inside the body is clearer than forcing the exit into the loop condition.
+
+<!-- Slide 20 -->

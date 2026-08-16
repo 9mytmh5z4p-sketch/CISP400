@@ -1,0 +1,145 @@
+<!-- Topic 4: Execution Trace Models -->
+<!-- Slides 45-56 -->
+
+# Execution Trace Models
+<!-- Slide 45 -->
+
+## Follow the Program, One Line at a Time {.smaller}
+
++ How do we predict what code will do before running it?
++ An execution trace records statements, variables, and output in order.
+
+::: notes
+Slides 45-56
+:::
+
+<!-- Slide 46 -->
+
+---
+
+## What Is an Execution Trace?
+
+An execution trace is a table or notes showing program state after each statement runs.
+
+It slows the program down enough for humans to inspect it.
+
+<!-- Slide 47 -->
+
+---
+
+## Trace Columns
+
+Useful trace columns include:
+
++ line number
++ statement
++ variable values
++ output
+
+Only update the values that change on that line.
+
+<!-- Slide 48 -->
+
+---
+
+## Simple Assignment Trace
+
+```cpp
+int a = 4;
+int b = 6;
+int total = a + b;
+```
+
+| Line | a | b | total |
+|---|---:|---:|---:|
+| 1 | 4 | | |
+| 2 | 4 | 6 | |
+| 3 | 4 | 6 | 10 |
+
+<!-- Slide 49 -->
+
+---
+
+## Output in a Trace
+
+When `cout` runs, record exactly what appears.
+
+| Statement | total | Output |
+|---|---:|---|
+| `cout << total;` | 10 | `10` |
+
+Output is part of the program's observable behavior.
+
+<!-- Slide 50 -->
+
+---
+
+## Input in a Trace
+
+When `cin` runs, choose an assumed user input and record the stored value.
+
+| User types | Statement | age |
+|---|---|---:|
+| `19` | `cin >> age;` | 19 |
+
+The trace depends on the input you assume.
+
+<!-- Slide 51 -->
+
+---
+
+## Trace vs. IPO
+
++ IPO is a design model used before writing code.
++ An execution trace is a reading model used after code exists.
++ IPO asks "what should happen?"; tracing asks "what does happen?"
+
+<!-- Slide 52 -->
+
+---
+
+## Date and Time Trace
+
+| Statement | now | Output |
+|---|---:|---|
+| `now = time(0);` | 1780594200 | |
+| `cout << now;` | 1780594200 | `1780594200` |
+
+The exact timestamp changes, but the trace pattern stays the same.
+
+<!-- Slide 53 -->
+
+---
+
+## Random Number Trace
+
+| Statement | raw | roll | Output |
+|---|---:|---:|---|
+| `raw = rand();` | 41 | | |
+| `roll = raw % 6 + 1;` | 41 | 6 | |
+| `cout << roll;` | 41 | 6 | `6` |
+
+Tracing separates the raw value from the final bounded value.
+
+<!-- Slide 54 -->
+
+---
+
+## Common Practices
+
++ Trace statements in execution order.
++ Update only the values that change.
++ Record output exactly.
++ Do not skip lines that seem obvious.
+
+<!-- Slide 55 -->
+
+---
+
+## Summary
+
++ Execution traces show how program state changes.
++ They help catch mistaken assumptions before or after running code.
++ A good trace makes invisible variable changes visible.
+
+<!-- Slide 56 -->

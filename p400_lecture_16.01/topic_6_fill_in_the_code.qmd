@@ -1,0 +1,90 @@
+<!-- Topic 6: Fill In the Missing Code -->
+<!-- Total slides: 3 -->
+
+# Fill In the Missing Code
+
+---
+
+## Exercise: complete the BankAccount method {.smaller}
+
++ The `BankAccount` class and `main` are complete — the `printSummary` body is missing.
++ Fill in lines 33–35 so the program compiles and prints both accounts correctly.
+
+::: notes
+Total slides: 3
+Students need to write three cout lines using private members directly (they're inside the class) plus one call to getBalance(). About 8 minutes — this is the capstone exercise for the last lecture. Encourage students to notice that printSummary is defined outside the class using ::, and that it can access private members because it's a member function.
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## The code {.smaller}
+
+```{.cpp}
+#include <iostream>
+#include <string>
+using namespace std;
+
+class BankAccount {
+private:
+    string owner;
+    double balance = 0.0;
+public:
+    void   setOwner(string name)   { owner = name; }
+    void   setBalance(double amt)  { balance = amt; }
+    string getOwner()  const       { return owner; }
+    double getBalance() const      { return balance; }
+    void   deposit(double amt)     { balance += amt; }
+    void   printSummary() const;
+};
+
+void BankAccount::printSummary() const {
+    // === YOUR CODE HERE (lines 33–35) ===
+    // Print: "Account: [owner]"
+    // Print: "Balance: $[balance]"
+    // Print: "After $500 deposit: $[balance + 500]"
+    // =====================================
+}
+
+int main() {
+    BankAccount a, b;
+    a.setOwner("Alice");   a.setBalance(1200.00);
+    b.setOwner("Bob");     b.setBalance(850.50);
+
+    a.printSummary();
+    cout << "\n";
+    b.printSummary();
+    return 0;
+}
+```
+
+<!-- Slide 2 -->
+
+---
+
+## Solution {.smaller}
+
+```{.cpp}
+void BankAccount::printSummary() const {
+    cout << "Account: "          << owner             << "\n";
+    cout << "Balance: $"         << balance           << "\n";
+    cout << "After $500 deposit: $" << balance + 500  << "\n";
+}
+```
+
+::: notes
+Output for Alice:
+Account: Alice
+Balance: $1200
+After $500 deposit: $1700
+
+Output for Bob:
+Account: Bob
+Balance: $850.5
+After $500 deposit: $1350.5
+
+Key points to discuss: (1) printSummary accesses private members owner and balance directly — it's a member function, so it has access. (2) The :: tells the compiler this belongs to BankAccount. (3) const after the signature means this method promises not to modify any members.
+:::
+
+<!-- Slide 3 -->

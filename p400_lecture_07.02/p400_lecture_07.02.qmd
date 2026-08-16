@@ -1,0 +1,447 @@
+# Last Time
+
+::: {.incremental}
++ **Conditional Statements**
++ **The Conditional Operator**
++ **The switch Statement**
++ **Nested if Statements**
++ **Compound Conditions**
++ **Range Checking**
+:::
+
+::: notes
+Recall that conditionals used true/false questions to choose whether code should run. Today uses the same condition idea, but the control flow can return to an earlier point and repeat.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Why Iteration Matters
+- Loop Anatomy and Program Control
+- The while Loop
+- The do-while Loop
+- The for Loop
+- Choosing a Loop
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_why_iteration.qmd >}}
+{{< include topic_2_loop_anatomy.qmd >}}
+{{< include topic_3_while_loop.qmd >}}
+{{< include topic_4_do_while_loop.qmd >}}
+{{< include topic_5_for_loop.qmd >}}
+{{< include topic_6_choosing_loop.qmd >}}
+
+---
+
+# Key Takeaways
+
+- Iteration is controlled repetition.
+- Loops extend the IPO model by repeating part of the process.
+- `while` tests before the body; `do-while` tests after the body.
+- `for` is best for counted repetition.
+- Range-based `for` remains the clearest choice when each collection item is enough.
+
+<!-- Slide 58 -->
+
+---
+
+# Next Time
+
+<!-- Slide 59 -->
+
+---
+
+# Appendix
+
+<!-- Slide 60 -->
+
+---
+
+## Why Iteration Matters: Good Practices
+
+- Name the repeated work before choosing syntax.
+- Identify what changes each pass.
+- State the condition that should eventually stop the repetition.
+
+<!-- Slide 61 -->
+
+---
+
+## Why Iteration Matters: Common Mistakes
+
+- Starting with loop syntax before identifying the repeated task.
+- Repeating code by copying and pasting instead of using a loop.
+- Forgetting that the loop needs a stopping condition.
+
+<!-- Slide 62 -->
+
+---
+
+## Why Iteration Matters: More Examples
+
+- Display every item in a list.
+- Ask for input until the user gives an acceptable value.
+- Calculate one row of output for each hour, day, or record.
+
+<!-- Slide 63 -->
+
+---
+
+## Why Iteration Matters: Practice Problems
+
+- Identify the repeated work in a receipt-printing program.
+- Describe what changes each pass when processing test scores.
+- Decide whether output should appear each pass or after the loop.
+
+<!-- Slide 64 -->
+
+---
+
+## Why Iteration Matters: AI Search Terms
+
+- C++ iteration design
+- C++ loop repetition condition
+- C++ IPO model loops
+- C++ loop control variable
+
+<!-- Slide 65 -->
+
+---
+
+## Why Iteration Matters: Questions for Reflection
+
+- What work is the program repeating?
+- What value or state changes each pass?
+- How will the program know the repetition is done?
+
+<!-- Slide 66 -->
+
+---
+
+## Loop Anatomy and Program Control: Good Practices
+
+- Keep the condition readable.
+- Update the loop-control value in a predictable place.
+- Trace a few passes before trusting the loop.
+
+<!-- Slide 67 -->
+
+---
+
+## Loop Anatomy and Program Control: Common Mistakes
+
+- Writing a condition that never becomes false.
+- Updating the wrong variable.
+- Confusing the loop body with the code that runs after the loop.
+
+<!-- Slide 68 -->
+
+---
+
+## Loop Anatomy and Program Control: More Examples
+
+```cpp
+int count = 1;
+while (count <= 5) {
+    cout << count << endl;
+    count++;
+}
+```
+
+<!-- Slide 69 -->
+
+---
+
+## Loop Anatomy and Program Control: Practice Problems
+
+- Circle the condition in a loop.
+- Identify the loop-control variable.
+- Build a Table of Variables for three passes.
+
+<!-- Slide 70 -->
+
+---
+
+## Loop Anatomy and Program Control: AI Search Terms
+
+- C++ loop control flow
+- C++ loop control variable
+- C++ entry condition loop
+- C++ exit condition loop
+
+<!-- Slide 71 -->
+
+---
+
+## Loop Anatomy and Program Control: Questions for Reflection
+
+- Where is the condition checked?
+- What sends control back to the top?
+- What changes so the loop can eventually stop?
+
+<!-- Slide 72 -->
+
+---
+
+## The while Loop: Good Practices
+
+- Use `while` when zero passes are possible.
+- Make the condition describe the reason to continue.
+- Update the value that affects the condition.
+
+<!-- Slide 73 -->
+
+---
+
+## The while Loop: Common Mistakes
+
+- Forgetting the update.
+- Writing the condition as the reason to stop instead of the reason to continue.
+- Assuming the body always runs at least once.
+
+<!-- Slide 74 -->
+
+---
+
+## The while Loop: More Examples
+
+```cpp
+int value = 1;
+
+while (value <= 10) {
+    cout << value << endl;
+    value += 2;
+}
+```
+
+<!-- Slide 75 -->
+
+---
+
+## The while Loop: Practice Problems
+
+- Write a condition that repeats while `score` is below `70`.
+- Trace a loop where `count` starts at `0` and increases by `2`.
+- Explain why a `while` body might never run.
+
+<!-- Slide 76 -->
+
+---
+
+## The while Loop: AI Search Terms
+
+- C++ while loop
+- C++ while loop trace table
+- C++ while loop condition
+- C++ infinite loop causes
+
+<!-- Slide 77 -->
+
+---
+
+## The while Loop: Questions for Reflection
+
+- Should the program test before doing the work?
+- Could the repeated work be skipped entirely?
+- What value moves the loop toward stopping?
+
+<!-- Slide 78 -->
+
+---
+
+## The do-while Loop: Good Practices
+
+- Use `do-while` when one pass is required.
+- Keep the repeated prompt or menu inside the body.
+- Remember the semicolon after the condition.
+
+<!-- Slide 79 -->
+
+---
+
+## The do-while Loop: Common Mistakes
+
+- Forgetting that the body runs before the test.
+- Omitting the final semicolon.
+- Using `do-while` when the program should be allowed to skip the body.
+
+<!-- Slide 80 -->
+
+---
+
+## The do-while Loop: More Examples
+
+```cpp
+int number;
+
+do {
+    cout << "Enter a positive number: ";
+    cin >> number;
+} while (number <= 0);
+```
+
+<!-- Slide 81 -->
+
+---
+
+## The do-while Loop: Practice Problems
+
+- Describe why a menu often uses `do-while`.
+- Trace one pass where the user enters `0`.
+- Rewrite a simple prompt loop as a `while` loop and compare the setup.
+
+<!-- Slide 82 -->
+
+---
+
+## The do-while Loop: AI Search Terms
+
+- C++ do while loop
+- C++ exit condition loop
+- C++ do while menu
+- C++ do while semicolon
+
+<!-- Slide 83 -->
+
+---
+
+## The do-while Loop: Questions for Reflection
+
+- Does the program need information from the first pass before testing?
+- Is one pass always required?
+- Would a `while` loop need extra setup before the loop?
+
+<!-- Slide 84 -->
+
+---
+
+## The for Loop: Good Practices
+
+- Use `for` for counted repetition.
+- Keep initialization, condition, and update easy to read.
+- Use a counter name that describes the count, such as `hour` or `day`.
+
+<!-- Slide 85 -->
+
+---
+
+## The for Loop: Common Mistakes
+
+- Using `<=` when the intended range requires `<`.
+- Changing the counter unexpectedly inside the body.
+- Using `for` when the number of passes is not known.
+
+<!-- Slide 86 -->
+
+---
+
+## The for Loop: More Examples
+
+```cpp
+for (int day = 1; day <= 7; day++) {
+    cout << "Day " << day << endl;
+}
+```
+
+<!-- Slide 87 -->
+
+---
+
+## The for Loop: Practice Problems
+
+- Write a loop that displays numbers 1 through 10.
+- Trace a loop that starts at 5 and counts down to 1.
+- Decide whether the counter should start at 0 or 1 for a user-facing label.
+
+<!-- Slide 88 -->
+
+---
+
+## The for Loop: AI Search Terms
+
+- C++ for loop
+- C++ counted loop
+- C++ for loop initialization condition update
+- C++ loop counter trace
+
+<!-- Slide 89 -->
+
+---
+
+## The for Loop: Questions for Reflection
+
+- Is the number of passes known?
+- What is the first counter value?
+- What counter value should stop the loop?
+
+<!-- Slide 90 -->
+
+---
+
+## Choosing a Loop: Good Practices
+
+- Choose based on the repetition need.
+- Prefer range-based `for` when the collection controls the loop.
+- Prefer the simplest loop that states the control clearly.
+
+<!-- Slide 91 -->
+
+---
+
+## Choosing a Loop: Common Mistakes
+
+- Choosing a loop because it is familiar instead of because it fits.
+- Using a counted `for` loop when the condition is not count-based.
+- Forgetting that range-based `for` is still available.
+
+<!-- Slide 92 -->
+
+---
+
+## Choosing a Loop: More Examples
+
+| Situation | Loop |
+|---|---|
+| Every vector element | Range-based `for` |
+| Hours 1 through N | `for` |
+| Repeat while data exists | `while` |
+| Show menu at least once | `do-while` |
+
+<!-- Slide 93 -->
+
+---
+
+## Choosing a Loop: Practice Problems
+
+- Choose a loop for printing one line per student.
+- Choose a loop for displaying a menu until quit.
+- Choose a loop for processing every value in a vector.
+
+<!-- Slide 94 -->
+
+---
+
+## Choosing a Loop: AI Search Terms
+
+- C++ which loop to use
+- C++ while vs do while
+- C++ for loop vs range based for
+- C++ loop selection decision table
+
+<!-- Slide 95 -->
+
+---
+
+## Choosing a Loop: Questions for Reflection
+
+- What controls the repetition: a collection, a count, a condition, or one required pass?
+- Which loop makes that control easiest to see?
+- Would another loop require extra setup or awkward logic?
+
+<!-- Slide 96 -->

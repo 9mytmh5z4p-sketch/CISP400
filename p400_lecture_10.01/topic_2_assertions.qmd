@@ -1,0 +1,226 @@
+<!-- Topic 2: Assertions -->
+<!-- Slides 30-45 -->
+
+# Assertions
+<!-- Slide 30 -->
+
+## What Should Never Be False? {.smaller}
+
+- Some checks are not about normal client mistakes.
+- They mean the program reached a state the programmer did not intend.
+
+::: notes
+Slides 30-45
+:::
+
+<!-- Slide 31 -->
+
+---
+
+## Validation vs Assertion
+
+| Validation | Assertion |
+|---|---|
+| Handles client mistakes | Catches programmer mistakes |
+| Gives a message and reprompts | Stops the program during development |
+| Part of normal behavior | Documents an assumption |
+
+Use validation for data coming from outside the program.
+
+<!-- Slide 32 -->
+
+---
+
+## What `assert` Does
+
+- `assert` checks a condition the programmer believes must be true.
+- If the condition is false, the program stops.
+- The failed condition points to a broken assumption.
+
+Assertions turn assumptions into executable checks.
+
+<!-- Slide 33 -->
+
+---
+
+## Basic `assert` Syntax
+
+```cpp
+#include <cassert>
+
+int index = 3;
+int size = 5;
+
+assert(index >= 0 && index < size);
+```
+
+The condition should describe a state that must already be true.
+
+<!-- Slide 34 -->
+
+---
+
+## Assertions Express Preconditions
+
+- A precondition must be true before code runs safely.
+- A divisor should not be zero.
+- An index should be inside the valid range.
+
+The assertion documents what the caller or earlier code must guarantee.
+
+<!-- Slide 35 -->
+
+---
+
+## Asserting Inside A Function
+
+```cpp
+#include <cassert>
+#include <iostream>
+using namespace std;
+
+double divide(int numerator, int denominator);
+
+int main() {
+    cout << divide(10, 2) << endl;
+    return 0;
+}
+
+double divide(int numerator, int denominator) {
+    assert(denominator != 0);
+    return static_cast<double>(numerator) / denominator;
+}
+```
+
+::: notes
+This example intentionally omits input. User-entered denominators should be validated before the function call.
+:::
+
+<!-- Slide 36 -->
+
+---
+
+## Assertions Express Invariants
+
+An invariant is a condition that should stay true while the program runs.
+
+```cpp
+vector<string> names;
+vector<int> scores;
+
+assert(names.size() == scores.size());
+```
+
+If parallel vectors represent the same records, their sizes should match.
+
+<!-- Slide 37 -->
+
+---
+
+## Reading An Assertion Failure
+
+- Do not patch around the failure immediately.
+- Ask which assumption failed.
+- Trace where the bad state entered the program.
+
+An assertion failure is evidence. Use it to find the earlier cause.
+
+<!-- Slide 38 -->
+
+---
+
+## Do Not Use `assert` For Client Input
+
+```cpp
+cin >> score;
+assert(score >= 0 && score <= 100);
+```
+
+Bad client input is expected. Expected mistakes need validation and recovery.
+
+<!-- Slide 39 -->
+
+---
+
+## Validation Handles Client Input
+
+```cpp
+cout << "Enter a score from 0 to 100: ";
+cin >> score;
+
+while (score < 0 || score > 100) {
+    cout << "Score must be 0 to 100. Try again: ";
+    cin >> score;
+}
+```
+
+Validation keeps the program running and tells the client how to recover.
+
+<!-- Slide 40 -->
+
+---
+
+## Avoid Side Effects In Assertions
+
+```cpp
+assert(count++ < limit);
+```
+
+- Do not put assignments inside assertion conditions.
+- Do not rely on increments inside an assertion.
+- Do not place required function calls inside an assertion.
+
+The program should behave correctly even if assertions are disabled.
+
+<!-- Slide 41 -->
+
+---
+
+## Assertions Can Be Disabled
+
+- Some builds compile assertions out.
+- Required behavior cannot depend on `assert`.
+- Use `assert` to catch problems, not to implement normal logic.
+
+Assertions are development checks, not a substitute for program behavior.
+
+<!-- Slide 42 -->
+
+---
+
+## Assertions And File I/O
+
+```cpp
+inFile >> expectedCount;
+
+for (int i = 0; i < expectedCount; i++) {
+    inFile >> score;
+    scores.push_back(score);
+}
+
+assert(scores.size() == expectedCount);
+```
+
+Validate the file operation first. Assert internal assumptions after the program has built its state.
+
+<!-- Slide 43 -->
+
+---
+
+## Common Practices
+
+- Assert programmer assumptions.
+- Assert preconditions before unsafe operations.
+- Assert invariants after state changes.
+- Validate client input and file data before trusting it.
+
+<!-- Slide 44 -->
+
+---
+
+## Summary
+
+- Validate what can reasonably happen.
+- Assert what should never happen if the code is correct.
+
+<!-- Slide 45 -->

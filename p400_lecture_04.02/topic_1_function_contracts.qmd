@@ -1,0 +1,160 @@
+<!-- Topic 1: Function Contracts -->
+<!-- Slides 3-13 -->
+
+# Function Contracts
+<!-- Slide 3 -->
+
+## What Does This Function Promise? {.smaller}
+
++ A function should make a promise the caller can understand.
++ The name, parameters, and return type tell most of that story.
++ The body explains how the promise is kept.
+
+::: notes
+Slides 3-13
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## A Contract Has Three Parts
+
+| Part | Question |
+|---|---|
+| Inputs | What data does the function need? |
+| Result or action | What does the function produce or do? |
+| Boundary | What details stay inside the function? |
+
+A contract lets the caller use the function without reading every line inside it.
+
+<!-- Slide 5 -->
+
+---
+
+## Reading a Prototype as a Contract
+
+```cpp
+double average(vector<int> scores);
+void displayScores(vector<int> scores);
+```
+
++ `average` needs a vector and sends back a `double`.
++ `displayScores` needs a vector and performs an action.
++ The prototype tells the caller how to communicate with the function.
+
+<!-- Slide 6 -->
+
+---
+
+## Caller Responsibilities
+
++ Choose the argument values.
++ Call the function at the right time.
++ Store or use the return value if one comes back.
+
+The caller should not need to know how the function does its internal work.
+
+<!-- Slide 7 -->
+
+---
+
+## Function Responsibilities
+
++ Use the data it receives.
++ Complete one clear job.
++ Keep temporary details inside the function body.
+
+The function should not depend on hidden outside state when parameters can provide the needed data.
+
+<!-- Slide 8 -->
+
+---
+
+## Example: Calculating an Average
+
+::: {.columns}
+::: {.column width="50%"}
+
+**Caller**
+
++ Collect or already have the scores.
++ Pass the vector to `average`.
++ Store or display the returned value.
+
+:::
+::: {.column width="50%"}
+
+**Function**
+
++ Receive the vector parameter.
++ Add the scores and divide by the count.
++ Return the calculated average.
+
+:::
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Example: Displaying a Report
+
+::: {.columns}
+::: {.column width="50%"}
+
+**Caller**
+
++ Pass the title and calculated values.
++ Decide when the report should appear.
++ Continue after the display function finishes.
+
+:::
+::: {.column width="50%"}
+
+**Function**
+
++ Format the report.
++ Print the values clearly.
++ Avoid changing the data it was given.
+
+:::
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## Contract Before Code
+
+```cpp
+vector<int> getScores();
+double average(vector<int> scores);
+void displayReport(double averageScore);
+```
+
++ Prototypes can come from an IPO model.
++ They outline the program before the function bodies exist.
++ This keeps design work separate from implementation details.
+
+<!-- Slide 11 -->
+
+---
+
+## Common Practices
+
++ Use verb-based names such as `calculateTotal` or `displayReport`.
++ Let the parameter list show what the function needs.
++ Split a function when one contract starts promising unrelated jobs.
+
+<!-- Slide 12 -->
+
+---
+
+## Summary
+
++ A function contract is the promise a function makes to its caller.
++ Clear contracts make modular programs easier to read.
++ The prototype is the first place to check the contract.
+
+<!-- Slide 13 -->

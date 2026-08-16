@@ -1,0 +1,12 @@
+# .quartoignore — files excluded from Quarto project-level rendering
+#
+# These are templates, test files, and scaffolding that are not render targets.
+# Individual lecture files are still renderable via explicit `quarto render file.qmd`.
+
+# Lecture template stubs (unbuilt lectures — broken include paths)
+**/Lecture Template.qmd
+
+# Test and experimental files at project root
+filter-test.qmd
+test-plantuml.qmd
+plantuml-test/

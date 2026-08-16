@@ -1,0 +1,522 @@
+# Last Time
+
+::: {.incremental}
++ **File I/O**
++ **Sequential I/O**
++ **Random Access**
+:::
+
+::: notes
+Recall how stored data survives beyond one run of a program. Arrays shift the focus from external storage to a fixed collection held during one run.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Introduction to Arrays
+- Array Initialization
+- Indexing Array Elements
+- Traversing Arrays
+- Inputting and Displaying Array Data
+- Arrays vs. Vectors
+- Performance — Arrays vs. Vectors
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_intro_arrays.qmd >}}
+{{< include topic_2_array_initialization.qmd >}}
+{{< include topic_3_indexing_elements.qmd >}}
+{{< include topic_4_traversing_arrays.qmd >}}
+{{< include topic_5_input_display.qmd >}}
+{{< include topic_6_arrays_vectors.qmd >}}
+{{< include topic_7_array_performance.qmd >}}
+
+---
+
+# Key Takeaways
+
+- Raw arrays store a fixed number of same-type elements.
+- Indexes begin at zero and must remain between `0` and `SIZE - 1`.
+- Index loops expose positions; range-based loops visit every declared element.
+- A separate count tracks meaningful data in a partially filled array.
+- Vectors remain the default when size changes or collection operations matter.
+
+<!-- Slide 97 -->
+
+---
+
+# Next Time
+
+- Processing array contents
+- Searching arrays
+- Passing arrays to functions
+
+<!-- Slide 98 -->
+
+---
+
+# Appendix
+
+<!-- Slide 99 -->
+
+## Introduction to Arrays: Good Practices
+
+- Give fixed capacities descriptive constant names.
+- Keep capacity separate from the logical data count.
+- Prefer a vector when fixed capacity is not a real requirement.
+
+<!-- Slide 100 -->
+
+---
+
+## Introduction to Arrays: Common Mistakes
+
+- Expecting an array to grow when more data arrives.
+- Treating capacity as proof that every position contains meaningful data.
+- Using a runtime variable as a raw-array capacity in standard C++.
+
+<!-- Slide 101 -->
+
+---
+
+## Introduction to Arrays: More Examples
+
+```{.cpp}
+const int DAYS = 7;
+double rainfall[DAYS];
+
+const int PLAYERS = 5;
+int jerseyNumbers[PLAYERS];
+
+const int QUESTIONS = 20;
+bool answers[QUESTIONS];
+```
+
+<!-- Slide 102 -->
+
+---
+
+## Introduction to Arrays: Practice Problems
+
+1. Declare an array that stores twelve monthly rainfall totals.
+2. Identify the element type, name, and capacity in `char codes[8];`.
+3. Explain when an array’s capacity and data count might differ.
+
+<!-- Slide 103 -->
+
+---
+
+## Introduction to Arrays: AI Search Terms
+
+- C++ raw array declaration
+- C++ compile-time array size
+- C++ contiguous array storage
+- array capacity versus logical size
+
+<!-- Slide 104 -->
+
+---
+
+## Introduction to Arrays: Questions for Reflection
+
+- What promise does fixed capacity make to the program?
+- What information does a raw array not track for you?
+- When would dynamic growth be more valuable than fixed storage?
+
+<!-- Slide 105 -->
+
+---
+
+## Array Initialization: Good Practices
+
+- Initialize local arrays before reading them.
+- Use `{}` when every element should begin at zero.
+- Let the compiler infer capacity when the initializer list defines the complete data set.
+
+<!-- Slide 106 -->
+
+---
+
+## Array Initialization: Common Mistakes
+
+- Reading elements from an uninitialized local array.
+- Supplying more initializer values than the declared capacity.
+- Trying to assign a new initializer list after declaration.
+
+<!-- Slide 107 -->
+
+---
+
+## Array Initialization: More Examples
+
+```{.cpp}
+int first[4] = {2, 4, 6, 8};
+int second[4] = {2, 4};
+int third[4] = {};
+int fourth[] = {2, 4, 6, 8};
+```
+
+<!-- Slide 108 -->
+
+---
+
+## Array Initialization: Practice Problems
+
+1. Declare six prices initialized to zero.
+2. Predict every value in `int values[5] = {7, 9};`.
+3. Infer the capacity of `char grades[] = {'A', 'B', 'C'};`.
+
+<!-- Slide 109 -->
+
+---
+
+## Array Initialization: AI Search Terms
+
+- C++ array initializer list
+- C++ partial array initialization
+- C++ zero initialize raw array
+- C++ infer raw array size
+
+<!-- Slide 110 -->
+
+---
+
+## Array Initialization: Questions for Reflection
+
+- Why does partial initialization safely produce zeros?
+- When is inferred capacity clearer than a named constant?
+- Why can initialization syntax be used only when the array is created?
+
+<!-- Slide 111 -->
+
+---
+
+## Indexing Array Elements: Good Practices
+
+- Derive the final valid index from the capacity.
+- Use one named constant anywhere the capacity controls access.
+- Keep user-facing item numbers separate from zero-based indexes.
+
+<!-- Slide 112 -->
+
+---
+
+## Indexing Array Elements: Common Mistakes
+
+- Using index `1` for the first element.
+- Treating `SIZE` as the final valid index.
+- Confusing an index with the value stored at that index.
+
+<!-- Slide 113 -->
+
+---
+
+## Indexing Array Elements: More Examples
+
+```{.cpp}
+int values[4] = {10, 20, 30, 40};
+
+cout << values[0] << '\n';
+values[2] = 35;
+values[3] += values[1];
+```
+
+<!-- Slide 114 -->
+
+---
+
+## Indexing Array Elements: Practice Problems
+
+1. Write the index of the sixth element.
+2. For capacity nine, identify the complete valid index range.
+3. Trace the array after `values[1] = values[3];`.
+
+<!-- Slide 115 -->
+
+---
+
+## Indexing Array Elements: AI Search Terms
+
+- C++ zero-based array indexing
+- C++ subscript operator raw array
+- C++ array valid index range
+- C++ out-of-bounds undefined behavior
+
+<!-- Slide 116 -->
+
+---
+
+## Indexing Array Elements: Questions for Reflection
+
+- Why is `SIZE - 1` the final valid index?
+- What makes an index expression valid?
+- Why can an out-of-bounds program appear to work temporarily?
+
+<!-- Slide 117 -->
+
+---
+
+## Traversing Arrays: Good Practices
+
+- Make the loop bound express the valid data range.
+- Use a range-based loop when every declared element should be visited.
+- Use an index loop when position or logical count matters.
+
+<!-- Slide 118 -->
+
+---
+
+## Traversing Arrays: Common Mistakes
+
+- Writing `i <= SIZE` instead of `i < SIZE`.
+- Using a copied range-loop variable when elements must change.
+- Traversing full capacity when only part of the array contains data.
+
+<!-- Slide 119 -->
+
+---
+
+## Traversing Arrays: More Examples
+
+```{.cpp}
+for (int i = 0; i < dataCount; i++)
+{
+    cout << i + 1 << ": " << values[i] << '\n';
+}
+
+for (int& value : values)
+{
+    value = 0;
+}
+```
+
+<!-- Slide 120 -->
+
+---
+
+## Traversing Arrays: Practice Problems
+
+1. Display every value with an index loop.
+2. Double every declared element with a range-based loop.
+3. Display only the first `dataCount` positions.
+
+<!-- Slide 121 -->
+
+---
+
+## Traversing Arrays: AI Search Terms
+
+- C++ loop through raw array
+- C++ range-based for raw array
+- C++ range for reference element
+- C++ array off-by-one loop
+
+<!-- Slide 122 -->
+
+---
+
+## Traversing Arrays: Questions for Reflection
+
+- What information does an index loop expose that a range loop hides?
+- Why does a reference allow a range loop to modify an element?
+- Which bound represents partially filled data?
+
+<!-- Slide 123 -->
+
+---
+
+## Inputting and Displaying Array Data: Good Practices
+
+- Validate the requested data count before filling the array.
+- Use the same logical count for later processing and display.
+- Keep collection, processing, and output passes distinct.
+
+<!-- Slide 124 -->
+
+---
+
+## Inputting and Displaying Array Data: Common Mistakes
+
+- Accepting a data count greater than capacity.
+- Displaying every capacity position after entering fewer values.
+- Showing zero-based indexes as user-facing item numbers without explanation.
+
+<!-- Slide 125 -->
+
+---
+
+## Inputting and Displaying Array Data: More Examples
+
+```{.cpp}
+for (int i = 0; i < dataCount; i++)
+{
+    cout << "Temperature " << i + 1 << ": ";
+    cin >> temperatures[i];
+}
+```
+
+<!-- Slide 126 -->
+
+---
+
+## Inputting and Displaying Array Data: Practice Problems
+
+1. Fill five quiz scores and display them in reverse order.
+2. Ask for a valid count from zero through eight.
+3. Display only the meaningful values in a capacity-twenty array.
+
+<!-- Slide 127 -->
+
+---
+
+## Inputting and Displaying Array Data: AI Search Terms
+
+- C++ input values into raw array loop
+- C++ partially filled array data count
+- C++ validate array element count
+- C++ two-pass array processing
+
+<!-- Slide 128 -->
+
+---
+
+## Inputting and Displaying Array Data: Questions for Reflection
+
+- Why store inputs before displaying them?
+- Which variable protects a partially filled array from invalid access?
+- When could processing occur between the input and display passes?
+
+<!-- Slide 129 -->
+
+---
+
+## Arrays vs. Vectors: Good Practices
+
+- Default to a vector when collection size is a runtime concern.
+- Choose an array only when fixed capacity is part of the design.
+- Compare equivalent access operations when discussing safety or speed.
+
+<!-- Slide 130 -->
+
+---
+
+## Arrays vs. Vectors: Common Mistakes
+
+- Choosing an array only because it appears simpler to declare.
+- Expecting raw arrays to support assignment, comparison, or `.size()`.
+- Claiming vector bracket access performs automatic bounds checking.
+
+<!-- Slide 131 -->
+
+---
+
+## Arrays vs. Vectors: More Examples
+
+| Requirement | Better starting choice |
+|---|---|
+| Five fixed sensor channels | Array |
+| Unknown number of survey responses | Vector |
+| User can add or remove tasks | Vector |
+| Interface requires a raw buffer | Array |
+
+<!-- Slide 132 -->
+
+---
+
+## Arrays vs. Vectors: Practice Problems
+
+1. Choose a container for seven fixed weekday totals.
+2. Choose a container for names read until end-of-file.
+3. Explain why vector assignment differs from raw-array assignment.
+
+<!-- Slide 133 -->
+
+---
+
+## Arrays vs. Vectors: AI Search Terms
+
+- C++ raw array versus vector
+- C++ vector size capacity difference
+- C++ vector at versus brackets
+- C++ copy raw array element by element
+
+<!-- Slide 134 -->
+
+---
+
+## Arrays vs. Vectors: Questions for Reflection
+
+- Is fixed capacity a benefit or a limitation in this program?
+- Which vector operations would the design lose by choosing an array?
+- What extra state must a partially filled array maintain?
+
+<!-- Slide 135 -->
+
+---
+
+## Performance — Arrays vs. Vectors: Good Practices
+
+- Choose the correct data model before optimizing.
+- Measure optimized builds with realistic workloads.
+- Compare equivalent initialization and access behavior.
+
+<!-- Slide 136 -->
+
+---
+
+## Performance — Arrays vs. Vectors: Common Mistakes
+
+- Assuming every array operation is faster than its vector equivalent.
+- Timing allocation and traversal together without identifying which cost matters.
+- Drawing performance conclusions from a debug build.
+
+<!-- Slide 137 -->
+
+---
+
+## Performance — Arrays vs. Vectors: More Examples
+
+| Measured cost | Relevant question |
+|---|---|
+| Construction | How often is storage allocated? |
+| Growth | How often does capacity change? |
+| Traversal | Are equivalent access methods used? |
+| Total runtime | Does this code dominate the program? |
+
+<!-- Slide 138 -->
+
+---
+
+## Performance — Arrays vs. Vectors: Practice Problems
+
+1. Identify the unfair work in comparing an uninitialized array with a zero-initialized vector.
+2. Design separate timing tests for construction and traversal.
+3. Explain why one timing result should not determine every container choice.
+
+<!-- Slide 139 -->
+
+---
+
+## Performance — Arrays vs. Vectors: AI Search Terms
+
+- C++ vector allocation performance
+- C++ raw array vector contiguous memory
+- C++ benchmark release versus debug
+- C++ vector reallocation cost
+
+<!-- Slide 140 -->
+
+---
+
+## Performance — Arrays vs. Vectors: Questions for Reflection
+
+- Which costs come from dynamic sizing rather than element access?
+- What evidence would justify replacing a vector with an array?
+- When is predictable allocation more important than flexibility?
+
+<!-- Slide 141 -->

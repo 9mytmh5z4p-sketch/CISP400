@@ -1,0 +1,195 @@
+<!-- Topic 6: Arrays vs. Vectors -->
+<!-- Slides 68–82 -->
+
+# Arrays vs. Vectors
+<!-- Slide 68 -->
+
+## Same Collection, Different Contract {.smaller}
+
++ Which container matches what the program needs to do?
+
+::: notes
+Slides 68–82
+:::
+
+<!-- Slide 69 -->
+
+---
+
+## Declarations Side by Side
+
+```{.cpp}
+#include <vector>
+using namespace std;
+
+const int SIZE = 5;
+
+int scoresArray[SIZE] = {91, 84, 78, 96, 88};
+vector<int> scoresVector = {91, 84, 78, 96, 88};
+```
+
+<!-- Slide 70 -->
+
+---
+
+## Fixed and Dynamic Capacity
+
+| Array | Vector |
+|---|---|
+| Capacity is part of the declaration | Size can change while running |
+| Cannot grow or shrink | Can grow or shrink |
+| Capacity must be known at compile time | Initial size may come from runtime data |
+
+<!-- Slide 71 -->
+
+---
+
+## Adding and Removing Values
+
+```{.cpp}
+vector<int> scores;
+scores.push_back(91);
+scores.pop_back();
+```
+
++ A raw array has no `push_back()` or `pop_back()`.
++ The program must manage which fixed positions contain meaningful values.
+
+<!-- Slide 72 -->
+
+---
+
+## Knowing the Size
+
+```{.cpp}
+cout << scoresVector.size() << '\n';
+
+cout << SIZE << '\n';
+
+int count = sizeof(scoresArray) / sizeof(scoresArray[0]);
+```
+
++ A vector reports its current size.
++ An array usually relies on a named capacity; the `sizeof` formula is local to the actual array.
+
+<!-- Slide 73 -->
+
+---
+
+## Element Access
+
+```{.cpp}
+cout << scoresArray[2] << '\n';
+cout << scoresVector[2] << '\n';
+```
+
++ Both containers use zero-based bracket indexing.
++ Both bracket operators assume the index is valid.
+
+<!-- Slide 74 -->
+
+---
+
+## Bounds Safety
+
+```{.cpp}
+cout << scoresVector.at(2) << '\n';
+```
+
+| Access | Bounds checked? |
+|---|---|
+| raw array `[]` | no |
+| vector `[]` | no |
+| vector `.at()` | yes |
+
++ A raw array has no `.at()` member function.
+
+<!-- Slide 75 -->
+
+---
+
+## Whole-Collection Operations
+
+```{.cpp}
+vector<int> first = {1, 2, 3};
+vector<int> second;
+
+second = first;
+bool same = (second == first);
+```
+
++ Vectors support whole-collection assignment and comparison.
++ Raw arrays require element-by-element copying and comparison.
+
+<!-- Slide 76 -->
+
+---
+
+## Passing Collections to Functions
+
+| Vector parameter | Raw-array parameter |
+|---|---|
+| Retains vector operations | Does not carry its capacity |
+| Can report `.size()` | Usually needs a separate size argument |
+| Commonly passed by reference | Has special parameter behavior |
+
++ Array parameter syntax and decay are next lecture’s topic.
+
+<!-- Slide 77 -->
+
+---
+
+## Partially Filled Storage
+
+```{.cpp}
+const int CAPACITY = 10;
+int arrayValues[CAPACITY] = {};
+int dataCount = 4;
+
+vector<int> vectorValues = {8, 15, 16, 23};
+```
+
++ The array needs a separate logical count.
++ The vector’s size already equals its current element count.
+
+<!-- Slide 78 -->
+
+---
+
+## Choose an Array
+
++ Capacity is small, fixed, and known at compile time.
++ Predictable storage is a real design requirement.
++ The code must interact with an interface that expects a raw array.
+
+<!-- Slide 79 -->
+
+---
+
+## Choose a Vector
+
++ The number of values can change.
++ The size comes from input or another runtime source.
++ Built-in size tracking, checked access, copying, or comparison improves the design.
+
+<!-- Slide 80 -->
+
+---
+
+## Decision Framework
+
+1. Can the number of values change? Use a vector.
+2. Is the size known only while running? Use a vector.
+3. Do collection operations or size tracking matter? Use a vector.
+4. Is fixed capacity an intentional requirement? Consider an array.
+
+<!-- Slide 81 -->
+
+---
+
+## Summary
+
++ Fixed capacity is the defining array contract.
++ Vectors provide dynamic size and a richer interface, so choose from program requirements rather than habit.
+
+<!-- Slide 82 -->

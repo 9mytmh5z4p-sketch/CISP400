@@ -1,0 +1,129 @@
+<!-- Topic 1: Increment and Decrement Operators -->
+<!-- Slides 3-11 -->
+
+# Increment and Decrement Operators
+<!-- Slide 3 -->
+
+## Why Does `i = i + 1` Have A Shortcut? {.smaller}
+
+Loop code often changes a control variable by exactly one. C++ gives that pattern its own notation because it is so common.
+
+::: notes
+Slides 3-11
+:::
+
+<!-- Slide 4 -->
+
+---
+
+
+## The Operators
+
+| Operator | Meaning | Equivalent statement |
+|---|---|---|
+| `x++` | increase `x` by 1 | `x = x + 1` |
+| `++x` | increase `x` by 1 | `x = x + 1` |
+| `x--` | decrease `x` by 1 | `x = x - 1` |
+| `--x` | decrease `x` by 1 | `x = x - 1` |
+
+When the operator is alone on a line, prefix and postfix forms leave the variable with the same final value.
+
+<!-- Slide 5 -->
+
+---
+
+
+## The Loop Use Case
+
+```cpp
+for (int i = 1; i <= 5; i++) {
+    cout << i << endl;
+}
+```
+
+The update expression `i++` means "move to the next value." In loop headers, `i++` is the conventional form students will see most often.
+
+<!-- Slide 6 -->
+
+---
+
+
+## Counting Down
+
+```cpp
+for (int lives = 3; lives > 0; lives--) {
+    cout << lives << " lives remaining" << endl;
+}
+
+cout << "Game over" << endl;
+```
+
+Use `--` when each pass moves the control variable one step downward.
+
+<!-- Slide 7 -->
+
+---
+
+
+## Prefix vs Postfix
+
+The difference matters only when the expression's value is used.
+
+```cpp
+int x = 5;
+
+cout << x++ << endl;  // prints 5, then x becomes 6
+cout << ++x << endl;  // x becomes 7, then prints 7
+```
+
+Avoid mixing increment operators into larger expressions until the order is clear.
+
+<!-- Slide 8 -->
+
+---
+
+
+## Compound Assignment
+
+Use compound assignment when the step is not exactly one.
+
+| Statement | Meaning |
+|---|---|
+| `x += 5;` | `x = x + 5;` |
+| `x -= 2;` | `x = x - 2;` |
+| `x *= 3;` | `x = x * 3;` |
+| `x /= 4;` | `x = x / 4;` |
+
+`++` and `--` are special cases of this broader shorthand family.
+
+<!-- Slide 9 -->
+
+---
+
+
+## Readability Rule
+
+Prefer the form that makes the loop movement obvious.
+
+```cpp
+for (int i = 0; i < count; i++) {
+    // standard one-step loop
+}
+
+for (int i = 0; i <= 100; i += 10) {
+    // clearer than ten separate increments
+}
+```
+
+Shorthand should make the code easier to scan, not harder to reason about.
+
+<!-- Slide 10 -->
+
+---
+
+
+## Summary
+
+Use `++` and `--` for one-step movement. Use compound assignment for larger steps, and keep prefix/postfix differences out of complex expressions unless the order matters.
+
+<!-- Slide 11 -->

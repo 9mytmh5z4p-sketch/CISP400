@@ -1,0 +1,135 @@
+<!-- Topic 1: Relational Operators -->
+<!-- Slides 3-12 -->
+
+# Relational Operators
+<!-- Slide 3 -->
+
+## Comparing Values {.smaller}
+
++ How can a program ask whether two values have a specific relationship?
++ Relational operators let code ask questions with yes-or-no answers.
+
+::: notes
+Slides 3-12
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## The Relational Operators
+
+| Operator | Meaning |
+|---|---|
+| `==` | equal to |
+| `!=` | not equal to |
+| `<` | less than |
+| `>` | greater than |
+| `<=` | less than or equal to |
+| `>=` | greater than or equal to |
+
+<!-- Slide 5 -->
+
+---
+
+## A Comparison Produces a Value
+
+```cpp
+int score = 87;
+
+score >= 70
+score == 100
+score < 60
+```
+
+Each expression evaluates to either `true` or `false`.
+
+<!-- Slide 6 -->
+
+---
+
+## Equality Is Not Assignment
+
+```cpp
+score = 70;   // Stores 70 in score
+score == 70;  // Asks whether score is equal to 70
+```
+
+The single equals sign changes a variable. The double equals sign compares two values.
+
+<!-- Slide 7 -->
+
+---
+
+## Common Comparison Shapes
+
+| Shape | Example |
+|---|---|
+| Threshold | `age >= 21` |
+| Exact choice | `choice == 1` |
+| Boundary | `temperature < 32` |
+| Different value | `menuChoice != 0` |
+
+<!-- Slide 8 -->
+
+---
+
+## Comparing Floating-Point Values
+
+Integers can usually be compared directly. Floating-point values may not store the exact value you expect.
+
+```cpp
+double result = .666667 * 6.0;
+cout << "Printed result: " << result << endl;
+```
+
+<!-- Slide 9 -->
+
+---
+
+## The Comparison Problem
+
+```cpp
+double result = .666667 * 6.0;
+
+if (result == 4.0) {
+    cout << "Internal result = 4.0\n";
+} else {
+    cout << "Internal result != 4.0\n";
+}
+```
+
+The printed value may look like 4, but the stored value may be slightly different.
+
+<!-- Slide 10 -->
+
+---
+
+## Comparing with a Tolerance
+
+```cpp
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+double result = .666667 * 6.0;
+double margin = 0.0001;
+
+if (abs(result - 4.0) < margin) {
+    cout << "Close enough to 4.0\n";
+}
+```
+
+Decide how close is close enough before calling floating-point values equal.
+
+<!-- Slide 11 -->
+
+---
+
+## Summary
+
+- Relational operators compare values.
+- A comparison evaluates to `true` or `false`.
+- Decision statements use those true-or-false results to choose what code runs.
+
+<!-- Slide 12 -->

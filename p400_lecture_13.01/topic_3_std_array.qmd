@@ -1,0 +1,326 @@
+<!-- Topic 3: std::array -->
+<!-- Slides 46–67 -->
+
+# `std::array`
+<!-- Slide 46 -->
+
+## A Modern Fixed-Size Array? {.smaller}
+
+- Keep contiguous, compile-time storage
+- Add the interface expected from a C++ container
+
+::: notes
+Slides 46–67
+:::
+
+<!-- Slide 47 -->
+
+---
+
+## Declaring a `std::array`
+
+```{.cpp}
+#include <array>
+
+using namespace std;
+
+array<int, 5> scores;
+```
+
+- First template argument: element type
+- Second template argument: fixed number of elements
+
+<!-- Slide 48 -->
+
+---
+
+## Initializing the Elements
+
+```{.cpp}
+array<int, 5> scores = {91, 85, 88, 94, 90};
+
+array<int, 5> zeros = {};
+```
+
+- Brace initialization fills elements in order
+- Empty braces value-initialize every element to zero
+
+<!-- Slide 49 -->
+
+---
+
+## The Size Is Part of the Type
+
+```{.cpp}
+array<int, 5> quizScores;
+array<int, 10> examScores;
+```
+
+- These are different types
+- The size cannot change while the program runs
+
+<!-- Slide 50 -->
+
+---
+
+## Familiar Indexing
+
+```{.cpp}
+scores[0] = 91;
+scores[4] = 90;
+
+cout << scores[2] << "\n";
+```
+
+- `std::array` preserves ordinary subscript syntax
+- Valid indexes remain `0` through `size - 1`
+
+<!-- Slide 51 -->
+
+---
+
+## Knowing Its Own Size
+
+```{.cpp}
+for (int index = 0; index < scores.size(); index++) {
+    cout << scores[index] << "\n";
+}
+```
+
+- `.size()` travels with the container
+- A separate size variable is unnecessary
+
+<!-- Slide 52 -->
+
+---
+
+## Range-Based Traversal
+
+```{.cpp}
+for (int score : scores) {
+    cout << score << "\n";
+}
+```
+
+- The container supplies its beginning and end
+- Use a reference when the loop should modify elements
+
+<!-- Slide 53 -->
+
+---
+
+## Checked Access
+
+```{.cpp}
+cout << scores[2] << "\n";
+cout << scores.at(2) << "\n";
+```
+
+- `[]` performs unchecked access
+- `.at()` checks the index and throws `out_of_range` when invalid
+
+<!-- Slide 54 -->
+
+---
+
+## First and Last Elements
+
+```{.cpp}
+cout << scores.front() << "\n";
+cout << scores.back() << "\n";
+```
+
+- `.front()` names the first element
+- `.back()` names the last element
+
+<!-- Slide 55 -->
+
+---
+
+## Passing by Reference
+
+```{.cpp}
+void addBonus(array<int, 5>& scores) {
+    for (int& score : scores) {
+        score += 2;
+    }
+}
+```
+
+- `std::array` does not decay into a pointer
+- The parameter retains its fixed size and container interface
+
+<!-- Slide 56 -->
+
+---
+
+## Read-Only Parameters
+
+```{.cpp}
+void display(const array<int, 5>& scores) {
+    for (int score : scores) {
+        cout << score << " ";
+    }
+}
+```
+
+- `const` prevents element changes
+- `&` avoids copying the whole container
+
+<!-- Slide 57 -->
+
+---
+
+## Whole-Array Value Semantics
+
+```{.cpp}
+array<int, 3> first = {1, 2, 3};
+array<int, 3> second = first;
+
+second = first;
+cout << (first == second) << "\n";
+```
+
+- Copy, assignment, return, and comparison operate on the entire container
+- C-style arrays do not provide these operations directly
+
+<!-- Slide 58 -->
+
+---
+
+## Standard Algorithms
+
+```{.cpp}
+#include <algorithm>
+
+sort(scores.begin(), scores.end());
+
+auto found = find(scores.begin(), scores.end(), 94);
+```
+
+- Iterators connect `std::array` to the standard algorithms library
+- The same algorithm style works with other containers
+
+<!-- Slide 59 -->
+
+---
+
+## Same Storage, Better Interface
+
+| Property | C-style array | `std::array` |
+|---|---|---|
+| Extent | Compile-time | Compile-time |
+| Storage | Contiguous | Contiguous |
+| Dynamic allocation | No | No |
+| Member functions | No | Yes |
+| Whole-container operations | No | Yes |
+
+<!-- Slide 60 -->
+
+---
+
+## Interoperability with `.data()`
+
+```{.cpp}
+array<int, 5> scores = {91, 85, 88, 94, 90};
+
+legacyFunction(scores.data(), scores.size());
+```
+
+- `.data()` returns a pointer to the first element
+- Use it only when an interface requires a raw buffer
+
+<!-- Slide 61 -->
+
+---
+
+## Still Not Resizable
+
+```{.cpp}
+array<int, 5> fixedScores;
+vector<int> growingScores;
+```
+
+- `std::array` modernizes a fixed-size array
+- `vector` remains the modern choice for a runtime or changing size
+
+<!-- Slide 62 -->
+
+---
+
+## Multidimensional `std::array`
+
+```{.cpp}
+array<array<int, 3>, 2> grid = {{
+    {8, 6, 7},
+    {5, 3, 0}
+}};
+
+cout << grid[1][2] << "\n";
+```
+
+- The outer array stores rows
+- Each inner array stores one fixed-length row
+
+<!-- Slide 63 -->
+
+---
+
+## Complete `std::array` Program
+
+```{.cpp}
+#include <algorithm>
+#include <array>
+#include <iostream>
+using namespace std;
+
+void display(const array<int, 5>& values);
+
+int main() {
+    array<int, 5> values = {42, 7, 19, 3, 11};
+    sort(values.begin(), values.end());
+    cout << "Count: " << values.size() << "\n";
+    display(values);
+    return 0;
+}
+
+void display(const array<int, 5>& values) {
+    for (int value : values) {
+        cout << value << " ";
+    }
+    cout << "\n";
+}
+```
+
+<!-- Slide 64 -->
+
+---
+
+## Three Choices
+
+| Need | Default choice |
+|---|---|
+| Fixed size, modern C++ | `std::array` |
+| Runtime or changing size | `vector` |
+| C-compatible raw buffer | C-style array or `.data()` |
+
+<!-- Slide 65 -->
+
+---
+
+## Which One Should You Use?
+
+- Default to `std::array` when the size is fixed at compile time
+- Default to `vector` when the size is determined or changed at runtime
+- Use a C-style array when compatibility or a specific low-level interface requires it
+
+<!-- Slide 66 -->
+
+---
+
+## Summary
+
+- `std::array` is the modern C++ fixed-size alternative to a C-style array
+- It preserves contiguous storage while adding size awareness, value semantics, and standard-library support
+
+<!-- Slide 67 -->

@@ -1,0 +1,275 @@
+<!-- Topic 1: Arrays of Objects -->
+<!-- Total slides: 11 -->
+
+# Arrays of Objects
+
+---
+
+## An array where each element is an object {.smaller}
+
++ An array of objects uses the same bracket syntax as any other array — the element type is your class.
++ Each element gives you access to all of that object's public methods via dot notation.
+
+::: notes
+Total slides: 11
+Students know arrays of structs from 15.02. This is the same pattern: Student roster[5] whether Student is a struct or a class. The new wrinkle is roster[i].method() — same two-step access, but now calling a function rather than reading a member directly.
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## Declaring and accessing {.smaller}
+
+```{.cpp}
+class Student {
+public:
+    string name;
+    int    grade = 0;
+
+    void   setName(string n)  { name = n; }
+    void   setGrade(int g)    { grade = g; }
+    string getName()  const   { return name; }
+    int    getGrade() const   { return grade; }
+};
+
+int main() {
+    Student roster[3];              // array of 3 Student objects
+
+    roster[0].setName("Alice");     // [index].method()
+    roster[0].setGrade(92);
+
+    cout << roster[0].getName() << ": " << roster[0].getGrade() << "\n";
+    return 0;
+}
+```
+
+::: notes
+roster[0] is a Student object; roster[0].getName() calls a method on that object. The subscript selects the element; the dot selects the method. Identical pattern to arrays of structs — method calls replace direct member access.
+:::
+
+<!-- Slide 2 -->
+
+---
+
+## Looping through an array of objects {.smaller}
+
+```{.cpp}
+const int SIZE = 4;
+Student   roster[SIZE];
+
+roster[0].setName("Alice");  roster[0].setGrade(92);
+roster[1].setName("Bob");    roster[1].setGrade(85);
+roster[2].setName("Carol");  roster[2].setGrade(97);
+roster[3].setName("Dan");    roster[3].setGrade(78);
+
+int best = 0;
+for (int i = 1; i < SIZE; i++)
+    if (roster[i].getGrade() > roster[best].getGrade()) best = i;
+
+cout << "Top student: " << roster[best].getName()
+     << " with " << roster[best].getGrade() << "\n";
+```
+
+::: notes
+Max-tracker pattern is identical to arrays of structs — just replace roster[i].grade with roster[i].getGrade(). The loop logic is unchanged; only the syntax for reading the grade differs because it's now behind an accessor.
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Upgrading Student with constructors {.smaller}
+
+```{.cpp}
+class Student {
+private:
+    string name;
+    int    grade;
+public:
+    Student()                    { name = "Unknown"; grade = 0; }  // default
+    Student(string n, int g)     { name = n; grade = g; }         // parameterized
+
+    string getName()  const      { return name; }
+    int    getGrade() const      { return grade; }
+};
+```
+
++ The default constructor lets `Student roster[n]` compile — every element needs one.
++ The parameterized constructor lets individual elements be initialized in a single expression.
+
+::: notes
+This is the Student class from 16.02 applied directly to the array context. Emphasize the why: without the default constructor the array declaration fails; without the parameterized constructor the initialization list below won't work. Both are needed.
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Initializing the array at declaration {.smaller}
+
+```{.cpp}
+const int SIZE = 4;
+
+Student roster[SIZE] = {
+    Student("Alice", 92),
+    Student("Bob",   85),
+    Student("Carol", 97),
+    Student("Dan",   78)
+};
+
+for (int i = 0; i < SIZE; i++)
+    cout << roster[i].getName() << ": " << roster[i].getGrade() << "\n";
+```
+
++ Each element in the initializer list is a constructor call — the object is fully initialized before the loop runs.
++ This replaces four pairs of `setName`/`setGrade` calls with a single compact block.
+
+::: notes
+Compare this directly to the setter chain in slide 3. The array initializer list is much more readable at scale — imagine 20 students. The constructor call syntax inside the braces creates a temporary Student that is copied into each slot.
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## Filling from user input with constructors {.smaller}
+
+```{.cpp}
+const int SIZE = 4;
+Student   roster[SIZE];          // default constructor fills each slot
+
+string name;
+int    grade;
+
+for (int i = 0; i < SIZE; i++) {
+    cout << "Name:  ";  cin >> name;
+    cout << "Grade: ";  cin >> grade;
+    roster[i] = Student(name, grade);   // construct and assign in one line
+}
+
+for (int i = 0; i < SIZE; i++)
+    cout << roster[i].getName() << ": " << roster[i].getGrade() << "\n";
+```
+
+::: notes
+This pattern — declare the array with the default constructor, then overwrite each element — is the idiomatic approach when data comes from the user at runtime rather than being known at compile time. Student(name, grade) creates a fully initialized temporary; the assignment operator copies it into roster[i].
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Using Print() instead of getters {.smaller}
+
+```{.cpp}
+class Student {
+private:
+    string name;
+    int    grade;
+public:
+    Student()                { name = "Unknown"; grade = 0; }
+    Student(string n, int g) { name = n; grade = g; }
+    void   print() const     { cout << name << ": " << grade << "\n"; }
+    string getName()  const  { return name; }
+    int    getGrade() const  { return grade; }
+};
+
+int main() {
+    const int SIZE = 4;
+    Student roster[SIZE] = {
+        Student("Alice", 92),
+        Student("Bob",   85),
+        Student("Carol", 97),
+        Student("Dan",   78)
+    };
+
+    for (int i = 0; i < SIZE; i++)
+        roster[i].print();   // one call replaces two separate getter calls
+}
+```
+
+::: notes
+print() is marked const — it reads private members but doesn't change them. This is the pattern to reach for when display logic belongs to the class rather than to main. It also hides the formatting decision inside the class: if you later want to add a label or change the separator, you change one place.
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## What belongs in the class? {.smaller}
+
++ **Display logic** belongs in the class — `print()` keeps output format in one place; `main` just calls it.
++ **Comparison logic** belongs in the class — an object knows its own data better than `main` does.
++ Collection-level operations — looping, searching, sorting — belong outside the class, where the collection lives.
+
+::: notes
+Keep it simple. The goal is to plant the idea that a well-designed class does its own work. The roster loop in main is fine; the grade comparison inside that loop is a candidate for the class.
+[Option to revisit: add printAsWinner() to show richer self-description ("Alice wins with 97") vs. generic print(). Deferred to keep this slide simple.]
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Const correctness {.smaller}
+
+```{.cpp}
+// This compiles:
+for (const Student& s : roster)
+    s.print();          // print() is marked const — OK
+
+// If print() were NOT marked const:
+// error: passing 'const Student' as 'this' discards qualifiers
+```
+
++ `const Student& s` in a range-for means "I promise not to modify this element."
++ The compiler enforces that promise — only methods marked `const` are callable on a `const` object.
++ Marking every read-only method `const` is not optional style — it is what makes `const` references usable.
+
+::: notes
+Keep it simple. Connect the dots between the `const&` in the range-for and the `const` on the method signature. One-sentence summary: "const on the method is the compiler's way of verifying your promise."
+[Option to revisit: show a mutating method called on a const reference to produce and explain the exact compiler error.]
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Passing a roster to a function {.smaller}
+
+```{.cpp}
+void printRoster(const Student roster[], int size) {
+    for (int i = 0; i < size; i++)
+        roster[i].print();
+}
+
+int main() {
+    const int SIZE = 4;
+    Student roster[SIZE] = {
+        Student("Alice", 92), Student("Bob",   85),
+        Student("Carol", 97), Student("Dan",   78)
+    };
+    printRoster(roster, SIZE);
+}
+```
+
++ Functions that only read the array declare `const ClassName array[], int size` — the caller's data is protected.
++ The size must travel with the array; static arrays carry no length information on their own.
+
+::: notes
+Motivating slide — the point is not to teach functions in depth but to show that arrays of objects pass like any other array. The const qualifier mirrors the const& pattern from range-for.
+[Option to revisit: show a mutable version void sortRoster(Student roster[], int size) that modifies the array. Deferred to keep this motivating rather than comprehensive.]
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## Summary {.smaller}
+
++ `ClassName array[n]` — same syntax as any array; the class is the element type. Access: `array[i].method()`.
++ Use constructor calls to populate an array at declaration or at runtime — no setter chains, no partially initialized state.
++ Keep display logic in `print()` — main should orchestrate, not compute.
+
+<!-- Slide 11 -->

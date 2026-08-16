@@ -1,0 +1,180 @@
+<!-- Topic 4: Scope -->
+<!-- Slides 37-48 -->
+
+# Scope
+<!-- Slide 37 -->
+
+## Now Scope Has Consequences {.smaller}
+
++ You have seen block scope, loop scope, and compiler scope errors.
++ Functions make scope affect program design.
++ The question is no longer only "Will this compile?"
+
+::: notes
+Slides 37-48
+:::
+
+<!-- Slide 38 -->
+
+---
+
+## Quick Recall: Scope Means Visibility
+
++ Scope is the region where a name can be used.
++ A name declared inside a block belongs to that block.
++ Code outside the block cannot use that name.
+
+This rule becomes more important when a program is split across functions.
+
+<!-- Slide 39 -->
+
+---
+
+## From Loop Scope to Function Scope
+
+```cpp
+for (int score : scores) {
+    cout << score << endl;
+}
+
+// cout << score << endl;  // score is not visible here
+```
+
+Loop bodies create scope. Function bodies do the same thing on a larger design boundary.
+
+<!-- Slide 40 -->
+
+---
+
+## Parameters Are Local Names
+
+```cpp
+void displayDouble(int number) {
+    cout << number * 2 << endl;
+}
+```
+
++ `number` receives data from the caller.
++ Inside the function, `number` is a local name.
++ The caller cannot use `number` after the function call.
+
+<!-- Slide 41 -->
+
+---
+
+## Same Data, Different Names
+
+```cpp
+void displayScores(vector<int> numbers) {
+    for (int number : numbers) {
+        cout << number << endl;
+    }
+}
+
+int main() {
+    vector<int> scores = {90, 85, 100};
+    displayScores(scores);
+    return 0;
+}
+```
+
+The caller's name and the parameter name do not need to match.
+
+<!-- Slide 42 -->
+
+---
+
+## Same Name, Different Scope
+
+```cpp
+int scoreTotal(vector<int> scores) {
+    int total = 0;
+
+    for (int score : scores) {
+        total = total + score;
+    }
+
+    return total;
+}
+
+int main() {
+    int total = 0;
+    vector<int> scores = {10, 20, 30};
+    total = scoreTotal(scores);
+    return 0;
+}
+```
+
+The two `total` variables are in different function scopes.
+
+<!-- Slide 43 -->
+
+---
+
+## Why This Matters for Modular Design
+
++ A function can hide local details from the caller.
++ The caller only needs the contract.
++ The function body can use helper variables without cluttering the rest of the program.
+
+Scope is what makes that separation work.
+
+<!-- Slide 44 -->
+
+---
+
+## Global Variables Break the Model
+
+```cpp
+int totalScore = 0;
+
+void addScore(int score) {
+    totalScore = totalScore + score;
+}
+```
+
++ `addScore` changes data that is not listed in its parameter list.
++ The hidden dependency makes the contract incomplete.
++ Beginners should prefer parameters and return values.
+
+<!-- Slide 45 -->
+
+---
+
+## Scope as a Design Tool
+
+```cpp
+double average(vector<int> scores) {
+    int sum = 0;
+
+    for (int score : scores) {
+        sum = sum + score;
+    }
+
+    return static_cast<double>(sum) / scores.size();
+}
+```
+
+`sum` and `score` are protected inside the function that needs them.
+
+<!-- Slide 46 -->
+
+---
+
+## Common Practices
+
++ Declare variables close to where they are used.
++ Pass data through parameters instead of globals.
++ Return results instead of making outside variables change invisibly.
+
+<!-- Slide 47 -->
+
+---
+
+## Summary
+
++ Scope controls where names are visible.
++ Function scope makes modular design possible.
++ A clear contract uses scope to keep internal details internal.
+
+<!-- Slide 48 -->

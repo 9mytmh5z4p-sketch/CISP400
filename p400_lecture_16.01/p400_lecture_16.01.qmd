@@ -1,0 +1,155 @@
+# Last Time
+
+::: {.incremental}
++ **Abstract Data Types**
++ **Structures**
++ **What's the Output?**
++ **Fill In the Missing Code**
++ **Arrays of Structures**
++ **Programming Task — Student Roster**
+:::
+
+::: notes
+16.01 introduced composite types: struct groups different-typed members under one name. Exercises practiced dot notation, initialization list vs member-by-member, pass-by-reference with structs, and building a static array of structs.
+:::
+
+---
+
+# Today's Agenda
+
+- Object-Oriented Programming
+- Introduction to Classes
+- Creating and Using Objects
+- Defining Member Functions
+- Fill In the Missing Code
+
+::: notes
+
+:::
+
+{{< include topic_1_oop_paradigm.qmd >}}
+{{< include topic_2_intro_classes.qmd >}}
+{{< include topic_3_creating_objects.qmd >}}
+{{< include topic_4_member_functions.qmd >}}
+{{< include topic_6_fill_in_the_code.qmd >}}
+
+---
+
+# Key Takeaways
+
+- A class groups private data and public behavior under one user-defined type name
+- Outside code interacts only through the public interface — the class owns its data
+- Member functions defined outside the class use `ClassName::method()` syntax
+- Accessors (`const`) read private data; mutators (setters) modify it and can validate before storing
+
+---
+
+# Next Time
+
+::: notes
+Next lecture (17.01): Arrays of Objects and Vectors of Objects — applying what students learned today about classes to collections of objects. Students will use ClassName array[n] and vector<ClassName> with the same dot-notation and method-call patterns.
+:::
+
+---
+
+# Appendix
+
+---
+
+## Object-Oriented Programming: Good Practices
+
+---
+
+## Object-Oriented Programming: Common Mistakes
+
+---
+
+## Object-Oriented Programming: More Examples
+
+---
+
+## Object-Oriented Programming: Practice Problems
+
+---
+
+## Object-Oriented Programming: AI Search Terms
+
+---
+
+## Object-Oriented Programming: Questions for Reflection
+
+---
+
+## Introduction to Classes: Good Practices
+
+---
+
+## Introduction to Classes: Common Mistakes
+
+---
+
+## Introduction to Classes: More Examples
+
+---
+
+## Introduction to Classes: Practice Problems
+
+---
+
+## Introduction to Classes: AI Search Terms
+
+---
+
+## Introduction to Classes: Questions for Reflection
+
+---
+
+## Creating and Using Objects: Good Practices
+
+---
+
+## Creating and Using Objects: Common Mistakes
+
+---
+
+## Creating and Using Objects: More Examples
+
+---
+
+## Creating and Using Objects: Practice Problems
+
+---
+
+## Creating and Using Objects: AI Search Terms
+
+---
+
+## Creating and Using Objects: Questions for Reflection
+
+---
+
+## Defining Member Functions: Good Practices
+
+---
+
+## Defining Member Functions: Common Mistakes
+
+---
+
+## Defining Member Functions: More Examples
+
+---
+
+## Defining Member Functions: Practice Problems
+
+---
+
+## Defining Member Functions: AI Search Terms
+
+---
+
+## Defining Member Functions: Questions for Reflection
+
+---
+
+<!-- Arrays of Objects moved to p400_lecture_17.01 -->

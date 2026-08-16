@@ -1,0 +1,117 @@
+<!-- Topic 3: Singleton Pattern -->
+<!-- Slides 21-31 -->
+
+# Singleton Pattern
+<!-- Slide 21 -->
+
+## Pattern Category
+
+![](images/Design_Patterns_1.png){fig-align="center" width="70%"}
+
+<!-- Slide 22 -->
+
+---
+
+## What If There Should Only Be One? {.smaller}
+
++ Some program resources should not have many independent copies.
++ A file name, counter, settings value, or shared output path may need one controlled access point.
+
+::: notes
+Slides 21-31
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## Singleton Pattern
+
++ Singleton controls access so a program uses one shared resource.
++ The program reaches that resource through one function.
++ Other code asks for the shared resource instead of creating separate copies.
+
+<!-- Slide 24 -->
+
+---
+
+## One Resource, One Access Point
+
+| Rule | Meaning |
+|---|---|
+| one resource | the program should not create several copies of the same resource |
+| controlled access | other code reaches the resource through one function |
+| shared state | callers see the same stored data |
+
+<!-- Slide 25 -->
+
+---
+
+## Example
+
+![](images/singleton_code.png){fig-align="center" width="86%"}
+
+::: notes
+The highlighted `static` local value is the controlled shared resource. The function is the access point.
+:::
+
+<!-- Slide 26 -->
+
+---
+
+## Example 2
+
+![](images/Singleton_Code_2.png){fig-align="center" width="86%"}
+
+::: notes
+Use this slide to contrast the global-variable version with the static-local version. Both preserve shared state, but the global version exposes the state more broadly.
+:::
+
+<!-- Slide 27 -->
+
+---
+
+## Why Static Shows Up Here
+
+```{.cpp}
+int& nextReportNumber() {
+    static int reportNumber = 1000;
+    return reportNumber;
+}
+```
+
++ The local `static` value is created once.
++ Each later call reaches the same stored value.
++ The value is kept inside the access function's control.
+
+<!-- Slide 28 -->
+
+---
+
+## When Singleton Is a Bad Fit
+
++ The data could be passed as a parameter.
++ The program may need multiple versions later.
++ The shared value changes in ways callers cannot easily see.
+
+<!-- Slide 29 -->
+
+---
+
+## Common Practices
+
++ Use Singleton only when one shared resource is part of the problem.
++ Keep the shared resource small and focused.
++ Do not use Singleton as a disguised global variable.
+
+<!-- Slide 30 -->
+
+---
+
+## Summary
+
++ Singleton controls access to one shared resource.
++ It is useful when the single-resource rule is intentional.
++ It should be chosen for a design reason, not convenience alone.
+
+<!-- Slide 31 -->

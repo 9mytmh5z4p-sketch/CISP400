@@ -1,0 +1,158 @@
+/* This is the style sheet from lecture_02.02 yaml */
+/* version: 01.00.00
+Changelog:
+01.00.00 (2026-02-03) - initial version numbering setup.
+*/
+    /* ===== Global slide layout ===== */
+    
+    /* Background image covers entire viewport (outside the slide box) */
+    .reveal {
+      background-image:
+      linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+        url('../img/tech_background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    
+    /* Logo fixed to bottom left corner of screen */
+    .reveal::before {
+      content: '';
+      position: fixed;
+      bottom: 15px;
+      left: 40px;
+      width: 80px;
+      height: 80px;
+      background: url('../img/stacked-logo.svg') no-repeat center;
+      background-size: contain;
+      z-index: 1000;
+    }
+
+    /* Move everything up to maximize space */
+    .reveal .slides {
+      top: 40% !important; 
+      padding: 0;
+    }
+    
+    /* Apply to all slides - clean white background */ 
+    .reveal .slides section {
+      margin: 0 auto !important;  /* Centers the slide */
+      width: 88%;  /* Consistent spacing on both sides */
+      padding: 1em 2.5em;  /* Top/bottom padding, l/r padding */
+      box-sizing: border-box !important;
+      font-size: clamp(0.7em, 2vw, 1em);
+      background-color: rgba(255, 255, 255, 0.98);
+      background-image: none;
+    }
+
+    /* Left-align titles to match images/code */
+    .reveal h1 { 
+      margin-top: 0.7em !important;
+      margin-bottom: 0.9em !important;
+      font-weight: 800;
+      text-decoration: underline;
+      text-decoration-thickness: 3px;
+      text-align: center;
+    }
+    .reveal h2 {  
+      margin-top: 1.5em !important;
+      margin-bottom: 0.8em !important;
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-thickness: 2px; 
+      white-space: nowrap;
+    }
+    /* Hide underline for blank headers */
+    .reveal section h1:first-child:not([class]) {
+      text-decoration: none !important;
+    }
+    .reveal section h2:first-child:not([class]) {
+      text-decoration: none !important;
+    }
+    .reveal h3 {
+      font-weight: 600;
+    }
+
+    /* Code window sizing */
+    .reveal pre {
+      max-height: 98vh;
+      overflow-y: auto;
+    }
+
+    .reveal pre code {
+      font-size: 0.9em;
+      line-height: 1.20;
+      padding: 0.6em;
+    }
+
+    /* C++ code blocks only (Quarto/Pandoc correct selectors) */
+    .reveal pre.sourceCode.cpp,
+    .reveal pre.sourceCode.cpp code {
+      background-color: #ffffff !important;
+      color: #000000;
+    }
+
+    /* Optional: subtle border for contrast */
+    .reveal pre.sourceCode.cpp {
+      border: 1px solid #ccc;
+    }
+
+    /* Strong, visible line highlighting for code */
+    .reveal pre .line-highlight {
+      background-color: #fff3cd;
+      display: block;
+      width: 100%;
+    }
+
+    /* Optional: emphasize the line number itself */
+    .reveal pre .line-highlight .hljs-ln-numbers {
+      font-weight: bold;
+      color: #b45309;
+    }
+
+    .reveal .highlight-line {
+      background-color: rgba(255, 235, 59, 0.08);
+      border-left: 6px solid #d97706;
+      padding-left: 0.5em;
+    }
+    
+    /* Clean professional look */
+    .reveal.overview {
+      background-color: #1a1a1a !important;
+    }
+
+    .reveal.overview .slides section {
+      background-color: #f5f5f5 !important;
+      border: 2px solid #666 !important;
+      opacity: 0.8;
+    }
+
+    .reveal.overview .slides section:hover {
+      opacity: 1;
+      border-color: #ff6b6b !important;
+      transform: scale(1.05);
+    }
+
+    .reveal.overview .slides section.present {
+      border: 4px solid #4ecdc4 !important;
+      opacity: 1;
+    }
+
+    /* Shrink Table */
+    .smaller-table table {
+      font-size: 0.7em;
+      width: 90%;
+      margin: 0 auto;
+    }
+    .smallest-table table {
+      font-size: 0.5em;
+      width: 50%;
+      margin: 0 auto;
+    }
+        .smaller-text  {
+      font-size: 0.7em !important;
+    }
+    .smallest-text  {
+      font-size: 0.5em !important;
+    }

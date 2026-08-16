@@ -1,0 +1,73 @@
+<!-- Topic 4: Constructor Overloading -->
+<!-- Total slides: 4 -->
+
+# Constructor Overloading
+
+---
+
+## What if you want two ways to create the same object? {.smaller}
+
+Sometimes you have all the data upfront; sometimes you want a default object to fill in later. Constructor overloading lets a single class support both — the compiler picks the right constructor from the argument list.
+
+::: notes
+Total slides: 4
+Students learned function overloading in lecture 5.02. Constructor overloading is the same mechanic applied to constructors. Keep this brief — the concept transfer is fast. Focus on the default-plus-parameterized pattern they will use constantly.
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## Same rules as function overloading {.smaller}
+
++ A class can have **any number of constructors** as long as each has a unique parameter list.
++ The compiler matches the call to the constructor whose parameters fit the arguments — same resolution rules as any overloaded function.
++ A zero-argument constructor and a parameterized constructor in the same class is the most common pattern.
+
+::: notes
+No new syntax — just apply what students already know about overloading. The only wrinkle is the disappearing default from the previous topic: if you define a parameterized constructor but still need Student s;, you must write the default explicitly.
+:::
+
+<!-- Slide 2 -->
+
+---
+
+## Default and parameterized together {.smaller}
+
+```{.cpp}
+class Student {
+private:
+    string name;
+    int    grade;
+public:
+    Student()                    { name = "Unknown"; grade = 0; }  // default
+    Student(string n, int g)     { name = n; grade = g; }         // parameterized
+    Student(string n)            { name = n; grade = 0; }         // name only
+
+    string getName()  const      { return name; }
+    int    getGrade() const      { return grade; }
+};
+
+int main() {
+    Student blank;                    // default
+    Student alice("Alice", 92);       // parameterized
+    Student named("Bob");             // name only
+
+    Student roster[3];                // array of 3 default-constructed Students
+}
+```
+
+::: notes
+Three constructors, three calling patterns. The array Student roster[3] uses the default constructor — each element starts as "Unknown"/0. This is why the default constructor matters even after you add parameterized ones.
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Summary {.smaller}
+
++ A class can define multiple constructors with different parameter lists — the compiler selects the matching one at each declaration.
++ The most common pattern is a default constructor paired with one or more parameterized constructors.
+
+<!-- Slide 4 -->

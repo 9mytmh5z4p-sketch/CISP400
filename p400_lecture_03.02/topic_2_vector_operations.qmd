@@ -1,0 +1,286 @@
+<!-- Topic 2: Vector Operations -->
+<!-- Slides 12-27 -->
+
+# Vector Operations
+<!-- Slide 12 -->
+
+## Changing a Vector {.smaller}
+
++ How does a vector grow, shrink, and report what it contains?
++ Vector operations change or inspect the container.
+
+::: notes
+Slides 12-27
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## push_back Adds a Value
+
+`push_back` adds one value to the end of the vector.
+
+```cpp
+vector<int> scores;
+
+scores.push_back(88);
+scores.push_back(92);
+```
+
+The vector now stores `88`, then `92`.
+
+<!-- Slide 14 -->
+
+---
+
+## Execution Trace: push_back
+
+| Statement | scores |
+|---|---|
+| `vector<int> scores;` | `{ }` |
+| `scores.push_back(88);` | `{88}` |
+| `scores.push_back(92);` | `{88, 92}` |
+| `scores.push_back(75);` | `{88, 92, 75}` |
+
+Each call adds one new value at the end.
+
+<!-- Slide 15 -->
+
+---
+
+## pop_back Removes the Last Value
+
+`pop_back` removes the final value from the vector.
+
+```cpp
+vector<int> scores = {88, 92, 75};
+
+scores.pop_back();
+```
+
+After this statement, the vector stores `88`, then `92`.
+
+<!-- Slide 16 -->
+
+---
+
+## Interactive Vector Changes
+
+<div class="vector-demo">
+<div id="vectorCells0302" class="vector-cells" aria-live="polite"></div>
+<div class="vector-buttons">
+<button type="button" onclick="pushVector0302()">push_back</button>
+<button type="button" onclick="popVector0302()">pop_back</button>
+<button type="button" onclick="resetVector0302()">reset</button>
+</div>
+<p id="vectorStatus0302">vector&lt;int&gt; scores = { };</p>
+</div>
+
+<style>
+.vector-demo { text-align: center; }
+.vector-cells { display: flex; justify-content: center; gap: 0.4rem; min-height: 4rem; margin: 1.2rem 0; }
+.vector-cell { border: 3px solid #334155; min-width: 4rem; padding: 0.7rem 0.9rem; font-size: 1.4rem; background: #f8fafc; }
+.vector-buttons { display: flex; justify-content: center; gap: 0.6rem; }
+.vector-buttons button { font-size: 1rem; padding: 0.45rem 0.8rem; border: 2px solid #334155; background: white; }
+</style>
+
+<script>
+let vectorValues0302 = [];
+let nextVectorValue0302 = 10;
+function drawVector0302() {
+  const cells = document.getElementById("vectorCells0302");
+  const status = document.getElementById("vectorStatus0302");
+  if (!cells || !status) return;
+  cells.innerHTML = vectorValues0302.map(value => `<div class="vector-cell">${value}</div>`).join("");
+  status.textContent = `vector<int> scores = { ${vectorValues0302.join(", ")} };`;
+}
+function pushVector0302() {
+  vectorValues0302.push(nextVectorValue0302);
+  nextVectorValue0302 += 10;
+  drawVector0302();
+}
+function popVector0302() {
+  vectorValues0302.pop();
+  drawVector0302();
+}
+function resetVector0302() {
+  vectorValues0302 = [];
+  nextVectorValue0302 = 10;
+  drawVector0302();
+}
+setTimeout(drawVector0302, 0);
+</script>
+
+<!-- Slide 17 -->
+
+---
+
+## size Reports the Count
+
+`size` reports how many values are currently stored.
+
+```cpp
+vector<int> scores = {88, 92, 75};
+
+cout << scores.size() << endl;
+```
+
+This prints `3`.
+
+<!-- Slide 18 -->
+
+---
+
+## Save Before Removing
+
+If the last value matters, save it before removing it.
+
+```cpp
+vector<int> scores = {88, 92, 75};
+
+int droppedScore = scores.back();
+scores.pop_back();
+
+cout << "Removed: " << droppedScore << endl;
+```
+
+After `pop_back`, the vector no longer stores `75`.
+
+<!-- Slide 19 -->
+
+---
+
+## Example 1: Daily Temperatures IPO
+
+| Input | Processing | Output |
+|---|---|---|
+| three temperatures | store each value with `push_back` | number of temperatures |
+
+The vector is the storage choice in the processing step.
+
+<!-- Slide 20 -->
+
+---
+
+## Example 1: Daily Temperatures Code
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    vector<double> temperatures;
+
+    temperatures.push_back(68.5);
+    temperatures.push_back(72.0);
+    temperatures.push_back(70.5);
+
+    cout << "Days recorded: " << temperatures.size() << endl;
+    return 0;
+}
+```
+
+<!-- Slide 21 -->
+
+---
+
+## Example 1: Execution Trace
+
+| Statement | temperatures | Output |
+|---|---|---|
+| `vector<double> temperatures;` | `{ }` | |
+| `temperatures.push_back(68.5);` | `{68.5}` | |
+| `temperatures.push_back(72.0);` | `{68.5, 72.0}` | |
+| `temperatures.push_back(70.5);` | `{68.5, 72.0, 70.5}` | |
+| `cout << temperatures.size();` | `{68.5, 72.0, 70.5}` | `3` |
+
+The trace makes each vector change visible.
+
+<!-- Slide 22 -->
+
+---
+
+## Example 2: Loading Scalar Variables
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+int main() {
+    string firstItem = "eggs";
+    string secondItem = "rice";
+    string thirdItem = "apples";
+    vector<string> items;
+
+    items.push_back(firstItem);
+    items.push_back(secondItem);
+    items.push_back(thirdItem);
+
+    cout << "Items loaded: " << items.size() << endl;
+    return 0;
+}
+```
+
+<!-- Slide 23 -->
+
+---
+
+## Example 3: Storing Formula Results
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    double hourlyRate = 18.50;
+    double mondayHours = 6.0;
+    double tuesdayHours = 7.5;
+    vector<double> dailyPay;
+
+    dailyPay.push_back(hourlyRate * mondayHours);
+    dailyPay.push_back(hourlyRate * tuesdayHours);
+
+    cout << "Paychecks stored: " << dailyPay.size() << endl;
+    return 0;
+}
+```
+
+<!-- Slide 24 -->
+
+---
+
+## Operation Summary Table
+
+| Operation | What it does |
+|---|---|
+| `push_back(value)` | adds a value to the end |
+| `pop_back()` | removes the last value |
+| `size()` | reports the current count |
+| `back()` | reads the last value |
+
+<!-- Slide 25 -->
+
+---
+
+## Common Practices
+
++ Use plural names for vectors, such as `scores` or `items`.
++ Check that a vector has values before reading from it.
++ Use `push_back` when the program discovers values one at a time.
+
+<!-- Slide 26 -->
+
+---
+
+## Summary
+
++ Vector operations can add, remove, count, or read values.
++ `push_back` and `pop_back` change the vector.
++ `size` and `back` help inspect what the vector contains.
+
+<!-- Slide 27 -->

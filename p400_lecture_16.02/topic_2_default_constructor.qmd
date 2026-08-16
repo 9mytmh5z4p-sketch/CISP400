@@ -1,0 +1,84 @@
+<!-- Topic 2: Default Constructor -->
+<!-- Total slides: 4 -->
+
+# Default Constructor
+
+---
+
+## What happens with no constructor at all? {.smaller}
+
+If you write a class and define zero constructors, C++ quietly provides one for you. What does it do — and when does it disappear?
+
+::: notes
+Total slides: 4
+This topic exists to prevent a specific surprise: students add their first parameterized constructor and then find that Student s; no longer compiles. The implicit default is invisible until it vanishes. Name it, describe it, and show exactly when it goes away.
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## The implicit default constructor {.smaller}
+
+```{.cpp}
+class Student {
+private:
+    string name;
+    int    grade = 0;
+public:
+    string getName()  const { return name; }
+    int    getGrade() const { return grade; }
+    // No constructor written — C++ provides: Student() {}
+};
+
+int main() {
+    Student s;   // OK — implicit default runs, members get default values
+}
+```
+
++ C++ generates a zero-argument constructor automatically when no constructors are defined.
++ Members with in-class initializers (`int grade = 0`) use those values; others get zero-initialized for primitives or default-constructed for objects.
+
+::: notes
+The implicit default does nothing special — it does not set name to "Unknown" or grade to -1. Whatever the member's in-class initializer says (or zero/empty if none) is what the object contains after the implicit default runs.
+:::
+
+<!-- Slide 2 -->
+
+---
+
+## The disappearing default {.smaller}
+
+```{.cpp}
+class Student {
+private:
+    string name;
+    int    grade;
+public:
+    Student(string n, int g) { name = n; grade = g; }
+    // C++ no longer provides Student() — you defined a constructor
+};
+
+int main() {
+    Student alice("Alice", 92);   // OK
+    Student blank;                // compile error — no default constructor
+}
+```
+
++ The moment you define **any** constructor, C++ stops providing the implicit default.
++ To keep zero-argument construction, write it yourself: `Student() { name = "Unknown"; grade = 0; }`
+
+::: notes
+This is the single most common constructor-related compile error students will see. Show the exact error message so they recognize it: "no matching function for call to Student::Student()". The fix is always the same — add an explicit default constructor.
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Summary {.smaller}
+
++ C++ provides a free zero-argument constructor only when you define no constructors at all.
++ Once you write any constructor, you own the default — write it explicitly or lose zero-argument construction.
+
+<!-- Slide 4 -->

@@ -1,0 +1,217 @@
+<!-- Topic 4: Traversing Arrays -->
+<!-- Slides 40–53 -->
+
+# Traversing Arrays
+<!-- Slide 40 -->
+
+## Moving Through Every Element {.smaller}
+
++ How can one operation reach each position exactly once?
+
+::: notes
+Slides 40–53
+:::
+
+<!-- Slide 41 -->
+
+---
+
+## Index Loop Structure
+
+```{.cpp}
+for (int i = 0; i < SIZE; i++)
+```
+
+| loop part | array meaning |
+|---|---|
+| `i = 0` | start at the first index |
+| `i < SIZE` | remain inside the valid range |
+| `i++` | advance to the next index |
+
+<!-- Slide 42 -->
+
+---
+
+## Index Loop Code
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    const int SIZE = 5;
+    int scores[SIZE] = {91, 84, 78, 96, 88};
+
+    for (int i = 0; i < SIZE; i++)
+    {
+        cout << scores[i] << '\n';
+    }
+
+    return 0;
+}
+```
+
+<!-- Slide 43 -->
+
+---
+
+## Following the Index
+
+| iteration | `i` | `scores[i]` |
+|---:|---:|---:|
+| 1 | 0 | 91 |
+| 2 | 1 | 84 |
+| 3 | 2 | 78 |
+| 4 | 3 | 96 |
+| 5 | 4 | 88 |
+
++ When `i` becomes `5`, `i < SIZE` is false.
+
+<!-- Slide 44 -->
+
+---
+
+## Processing with an Index
+
+```{.cpp}
+int total = 0;
+
+for (int i = 0; i < SIZE; i++)
+{
+    if (scores[i] >= 70)
+    {
+        total += scores[i];
+    }
+}
+```
+
+<!-- Slide 45 -->
+
+---
+
+## Changing Elements by Index
+
+```{.cpp}
+for (int i = 0; i < SIZE; i++)
+{
+    scores[i] += 5;
+}
+```
+
++ Each subscript selects the element to modify during that iteration.
+
+<!-- Slide 46 -->
+
+---
+
+## Range-Based Traversal
+
+```{.cpp}
+for (int score : scores)
+{
+    cout << score << '\n';
+}
+```
+
++ The loop visits every declared element in order.
++ No index variable is exposed.
+
+<!-- Slide 47 -->
+
+---
+
+## Copies and References
+
+```{.cpp}
+for (int score : scores)       // score is a copy
+{
+    cout << score << '\n';
+}
+
+for (int& score : scores)      // score refers to the element
+{
+    score += 5;
+}
+```
+
+<!-- Slide 48 -->
+
+---
+
+## Range-Based Loop Code
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int scores[] = {91, 84, 78, 96, 88};
+
+    for (int& score : scores)
+    {
+        score += 2;
+    }
+
+    return 0;
+}
+```
+
+<!-- Slide 49 -->
+
+---
+
+## Capacity or Data Count?
+
+```{.cpp}
+const int CAPACITY = 10;
+int scores[CAPACITY] = {};
+int dataCount = 4;
+
+for (int i = 0; i < dataCount; i++)
+{
+    cout << scores[i] << '\n';
+}
+```
+
++ A range-based loop would visit all ten declared positions.
++ The index loop can stop after the four meaningful values.
+
+<!-- Slide 50 -->
+
+---
+
+## Loop Bound Reasoning
+
+| condition | final attempted index | result |
+|---|---:|---|
+| `i < SIZE` | `SIZE - 1` | inside the array |
+| `i <= SIZE` | `SIZE` | outside the array |
+
++ The condition describes when another iteration is allowed.
+
+<!-- Slide 51 -->
+
+---
+
+## Choosing the Loop
+
+| Need | Loop choice |
+|---|---|
+| Read every declared value | Range-based loop |
+| Change every declared value | Range-based loop with reference |
+| Use the position | Index loop |
+| Stop at a logical data count | Index loop |
+| Compare neighboring elements | Index loop |
+
+<!-- Slide 52 -->
+
+---
+
+## Summary
+
++ Index loops connect repetition directly to valid positions.
++ Range-based loops visit full capacity; index loops can stop at the logical data count.
+
+<!-- Slide 53 -->

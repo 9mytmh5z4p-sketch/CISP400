@@ -1,0 +1,238 @@
+<!-- Topic 2: Dates and Random Numbers -->
+<!-- Slides 16-30 -->
+
+# Dates and Random Numbers
+<!-- Slide 16 -->
+
+## Programs Need Changing Values {.smaller}
+
++ Some programs need values that change while the program runs.
++ Date/time values and random numbers let programs respond to the current moment.
+
+::: notes
+Slides 16-30
+:::
+
+<!-- Slide 17 -->
+
+---
+
+## Date and Time
+
+Date and time functions let a program ask the computer for the current moment.
+
+This is useful for timestamps, elapsed time, and seeding random numbers.
+
+<!-- Slide 18 -->
+
+---
+
+## Getting the Current Time
+
+`time(0)` returns the current time as a numeric timestamp.
+
+```cpp
+#include <iostream>
+#include <ctime>        // library for time
+using namespace std;
+
+int main() {
+    time_t now = time(0);
+    cout << now << endl;
+    return 0;
+}
+```
+
+Example output:
+
+```text
+1780612200
+```
+
+<!-- Slide 19 -->
+
+---
+
+## Date Illustration
+
+```cpp
+#include <iostream>
+#include <ctime>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    time_t now = time(0);
+    tm* date = localtime(&now);
+
+    int month = date->tm_mon + 1;
+    int day = date->tm_mday;
+    int year = (date->tm_year + 1900) % 100;
+
+    cout << setfill('0');
+    cout << setw(2) << month << "/";
+    cout << setw(2) << day << "/";
+    cout << setw(2) << year << endl;
+
+    return 0;
+}
+```
+
+```text
+06/11/26
+```
+
+::: notes
+[Graphic suggestion: a calendar label connected to a numeric timestamp, then to a program output line.]
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## Time Variables
+
+| Member | Type | Meaning | Range |
+|--------|------|---------|-------|
+| `tm_sec` | `int` | seconds after the minute | 0-60* |
+| `tm_min` | `int` | minutes after the hour | 0-59 |
+| `tm_hour` | `int` | hours since midnight | 0-23 |
+| `tm_mday` | `int` | day of the month | 1-31 |
+| `tm_mon` | `int` | months since January | 0-11 |
+| `tm_year` | `int` | years since 1900 | |
+| `tm_wday` | `int` | days since Sunday | 0-6 |
+| `tm_yday` | `int` | days since January 1 | 0-365 |
+| `tm_isdst` | `int` | Daylight Saving Time flag | |
+
+<!-- Slide 21 -->
+
+---
+
+## Time as a Number
+
+The timestamp is useful even before we format it as a human-readable date.
+
++ It changes every second.
++ It can be stored in a variable.
++ It can make random-number sequences start differently.
+
+<!-- Slide 22 -->
+
+---
+
+## Random Numbers
+
+Random numbers let a program choose from several possible values.
+
+They are useful for games, simulations, sampling, and practice programs.
+
+<!-- Slide 23 -->
+
+---
+
+## Why Random Needs a Seed
+
+`rand()` follows a repeatable sequence.
+
+The seed chooses where that sequence starts.
+
+```cpp
+srand(5);
+```
+
+The same seed produces the same sequence.
+
+<!-- Slide 24 -->
+
+---
+
+## Seeding with Time
+
+Use the current time as a changing seed.
+
+```cpp
+#include <cstdlib>
+#include <ctime>
+
+srand(time(0));
+```
+
+Seed once near the beginning of the program.
+
+<!-- Slide 25 -->
+
+---
+
+## Generating a Random Number
+
+`rand()` returns a large integer.
+
+```cpp
+int raw = rand();
+```
+
+The raw value is usually too large for the program's actual need.
+
+<!-- Slide 26 -->
+
+---
+
+## Limiting the Range
+
+Use modulus to reduce the raw value to a smaller range.
+
+```cpp
+int roll = rand() % 6 + 1;
+```
+
+This produces values from 1 through 6.
+
+<!-- Slide 27 -->
+
+---
+
+## Die Roll Example
+
+```cpp
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main() {
+    srand(time(0));
+
+    int roll = rand() % 6 + 1;
+    cout << "Roll: " << roll << endl;
+
+    return 0;
+}
+```
+
+Example output:
+
+```text
+Roll: 4
+```
+
+<!-- Slide 28 -->
+
+---
+
+## Common Practices
+
++ Seed once, before calling `rand`.
++ Use a range formula that matches the values you want.
++ Use random numbers only when unpredictability helps the program.
+
+<!-- Slide 29 -->
+
+---
+
+## Summary
+
++ Time gives a changing value from the system.
++ A seed controls where the random sequence begins.
++ A range formula turns raw random numbers into useful program values.
+
+<!-- Slide 30 -->

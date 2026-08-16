@@ -1,0 +1,188 @@
+<!-- Topic 7: Menus and Functions -->
+<!-- Slides 62-74 -->
+
+# Menus and Functions
+<!-- Slide 62 -->
+
+## Who Owns Each Menu Job? {.smaller}
+
++ A menu program has repeated responsibilities.
++ Functions can keep each responsibility small.
++ `main()` should coordinate the pieces instead of doing every job itself.
+
+::: notes
+Slides 62-74
+:::
+
+<!-- Slide 63 -->
+
+---
+
+## Menu Program Responsibilities
+
++ Display the choices.
++ Read the user's choice.
++ Process the selected action.
++ Repeat until the user chooses to quit.
+
+Each responsibility can become a function or a small group of functions.
+
+<!-- Slide 64 -->
+
+---
+
+## Display Menu Function
+
+```cpp
+void displayMenu() {
+    cout << "1. Deposit" << endl;
+    cout << "2. Withdraw" << endl;
+    cout << "3. Show balance" << endl;
+    cout << "4. Quit" << endl;
+}
+```
+
+This function owns the menu text.
+
+<!-- Slide 65 -->
+
+---
+
+## Get Choice Function
+
+```cpp
+int getChoice() {
+    int choice;
+    cout << "Choice: ";
+    cin >> choice;
+    return choice;
+}
+```
+
+The function reads one value and returns it to the caller.
+
+<!-- Slide 66 -->
+
+---
+
+## Action Functions
+
+```cpp
+void showBalance(double balance) {
+    cout << "Balance: $" << balance << endl;
+}
+```
+
+An action function should do one menu job clearly.
+
+<!-- Slide 67 -->
+
+---
+
+## Main as the Coordinator
+
+```cpp
+int main() {
+    double balance = 0.0;
+    int choice;
+
+    displayMenu();
+    choice = getChoice();
+
+    return 0;
+}
+```
+
+`main()` owns the program flow and delegates details to helper functions.
+
+<!-- Slide 68 -->
+
+---
+
+## Dispatching the Choice
+
+```cpp
+if (choice == 1) {
+    addDeposit(balance);
+} else if (choice == 2) {
+    makeWithdrawal(balance);
+} else if (choice == 3) {
+    showBalance(balance);
+}
+```
+
+The dispatch code connects a user choice to the matching function call.
+
+<!-- Slide 69 -->
+
+---
+
+## Menu Loop Shape
+
+```cpp
+do {
+    displayMenu();
+    choice = getChoice();
+    processChoice(choice, balance);
+} while (choice != 4);
+```
+
+A menu loop keeps showing choices until the quit option is selected.
+
+<!-- Slide 70 -->
+
+---
+
+## Reference Parameters in Menu Actions
+
+```cpp
+void addDeposit(double& balance) {
+    double amount;
+    cout << "Deposit amount: ";
+    cin >> amount;
+    balance = balance + amount;
+}
+```
+
+The reference parameter lets the action update the caller's balance.
+
+<!-- Slide 71 -->
+
+---
+
+## Default Parameters in Display Helpers
+
+```cpp
+void printDivider(char symbol = '-', int length = 30);
+```
+
+Defaults keep common formatting calls short while still allowing customization.
+
+<!-- Slide 72 -->
+
+---
+
+## Complete Menu Skeleton
+
+```cpp
+void displayMenu();
+int getChoice();
+void processChoice(int choice, double& balance);
+void addDeposit(double& balance);
+void makeWithdrawal(double& balance);
+void showBalance(double balance);
+```
+
+The prototypes show the menu architecture before the function bodies are written.
+
+<!-- Slide 73 -->
+
+---
+
+## Summary
+
++ Menus stay manageable when each function owns one responsibility.
++ Reference parameters let menu actions update caller-owned state.
++ Default parameters can simplify repeated display helper calls.
+
+<!-- Slide 74 -->

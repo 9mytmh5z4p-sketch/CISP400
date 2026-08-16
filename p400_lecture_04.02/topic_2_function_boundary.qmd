@@ -1,0 +1,182 @@
+<!-- Topic 2: Function Boundary Model -->
+<!-- Slides 14-24 -->
+
+# Function Boundary Model
+<!-- Slide 14 -->
+
+## What Crosses the Boundary? {.smaller}
+
++ A function call creates a controlled exchange.
++ Arguments move data from the caller into the function.
++ Return values move one result back to the caller.
+
+::: notes
+Slides 14-24
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## The Boundary Around a Function
+
+```cpp
+int total(vector<int> scores) {
+    int sum = 0;
+
+    for (int score : scores) {
+        sum = sum + score;
+    }
+
+    return sum;
+}
+```
+
+The function body is a separate region with its own local details.
+
+<!-- Slide 16 -->
+
+---
+
+## Data Goes In Through Parameters
+
+```cpp
+int answer = total(quizScores);
+```
+
++ `quizScores` is the caller's argument.
++ `scores` is the function's parameter.
++ The parameter gives the function a name for the received data.
+
+<!-- Slide 17 -->
+
+---
+
+## Data Comes Back Through Return Values
+
+```cpp
+return sum;
+```
+
++ A return value crosses back to the caller.
++ The function call is replaced by that returned value.
++ The caller decides where the value goes next.
+
+<!-- Slide 18 -->
+
+---
+
+## What Stays Inside
+
++ Local variables stay inside the function.
++ Temporary calculations stay inside the function.
++ Helper details stay inside the function.
+
+This is why a caller can trust a small function without reading every internal step.
+
+<!-- Slide 19 -->
+
+---
+
+## What the Caller Cannot See
+
+```cpp
+int total(vector<int> scores) {
+    int sum = 0;
+    return sum;
+}
+
+int main() {
+    vector<int> scores = {10, 20, 30};
+    cout << total(scores) << endl;
+    cout << sum << endl;  // error
+    return 0;
+}
+```
+
+`sum` belongs to `total()`, not to `main()`.
+
+<!-- Slide 20 -->
+
+---
+
+## Boundary Model: Calculate Total
+
+::: {.columns}
+::: {.column width="50%"}
+
+**Caller**
+
++ Has a vector of scores.
++ Calls `total(scores)`.
++ Stores the returned integer.
+
+:::
+::: {.column width="50%"}
+
+**Function**
+
++ Receives the vector.
++ Adds every score.
++ Returns the sum.
+
+:::
+:::
+
+<!-- Slide 21 -->
+
+---
+
+## Boundary Model: Display Results
+
+::: {.columns}
+::: {.column width="50%"}
+
+```cpp
+displayResult(totalScore);
+```
+
++ The caller supplies the value.
++ No returned value is expected.
+
+:::
+::: {.column width="50%"}
+
+```cpp
+void displayResult(int total) {
+    cout << "Total: " << total << endl;
+}
+```
+
++ The function prints the result.
++ The visible effect is output.
+
+:::
+:::
+
+<!-- Slide 22 -->
+
+---
+
+## Design Check: Too Much Crossing
+
+```cpp
+void printReport(string name, int score1, int score2,
+                 int score3, int score4, int score5);
+```
+
++ A long parameter list can be a design warning.
++ The function may need a vector instead of many separate values.
++ The function may be trying to do more than one job.
+
+<!-- Slide 23 -->
+
+---
+
+## Summary
+
++ Parameters are the main path into a function.
++ Return values are the main path back to the caller.
++ Modular design keeps details inside the boundary where they belong.
+
+<!-- Slide 24 -->

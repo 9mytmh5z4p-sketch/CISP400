@@ -1,0 +1,177 @@
+# Last Time
+
+::: {.incremental}
++ **Object-Oriented Programming**
++ **Introduction to Classes**
++ **Creating and Using Objects**
++ **Defining Member Functions**
++ **Fill In the Missing Code**
+:::
+
+::: notes
+1. **Object-Oriented Programming**: Paradigm shift from procedural; class = blueprint, object = instance; cookie-cutter analogy; structured programming vs OOP contrast.
+2. **Introduction to Classes**: class vs struct; private by default; public/private access specifiers; class anatomy with Point example; encapsulation.
+3. **Creating and Using Objects**: Three design decisions (data/operations/visibility); Book and Library interacting-objects example; ClassName variableName declaration syntax.
+4. **Defining Member Functions**: Inline vs outside definition; :: scope resolution operator; StopLight example; accessors (const getters) and mutators (validating setters).
+5. **Fill In the Missing Code**: BankAccount class; fill in printSummary() using private members directly from inside a member function.
+:::
+
+---
+
+# Today's Agenda
+
+- Arrays of Objects
+- Vectors of Objects
+
+::: notes
+
+:::
+
+{{< include topic_1_arrays_of_objects.qmd >}}
+{{< include topic_2_vectors_of_objects.qmd >}}
+
+---
+
+# Key Takeaways
+
+- `ClassName array[n]` and `vector<ClassName>` both use `[i].method()` to call methods on each element
+- Use a vector when the number of objects is not known at compile time; use a static array when it is
+- `const ClassName&` in a range-for both prevents copying and requires `const`-correct methods — mark every read-only method `const`
+- Keep display and comparison logic in the class (`print()`, `isBetterThan`) — main should orchestrate, not compute
+
+---
+
+# Next Time
+
+::: notes
+This is the final content lecture of CISP 400. The next step is CISP 400 — Object-Oriented Programming — where students go deeper into constructors, destructors, inheritance, polymorphism, and operator overloading.
+:::
+
+---
+
+# Appendix
+
+---
+
+## Arrays of Objects: Good Practices
+
+- Declare the class before the array — the type must be fully defined before it can be used as an element type.
+- Use a named constant for array size (`const int SIZE = 5`) and use it consistently in all loops over the array.
+- Use `array[i].method()` — never try to access private members directly with `array[i].member`.
+
+---
+
+## Arrays of Objects: Common Mistakes
+
+- Writing `roster.getName()[i]` instead of `roster[i].getName()` — the subscript comes first, then the dot.
+- Comparing `getGrade()` return values without understanding that the method is called on each element individually.
+- Declaring the array inside a function and expecting it to persist — static arrays on the stack are destroyed when the function returns.
+
+---
+
+## Arrays of Objects: More Examples
+
+```cpp
+// Printing all objects with a helper function
+void printRoster(Student roster[], int size) {
+    for (int i = 0; i < size; i++)
+        cout << roster[i].getName() << ": " << roster[i].getGrade() << "\n";
+}
+
+// Finding minimum grade
+int worst = 0;
+for (int i = 1; i < SIZE; i++)
+    if (roster[i].getGrade() < roster[worst].getGrade()) worst = i;
+cout << "Lowest: " << roster[worst].getName() << "\n";
+```
+
+---
+
+## Arrays of Objects: Practice Problems
+
+1. Add a `string major` member to the `Student` class. Update the setters, getters, and the roster loop to include the major.
+2. Write a function that takes a `Student` array and size and returns the index of the student with the highest grade.
+3. Write a loop that prints only students with a grade at or above 90.
+4. What changes if you replace `Student roster[SIZE]` with `Student* roster = new Student[SIZE]`? What must you add to main?
+
+---
+
+## Arrays of Objects: AI Search Terms
+
+- "C++ array of objects class"
+- "C++ array class member function call"
+- "C++ static array of user-defined type"
+- "C++ array of objects loop dot notation"
+- "C++ pass array of objects to function"
+
+---
+
+## Arrays of Objects: Questions for Reflection
+
+- How does `roster[i].getGrade()` differ from `roster[i].grade` when `grade` is private?
+- What would change if you needed to sort the roster by grade? What algorithm from earlier lectures applies?
+- When would you choose a static array of objects over a vector of objects?
+
+---
+
+## Vectors of Objects: Good Practices
+
+- Prefer `vector<ClassName>` over static arrays unless the size is fixed and known at compile time.
+- Use `const ClassName&` in range-for loops to avoid copying objects on each iteration.
+- Call `.size()` instead of tracking size manually — the vector always knows how many elements it holds.
+
+---
+
+## Vectors of Objects: Common Mistakes
+
+- Forgetting `#include <vector>` — vector is not available without it.
+- Modifying a vector while iterating over it with a range-for — this invalidates iterators and causes undefined behavior; use an index loop if you need to modify during iteration.
+- Using `int` instead of `size_t` (or casting) when comparing a loop counter to `.size()` — `.size()` returns an unsigned type and the comparison produces a warning.
+
+---
+
+## Vectors of Objects: More Examples
+
+```cpp
+// Remove a student by index (erase)
+roster.erase(roster.begin() + 2);   // removes element at index 2
+
+// Sort by grade using a lambda (C++11)
+#include <algorithm>
+sort(roster.begin(), roster.end(),
+     [](const Student& a, const Student& b) {
+         return a.getGrade() > b.getGrade();   // descending
+     });
+
+// Count students above 90
+int count = 0;
+for (const Student& s : roster)
+    if (s.getGrade() >= 90) count++;
+```
+
+---
+
+## Vectors of Objects: Practice Problems
+
+1. Read student names and grades from the user until the user types "done". Store each in a `vector<Student>` and print the full list afterward.
+2. Write a function `double classAverage(const vector<Student>& v)` that returns the mean grade.
+3. Write a function that removes all students with a grade below 60 from the vector.
+4. What is the difference between `vector<Student>` and `vector<Student*>`? When would you use the pointer version?
+
+---
+
+## Vectors of Objects: AI Search Terms
+
+- "C++ vector of objects class"
+- "C++ push_back object to vector"
+- "C++ range-for const reference vector"
+- "C++ vector size_t loop"
+- "C++ sort vector of objects lambda"
+
+---
+
+## Vectors of Objects: Questions for Reflection
+
+- Why is `const Student&` the right type for a range-for loop variable rather than `Student` or `Student&`?
+- What happens to a `vector<Student>` when the function it was declared in returns?
+- How would you design a class that manages its own internal `vector` of sub-objects — for example, a `Classroom` that holds a `vector<Student>`?

@@ -1,0 +1,91 @@
+# CISP 400
+
+Object Oriented Programming in C++
+
+Dr. Fowler
+
+![Folsom Lake College](images/flc_wordmark_mask.png){fig-align="center" width="76%" style="filter: invert(1); mix-blend-mode: multiply;"}
+
+<!-- Slide 1 -->
+
+# Agenda
+
+**CISP 400 — Class Introduction**
+
+:::: {.columns}
+::: {.column width="50%"}
++ What’s C++?
++ What do I expect of you in this class?
++ What’s my job?
++ Where does this class fit at FLC?
+:::
+
+::: {.column width="50%"}
++ What tools will you need?
++ Why should you learn how to program?
+:::
+::::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_course_overview.qmd >}}
+{{< include topic_2_toolset.qmd >}}
+{{< include topic_3_syllabus_reconnaissance.qmd >}}
+{{< include topic_4_class_expectations.qmd >}}
+{{< include topic_5_instructor_role.qmd >}}
+{{< include topic_6_course_at_flc.qmd >}}
+{{< include topic_7_reciprocal_interview.qmd >}}
+
+# What’s This Section About?
+
+![Review](images/review_stamp.png){fig-align="right" width="28%"}
+
+<!-- Slide 39 -->
+
+# Agenda
+
+**CISP 400 — Class Introduction**
+
+:::: {.columns}
+::: {.column width="50%"}
++ What’s C++?
++ What do I expect of you in this class?
++ What’s my job?
++ Where does this class fit at FLC?
+:::
+
+::: {.column width="50%"}
++ What tools will you need?
++ Why should you learn how to program?
+:::
+::::
+
+<!-- Slide 40 -->
+
+---
+
+<h1 style="display:none">Next Time</h1>
+
+![Next Time](images/next_time.png){fig-align="center" width="84%"}
+
+<!-- Slide 41 -->
+
+# Review Material From CISP 360
+
+<!-- Slide 42 -->
+
+{{< include topic_8_success_team_bingo.qmd >}}
+{{< include topic_9_advice_cards.qmd >}}
+
+# Emergency Plan
+
++ Evacuation Map
+
+<!-- Slide 52 -->
+
+# References
+
++ [GW17] Gaddis, Tony. *Starting out with C++. Early objects. Starting out with C++. Early objects.* Pearson, 2017.
++ [Me01] Meyers, Scott. *Effective STL: 50 Specific Ways to Improve Your Use of the Standard Template Library.* Addison-Wesley Professional, 2001.
+
+<!-- Slide 53 -->

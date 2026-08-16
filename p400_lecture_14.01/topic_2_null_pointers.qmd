@@ -1,0 +1,350 @@
+<!-- Topic 2: Null Pointers -->
+<!-- Slides 25–47 -->
+
+# Null Pointers
+<!-- Slide 25 -->
+
+## When a Pointer Has No Target {.smaller}
+
+- What should a pointer store when there is no object to point at?
+- C++ gives us a deliberate no-object value: `nullptr`.
+
+::: notes
+Slides 25–47
+:::
+
+<!-- Slide 26 -->
+
+---
+
+## Null Is a Value, Not a Mistake
+
+- `nullptr` is the modern C++ value meaning “points to no object.”
+- A null pointer is safe when its meaning is intentional and checked before access.
+
+```{.cpp}
+int* selected = nullptr;
+```
+
+<!-- Slide 27 -->
+
+---
+
+## Why This Matters
+
+- Pointers sometimes need to represent absence: not found, no current selection, or optional information.
+- `nullptr` lets us represent absence without using an unknown address.
+
+<!-- Slide 28 -->
+
+---
+
+## `nullptr` Is Not an Address You Can Use
+
+```{.cpp}
+int value = 42;
+
+int* valid = &value;
+int* empty = nullptr;
+int* unknown;
+```
+
+| Pointer | Meaning |
+|---|---|
+| `valid` | points to a live `int` |
+| `empty` | deliberately points to nothing |
+| `unknown` | uninitialized and unusable |
+
+<!-- Slide 29 -->
+
+---
+
+## Initialize to Something Known
+
+```{.cpp}
+int score = 88;
+bool ready = false;
+
+int* selected = nullptr;
+if (ready) {
+    selected = &score;
+}
+```
+
+- A pointer should begin as either a valid address or `nullptr`.
+
+<!-- Slide 30 -->
+
+---
+
+## Predict the Branch
+
+```{.cpp}
+int* current = nullptr;
+
+if (current == nullptr) {
+    cout << "nothing selected\n";
+} else {
+    cout << *current << "\n";
+}
+```
+
+- Which branch runs?
+
+<!-- Slide 31 -->
+
+---
+
+## Testing for `nullptr`
+
+```{.cpp}
+if (current == nullptr) {
+    cout << "nothing selected\n";
+}
+
+if (current != nullptr) {
+    cout << *current << "\n";
+}
+```
+
+- The test separates the object-absent path from the object-present path.
+
+<!-- Slide 32 -->
+
+---
+
+## Pointer Truth Tests
+
+```{.cpp}
+if (current) {
+    cout << *current << "\n";
+}
+
+if (!current) {
+    cout << "nothing selected\n";
+}
+```
+
+- This shorthand is common.
+- Explicit `nullptr` comparisons are clearer while the habit is new.
+
+<!-- Slide 33 -->
+
+---
+
+## Guard Before Dereference
+
+```{.cpp}
+int* current = nullptr;
+
+if (current != nullptr) {
+    cout << *current << "\n";
+}
+```
+
+- The null check is the gate before `*current`.
+- Do not dereference a pointer that points to no object.
+
+<!-- Slide 34 -->
+
+---
+
+## Safe Dereference Example
+
+```{.cpp}
+void printIfPresent(const int* value) {
+    if (value != nullptr) {
+        cout << "value: " << *value << "\n";
+    } else {
+        cout << "no value\n";
+    }
+}
+```
+
+<!-- Slide 35 -->
+
+---
+
+## Null Is Safer Than Wild
+
+```{.cpp}
+int* safeEmpty = nullptr;
+int* wild;
+
+if (safeEmpty == nullptr) {
+    cout << "known empty state\n";
+}
+```
+
+- `nullptr` can be tested.
+- An uninitialized pointer contains an indeterminate value.
+
+<!-- Slide 36 -->
+
+---
+
+## Null Does Not Mean Valid Later
+
+- A pointer can be non-null and still be invalid.
+- Null checks answer “does this pointer equal `nullptr`?” not “is this target alive and in range?”
+
+::: notes
+Keep this as a signpost. Heap lifetime, leaks, and use-after-free are intentionally deferred until after dynamic allocation.
+:::
+
+<!-- Slide 37 -->
+
+---
+
+## Nullable Return Values
+
+```{.cpp}
+int* findValue(int* values, int size, int target) {
+    for (int i = 0; i < size; i++) {
+        if (values[i] == target) {
+            return &values[i];
+        }
+    }
+    return nullptr;
+}
+```
+
+<!-- Slide 38 -->
+
+---
+
+## Calling a Nullable Return Function
+
+```{.cpp}
+int values[5] = {12, 18, 25, 31, 44};
+int* found = findValue(values, 5, 25);
+
+if (found != nullptr) {
+    cout << "value: " << *found << "\n";
+    cout << "index: " << found - values << "\n";
+} else {
+    cout << "not found\n";
+}
+```
+
+<!-- Slide 39 -->
+
+---
+
+## What Does `nullptr` Mean Here?
+
+- Every nullable pointer needs a documented meaning.
+- `nullptr` might mean “not found,” “optional input omitted,” or “no current selection.”
+
+<!-- Slide 40 -->
+
+---
+
+## Nullable Parameters
+
+```{.cpp}
+void printScore(const int* score) {
+    if (score == nullptr) {
+        cout << "score not available\n";
+    } else {
+        cout << "score: " << *score << "\n";
+    }
+}
+```
+
+- The function contract must say whether `nullptr` is allowed.
+
+<!-- Slide 41 -->
+
+---
+
+## Required Object? Use a Reference
+
+```{.cpp}
+void addBonus(int& score) {
+    score += 5;
+}
+
+void addBonusIfPresent(int* score) {
+    if (score != nullptr) {
+        *score += 5;
+    }
+}
+```
+
+- Use a reference when the object is required.
+- Use a pointer when absence is meaningful.
+
+<!-- Slide 42 -->
+
+---
+
+## The Arrow Operator With Nullable Pointers
+
+```{.cpp}
+struct Player {
+    string name;
+    int score;
+};
+
+void printPlayer(const Player* player) {
+    if (player != nullptr) {
+        cout << player->name << ": " << player->score << "\n";
+    }
+}
+```
+
+- `player->name` means `(*player).name`.
+
+<!-- Slide 43 -->
+
+---
+
+## Deleting `nullptr` Is Safe, But Not the Point
+
+```{.cpp}
+int* ptr = nullptr;
+delete ptr;
+```
+
+- C++ allows deleting `nullptr`.
+- Dynamic allocation and ownership belong in the next lecture.
+
+<!-- Slide 44 -->
+
+---
+
+## A Null Check Is Not a Lifetime Check
+
+```{.cpp}
+if (ptr != nullptr) {
+    cout << *ptr << "\n";
+}
+```
+
+- This check protects the immediate dereference from a null pointer.
+- It does not prove the pointer is in bounds or still points to a live object.
+
+<!-- Slide 45 -->
+
+---
+
+## Choosing a Null Contract
+
+| Situation | Prefer |
+|---|---|
+| Object is required | Reference |
+| Object is optional | Nullable pointer |
+| Search may fail | Pointer return or index sentinel |
+| Array range may be empty | Pointer plus size or begin/end |
+
+<!-- Slide 46 -->
+
+---
+
+## Null Pointer Summary
+
+- `nullptr` represents intentional absence.
+- Dereferencing requires more than “not null”: the target must also be valid for the operation.
+
+<!-- Slide 47 -->

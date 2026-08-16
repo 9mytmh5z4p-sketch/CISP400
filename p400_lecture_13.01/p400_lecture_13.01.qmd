@@ -1,0 +1,232 @@
+# Last Time
+
+::: {.incremental}
++ **Arrays with Functions**
++ **Array Algorithms**
++ **Parallel Arrays**
+:::
+
+::: notes
+Recall the fixed-size array model, explicit logical sizes, traversal algorithms, and coordinated indexing. Multidimensional arrays continue that work by adding another index.
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Multidimensional Arrays
+- C-Style Arrays and C-Strings
+- `std::array`
+
+::: notes
+Multidimensional arrays are the main continuation. The remaining topics name the built-in array form, apply it to C-strings, and introduce the modern fixed-size alternative.
+:::
+
+<!-- Slide 2 -->
+
+{{< include topic_1_multidimensional_arrays.qmd >}}
+{{< include topic_2_c_style_arrays.qmd >}}
+{{< include topic_3_std_array.qmd >}}
+
+---
+
+# Key Takeaways
+
+- Multidimensional arrays apply one index per dimension and store rectangular data in row-major order
+- C-strings are character arrays whose meaningful text ends at `\0`
+- `std::array` is the modern C++ default for fixed-size arrays
+- Use `vector` when the size must be determined or changed at runtime
+
+<!-- Slide 68 -->
+
+---
+
+# Next Time
+
+<!-- Slide 69 -->
+
+---
+
+# Appendix
+
+<!-- Slide 70 -->
+
+---
+
+## Multidimensional Arrays: Good Practices
+
+- Name every dimension with a compile-time constant
+- Use `row` and `col` as loop-variable names
+- Traverse rows in the outer loop when processing the complete grid
+
+<!-- Slide 71 -->
+
+---
+
+## Multidimensional Arrays: Common Mistakes
+
+- Reversing row and column indexes
+- Using a dimension as a valid index instead of stopping one position earlier
+- Omitting a required trailing dimension from a function parameter
+
+<!-- Slide 72 -->
+
+---
+
+## Multidimensional Arrays: More Examples
+
+- Weekly temperatures: day by hour
+- Theater seating: row by seat
+- Image data: row by column by color channel
+
+<!-- Slide 73 -->
+
+---
+
+## Multidimensional Arrays: Practice Problems
+
+1. Find the largest value in a 4-by-5 grid.
+2. Compute each diagonal total in a square grid.
+3. Count the occupied seats in each theater row.
+
+<!-- Slide 74 -->
+
+---
+
+## Multidimensional Arrays: AI Search Terms
+
+- C++ two-dimensional array row-major storage
+- C++ pass multidimensional array to function
+- C++ nested loops row and column totals
+
+<!-- Slide 75 -->
+
+---
+
+## Multidimensional Arrays: Questions for Reflection
+
+- Which dimensions are fixed by the problem?
+- Does the data have to be rectangular?
+- Which index should change fastest during traversal?
+
+<!-- Slide 76 -->
+
+---
+
+## C-Style Arrays and C-Strings: Good Practices
+
+- Reserve space for the null terminator
+- Pass destination capacity to functions that write text
+- Prefer `string` for new C++ text-processing code
+
+<!-- Slide 77 -->
+
+---
+
+## C-Style Arrays and C-Strings: Common Mistakes
+
+- Confusing `'0'` with `\0`
+- Comparing C-string text with `==`
+- Copying or appending without checking destination capacity
+
+<!-- Slide 78 -->
+
+---
+
+## C-Style Arrays and C-Strings: More Examples
+
+- Count words by detecting transitions from whitespace to text
+- Remove punctuation by copying selected characters forward
+- Test whether a C-string is a palindrome
+
+<!-- Slide 79 -->
+
+---
+
+## C-Style Arrays and C-Strings: Practice Problems
+
+1. Count digits in a C-string.
+2. Replace every space with an underscore.
+3. Compare two names without considering letter case.
+
+<!-- Slide 80 -->
+
+---
+
+## C-Style Arrays and C-Strings: AI Search Terms
+
+- C++ null-terminated character array
+- C++ strlen versus sizeof character array
+- C++ cin getline char buffer capacity
+
+<!-- Slide 81 -->
+
+---
+
+## C-Style Arrays and C-Strings: Questions for Reflection
+
+- Where is the terminator stored?
+- Who owns the destination-capacity contract?
+- Does the interface require a C-string or accept `string`?
+
+<!-- Slide 82 -->
+
+---
+
+## `std::array`: Good Practices
+
+- Prefer `std::array` for fixed-size collections in modern C++
+- Pass large arrays by reference and read-only arrays by `const` reference
+- Use `.data()` only at raw-buffer boundaries
+
+<!-- Slide 83 -->
+
+---
+
+## `std::array`: Common Mistakes
+
+- Expecting the container to resize
+- Omitting the size from a function parameter type
+- Assuming `[]` performs bounds checking
+
+<!-- Slide 84 -->
+
+---
+
+## `std::array`: More Examples
+
+- Store the twelve fixed month names
+- Sort a fixed hand of playing-card values
+- Represent a fixed RGB color with three components
+
+<!-- Slide 85 -->
+
+---
+
+## `std::array`: Practice Problems
+
+1. Return the average of an `array<double, 6>`.
+2. Rotate an `array<int, 5>` one position to the right.
+3. Find a value with `find` and report its index.
+
+<!-- Slide 86 -->
+
+---
+
+## `std::array`: AI Search Terms
+
+- C++ std array fixed-size container
+- C++ std array const reference parameter
+- C++ std array data C interface
+
+<!-- Slide 87 -->
+
+---
+
+## `std::array`: Questions for Reflection
+
+- Is the collection size known at compile time?
+- Does the code need whole-container copying or comparison?
+- Is a raw pointer required only at one interface boundary?
+
+<!-- Slide 88 -->

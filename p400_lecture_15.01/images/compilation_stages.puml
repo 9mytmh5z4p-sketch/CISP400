@@ -1,0 +1,70 @@
+@startuml compilation_stages
+
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName "Helvetica Neue"
+skinparam defaultFontSize 13
+
+skinparam rectangle {
+  BackgroundColor #2C3E50
+  FontColor #ECEFF1
+  BorderColor #1A252F
+  BorderThickness 2
+  RoundCorner 14
+  FontSize 13
+}
+
+skinparam note {
+  BackgroundColor #F2F3F4
+  BorderColor #BDC3C7
+  FontColor #2C3E50
+  FontSize 11
+}
+
+skinparam arrow {
+  Color #7F8C8D
+  FontColor #5D6D7E
+  FontSize 10
+  Thickness 2
+}
+
+left to right direction
+
+note as N0
+  <b>main.cpp</b>
+  <i>.h files</i>
+end note
+
+rectangle "<b>1 — Preprocessor</b>\n\n&#35;include, &#35;define\nmacro expansion" as P
+
+note as N1
+  <b>Expanded Source</b>
+  <i>(.ii)</i>
+end note
+
+rectangle "<b>2 — Compiler</b>\n\nsyntax & type check\n→ object code" as C
+
+note as N2
+  <b>Object File</b>
+  <i>(.o)</i>
+end note
+
+rectangle "<b>3 — Linker</b>\n\nresolve symbols\ncombine .o files" as L
+
+note as N3
+  <b>Executable</b>
+end note
+
+note as LIB
+  Standard Library
+  <i>(.a / .so)</i>
+end note
+
+N0 --> P
+P --> N1
+N1 --> C
+C --> N2
+N2 --> L
+L --> N3
+LIB -up-> L
+
+@enduml

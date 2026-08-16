@@ -1,0 +1,208 @@
+<!-- Topic 3: Indexing Array Elements -->
+<!-- Slides 25–39 -->
+
+# Indexing Array Elements
+<!-- Slide 25 -->
+
+## Selecting One Element {.smaller}
+
++ How does the program identify one position inside an array?
+
+::: notes
+Slides 25–39
+:::
+
+<!-- Slide 26 -->
+
+---
+
+## Zero-Based Positions
+
+| human position | first | second | third | fourth | fifth |
+|---|---:|---:|---:|---:|---:|
+| C++ index | 0 | 1 | 2 | 3 | 4 |
+
++ The first element uses index `0`.
++ The index is always one less than its human position number.
+
+<!-- Slide 27 -->
+
+---
+
+## Index and Value
+
+```{.cpp}
+int scores[5] = {91, 84, 78, 96, 88};
+```
+
+| index | 0 | 1 | 2 | 3 | 4 |
+|---|---:|---:|---:|---:|---:|
+| value | 91 | 84 | 78 | 96 | 88 |
+
++ The index identifies a position; the value is stored at that position.
+
+<!-- Slide 28 -->
+
+---
+
+## The Subscript Operator
+
+```{.cpp}
+scores[2]
+```
+
+```text
+array name   index expression
+  scores          2
+```
+
++ Brackets select one element from the array.
+
+<!-- Slide 29 -->
+
+---
+
+## Reading an Element
+
+```{.cpp}
+cout << scores[0] << '\n';
+
+double average = (scores[0] + scores[1]) / 2.0;
+```
+
++ A subscripted element behaves like a value of the array’s element type.
+
+<!-- Slide 30 -->
+
+---
+
+## Changing an Element
+
+```{.cpp}
+scores[2] = 82;
+scores[4] += 5;
+```
+
+| index | 0 | 1 | 2 | 3 | 4 |
+|---|---:|---:|---:|---:|---:|
+| value | 91 | 84 | 82 | 96 | 93 |
+
+<!-- Slide 31 -->
+
+---
+
+## Indexes Are Expressions
+
+```{.cpp}
+int i = 2;
+
+cout << scores[i] << '\n';
+cout << scores[i + 1] << '\n';
+cout << scores[4 - i] << '\n';
+```
+
++ An index can be any whole-number expression that produces a valid position.
+
+<!-- Slide 32 -->
+
+---
+
+## Valid Index Range
+
+```text
+capacity:      SIZE
+first index:   0
+last index:    SIZE - 1
+```
+
++ For capacity five, valid indexes are `0` through `4`.
++ Negative indexes and index `SIZE` are outside the array.
+
+<!-- Slide 33 -->
+
+---
+
+## Out-of-Bounds Access
+
+```{.cpp}
+const int SIZE = 5;
+int scores[SIZE] = {};
+
+scores[5] = 100;   // outside the array
+```
+
++ Raw arrays do not perform automatic bounds checks.
++ Out-of-bounds access causes undefined behavior.
+
+<!-- Slide 34 -->
+
+---
+
+## Named Capacity
+
+```{.cpp}
+const int SIZE = 5;
+int scores[SIZE] = {};
+
+cout << "Last index: " << SIZE - 1 << '\n';
+```
+
++ One name keeps the declaration and bounds reasoning aligned.
+
+<!-- Slide 35 -->
+
+---
+
+## Counting Elements with `sizeof`
+
+```{.cpp}
+int scores[] = {91, 84, 78, 96, 88};
+
+int count = sizeof(scores) / sizeof(scores[0]);
+```
+
++ Total array bytes divided by one element’s bytes gives the element count.
+
+<!-- Slide 36 -->
+
+---
+
+## Where the `sizeof` Count Works
+
+```{.cpp}
+int scores[] = {91, 84, 78, 96, 88};
+int count = sizeof(scores) / sizeof(scores[0]);
+```
+
++ This works where `scores` is still an actual array variable.
++ An array parameter does not preserve this size information; functions come next lecture.
+
+<!-- Slide 37 -->
+
+---
+
+## Tracing Index Access
+
+```{.cpp}
+int values[4] = {10, 20, 30, 40};
+int i = 1;
+
+values[i] += 5;
+i++;
+values[i] = values[0];
+```
+
+| index | 0 | 1 | 2 | 3 |
+|---|---:|---:|---:|---:|
+| final value | 10 | 25 | 10 | 40 |
+
+<!-- Slide 38 -->
+
+---
+
+## Summary
+
++ Index `0` selects the first element; `SIZE - 1` selects the last.
++ The subscript operator reads or changes one element, and its index must remain inside the valid range.
+
+<!-- Slide 39 -->

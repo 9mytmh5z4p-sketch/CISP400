@@ -1,0 +1,14 @@
+---
+title: "PlantUML Test"
+format: html
+filters:
+  - plantuml-filter.lua
+---
+
+## Test Diagram
+```{plantuml}
+@startuml
+Alice -> Bob: Hello
+Bob --> Alice: Hi!
+@enduml
+```

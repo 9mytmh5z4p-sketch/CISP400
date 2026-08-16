@@ -1,0 +1,210 @@
+<!-- Topic 1: Nested Loops -->
+<!-- Slides 3-17 -->
+
+# Nested Loops
+<!-- Slide 3 -->
+
+## Repeating Repetition {.smaller}
+
+- Sometimes each pass through a loop contains another full loop.
+- That pattern is called a nested loop.
+
+::: notes
+Slides 3-17
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Outer Loop, Inner Loop
+
+| Loop | Role |
+|---|---|
+| Outer loop | Chooses the larger context |
+| Inner loop | Completes repeated work inside that context |
+
+<!-- Slide 5 -->
+
+---
+
+## Reading Nested Loops
+
+- Read the outer loop first to understand the big structure.
+- Then read the inner loop to understand what happens inside each outer pass.
+- During execution, the inner loop finishes before the next outer pass begins.
+
+<!-- Slide 6 -->
+
+---
+
+## A Small Trace
+
+| Outer Pass | Inner Passes |
+|---:|---|
+| `row = 1` | `col = 1`, `col = 2`, `col = 3` |
+| `row = 2` | `col = 1`, `col = 2`, `col = 3` |
+
+The inner loop runs three times for each row.
+
+<!-- Slide 7 -->
+
+---
+
+## The Inner Loop Starts Over
+
+- Each new outer-loop pass creates a fresh run of the inner loop.
+- The inner loop's control variable is initialized again.
+- This is why the column count restarts on each row.
+
+<!-- Slide 8 -->
+
+---
+
+## Rows And Columns
+
+| Idea | Loop Role |
+|---|---|
+| Row | Outer loop |
+| Column | Inner loop |
+| Cell | One pass through the inner loop |
+
+<!-- Slide 9 -->
+
+---
+
+## Printing A Rectangle
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int row = 1; row <= 3; row++) {
+        for (int col = 1; col <= 5; col++) {
+            cout << '*';
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+```
+
+<!-- Slide 10 -->
+
+---
+
+## Printing A Triangle
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int row = 1; row <= 5; row++) {
+        for (int col = 1; col <= row; col++) {
+            cout << '*';
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+```
+
+<!-- Slide 11 -->
+
+---
+
+## Counting Total Passes
+
+- When both loops have fixed counts, multiply them.
+- `3` rows and `5` columns create `15` inner-loop passes.
+- If one loop depends on the other, trace the rows one at a time.
+
+<!-- Slide 12 -->
+
+---
+
+## Loop Order Matters
+
+::: {.columns}
+::: {.column width="50%"}
+```{.cpp}
+for (int row = 1; row <= 3; row++) {
+    for (int col = 1; col <= 5; col++) {
+        cout << '*';
+    }
+    cout << endl;
+}
+```
+:::
+
+::: {.column width="50%"}
+```{.cpp}
+for (int col = 1; col <= 5; col++) {
+    for (int row = 1; row <= 3; row++) {
+        cout << '*';
+    }
+    cout << endl;
+}
+```
+:::
+:::
+
+The same two counts can produce a different traversal pattern.
+
+<!-- Slide 13 -->
+
+---
+
+## Choosing Loop Variables
+
+- Use names that describe the structure: `row`, `col`, `student`, `score`.
+- Do not reuse the same loop variable name in both loops.
+- Clear names make the nesting easier to trace.
+
+<!-- Slide 14 -->
+
+---
+
+## Nested Loops With Totals
+
+```cpp
+int grandTotal = 0;
+
+for (int student = 1; student <= 3; student++) {
+    int studentTotal = 0;
+
+    for (int test = 1; test <= 4; test++) {
+        int score;
+        cin >> score;
+        studentTotal += score;
+    }
+
+    grandTotal += studentTotal;
+}
+```
+
+<!-- Slide 15 -->
+
+---
+
+## Keeping Nesting Shallow
+
+- Two levels of nesting are common.
+- Three or more levels can become hard to read quickly.
+- When nesting gets deep, ask whether a function can name part of the work.
+
+<!-- Slide 16 -->
+
+---
+
+## Summary
+
+- The outer loop chooses the context.
+- The inner loop completes the repeated work for that context.
+- The inner loop starts over for each outer-loop pass.
+
+<!-- Slide 17 -->

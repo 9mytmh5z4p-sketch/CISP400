@@ -1,0 +1,231 @@
+<!-- Topic 3: Common Elements -->
+<!-- Total slides: 12 -->
+
+# Common Elements
+
+---
+
+## The vocabulary of C++ {.smaller}
+
++ Before you can read or write code, you need the vocabulary.
++ Every C++ program — from the smallest to the largest — uses the same three categories of words.
+
+::: notes
+Total slides: 12
+Frame this as vocabulary acquisition before grammar instruction. Students who mix up these three categories will write code that does not compile and will not understand why. Spend time here — the payoff is fewer beginner errors.
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## Three categories, every program {.smaller}
+
+| Category | Who controls it | Example |
+|---|---|---|
+| **Identifiers** | You | `age`, `name`, `main` |
+| **Reserved words** | The compiler | `int`, `return`, `if` |
+| **Literals** | Fixed in the source | `25`, `"Hello"`, `0` |
+
+::: notes
+Show the taxonomy before explaining each category in depth. Students should be able to look at any line of code and classify every word into one of these three buckets. Comments are a fourth category worth mentioning briefly: they belong to neither the programmer’s logic nor the compiler — they are human notes that the compiler ignores entirely.
+:::
+
+<!-- Slide 2 -->
+
+---
+
+## Identifiers {.smaller}
+
++ Words **you** get to name — C++ does not care what they are called.
++ Used for variables, functions, and other programmer-defined things.
+
+```{.cpp}
+int age = 25;           // 'age' is an identifier
+string name = "Pat";    // 'name' is an identifier
+```
+
+::: notes
+Identifiers follow rules: must start with a letter or underscore, can contain letters, digits, and underscores, and are case-sensitive. The important point for day one is simpler: if you named it, it is an identifier. Examples like ‘age’, ‘myArray’, ‘GoHome’, and even ‘yo’ are all valid identifiers.
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Reserved words {.smaller}
+
++ Words the **compiler** owns — they carry fixed meaning and cannot be repurposed.
++ Using them as identifier names will prevent your program from compiling.
+
+```{.cpp}
+int age = 25;       // 'int' is a reserved word — declares integer type
+return 0;           // 'return' is a reserved word — sends a value back
+```
+
+::: notes
+Common reserved words students will encounter immediately: int, return, if, else, while, for, using, namespace. There are about 95 reserved words in C++. Students do not need to memorize them — they will learn them by using them. The important concept is that these words are off-limits as names.
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Error: reserved word used as a variable name {.smaller}
+
+```{.cpp}
+// ERROR: 'int' is a reserved word — cannot be used as a variable name.
+int int = 5;
+cout << int << endl;
+```
+
+```
+error: expected unqualified-id before 'int'
+     int int = 5;
+         ^~~
+```
+
+::: notes
+Show the actual compiler output so students recognize this error when they encounter it. The phrase “expected unqualified-id” is the compiler’s way of saying “I expected a name here, but you gave me a reserved word.” This exact error is one of the first many students produce.
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## Error: C++ is case-sensitive {.smaller}
+
+```{.cpp}
+// ERROR: 'Include' is not '#include' — directives are case-sensitive.
+#Include <iostream>
+using namespace std;
+
+int main()
+{
+    cout << "Hello!" << endl;
+    return 0;
+}
+```
+
+```
+error: invalid preprocessing directive #Include
+```
+
+::: notes
+Reserved words and directives are all lowercase. A capital letter anywhere in a reserved word makes it an unrecognized token. This catches beginners who autocorrect or type quickly. The same issue applies to ‘INT’, ‘Return’, ‘While’, etc.
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Error: undeclared identifier {.smaller}
+
+```{.cpp}
+// ERROR: 'messge' is not declared — a one-character typo makes it unrecognizable.
+int main()
+{
+    string message = "Hello!";
+    cout << messge << endl;    // typo: 'messge' instead of 'message'
+    return 0;
+}
+```
+
+```
+error: 'messge' was not declared in this scope
+```
+
+::: notes
+This is the most common identifier error students will make. A single typo — transposed letters, wrong case, extra character — creates a name the compiler has never seen. The fix is always the same: compare the name where it is declared to the name where it is used. [Note: if a screenshot of the actual compiler output in the student’s IDE would be clearer than the text block above, substitute it here.]
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## Literals {.smaller}
+
++ Data that is **fixed** in the source code — it does not change while the program runs.
++ Not under program control: once you write `25`, it is always `25`.
+
+```{.cpp}
+int age = 25;                    // 25 is a literal
+cout << "I love to code!\n";     // "I love to code!\n" is a literal
+myTax = salary * myRate + 8345.11;  // 8345.11 is a literal (magic number)
+```
+
+::: notes
+The magic number point is worth flagging: hard-coded values like 8345.11 buried in an expression are literals that make code hard to read and maintain. C++ provides constants to give literals meaningful names — that comes later in the course. For now, students should be able to identify literals when they see them.
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Comments {.smaller}
+
+```{.cpp}
+// This is a single-line comment — everything after // is ignored.
+
+/*
+   This is a multi-line comment.
+   The compiler ignores everything between the delimiters.
+*/
+
+int age = 25;   // end-of-line comment
+```
+
+::: notes
+Two forms: single-line (//) and block (/* */). The compiler ignores both completely. Uses: explain intent, document logic, temporarily disable code during debugging. Students should write comments from day one — not because they are required, but because they will thank themselves later.
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Write comments for intent, not for code {.smaller}
+
+```{.cpp}
+// Helpful — explains why, not what
+float age;   // store months after decimal; that's why not an int
+
+// Unhelpful — restates what the code already says
+float age;   // this is a float
+```
+
+::: notes
+The unhelpful comment adds no information — the code already says it is a float. The helpful comment explains a non-obvious decision. The best comments answer the question a future reader would ask: “Why was this done this way?” Encourage students to write comments as if explaining the code to a classmate who is not familiar with it.
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## Whole-line vs. end-of-line comments {.smaller}
+
+```{.cpp}
+// Whole-line comment — occupies an entire line
+// Use for explaining blocks of logic
+
+int age;    // End-of-line comment — use only with variable declarations
+```
+
++ Whole-line comments are preferred because code changes frequently and they are easy to move.
++ End-of-line comments are appropriate only next to variable declarations.
+
+::: notes
+The practical reason to prefer whole-line comments: if the code on a line changes or moves, an end-of-line comment may become detached from what it was explaining. A whole-line comment directly above the relevant code stays associated with it even after edits.
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## Summary {.smaller}
+
++ **Identifiers** are names you invent — C++ does not care what you call them.
++ **Reserved words** belong to the compiler — they have fixed meaning and cannot be used as names.
++ **Literals** are fixed data hardcoded into the program.
++ **Comments** are human notes the compiler ignores entirely — write them for intent.
+
+<!-- Slide 12 -->

@@ -1,0 +1,126 @@
+<!-- Topic 5: Void Functions -->
+<!-- Slides 49-57 -->
+
+# Void Functions
+<!-- Slide 49 -->
+
+## What If Nothing Comes Back? {.smaller}
+
++ Some functions calculate an answer.
++ Other functions perform an action.
++ `void` functions are for action-only work.
+
+::: notes
+Slides 49-57
+:::
+
+<!-- Slide 50 -->
+
+---
+
+## Void Means No Return Value
+
+```cpp
+void displayLine() {
+    cout << "--------------------" << endl;
+}
+```
+
++ `void` means the function does not send a value back.
++ The function can still do useful work.
+
+<!-- Slide 51 -->
+
+---
+
+## A Void Function
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void displayWelcome();
+
+int main() {
+    displayWelcome();
+    return 0;
+}
+
+void displayWelcome() {
+    cout << "Grade Calculator" << endl;
+    cout << "Ready to begin." << endl;
+}
+```
+
+The visible result is the action the function performs.
+
+<!-- Slide 52 -->
+
+---
+
+## Call It Like Any Other Function
+
+```cpp
+displayWelcome();
+```
+
++ A void function is called by name with parentheses.
++ Do not store a void function call in a variable.
++ There is no returned value to store.
+
+<!-- Slide 53 -->
+
+---
+
+## When Void Makes Sense
+
++ Display a header.
++ Show a menu.
++ Print a divider line.
++ Pause or clear part of the interface.
+
+Use `void` when the caller needs an action, not an answer.
+
+<!-- Slide 54 -->
+
+---
+
+## Return in a Void Function
+
+```cpp
+void checkAge(int age) {
+    if (age < 18) {
+        cout << "Access denied." << endl;
+        return;
+    }
+
+    cout << "Access granted." << endl;
+}
+```
+
+`return;` exits a void function early, but it does not return a value.
+
+<!-- Slide 55 -->
+
+---
+
+## Void or Return Value?
+
+| Use This | When |
+|---|---|
+| return value | the caller needs an answer |
+| `void` | the function performs an action |
+
+Choose based on what the caller needs after the function runs.
+
+<!-- Slide 56 -->
+
+---
+
+## Summary
+
++ `void` functions do not return values.
++ They still help modularize a program.
++ Their result is the action they perform.
+
+<!-- Slide 57 -->

@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CISP 400 – Lectures</title>
+  <style>
+    :root {
+      --bg: #f5f4f0;
+      --white: #ffffff;
+      --border: #e2e0db;
+      --text: #1a1a1a;
+      --text-mid: #555550;
+      --text-dim: #999;
+      --link: #2563eb;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 14px;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 0.9rem 2.5rem;
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    .topbar h1 { font-size: 1.1rem; font-weight: 600; letter-spacing: -0.01em; }
+    .topbar .sub { font-size: 0.8rem; color: #aaa; }
+
+    .main { padding: 2rem 2.5rem; max-width: 1060px; }
+
+    /* ── Section block ── */
+    .unit { margin-bottom: 3rem; }
+
+    .section-header {
+      margin-bottom: 1.1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid;
+    }
+    .section-header h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .section-header p {
+      font-size: 12px;
+      margin-top: 0.2rem;
+      font-style: italic;
+    }
+
+    /* Section accent colors */
+    .s1 .section-header { border-color: #d97706; }
+    .s1 .section-header h2 { color: #92400e; }
+    .s1 .section-header p  { color: #b45309; }
+    .s1 .week-bar          { background: #fef3c7; color: #92400e; }
+    .s1 .lec-badge         { background: #fef3c7; color: #92400e; }
+
+    .s2 .section-header { border-color: #dc2626; }
+    .s2 .section-header h2 { color: #7f1d1d; }
+    .s2 .section-header p  { color: #991b1b; }
+    .s2 .week-bar          { background: #fee2e2; color: #7f1d1d; }
+    .s2 .lec-badge         { background: #fee2e2; color: #7f1d1d; }
+
+    .s3 .section-header { border-color: #374151; }
+    .s3 .section-header h2 { color: #111827; }
+    .s3 .section-header p  { color: #4b5563; }
+    .s3 .week-bar          { background: #f3f4f6; color: #374151; }
+    .s3 .lec-badge         { background: #f3f4f6; color: #374151; }
+
+    /* ── Week card grid ── */
+    .week-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .week-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+    .week-card:hover {
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      border-color: #ccc;
+    }
+
+    .week-bar {
+      padding: 0.45rem 1rem;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* 2-column lecture grid — used for 2 or 4 lectures */
+    .lec-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .lec-pane {
+      padding: 0.75rem 1rem 0.8rem;
+    }
+    .lec-pane + .lec-pane {
+      border-left: 1px solid var(--border);
+    }
+    /* Rows 2+ get a top border */
+    .lec-pair .lec-pane:nth-child(n+3) {
+      border-top: 1px solid var(--border);
+    }
+    /* First column of every row after row 1 gets no left border */
+    .lec-pair .lec-pane:nth-child(odd):not(:first-child) {
+      border-left: none;
+    }
+
+    .lec-pane.empty {
+      background: #fafaf8;
+    }
+
+    .lec-num-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+    }
+    .lec-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+    .lec-slot {
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+
+    .lec-title {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 0.5rem;
+    }
+    .lec-title a { color: var(--text); text-decoration: none; }
+    .lec-title a:hover { color: var(--link); }
+    .lec-title.empty { color: var(--text-dim); font-weight: 400; font-style: italic; font-size: 12px; }
+
+    .lec-refs {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .lec-refs a {
+      font-size: 11px;
+      color: var(--link);
+      text-decoration: none;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.3rem;
+      line-height: 1.4;
+    }
+    .lec-refs a:hover { text-decoration: underline; }
+    .lec-refs a::before { content: '↗'; opacity: 0.5; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>CISP 400 — Object-Oriented Programming</h1>
+  <span class="sub">Folsom Lake College &mdash; Summer</span>
+</div>
+
+<div class="main">
+
+  <p style="font-size:12px; color:#666; margin-bottom:1.5rem;">
+    Blue links inside each card go to <a href="https://www.learncpp.com/" style="color:#2563eb;">learncpp.com</a> — a free, open-source C++ reference that covers the topics for that lecture.
+  </p>
+
+  <!-- ═══════════════════════════════════════════════════
+       Section 1: C++ is like other languages
+       ═══════════════════════════════════════════════════ -->
+  <div class="unit s1">
+    <div class="section-header">
+      <h2>C++ is like other languages</h2>
+    </div>
+    <div class="week-grid">
+
+      <!-- Week 1 -->
+      <div class="week-card">
+        <div class="week-bar">Week 1 &mdash; Introduction to C++</div>
+        <div class="lec-pair">
+
+          <!-- 01.01 -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">01.01</span><span class="lec-slot">Lecture 1</span></div>
+            <div class="lec-title"><a href="p400_lecture_01.01/p400_lecture_01.01.html">Course Introduction</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-programs-and-programming-languages/">0.2 — Programs and programming languages</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/statements-and-the-structure-of-a-program/">1.1 — Statements and program structure</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/comments/">1.2 — Comments</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/keywords-and-naming-identifiers/">1.7 — Keywords and naming identifiers</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/developing-your-first-program/">1.11 — Developing your first program</a>
+            </div>
+          </div>
+
+          <!-- 01.02 -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">01.02</span><span class="lec-slot">Lecture 2</span></div>
+            <div class="lec-title"><a href="p400_lecture_01.02/p400_lecture_01.02.html">C++ Programming Review</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-objects-and-variables/">1.3 — Introduction to objects and variables</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/variable-assignment-and-initialization/">1.4 — Variable assignment and initialization</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-fundamental-data-types/">4.1 — Introduction to fundamental data types</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/constant-variables-named-constants/">5.1 — Constant variables</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/arithmetic-operators/">6.2 — Arithmetic operators</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/remainder-and-exponentiation/">6.3 — Remainder and exponentiation</a>
+            </div>
+          </div>
+
+          <!-- 02.01: receives content from 15.01 (Variable Details) -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">02.01</span><span class="lec-slot">Lecture 3</span></div>
+            <div class="lec-title"><a href="p400_lecture_02.01/p400_lecture_02.01.html">Variable Details — Conversion, Overflow, and Memory</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-the-compiler-linker-and-libraries/">0.5 — Compiler, linker, and libraries</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-the-preprocessor/">2.10 — Introduction to the preprocessor</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/object-sizes-and-the-sizeof-operator/">4.3 — Object sizes and sizeof</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/signed-integers/">4.4 — Signed integers</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/unsigned-integers-and-why-to-avoid-them/">4.5 — Unsigned integers</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/fixed-width-integers-and-size-t/">4.6 — Fixed-width integers and size_t</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-type-conversion-and-static_cast/">4.12 — Introduction to type conversion and static_cast</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/implicit-type-conversion/">10.1 — Implicit type conversion</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/numeric-conversions/">10.3 — Numeric conversions</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/explicit-type-conversion-casting-and-static-cast/">10.6 — Explicit type conversion and static_cast</a>
+            </div>
+          </div>
+
+          <!-- 02.02: receives content from 02.01 (Terminal Interactions) -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">02.02</span><span class="lec-slot">Lecture 4</span></div>
+            <div class="lec-title"><a href="p400_lecture_02.02/p400_lecture_02.02.html">Terminal Interactions and Colors</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-iostream-cout-cin-and-endl/">1.5 — Introduction to iostream</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/stdcin-and-handling-invalid-input/">9.5 — std::cin and handling invalid input</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/floating-point-numbers/">4.8 — Floating point numbers</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/output-with-ostream-and-ios/">28.3 — Output with ostream and ios</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Week 2 -->
+      <div class="week-card">
+        <div class="week-bar">Week 2 &mdash; Consolidation &amp; Functions</div>
+        <div class="lec-pair">
+
+          <!-- 03.01: Software Design -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">03.01</span><span class="lec-slot">Lecture 1</span></div>
+            <div class="lec-title"><a href="p400_lecture_03.01/p400_lecture_03.01.html">Software Design</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/stdcin-and-handling-invalid-input/">9.5 — std::cin and handling invalid input</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-random-number-generation/">8.13 — Introduction to random number generation</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/generating-random-numbers-using-mersenne-twister/">8.14 — Generating random numbers using Mersenne Twister</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/how-to-design-your-first-programs/">2.13 — How to design your first programs</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/basic-debugging-tactics/">3.4 — Basic debugging tactics</a>
+            </div>
+          </div>
+
+          <!-- 03.02: Vectors and Range-Based Loops -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">03.02</span><span class="lec-slot">Lecture 2</span></div>
+            <div class="lec-title"><a href="p400_lecture_03.02/p400_lecture_03.02.html">Vectors and Range-Based Loops</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-containers-and-arrays/">16.1 — Introduction to containers and arrays</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-stdvector-and-list-constructors/">16.2 — Introduction to std::vector</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/variable-assignment-and-initialization/">1.4 — Variable assignment and initialization</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/arithmetic-operators/">6.2 — Arithmetic operators</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/range-based-for-loops-for-each/">16.8 — Range-based for loops</a>
+            </div>
+          </div>
+
+          <!-- 04.01: Modular Programming -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">04.01</span><span class="lec-slot">Lecture 3</span></div>
+            <div class="lec-title"><a href="p400_lecture_04.01/p400_lecture_04.01.html">Modular Programming</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-functions/">2.1 — Introduction to functions</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/function-return-values-value-returning-functions/">2.2 — Function return values</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/void-functions-non-value-returning-functions/">2.3 — Void functions</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-function-parameters-and-arguments/">2.4 — Function parameters and arguments</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/why-functions-are-useful-and-how-to-use-them-effectively/">2.6 — Why functions are useful</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/forward-declarations/">2.7 — Forward declarations and definitions</a>
+            </div>
+          </div>
+
+          <!-- 04.02: Modular Design -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">04.02</span><span class="lec-slot">Lecture 4</span></div>
+            <div class="lec-title"><a href="p400_lecture_04.02/p400_lecture_04.02.html">Modular Design</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-function-parameters-and-arguments/">2.4 — Function parameters and arguments</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-local-scope/">2.5 — Introduction to local scope</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/passing-stdvector/">16.4 — Passing std::vector</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/returning-stdvector-and-an-introduction-to-move-semantics/">16.5 — Returning std::vector</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/local-variables/">7.3 — Local variables</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/variable-shadowing-name-hiding/">7.5 — Variable shadowing</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Week 3 -->
+      <div class="week-card">
+        <div class="week-bar">Week 3 &mdash; Advanced Functions</div>
+        <div class="lec-pair">
+
+          <!-- 05.01: Advanced Functions -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">05.01</span><span class="lec-slot">Lecture 1</span></div>
+            <div class="lec-title"><a href="p400_lecture_05.01/p400_lecture_05.01.html">Advanced Functions</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/lvalue-references/">12.3 — Lvalue references</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/pass-by-lvalue-reference/">12.5 — Pass by lvalue reference</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/static-local-variables/">7.11 — Static local variables</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/default-arguments/">11.5 — Default arguments</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/halts-exiting-your-program-early/">8.12 — Halts: exiting your program early</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/do-while-statements/">8.9 — Do while statements</a>
+            </div>
+          </div>
+
+          <!-- 05.02: Overloading -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">05.02</span><span class="lec-slot">Lecture 2</span></div>
+            <div class="lec-title"><a href="p400_lecture_05.02/p400_lecture_05.02.html">Overloading</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-function-overloading/">11.1 — Introduction to function overloading</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/function-overload-differentiation/">11.2 — Function overload differentiation</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/function-overload-resolution-and-ambiguous-matches/">11.3 — Function overload resolution and ambiguous matches</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/pass-by-lvalue-reference/">12.5 — Pass by lvalue reference</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/pass-by-const-lvalue-reference/">12.6 — Pass by const lvalue reference</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/increment-decrement-operators-and-side-effects/">6.4 — Increment/decrement operators, and side effects</a>
+            </div>
+          </div>
+
+          <!-- 06.01: Design Patterns -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">06.01</span><span class="lec-slot">Lecture 3</span></div>
+            <div class="lec-title"><a href="p400_lecture_06.01/p400_lecture_06.01.html">Design Patterns</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/static-local-variables/">7.11 — Static local variables</a>
+            </div>
+          </div>
+
+          <!-- 06.02: Conditionals -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">06.02</span><span class="lec-slot">Lecture 4</span></div>
+            <div class="lec-title"><a href="p400_lecture_06.02/p400_lecture_06.02.html">Conditionals</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/boolean-values/">4.9 — Boolean values</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-if-statements/">4.10 — Introduction to if statements</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/operator-precedence-and-associativity/">6.1 — Operator precedence and associativity</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/relational-operators-and-floating-point-comparisons/">6.7 — Relational operators and floating point comparisons</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/control-flow-introduction/">8.1 — Control flow introduction</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/if-statements-and-blocks/">8.2 — If statements and blocks</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/common-if-statement-problems/">8.3 — Common if statement problems</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/detecting-and-handling-errors/">9.4 — Detecting and handling errors</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/stdcin-and-handling-invalid-input/">9.5 — std::cin and handling invalid input</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /week-grid s1 -->
+  </div><!-- /unit s1 -->
+
+
+  <!-- ═══════════════════════════════════════════════════
+       Section 2: Controlled De-Abstraction
+       ═══════════════════════════════════════════════════ -->
+  <div class="unit s2">
+    <div class="section-header">
+      <h2>Controlled De-Abstraction</h2>
+      <p>Now we look at what the abstraction was hiding.</p>
+    </div>
+    <div class="week-grid">
+
+      <!-- Week 4 -->
+      <div class="week-card">
+        <div class="week-bar">Week 4 &mdash; Iteration &amp; Validation</div>
+        <div class="lec-pair">
+
+          <!-- 07.01: receives content from 06.02 (Conditionals, Part 2) -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">07.01</span><span class="lec-slot">Lecture 1</span></div>
+            <div class="lec-title"><a href="p400_lecture_07.01/p400_lecture_07.01.html">Conditionals, Part 2</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/the-conditional-operator/">6.6 — The conditional operator</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/if-statements-and-blocks/">8.2 — If statements and blocks</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/switch-statement-basics/">8.5 — Switch statement basics</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/switch-fallthrough-and-scoping/">8.6 — Switch fallthrough and scoping</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/logical-operators/">6.8 — Logical operators</a>
+            </div>
+          </div>
+
+          <!-- 07.02: receives content from 07.01 (Iteration) -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">07.02</span><span class="lec-slot">Lecture 2</span></div>
+            <div class="lec-title"><a href="p400_lecture_07.02/p400_lecture_07.02.html">Iteration</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-loops-and-while-statements/">8.8 — Introduction to loops and while statements</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/do-while-statements/">8.9 — Do while statements</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/for-statements/">8.10 — For statements</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/range-based-for-loops-for-each/">16.8 — Range-based for loops (for-each)</a>
+            </div>
+          </div>
+
+          <!-- 08.01: receives content from 07.02 (Nested Loops and Multi-Dimensional Vectors) -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">08.01</span><span class="lec-slot">Lecture 3</span></div>
+            <div class="lec-title"><a href="p400_lecture_08.01/p400_lecture_08.01.html">Nested Loops and Multi-Dimensional Vectors</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/for-statements/">8.10 — For statements</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-stdvector-and-list-constructors/">16.2 — Introduction to std::vector and list constructors</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/arrays-and-loops/">16.6 — Arrays and loops</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/range-based-for-loops-for-each/">16.8 — Range-based for loops</a>
+            </div>
+          </div>
+
+          <!-- 08.02: receives content from 08.01 (Input Validation) -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">08.02</span><span class="lec-slot">Lecture 4</span></div>
+            <div class="lec-title"><a href="p400_lecture_08.02/p400_lecture_08.02.html">Menu Driven Programming</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/stdcin-and-handling-invalid-input/">9.5 — std::cin and handling invalid input</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Week 5 -->
+      <div class="week-card">
+        <div class="week-bar">Week 5 &mdash; Loops &amp; File I/O</div>
+        <div class="lec-pair">
+
+          <!-- 09.01: loop control and input validation -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">09.01</span><span class="lec-slot">Lecture 1</span></div>
+            <div class="lec-title"><a href="p400_lecture_09.01/p400_lecture_09.01.html">Loop Control and Input Validation</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/increment-decrement-operators-and-side-effects/">6.4 — Increment/decrement operators, and side effects</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/break-and-continue/">8.11 — Break and continue</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/stdcin-and-handling-invalid-input/">9.5 — std::cin and handling invalid input</a>
+            </div>
+          </div>
+
+          <!-- 10.01: receives content from 09.01 (File I/O and Assertions) -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">10.01</span><span class="lec-slot">Lecture 2</span></div>
+            <div class="lec-title"><a href="p400_lecture_10.01/p400_lecture_10.01.html">File I/O and Assertions</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/basic-file-io/">28.6 — Basic file I/O</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/assert-and-static_assert/">9.6 — Assert and static_assert</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /week-grid s2 -->
+  </div><!-- /unit s2 -->
+
+
+  <!-- ═══════════════════════════════════════════════════
+       Section 3: Raw Power
+       ═══════════════════════════════════════════════════ -->
+  <div class="unit s3">
+    <div class="section-header">
+      <h2>Raw Power</h2>
+      <p>This is why STL was invented.</p>
+    </div>
+    <div class="week-grid">
+
+      <!-- Week 6 -->
+      <div class="week-card">
+        <div class="week-bar">Week 6 &mdash; Arrays &amp; Pointers</div>
+        <div class="lec-pair">
+
+          <!-- 11.01: receives content from 10.01 (File I/O) -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">11.01</span><span class="lec-slot">Lecture 1</span></div>
+            <div class="lec-title"><a href="p400_lecture_11.01/p400_lecture_11.01.html">String Streams and Random Access</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/stream-classes-for-strings/">28.4 — Stream classes for strings</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/random-file-io/">28.7 — Random file I/O</a>
+            </div>
+          </div>
+
+          <!-- 11.02: receives content from 11.01 (Arrays) -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">11.02</span><span class="lec-slot">Lecture 2</span></div>
+            <div class="lec-title"><a href="p400_lecture_11.02/p400_lecture_11.02.html">Arrays and Indexing</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-c-style-arrays/">17.7 — Introduction to C-style arrays</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/arrays-and-loops/">16.6 — Arrays and loops</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/range-based-for-loops-for-each/">16.8 — Range-based for loops</a>
+            </div>
+          </div>
+
+          <!-- 12.01: receives content from 11.02 (Array Algorithms) -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">12.01</span><span class="lec-slot">Lecture 3</span></div>
+            <div class="lec-title"><a href="p400_lecture_12.01/p400_lecture_12.01.html">Array Functions, Algorithms, and Parallel Arrays</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-c-style-arrays/">17.7 — Introduction to C-style arrays</a>
+            </div>
+          </div>
+
+          <!-- 13.01: receives content from 12.01 (More Arrays) -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">13.01</span><span class="lec-slot">Lecture 4</span></div>
+            <div class="lec-title"><a href="p400_lecture_13.01/p400_lecture_13.01.html">Week 13, Lecture 01 – Multidimensional and Modern Arrays</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-stdarray/">17.1 — Introduction to std::array</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/stdarray-length-and-indexing/">17.2 — std::array length and indexing</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/passing-and-returning-stdarray/">17.3 — Passing and returning std::array</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-c-style-arrays/">17.7 — Introduction to C-style arrays</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/c-style-strings/">17.10 — C-style strings</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/multidimensional-c-style-arrays/">17.12 — Multidimensional C-style arrays</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/multidimensional-stdarray/">17.13 — Multidimensional std::array</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Week 7 -->
+      <div class="week-card">
+        <div class="week-bar">Week 7 &mdash; Dynamic Memory &amp; Variable Details</div>
+        <div class="lec-pair">
+
+          <!-- 13.02: pointer foundations, initialization, dereferencing, and safe scalar use -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">13.02</span><span class="lec-slot">Lecture 1</span></div>
+            <div class="lec-title"><a href="p400_lecture_13.02/p400_lecture_13.02.html">Week 13, Lecture 02 – Pointer Foundations</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-pointers/">12.7 — Introduction to pointers</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/null-pointers/">12.8 — Null pointers</a>
+            </div>
+          </div>
+
+          <!-- 14.01: receives content from 13.02 (Pointers in Practice) -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">14.01</span><span class="lec-slot">Lecture 2</span></div>
+            <div class="lec-title"><a href="p400_lecture_14.01/p400_lecture_14.01.html">Week 14, Lecture 01 – Array Decay, Null Pointers, and Passing Pointers</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/pass-by-address/">12.10 — Pass by address</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/return-by-reference-and-return-by-address/">12.12 — Return by reference and address</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-smart-pointers-move-semantics/">22.1 — Introduction to smart pointers</a>
+            </div>
+          </div>
+
+          <!-- 14.02: scalar dynamic allocation, pointer lifetime errors, and smart pointers -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">14.02</span><span class="lec-slot">Lecture 3</span></div>
+            <div class="lec-title"><a href="p400_lecture_14.02/p400_lecture_14.02.html">Dynamic Memory and Smart Pointers</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/dynamic-memory-allocation-with-new-and-delete/">Dynamic memory allocation with new and delete</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-smart-pointers-move-semantics/">Introduction to smart pointers and move semantics</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/stdunique_ptr/">std::unique_ptr</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/stdshared_ptr/">std::shared_ptr</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/circular-dependency-issues-with-stdshared_ptr-and-stdweak_ptr/">std::shared_ptr cycles and std::weak_ptr</a>
+            </div>
+          </div>
+
+          <!-- 15.01: receives content from 14.02 (Leaks, Dangling Pointers, and Practice) -->
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">15.01</span><span class="lec-slot">Lecture 4</span></div>
+            <div class="lec-title"><a href="p400_lecture_15.01/p400_lecture_15.01.html">Pseudodynamic and Dynamic Memory</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-smart-pointers-move-semantics/">22.1 — Introduction to smart pointers</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/stdunique_ptr/">22.5 — std::unique_ptr</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Week 8: unchanged -->
+      <div class="week-card">
+        <div class="week-bar">Week 8 &mdash; Structs, Classes &amp; Finals</div>
+        <div class="lec-pair">
+
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">15.02</span><span class="lec-slot">Lecture 2</span></div>
+            <div class="lec-title"><a href="p400_lecture_15.02/p400_lecture_15.02.html">Structures, Binary Records, and ADTs</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-structs-members-and-member-selection/">13.5 — Introduction to structs</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/struct-aggregate-initialization/">13.7 — Struct aggregate initialization</a>
+            </div>
+          </div>
+
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">16.01</span><span class="lec-slot">Lecture 2</span></div>
+            <div class="lec-title"><a href="p400_lecture_16.01/p400_lecture_16.01.html">Classes &amp; Member Functions</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-object-oriented-programming/">14.1 — Introduction to OOP</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-classes/">14.2 — Introduction to classes</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/member-functions/">14.3 — Member functions</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/public-vs-private-access-specifiers/">14.5 — Public and private members</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/access-functions/">14.6 — Access functions (getters &amp; setters)</a>
+            </div>
+          </div>
+
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">16.02</span><span class="lec-slot">Lecture 3</span></div>
+            <div class="lec-title"><a href="p400_lecture_16.02/p400_lecture_16.02.html">Constructors &amp; Destructors</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-constructors/">14.9 — Introduction to constructors</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/default-constructors-and-default-arguments/">14.11 — Default constructors</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-destructors/">15.4 — Introduction to destructors</a>
+            </div>
+          </div>
+
+          <div class="lec-pane">
+            <div class="lec-num-row"><span class="lec-badge">17.01</span><span class="lec-slot">Lecture 4</span></div>
+            <div class="lec-title"><a href="p400_lecture_17.01/p400_lecture_17.01.html">Arrays &amp; Vectors of Objects</a></div>
+            <div class="lec-refs">
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-c-style-arrays/">17.7 — Introduction to C-style arrays</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-stdvector-and-list-constructors/">16.2 — Introduction to std::vector</a>
+              <a href="https://www.learncpp.com/cpp-tutorial/introduction-to-classes/">14.2 — Introduction to classes</a>
+            </div>
+          </div>
+
+          <div class="lec-pane empty">
+            <div class="lec-num-row"><span class="lec-badge">17.02</span><span class="lec-slot">Lecture 5</span></div>
+            <div class="lec-title empty">CIS Interviews &mdash; No Class</div>
+          </div>
+
+          <div class="lec-pane empty">
+            <div class="lec-num-row"><span class="lec-badge">18.01</span><span class="lec-slot">Lecture 6</span></div>
+            <div class="lec-title empty">Finals Week</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /week-grid s3 -->
+  </div><!-- /unit s3 -->
+
+</div><!-- /main -->
+</body>
+</html>

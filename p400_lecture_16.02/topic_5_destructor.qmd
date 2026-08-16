@@ -1,0 +1,74 @@
+<!-- Topic 5: Destructor -->
+<!-- Total slides: 4 -->
+
+# Destructor
+
+---
+
+## If a constructor runs when an object is born, what runs when it dies? {.smaller}
+
+Every object has a defined moment when it goes out of scope or is explicitly deleted. The destructor runs at that exact moment — automatically, with no call needed.
+
+::: notes
+Total slides: 4
+Students have done new/delete in lectures 14.01–14.02, so object lifetime is not a new concept. The destructor names the automatic cleanup mechanism they have been invoking implicitly. Keep this introductory — CISP 400 covers destructors in depth (resource management, rule of three/five). The goal here is recognition and basic understanding.
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## Destructor syntax {.smaller}
+
+```{.cpp}
+class ClassName {
+public:
+    ClassName()  { /* constructor */ }
+    ~ClassName() { /* destructor  */ }   // tilde prefix, no parameters, no return type
+};
+```
+
++ **Tilde prefix** (`~`) — the only syntactic difference from a constructor.
++ **No parameters, no return type** — a class can have only one destructor; it cannot be overloaded.
++ **Called automatically** — you never call it directly; the runtime calls it when the object's lifetime ends.
+
+<!-- Slide 2 -->
+
+---
+
+## When destructors run {.smaller}
+
+```{.cpp}
+class Logger {
+public:
+    Logger()  { cout << "Logger created\n"; }
+    ~Logger() { cout << "Logger destroyed\n"; }
+};
+
+int main() {
+    Logger a;              // "Logger created"
+    {
+        Logger b;          // "Logger created"
+    }                      // "Logger destroyed" — b goes out of scope here
+    return 0;              // "Logger destroyed" — a goes out of scope here
+}
+
+// With dynamic allocation:
+Logger* p = new Logger;    // "Logger created"
+delete p;                  // "Logger destroyed" — destructor runs at delete
+```
+
+::: notes
+Run this live if possible — watching "Logger destroyed" print at exactly the closing brace is memorable. The key message: for stack objects, you never have to think about cleanup. For heap objects (new/delete), delete triggers the destructor before releasing the memory. This is why forgetting delete causes resource leaks even when a destructor is defined.
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Summary {.smaller}
+
++ A destructor is defined with a tilde prefix, takes no parameters, and runs automatically when an object's lifetime ends — at scope exit for stack objects, at `delete` for heap objects.
++ Use a destructor to release any resources the constructor acquired; for simple data classes, you usually need none.
+
+<!-- Slide 4 -->

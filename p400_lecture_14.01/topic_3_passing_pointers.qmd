@@ -1,0 +1,404 @@
+<!-- Topic 3: Passing Pointers -->
+<!-- Slides 48–72 -->
+
+# Passing Pointers
+<!-- Slide 48 -->
+
+## What Crosses the Function Boundary? {.smaller}
+
+- When a pointer is passed to a function, the address crosses the boundary.
+- The function gets its own pointer variable, but it may share access to the caller's object.
+
+::: notes
+Slides 48–72
+:::
+
+<!-- Slide 49 -->
+
+---
+
+## Passing an Address
+
+- Passing a pointer means passing an address value into a pointer parameter.
+- The parameter can use that address to read or write the pointed-to object.
+
+```{.cpp}
+void printValue(const int* value);
+
+int score = 91;
+printValue(&score);
+```
+
+<!-- Slide 50 -->
+
+---
+
+## The Two Things to Track
+
+| Thing | Where it lives |
+|---|---|
+| Pointer parameter | Local to the called function |
+| Pointed-to object | Wherever the address came from |
+
+- The pointer is passed by value.
+- The target may still be shared.
+
+<!-- Slide 51 -->
+
+---
+
+## Anatomy of a Pointer Parameter
+
+```{.cpp}
+void addBonus(int* score);
+
+int main() {
+    int exam = 85;
+    addBonus(&exam);
+    return 0;
+}
+
+void addBonus(int* score) {
+    *score += 5;
+}
+```
+
+- `&exam` supplies the address.
+- `*score` accesses the caller's `exam`.
+
+<!-- Slide 52 -->
+
+---
+
+## Pointer Parameter Trace
+
+```{.cpp}
+int exam = 85;
+addBonus(&exam);
+cout << exam << "\n";
+```
+
+| Moment | `exam` | `score` inside function |
+|---|---:|---|
+| before call | 85 | does not exist |
+| during call | 85 | address of `exam` |
+| after `*score += 5` | 90 | address of `exam` |
+
+<!-- Slide 53 -->
+
+---
+
+## Read Through a Pointer
+
+```{.cpp}
+void printValue(const int* value) {
+    if (value != nullptr) {
+        cout << "value: " << *value << "\n";
+    }
+}
+```
+
+- `const int*` means the function may read the target but not change the `int`.
+
+<!-- Slide 54 -->
+
+---
+
+## Write Through a Pointer
+
+```{.cpp}
+void resetScore(int* score) {
+    if (score != nullptr) {
+        *score = 0;
+    }
+}
+```
+
+- Writing through `*score` changes the caller-owned object.
+
+<!-- Slide 55 -->
+
+---
+
+## Predict the Output
+
+```{.cpp}
+void doubleValue(int* value) {
+    *value *= 2;
+}
+
+int main() {
+    int number = 12;
+    doubleValue(&number);
+    cout << number << "\n";
+    return 0;
+}
+```
+
+- What prints after the function returns?
+
+<!-- Slide 56 -->
+
+---
+
+## Changing `ptr` Versus Changing `*ptr`
+
+```{.cpp}
+void changeBoth(int* ptr) {
+    *ptr = 99;
+    ptr = nullptr;
+}
+
+int value = 10;
+int* original = &value;
+changeBoth(original);
+```
+
+- `*ptr = 99` changes `value`.
+- `ptr = nullptr` changes only the local pointer copy.
+
+<!-- Slide 57 -->
+
+---
+
+## Pointer Parameter Versus Reference Parameter
+
+```{.cpp}
+void addOnePointer(int* value) {
+    if (value != nullptr) {
+        *value += 1;
+    }
+}
+
+void addOneReference(int& value) {
+    value += 1;
+}
+```
+
+- Both can modify the caller's object.
+- The pointer version can also represent absence.
+
+<!-- Slide 58 -->
+
+---
+
+## Required Target? Prefer a Reference
+
+```{.cpp}
+void curveRequired(int& score) {
+    score += 5;
+}
+```
+
+- A reference says the function requires a real object.
+- There is no null branch to explain or defend.
+
+<!-- Slide 59 -->
+
+---
+
+## Optional Target? Use a Nullable Pointer
+
+```{.cpp}
+void curveIfPresent(int* score) {
+    if (score != nullptr) {
+        *score += 5;
+    }
+}
+```
+
+- A pointer is appropriate when `nullptr` is part of the contract.
+
+<!-- Slide 60 -->
+
+---
+
+## Guard Nullable Parameters
+
+```{.cpp}
+void printLabel(const string* label) {
+    if (label == nullptr) {
+        cout << "(unlabeled)\n";
+    } else {
+        cout << *label << "\n";
+    }
+}
+```
+
+- If the parameter can be null, the function must check before dereferencing.
+
+<!-- Slide 61 -->
+
+---
+
+## What Does `nullptr` Mean Here?
+
+```{.cpp}
+void showScore(const int* score) {
+    if (score == nullptr) {
+        cout << "score omitted\n";
+        return;
+    }
+    cout << *score << "\n";
+}
+```
+
+- The function's contract gives `nullptr` a specific meaning.
+
+<!-- Slide 62 -->
+
+---
+
+## Pointer Output Parameters
+
+```{.cpp}
+bool divide(int numerator, int denominator, double* result) {
+    if (denominator == 0) {
+        return false;
+    }
+    if (result != nullptr) {
+        *result = static_cast<double>(numerator) / denominator;
+    }
+    return true;
+}
+```
+
+<!-- Slide 63 -->
+
+---
+
+## Multiple Outputs With Pointers
+
+```{.cpp}
+void findMinMax(const int* values, int size,
+                int* minimum, int* maximum) {
+    if (size <= 0) return;
+
+    if (minimum != nullptr) *minimum = values[0];
+    if (maximum != nullptr) *maximum = values[0];
+
+    for (int i = 1; i < size; i++) {
+        if (minimum != nullptr && values[i] < *minimum)
+            *minimum = values[i];
+        if (maximum != nullptr && values[i] > *maximum)
+            *maximum = values[i];
+    }
+}
+```
+
+<!-- Slide 64 -->
+
+---
+
+## Pointer Parameters and Arrays
+
+```{.cpp}
+void printValues(const int* values, int size) {
+    for (int i = 0; i < size; i++) {
+        cout << values[i] << "\n";
+    }
+}
+
+int scores[3] = {88, 91, 76};
+printValues(scores, 3);
+```
+
+- An array argument decays to a pointer at the function boundary.
+
+<!-- Slide 65 -->
+
+---
+
+## Pointer Plus Size Contract
+
+```{.cpp}
+int scores[3] = {88, 91, 76};
+
+printValues(scores, 3); // correct
+printValues(scores, 5); // broken contract
+```
+
+- The pointer says where the range begins.
+- The size says where the valid range ends.
+
+<!-- Slide 66 -->
+
+---
+
+## Passing a Subrange
+
+```{.cpp}
+int values[6] = {10, 20, 30, 40, 50, 60};
+
+printValues(values, 6);
+printValues(values + 2, 3);
+```
+
+- The second call starts at `30` and processes three elements.
+
+<!-- Slide 67 -->
+
+---
+
+## Do Not Return Pointers to Locals
+
+```{.cpp}
+int* badPointer() {
+    int local = 42;
+    return &local;
+}
+```
+
+- `local` disappears when the function returns.
+- The returned pointer would refer to an object that no longer exists.
+
+<!-- Slide 68 -->
+
+---
+
+## Pointer Parameters in a Prototype
+
+```{.cpp}
+void printValues(const int* values, int size);
+void resetScore(int* score);
+bool divide(int numerator, int denominator, double* result);
+void printLabel(const string* label);
+```
+
+- `const` suggests read-only access.
+- A pointer suggests the target may be shared, optional, or range-like.
+
+<!-- Slide 69 -->
+
+---
+
+## Caller Responsibilities
+
+- Pass a valid address when the function requires one.
+- Pass `nullptr` only when the function contract allows it.
+- Keep pointer ranges paired with the correct boundary.
+
+<!-- Slide 70 -->
+
+---
+
+## Use the Least Powerful Parameter
+
+| Need | Prefer |
+|---|---|
+| Small input copied safely | Value |
+| Required read-only large object | `const` reference |
+| Required caller-visible change | Reference |
+| Optional object | Pointer |
+| Raw array range | Pointer plus size or begin/end |
+
+<!-- Slide 71 -->
+
+---
+
+## Passing Pointers Summary
+
+- Passing a pointer copies an address into a local parameter.
+- Changing `*ptr` can change the caller's object; changing `ptr` changes only the local pointer copy.
+
+<!-- Slide 72 -->

@@ -1,0 +1,114 @@
+<!-- Topic 3: Parameterized Constructor -->
+<!-- Total slides: 5 -->
+
+# Parameterized Constructor
+
+---
+
+## Can an object know its own data at birth? {.smaller}
+
+A parameterized constructor accepts arguments at the moment of declaration — the object is fully initialized in a single line before any other code runs.
+
+::: notes
+Total slides: 5
+This is the main event of the lecture. Students already understand function parameters; applying that knowledge to constructors is the leap. Use the Student class they have been working with since 16.01 so the upgrade from setter chain to constructor call is immediately visible.
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## Syntax {.smaller}
+
+```{.cpp}
+class ClassName {
+public:
+    ClassName(type param1, type param2) {
+        member1 = param1;
+        member2 = param2;
+    }
+};
+
+ClassName obj(value1, value2);   // arguments match constructor parameters
+```
+
++ The parameter list works exactly like any function — types, names, order.
++ Arguments are passed at the declaration: `ClassName obj(arg1, arg2)`.
+
+<!-- Slide 2 -->
+
+---
+
+## Full example — upgrading Student {.smaller}
+
+```{.cpp}
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Student {
+private:
+    string name;
+    int    grade;
+public:
+    Student(string n, int g) { name = n; grade = g; }
+    string getName()  const  { return name; }
+    int    getGrade() const  { return grade; }
+};
+
+int main() {
+    Student alice("Alice", 92);
+    Student bob("Bob",     85);
+
+    cout << alice.getName() << ": " << alice.getGrade() << "\n";
+    cout << bob.getName()   << ": " << bob.getGrade()   << "\n";
+    return 0;
+}
+```
+
+::: notes
+Copy and run. alice and bob are fully initialized at their declarations — no setter calls, no partially constructed state. The class interface is cleaner too: getName and getGrade are still the only public surface, the constructor just handles setup.
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Before and after {.smaller}
+
+```{.cpp}
+// Before — setter chain; object exists but is incomplete on line 1
+Student alice;
+alice.setName("Alice");
+alice.setGrade(92);
+
+// After — constructor; object is complete on line 1
+Student alice("Alice", 92);
+```
+
+```{.cpp}
+// Works the same with arrays and vectors
+Student roster[3] = {
+    Student("Alice", 92),
+    Student("Bob",   85),
+    Student("Carol", 97)
+};
+
+vector<Student> v;
+v.push_back(Student("Dan", 78));
+```
+
+::: notes
+The array initialization list shows that constructors work inside aggregate initializers — students can initialize an entire roster in one block. The vector push_back with a constructor call creates a temporary object inline, which is a natural pattern with vectors of objects.
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Summary {.smaller}
+
++ A parameterized constructor takes arguments at the point of declaration and initializes all members before any other code runs.
++ Constructors compose naturally with arrays and vectors — objects can be fully initialized at the point of creation regardless of how they are stored.
+
+<!-- Slide 5 -->

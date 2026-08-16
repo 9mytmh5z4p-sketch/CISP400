@@ -1,0 +1,517 @@
+<!-- Topic 1: Structures -->
+<!-- Slides 3–33 -->
+
+# Structures
+<!-- Slide 3 -->
+
+## One Employee, Three Variables {.smaller}
+
++ What keeps an ID, name, and hourly rate together as one employee?
+
+::: notes
+Slides 3–33
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## One Value Should Represent One Employee
+
++ Separate variables describe pieces of an employee.
++ A record treats those related pieces as one value.
++ Copying or moving the record keeps the pieces together.
+
+<!-- Slide 5 -->
+
+---
+
+## Generic Structure Syntax
+
+```cpp
+struct TypeName {
+    DataType memberName;
+    DataType memberName;
+};
+```
+
+<!-- Slide 6 -->
+
+---
+
+## Employee Structure Anatomy
+
+```cpp
+struct Employee {
+    int employeeID;
+    string name;
+    double hourlyRate;
+};
+```
+
+::: notes
+Label the keyword, new type name, member declarations, braces, and required semicolon.
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## A Definition Does Not Create an Employee
+
+```cpp
+struct Employee {
+    int employeeID;
+    string name;
+    double hourlyRate;
+};
+
+Employee manager;
+Employee assistant;
+```
+
+<!-- Slide 8 -->
+
+---
+
+## Defining and Declaring
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Employee {
+    int employeeID;
+    string name;
+    double hourlyRate;
+};
+
+int main() {
+    Employee worker;
+    cout << sizeof(worker) << '\n';
+    return 0;
+}
+```
+
+<!-- Slide 9 -->
+
+---
+
+## Accessing Members
+
+```cpp
+Employee worker {104, "Ana Ruiz", 27.50};
+
+cout << worker.employeeID << '\n';
+cout << worker.name << '\n';
+cout << worker.hourlyRate << '\n';
+```
+
+<!-- Slide 10 -->
+
+---
+
+## Assigning Members
+
+```cpp
+Employee worker;
+
+worker.employeeID = 104;
+worker.name = "Ana Ruiz";
+worker.hourlyRate = 27.50;
+```
+
+<!-- Slide 11 -->
+
+---
+
+## Reading a Structure from Input
+
+```cpp
+int main() {
+    Employee worker;
+
+    cout << "Employee ID: ";
+    cin >> worker.employeeID;
+    cin.ignore();
+    cout << "Name: ";
+    getline(cin, worker.name);
+    cout << "Hourly rate: ";
+    cin >> worker.hourlyRate;
+
+    cout << worker.name << ": $"
+         << worker.hourlyRate << '\n';
+    return 0;
+}
+```
+
+<!-- Slide 12 -->
+
+---
+
+## Aggregate Initialization
+
+```cpp
+Employee first {104, "Ana Ruiz", 27.50};
+Employee second {205, "Ben Lee", 31.25};
+```
+
++ Values correspond to members in declaration order.
+
+<!-- Slide 13 -->
+
+---
+
+## Initialization Follows Declaration Order
+
+```cpp
+struct Measurement {
+    double temperature;
+    int sampleNumber;
+};
+
+Measurement reading {7, 21};
+```
+
++ What values and types will the two members receive?
+
+<!-- Slide 14 -->
+
+---
+
+## Partial and Value Initialization
+
+```cpp
+Employee unknown {};
+Employee intern {301, "Kai"};
+```
+
++ Omitted numeric members are value-initialized to zero.
++ `{}` value-initializes every member.
+
+<!-- Slide 15 -->
+
+---
+
+## Copying a Structure
+
+```cpp
+Employee original {104, "Ana Ruiz", 27.50};
+Employee copy = original;
+
+copy.hourlyRate = 30.00;
+
+cout << original.hourlyRate << '\n';
+cout << copy.hourlyRate << '\n';
+```
+
+<!-- Slide 16 -->
+
+---
+
+## Comparing Structures
+
+```cpp
+bool sameEmployee(const Employee& left,
+                  const Employee& right);
+
+bool sameEmployee(const Employee& left,
+                  const Employee& right) {
+    return left.employeeID == right.employeeID;
+}
+```
+
++ Decide which members define equality for the program.
+
+<!-- Slide 17 -->
+
+---
+
+## Passing a Structure by Value
+
+```cpp
+void giveRaise(Employee worker) {
+    worker.hourlyRate += 2.00;
+}
+
+Employee worker {104, "Ana Ruiz", 27.50};
+giveRaise(worker);
+cout << worker.hourlyRate << '\n';
+```
+
+::: notes
+Trace the independent parameter copy.
+:::
+
+<!-- Slide 18 -->
+
+---
+
+## Passing by `const` Reference
+
+```cpp
+void printEmployee(const Employee& worker) {
+    cout << worker.employeeID << "  "
+         << worker.name << "  $"
+         << worker.hourlyRate << '\n';
+}
+```
+
++ Use a `const` reference when a function only reads a record.
+
+<!-- Slide 19 -->
+
+---
+
+## Modifying through a Reference
+
+```cpp
+void giveRaise(Employee& worker, double amount) {
+    worker.hourlyRate += amount;
+}
+
+Employee worker {104, "Ana Ruiz", 27.50};
+giveRaise(worker, 2.00);
+cout << worker.hourlyRate << '\n';
+```
+
+<!-- Slide 20 -->
+
+---
+
+## Returning a Structure
+
+```cpp
+Employee readEmployee();
+
+int main() {
+    Employee worker = readEmployee();
+    return 0;
+}
+
+Employee readEmployee() {
+    Employee worker;
+    cin >> worker.employeeID;
+    cin.ignore();
+    getline(cin, worker.name);
+    cin >> worker.hourlyRate;
+    return worker;
+}
+```
+
+<!-- Slide 21 -->
+
+---
+
+## Structures Can Contain Structures
+
+```cpp
+struct Date {
+    int month;
+    int day;
+    int year;
+};
+
+struct Employee {
+    int employeeID;
+    string name;
+    Date hireDate;
+};
+
+cout << worker.hireDate.year << '\n';
+```
+
+<!-- Slide 22 -->
+
+---
+
+## A Complete Employee Program
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Employee {
+    int employeeID;
+    string name;
+    double hourlyRate;
+};
+
+Employee makeEmployee(int id, string name, double rate);
+void giveRaise(Employee& worker, double amount);
+void printEmployee(const Employee& worker);
+
+int main() {
+    Employee worker = makeEmployee(104, "Ana Ruiz", 27.50);
+    giveRaise(worker, 2.00);
+    printEmployee(worker);
+    return 0;
+}
+```
+
+<!-- Slide 23 -->
+
+---
+
+## A Complete Employee Program
+
+```cpp
+Employee makeEmployee(int id, string name, double rate) {
+    Employee worker {id, name, rate};
+    return worker;
+}
+
+void giveRaise(Employee& worker, double amount) {
+    worker.hourlyRate += amount;
+}
+
+void printEmployee(const Employee& worker) {
+    cout << worker.employeeID << "  "
+         << worker.name << "  $"
+         << worker.hourlyRate << '\n';
+}
+```
+
+<!-- Slide 24 -->
+
+---
+
+## How Much Memory Does a Structure Use?
+
+```cpp
+struct Sample {
+    char code;
+    int reading;
+};
+
+cout << sizeof(char) + sizeof(int) << '\n';
+cout << sizeof(Sample) << '\n';
+```
+
++ Predict both outputs before running the program.
+
+<!-- Slide 25 -->
+
+---
+
+## Padding and Alignment
+
++ Members may need addresses aligned for efficient access.
++ The compiler may insert unused padding bytes.
++ `sizeof(StructType)` includes padding.
++ Member order can change the structure’s size.
+
+<!-- Slide 26 -->
+
+---
+
+## When Should Data Become a Structure?
+
++ The values describe one entity.
++ The values move through functions together.
++ Copying one value should copy the complete record.
++ An array cannot represent the fields because their types differ.
+
+<!-- Slide 27 -->
+
+---
+
+## Where Should the Definition Go?
+
+```cpp
+struct Employee {
+    int employeeID;
+    string name;
+    double hourlyRate;
+};
+
+void printEmployee(const Employee& worker);
+
+int main() {
+    Employee worker {};
+    printEmployee(worker);
+    return 0;
+}
+```
+
++ Define the type before prototypes that use it.
+
+<!-- Slide 28 -->
+
+---
+
+## Default Values Protect New Records
+
+```cpp
+struct Employee {
+    int employeeID = 0;
+    string name = "Unknown";
+    double hourlyRate = 0.0;
+};
+
+Employee worker;
+cout << worker.name << '\n';
+```
+
+<!-- Slide 29 -->
+
+---
+
+## Structures Can Contain Arrays
+
+```cpp
+struct Student {
+    string name;
+    int scores[3] {};
+};
+
+Student student {"Mina", {88, 91, 95}};
+cout << student.scores[1] << '\n';
+```
+
+<!-- Slide 30 -->
+
+---
+
+## Pointers to Structures
+
+```cpp
+Employee worker {104, "Ana Ruiz", 27.50};
+Employee* workerPtr = &worker;
+
+cout << (*workerPtr).name << '\n';
+cout << workerPtr->name << '\n';
+
+workerPtr->hourlyRate += 2.00;
+```
+
+<!-- Slide 31 -->
+
+---
+
+## A Structure Cannot Protect Itself Yet
+
+```cpp
+Employee worker;
+
+worker.employeeID = -9;
+worker.name = "";
+worker.hourlyRate = -500.00;
+```
+
++ Public members allow every part of the program to create invalid states.
++ This limitation motivates abstract data types and classes.
+
+<!-- Slide 32 -->
+
+---
+
+## Structures Summary
+
++ A structure defines a new type by grouping related members.
++ Dot notation selects a member; whole-record assignment copies every member.
++ Choose value, `const` reference, or reference parameters according to the function’s purpose.
+
+<!-- Slide 33 -->

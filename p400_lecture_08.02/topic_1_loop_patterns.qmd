@@ -1,0 +1,227 @@
+<!-- Topic 1: Stuff To Do With A Loop -->
+<!-- Slides 3-17 -->
+
+# Stuff To Do With A Loop
+<!-- Slide 3 -->
+
+## What Can A Loop Do? {.smaller}
+
+- A loop repeats the same kind of work.
+- The useful question is what changes each time.
+
+::: notes
+Slides 3-17
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Loop Pattern Thinking
+
+| Design Question | Why It Matters |
+|---|---|
+| What repeats? | Names the work inside the loop |
+| What changes? | Identifies the control variable or state |
+| What stops it? | Defines the loop condition |
+
+<!-- Slide 5 -->
+
+---
+
+## Counters
+
+- A counter records how many times something has happened.
+- It usually changes by `1` each time the loop body runs.
+- Counters answer "how many?"
+
+<!-- Slide 6 -->
+
+---
+
+## Counting Loop Passes
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int count = 0;
+
+    while (count < 5) {
+        cout << "Loop pass " << count + 1 << endl;
+        count++;
+    }
+
+    return 0;
+}
+```
+
+<!-- Slide 7 -->
+
+---
+
+## Running Totals
+
+- A running total accumulates values across loop passes.
+- Start the total at `0`.
+- Add the new amount each time the loop processes another value.
+
+<!-- Slide 8 -->
+
+---
+
+## Adding One Value At A Time
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int total = 0;
+
+    for (int day = 1; day <= 3; day++) {
+        int sales;
+        cout << "Sales for day " << day << ": ";
+        cin >> sales;
+        total += sales;
+    }
+
+    cout << "Total sales: " << total << endl;
+    return 0;
+}
+```
+
+<!-- Slide 9 -->
+
+---
+
+## Sentinels
+
+- A sentinel is a special value that means "stop."
+- It works when the program does not know ahead of time how much data will arrive.
+- The sentinel is not processed as regular data.
+
+<!-- Slide 10 -->
+
+---
+
+## Stopping On A Signal
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int score;
+    int total = 0;
+
+    cout << "Enter a score or -1 to stop: ";
+    cin >> score;
+
+    while (score != -1) {
+        total += score;
+        cout << "Enter a score or -1 to stop: ";
+        cin >> score;
+    }
+
+    cout << "Total: " << total << endl;
+    return 0;
+}
+```
+
+<!-- Slide 11 -->
+
+---
+
+## Flag-Controlled Loops
+
+- A flag is a `bool` variable that records whether a condition has happened.
+- The loop continues while the flag says more work is needed.
+- Flags are useful when the stopping reason is a state change.
+
+<!-- Slide 12 -->
+
+---
+
+## Finding Something
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int target = 17;
+    int value;
+    bool found = false;
+
+    while (!found && cin >> value) {
+        if (value == target) {
+            found = true;
+        }
+    }
+
+    cout << boolalpha << found << endl;
+    return 0;
+}
+```
+
+<!-- Slide 13 -->
+
+---
+
+## Tracking The Best Value
+
+- A max or min tracker remembers the best value seen so far.
+- Initialize it with the first real value when possible.
+- Compare each new value to the current best.
+
+<!-- Slide 14 -->
+
+---
+
+## Max Tracker Shape
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int highest;
+    int value;
+
+    cin >> highest;
+
+    for (int count = 2; count <= 5; count++) {
+        cin >> value;
+        if (value > highest) {
+            highest = value;
+        }
+    }
+
+    cout << "Highest: " << highest << endl;
+    return 0;
+}
+```
+
+<!-- Slide 15 -->
+
+---
+
+## Building Output Repeatedly
+
+- A loop can create visible structure by printing one piece at a time.
+- Repeated symbols can become a line, a bar, or a table.
+- This is the bridge from loop mechanics to terminal graphs.
+
+<!-- Slide 16 -->
+
+---
+
+## Summary
+
+- Counters count passes.
+- Running totals accumulate values.
+- Sentinels, flags, searches, trackers, and output builders solve different loop problems.
+
+<!-- Slide 17 -->
