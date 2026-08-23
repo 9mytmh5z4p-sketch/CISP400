@@ -69,17 +69,6 @@ This is also a good online reference: [LearnCpp](https://www.learncpp.com/).
 
 The assignment schedule and grade plan below provide a high-level overview. Canvas is the authoritative source for assignment instructions, submission details, and any updates.
 
-### Grade Plan
-
-| Assignment | Freq | Points | Total | % |
-| --- | ---: | ---: | ---: | ---: |
-| Pig | 1 | 50 | 50 | 6% |
-| Homework 1–6 | 6 | 100 | 600 | 71% |
-| Final Project | 1 | 200 | 200 | 24% |
-| **Total** | — | — | **850** | **100%** |
-
-Percentages are rounded to the nearest whole percent.
-
 ### Course Topics
 
 | Course topic | Brief summary |
@@ -91,6 +80,31 @@ Percentages are rounded to the nearest whole percent.
 | Operators, Streams, Conversions, Lambdas, Functors, and Templates | Extend class behavior through overloaded operators, stream I/O, conversion functions, callable objects, lambdas, and generic programming. |
 | Aggregation, Inheritance, and Polymorphism | Model relationships among objects, distinguish composition from inheritance, create abstract base classes, and use virtual functions for runtime behavior. |
 | Exceptions and the Standard Template Library | Handle exceptional conditions safely and use standard library containers, algorithms, and related generic programming tools. |
+
+### Reading Schedule
+
+| Week | Topics | Textbook chapters | LearnCpp material |
+| --- | --- | --- | --- |
+| Week 1 | Pointers, references, pointer parameters, memory, dynamic allocation, and dynamic arrays | Chapter 10 | [Chapter 12: Compound Types](https://www.learncpp.com/cpp-tutorial/introduction-to-compound-data-types/); [Dynamic memory allocation](https://www.learncpp.com/cpp-tutorial/dynamic-memory-allocation-with-new-and-delete/) |
+| Week 2 | Structures, classes, objects, encapsulation, methods, and abstract data types | Chapter 7 | [Chapter 13: Enums and Structs](https://www.learncpp.com/cpp-tutorial/introduction-to-program-defined-user-defined-types/); [Chapter 14: Introduction to Classes](https://www.learncpp.com/cpp-tutorial/introduction-to-object-oriented-programming/) |
+| Week 2 | Methods, constructors, destructors, dependencies, assertions, object arrays, object parameters, and RAII | Chapter 7 | [The hidden `this` pointer](https://www.learncpp.com/cpp-tutorial/the-hidden-this-pointer-and-member-function-chaining/); [Assertions](https://www.learncpp.com/cpp-tutorial/assert-and-static-assert/) |
+| Week 3 | Anonymous classes, anonymous objects, and the Adapter Pattern | Chapter 7 | [Introduction to classes](https://www.learncpp.com/cpp-tutorial/introduction-to-object-oriented-programming/); [Object relationships](https://www.learncpp.com/cpp-tutorial/object-relationships/) |
+| Week 3 | C-strings, character arrays, C-string functions, `std::string`, and numeric conversions | Chapter 12 | [Chapter 5: `std::string`](https://www.learncpp.com/cpp-tutorial/introduction-to-stdstring/); [Implicit type conversion](https://www.learncpp.com/cpp-tutorial/implicit-type-conversion/) |
+| Week 4 | Constructors, static members, the `this` pointer, and operator overloading | Chapter 11 | [The hidden `this` pointer](https://www.learncpp.com/cpp-tutorial/the-hidden-this-pointer-and-member-function-chaining/); [Chapter 21: Operator overloading](https://www.learncpp.com/cpp-tutorial/introduction-to-operator-overloading/) |
+| Week 4 | Stream operators, copy construction, deep copy, and move operations | Chapter 11 | [I/O streams](https://www.learncpp.com/cpp-tutorial/input-and-output-io-streams/); [Move semantics and smart pointers](https://www.learncpp.com/cpp-tutorial/introduction-to-smart-pointers-move-semantics/) |
+| Week 5 | Functors, algorithms, lambdas, closures, callbacks, and `std::function` | Chapter 11 | [Lambdas](https://www.learncpp.com/cpp-tutorial/introduction-to-lambdas-anonymous-functions/); [Algorithms](https://www.learncpp.com/cpp-tutorial/sorting-an-array-using-selection-sort/) |
+| Week 5 | Function templates, class templates, template argument deduction, and specialization | Chapter 16 | [Function overloading](https://www.learncpp.com/cpp-tutorial/introduction-to-function-overloading/); [Chapter 26: Templates and classes](https://www.learncpp.com/cpp-tutorial/template-classes/) |
+| Week 5 | Conversion operators, conversion constructors, object conversions, and conversion safety | Chapter 11 | [Implicit type conversion](https://www.learncpp.com/cpp-tutorial/implicit-type-conversion/); [Operator overloading](https://www.learncpp.com/cpp-tutorial/introduction-to-operator-overloading/) |
+| Week 6 | Class relationships, aggregation, composition, inheritance, and access control | Chapters 11 and 15 | [Chapter 23: Object relationships](https://www.learncpp.com/cpp-tutorial/object-relationships/); [Chapter 24: Inheritance](https://www.learncpp.com/cpp-tutorial/introduction-to-inheritance/) |
+| Week 6 | Inheritance, overriding, base-class construction, multiple inheritance, and arrays of class objects | Chapter 15 | [Introduction to inheritance](https://www.learncpp.com/cpp-tutorial/introduction-to-inheritance/); [Object relationships](https://www.learncpp.com/cpp-tutorial/object-relationships/) |
+| Week 6 | Polymorphism, virtual functions, polymorphic data structures, and inheritance design | Chapter 15 | [Chapter 25: Virtual functions](https://www.learncpp.com/cpp-tutorial/pointers-and-references-to-the-base-class-of-derived-objects/) |
+| Week 6 | Inheritance and arrays, aggregation review, and arrays of class objects | Chapter 15 | [Inheritance](https://www.learncpp.com/cpp-tutorial/introduction-to-inheritance/); [Object relationships](https://www.learncpp.com/cpp-tutorial/object-relationships/) |
+| Week 6 | Polymorphism, virtual member functions, type compatibility, and polymorphic data structures | Chapter 15 | [Virtual functions](https://www.learncpp.com/cpp-tutorial/pointers-and-references-to-the-base-class-of-derived-objects/) |
+| Week 8 | Classes, member functions, constructors, destructors, arrays, and vectors of objects | Chapters 7 and 11 | [Chapter 14: Introduction to Classes](https://www.learncpp.com/cpp-tutorial/introduction-to-object-oriented-programming/); [Chapter 15: More on Classes](https://www.learncpp.com/cpp-tutorial/the-hidden-this-pointer-and-member-function-chaining/); [Chapter 16: `std::vector`](https://www.learncpp.com/cpp-tutorial/introduction-to-stdarray/) |
+| Week 14 | Abstract classes, polymorphic arrays, object slicing, inheritance versus composition, and dynamic casting | Chapter 15 | [Virtual functions](https://www.learncpp.com/cpp-tutorial/pointers-and-references-to-the-base-class-of-derived-objects/); [Object relationships](https://www.learncpp.com/cpp-tutorial/object-relationships/) |
+| Week 14 | Exceptions, exception safety, exception hierarchies, and polymorphic exceptions | Chapter 16 | [Chapter 27: Exceptions](https://www.learncpp.com/cpp-tutorial/the-need-for-exceptions/) |
+| Week 15 | STL preview and vectors of vectors | Chapter 17 | [Containers and arrays](https://www.learncpp.com/cpp-tutorial/introduction-to-containers-and-arrays/); [`std::vector`](https://www.learncpp.com/cpp-tutorial/introduction-to-stdvector/) |
+| Week 15 | Function templates, template arguments, specialization, and generic maintenance | Chapter 16 | [Templates and classes](https://www.learncpp.com/cpp-tutorial/template-classes/) |
 
 ### Assignment Schedule
 
@@ -104,6 +118,17 @@ Percentages are rounded to the nearest whole percent.
 | Homework 5 | Aggregation, inheritance, abstract classes, and polymorphism | Sunday, November 8, 2026 | [Homework 5](https://9mytmh5z4p-sketch.github.io/CISP400/hw/Programming%20Homework%205.html) |
 | Homework 6 | Resource management, deep copy, move operations, and exceptions | Sunday, November 22, 2026 | [Homework 6](https://9mytmh5z4p-sketch.github.io/CISP400/hw/Programming%20Homework%206.html) |
 | Final Project | Genetic Algorithm Robots; introduced in late October | December 17, 2026 — last day of class | [Final Project](https://9mytmh5z4p-sketch.github.io/CISP400/hw/Programming%20Homework%20Final.html) |
+
+### Grade Plan
+
+| Assignment | Freq | Points | Total | % |
+| --- | ---: | ---: | ---: | ---: |
+| Pig | 1 | 50 | 50 | 6% |
+| Homework 1–6 | 6 | 100 | 600 | 71% |
+| Final Project | 1 | 200 | 200 | 24% |
+| **Total** | — | — | **850** | **100%** |
+
+Percentages are rounded to the nearest whole percent.
 
 ## Attendance
 
