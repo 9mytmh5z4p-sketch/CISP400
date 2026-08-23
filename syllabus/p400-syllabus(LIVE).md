@@ -106,6 +106,10 @@ The assignment schedule and grade plan below provide a high-level overview. Canv
 | Week 15 | STL preview and vectors of vectors | Chapter 17 | [Containers and arrays](https://www.learncpp.com/cpp-tutorial/introduction-to-containers-and-arrays/); [`std::vector`](https://www.learncpp.com/cpp-tutorial/introduction-to-stdvector/) |
 | Week 15 | Function templates, template arguments, specialization, and generic maintenance | Chapter 16 | [Templates and classes](https://www.learncpp.com/cpp-tutorial/template-classes/) |
 
+You are free to use the textbook or the online links. I do not expect students to read both. Reading just one should be sufficient.
+
+
+
 ### Assignment Schedule
 
 | Assignment | Focus | Due date | GitHub assignment |
