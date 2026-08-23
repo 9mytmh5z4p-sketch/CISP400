@@ -96,14 +96,14 @@ Percentages are rounded to the nearest whole percent.
 
 | Assignment | Focus | Due date | GitHub assignment |
 | --- | --- | --- | --- |
-| Programming Task: Pig | Procedural C++ refresher | Sunday, August 30, 2026 | [Pig](https://github.com/9mytmh5z4p-sketch/CISP400/blob/main/hw/Programming%20Task%20Pig.md) |
-| Homework 1 | Arrays, pointers, dynamic memory, functions, and overloading | Sunday, September 13, 2026 | [Homework 1](https://github.com/9mytmh5z4p-sketch/CISP400/blob/main/hw/Programming%20Homework%201.md) |
-| Homework 2 | Structs, classes, dependencies, assertions, and dynamic arrays | Sunday, September 27, 2026 | [Homework 2](https://github.com/9mytmh5z4p-sketch/CISP400/blob/main/hw/Programming%20Homework%202.md) |
-| Homework 3 | Stream operators, object interaction, and dynamic collections | Sunday, October 11, 2026 | [Homework 3](https://github.com/9mytmh5z4p-sketch/CISP400/blob/main/hw/Programming%20Homework%203.md) |
-| Homework 4 | Lambdas, functors, conversions, and dynamic objects | Sunday, October 25, 2026 | [Homework 4](https://github.com/9mytmh5z4p-sketch/CISP400/blob/main/hw/Programming%20Homework%204.md) |
-| Homework 5 | Aggregation, inheritance, abstract classes, and polymorphism | Sunday, November 8, 2026 | [Homework 5](https://github.com/9mytmh5z4p-sketch/CISP400/blob/main/hw/Programming%20Homework%205.md) |
-| Homework 6 | Resource management, deep copy, move operations, and exceptions | Sunday, November 22, 2026 | [Homework 6](https://github.com/9mytmh5z4p-sketch/CISP400/blob/main/hw/Programming%20Homework%206.md) |
-| Final Project | Genetic Algorithm Robots; introduced in late October | December 17, 2026 — last day of class | [Final Project](https://github.com/9mytmh5z4p-sketch/CISP400/blob/main/hw/Programming%20Homework%20Final.md) |
+| Programming Task: Pig | Procedural C++ refresher | Sunday, August 30, 2026 | [Pig](https://github.com/9mytmh5z4p-sketch/CISP400/blob/main/hw/Programming%20Task%20Pig.html) |
+| Homework 1 | Arrays, pointers, dynamic memory, functions, and overloading | Sunday, September 13, 2026 | [Homework 1](https://github.com/9mytmh5z4p-sketch/CISP400/blob/main/hw/Programming%20Homework%201.html) |
+| Homework 2 | Structs, classes, dependencies, assertions, and dynamic arrays | Sunday, September 27, 2026 | [Homework 2](https://github.com/9mytmh5z4p-sketch/CISP400/blob/main/hw/Programming%20Homework%202.html) |
+| Homework 3 | Stream operators, object interaction, and dynamic collections | Sunday, October 11, 2026 | [Homework 3](https://github.com/9mytmh5z4p-sketch/CISP400/blob/main/hw/Programming%20Homework%203.html) |
+| Homework 4 | Lambdas, functors, conversions, and dynamic objects | Sunday, October 25, 2026 | [Homework 4](https://github.com/9mytmh5z4p-sketch/CISP400/blob/main/hw/Programming%20Homework%204.html) |
+| Homework 5 | Aggregation, inheritance, abstract classes, and polymorphism | Sunday, November 8, 2026 | [Homework 5](https://github.com/9mytmh5z4p-sketch/CISP400/blob/main/hw/Programming%20Homework%205.html) |
+| Homework 6 | Resource management, deep copy, move operations, and exceptions | Sunday, November 22, 2026 | [Homework 6](https://github.com/9mytmh5z4p-sketch/CISP400/blob/main/hw/Programming%20Homework%206.html) |
+| Final Project | Genetic Algorithm Robots; introduced in late October | December 17, 2026 — last day of class | [Final Project](https://github.com/9mytmh5z4p-sketch/CISP400/blob/main/hw/Programming%20Homework%20Final.html) |
 
 ## Attendance
 
