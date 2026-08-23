@@ -1,0 +1,157 @@
+<!-- Topic: Rvalue References and Move Operations -->
+<!-- Slides 37–55 -->
+
+# Rvalue References and Move Operations
+
+![](images/source_pages/slide-37.png){width="100%" fig-alt="Rvalue References and Move Operations"}
+
+::: notes
+Slides 37–55
+Source slide 37 from the authoritative PDF.
+:::
+
+<!-- Slide 37 -->
+
+---
+
+## <span style="display:none">Source Slide 38</span>
+
+![](images/source_pages/slide-38.png){width="100%" fig-alt="Source Slide 38"}
+
+<!-- Slide 38 -->
+
+---
+
+## <span style="display:none">Source Slide 39</span>
+
+![](images/source_pages/slide-39.png){width="100%" fig-alt="Source Slide 39"}
+
+<!-- Slide 39 -->
+
+---
+
+## <span style="display:none">Source Slide 40</span>
+
+![](images/source_pages/slide-40.png){width="100%" fig-alt="Remember"}
+
+<!-- Slide 40 -->
+
+---
+
+## <span style="display:none">Source Slide 41</span>
+
+![](images/source_pages/slide-41.png){width="100%" fig-alt="Cool! Now let’s say …"}
+
+<!-- Slide 41 -->
+
+---
+
+## <span style="display:none">Source Slide 42</span>
+
+![](images/source_pages/slide-42.png){width="100%" fig-alt="We have a function call …"}
+
+<!-- Slide 42 -->
+
+---
+
+## <span style="display:none">Source Slide 43</span>
+
+![](images/source_pages/slide-43.png){width="100%" fig-alt="11.7 Rvalue References"}
+
+<!-- Slide 43 -->
+
+---
+
+## <span style="display:none">Source Slide 44</span>
+
+![](images/source_pages/slide-44.png){width="100%" fig-alt="What REALLY happens during a function call …"}
+
+<!-- Slide 44 -->
+
+---
+
+## <span style="display:none">Source Slide 45</span>
+
+![](images/source_pages/slide-45.png){width="100%" fig-alt="• lvalue - A ‘named’ variable which can be called"}
+
+<!-- Slide 45 -->
+
+---
+
+## <span style="display:none">Source Slide 46</span>
+
+![](images/source_pages/slide-46.png){width="100%" fig-alt="An lvalue reference is any value which can have a"}
+
+<!-- Slide 46 -->
+
+---
+
+## <span style="display:none">Source Slide 47</span>
+
+![](images/source_pages/slide-47.png){width="100%" fig-alt="• Normally, we can’t access rValues."}
+
+<!-- Slide 47 -->
+
+---
+
+## <span style="display:none">Source Slide 48</span>
+
+![](images/source_pages/slide-48.png){width="100%" fig-alt="Ok. So what?"}
+
+<!-- Slide 48 -->
+
+---
+
+## <span style="display:none">Source Slide 49</span>
+
+![](images/source_pages/slide-49.png){width="100%" fig-alt="A Reference Variable works here because Db"}
+
+<!-- Slide 49 -->
+
+---
+
+## <span style="display:none">Source Slide 50</span>
+
+![](images/source_pages/slide-50.png){width="100%" fig-alt="Now, what if we did this …"}
+
+<!-- Slide 50 -->
+
+---
+
+## <span style="display:none">Source Slide 51</span>
+
+![](images/source_pages/slide-51.png){width="100%" fig-alt="What happens is Foo() returns an rValue. That"}
+
+<!-- Slide 51 -->
+
+---
+
+## <span style="display:none">Source Slide 52</span>
+
+![](images/source_pages/slide-52.png){width="100%" fig-alt="Then, assignment performs another shallow copy"}
+
+<!-- Slide 52 -->
+
+---
+
+## <span style="display:none">Source Slide 53</span>
+
+![](images/source_pages/slide-53.png){width="100%" fig-alt="What do we do?"}
+
+<!-- Slide 53 -->
+
+---
+
+## <span style="display:none">Source Slide 54</span>
+
+![](images/source_pages/slide-54.png){width="100%" fig-alt="Complete setup looks like"}
+
+<!-- Slide 54 -->
+
+---
+
+## <span style="display:none">Source Slide 55</span>
+
+![](images/source_pages/slide-55.png){width="100%" fig-alt="Source Slide 55"}
+
+<!-- Slide 55 -->

@@ -1,0 +1,2 @@
+{{< include topic_function_templates.qmd >}}\n{{< include topic_class_templates.qmd >}}\n{{< include topic_template_deduction.qmd >}}\n{{< include topic_activities.qmd >}}
+

@@ -1,0 +1,85 @@
+<!-- Topic 5: Overriding Functions -->
+<!-- Slides 37–43 -->
+# Overriding Functions
+
+## Overriding Base Functions
+
+This slide develops the authoritative source material on **overriding base functions**.
+
+::: notes
+Slides 37–43
+:::
+
+<!-- Slide 37 -->
+
+---
+
+## Overriding Base Functions
+
+This slide develops the authoritative source material on **overriding base functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 38 -->
+
+---
+
+## Overriding Base Functions
+
+This slide develops the authoritative source material on **overriding base functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 39 -->
+
+---
+
+## Overriding Base Functions
+
+This slide develops the authoritative source material on **overriding base functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 40 -->
+
+---
+
+## Overriding Base Functions
+
+This slide develops the authoritative source material on **overriding base functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 41 -->
+
+---
+
+## Overriding Base Functions
+
+This slide develops the authoritative source material on **overriding base functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 42 -->
+
+---
+
+## Overriding Base Functions
+
+This slide develops the authoritative source material on **overriding base functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 43 -->

@@ -1,0 +1,73 @@
+<!-- Topic 2: Why Exceptions -->
+<!-- Slides 5–10 -->
+# Why Exceptions
+
+## Why Exceptions
+
+This slide develops the authoritative source material on **why exceptions**.
+
+::: notes
+Slides 5–10
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## Why Exceptions
+
+This slide develops the authoritative source material on **why exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Why Exceptions
+
+This slide develops the authoritative source material on **why exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## Why Exceptions
+
+This slide develops the authoritative source material on **why exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Why Exceptions
+
+This slide develops the authoritative source material on **why exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Why Exceptions
+
+This slide develops the authoritative source material on **why exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 10 -->

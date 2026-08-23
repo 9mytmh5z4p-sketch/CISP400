@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CISP 400 Fall 2026 class calendar, lecture schedule, deadlines, closures, and final-exam period.">
+  <title>CISP 400 — Object Oriented Programming in C++ Calendar</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --brand-violet: #874e9c;
+      --brand-purple: #7d279c;
+      --brand-deep: #72009c;
+      --ink: #2c2330;
+      --ink-soft: #665b69;
+      --ink-faint: #837987;
+      --paper: #f6f1f7;
+      --surface: #fffdfd;
+      --surface-2: #faf6fb;
+      --line: #ded4e1;
+      --line-strong: #bfb1c4;
+      --navy: #4b185c;
+      --navy-2: #68217e;
+      --teal: var(--brand-purple);
+      --teal-soft: #eee3f2;
+      --assignment-red: #b4233d;
+      --assignment-red-soft: #f8dfe3;
+      --amber: #a86612;
+      --amber-soft: #f7ead1;
+      --coral: #a74a3a;
+      --coral-soft: #f4dfda;
+      --slate: #3d5964;
+      --slate-soft: #e2eaed;
+      --red: #a22f2c;
+      --red-soft: #f7dfdd;
+      --green: #3f6f54;
+      --green-soft: #deece2;
+      --purple: var(--brand-deep);
+      --purple-soft: #eee1f3;
+      --blue: #315d85;
+      --blue-soft: #e1eaf2;
+      --shadow: 0 16px 42px rgba(75, 24, 92, 0.09);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 12% -10%, rgba(135, 78, 156, 0.12), transparent 27rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    button, select, a { font: inherit; }
+
+    button { color: inherit; }
+
+    a { color: inherit; }
+
+    :focus-visible {
+      outline: 3px solid var(--brand-deep);
+      outline-offset: 2px;
+    }
+
+    .site-header :focus-visible,
+    .details-hero :focus-visible,
+    .site-footer :focus-visible { outline-color: #fff; }
+
+    .site-header {
+      color: #fff;
+      background:
+        linear-gradient(115deg, rgba(255,255,255,0.035) 0 20%, transparent 20% 100%),
+        linear-gradient(120deg, var(--navy) 0%, var(--brand-deep) 58%, var(--brand-violet) 100%);
+      border-bottom: 4px solid #b78ac7;
+    }
+
+    .header-inner,
+    .page-shell,
+    .term-strip-inner,
+    .footer-inner {
+      width: min(1520px, 100%);
+      margin: 0 auto;
+    }
+
+    .header-inner {
+      min-height: 92px;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 52px;
+      height: auto;
+      max-height: 59px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(38, 7, 50, 0.24));
+      flex: 0 0 auto;
+    }
+
+    .brand-kicker {
+      margin: 0 0 2px;
+      color: #f0e6f3;
+      font-size: 0.75rem;
+      font-weight: 750;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.35rem, 2vw, 2rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .term-select {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 12px;
+      color: #fff;
+      background: rgba(72, 18, 91, 0.55);
+      border: 1px solid rgba(255,255,255,0.26);
+      border-radius: 9px;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .header-link {
+      padding: 9px 12px;
+      border-radius: 9px;
+      color: #f0e6f3;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .header-link:hover { background: rgba(255,255,255,0.08); color: #fff; }
+
+    .header-link[aria-current="page"] {
+      color: #fff;
+      background: rgba(255,255,255,0.13);
+    }
+
+    .term-strip {
+      background: #f0e8f3;
+      border-bottom: 1px solid #d8c7de;
+    }
+
+    .term-strip-inner {
+      min-height: 62px;
+      padding: 10px 32px;
+      display: grid;
+      grid-template-columns: minmax(260px, 0.9fr) minmax(390px, 1.3fr) auto;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .term-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #c17b23;
+      box-shadow: 0 0 0 4px rgba(193,123,35,0.13);
+      flex: 0 0 auto;
+    }
+
+    .term-status strong { font-size: 0.92rem; }
+    .term-status span { color: var(--ink-soft); font-size: 0.82rem; }
+
+    .progress-wrap { min-width: 0; }
+
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--ink-soft);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .progress-track {
+      position: relative;
+      height: 5px;
+      margin-top: 6px;
+      border-radius: 99px;
+      background: #d8c7de;
+      overflow: hidden;
+    }
+
+    .progress-fill { width: 0%; height: 100%; background: var(--teal); }
+
+    .today-stamp {
+      color: var(--ink-soft);
+      font-size: 0.79rem;
+      white-space: nowrap;
+    }
+
+    .today-stamp strong { color: var(--ink); }
+
+    .page-shell { padding: 24px 32px 70px; }
+
+    .calendar-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 365px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .calendar-panel,
+    .details-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .calendar-toolbar {
+      padding: 16px 18px 13px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #fffdfd, #faf7fb);
+    }
+
+    .toolbar-top {
+      display: grid;
+      grid-template-columns: auto minmax(180px, 1fr) auto;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .month-stepper { display: flex; gap: 6px; }
+
+    .icon-button,
+    .today-button,
+    .month-button,
+    .view-link {
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      background: var(--surface);
+      cursor: pointer;
+      font-weight: 750;
+    }
+
+    .icon-button {
+      width: 35px;
+      height: 35px;
+      display: grid;
+      place-items: center;
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+
+    .icon-button:hover,
+    .today-button:hover,
+    .month-button:hover,
+    .view-link:hover { border-color: var(--teal); color: var(--teal); }
+
+    .icon-button:disabled { opacity: 0.32; cursor: not-allowed; }
+
+    .month-heading { min-width: 0; }
+
+    .month-heading h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.35rem, 2vw, 1.8rem);
+      line-height: 1.15;
+      font-weight: 600;
+    }
+
+    .month-heading p {
+      margin: 3px 0 0;
+      color: var(--ink-soft);
+      font-size: 0.78rem;
+    }
+
+    .toolbar-actions { display: flex; align-items: center; gap: 7px; }
+
+    .today-button,
+    .view-link {
+      padding: 7px 10px;
+      text-decoration: none;
+      font-size: 0.78rem;
+    }
+
+    .month-jump {
+      margin-top: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .month-buttons { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+
+    .month-button {
+      min-width: 42px;
+      padding: 5px 9px;
+      border-color: transparent;
+      background: transparent;
+      color: var(--ink-soft);
+      font-size: 0.76rem;
+    }
+
+    .month-button[aria-pressed="true"] {
+      color: #fff;
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+
+    .legend {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      flex-wrap: wrap;
+      color: var(--ink-soft);
+      font-size: 0.68rem;
+      font-weight: 700;
+    }
+
+    .legend-item { display: inline-flex; align-items: center; gap: 5px; }
+
+    .legend-swatch {
+      width: 9px;
+      height: 9px;
+      border-radius: 2px;
+      border: 1px solid rgba(23,40,40,0.12);
+    }
+
+    .swatch-lecture { background: var(--teal-soft); }
+    .swatch-homework { background: var(--assignment-red-soft); }
+    .swatch-deadline { background: var(--red-soft); }
+    .swatch-closure { background: var(--green-soft); }
+    .swatch-exam { background: var(--purple-soft); }
+
+    .weekday-row,
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+    }
+
+    .weekday-row {
+      background: #f4eff5;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .weekday {
+      padding: 8px 8px;
+      color: var(--ink-soft);
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .weekday.meeting-weekday {
+      color: var(--teal);
+      background: #eee3f2;
+      box-shadow: inset 0 -3px 0 var(--teal);
+    }
+
+    .weekday.meeting-weekday span {
+      display: block;
+      margin-top: 2px;
+      font-size: 0.51rem;
+      letter-spacing: 0.05em;
+    }
+
+    .calendar-grid { background: var(--line); gap: 1px; }
+
+    .calendar-row { display: contents; }
+
+    .day-cell {
+      position: relative;
+      min-width: 0;
+      min-height: 102px;
+      padding: 6px;
+      background: var(--surface);
+      isolation: isolate;
+    }
+
+    .day-cell.meeting-column { background: #fdfafd; }
+
+    .day-cell.meeting-column.outside { background: #f3edf5; }
+
+    .day-cell.class-meeting {
+      box-shadow: inset 0 3px 0 var(--week-color);
+    }
+
+    .day-cell.no-class {
+      background:
+        repeating-linear-gradient(-45deg, rgba(63,111,84,0.08) 0 7px, rgba(63,111,84,0.02) 7px 14px),
+        var(--green-soft);
+      box-shadow: inset 0 0 0 2px rgba(63,111,84,0.42);
+    }
+
+    .day-cell.outside { background: #f6f5f0; color: var(--ink-faint); }
+
+    .day-cell.instructional::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      opacity: 0.48;
+      background: linear-gradient(180deg, var(--week-tint) 0 3px, transparent 3px 100%);
+    }
+
+    .day-cell.selected { box-shadow: inset 0 0 0 2px var(--teal); z-index: 2; }
+
+    .date-row {
+      min-height: 27px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+    }
+
+    .date-button {
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      color: inherit;
+      background: transparent;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-weight: 760;
+    }
+
+    .date-button:hover { background: #eee5f1; }
+
+    .today .date-button {
+      color: #fff;
+      background: var(--coral);
+      box-shadow: 0 0 0 3px var(--coral-soft);
+    }
+
+    .week-tag {
+      color: var(--ink-soft);
+      font-size: 0.59rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .cell-items { display: grid; gap: 3px; }
+
+    .week-block {
+      min-width: 0;
+      padding: 5px 6px 6px;
+      border-left: 3px solid var(--week-color);
+      border-radius: 5px;
+      background: var(--week-bg);
+    }
+
+    .lecture-block {
+      min-width: 0;
+      padding: 6px;
+      border-left: 3px solid var(--week-color);
+      border-radius: 5px;
+      background: var(--week-bg);
+    }
+
+    .lecture-block .lecture-day-label {
+      display: block;
+      color: var(--week-color);
+      font-size: 0.56rem;
+      font-weight: 850;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .lecture-block .mini-lecture {
+      margin-top: 3px;
+      white-space: normal;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .week-block-button {
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      text-align: left;
+      font-size: 0.62rem;
+      font-weight: 850;
+      letter-spacing: 0.02em;
+      line-height: 1.25;
+    }
+
+    .week-block-button:hover { text-decoration: underline; }
+
+    .mini-lecture {
+      display: block;
+      min-width: 0;
+      margin-top: 2px;
+      color: var(--ink);
+      font-size: 0.62rem;
+      font-weight: 660;
+      line-height: 1.25;
+      text-decoration: none;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .mini-lecture:hover { color: var(--teal); text-decoration: underline; }
+
+    .mini-lecture span { color: var(--ink-soft); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+    .event-pill {
+      width: 100%;
+      min-width: 0;
+      padding: 4px 5px;
+      border: 0;
+      border-radius: 5px;
+      cursor: pointer;
+      color: var(--ink);
+      text-align: left;
+      font-size: 0.61rem;
+      font-weight: 760;
+      line-height: 1.2;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .event-pill:hover { filter: saturate(1.2) brightness(0.98); }
+    .event-homework { background: var(--assignment-red-soft); border-left: 3px solid var(--assignment-red); }
+    .event-deadline { background: var(--red-soft); border-left: 3px solid var(--red); }
+    .event-holiday, .event-recess { background: var(--green-soft); border-left: 3px solid var(--green); }
+    .event-exam { background: var(--purple-soft); border-left: 3px solid var(--purple); }
+    .event-term { background: var(--blue-soft); border-left: 3px solid var(--blue); }
+    .event-office { background: var(--amber-soft); border-left: 3px solid var(--amber); }
+
+    .mobile-indicators { display: none; }
+
+    .details-panel {
+      position: sticky;
+      top: 18px;
+    }
+
+    .details-hero {
+      padding: 20px 21px 18px;
+      color: #fff;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.09), transparent 46%),
+        linear-gradient(135deg, var(--navy), var(--brand-deep));
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #dfc9e7;
+      font-size: 0.66rem;
+      font-weight: 850;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .details-hero h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.65rem;
+      line-height: 1.07;
+      font-weight: 600;
+    }
+
+    .details-hero .hero-subtitle {
+      margin: 8px 0 0;
+      color: #eee2f2;
+      font-size: 0.8rem;
+    }
+
+    .countdown {
+      margin-top: 16px;
+      padding-top: 13px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      border-top: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .countdown strong {
+      color: #e4bff0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .countdown span { color: #eee2f2; font-size: 0.72rem; }
+
+    .details-body { padding: 18px 21px 21px; }
+
+    .details-section + .details-section {
+      margin-top: 18px;
+      padding-top: 17px;
+      border-top: 1px solid var(--line);
+    }
+
+    .details-section h3 {
+      margin: 0 0 9px;
+      color: var(--ink-soft);
+      font-size: 0.67rem;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .empty-note {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 0.78rem;
+      line-height: 1.5;
+    }
+
+    .detail-event-list,
+    .detail-lecture-list,
+    .upcoming-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .detail-event {
+      padding: 9px 10px;
+      border-left: 3px solid var(--event-color);
+      border-radius: 6px;
+      background: var(--event-bg);
+    }
+
+    .detail-event strong { display: block; font-size: 0.78rem; }
+    .detail-event span { display: block; margin-top: 2px; color: var(--ink-soft); font-size: 0.7rem; }
+
+    .week-detail {
+      padding: 11px;
+      border-radius: 8px;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+    }
+
+    .week-detail-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .week-detail-top strong { font-size: 0.82rem; }
+    .week-detail-top span { color: var(--ink-soft); font-size: 0.67rem; }
+
+    .detail-lecture-link {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr) auto;
+      align-items: start;
+      gap: 7px;
+      padding: 6px 0;
+      color: var(--ink);
+      text-decoration: none;
+      border-top: 1px solid var(--line);
+      font-size: 0.72rem;
+      font-weight: 690;
+      line-height: 1.32;
+    }
+
+    .detail-lecture-link:first-child { border-top: 0; }
+    .detail-lecture-link:hover { color: var(--teal); }
+    .inventory-topics {
+      display: block;
+      margin-top: 4px;
+      color: var(--ink-soft);
+      font-size: 0.7rem;
+      font-weight: 650;
+      line-height: 1.35;
+    }
+
+    .lecture-code {
+      color: var(--ink-soft);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.65rem;
+      font-weight: 800;
+    }
+
+    .external-mark { color: var(--ink-faint); }
+
+    .no-class-row {
+      padding: 6px 0;
+      color: var(--ink-soft);
+      font-size: 0.72rem;
+      font-style: italic;
+      border-top: 1px solid var(--line);
+    }
+
+    .upcoming-item {
+      display: grid;
+      grid-template-columns: 53px minmax(0, 1fr);
+      gap: 9px;
+      align-items: start;
+    }
+
+    .upcoming-date {
+      padding-top: 1px;
+      color: var(--teal);
+      font-size: 0.65rem;
+      font-weight: 850;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .upcoming-copy strong { display: block; font-size: 0.73rem; line-height: 1.25; }
+    .upcoming-copy span { color: var(--ink-soft); font-size: 0.66rem; }
+
+    .calendar-note {
+      margin: 12px 4px 0;
+      color: var(--ink-soft);
+      font-size: 0.72rem;
+    }
+
+    .semester-section,
+    .dates-section {
+      margin-top: 48px;
+      scroll-margin-top: 20px;
+    }
+
+    .section-intro {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 18px;
+      padding-bottom: 13px;
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .section-kicker {
+      margin: 0 0 4px;
+      color: var(--teal);
+      font-size: 0.68rem;
+      font-weight: 850;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .section-intro h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.6rem, 2.4vw, 2.25rem);
+      line-height: 1.1;
+      font-weight: 600;
+    }
+
+    .section-intro p:last-child {
+      max-width: 560px;
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 0.78rem;
+      text-align: right;
+    }
+
+    .semester-groups {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .semester-group {
+      border-top: 5px solid var(--group-color);
+      background: var(--surface);
+      border-radius: 4px 4px 14px 14px;
+      box-shadow: 0 8px 28px rgba(75,24,92,0.07);
+      overflow: hidden;
+    }
+
+    .group-heading {
+      padding: 15px 17px 13px;
+      background: var(--group-bg);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .group-heading .group-range {
+      display: block;
+      color: var(--ink-soft);
+      font-size: 0.62rem;
+      font-weight: 850;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .group-heading h3 {
+      margin: 3px 0 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.12rem;
+      font-weight: 600;
+    }
+
+    .group-heading p {
+      margin: 4px 0 0;
+      color: var(--ink-soft);
+      font-size: 0.68rem;
+    }
+
+    .semester-week-list { list-style: none; padding: 0; margin: 0; }
+
+    .semester-week {
+      display: grid;
+      grid-template-columns: 66px minmax(0, 1fr);
+      gap: 12px;
+      padding: 13px 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .semester-week:first-child { border-top: 0; }
+
+    .week-index {
+      color: var(--group-color);
+      font-size: 0.68rem;
+      font-weight: 850;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .week-index span {
+      display: block;
+      margin-top: 2px;
+      color: var(--ink-soft);
+      font-size: 0.61rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .week-copy h4 { margin: 0 0 5px; font-size: 0.78rem; line-height: 1.25; }
+
+    .week-lecture-links { display: grid; gap: 3px; }
+
+    .week-lecture-links a {
+      color: var(--ink-soft);
+      font-size: 0.68rem;
+      line-height: 1.28;
+      text-decoration: none;
+    }
+
+    .week-lecture-links a:hover { color: var(--teal); text-decoration: underline; }
+    .week-lecture-links code { color: var(--ink); font-size: 0.62rem; font-weight: 750; }
+
+    .week-lecture-links time {
+      display: inline-block;
+      min-width: 46px;
+      margin-right: 5px;
+      color: var(--teal);
+      font-size: 0.61rem;
+      font-weight: 800;
+    }
+
+    .week-schedule-note {
+      color: var(--ink-soft);
+      font-size: 0.66rem;
+      font-style: italic;
+      line-height: 1.3;
+    }
+
+    .dates-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .date-card {
+      padding: 17px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 13px;
+    }
+
+    .date-card h3 {
+      margin: 0 0 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .date-list { list-style: none; padding: 0; margin: 0; }
+
+    .date-list li {
+      display: grid;
+      grid-template-columns: 86px minmax(0, 1fr);
+      gap: 10px;
+      padding: 9px 0;
+      border-top: 1px solid var(--line);
+      font-size: 0.72rem;
+    }
+
+    .date-list li:first-child { border-top: 0; padding-top: 0; }
+    .date-list time { color: var(--teal); font-weight: 820; }
+    .date-list span { color: var(--ink-soft); }
+
+    .site-footer {
+      margin-top: 55px;
+      color: #eee3f2;
+      background: var(--navy);
+    }
+
+    .footer-inner {
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      font-size: 0.74rem;
+    }
+
+    .footer-inner p { margin: 0; }
+    .footer-inner a { color: #e2b9ef; font-weight: 750; }
+
+    @media (max-width: 1180px) {
+      .calendar-layout { grid-template-columns: minmax(0, 1fr) 330px; }
+      .term-strip-inner { grid-template-columns: 1fr 1.2fr; }
+      .today-stamp { display: none; }
+      .semester-groups { grid-template-columns: 1fr 1fr; }
+      .semester-group:last-child { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 920px) {
+      .calendar-layout { grid-template-columns: 1fr; }
+      .details-panel { position: static; }
+      .semester-groups, .dates-grid { grid-template-columns: 1fr; }
+      .semester-group:last-child { grid-column: auto; }
+      .section-intro { align-items: start; flex-direction: column; }
+      .section-intro p:last-child { text-align: left; }
+    }
+
+    @media (max-width: 700px) {
+      .header-inner, .term-strip-inner, .page-shell, .footer-inner { padding-left: 15px; padding-right: 15px; }
+      .header-inner { align-items: flex-start; flex-direction: column; gap: 12px; }
+      .header-actions { width: 100%; justify-content: flex-start; }
+      .term-strip-inner { grid-template-columns: 1fr; gap: 10px; padding-top: 12px; padding-bottom: 12px; }
+      .toolbar-top { grid-template-columns: auto minmax(0, 1fr); }
+      .toolbar-actions { grid-column: 1 / -1; }
+      .month-jump { align-items: flex-start; flex-direction: column; }
+      .weekday { padding: 7px 2px; text-align: center; font-size: 0.56rem; letter-spacing: 0.02em; }
+      .day-cell { min-height: 53px; padding: 3px; }
+      .date-row { min-height: 30px; align-items: flex-start; justify-content: center; }
+      .date-button { width: 26px; height: 26px; font-size: 0.68rem; }
+      .week-tag, .cell-items { display: none; }
+      .mobile-indicators { display: flex; min-height: 12px; align-items: center; justify-content: center; gap: 3px; }
+      .mobile-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--dot-color); }
+      .details-hero h2 { font-size: 1.45rem; }
+      .semester-week { grid-template-columns: 60px minmax(0,1fr); }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 420px) {
+      .page-shell { padding-top: 14px; }
+      .calendar-toolbar { padding: 13px 11px 11px; }
+      .calendar-layout { gap: 13px; }
+      .month-heading p { display: none; }
+      .legend { gap: 7px; }
+      .legend-item { font-size: 0.61rem; }
+      .view-link { display: none; }
+      .date-card { padding: 14px; }
+      .date-list li { grid-template-columns: 76px minmax(0,1fr); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <img class="brand-mark" src="img/p400%20ISO_C%2B%2B_Logo.png" alt="" width="638" height="718">
+        <div>
+          <p class="brand-kicker">Folsom Lake College · CISP 400</p>
+          <h1>Object Oriented Programming in C++</h1>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span class="term-select" aria-label="Current semester">Fall 2026</span>
+        <a class="header-link" href="calendar.html" aria-current="page">Calendar</a>
+        <a class="header-link" href="map.html">Course map</a>
+        <a class="header-link" href="#key-dates">Key dates</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="term-strip">
+    <div class="term-strip-inner">
+      <div class="term-status">
+        <span class="status-dot" id="term-status-dot" aria-hidden="true"></span>
+        <div><strong id="term-state">Fall 2026</strong><br><span id="term-next">Loading the current course status…</span></div>
+      </div>
+      <div class="progress-wrap" id="term-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Full term runs August 22 through December 17, 2026.">
+        <div class="progress-labels"><span>Aug 22 · Classes start</span><span>Dec 17 · Last day</span></div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+      </div>
+      <div class="today-stamp" id="today-stamp">Today</div>
+    </div>
+  </div>
+
+  <main class="page-shell">
+    <div class="calendar-layout">
+      <section class="calendar-panel" aria-labelledby="month-title">
+        <div class="calendar-toolbar">
+          <div class="toolbar-top">
+            <div class="month-stepper" aria-label="Move between months">
+              <button class="icon-button" id="previous-month" type="button" aria-label="Previous month">&#8249;</button>
+              <button class="icon-button" id="next-month" type="button" aria-label="Next month">&#8250;</button>
+            </div>
+            <div class="month-heading">
+              <h2 id="month-title">August 2026</h2>
+              <p id="month-caption">Pre-semester → opening weeks 1–2</p>
+            </div>
+            <div class="toolbar-actions">
+              <button class="today-button" id="today-button" type="button">Today</button>
+              <a class="view-link" href="map.html">Course map</a>
+            </div>
+          </div>
+          <div class="month-jump">
+            <div class="month-buttons" id="month-buttons" aria-label="Choose a month"></div>
+            <div class="legend" aria-label="Calendar legend">
+              <span class="legend-item"><span class="legend-swatch swatch-lecture"></span>Class meeting</span>
+              <span class="legend-item"><span class="legend-swatch swatch-homework"></span>Assignment due</span>
+              <span class="legend-item"><span class="legend-swatch swatch-deadline"></span>Deadline</span>
+              <span class="legend-item"><span class="legend-swatch swatch-closure"></span>Closure</span>
+              <span class="legend-item"><span class="legend-swatch swatch-exam"></span>Finals</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="weekday-row" aria-hidden="true">
+          <div class="weekday">Sun</div><div class="weekday meeting-weekday">Mon<span>Class</span></div><div class="weekday">Tue</div>
+          <div class="weekday meeting-weekday">Wed<span>Class</span></div><div class="weekday">Thu</div><div class="weekday">Fri</div><div class="weekday">Sat</div>
+        </div>
+        <div class="calendar-grid" id="calendar-grid" role="grid" aria-labelledby="month-title"></div>
+      </section>
+
+      <aside class="details-panel" aria-label="Selected date and agenda" aria-live="polite">
+        <div class="details-hero">
+          <p class="eyebrow" id="detail-eyebrow">Today</p>
+          <h2 id="detail-date">Current date</h2>
+          <p class="hero-subtitle" id="detail-subtitle">Loading the current course status.</p>
+          <div class="countdown" id="countdown"><strong>—</strong><span>course calendar<br>status</span></div>
+        </div>
+        <div class="details-body">
+          <section class="details-section" id="day-events-section">
+            <h3>On this date</h3>
+            <div id="day-events"></div>
+          </section>
+          <section class="details-section" id="week-section">
+            <h3>Class meeting</h3>
+            <div id="week-detail"></div>
+          </section>
+          <section class="details-section">
+            <h3>Coming up</h3>
+            <ol class="upcoming-list" id="upcoming-list"></ol>
+          </section>
+        </div>
+      </aside>
+    </div>
+
+    <p class="calendar-note">CISP 400 meets Mondays and Wednesdays. Each lecture is placed on its scheduled class date; striped holiday dates are no-class meetings.</p>
+
+    <section class="dates-section" id="key-dates" aria-labelledby="dates-heading">
+      <div class="section-intro">
+        <div>
+          <p class="section-kicker">Keep in view</p>
+          <h2 id="dates-heading">Dates that shape the term</h2>
+        </div>
+        <p>Assignment due dates, official semester deadlines, campus closures, finals, and post-term dates remain visible beside the lecture sequence.</p>
+      </div>
+      <div class="dates-grid">
+        <article class="date-card">
+          <h3>Assignments Due</h3>
+          <ul class="date-list">
+            <li><time datetime="2026-08-30">Aug 30</time><span>Programming Task: Pig.</span></li>
+            <li><time datetime="2026-09-13">Sep 13</time><span>Homework 1.</span></li>
+            <li><time datetime="2026-09-27">Sep 27</time><span>Homework 2.</span></li>
+            <li><time datetime="2026-10-11">Oct 11</time><span>Homework 3.</span></li>
+            <li><time datetime="2026-10-25">Oct 25</time><span>Homework 4.</span></li>
+            <li><time datetime="2026-11-08">Nov 8</time><span>Homework 5.</span></li>
+            <li><time datetime="2026-11-22">Nov 22</time><span>Homework 6.</span></li>
+            <li><time datetime="2026-12-17">Dec 17</time><span>Final Project.</span></li>
+          </ul>
+        </article>
+        <article class="date-card">
+          <h3>Enrollment &amp; Refunds</h3>
+          <ul class="date-list">
+            <li><time datetime="2026-08-22">Aug 22</time><span>Classes start.</span></li>
+            <li><time datetime="2026-09-04">Sep 4</time><span>Last day to return a parking permit for refund; last day to drop and qualify for a tuition refund.</span></li>
+            <li><time datetime="2026-09-06">Sep 6</time><span>Last day to drop without notation on record; last day to enroll in classes.</span></li>
+            <li><time datetime="2026-11-17">Nov 17</time><span>Last day to withdraw with a “W” notation on record.</span></li>
+          </ul>
+        </article>
+        <article class="date-card">
+          <h3>Campus Closures</h3>
+          <ul class="date-list">
+            <li><time datetime="2026-09-07">Sep 7</time><span>Labor Day. No classes; offices closed.</span></li>
+            <li><time datetime="2026-11-11">Nov 11</time><span>Veterans Day. No classes; offices closed.</span></li>
+            <li><time datetime="2026-11-26">Nov 26–29</time><span>Thanksgiving Recess. No classes; offices closed.</span></li>
+            <li><time datetime="2026-12-18">Dec 18–Jan 3</time><span>Winter Recess. Offices are open December 18, 21, and 22.</span></li>
+          </ul>
+        </article>
+        <article class="date-card">
+          <h3>Finals &amp; Closeout</h3>
+          <ul class="date-list">
+            <li><time datetime="2026-12-11">Dec 11–17</time><span>Final exams.</span></li>
+            <li><time datetime="2026-12-17">Dec 17</time><span>Last day of classes; pass/no-pass petition deadline; last day to submit a refund request to Business Services.</span></li>
+            <li><time datetime="2027-01-04">Jan 4, 2027</time><span>Grades due.</span></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>CISP 400 · Object Oriented Programming in C++ · Fall 2026</p>
+      <p>Full term: August 22–December 17, 2026</p>
+    </div>
+  </footer>
+
+  <script src="p400_inventory.js"></script>
+  <script>
+    (() => {
+      "use strict";
+
+      const BASE = "./";
+      const currentMoment = new Date();
+      const TODAY = `${currentMoment.getFullYear()}-${String(currentMoment.getMonth() + 1).padStart(2, "0")}-${String(currentMoment.getDate()).padStart(2, "0")}`;
+
+      const sectionMeta = {
+        foundations: {
+          title: "C++ is like other languages",
+          subtitle: "Build fluency with familiar programming structures.",
+          color: "#a86612",
+          bg: "#f7ead1",
+          tint: "#d59b4a"
+        },
+        control: {
+          title: "Controlled De-Abstraction",
+          subtitle: "Now we look at what the abstraction was hiding.",
+          color: "#a74a3a",
+          bg: "#f4dfda",
+          tint: "#cb7b6c"
+        },
+        power: {
+          title: "Raw Power",
+          subtitle: "This is why STL was invented.",
+          color: "#3d5964",
+          bg: "#e2eaed",
+          tint: "#6f8992"
+        }
+      };
+
+      const sessionDates = {
+        "01.01": "2026-08-24", "01.02": "2026-08-26",
+        "02.01": "2026-08-31", "02.02": "2026-09-02",
+        "03.01": "2026-09-09", "03.02": "2026-09-14",
+        "04.01": "2026-09-16", "04.02": "2026-09-21",
+        "05.01": "2026-09-23", "05.02": "2026-09-28",
+        "06.01": "2026-09-30", "06.02": "2026-10-05",
+        "07.01": "2026-10-07", "07.02": "2026-10-12",
+        "08.01": "2026-10-14", "08.02": "2026-10-19",
+        "09.01": "2026-10-21", "10.01": "2026-10-26",
+        "11.01": "2026-10-28", "11.02": "2026-11-02",
+        "12.01": "2026-11-04", "13.01": "2026-11-09",
+        "13.02": "2026-11-16", "14.01": "2026-11-18",
+        "14.02": "2026-11-23", "15.01": "2026-11-25",
+        "15.02": "2026-11-30", "16.01": "2026-12-02",
+        "16.02": "2026-12-07", "17.01": "2026-12-09"
+      };
+
+      const lecture = (id, title) => ({
+        id,
+        title: window.P400_LECTURE_TITLES[id] || title,
+        date: sessionDates[id],
+        href: `${BASE}p400_lecture_${id}/p400_lecture_${id}.html`,
+        topics: window.P400_INVENTORY[id] || []
+      });
+
+      const weeks = [
+        { n: 1, start: "2026-08-24", end: "2026-08-26", section: "foundations", label: "Introduction to C++", lectures: [
+          lecture("01.01", "Introduction to Structured Programming"),
+          lecture("01.02", "Variables, Types, and Arithmetic")
+        ]},
+        { n: 2, start: "2026-08-31", end: "2026-09-02", section: "foundations", label: "Variables and the Terminal", lectures: [
+          lecture("02.01", "Variable Details — Conversion, Overflow, and Memory"),
+          lecture("02.02", "Terminal Interactions and Colors")
+        ]},
+        { n: 3, start: "2026-09-07", end: "2026-09-09", section: "foundations", label: "Labor Day and Software Design", note: "Mon Sep 7 · Labor Day — no class", lectures: [
+          lecture("03.01", "Software Design")
+        ]},
+        { n: 4, start: "2026-09-14", end: "2026-09-16", section: "foundations", label: "Vectors and Modular Programs", lectures: [
+          lecture("03.02", "Vectors and Range-Based Loops"),
+          lecture("04.01", "Modular Programming")
+        ]},
+        { n: 5, start: "2026-09-21", end: "2026-09-23", section: "foundations", label: "Modular Design and Advanced Functions", lectures: [
+          lecture("04.02", "Modular Design"),
+          lecture("05.01", "Advanced Functions")
+        ]},
+        { n: 6, start: "2026-09-28", end: "2026-09-30", section: "foundations", label: "Overloading and Design Patterns", lectures: [
+          lecture("05.02", "Overloading"),
+          lecture("06.01", "Design Patterns")
+        ]},
+        { n: 7, start: "2026-10-05", end: "2026-10-07", section: "control", label: "Conditional Logic", lectures: [
+          lecture("06.02", "Conditionals"),
+          lecture("07.01", "Conditionals, Part 2")
+        ]},
+        { n: 8, start: "2026-10-12", end: "2026-10-14", section: "control", label: "Iteration and Nested Loops", lectures: [
+          lecture("07.02", "Iteration"),
+          lecture("08.01", "Nested Loops and Multi-Dimensional Vectors")
+        ]},
+        { n: 9, start: "2026-10-19", end: "2026-10-21", section: "control", label: "Menus and Reliable Loops", lectures: [
+          lecture("08.02", "Menu Driven Programming"),
+          lecture("09.01", "Loop Control and Input Validation")
+        ]},
+        { n: 10, start: "2026-10-26", end: "2026-10-28", section: "control", label: "Files and String Streams", lectures: [
+          lecture("10.01", "File I/O and Assertions"),
+          lecture("11.01", "String Streams and Random Access")
+        ]},
+        { n: 11, start: "2026-11-02", end: "2026-11-04", section: "power", label: "Arrays and Algorithms", lectures: [
+          lecture("11.02", "Arrays and Indexing"),
+          lecture("12.01", "Array Functions, Algorithms, and Parallel Arrays")
+        ]},
+        { n: 12, start: "2026-11-09", end: "2026-11-11", section: "power", label: "Modern Arrays and Veterans Day", note: "Wed Nov 11 · Veterans Day — no class", lectures: [
+          lecture("13.01", "Week 13, Lecture 01 – Multidimensional and Modern Arrays")
+        ]},
+        { n: 13, start: "2026-11-16", end: "2026-11-18", section: "power", label: "Pointer Foundations", lectures: [
+          lecture("13.02", "Week 13, Lecture 02 – Pointer Foundations"),
+          lecture("14.01", "Week 14, Lecture 01 – Array Decay, Null Pointers, and Passing Pointers")
+        ]},
+        { n: 14, start: "2026-11-23", end: "2026-11-25", section: "power", label: "Dynamic Memory", note: "Thanksgiving Recess begins Thu Nov 26", lectures: [
+          lecture("14.02", "Dynamic Memory and Smart Pointers"),
+          lecture("15.01", "Pseudodynamic and Dynamic Memory")
+        ]},
+        { n: 15, start: "2026-11-30", end: "2026-12-02", section: "power", label: "Records and Classes", lectures: [
+          lecture("15.02", "Structures, Binary Records, and ADTs"),
+          lecture("16.01", "Classes & Member Functions")
+        ]},
+        { n: 16, start: "2026-12-07", end: "2026-12-09", section: "power", label: "Object Lifecycles and Collections", lectures: [
+          lecture("16.02", "Constructors & Destructors"),
+          lecture("17.01", "Arrays & Vectors of Objects")
+        ]},
+        { n: 17, start: "2026-12-14", end: "2026-12-16", section: "power", label: "Finals Period", note: "Exact CISP 400 final exam date and time are not yet assigned", lectures: [] }
+      ];
+
+      const classMeetings = weeks.flatMap(week => week.lectures.map(item => ({ ...item, week })));
+      const meetingByDate = Object.fromEntries(classMeetings.map(item => [item.date, item]));
+
+      const eventMeta = {
+        homework: { color: "#b4233d", bg: "#f8dfe3" },
+        deadline: { color: "#a22f2c", bg: "#f7dfdd" },
+        holiday: { color: "#3f6f54", bg: "#deece2" },
+        recess: { color: "#3f6f54", bg: "#deece2" },
+        exam: { color: "#72009c", bg: "#eee1f3" },
+        term: { color: "#315d85", bg: "#e1eaf2" },
+        office: { color: "#a86612", bg: "#f7ead1" }
+      };
+
+      const events = {};
+      const addEvent = (date, type, title, detail = "") => {
+        if (!events[date]) events[date] = [];
+        events[date].push({ type, title, detail });
+      };
+
+      const parseISO = value => {
+        const [year, month, day] = value.split("-").map(Number);
+        return new Date(year, month - 1, day, 12, 0, 0);
+      };
+
+      const toISO = date => {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      };
+
+      const dayOrdinal = iso => {
+        const [year, month, day] = iso.split("-").map(Number);
+        return Math.floor(Date.UTC(year, month - 1, day) / 86400000);
+      };
+
+      const daysBetween = (start, end) => dayOrdinal(end) - dayOrdinal(start);
+
+      const addRange = (start, end, type, title, detail) => {
+        const cursor = parseISO(start);
+        const last = parseISO(end);
+        while (cursor <= last) {
+          addEvent(toISO(cursor), type, title, detail);
+          cursor.setDate(cursor.getDate() + 1);
+        }
+      };
+
+      addEvent("2026-08-22", "term", "Classes start", "Full Term begins; the term runs August 22 through December 17.");
+      addEvent("2026-08-30", "homework", "Programming Task: Pig due", "Due date.");
+      addEvent("2026-09-04", "deadline", "Parking permit refund", "Last day to return a parking permit for a refund.");
+      addEvent("2026-09-04", "deadline", "Tuition refund", "Last day to drop classes and qualify for a tuition refund.");
+      addEvent("2026-09-06", "deadline", "Drop without notation", "Last day to drop classes without notation on record.");
+      addEvent("2026-09-06", "deadline", "Enrollment closes", "Last day to enroll in classes.");
+      addEvent("2026-09-13", "homework", "Homework 1 due", "Due date.");
+      addEvent("2026-09-27", "homework", "Homework 2 due", "Due date.");
+      addEvent("2026-10-11", "homework", "Homework 3 due", "Due date.");
+      addEvent("2026-10-25", "homework", "Homework 4 due", "Due date.");
+      addEvent("2026-09-07", "holiday", "Labor Day · No class", "No classes; offices closed.");
+      addEvent("2026-11-11", "holiday", "Veterans Day · No class", "No classes; offices closed.");
+      addEvent("2026-11-08", "homework", "Homework 5 due", "Due date.");
+      addEvent("2026-11-17", "deadline", "Withdraw with a “W”", "Last day to withdraw from classes with a “W” notation on record.");
+      addEvent("2026-11-22", "homework", "Homework 6 due", "Due date.");
+      addRange("2026-11-26", "2026-11-29", "recess", "Thanksgiving Recess", "No classes; offices closed November 26–29.");
+      addRange("2026-12-11", "2026-12-17", "exam", "Final exams", "Final exams run December 11–17.");
+      addEvent("2026-12-17", "homework", "Final Project due", "Due on the last day of class.");
+      addEvent("2026-12-17", "deadline", "Pass/no-pass petition", "Last day to petition for pass/no pass.");
+      addEvent("2026-12-17", "term", "Last day of classes", "The Fall 2026 Full Term ends today.");
+      addEvent("2026-12-17", "deadline", "Refund request deadline", "Last day to submit a refund request to the Business Services Office.");
+      addRange("2026-12-18", "2027-01-03", "recess", "Winter Recess", "Winter Recess runs December 18, 2026 through January 3, 2027.");
+      ["2026-12-18", "2026-12-21", "2026-12-22"].forEach(date => addEvent(date, "office", "Offices open", "Campus offices are open today during Winter Recess."));
+      addEvent("2027-01-04", "deadline", "Grades due", "Fall 2026 grades are due.");
+
+      const monthOptions = [
+        { year: 2026, month: 7, short: "Aug" },
+        { year: 2026, month: 8, short: "Sep" },
+        { year: 2026, month: 9, short: "Oct" },
+        { year: 2026, month: 10, short: "Nov" },
+        { year: 2026, month: 11, short: "Dec" },
+        { year: 2027, month: 0, short: "Jan ’27" }
+      ];
+
+      const monthCaptions = {
+        "2026-07": "First class Mon, Aug 24 · Monday/Wednesday schedule",
+        "2026-08": "Monday/Wednesday classes · Labor Day closure",
+        "2026-09": "Eight Monday/Wednesday class meetings",
+        "2026-10": "Veterans Day closure · Thanksgiving Recess",
+        "2026-11": "Final lectures Dec 2, 7, and 9 · finals Dec 11–17",
+        "2027-00": "Post-term · Winter Recess and grades due"
+      };
+
+      const firstCalendarMonth = monthOptions[0];
+      const lastCalendarMonth = monthOptions[monthOptions.length - 1];
+      const monthOrdinal = (year, month) => (year * 12) + month;
+      const todayDate = parseISO(TODAY);
+      const todayMonthOrdinal = monthOrdinal(todayDate.getFullYear(), todayDate.getMonth());
+      const firstMonthOrdinal = monthOrdinal(firstCalendarMonth.year, firstCalendarMonth.month);
+      const lastMonthOrdinal = monthOrdinal(lastCalendarMonth.year, lastCalendarMonth.month);
+      const initialView = todayMonthOrdinal < firstMonthOrdinal
+        ? firstCalendarMonth
+        : (todayMonthOrdinal > lastMonthOrdinal
+          ? lastCalendarMonth
+          : { year: todayDate.getFullYear(), month: todayDate.getMonth() });
+
+      let viewYear = initialView.year;
+      let viewMonth = initialView.month;
+      let selectedDate = TODAY;
+
+      const grid = document.getElementById("calendar-grid");
+      const monthTitle = document.getElementById("month-title");
+      const monthCaption = document.getElementById("month-caption");
+      const monthButtons = document.getElementById("month-buttons");
+      const previousButton = document.getElementById("previous-month");
+      const nextButton = document.getElementById("next-month");
+      const termState = document.getElementById("term-state");
+      const termNext = document.getElementById("term-next");
+      const termStatusDot = document.getElementById("term-status-dot");
+      const termProgress = document.getElementById("term-progress");
+      const progressFill = document.getElementById("progress-fill");
+      const todayStamp = document.getElementById("today-stamp");
+
+      const TERM_START = "2026-08-22";
+      const FIRST_CLASS = "2026-08-24";
+      const FINALS_START = "2026-12-11";
+      const TERM_END = "2026-12-17";
+      const GRADES_DUE = "2027-01-04";
+
+      const formatMonthDay = iso => parseISO(iso).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+      const formatLongDate = iso => parseISO(iso).toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
+      const formatMonthName = (year, month) => new Date(year, month, 1).toLocaleDateString("en-US", { month: "long", year: "numeric" });
+      const formatStatusDate = (iso, includeYear = false) => parseISO(iso).toLocaleDateString(undefined, {
+        weekday: "short",
+        month: "short",
+        day: "numeric",
+        ...(includeYear ? { year: "numeric" } : {})
+      });
+
+      const phaseForDate = iso => {
+        if (iso < TERM_START) return "Pre-semester";
+        if (iso <= TERM_END) return "In session";
+        return "Term complete";
+      };
+
+      const renderTermStrip = () => {
+        const phase = phaseForDate(TODAY);
+        let nextStatus;
+        let dotColor;
+        let dotHalo;
+
+        if (phase === "Pre-semester") {
+          nextStatus = `Next class: ${formatStatusDate(FIRST_CLASS)}`;
+          dotColor = "#c17b23";
+          dotHalo = "rgba(193,123,35,0.13)";
+        } else if (phase === "In session") {
+          const nextMeeting = classMeetings.find(meeting => meeting.date >= TODAY);
+          if (nextMeeting) {
+            nextStatus = `Next class: ${formatStatusDate(nextMeeting.date)} · ${nextMeeting.id}`;
+          } else if (TODAY < FINALS_START) {
+            nextStatus = `Regular lectures complete · Finals begin ${formatStatusDate(FINALS_START)}`;
+          } else {
+            nextStatus = `Finals period · Term ends ${formatStatusDate(TERM_END)}`;
+          }
+          dotColor = "#7d279c";
+          dotHalo = "rgba(125,39,156,0.16)";
+        } else {
+          if (TODAY < GRADES_DUE) {
+            nextStatus = `Grades due: ${formatStatusDate(GRADES_DUE, true)}`;
+          } else if (TODAY === GRADES_DUE) {
+            nextStatus = "Grades due today";
+          } else {
+            nextStatus = "Fall 2026 calendar complete";
+          }
+          dotColor = "#3d5964";
+          dotHalo = "rgba(61,89,100,0.14)";
+        }
+
+        const elapsedDays = daysBetween(TERM_START, TODAY);
+        const totalDays = daysBetween(TERM_START, TERM_END);
+        const progress = Math.max(0, Math.min(100, (elapsedDays / totalDays) * 100));
+        const roundedProgress = Math.round(progress);
+
+        termState.textContent = phase;
+        termNext.textContent = nextStatus;
+        termStatusDot.style.background = dotColor;
+        termStatusDot.style.boxShadow = `0 0 0 4px ${dotHalo}`;
+        progressFill.style.width = `${progress}%`;
+        termProgress.setAttribute("aria-valuenow", String(roundedProgress));
+        termProgress.setAttribute("aria-valuetext", `${roundedProgress}% through the Full Term`);
+        termProgress.setAttribute("aria-label", `Full term runs August 22 through December 17, 2026. ${phase}. ${nextStatus}`);
+        todayStamp.innerHTML = `Today: <strong>${parseISO(TODAY).toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric", year: "numeric" })}</strong>`;
+      };
+
+      const weekForDate = iso => {
+        const meeting = meetingByDate[iso];
+        return meeting ? meeting.week : null;
+      };
+
+      const setWeekVariables = (element, section) => {
+        const meta = sectionMeta[section];
+        element.style.setProperty("--week-color", meta.color);
+        element.style.setProperty("--week-bg", meta.bg);
+        element.style.setProperty("--week-tint", meta.tint);
+      };
+
+      const renderMonthButtons = () => {
+        monthButtons.innerHTML = "";
+        monthOptions.forEach(option => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "month-button";
+          button.textContent = option.short;
+          button.setAttribute("aria-pressed", String(option.year === viewYear && option.month === viewMonth));
+          button.addEventListener("click", () => {
+            viewYear = option.year;
+            viewMonth = option.month;
+            renderCalendar();
+          });
+          monthButtons.appendChild(button);
+        });
+      };
+
+      const selectDate = iso => {
+        selectedDate = iso;
+        const selected = parseISO(iso);
+        const inAllowedMonth = monthOptions.some(option => option.year === selected.getFullYear() && option.month === selected.getMonth());
+        if (inAllowedMonth && (selected.getFullYear() !== viewYear || selected.getMonth() !== viewMonth)) {
+          viewYear = selected.getFullYear();
+          viewMonth = selected.getMonth();
+        }
+        renderCalendar();
+        renderDetails();
+      };
+
+      const makeLectureBlock = meeting => {
+        const week = meeting.week;
+        const wrapper = document.createElement("div");
+        wrapper.className = "lecture-block";
+        setWeekVariables(wrapper, week.section);
+
+        const label = document.createElement("span");
+        label.className = "lecture-day-label";
+        label.textContent = `Week ${week.n} · Class`;
+        wrapper.appendChild(label);
+
+        const link = document.createElement("a");
+        link.className = "mini-lecture";
+        link.href = meeting.href;
+        link.innerHTML = `<span>${meeting.id}</span> ${meeting.title}`;
+        const topicCount = meeting.topics.length;
+        link.setAttribute("aria-label", `${meeting.id}: ${meeting.title}. ${topicCount ? `${topicCount} inventory topics.` : "No inventory topics recorded."} Open lecture.`);
+        wrapper.appendChild(link);
+        return wrapper;
+      };
+
+      const makeEventPill = (event, iso) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `event-pill event-${event.type}`;
+        button.textContent = event.title;
+        button.setAttribute("aria-label", `${event.title} on ${formatLongDate(iso)}. Show details.`);
+        button.addEventListener("click", () => selectDate(iso));
+        return button;
+      };
+
+      const renderCalendar = () => {
+        monthTitle.textContent = formatMonthName(viewYear, viewMonth);
+        monthCaption.textContent = monthCaptions[`${viewYear}-${String(viewMonth).padStart(2, "0")}`] || "Fall 2026 course calendar";
+        grid.innerHTML = "";
+
+        const first = new Date(viewYear, viewMonth, 1, 12, 0, 0);
+        const start = new Date(viewYear, viewMonth, 1 - first.getDay(), 12, 0, 0);
+        const lastOfMonth = new Date(viewYear, viewMonth + 1, 0, 12, 0, 0);
+        const cellCount = Math.ceil((first.getDay() + lastOfMonth.getDate()) / 7) * 7;
+
+        let calendarRow = null;
+        for (let index = 0; index < cellCount; index += 1) {
+          if (index % 7 === 0) {
+            calendarRow = document.createElement("div");
+            calendarRow.className = "calendar-row";
+            calendarRow.setAttribute("role", "row");
+            grid.appendChild(calendarRow);
+          }
+
+          const date = new Date(start);
+          date.setDate(start.getDate() + index);
+          const iso = toISO(date);
+          const meeting = meetingByDate[iso] || null;
+          const week = meeting ? meeting.week : null;
+          const dayEvents = events[iso] || [];
+          const isNoClass = dayEvents.some(event => event.type === "holiday");
+
+          const cell = document.createElement("div");
+          cell.className = "day-cell";
+          cell.setAttribute("role", "gridcell");
+          if (date.getDay() === 1 || date.getDay() === 3) cell.classList.add("meeting-column");
+          if (date.getMonth() !== viewMonth) cell.classList.add("outside");
+          if (iso === TODAY) cell.classList.add("today");
+          if (iso === selectedDate) cell.classList.add("selected");
+          if (week) {
+            cell.classList.add("instructional", "class-meeting");
+            setWeekVariables(cell, week.section);
+          }
+          if (isNoClass) cell.classList.add("no-class");
+
+          const dateRow = document.createElement("div");
+          dateRow.className = "date-row";
+          const dateButton = document.createElement("button");
+          dateButton.type = "button";
+          dateButton.className = "date-button";
+          dateButton.textContent = String(date.getDate());
+          dateButton.setAttribute("aria-label", `Select ${formatLongDate(iso)}`);
+          dateButton.setAttribute("aria-pressed", String(iso === selectedDate));
+          if (iso === TODAY) dateButton.setAttribute("aria-current", "date");
+          dateButton.addEventListener("click", () => selectDate(iso));
+          dateRow.appendChild(dateButton);
+          if (week) {
+            const weekTag = document.createElement("span");
+            weekTag.className = "week-tag";
+            weekTag.textContent = `W${week.n}`;
+            dateRow.appendChild(weekTag);
+          }
+          cell.appendChild(dateRow);
+
+          const items = document.createElement("div");
+          items.className = "cell-items";
+          if (meeting) items.appendChild(makeLectureBlock(meeting));
+          dayEvents.forEach(event => items.appendChild(makeEventPill(event, iso)));
+          cell.appendChild(items);
+
+          const indicators = document.createElement("div");
+          indicators.className = "mobile-indicators";
+          if (meeting) {
+            const dot = document.createElement("span");
+            dot.className = "mobile-dot";
+            dot.style.setProperty("--dot-color", sectionMeta[week.section].color);
+            indicators.appendChild(dot);
+          }
+          dayEvents.slice(0, 3).forEach(event => {
+            const dot = document.createElement("span");
+            dot.className = "mobile-dot";
+            dot.style.setProperty("--dot-color", eventMeta[event.type].color);
+            indicators.appendChild(dot);
+          });
+          cell.appendChild(indicators);
+          calendarRow.appendChild(cell);
+        }
+
+        const optionIndex = monthOptions.findIndex(option => option.year === viewYear && option.month === viewMonth);
+        previousButton.disabled = optionIndex <= 0;
+        nextButton.disabled = optionIndex === -1 || optionIndex >= monthOptions.length - 1;
+        renderMonthButtons();
+      };
+
+      const makeDetailEvent = event => {
+        const li = document.createElement("li");
+        li.className = "detail-event";
+        const meta = eventMeta[event.type];
+        li.style.setProperty("--event-color", meta.color);
+        li.style.setProperty("--event-bg", meta.bg);
+        li.innerHTML = `<strong>${event.title}</strong>${event.detail ? `<span>${event.detail}</span>` : ""}`;
+        return li;
+      };
+
+      const renderMeetingDetail = (meeting, dayEvents) => {
+        const container = document.getElementById("week-detail");
+        if (!meeting) {
+          const holiday = dayEvents.some(event => event.type === "holiday");
+          container.innerHTML = holiday
+            ? `<p class="empty-note"><strong>No class.</strong> This Monday/Wednesday meeting is cancelled for the campus holiday.</p>`
+            : `<p class="empty-note">No CISP 400 lecture is scheduled. Regular class meetings are Mondays and Wednesdays.</p>`;
+          return;
+        }
+
+        const week = meeting.week;
+        const meta = sectionMeta[week.section];
+        const box = document.createElement("div");
+        box.className = "week-detail";
+        box.style.borderTop = `4px solid ${meta.color}`;
+        const header = document.createElement("div");
+        header.className = "week-detail-top";
+        header.innerHTML = `<strong>Week ${week.n} · ${week.label}</strong><span>${formatMonthDay(meeting.date)}</span>`;
+        box.appendChild(header);
+
+        const list = document.createElement("div");
+        list.className = "detail-lecture-list";
+        const link = document.createElement("a");
+        link.className = "detail-lecture-link";
+        link.href = meeting.href;
+        link.innerHTML = `<span class="lecture-code">${meeting.id}</span><span><strong>${meeting.title}</strong>${meeting.topics.length ? `<small class="inventory-topics">${meeting.topics.length} inventory topics · ${meeting.topics.slice(0, 3).join(" · ")}${meeting.topics.length > 3 ? " · …" : ""}</small>` : `<small class="inventory-topics">No inventory topics recorded</small>`}</span><span class="external-mark" aria-hidden="true">→</span>`;
+        list.appendChild(link);
+        box.appendChild(list);
+        container.replaceChildren(box);
+      };
+
+      const milestoneItems = () => {
+        const items = [
+          ...classMeetings.map(meeting => ({ date: meeting.date, title: `${meeting.id} · Class meeting`, detail: meeting.title })),
+          { date: "2026-08-22", title: "Classes start", detail: "Full Term begins" },
+          { date: "2026-08-30", title: "Programming Task: Pig due", detail: "Assignment due" },
+          { date: "2026-09-04", title: "Refund deadlines", detail: "Parking permit and tuition" },
+          { date: "2026-09-06", title: "Enrollment deadlines", detail: "Enroll or drop without notation" },
+          { date: "2026-09-07", title: "Labor Day · No class", detail: "Campus closed" },
+          { date: "2026-09-13", title: "Homework 1 due", detail: "Assignment due" },
+          { date: "2026-09-27", title: "Homework 2 due", detail: "Assignment due" },
+          { date: "2026-10-11", title: "Homework 3 due", detail: "Assignment due" },
+          { date: "2026-10-25", title: "Homework 4 due", detail: "Assignment due" },
+          { date: "2026-11-11", title: "Veterans Day · No class", detail: "Campus closed" },
+          { date: "2026-11-08", title: "Homework 5 due", detail: "Assignment due" },
+          { date: "2026-11-17", title: "Withdrawal deadline", detail: "Withdraw with a “W”" },
+          { date: "2026-11-22", title: "Homework 6 due", detail: "Assignment due" },
+          { date: "2026-11-26", title: "Thanksgiving Recess", detail: "November 26–29" },
+          { date: "2026-12-11", title: "Final exams", detail: "December 11–17" },
+          { date: "2026-12-17", title: "Final Project due", detail: "Assignment due" },
+          { date: "2026-12-17", title: "Last day of classes", detail: "Term close and final deadlines" },
+          { date: "2026-12-18", title: "Winter Recess", detail: "December 18–January 3" },
+          { date: "2027-01-04", title: "Grades due", detail: "Fall 2026" }
+        ];
+        return items.sort((a, b) => a.date.localeCompare(b.date));
+      };
+
+      const renderUpcoming = iso => {
+        const list = document.getElementById("upcoming-list");
+        const upcoming = milestoneItems().filter(item => item.date >= iso).slice(0, 4);
+        list.innerHTML = "";
+        upcoming.forEach(item => {
+          const li = document.createElement("li");
+          li.className = "upcoming-item";
+          li.innerHTML = `<time class="upcoming-date" datetime="${item.date}">${formatMonthDay(item.date)}</time><div class="upcoming-copy"><strong>${item.title}</strong><span>${item.detail}</span></div>`;
+          list.appendChild(li);
+        });
+        if (!upcoming.length) {
+          list.innerHTML = `<li class="empty-note">The Fall 2026 calendar is complete.</li>`;
+        }
+      };
+
+      const renderDetails = () => {
+        const date = parseISO(selectedDate);
+        const meeting = meetingByDate[selectedDate] || null;
+        const week = meeting ? meeting.week : null;
+        const dayEvents = events[selectedDate] || [];
+        const isToday = selectedDate === TODAY;
+        const selectedPhase = phaseForDate(selectedDate);
+
+        document.getElementById("detail-eyebrow").textContent = isToday
+          ? `Today · ${selectedPhase}`
+          : (meeting ? `Week ${week.n} · Class meeting` : `${selectedPhase} · Calendar date`);
+        document.getElementById("detail-date").innerHTML = `${date.toLocaleDateString("en-US", { weekday: "long" })}<br>${date.toLocaleDateString("en-US", { month: "long", day: "numeric" })}`;
+
+        let subtitle = "No course event is scheduled for this date.";
+        if (dayEvents.length) subtitle = `${dayEvents.length} ${dayEvents.length === 1 ? "item" : "items"} on the course calendar.`;
+        else if (meeting) subtitle = `${meeting.id} · ${meeting.title}`;
+        else if (selectedDate < TERM_START) subtitle = "The course is in pre-semester mode.";
+        else if (selectedDate > TERM_END) subtitle = "The Full Term has ended.";
+        document.getElementById("detail-subtitle").textContent = subtitle;
+
+        const countdown = document.getElementById("countdown");
+        if (selectedDate < FIRST_CLASS) {
+          const days = daysBetween(selectedDate, FIRST_CLASS);
+          countdown.innerHTML = `<strong>${days}</strong><span>days until<br>first class</span>`;
+        } else if (selectedDate < TERM_END) {
+          const days = daysBetween(selectedDate, TERM_END);
+          countdown.innerHTML = `<strong>${days}</strong><span>days remain<br>in Full Term</span>`;
+        } else if (selectedDate === TERM_END) {
+          countdown.innerHTML = isToday
+            ? `<strong>Today</strong><span>is the last day<br>of Full Term</span>`
+            : `<strong>Last day</strong><span>of Full Term<br>December 17</span>`;
+        } else {
+          countdown.innerHTML = `<strong>Closed</strong><span>Full Term ended<br>December 17</span>`;
+        }
+
+        const dayEventContainer = document.getElementById("day-events");
+        if (dayEvents.length) {
+          const list = document.createElement("ul");
+          list.className = "detail-event-list";
+          dayEvents.forEach(event => list.appendChild(makeDetailEvent(event)));
+          dayEventContainer.replaceChildren(list);
+        } else {
+          dayEventContainer.innerHTML = `<p class="empty-note">Nothing dated here. Select a marked date for an assignment, deadline, closure, or finals detail.</p>`;
+        }
+
+        renderMeetingDetail(meeting, dayEvents);
+        renderUpcoming(selectedDate);
+      };
+
+      previousButton.addEventListener("click", () => {
+        const index = monthOptions.findIndex(option => option.year === viewYear && option.month === viewMonth);
+        if (index > 0) {
+          viewYear = monthOptions[index - 1].year;
+          viewMonth = monthOptions[index - 1].month;
+          renderCalendar();
+        }
+      });
+
+      nextButton.addEventListener("click", () => {
+        const index = monthOptions.findIndex(option => option.year === viewYear && option.month === viewMonth);
+        if (index >= 0 && index < monthOptions.length - 1) {
+          viewYear = monthOptions[index + 1].year;
+          viewMonth = monthOptions[index + 1].month;
+          renderCalendar();
+        }
+      });
+
+      document.getElementById("today-button").addEventListener("click", () => {
+        selectedDate = TODAY;
+        viewYear = initialView.year;
+        viewMonth = initialView.month;
+        renderCalendar();
+        renderDetails();
+      });
+
+      renderTermStrip();
+      renderCalendar();
+      renderDetails();
+    })();
+  </script>
+</body>
+</html>

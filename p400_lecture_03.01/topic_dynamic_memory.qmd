@@ -1,0 +1,101 @@
+<!-- Topic: Dynamic Memory Allocation -->
+<!-- Slides 20–31 -->
+
+# Dynamic Memory Allocation
+
+![](images/source_pages/slide-20.png){width="100%" fig-alt="Dynamic Memory Allocation"}
+
+::: notes
+Slides 20–31
+Source slide 20 from the authoritative PDF.
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## <span style="display:none">Source Slide 21</span>
+
+![](images/source_pages/slide-21.png){width="100%" fig-alt="Problem with Arrays"}
+
+<!-- Slide 21 -->
+
+---
+
+## <span style="display:none">Source Slide 22</span>
+
+![](images/source_pages/slide-22.png){width="100%" fig-alt="• The problem is our variables are stored on the"}
+
+<!-- Slide 22 -->
+
+---
+
+## <span style="display:none">Source Slide 23</span>
+
+![](images/source_pages/slide-23.png){width="100%" fig-alt="Access to the Heap"}
+
+<!-- Slide 23 -->
+
+---
+
+## <span style="display:none">Source Slide 24</span>
+
+![](images/source_pages/slide-24.png){width="100%" fig-alt="delete and delete []"}
+
+<!-- Slide 24 -->
+
+---
+
+## <span style="display:none">Source Slide 25</span>
+
+![](images/source_pages/slide-25.png){width="100%" fig-alt="Source Slide 25"}
+
+<!-- Slide 25 -->
+
+---
+
+## <span style="display:none">Source Slide 26</span>
+
+![](images/source_pages/slide-26.png){width="100%" fig-alt="Source Slide 26"}
+
+<!-- Slide 26 -->
+
+---
+
+## <span style="display:none">Source Slide 27</span>
+
+![](images/source_pages/slide-27.png){width="100%" fig-alt="Source Slide 27"}
+
+<!-- Slide 27 -->
+
+---
+
+## <span style="display:none">Source Slide 28</span>
+
+![](images/source_pages/slide-28.png){width="100%" fig-alt="Source Slide 28"}
+
+<!-- Slide 28 -->
+
+---
+
+## <span style="display:none">Source Slide 29</span>
+
+![](images/source_pages/slide-29.png){width="100%" fig-alt="• When we use a scalar variable and a pointer"}
+
+<!-- Slide 29 -->
+
+---
+
+## <span style="display:none">Source Slide 30</span>
+
+![](images/source_pages/slide-30.png){width="100%" fig-alt="• Contrast that with heap variables (created with"}
+
+<!-- Slide 30 -->
+
+---
+
+## <span style="display:none">Source Slide 31</span>
+
+![](images/source_pages/slide-31.png){width="100%" fig-alt="Advantages of Heap"}
+
+<!-- Slide 31 -->

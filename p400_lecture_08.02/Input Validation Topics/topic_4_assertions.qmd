@@ -1,0 +1,127 @@
+<!-- Topic 4: Assertions -->
+<!-- Slides 41-52 -->
+
+# Assertions
+<!-- Slide 41 -->
+
+## What Should Never Be False? {.smaller}
+
+- Some failed checks are not normal client mistakes.
+- They mean the program reached a state the programmer did not intend.
+
+::: notes
+Slides 41-52
+:::
+
+<!-- Slide 42 -->
+
+---
+
+## Validation vs Assertion
+
+| Validation | Assertion |
+|---|---|
+| Handles client mistakes | Catches programmer mistakes |
+| Gives a message and reprompts | Stops the program in development |
+| Part of normal behavior | Documents an assumption |
+
+<!-- Slide 43 -->
+
+---
+
+## What assert Does
+
+- `assert` checks a condition the programmer believes must be true.
+- If the condition is false, the program stops.
+- The failed condition points to a broken assumption.
+
+<!-- Slide 44 -->
+
+---
+
+## Reading An Assertion Failure
+
+- Do not patch around the failure immediately.
+- Ask which assumption failed.
+- Then trace where the bad state came from.
+
+<!-- Slide 45 -->
+
+---
+
+## Basic assert Syntax
+
+```cpp
+#include <cassert>
+
+int index = 3;
+int size = 5;
+
+assert(index >= 0 && index < size);
+```
+
+<!-- Slide 46 -->
+
+---
+
+## Assertions Express Preconditions
+
+- A precondition must be true before code runs safely.
+- A divisor should not be zero.
+- An index should be inside the valid range.
+
+<!-- Slide 47 -->
+
+---
+
+## assert Inside A Function
+
+```cpp
+#include <cassert>
+
+double divide(int numerator, int denominator) {
+    assert(denominator != 0);
+    return static_cast<double>(numerator) / denominator;
+}
+```
+
+<!-- Slide 48 -->
+
+---
+
+## Do Not Use assert For Client Input
+
+- Bad client input is expected.
+- Expected mistakes need validation and recovery.
+- Assertions are for states that should never happen if the code is correct.
+
+<!-- Slide 49 -->
+
+---
+
+## Avoid Side Effects In Assertions
+
+- Do not put assignments inside assertion conditions.
+- Do not rely on increments or required function calls inside an assertion.
+- The program should behave correctly even if assertions are disabled.
+
+<!-- Slide 50 -->
+
+---
+
+## Assertions Can Be Disabled
+
+- Some builds compile assertions out.
+- Required program behavior cannot depend on `assert`.
+- Use `assert` to catch problems, not to implement normal logic.
+
+<!-- Slide 51 -->
+
+---
+
+## Summary
+
+- Use validation for expected bad input.
+- Use assertions for assumptions that should never be false during development.
+
+<!-- Slide 52 -->

@@ -1,0 +1,217 @@
+<!-- Topic 9: Inheritance Access Control -->
+<!-- Slides 106–123 -->
+# Inheritance Access Control
+
+## Constructors and Inheritance
+
+This slide develops the authoritative source material on **constructors and inheritance**.
+
+::: notes
+Slides 106–123
+:::
+
+<!-- Slide 106 -->
+
+---
+
+## Constructors and Inheritance
+
+This slide develops the authoritative source material on **constructors and inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 107 -->
+
+---
+
+## Constructors and Inheritance
+
+This slide develops the authoritative source material on **constructors and inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 108 -->
+
+---
+
+## Constructors and Inheritance
+
+This slide develops the authoritative source material on **constructors and inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 109 -->
+
+---
+
+## Constructors and Inheritance
+
+This slide develops the authoritative source material on **constructors and inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 110 -->
+
+---
+
+## Constructors and Inheritance
+
+This slide develops the authoritative source material on **constructors and inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 111 -->
+
+---
+
+## Access Specifiers
+
+This slide develops the authoritative source material on **access specifiers**.
+
+::: notes
+
+:::
+
+<!-- Slide 112 -->
+
+---
+
+## Access Specifiers
+
+This slide develops the authoritative source material on **access specifiers**.
+
+::: notes
+
+:::
+
+<!-- Slide 113 -->
+
+---
+
+## Access Specifiers
+
+This slide develops the authoritative source material on **access specifiers**.
+
+::: notes
+
+:::
+
+<!-- Slide 114 -->
+
+---
+
+## Access Specifiers
+
+This slide develops the authoritative source material on **access specifiers**.
+
+::: notes
+
+:::
+
+<!-- Slide 115 -->
+
+---
+
+## Access Specifiers
+
+This slide develops the authoritative source material on **access specifiers**.
+
+::: notes
+
+:::
+
+<!-- Slide 116 -->
+
+---
+
+## Access Specifiers
+
+This slide develops the authoritative source material on **access specifiers**.
+
+::: notes
+
+:::
+
+<!-- Slide 117 -->
+
+---
+
+## Access Specifiers
+
+This slide develops the authoritative source material on **access specifiers**.
+
+::: notes
+
+:::
+
+<!-- Slide 118 -->
+
+---
+
+## Access Specifiers
+
+This slide develops the authoritative source material on **access specifiers**.
+
+::: notes
+
+:::
+
+<!-- Slide 119 -->
+
+---
+
+## Access Specifiers
+
+This slide develops the authoritative source material on **access specifiers**.
+
+::: notes
+
+:::
+
+<!-- Slide 120 -->
+
+---
+
+## Protected Members
+
+This slide develops the authoritative source material on **protected members**.
+
+::: notes
+
+:::
+
+<!-- Slide 121 -->
+
+---
+
+## Protected Members
+
+This slide develops the authoritative source material on **protected members**.
+
+::: notes
+
+:::
+
+<!-- Slide 122 -->
+
+---
+
+## Protected Members
+
+This slide develops the authoritative source material on **protected members**.
+
+::: notes
+
+:::
+
+<!-- Slide 123 -->

@@ -1,0 +1,121 @@
+<!-- Topic 7: Multiple Template Arguments -->
+<!-- Slides 36–45 -->
+# Multiple Template Arguments
+
+## Multiple Template Arguments
+
+This slide develops the authoritative source material on **multiple template arguments**.
+
+::: notes
+Slides 36–45
+:::
+
+<!-- Slide 36 -->
+
+---
+
+## Multiple Template Arguments
+
+This slide develops the authoritative source material on **multiple template arguments**.
+
+::: notes
+
+:::
+
+<!-- Slide 37 -->
+
+---
+
+## Multiple Template Arguments
+
+This slide develops the authoritative source material on **multiple template arguments**.
+
+::: notes
+
+:::
+
+<!-- Slide 38 -->
+
+---
+
+## Multiple Template Arguments
+
+This slide develops the authoritative source material on **multiple template arguments**.
+
+::: notes
+
+:::
+
+<!-- Slide 39 -->
+
+---
+
+## Multiple Template Arguments
+
+This slide develops the authoritative source material on **multiple template arguments**.
+
+::: notes
+
+:::
+
+<!-- Slide 40 -->
+
+---
+
+## Multiple Template Arguments
+
+This slide develops the authoritative source material on **multiple template arguments**.
+
+::: notes
+
+:::
+
+<!-- Slide 41 -->
+
+---
+
+## Multiple Template Arguments
+
+This slide develops the authoritative source material on **multiple template arguments**.
+
+::: notes
+
+:::
+
+<!-- Slide 42 -->
+
+---
+
+## Multiple Template Arguments
+
+This slide develops the authoritative source material on **multiple template arguments**.
+
+::: notes
+
+:::
+
+<!-- Slide 43 -->
+
+---
+
+## Multiple Template Arguments
+
+This slide develops the authoritative source material on **multiple template arguments**.
+
+::: notes
+
+:::
+
+<!-- Slide 44 -->
+
+---
+
+## Multiple Template Arguments
+
+This slide develops the authoritative source material on **multiple template arguments**.
+
+::: notes
+
+:::
+
+<!-- Slide 45 -->

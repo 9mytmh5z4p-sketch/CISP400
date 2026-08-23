@@ -1,0 +1,133 @@
+<!-- Topic 3: Virtual Member Functions -->
+<!-- Slides 9–19 -->
+# Virtual Member Functions
+
+## Virtual Member Functions
+
+This slide develops the authoritative source material on **virtual member functions**.
+
+::: notes
+Slides 9–19
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Virtual Member Functions
+
+This slide develops the authoritative source material on **virtual member functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## Virtual Member Functions
+
+This slide develops the authoritative source material on **virtual member functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## Virtual Member Functions
+
+This slide develops the authoritative source material on **virtual member functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Virtual Member Functions
+
+This slide develops the authoritative source material on **virtual member functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## Virtual Member Functions
+
+This slide develops the authoritative source material on **virtual member functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 14 -->
+
+---
+
+## Binding and Type Compatibility
+
+This slide develops the authoritative source material on **binding and type compatibility**.
+
+::: notes
+
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## Binding and Type Compatibility
+
+This slide develops the authoritative source material on **binding and type compatibility**.
+
+::: notes
+
+:::
+
+<!-- Slide 16 -->
+
+---
+
+## Binding and Type Compatibility
+
+This slide develops the authoritative source material on **binding and type compatibility**.
+
+::: notes
+
+:::
+
+<!-- Slide 17 -->
+
+---
+
+## Binding and Type Compatibility
+
+This slide develops the authoritative source material on **binding and type compatibility**.
+
+::: notes
+
+:::
+
+<!-- Slide 18 -->
+
+---
+
+## Binding and Type Compatibility
+
+This slide develops the authoritative source material on **binding and type compatibility**.
+
+::: notes
+
+:::
+
+<!-- Slide 19 -->

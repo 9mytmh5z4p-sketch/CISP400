@@ -1,0 +1,61 @@
+<!-- Topic 6: Vectors of Vectors -->
+<!-- Slides 21–25 -->
+# Vectors of Vectors
+
+## Vectors of Vectors
+
+This slide develops the authoritative source material on **vectors of vectors**.
+
+::: notes
+Slides 21–25
+:::
+
+<!-- Slide 21 -->
+
+---
+
+## Vectors of Vectors
+
+This slide develops the authoritative source material on **vectors of vectors**.
+
+::: notes
+
+:::
+
+<!-- Slide 22 -->
+
+---
+
+## Vectors of Vectors
+
+This slide develops the authoritative source material on **vectors of vectors**.
+
+::: notes
+
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## Vectors of Vectors
+
+This slide develops the authoritative source material on **vectors of vectors**.
+
+::: notes
+
+:::
+
+<!-- Slide 24 -->
+
+---
+
+## Vectors of Vectors
+
+This slide develops the authoritative source material on **vectors of vectors**.
+
+::: notes
+
+:::
+
+<!-- Slide 25 -->

@@ -1,0 +1,169 @@
+<!-- Topic 3: Try Catch and Throw -->
+<!-- Slides 11–24 -->
+# Try Catch and Throw
+
+## Try Catch and Throw
+
+This slide develops the authoritative source material on **try catch and throw**.
+
+::: notes
+Slides 11–24
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## Try Catch and Throw
+
+This slide develops the authoritative source material on **try catch and throw**.
+
+::: notes
+
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Try Catch and Throw
+
+This slide develops the authoritative source material on **try catch and throw**.
+
+::: notes
+
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## Try Catch and Throw
+
+This slide develops the authoritative source material on **try catch and throw**.
+
+::: notes
+
+:::
+
+<!-- Slide 14 -->
+
+---
+
+## Try Catch and Throw
+
+This slide develops the authoritative source material on **try catch and throw**.
+
+::: notes
+
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## Try Catch and Throw
+
+This slide develops the authoritative source material on **try catch and throw**.
+
+::: notes
+
+:::
+
+<!-- Slide 16 -->
+
+---
+
+## Exception Design
+
+This slide develops the authoritative source material on **exception design**.
+
+::: notes
+
+:::
+
+<!-- Slide 17 -->
+
+---
+
+## Exception Design
+
+This slide develops the authoritative source material on **exception design**.
+
+::: notes
+
+:::
+
+<!-- Slide 18 -->
+
+---
+
+## Exception Design
+
+This slide develops the authoritative source material on **exception design**.
+
+::: notes
+
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## Exception Design
+
+This slide develops the authoritative source material on **exception design**.
+
+::: notes
+
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## Exception Design
+
+This slide develops the authoritative source material on **exception design**.
+
+::: notes
+
+:::
+
+<!-- Slide 21 -->
+
+---
+
+## Exception Design
+
+This slide develops the authoritative source material on **exception design**.
+
+::: notes
+
+:::
+
+<!-- Slide 22 -->
+
+---
+
+## Exception Design
+
+This slide develops the authoritative source material on **exception design**.
+
+::: notes
+
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## Exception Design
+
+This slide develops the authoritative source material on **exception design**.
+
+::: notes
+
+:::
+
+<!-- Slide 24 -->

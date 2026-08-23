@@ -1,0 +1,54 @@
+Slide Number,Topic,Subject,Title,Category,Filename
+1,Course Introduction,,CISP 400,Section Divider,flc_wordmark_mask.png
+2,Course Introduction,,Agenda,Agenda,
+3,Course Overview,,Goal of This Class,Section Divider,
+4,Course Overview,,Class Goal,Value Added,
+5,Course Overview,,What Will the Class Cover?,Opening Question,
+6,Course Overview,,Where’s This Fit in the Course?,Progression Map,course_progression.png
+7,Toolset,,Toolset,Section Divider,
+8,Toolset,,Operating System,Setup,ubuntu_16_04_lts.png
+9,Toolset,,Running Ubuntu,Setup,
+10,Toolset,,Windows Visual Studio Will NOT Compile on Ubuntu.,Boundary,
+11,Toolset,,Programmer’s Editors,Enumerate,
+12,Toolset,,Integrated Development Environment (IDE),Define,ide_workflow.png
+13,Toolset,,Integrated Development Environment (IDE),Contrast,ide_overkill_meme.png
+14,Toolset,,<IDE and Online Tool Visuals>,Image,ide_overkill_meme.png; ide_workflow.png; test_pilot_poster.png
+15,Toolset,,Online Coding Environments,Boundary,
+16,Toolset,,Online IDE,Decision Point,test_pilot_poster.png
+17,Syllabus Reconnaissance,,Differences From Last Semester,Section Divider,
+18,Syllabus Reconnaissance,,Syllabus Reconnaissance,Section Divider,
+19,Syllabus Reconnaissance,,Exercise Goals,Value Added,
+20,Syllabus Reconnaissance,,Procedure,Process Pattern,five_minute_countdown.png
+21,Class Expectations,,Class Expectations,Section Divider,
+22,Class Expectations,,Textbook,Setup,
+23,Class Expectations,,<Student Responsibility>,Ownership Model,
+24,Class Expectations,,Not Me,Contrast,fountain_of_knowledge.png
+25,Instructor Role,,<Instructor as Guide>,Image,instructor_guide.png
+26,Instructor Role,,Why Should We Listen to You?,Connect,
+27,Instructor Role,,Why Don’t You Get Back to Me Right Away?,Connect,
+28,Course Placement at FLC,,Where This Class Fits at FLC,Section Divider,
+29,Course Placement at FLC,,CIS AS Degree,Progression Map,cis_as_requirements.png
+30,Course Placement at FLC,,CIS AS Degree,Progression Map,cis_as_semester_plan.png
+31,Course Placement at FLC,,Common Questions,Section Divider,
+32,Course Placement at FLC,,<Common Questions List>,Enumerate,
+33,Course Placement at FLC,,You Are Responsible for Your Code,Ownership Model,code_responsibility.png
+34,Course Placement at FLC,,FLC++,Connect,
+35,Reciprocal Interview,,Reciprocal Interview,Section Divider,
+36,Reciprocal Interview,,Exercise Goals,Value Added,
+37,Reciprocal Interview,,Procedure,Process Pattern,
+38,Reciprocal Interview,,<Reciprocal Interview Questions>,Image,reciprocal_interview_questions.png
+39,Course Wrap-Up,,What’s This Section About?,Opening Question,review_stamp.png
+40,Course Wrap-Up,,Agenda,Review,
+41,Course Wrap-Up,,<Next Time>,Section Divider,next_time.png
+42,CISP 360 Review,,Review Material From CISP 360,Review,
+43,Success Team Bingo,,Success Team Bingo,Section Divider,
+44,Success Team Bingo,,Exercise Goals,Value Added,
+45,Success Team Bingo,,<Success Team Bingo Worksheet>,Image,success_team_bingo.png
+46,Success Team Bingo,,Debrief,Review,
+47,Advice Cards,,Advice Cards,Section Divider,
+48,Advice Cards,,Exercise Goals,Value Added,
+49,Advice Cards,,Advice Cards,Process Pattern,
+50,Advice Cards,,<P400 Advice Card Summary>,Image,p400_advice_card_summary.png
+51,Advice Cards,,Debrief,Review,
+52,Course Wrap-Up,,Emergency Plan,Setup,
+53,Course Wrap-Up,,References,Connect,

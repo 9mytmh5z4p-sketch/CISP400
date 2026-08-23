@@ -1,0 +1,133 @@
+<!-- Topic 4: Polymorphism and Arrays -->
+<!-- Slides 20–30 -->
+# Polymorphism and Arrays
+
+## Polymorphism and Arrays
+
+This slide develops the authoritative source material on **polymorphism and arrays**.
+
+::: notes
+Slides 20–30
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## Polymorphism and Arrays
+
+This slide develops the authoritative source material on **polymorphism and arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 21 -->
+
+---
+
+## Polymorphism and Arrays
+
+This slide develops the authoritative source material on **polymorphism and arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 22 -->
+
+---
+
+## Polymorphism and Arrays
+
+This slide develops the authoritative source material on **polymorphism and arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## Polymorphism and Arrays
+
+This slide develops the authoritative source material on **polymorphism and arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 24 -->
+
+---
+
+## Polymorphism and Arrays
+
+This slide develops the authoritative source material on **polymorphism and arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 25 -->
+
+---
+
+## Polymorphism and Arrays
+
+This slide develops the authoritative source material on **polymorphism and arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 26 -->
+
+---
+
+## Polymorphism and Arrays
+
+This slide develops the authoritative source material on **polymorphism and arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 27 -->
+
+---
+
+## Polymorphism and Arrays
+
+This slide develops the authoritative source material on **polymorphism and arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 28 -->
+
+---
+
+## Polymorphism and Arrays
+
+This slide develops the authoritative source material on **polymorphism and arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 29 -->
+
+---
+
+## Polymorphism and Arrays
+
+This slide develops the authoritative source material on **polymorphism and arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 30 -->

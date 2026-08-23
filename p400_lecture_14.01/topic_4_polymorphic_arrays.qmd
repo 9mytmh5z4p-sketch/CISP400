@@ -1,0 +1,205 @@
+<!-- Topic 4: Polymorphic Arrays -->
+<!-- Slides 38–54 -->
+# Polymorphic Arrays
+
+## Polymorphic Arrays
+
+This slide develops the authoritative source material on **polymorphic arrays**.
+
+::: notes
+Slides 38–54
+:::
+
+<!-- Slide 38 -->
+
+---
+
+## Polymorphic Arrays
+
+This slide develops the authoritative source material on **polymorphic arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 39 -->
+
+---
+
+## Polymorphic Arrays
+
+This slide develops the authoritative source material on **polymorphic arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 40 -->
+
+---
+
+## Polymorphic Arrays
+
+This slide develops the authoritative source material on **polymorphic arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 41 -->
+
+---
+
+## Polymorphic Arrays
+
+This slide develops the authoritative source material on **polymorphic arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 42 -->
+
+---
+
+## Polymorphic Arrays
+
+This slide develops the authoritative source material on **polymorphic arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 43 -->
+
+---
+
+## Polymorphic Arrays
+
+This slide develops the authoritative source material on **polymorphic arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 44 -->
+
+---
+
+## Polymorphic Arrays
+
+This slide develops the authoritative source material on **polymorphic arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 45 -->
+
+---
+
+## Polymorphic Arrays
+
+This slide develops the authoritative source material on **polymorphic arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 46 -->
+
+---
+
+## Polymorphic Arrays
+
+This slide develops the authoritative source material on **polymorphic arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 47 -->
+
+---
+
+## Polymorphic Arrays
+
+This slide develops the authoritative source material on **polymorphic arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 48 -->
+
+---
+
+## Polymorphic Arrays
+
+This slide develops the authoritative source material on **polymorphic arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 49 -->
+
+---
+
+## Polymorphic Arrays
+
+This slide develops the authoritative source material on **polymorphic arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 50 -->
+
+---
+
+## Polymorphic Arrays
+
+This slide develops the authoritative source material on **polymorphic arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 51 -->
+
+---
+
+## Polymorphic Arrays
+
+This slide develops the authoritative source material on **polymorphic arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 52 -->
+
+---
+
+## Polymorphic Arrays
+
+This slide develops the authoritative source material on **polymorphic arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 53 -->
+
+---
+
+## Polymorphic Arrays
+
+This slide develops the authoritative source material on **polymorphic arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 54 -->

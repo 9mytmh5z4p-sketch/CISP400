@@ -1,0 +1,6 @@
+{{< include topic_course_framing.qmd >}}
+{{< include topic_operator_overloading.qmd >}}
+{{< include topic_friend_functions.qmd >}}
+{{< include topic_code_together.qmd >}}
+{{< include topic_wrap_up.qmd >}}
+

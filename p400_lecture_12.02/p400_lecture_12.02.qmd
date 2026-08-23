@@ -1,0 +1,37 @@
+# Last Time
+
+::: {.incremental}
++ **Inheritance**
++ **Class relationships**
+:::
+
+# Today's Agenda
+
+- Inheritance Review
+- Practice and Review
+- Polymorphic Data Structures
+- Overriding Functions
+- Inheritance Design
+- Inheritance and Data Structures
+- Inheritance Applications
+
+{{< include topic_1_course_framing.qmd >}}
+{{< include topic_2_inheritance_review.qmd >}}
+{{< include topic_3_practice_and_review.qmd >}}
+{{< include topic_4_polymorphic_data_structures.qmd >}}
+{{< include topic_5_overriding_functions.qmd >}}
+{{< include topic_6_inheritance_design.qmd >}}
+{{< include topic_7_inheritance_and_data_structures.qmd >}}
+{{< include topic_8_inheritance_applications.qmd >}}
+
+---
+# Key Takeaways
+
+- Constructors, access rules, and overrides define how derived classes behave.
+- Inheritance is most useful when shared behavior and substitutability are clear.
+
+---
+# Next Time
+
+---
+# Appendix

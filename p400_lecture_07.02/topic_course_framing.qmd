@@ -1,0 +1,69 @@
+<!-- Topic: Course Framing -->
+<!-- Slides 1–8 -->
+
+# Course Framing
+
+![](images/source_pages/slide-01.png){width="100%" fig-alt="Course Framing"}
+
+::: notes
+Slides 1–8
+Source slide 1 from the authoritative PDF.
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## <span style="display:none">Source Slide 2</span>
+
+![](images/source_pages/slide-02.png){width="100%" fig-alt="Start-Stop-Continue"}
+
+<!-- Slide 2 -->
+
+---
+
+## <span style="display:none">Source Slide 3</span>
+
+![](images/source_pages/slide-03.png){width="100%" fig-alt="Exercise Goals"}
+
+<!-- Slide 3 -->
+
+---
+
+## <span style="display:none">Source Slide 4</span>
+
+![](images/source_pages/slide-04.png){width="100%" fig-alt="Stop-Start-Continue"}
+
+<!-- Slide 4 -->
+
+---
+
+## <span style="display:none">Source Slide 5</span>
+
+![](images/source_pages/slide-05.png){width="100%" fig-alt="Chapter 11"}
+
+<!-- Slide 5 -->
+
+---
+
+## <span style="display:none">Source Slide 6</span>
+
+![](images/source_pages/slide-06.png){width="100%" fig-alt="Ch 11 - More OOP"}
+
+<!-- Slide 6 -->
+
+---
+
+## <span style="display:none">Source Slide 7</span>
+
+![](images/source_pages/slide-07.png){width="100%" fig-alt="Ch 11 - More OOP"}
+
+<!-- Slide 7 -->
+
+---
+
+## <span style="display:none">Source Slide 8</span>
+
+![](images/source_pages/slide-08.png){width="100%" fig-alt="Theme for Today"}
+
+<!-- Slide 8 -->

@@ -1,0 +1,188 @@
+<!-- Topic 6: Stack Frame Model -->
+<!-- Slides 60-72 -->
+
+# Stack Frame Model
+<!-- Slide 60 -->
+
+## Where Do Function Variables Go? {.smaller}
+
++ Parameters and local variables need temporary storage.
++ A function call creates that temporary workspace.
++ The workspace disappears when the function returns.
+
+::: notes
+Slides 60-72
+:::
+
+<!-- Slide 61 -->
+
+---
+
+## A Stack Frame Is One Function Call
+
++ A stack frame is the workspace for one active function call.
++ It stores that call's parameters and local variables.
++ Each active function call has its own frame.
+
+::: notes
+[Graphic suggestion: show a single labeled box named average(scores), with parameter scores and local variable sum inside.]
+:::
+
+<!-- Slide 62 -->
+
+---
+
+## Main Starts the Stack
+
+```cpp
+int main() {
+    int score = 90;
+    cout << score << endl;
+    return 0;
+}
+```
+
+At program start, `main()` is the active frame.
+
+<!-- Slide 63 -->
+
+---
+
+## Calling a Function Adds a Frame
+
+```cpp
+int main() {
+    int score = 90;
+    displayScore(score);
+    return 0;
+}
+```
+
+When `displayScore(score)` runs, a new frame is placed above `main()`.
+
+<!-- Slide 64 -->
+
+---
+
+## Returning Removes the Frame
+
+```cpp
+void displayScore(int score) {
+    cout << score << endl;
+}
+```
+
++ The function frame exists while the function runs.
++ When the function finishes, its frame is removed.
++ Execution continues in the caller.
+
+<!-- Slide 65 -->
+
+---
+
+## Parameters Live in the Function Frame
+
+```cpp
+void displayScore(int score) {
+    cout << score << endl;
+}
+```
+
+`score` is stored in the `displayScore()` frame, even if the caller used a different name.
+
+<!-- Slide 66 -->
+
+---
+
+## Local Variables Live in the Function Frame
+
+```cpp
+double average(vector<int> scores) {
+    int sum = 0;
+
+    for (int score : scores) {
+        sum = sum + score;
+    }
+
+    return static_cast<double>(sum) / scores.size();
+}
+```
+
+`scores`, `sum`, and the loop variable belong to the function call.
+
+<!-- Slide 67 -->
+
+---
+
+## Return Values Leave First
+
+```cpp
+int square(int number) {
+    int result = number * number;
+    return result;
+}
+```
+
++ The returned value crosses back to the caller.
++ Then the function frame is removed.
++ The caller keeps the returned value if it stores it.
+
+<!-- Slide 68 -->
+
+---
+
+## Stack Frames Explain Scope
+
++ A caller cannot use names stored inside a function frame.
++ A local variable disappears when its frame disappears.
++ A parameter is local because it lives in the called function's frame.
+
+Scope is the visibility rule. Stack frames show the storage behind the rule.
+
+<!-- Slide 69 -->
+
+---
+
+## Stack Frames Explain Shadowing
+
+```cpp
+void displayScore(int score);
+
+int main() {
+    int score = 10;
+    displayScore(score);
+    return 0;
+}
+
+void displayScore(int score) {
+    cout << score << endl;
+}
+```
+
+Both frames can have a name called `score`, but they are separate storage.
+
+<!-- Slide 70 -->
+
+---
+
+## Trace a Function Call
+
+| Step | Active Frame | Important Data |
+|---:|---|---|
+| 1 | `main()` | `score = 10` |
+| 2 | `displayScore()` | `score = 10` copy |
+| 3 | `main()` | function frame is gone |
+
+The same value can appear in different frames under the same or different names.
+
+<!-- Slide 71 -->
+
+---
+
+## Summary
+
++ A stack frame is the temporary workspace for one function call.
++ Parameters and local variables live in that frame.
++ Stack frames explain why function variables are temporary, local, and separate.
+
+<!-- Slide 72 -->

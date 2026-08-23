@@ -1,0 +1,130 @@
+lecture,week,section,Subject,emphasis,time_budget,optional,notes
+,,,,,,,
+p400_lecture_02.01,1,pointers,Pointer Motivation and Memory Addresses,standard,8,no,why addresses matter; pointer motivation; memory-address model; prerequisite review from the authoritative Intro to Pointers PDF
+p400_lecture_02.01,1,pointers,Pointers and the Address Operator,standard,8,no,address-of operator; obtaining an object's address; pointer notation introduced from the authoritative PDF
+p400_lecture_02.01,1,pointers,Arrays and Pointers,standard,10,no,array and pointer relationship; pointer notation; accessing array elements through addresses
+p400_lecture_02.01,1,pointers,Pointer Arithmetic,standard,8,no,address movement and pointer notation; arithmetic rules presented in the source chapter sequence
+p400_lecture_02.01,1,pointers,Initializing Pointers,standard,12,no,initialization with valid addresses; null and nullptr; safe tests; reliability and invalid-memory limitations
+p400_lecture_02.01,1,pointers,Comparing Pointers,standard,8,no,comparisons involving addresses; checking null pointers and pointer relationships
+p400_lecture_02.01,1,references,Reference Variables,standard,10,no,reference aliases; scope and lifetime; comparison of pointers and references
+p400_lecture_02.02,1,pointers,Pointer Variables in Memory,standard,8,no,pointer storage; addresses and dereferenced values; reassigning pointers through a memory activity
+p400_lecture_02.02,1,pointers,Comparing Pointers,standard,8,no,address comparisons; equality and null checks; array-boundary and dangling-pointer checks
+p400_lecture_02.02,1,pointers,Pointers to Constants and Constant Pointers,standard,15,no,const applied to pointed-to data; const applied to pointer address; const pointer to const data
+p400_lecture_02.02,1,pointers,Pointers as Function Parameters,standard,15,no,pointer parameters for pass-by-reference behavior; modifying original data; relationship to references
+p400_lecture_02.02,1,pointers,Returning and Reassigning Pointers,standard,12,no,returning pointers; passing pointer references; pointer-to-pointer techniques for changing an address
+p400_lecture_02.02,1,pointers,Function Pointers,standard,8,no,using addresses of functions; invoking code through a function pointer
+p400_lecture_03.01,2,memory,C++ Memory Model and Pointer Review,standard,10,no,direct memory access; pointer recap; stack versus heap motivation; review of pointer const and function-parameter forms
+p400_lecture_03.01,2,memory,Dynamic Memory Allocation,standard,12,no,stack-size limitation; heap access; new; delete and delete[]; heap-variable lifetime and access
+p400_lecture_03.01,2,data_structures,Pseudo-Dynamic Arrays,standard,12,no,heap-allocated arrays with runtime size; pointer-as-array notation; allocation and cleanup algorithm
+p400_lecture_03.01,2,data_structures,Real Dynamic Arrays,standard,18,no,replacement-array algorithm; growing and shrinking; copying values; freeing old storage; pointer cleanup
+p400_lecture_04.01,2,oop,OOP Motivation and Progression,standard,,no,mini-programs; private and public parts; progression from prior pointer and dynamic-memory work into object-oriented design
+p400_lecture_04.01,2,structures,Structures,standard,,no,grouping variables of different types; struct declaration; dot notation; initialization lists and constructors
+p400_lecture_04.01,2,oop,Classes Objects and Encapsulation,standard,,no,classes as custom types; data and behavior; public access; private state; setters and getters
+p400_lecture_04.01,2,adt,Abstract Data Types,standard,,no,interface versus implementation; hiding details; safe APIs; client use without internal knowledge
+p400_lecture_04.01,2,methods,Methods and Public Interfaces,standard,,no,methods as object behavior; class interfaces; setters and getters; methods as forced abstraction
+p400_lecture_07.01,4,constructors,Constructors and Constructor Overloading,standard,12,no,constructor rules; default and overloaded constructors; default arguments; initialization behavior
+p400_lecture_07.01,4,methods,The this Pointer and Constant Member Functions,standard,14,no,self-reference through this; member-name disambiguation; const member functions; object operations
+p400_lecture_07.01,4,static,Static Members,standard,10,no,shared class data; static member access; callable without an object; class-wide state
+p400_lecture_07.01,4,operators,Operator Overloading Preview,standard,8,no,object operations through methods; motivation for making custom types work with familiar operators
+p400_lecture_07.02,4,operators,Operator Overloading,standard,18,no,arithmetic and relational overloads; member versus stand-alone functions; pre/post increment; overload design rules
+p400_lecture_07.02,4,oop,Friend Functions and Stream Operators,standard,16,no,friend access to private state; stream insertion and extraction; free-function operator overloads
+p400_lecture_09.01,5,functors,Functors,standard,14,no,callable objects through overloaded operator(); stateful behavior; predicates; reusable algorithm components
+p400_lecture_09.01,5,iteration,Range-Based Loops and std::for_each,standard,12,no,range-based iteration; for_each; pointers and arrays; separating loop logic from action
+p400_lecture_09.01,5,functions,Lambda Expressions,standard,14,no,capture clause; parameter list; function body; concise anonymous callable syntax
+p400_lecture_09.01,5,functions,Lambda Use Cases Closures and Callbacks,standard,16,no,STL algorithms; closures; callbacks; std::function; asynchronous and event-driven use cases
+p400_lecture_09.02,5,templates,Function Templates,standard,16,no,generic function syntax; type deduction; template parameters; specialization and static binding
+p400_lecture_09.02,5,templates,Class Templates,standard,16,no,generic class design; vector-like template classes; template inheritance; reusable type-independent containers
+p400_lecture_16.01,8,exercises,Fill In the Missing Code,standard,10,no,BankAccount class; fill in printSummary() using private members; outside definition with :: ; final lecture capstone
+p400_lecture_16.01,8,oop,Object-Oriented Programming,high,8,no,paradigm shift from procedural; bank/cookie-cutter analogies; class = blueprint / object = instance
+p400_lecture_16.01,8,oop,Defining Member Functions,high,12,no,inline vs outside definition; :: scope resolution; StopLight example; accessor/mutator pattern
+p400_lecture_16.01,8,oop,Creating and Using Objects,standard,8,no,three design decisions; Book/Library interacting objects; ClassName variableName declaration syntax
+p400_lecture_16.01,8,oop,Introduction to Classes,high,12,no,class vs struct; private/public access specifiers; class anatomy two-column; Point canonical example
+p400_lecture_16.02,8,oop,Destructor,standard,8,no,~ClassName() syntax; no parameters no return type; runs at scope exit or delete; heap cleanup; RAII intro
+p400_lecture_16.02,8,oop,Constructor Overloading,standard,8,no,multiple constructors with different parameter lists; same rules as function overloading; default + parameterized pattern
+p400_lecture_16.02,8,oop,Parameterized Constructor,high,12,no,parameters initialize members at creation; before/after setter chain comparison; works with arrays and vectors; constructor validation
+p400_lecture_16.02,8,oop,Default Constructor,standard,8,no,implicit default provided by C++; disappears when any constructor is defined; explicit default to restore it; most vexing parse
+p400_lecture_16.02,8,oop,What is a Constructor,high,8,no,same name as class; no return type; automatic invocation; replaces setter-chain pattern; partially-initialized object problem
+p400_lecture_17.01,8,oop,Vectors of Objects,standard,15,no,vector<ClassName> declaration; push_back objects; range-for with const ref; .size() vs static SIZE; dynamic growth from user input
+p400_lecture_17.01,8,oop,Arrays of Objects,standard,10,no,ClassName array[n]; array[i].method() two-step access; max-tracker loop with getters; moved from 16.01
+p400_lecture_04.02,2,methods,Methods,standard,,no,methods as class behavior; function knowledge applied to member functions; method syntax and calls
+p400_lecture_04.02,2,constructors,Constructors and Constructor Overloading,standard,,no,constructor rules; initialization; default constructors; overloaded constructors; default arguments
+p400_lecture_04.02,2,constructors,Destructors,standard,,no,destructor role; cleanup at object lifetime end; constructor and destructor relationship
+p400_lecture_05.01,3,relationships,Class Initialization and Relationships,standard,10,no,setters and getters; object relationships; modular and reliable class collaboration
+p400_lecture_05.01,3,relationships,Dependency Relationships,standard,12,no,uses-a relationship; short-lived class interaction; dependency examples
+p400_lecture_05.01,3,data_structures,Arrays of Objects,standard,15,no,arrays of structs and classes; stack and heap placement; constructor initialization lists; dynamic object arrays
+p400_lecture_05.01,3,debugging,Assertions,standard,8,no,assert as a toggleable incorrect-state detector; compile-out behavior; debugging support
+p400_lecture_05.02,3,objects,Selecting Members of Objects,standard,12,no,member access through object pointers; dereference precedence; arrow operator
+p400_lecture_05.02,3,data_structures,Arrays of Objects on the Stack and Heap,standard,12,no,object arrays; constructor calls; stack versus heap placement; dynamic object arrays
+p400_lecture_05.02,3,resource_management,Resource Acquisition Is Initialization,standard,8,no,constructors acquire resources; destructors release them; scope-driven cleanup
+p400_lecture_05.02,3,objects,Passing Objects to Functions,standard,14,no,pass by value; reference; pointer; const reference; tradeoffs and method interfaces
+p400_lecture_06.01,3,objects,Anonymous Classes and Objects,standard,8,no,class and object lifetime without named reusable types; scope; one-use objects
+p400_lecture_06.01,3,patterns,Adapter Pattern,standard,12,no,bridge incompatible object formats; temporary uses-a conversion; broad input type and adapter conversion
+p400_lecture_06.02,3,strings,C-Strings and Character Arrays,standard,14,no,null-terminated character arrays; char pointers; literals; buffer overrun risk; input and bounds limitations
+p400_lecture_06.02,3,strings,C-String Library Functions,standard,8,no,cstring functions for copying comparison length and search operations
+p400_lecture_06.02,3,strings,String and Numeric Conversions,standard,18,no,stringstream conversion; to_string; stoi and related functions; choosing stream versus quick conversion
+p400_lecture_06.02,3,strings,Writing C-String Handling Functions,standard,10,no,custom functions for C-string processing; pointer and ASCII considerations; reusable string operations
+p400_lecture_08.01,4,constructors,Copy Constructors and Memberwise Assignment,standard,16,no,copy-constructor invocation; memberwise assignment; initialization versus assignment; shallow member copies
+p400_lecture_08.01,4,memory,Shallow Copies and the Serialization Problem,standard,16,no,pointer duplication; shared heap state; dangling addresses; serialization failure
+p400_lecture_08.02,4,memory,Deep Copy,standard,18,no,allocate independent pointees; customize copy constructor and assignment operator; document copy policy
+p400_lecture_08.02,4,memory,Rvalue References and Move Operations,standard,18,no,lvalues and rvalues; move operations; temporary object transfer; copy versus move decisions
+p400_lecture_16.01,16,oop,Abstract Data Types - Part 2,high,,no,resume from 15.02 exposed-state limitation; abstraction versus encapsulation; private representation; public operations; constructors and valid initial state; member functions; class-enforced invariants; transition into object-oriented programming
+p400_lecture_01.02,1,review,Variables,standard,2,no,authoritative PDF rebuild; brief variables review; supersedes seeded Variables and Assignment entry
+p400_lecture_01.02,1,conditionals,Conditional Statements,standard,8,no,authoritative PDF rebuild; review conditional execution and multi-way selection
+p400_lecture_01.02,1,iteration,Iteration,standard,8,no,authoritative PDF rebuild; review repetition with while do-while and for loops
+p400_lecture_01.02,1,functions,Functions,standard,5,no,authoritative PDF rebuild; review function declarations calls parameters and return values
+p400_lecture_01.02,1,design,Coding for Reuse,standard,5,no,authoritative PDF rebuild; preserve raw input; prefer error state or exceptions; component testing; constants over literals
+p400_lecture_01.02,1,logging,A Logging Function,standard,12,no,authoritative PDF rebuild; disk-based troubleshooting history; function-based append logger; chrono timing; resource-use limitation
+
+
+
+p400_lecture_10.01,5,conversion,Type Conversion Operators,high,,no,conversion operators; class-to-primitive conversion; explicit conversion syntax
+p400_lecture_10.01,5,conversion,Conversion Constructors,high,,no,constructing one class from another type; conversion constructor syntax; explicit constructors
+p400_lecture_10.01,5,operator_overloading,Operator Chaining,standard,,no,return the calling object; const right-hand operands; predictable chained assignments
+p400_lecture_10.01,5,functions,Lambda and Functor Review,standard,,no,lambda syntax; callable objects; threshold predicates; floating-point comparison
+p400_lecture_10.02,5,conversion,Conversion Constructors,high,,no,implicit and explicit converting constructors; object conversion contexts
+p400_lecture_10.02,5,objects,First-Class Objects,standard,,no,objects as values; copying; passing and returning objects
+p400_lecture_10.02,5,conversion,Object Conversions,high,,no,type conversion operators; conversion constructors; templated conversion operators
+p400_lecture_10.02,5,conversion,Conversion Safety,high,,no,unintended conversions; constructor hijacking; explicit and deleted conversion paths
+p400_lecture_11.01,6,relationships,Class Relationships,high,,no,association; aggregation; composition; modeling object relationships and ownership
+p400_lecture_11.01,6,relationships,Aggregation and Composition,high,,no,front-end and back-end classes; object lifetime; initializer lists; ownership boundaries
+p400_lecture_11.01,6,conversion,Conversion Review,standard,,no,conversion operators and converting constructors as a review connection
+p400_lecture_11.02,6,relationships,Class Relationships,high,,no,association; aggregation; composition; modeling object relationships and ownership
+p400_lecture_11.02,6,relationships,Aggregation and Composition,high,,no,front-end and back-end classes; object lifetime; initializer lists; ownership boundaries
+p400_lecture_11.02,6,inheritance,Inheritance,high,,no,base and derived classes; overriding; is-a relationships; specialization
+p400_lecture_11.02,6,inheritance,Multiple Inheritance,high,,no,multiple base classes; diamond problem; constructor order and ambiguity
+p400_lecture_11.02,6,inheritance,Inheritance Access Control,high,,no,public protected and private inheritance; protected members; inherited access
+p400_lecture_11.02,6,inheritance,Virtual Inheritance,standard,,no,shared base subobjects; virtual inheritance; resolving diamond ambiguity
+p400_lecture_12.01,6,inheritance,Inheritance and Overriding,high,,no,base and derived classes; overriding; is-a relationships; specialization
+p400_lecture_12.01,6,inheritance,Base Class Construction,high,,no,constructor order; initializer lists; passing arguments to base constructors
+p400_lecture_12.01,6,inheritance,Multiple Inheritance,high,,no,multiple base classes; diamond problem; constructor order and ambiguity
+p400_lecture_12.01,6,inheritance,Access Specifiers,high,,no,public protected and private inheritance; protected members; inherited access
+p400_lecture_12.01,6,inheritance,Inheritance Design,standard,,no,choosing inheritance versus composition; specialization; maintainable hierarchies
+p400_lecture_12.02,6,inheritance,Polymorphic Data Structures,high,,no,related objects in one traversal; shared interfaces; overriding behavior
+p400_lecture_12.02,6,inheritance,Overriding Functions,high,,no,derived methods replace base behavior; matching signatures; inherited defaults
+p400_lecture_12.02,6,inheritance,Inheritance and Data Structures,high,,no,arrays and containers of related objects; data structure design with inheritance
+p400_lecture_12.02,6,inheritance,Inheritance Applications,standard,,no,vehicle and shape examples; applying a hierarchy to a larger program
+p400_lecture_13.01,6,inheritance,Inheritance and Arrays,high,,no,base and derived objects in arrays; type compatibility; reuse and specialization
+p400_lecture_13.01,6,arrays,Arrays of Class Objects,high,,no,arrays and vectors of objects; constructor requirements; pointers for heterogeneous hierarchies
+p400_lecture_13.01,6,inheritance,Inheritance Design,standard,,no,code reuse; base-class extraction; choosing inheritance versus composition
+p400_lecture_13.01,6,relationships,Aggregation Review,standard,,no,aggregation and composition as alternatives to inheritance
+p400_lecture_13.02,6,polymorphism,Polymorphism,high,,no,dynamic behavior through a common base interface; runtime function selection
+p400_lecture_13.02,6,polymorphism,Virtual Member Functions,high,,no,virtual declaration; overriding; virtual dispatch; binding
+p400_lecture_13.02,6,polymorphism,Type Compatibility,high,,no,base and derived pointer compatibility; arrays and vectors; object slicing constraints
+p400_lecture_13.02,6,polymorphism,Polymorphic Data Structures,high,,no,collections of related objects; pointer-based traversal; shared behavior
+p400_lecture_13.02,6,polymorphism,Polymorphism Design,standard,,no,when to use virtual functions; common structure with specialized behavior
+p400_lecture_14.01,14,polymorphism,Abstract Base Classes,high,,no,pure virtual functions; abstract interfaces; derived classes must implement required behavior
+p400_lecture_14.01,14,polymorphism,Polymorphic Arrays,high,,no,array of base pointers; virtual dispatch; heterogeneous derived objects; heap allocation
+p400_lecture_14.01,14,polymorphism,Object Slicing,high,,no,base-object copies discard derived state; pointer collections preserve dynamic type
+p400_lecture_14.01,14,inheritance,Inheritance Versus Composition,high,,no,is-a versus has-a; code reuse; choosing a maintainable relationship
+p400_lecture_14.01,14,polymorphism,Dynamic Casting,standard,,no,runtime-checked downcast; safe type identification; design smell warning
+p400_lecture_14.02,14,exceptions,Exception Handling,high,,no,try catch throw; exceptional events; separation of detection and response
+p400_lecture_14.02,14,exceptions,Exception Safety,high,,no,error propagation; resource and object invariants; handling multiple exception types
+p400_lecture_14.02,14,polymorphism,Abstract Classes and Exceptions,standard,,no,exception hierarchies; abstract interfaces for errors; polymorphic error handling
+p400_lecture_14.02,14,exceptions,Exception Hierarchies,standard,,no,base and derived exception types; matching handlers; mixed collections of errors
+p400_lecture_15.01,15,stl,Standard Template Library Preview,standard,,yes,vector overview; standard library context; connection to polymorphism and generic programming
+p400_lecture_15.01,15,containers,Vectors of Vectors,standard,,no,nested vector syntax; temporary-vector construction; ragged versus rectangular structures
+p400_lecture_15.01,15,design,Design Exercise,standard,,no,apply inheritance and composition decisions in a focused design activity
+p400_lecture_15.02,15,templates,Function Templates,high,,no,template parameter syntax; type deduction; compile-time generic functions
+p400_lecture_15.02,15,templates,Template Arguments,high,,no,multiple type parameters; mixed argument types; explicit casts and deduction
+p400_lecture_15.02,15,templates,Template Specialization,standard,,no,explicit specialization for exceptional types; generic default with targeted override
+p400_lecture_15.02,15,maintenance,Generic Program Maintenance,standard,,no,reading unfamiliar template code; preserving behavior while changing implementation

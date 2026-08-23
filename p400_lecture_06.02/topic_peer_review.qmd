@@ -1,0 +1,37 @@
+<!-- Topic: Peer Review and Programming Exercise -->
+<!-- Slides 62–65 -->
+
+# Peer Review and Programming Exercise
+
+![](images/source_pages/slide-62.png){width="100%" fig-alt="Peer Review and Programming Exercise"}
+
+::: notes
+Slides 62–65
+Source slide 62 from the authoritative PDF.
+:::
+
+<!-- Slide 62 -->
+
+---
+
+## <span style="display:none">Source Slide 63</span>
+
+![](images/source_pages/slide-63.png){width="100%" fig-alt="Programming Exercise"}
+
+<!-- Slide 63 -->
+
+---
+
+## <span style="display:none">Source Slide 64</span>
+
+![](images/source_pages/slide-64.png){width="100%" fig-alt="Exercise Goals"}
+
+<!-- Slide 64 -->
+
+---
+
+## <span style="display:none">Source Slide 65</span>
+
+![](images/source_pages/slide-65.png){width="100%" fig-alt="Programming Exercise"}
+
+<!-- Slide 65 -->

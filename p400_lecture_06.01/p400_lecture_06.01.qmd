@@ -1,0 +1,7 @@
+{{< include topic_course_framing.qmd >}}
+{{< include topic_anonymous_classes_objects.qmd >}}
+{{< include topic_adapter_pattern.qmd >}}
+{{< include topic_wrap_up.qmd >}}
+{{< include topic_homework_preflight.qmd >}}
+{{< include topic_class_starters.qmd >}}
+

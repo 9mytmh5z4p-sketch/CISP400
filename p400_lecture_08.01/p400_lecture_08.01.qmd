@@ -1,0 +1,7 @@
+{{< include topic_course_framing.qmd >}}
+{{< include topic_copy_constructors.qmd >}}
+{{< include topic_shallow_copies.qmd >}}
+{{< include topic_programming_exercise.qmd >}}
+{{< include topic_wrap_up.qmd >}}
+{{< include topic_desk_check.qmd >}}
+

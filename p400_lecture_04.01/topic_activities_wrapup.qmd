@@ -1,0 +1,125 @@
+<!-- Topic: Activities and Wrap-Up -->
+<!-- Slides 94–108 -->
+
+# Activities and Wrap-Up
+
+![](images/source_pages/slide-94.png){width="100%" fig-alt="Activities and Wrap-Up"}
+
+::: notes
+Slides 94–108
+Source slide 94 from the authoritative PDF.
+:::
+
+<!-- Slide 94 -->
+
+---
+
+## <span style="display:none">Source Slide 95</span>
+
+![](images/source_pages/slide-95.png){width="100%" fig-alt="Programming Exercise"}
+
+<!-- Slide 95 -->
+
+---
+
+## <span style="display:none">Source Slide 96</span>
+
+![](images/source_pages/slide-96.png){width="100%" fig-alt="Source Slide 96"}
+
+<!-- Slide 96 -->
+
+---
+
+## <span style="display:none">Source Slide 97</span>
+
+![](images/source_pages/slide-97.png){width="100%" fig-alt="Homework 1 Peer"}
+
+<!-- Slide 97 -->
+
+---
+
+## <span style="display:none">Source Slide 98</span>
+
+![](images/source_pages/slide-98.png){width="100%" fig-alt="Hw Debrief"}
+
+<!-- Slide 98 -->
+
+---
+
+## <span style="display:none">Source Slide 99</span>
+
+![](images/source_pages/slide-99.png){width="100%" fig-alt="Process"}
+
+<!-- Slide 99 -->
+
+---
+
+## <span style="display:none">Source Slide 100</span>
+
+![](images/source_pages/slide-100.png){width="100%" fig-alt="Analysis"}
+
+<!-- Slide 100 -->
+
+---
+
+## <span style="display:none">Source Slide 101</span>
+
+![](images/source_pages/slide-101.png){width="100%" fig-alt="Debrief"}
+
+<!-- Slide 101 -->
+
+---
+
+## <span style="display:none">Source Slide 102</span>
+
+![](images/source_pages/slide-102.png){width="100%" fig-alt="Program This - Debrief"}
+
+<!-- Slide 102 -->
+
+---
+
+## <span style="display:none">Source Slide 103</span>
+
+![](images/source_pages/slide-103.png){width="100%" fig-alt="Exercise Goals"}
+
+<!-- Slide 103 -->
+
+---
+
+## <span style="display:none">Source Slide 104</span>
+
+![](images/source_pages/slide-104.png){width="100%" fig-alt="Programming Exercise"}
+
+<!-- Slide 104 -->
+
+---
+
+## <span style="display:none">Source Slide 105</span>
+
+![](images/source_pages/slide-105.png){width="100%" fig-alt="Exercise"}
+
+<!-- Slide 105 -->
+
+---
+
+## <span style="display:none">Source Slide 106</span>
+
+![](images/source_pages/slide-106.png){width="100%" fig-alt="Exercise Goals"}
+
+<!-- Slide 106 -->
+
+---
+
+## <span style="display:none">Source Slide 107</span>
+
+![](images/source_pages/slide-107.png){width="100%" fig-alt="Programming Exercise"}
+
+<!-- Slide 107 -->
+
+---
+
+## <span style="display:none">Source Slide 108</span>
+
+![](images/source_pages/slide-108.png){width="100%" fig-alt="Source Slide 108"}
+
+<!-- Slide 108 -->

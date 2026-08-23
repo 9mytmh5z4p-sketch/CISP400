@@ -1,0 +1,85 @@
+<!-- Topic 5: Template Context -->
+<!-- Slides 27–33 -->
+# Template Context
+
+## Template Context
+
+This slide develops the authoritative source material on **template context**.
+
+::: notes
+Slides 27–33
+:::
+
+<!-- Slide 27 -->
+
+---
+
+## Template Context
+
+This slide develops the authoritative source material on **template context**.
+
+::: notes
+
+:::
+
+<!-- Slide 28 -->
+
+---
+
+## Template Context
+
+This slide develops the authoritative source material on **template context**.
+
+::: notes
+
+:::
+
+<!-- Slide 29 -->
+
+---
+
+## Template Context
+
+This slide develops the authoritative source material on **template context**.
+
+::: notes
+
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## Template Context
+
+This slide develops the authoritative source material on **template context**.
+
+::: notes
+
+:::
+
+<!-- Slide 31 -->
+
+---
+
+## Template Context
+
+This slide develops the authoritative source material on **template context**.
+
+::: notes
+
+:::
+
+<!-- Slide 32 -->
+
+---
+
+## Template Context
+
+This slide develops the authoritative source material on **template context**.
+
+::: notes
+
+:::
+
+<!-- Slide 33 -->

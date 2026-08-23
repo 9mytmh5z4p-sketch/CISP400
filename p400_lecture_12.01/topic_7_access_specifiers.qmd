@@ -1,0 +1,73 @@
+<!-- Topic 7: Access Specifiers -->
+<!-- Slides 68–73 -->
+# Access Specifiers
+
+## Access Specifiers
+
+This slide develops the authoritative source material on **access specifiers**.
+
+::: notes
+Slides 68–73
+:::
+
+<!-- Slide 68 -->
+
+---
+
+## Access Specifiers
+
+This slide develops the authoritative source material on **access specifiers**.
+
+::: notes
+
+:::
+
+<!-- Slide 69 -->
+
+---
+
+## Access Specifiers
+
+This slide develops the authoritative source material on **access specifiers**.
+
+::: notes
+
+:::
+
+<!-- Slide 70 -->
+
+---
+
+## Access Specifiers
+
+This slide develops the authoritative source material on **access specifiers**.
+
+::: notes
+
+:::
+
+<!-- Slide 71 -->
+
+---
+
+## Access Specifiers
+
+This slide develops the authoritative source material on **access specifiers**.
+
+::: notes
+
+:::
+
+<!-- Slide 72 -->
+
+---
+
+## Access Specifiers
+
+This slide develops the authoritative source material on **access specifiers**.
+
+::: notes
+
+:::
+
+<!-- Slide 73 -->

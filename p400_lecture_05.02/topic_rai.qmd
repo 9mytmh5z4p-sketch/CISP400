@@ -1,0 +1,21 @@
+<!-- Topic: Resource Acquisition Is Initialization -->
+<!-- Slides 47–48 -->
+
+# Resource Acquisition Is Initialization
+
+![](images/source_pages/slide-47.png){width="100%" fig-alt="Resource Acquisition Is Initialization"}
+
+::: notes
+Slides 47–48
+Source slide 47 from the authoritative PDF.
+:::
+
+<!-- Slide 47 -->
+
+---
+
+## <span style="display:none">Source Slide 48</span>
+
+![](images/source_pages/slide-48.png){width="100%" fig-alt="RAII"}
+
+<!-- Slide 48 -->

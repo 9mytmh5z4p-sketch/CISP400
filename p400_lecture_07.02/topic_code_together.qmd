@@ -1,0 +1,29 @@
+<!-- Topic: Code Together -->
+<!-- Slides 57–59 -->
+
+# Code Together
+
+![](images/source_pages/slide-57.png){width="100%" fig-alt="Code Together"}
+
+::: notes
+Slides 57–59
+Source slide 57 from the authoritative PDF.
+:::
+
+<!-- Slide 57 -->
+
+---
+
+## <span style="display:none">Source Slide 58</span>
+
+![](images/source_pages/slide-58.png){width="100%" fig-alt="• Code a rectangle class"}
+
+<!-- Slide 58 -->
+
+---
+
+## <span style="display:none">Source Slide 59</span>
+
+![](images/source_pages/slide-59.png){width="100%" fig-alt="Key Takeaway"}
+
+<!-- Slide 59 -->

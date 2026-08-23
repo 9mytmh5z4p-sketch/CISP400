@@ -1,0 +1,175 @@
+<!-- Topic 3: Passing Vectors -->
+<!-- Slides 25-36 -->
+
+# Passing Vectors
+<!-- Slide 25 -->
+
+## Can a Function Receive a Whole Vector? {.smaller}
+
++ A vector is a value with many elements inside it.
++ A function can receive that value through a parameter.
++ The contract should say whether the function needs the whole collection.
+
+::: notes
+Slides 25-36
+:::
+
+<!-- Slide 26 -->
+
+---
+
+## Vector Parameters
+
+```cpp
+void displayScores(vector<int> scores) {
+    for (int score : scores) {
+        cout << score << endl;
+    }
+}
+```
+
+The parameter type includes the vector element type.
+
+<!-- Slide 27 -->
+
+---
+
+## Calling with a Vector Argument
+
+```cpp
+int main() {
+    vector<int> quizScores = {9, 10, 8};
+
+    displayScores(quizScores);
+
+    return 0;
+}
+```
+
+The argument is the caller's vector.
+
+<!-- Slide 28 -->
+
+---
+
+## The Parameter Gets a Copy
+
+```cpp
+void displayScores(vector<int> scores);
+```
+
++ `quizScores` belongs to `main()`.
++ `scores` belongs to `displayScores()`.
++ With this syntax, the function receives its own copy.
+
+::: notes
+[Graphic suggestion: show two labeled vector boxes, one in main() and one inside displayScores(), with the same values but different names.]
+:::
+
+<!-- Slide 29 -->
+
+---
+
+## Reading Vector Data in a Function
+
+```cpp
+int total(vector<int> scores) {
+    int sum = 0;
+
+    for (int score : scores) {
+        sum = sum + score;
+    }
+
+    return sum;
+}
+```
+
+The range-based loop reads each value from the parameter vector.
+
+<!-- Slide 30 -->
+
+---
+
+## Returning a Vector
+
+```cpp
+vector<int> getScores() {
+    vector<int> scores;
+
+    scores.push_back(92);
+    scores.push_back(87);
+    scores.push_back(95);
+
+    return scores;
+}
+```
+
+A function can build a vector and return it to the caller.
+
+<!-- Slide 31 -->
+
+---
+
+## Vector Contract Examples
+
+| Prototype | Contract |
+|---|---|
+| `int total(vector<int> scores);` | receive a collection, return one number |
+| `double average(vector<int> scores);` | receive a collection, return one decimal |
+| `vector<int> getScores();` | create a collection, return it |
+
+<!-- Slide 32 -->
+
+---
+
+## When Should a Function Receive a Vector?
+
++ Use a vector parameter when the function needs the collection as a whole.
++ Totals, averages, maximums, and reports often need the whole collection.
++ The caller should pass the vector instead of many separate variables.
+
+<!-- Slide 33 -->
+
+---
+
+## Counter Example: One Element at a Time
+
+```cpp
+void displayScore(int score) {
+    cout << "Score: " << score << endl;
+}
+
+int main() {
+    vector<int> scores = {92, 87, 95};
+
+    for (int score : scores) {
+        displayScore(score);
+    }
+
+    return 0;
+}
+```
+
+The function receives one value because it only needs one value per call.
+
+<!-- Slide 34 -->
+
+---
+
+## When Should a Function Return a Vector?
+
++ Return a vector when the function creates a collection.
++ Return a vector when the caller needs the completed collection.
++ Do not return a vector when the caller only needs one calculated answer.
+
+<!-- Slide 35 -->
+
+---
+
+## Summary
+
++ Vectors cross function boundaries through parameters and return values.
++ Passing a whole vector is useful when the function needs the collection.
++ Passing one element at a time is clearer when the function only needs one value.
+
+<!-- Slide 36 -->

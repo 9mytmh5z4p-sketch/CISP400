@@ -1,0 +1,145 @@
+<!-- Topic 6: Inheritance and Exceptions -->
+<!-- Slides 47–58 -->
+# Inheritance and Exceptions
+
+## Inheritance and Exceptions
+
+This slide develops the authoritative source material on **inheritance and exceptions**.
+
+::: notes
+Slides 47–58
+:::
+
+<!-- Slide 47 -->
+
+---
+
+## Inheritance and Exceptions
+
+This slide develops the authoritative source material on **inheritance and exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 48 -->
+
+---
+
+## Inheritance and Exceptions
+
+This slide develops the authoritative source material on **inheritance and exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 49 -->
+
+---
+
+## Inheritance and Exceptions
+
+This slide develops the authoritative source material on **inheritance and exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 50 -->
+
+---
+
+## Inheritance and Exceptions
+
+This slide develops the authoritative source material on **inheritance and exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 51 -->
+
+---
+
+## Inheritance and Exceptions
+
+This slide develops the authoritative source material on **inheritance and exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 52 -->
+
+---
+
+## Inheritance and Exceptions
+
+This slide develops the authoritative source material on **inheritance and exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 53 -->
+
+---
+
+## Inheritance and Exceptions
+
+This slide develops the authoritative source material on **inheritance and exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 54 -->
+
+---
+
+## Inheritance and Exceptions
+
+This slide develops the authoritative source material on **inheritance and exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 55 -->
+
+---
+
+## Inheritance and Exceptions
+
+This slide develops the authoritative source material on **inheritance and exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 56 -->
+
+---
+
+## Inheritance and Exceptions
+
+This slide develops the authoritative source material on **inheritance and exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 57 -->
+
+---
+
+## Inheritance and Exceptions
+
+This slide develops the authoritative source material on **inheritance and exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 58 -->

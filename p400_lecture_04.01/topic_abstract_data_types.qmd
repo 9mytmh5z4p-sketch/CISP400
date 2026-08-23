@@ -1,0 +1,253 @@
+<!-- Topic: Abstract Data Types -->
+<!-- Slides 47–77 -->
+
+# Abstract Data Types
+
+![](images/source_pages/slide-47.png){width="100%" fig-alt="Abstract Data Types"}
+
+::: notes
+Slides 47–77
+Source slide 47 from the authoritative PDF.
+:::
+
+<!-- Slide 47 -->
+
+---
+
+## <span style="display:none">Source Slide 48</span>
+
+![](images/source_pages/slide-48.png){width="100%" fig-alt="Someone will break it!"}
+
+<!-- Slide 48 -->
+
+---
+
+## <span style="display:none">Source Slide 49</span>
+
+![](images/source_pages/slide-49.png){width="100%" fig-alt="“An Abstract Data Type (ADT) describes any"}
+
+<!-- Slide 49 -->
+
+---
+
+## <span style="display:none">Source Slide 50</span>
+
+![](images/source_pages/slide-50.png){width="100%" fig-alt="How?"}
+
+<!-- Slide 50 -->
+
+---
+
+## <span style="display:none">Source Slide 51</span>
+
+![](images/source_pages/slide-51.png){width="100%" fig-alt="Build ADT"}
+
+<!-- Slide 51 -->
+
+---
+
+## <span style="display:none">Source Slide 52</span>
+
+![](images/source_pages/slide-52.png){width="100%" fig-alt="This is the API"}
+
+<!-- Slide 52 -->
+
+---
+
+## <span style="display:none">Source Slide 53</span>
+
+![](images/source_pages/slide-53.png){width="100%" fig-alt="Source Slide 53"}
+
+<!-- Slide 53 -->
+
+---
+
+## <span style="display:none">Source Slide 54</span>
+
+![](images/source_pages/slide-54.png){width="100%" fig-alt="• The work we do in this class will focus on making"}
+
+<!-- Slide 54 -->
+
+---
+
+## <span style="display:none">Source Slide 55</span>
+
+![](images/source_pages/slide-55.png){width="100%" fig-alt="7.2 Object Oriented"}
+
+<!-- Slide 55 -->
+
+---
+
+## <span style="display:none">Source Slide 56</span>
+
+![](images/source_pages/slide-56.png){width="100%" fig-alt="• OOP is so powerful because we create software"}
+
+<!-- Slide 56 -->
+
+---
+
+## <span style="display:none">Source Slide 57</span>
+
+![](images/source_pages/slide-57.png){width="100%" fig-alt="• We manipulate those objects because of"}
+
+<!-- Slide 57 -->
+
+---
+
+## <span style="display:none">Source Slide 58</span>
+
+![](images/source_pages/slide-58.png){width="100%" fig-alt="“We gather the implementation details together"}
+
+<!-- Slide 58 -->
+
+---
+
+## <span style="display:none">Source Slide 59</span>
+
+![](images/source_pages/slide-59.png){width="100%" fig-alt="Where do we begin?"}
+
+<!-- Slide 59 -->
+
+---
+
+## <span style="display:none">Source Slide 60</span>
+
+![](images/source_pages/slide-60.png){width="100%" fig-alt="“… representing information in terms of it's"}
+
+<!-- Slide 60 -->
+
+---
+
+## <span style="display:none">Source Slide 61</span>
+
+![](images/source_pages/slide-61.png){width="100%" fig-alt="Why?"}
+
+<!-- Slide 61 -->
+
+---
+
+## <span style="display:none">Source Slide 62</span>
+
+![](images/source_pages/slide-62.png){width="100%" fig-alt="Source Slide 62"}
+
+<!-- Slide 62 -->
+
+---
+
+## <span style="display:none">Source Slide 63</span>
+
+![](images/source_pages/slide-63.png){width="100%" fig-alt="Source Slide 63"}
+
+<!-- Slide 63 -->
+
+---
+
+## <span style="display:none">Source Slide 64</span>
+
+![](images/source_pages/slide-64.png){width="100%" fig-alt="Source Slide 64"}
+
+<!-- Slide 64 -->
+
+---
+
+## <span style="display:none">Source Slide 65</span>
+
+![](images/source_pages/slide-65.png){width="100%" fig-alt="Source Slide 65"}
+
+<!-- Slide 65 -->
+
+---
+
+## <span style="display:none">Source Slide 66</span>
+
+![](images/source_pages/slide-66.png){width="100%" fig-alt="Source Slide 66"}
+
+<!-- Slide 66 -->
+
+---
+
+## <span style="display:none">Source Slide 67</span>
+
+![](images/source_pages/slide-67.png){width="100%" fig-alt="Source Slide 67"}
+
+<!-- Slide 67 -->
+
+---
+
+## <span style="display:none">Source Slide 68</span>
+
+![](images/source_pages/slide-68.png){width="100%" fig-alt="Source Slide 68"}
+
+<!-- Slide 68 -->
+
+---
+
+## <span style="display:none">Source Slide 69</span>
+
+![](images/source_pages/slide-69.png){width="100%" fig-alt="Source Slide 69"}
+
+<!-- Slide 69 -->
+
+---
+
+## <span style="display:none">Source Slide 70</span>
+
+![](images/source_pages/slide-70.png){width="100%" fig-alt="Source Slide 70"}
+
+<!-- Slide 70 -->
+
+---
+
+## <span style="display:none">Source Slide 71</span>
+
+![](images/source_pages/slide-71.png){width="100%" fig-alt="Why do we want to do this?"}
+
+<!-- Slide 71 -->
+
+---
+
+## <span style="display:none">Source Slide 72</span>
+
+![](images/source_pages/slide-72.png){width="100%" fig-alt="Source Slide 72"}
+
+<!-- Slide 72 -->
+
+---
+
+## <span style="display:none">Source Slide 73</span>
+
+![](images/source_pages/slide-73.png){width="100%" fig-alt="Source Slide 73"}
+
+<!-- Slide 73 -->
+
+---
+
+## <span style="display:none">Source Slide 74</span>
+
+![](images/source_pages/slide-74.png){width="100%" fig-alt="Source Slide 74"}
+
+<!-- Slide 74 -->
+
+---
+
+## <span style="display:none">Source Slide 75</span>
+
+![](images/source_pages/slide-75.png){width="100%" fig-alt="Source Slide 75"}
+
+<!-- Slide 75 -->
+
+---
+
+## <span style="display:none">Source Slide 76</span>
+
+![](images/source_pages/slide-76.png){width="100%" fig-alt="Source Slide 76"}
+
+<!-- Slide 76 -->
+
+---
+
+## <span style="display:none">Source Slide 77</span>
+
+![](images/source_pages/slide-77.png){width="100%" fig-alt="Table of Variables"}
+
+<!-- Slide 77 -->

@@ -1,0 +1,156 @@
+<!-- Topic 1: Input Validation Strategy -->
+<!-- Slides 3-17 -->
+
+# Input Validation Strategy
+<!-- Slide 3 -->
+
+## What Can We Trust? {.smaller}
+
+- Client input begins outside the program's control.
+- Validation decides when that input is safe enough to use.
+
+::: notes
+Slides 3-17
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Why Validate Input?
+
+- Bad input can corrupt program state.
+- It can break calculations or send the program down the wrong branch.
+- Validation protects the boundary before the value is trusted.
+
+<!-- Slide 5 -->
+
+---
+
+## Minimum Validation Behavior
+
+- Identify the problem.
+- Give a specific correction message.
+- Reprompt so the client can fix the value.
+
+<!-- Slide 6 -->
+
+---
+
+## Where Validation Belongs
+
+- Validate right after input is read.
+- Do it before calculations, branches, vectors, or function calls use the value.
+- The rest of the program should receive already-checked data.
+
+<!-- Slide 7 -->
+
+---
+
+## Two General Strategies
+
+| Strategy | Meaning |
+|---|---|
+| Allow by default | Accept most input and reject known bad values |
+| Deny by default | Reject everything except known good values |
+
+::: notes
+[Graphic suggestion: two doors labeled "default open" and "default closed" with a guard checking names.]
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Deny By Default
+
+- Deny by default works well when the valid set is small.
+- Menus, yes/no prompts, and known commands are strong fits.
+- The program accepts only the choices it understands.
+
+<!-- Slide 9 -->
+
+---
+
+## Allow By Default
+
+- Allow by default can reject a short list of known bad inputs.
+- It is better than no validation when the invalid set is small.
+- It is weak when the program needs evidence that the data is correct.
+
+<!-- Slide 10 -->
+
+---
+
+## The Gauntlet Of Trust
+
+| Check | Question |
+|---|---|
+| Presence | Is there data? |
+| Shape | Is it the kind of input we need? |
+| Range or set | Is it an expected value? |
+
+::: notes
+[Graphic suggestion: three gates labeled presence, shape, and range, with trust increasing after each gate.]
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## Start With Presence
+
+- Empty input is different from wrong input.
+- For full-line input, use `getline()` so the program can see the whole response.
+- A blank string should be handled before checking more specific rules.
+
+<!-- Slide 12 -->
+
+---
+
+## Check The Shape
+
+- Shape means the input has the form the program expects.
+- A whole number, a nonblank string, and a yes/no answer are different shapes.
+- This check comes before asking whether the value is in range.
+
+<!-- Slide 13 -->
+
+---
+
+## Check The Range Or Set
+
+- A readable value can still be unacceptable.
+- Range checks ask whether a number is between legal bounds.
+- Set checks ask whether a value is one of the legal choices.
+
+<!-- Slide 14 -->
+
+---
+
+## Why The Error Message Matters
+
+- "Invalid input" tells the client almost nothing.
+- "Enter a whole number from 0 to 100" names the correction.
+- Precise feedback reduces repeated mistakes.
+
+<!-- Slide 15 -->
+
+---
+
+## Broad To Narrow
+
+- First ask whether anything was entered.
+- Then ask whether the data has the right shape.
+- Then ask whether it meets the specific rule for this program.
+
+<!-- Slide 16 -->
+
+---
+
+## Summary
+
+- Validation builds trust in stages.
+- Check broad failures first, explain clearly, and reprompt until the program has usable data.
+
+<!-- Slide 17 -->

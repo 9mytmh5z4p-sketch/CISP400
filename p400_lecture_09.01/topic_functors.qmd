@@ -1,0 +1,204 @@
+<!-- Topic: Functors -->
+<!-- Slides 1–20 -->
+
+# Functors
+
+## +CISP 400
+
+::: notes
+Slides 1–20
+Source text extracted from the authoritative Keynote deck.
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## Chapter 11
+
+- Functors
+- 6D%C%#
+- decimal?a
+
+<!-- Slide 2 -->
+
+---
+
+## )>`V
+
+- Agenda
+- Chapter 11 - More About Classes and OOP
+- The this poin
+- Lconstant member funca
+
+<!-- Slide 3 -->
+
+---
+
+## Chapter 11
+
+- More OOP
+- 6D%E%%
+- 2%T!I
+- decimal?a
+
+<!-- Slide 4 -->
+
+---
+
+## )>`V
+
+- Agenda
+- Chapter 11 - More About Classes and OOP
+- The this poin
+- Lconstant member funca
+
+<!-- Slide 5 -->
+
+---
+
+## )>@C
+
+- 5e T
+
+<!-- Slide 6 -->
+
+---
+
+## )>@C
+
+- 5e T
+
+<!-- Slide 7 -->
+
+---
+
+## Exercise Goals
+
+- a_Increase Topic Mastery
+- Construct Knowledge
+- Give you data to evaluate how well you are learning.
+
+<!-- Slide 8 -->
+
+---
+
+## Programming Exercise
+
+- u0(T
+- ]4 N
+
+<!-- Slide 9 -->
+
+---
+
+## )>pZ
+
+- Advantages
+- qnEasy, small, anonymous functions
+- locality - everything is local
+- t pollute namespace
+
+<!-- Slide 10 -->
+
+---
+
+## decimal5!
+
+- Type in lambda.cpp5
+- Comparison of a functor and a
+
+<!-- Slide 11 -->
+
+---
+
+## 0[capture clause](parameter list) {function body}
+
+- F - In-scope variables the lambda can access.
+- Parameter List - incoming
+- TBody - what to do with
+- 6DA6i{
+
+<!-- Slide 12 -->
+
+---
+
+## Lambda Expresion form
+
+- 8[](){}
+- [capture clause](parameter list) {function body}
+- decimal?
+
+<!-- Slide 13 -->
+
+---
+
+## Lambda Expressions
+
+- A streamlined notation for e
+- '8ng the logic of
+- funct
+- )tcall operator.
+
+<!-- Slide 14 -->
+
+---
+
+## vCreating those classes for a functor seems like a waste - lots of work for just an operator().
+
+- Can we streamline that?
+- 2%T!I
+- decimal?a
+
+<!-- Slide 15 -->
+
+---
+
+## Lambda Functions
+
+
+<!-- Slide 16 -->
+
+---
+
+## )>@C
+
+- Anonymous functor
+- run in repl.it
+- $64EFE1DC-266F-46DE-8720-2C6EAFB04A3B
+- http://repl.it
+
+<!-- Slide 17 -->
+
+---
+
+## )>@C
+
+- mjrun in repl.it
+- really starting to build flexible code.
+- May want to split out error messages into own class
+- $DE4FF7DE-419D-4522-9ACF-5C614A7BFB6C
+
+<!-- Slide 18 -->
+
+---
+
+## Predicates - a function which acts as a yes or no question.
+
+- Unary Pr
+- - take
+- Lsingle argument and determines if an object has a certain characteristic.
+- BinVe
+
+<!-- Slide 19 -->
+
+---
+
+## )>pZ
+
+- Advantages
+- We can split the logic for looping from t2
+- (which we may be able to do with a function) and use
+- .. each
+
+<!-- Slide 20 -->

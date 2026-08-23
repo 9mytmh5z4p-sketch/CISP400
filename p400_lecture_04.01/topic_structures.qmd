@@ -1,0 +1,101 @@
+<!-- Topic: Structures -->
+<!-- Slides 20–31 -->
+
+# Structures
+
+![](images/source_pages/slide-20.png){width="100%" fig-alt="Structures"}
+
+::: notes
+Slides 20–31
+Source slide 20 from the authoritative PDF.
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## <span style="display:none">Source Slide 21</span>
+
+![](images/source_pages/slide-21.png){width="100%" fig-alt="The Problem"}
+
+<!-- Slide 21 -->
+
+---
+
+## <span style="display:none">Source Slide 22</span>
+
+![](images/source_pages/slide-22.png){width="100%" fig-alt="Source Slide 22"}
+
+<!-- Slide 22 -->
+
+---
+
+## <span style="display:none">Source Slide 23</span>
+
+![](images/source_pages/slide-23.png){width="100%" fig-alt="• What we need is a way to logically group variables"}
+
+<!-- Slide 23 -->
+
+---
+
+## <span style="display:none">Source Slide 24</span>
+
+![](images/source_pages/slide-24.png){width="100%" fig-alt="Solution - Struct"}
+
+<!-- Slide 24 -->
+
+---
+
+## <span style="display:none">Source Slide 25</span>
+
+![](images/source_pages/slide-25.png){width="100%" fig-alt="Photo Credit: C++ Primer Plus (6th Edition)"}
+
+<!-- Slide 25 -->
+
+---
+
+## <span style="display:none">Source Slide 26</span>
+
+![](images/source_pages/slide-26.png){width="100%" fig-alt="Photo Credit: C++ Primer Plus (6th Edition)"}
+
+<!-- Slide 26 -->
+
+---
+
+## <span style="display:none">Source Slide 27</span>
+
+![](images/source_pages/slide-27.png){width="100%" fig-alt="Accessing a struct"}
+
+<!-- Slide 27 -->
+
+---
+
+## <span style="display:none">Source Slide 28</span>
+
+![](images/source_pages/slide-28.png){width="100%" fig-alt="Initializing a Struct"}
+
+<!-- Slide 28 -->
+
+---
+
+## <span style="display:none">Source Slide 29</span>
+
+![](images/source_pages/slide-29.png){width="100%" fig-alt="Initialization List"}
+
+<!-- Slide 29 -->
+
+---
+
+## <span style="display:none">Source Slide 30</span>
+
+![](images/source_pages/slide-30.png){width="100%" fig-alt="Constructor"}
+
+<!-- Slide 30 -->
+
+---
+
+## <span style="display:none">Source Slide 31</span>
+
+![](images/source_pages/slide-31.png){width="100%" fig-alt="Questions"}
+
+<!-- Slide 31 -->

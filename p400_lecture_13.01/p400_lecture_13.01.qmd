@@ -1,0 +1,35 @@
+# Last Time
+
+::: {.incremental}
++ **Inheritance**
++ **Class relationships**
+:::
+
+# Today's Agenda
+
+- Inheritance and Arrays
+- Inheritance Design
+- Arrays of Class Objects
+- Practice and Review
+- Inheritance and Exceptions
+- Aggregation Review
+
+{{< include topic_1_course_framing.qmd >}}
+{{< include topic_2_inheritance_and_arrays.qmd >}}
+{{< include topic_3_inheritance_design.qmd >}}
+{{< include topic_4_arrays_of_class_objects.qmd >}}
+{{< include topic_5_practice_and_review.qmd >}}
+{{< include topic_6_inheritance_and_exceptions.qmd >}}
+{{< include topic_7_aggregation_review.qmd >}}
+
+---
+# Key Takeaways
+
+- Arrays of related objects expose important type-compatibility and design constraints.
+- Virtual functions let the program select behavior through a common interface.
+
+---
+# Next Time
+
+---
+# Appendix

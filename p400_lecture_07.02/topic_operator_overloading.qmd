@@ -1,0 +1,205 @@
+<!-- Topic: Operator Overloading -->
+<!-- Slides 9–33 -->
+
+# Operator Overloading
+
+![](images/source_pages/slide-09.png){width="100%" fig-alt="Operator Overloading"}
+
+::: notes
+Slides 9–33
+Source slide 9 from the authoritative PDF.
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## <span style="display:none">Source Slide 10</span>
+
+![](images/source_pages/slide-10.png){width="100%" fig-alt="Exercise Goals"}
+
+<!-- Slide 10 -->
+
+---
+
+## <span style="display:none">Source Slide 11</span>
+
+![](images/source_pages/slide-11.png){width="100%" fig-alt="Programming Exercise"}
+
+<!-- Slide 11 -->
+
+---
+
+## <span style="display:none">Source Slide 12</span>
+
+![](images/source_pages/slide-12.png){width="100%" fig-alt="Source Slide 12"}
+
+<!-- Slide 12 -->
+
+---
+
+## <span style="display:none">Source Slide 13</span>
+
+![](images/source_pages/slide-13.png){width="100%" fig-alt="Source Slide 13"}
+
+<!-- Slide 13 -->
+
+---
+
+## <span style="display:none">Source Slide 14</span>
+
+![](images/source_pages/slide-14.png){width="100%" fig-alt="11.6 Operator"}
+
+<!-- Slide 14 -->
+
+---
+
+## <span style="display:none">Source Slide 15</span>
+
+![](images/source_pages/slide-15.png){width="100%" fig-alt="Have you ever wondered how the * is able to do so"}
+
+<!-- Slide 15 -->
+
+---
+
+## <span style="display:none">Source Slide 16</span>
+
+![](images/source_pages/slide-16.png){width="100%" fig-alt="• Have you ever wanted to change the function of the"}
+
+<!-- Slide 16 -->
+
+---
+
+## <span style="display:none">Source Slide 17</span>
+
+![](images/source_pages/slide-17.png){width="100%" fig-alt="• We can do that in C++ because these symbols are"}
+
+<!-- Slide 17 -->
+
+---
+
+## <span style="display:none">Source Slide 18</span>
+
+![](images/source_pages/slide-18.png){width="100%" fig-alt="Operator Overloading"}
+
+<!-- Slide 18 -->
+
+---
+
+## <span style="display:none">Source Slide 19</span>
+
+![](images/source_pages/slide-19.png){width="100%" fig-alt="Source Slide 19"}
+
+<!-- Slide 19 -->
+
+---
+
+## <span style="display:none">Source Slide 20</span>
+
+![](images/source_pages/slide-20.png){width="100%" fig-alt="• You can completely change the meaning of an"}
+
+<!-- Slide 20 -->
+
+---
+
+## <span style="display:none">Source Slide 21</span>
+
+![](images/source_pages/slide-21.png){width="100%" fig-alt="Why would we want to do"}
+
+<!-- Slide 21 -->
+
+---
+
+## <span style="display:none">Source Slide 22</span>
+
+![](images/source_pages/slide-22.png){width="100%" fig-alt="Ways to Overload"}
+
+<!-- Slide 22 -->
+
+---
+
+## <span style="display:none">Source Slide 23</span>
+
+![](images/source_pages/slide-23.png){width="100%" fig-alt="Overloading Arithmetic and Relational Operators"}
+
+<!-- Slide 23 -->
+
+---
+
+## <span style="display:none">Source Slide 24</span>
+
+![](images/source_pages/slide-24.png){width="100%" fig-alt="Source Slide 24"}
+
+<!-- Slide 24 -->
+
+---
+
+## <span style="display:none">Source Slide 25</span>
+
+![](images/source_pages/slide-25.png){width="100%" fig-alt="Source Slide 25"}
+
+<!-- Slide 25 -->
+
+---
+
+## <span style="display:none">Source Slide 26</span>
+
+![](images/source_pages/slide-26.png){width="100%" fig-alt="How do we allow our code to perform multiple"}
+
+<!-- Slide 26 -->
+
+---
+
+## <span style="display:none">Source Slide 27</span>
+
+![](images/source_pages/slide-27.png){width="100%" fig-alt="Source Slide 27"}
+
+<!-- Slide 27 -->
+
+---
+
+## <span style="display:none">Source Slide 28</span>
+
+![](images/source_pages/slide-28.png){width="100%" fig-alt="Overloading the pre/post x operators"}
+
+<!-- Slide 28 -->
+
+---
+
+## <span style="display:none">Source Slide 29</span>
+
+![](images/source_pages/slide-29.png){width="100%" fig-alt="Source Slide 29"}
+
+<!-- Slide 29 -->
+
+---
+
+## <span style="display:none">Source Slide 30</span>
+
+![](images/source_pages/slide-30.png){width="100%" fig-alt="Source Slide 30"}
+
+<!-- Slide 30 -->
+
+---
+
+## <span style="display:none">Source Slide 31</span>
+
+![](images/source_pages/slide-31.png){width="100%" fig-alt="Overloading the comparison operator"}
+
+<!-- Slide 31 -->
+
+---
+
+## <span style="display:none">Source Slide 32</span>
+
+![](images/source_pages/slide-32.png){width="100%" fig-alt="Source Slide 32"}
+
+<!-- Slide 32 -->
+
+---
+
+## <span style="display:none">Source Slide 33</span>
+
+![](images/source_pages/slide-33.png){width="100%" fig-alt="Algorithm for Overloading"}
+
+<!-- Slide 33 -->

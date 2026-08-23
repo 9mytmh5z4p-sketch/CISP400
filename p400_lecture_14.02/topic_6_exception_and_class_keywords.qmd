@@ -1,0 +1,73 @@
+<!-- Topic 6: Exception and Class Keywords -->
+<!-- Slides 41–46 -->
+# Exception and Class Keywords
+
+## Exception and Class Keywords
+
+This slide develops the authoritative source material on **exception and class keywords**.
+
+::: notes
+Slides 41–46
+:::
+
+<!-- Slide 41 -->
+
+---
+
+## Exception and Class Keywords
+
+This slide develops the authoritative source material on **exception and class keywords**.
+
+::: notes
+
+:::
+
+<!-- Slide 42 -->
+
+---
+
+## Exception and Class Keywords
+
+This slide develops the authoritative source material on **exception and class keywords**.
+
+::: notes
+
+:::
+
+<!-- Slide 43 -->
+
+---
+
+## Exception and Class Keywords
+
+This slide develops the authoritative source material on **exception and class keywords**.
+
+::: notes
+
+:::
+
+<!-- Slide 44 -->
+
+---
+
+## Exception and Class Keywords
+
+This slide develops the authoritative source material on **exception and class keywords**.
+
+::: notes
+
+:::
+
+<!-- Slide 45 -->
+
+---
+
+## Exception and Class Keywords
+
+This slide develops the authoritative source material on **exception and class keywords**.
+
+::: notes
+
+:::
+
+<!-- Slide 46 -->

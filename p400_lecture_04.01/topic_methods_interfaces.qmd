@@ -1,0 +1,133 @@
+<!-- Topic: Methods and Public Interfaces -->
+<!-- Slides 78–93 -->
+
+# Methods and Public Interfaces
+
+![](images/source_pages/slide-78.png){width="100%" fig-alt="Methods and Public Interfaces"}
+
+::: notes
+Slides 78–93
+Source slide 78 from the authoritative PDF.
+:::
+
+<!-- Slide 78 -->
+
+---
+
+## <span style="display:none">Source Slide 79</span>
+
+![](images/source_pages/slide-79.png){width="100%" fig-alt="Photo Credit: https://qph.ec.quoracdn.net/main-qimg-021242ab769010da96e2a2ecb7fb266a"}
+
+<!-- Slide 79 -->
+
+---
+
+## <span style="display:none">Source Slide 80</span>
+
+![](images/source_pages/slide-80.png){width="100%" fig-alt="Photo Credit: https://3.bp.blogspot.com/-y8do_JdFx6c/V3_dywgZzPI/AAAAAAAAGZY/catSBAx1g-ciuT6LxvvnjYAfvEWH2jAmQCLcB/s1600"}
+
+<!-- Slide 80 -->
+
+---
+
+## <span style="display:none">Source Slide 81</span>
+
+![](images/source_pages/slide-81.png){width="100%" fig-alt="Photo Credit: https://iandunn.name/content/presentations/wp-oop-mvc/images/object-instantiation.png"}
+
+<!-- Slide 81 -->
+
+---
+
+## <span style="display:none">Source Slide 82</span>
+
+![](images/source_pages/slide-82.png){width="100%" fig-alt="7.4 Creating and"}
+
+<!-- Slide 82 -->
+
+---
+
+## <span style="display:none">Source Slide 83</span>
+
+![](images/source_pages/slide-83.png){width="100%" fig-alt="Source Slide 83"}
+
+<!-- Slide 83 -->
+
+---
+
+## <span style="display:none">Source Slide 84</span>
+
+![](images/source_pages/slide-84.png){width="100%" fig-alt="7.5 De ning Member"}
+
+<!-- Slide 84 -->
+
+---
+
+## <span style="display:none">Source Slide 85</span>
+
+![](images/source_pages/slide-85.png){width="100%" fig-alt="• Classes group data and associated behaviors."}
+
+<!-- Slide 85 -->
+
+---
+
+## <span style="display:none">Source Slide 86</span>
+
+![](images/source_pages/slide-86.png){width="100%" fig-alt="• We use methods!"}
+
+<!-- Slide 86 -->
+
+---
+
+## <span style="display:none">Source Slide 87</span>
+
+![](images/source_pages/slide-87.png){width="100%" fig-alt="Methods"}
+
+<!-- Slide 87 -->
+
+---
+
+## <span style="display:none">Source Slide 88</span>
+
+![](images/source_pages/slide-88.png){width="100%" fig-alt="Method"}
+
+<!-- Slide 88 -->
+
+---
+
+## <span style="display:none">Source Slide 89</span>
+
+![](images/source_pages/slide-89.png){width="100%" fig-alt="Another example"}
+
+<!-- Slide 89 -->
+
+---
+
+## <span style="display:none">Source Slide 90</span>
+
+![](images/source_pages/slide-90.png){width="100%" fig-alt="Source Slide 90"}
+
+<!-- Slide 90 -->
+
+---
+
+## <span style="display:none">Source Slide 91</span>
+
+![](images/source_pages/slide-91.png){width="100%" fig-alt="Yet another example"}
+
+<!-- Slide 91 -->
+
+---
+
+## <span style="display:none">Source Slide 92</span>
+
+![](images/source_pages/slide-92.png){width="100%" fig-alt="Source Slide 92"}
+
+<!-- Slide 92 -->
+
+---
+
+## <span style="display:none">Source Slide 93</span>
+
+![](images/source_pages/slide-93.png){width="100%" fig-alt="Exercise"}
+
+<!-- Slide 93 -->

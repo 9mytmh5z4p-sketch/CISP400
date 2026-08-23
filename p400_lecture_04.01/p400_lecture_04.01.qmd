@@ -1,0 +1,8 @@
+{{< include topic_course_framing.qmd >}}
+{{< include topic_oop_motivation.qmd >}}
+{{< include topic_structures.qmd >}}
+{{< include topic_classes_objects.qmd >}}
+{{< include topic_abstract_data_types.qmd >}}
+{{< include topic_methods_interfaces.qmd >}}
+{{< include topic_activities_wrapup.qmd >}}
+

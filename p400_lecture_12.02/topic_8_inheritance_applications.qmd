@@ -1,0 +1,49 @@
+<!-- Topic 8: Inheritance Applications -->
+<!-- Slides 55–58 -->
+# Inheritance Applications
+
+## Vehicle Applications
+
+This slide develops the authoritative source material on **vehicle applications**.
+
+::: notes
+Slides 55–58
+:::
+
+<!-- Slide 55 -->
+
+---
+
+## Vehicle Applications
+
+This slide develops the authoritative source material on **vehicle applications**.
+
+::: notes
+
+:::
+
+<!-- Slide 56 -->
+
+---
+
+## Vehicle Applications
+
+This slide develops the authoritative source material on **vehicle applications**.
+
+::: notes
+
+:::
+
+<!-- Slide 57 -->
+
+---
+
+## Vehicle Applications
+
+This slide develops the authoritative source material on **vehicle applications**.
+
+::: notes
+
+:::
+
+<!-- Slide 58 -->

@@ -1,0 +1,37 @@
+<!-- Topic: Function Pointers -->
+<!-- Slides 68–71 -->
+
+# Function Pointers
+
+![](images/source_pages/slide-68.png){width="100%" fig-alt="Function Pointers"}
+
+::: notes
+Slides 68–71
+Source slide 68 from the authoritative PDF.
+:::
+
+<!-- Slide 68 -->
+
+---
+
+## <span style="display:none">Source Slide 69</span>
+
+![](images/source_pages/slide-69.png){width="100%" fig-alt="We’ve been using addresses to store stuff in memory."}
+
+<!-- Slide 69 -->
+
+---
+
+## <span style="display:none">Source Slide 70</span>
+
+![](images/source_pages/slide-70.png){width="100%" fig-alt="Can we jump to the address of a function?"}
+
+<!-- Slide 70 -->
+
+---
+
+## <span style="display:none">Source Slide 71</span>
+
+![](images/source_pages/slide-71.png){width="100%" fig-alt="Can we jump to the address of a function?"}
+
+<!-- Slide 71 -->

@@ -1,0 +1,117 @@
+<!-- Topic: C-Strings and Character Arrays -->
+<!-- Slides 12–25 -->
+
+# C-Strings and Character Arrays
+
+![](images/source_pages/slide-12.png){width="100%" fig-alt="C-Strings and Character Arrays"}
+
+::: notes
+Slides 12–25
+Source slide 12 from the authoritative PDF.
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## <span style="display:none">Source Slide 13</span>
+
+![](images/source_pages/slide-13.png){width="100%" fig-alt="C++ Strings"}
+
+<!-- Slide 13 -->
+
+---
+
+## <span style="display:none">Source Slide 14</span>
+
+![](images/source_pages/slide-14.png){width="100%" fig-alt="C strings"}
+
+<!-- Slide 14 -->
+
+---
+
+## <span style="display:none">Source Slide 15</span>
+
+![](images/source_pages/slide-15.png){width="100%" fig-alt="Variable type of a C-String is a pointer to char."}
+
+<!-- Slide 15 -->
+
+---
+
+## <span style="display:none">Source Slide 16</span>
+
+![](images/source_pages/slide-16.png){width="100%" fig-alt="✎"}
+
+<!-- Slide 16 -->
+
+---
+
+## <span style="display:none">Source Slide 17</span>
+
+![](images/source_pages/slide-17.png){width="100%" fig-alt="We need to be mindful of buffer over ow/overrun with"}
+
+<!-- Slide 17 -->
+
+---
+
+## <span style="display:none">Source Slide 18</span>
+
+![](images/source_pages/slide-18.png){width="100%" fig-alt="Stop buffer overrun"}
+
+<!-- Slide 18 -->
+
+---
+
+## <span style="display:none">Source Slide 19</span>
+
+![](images/source_pages/slide-19.png){width="100%" fig-alt="We also can read in an entire line of text to the C"}
+
+<!-- Slide 19 -->
+
+---
+
+## <span style="display:none">Source Slide 20</span>
+
+![](images/source_pages/slide-20.png){width="100%" fig-alt="This is NOT the same as getline();"}
+
+<!-- Slide 20 -->
+
+---
+
+## <span style="display:none">Source Slide 21</span>
+
+![](images/source_pages/slide-21.png){width="100%" fig-alt="Ways to access C-Strings"}
+
+<!-- Slide 21 -->
+
+---
+
+## <span style="display:none">Source Slide 22</span>
+
+![](images/source_pages/slide-22.png){width="100%" fig-alt="22"}
+
+<!-- Slide 22 -->
+
+---
+
+## <span style="display:none">Source Slide 23</span>
+
+![](images/source_pages/slide-23.png){width="100%" fig-alt="23"}
+
+<!-- Slide 23 -->
+
+---
+
+## <span style="display:none">Source Slide 24</span>
+
+![](images/source_pages/slide-24.png){width="100%" fig-alt="C-String General Rules"}
+
+<!-- Slide 24 -->
+
+---
+
+## <span style="display:none">Source Slide 25</span>
+
+![](images/source_pages/slide-25.png){width="100%" fig-alt="C-string and C++ string"}
+
+<!-- Slide 25 -->

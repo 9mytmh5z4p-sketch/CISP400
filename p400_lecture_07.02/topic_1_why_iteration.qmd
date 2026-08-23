@@ -1,0 +1,59 @@
+<!-- Topic 1: Why Iteration Matters -->
+<!-- Slides 3-8 -->
+
+# Why Iteration Matters
+<!-- Slide 3 -->
+
+## Why Repeat Work? {.smaller}
+
+- How do we tell a program to do the same kind of work more than once?
+- Iteration is controlled repetition.
+
+::: notes
+Slides 3-8
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Programming vs. Coding
+
+| Design Question | Syntax Question |
+|---|---|
+| What work repeats? | Which loop construct expresses it? |
+| What changes each time? | Where does the update happen? |
+| When should repetition stop? | Where is the condition checked? |
+
+<!-- Slide 5 -->
+
+---
+
+## Iteration in IPO
+
+| IPO Part | Loop Connection |
+|---|---|
+| Input | New data may arrive each pass |
+| Process | The repeated work usually lives here |
+| Output | Results may appear once per pass or after the loop |
+
+<!-- Slide 6 -->
+
+---
+
+## Same Work, New Data
+
+- Each pass through a loop should have a purpose.
+- The repeated work may use a new input value, a new counter value, or a new program state.
+- A loop is useful when the shape of the work stays the same.
+
+<!-- Slide 7 -->
+
+---
+
+## Summary
+
+- Iteration repeats useful work under control of a condition.
+- The design question comes first: what repeats, what changes, and when should it stop?
+
+<!-- Slide 8 -->

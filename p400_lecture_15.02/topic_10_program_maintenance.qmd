@@ -1,0 +1,73 @@
+<!-- Topic 10: Program Maintenance -->
+<!-- Slides 61–66 -->
+# Program Maintenance
+
+## Program Maintenance
+
+This slide develops the authoritative source material on **program maintenance**.
+
+::: notes
+Slides 61–66
+:::
+
+<!-- Slide 61 -->
+
+---
+
+## Program Maintenance
+
+This slide develops the authoritative source material on **program maintenance**.
+
+::: notes
+
+:::
+
+<!-- Slide 62 -->
+
+---
+
+## Program Maintenance
+
+This slide develops the authoritative source material on **program maintenance**.
+
+::: notes
+
+:::
+
+<!-- Slide 63 -->
+
+---
+
+## Program Maintenance
+
+This slide develops the authoritative source material on **program maintenance**.
+
+::: notes
+
+:::
+
+<!-- Slide 64 -->
+
+---
+
+## Program Maintenance
+
+This slide develops the authoritative source material on **program maintenance**.
+
+::: notes
+
+:::
+
+<!-- Slide 65 -->
+
+---
+
+## Program Maintenance
+
+This slide develops the authoritative source material on **program maintenance**.
+
+::: notes
+
+:::
+
+<!-- Slide 66 -->

@@ -1,0 +1,145 @@
+<!-- Topic 3: First-Class Objects -->
+<!-- Slides 21–32 -->
+# First-Class Objects
+
+## What's This Section About?
+
+This slide presents the source material for **What's This Section About?** from the authoritative lecture deck.
+
+::: notes
+Slides 21–32
+:::
+
+<!-- Slide 21 -->
+
+---
+
+## Section Context
+
+This slide presents the source material for **Section Context** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 22 -->
+
+---
+
+## Return to Chapter 11
+
+This slide presents the source material for **Return to Chapter 11** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## Key Attributes
+
+This slide presents the source material for **Key Attributes** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 24 -->
+
+---
+
+## First-Class Objects
+
+This slide presents the source material for **First-Class Objects** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 25 -->
+
+---
+
+## First-Class Objects
+
+This slide presents the source material for **First-Class Objects** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 26 -->
+
+---
+
+## First-Class Objects
+
+This slide presents the source material for **First-Class Objects** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 27 -->
+
+---
+
+## First-Class Objects
+
+This slide presents the source material for **First-Class Objects** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 28 -->
+
+---
+
+## Why Operator Overload?
+
+This slide presents the source material for **Why Operator Overload?** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 29 -->
+
+---
+
+## First-Class Object Usefulness
+
+This slide presents the source material for **First-Class Object Usefulness** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## First-Class Objects Definition
+
+This slide presents the source material for **First-Class Objects Definition** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 31 -->
+
+---
+
+## Key Attributes
+
+This slide presents the source material for **Key Attributes** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 32 -->

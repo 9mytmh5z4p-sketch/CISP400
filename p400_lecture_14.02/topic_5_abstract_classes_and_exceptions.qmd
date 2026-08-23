@@ -1,0 +1,85 @@
+<!-- Topic 5: Abstract Classes and Exceptions -->
+<!-- Slides 34–40 -->
+# Abstract Classes and Exceptions
+
+## Abstract Classes and Exceptions
+
+This slide develops the authoritative source material on **abstract classes and exceptions**.
+
+::: notes
+Slides 34–40
+:::
+
+<!-- Slide 34 -->
+
+---
+
+## Abstract Classes and Exceptions
+
+This slide develops the authoritative source material on **abstract classes and exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 35 -->
+
+---
+
+## Abstract Classes and Exceptions
+
+This slide develops the authoritative source material on **abstract classes and exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 36 -->
+
+---
+
+## Abstract Classes and Exceptions
+
+This slide develops the authoritative source material on **abstract classes and exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 37 -->
+
+---
+
+## Abstract Classes and Exceptions
+
+This slide develops the authoritative source material on **abstract classes and exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 38 -->
+
+---
+
+## Abstract Classes and Exceptions
+
+This slide develops the authoritative source material on **abstract classes and exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 39 -->
+
+---
+
+## Abstract Classes and Exceptions
+
+This slide develops the authoritative source material on **abstract classes and exceptions**.
+
+::: notes
+
+:::
+
+<!-- Slide 40 -->

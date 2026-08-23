@@ -1,0 +1,61 @@
+<!-- Topic 7: Inheritance Basics -->
+<!-- Slides 88–92 -->
+# Inheritance Basics
+
+## Overriding Base Class Functions
+
+This slide develops the authoritative source material on **overriding base class functions**.
+
+::: notes
+Slides 88–92
+:::
+
+<!-- Slide 88 -->
+
+---
+
+## Overriding Base Class Functions
+
+This slide develops the authoritative source material on **overriding base class functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 89 -->
+
+---
+
+## Overriding Base Class Functions
+
+This slide develops the authoritative source material on **overriding base class functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 90 -->
+
+---
+
+## Overriding Base Class Functions
+
+This slide develops the authoritative source material on **overriding base class functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 91 -->
+
+---
+
+## Overriding Base Class Functions
+
+This slide develops the authoritative source material on **overriding base class functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 92 -->

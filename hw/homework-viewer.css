@@ -1,0 +1,247 @@
+:root {
+  color-scheme: light;
+  --paper: #ffffff;
+  --canvas: #eef1f4;
+  --ink: #171717;
+  --muted: #5c6470;
+  --line: #d8dde4;
+  --link: #0645ad;
+  --toolbar: #17202a;
+  --toolbar-ink: #f7f9fb;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--canvas); }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--canvas);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.viewer-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  color: var(--toolbar-ink);
+  background: var(--toolbar);
+  box-shadow: 0 1px 8px rgb(0 0 0 / 24%);
+}
+
+.viewer-toolbar__inner,
+.viewer-status {
+  width: min(100% - 2rem, 8.5in);
+  margin: 0 auto;
+}
+
+.viewer-toolbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.25rem;
+}
+
+.viewer-toolbar__title {
+  min-width: 0;
+  font-size: .9rem;
+  font-weight: 650;
+}
+
+.viewer-toolbar__title code {
+  color: #cbd5e1;
+  font: inherit;
+  font-weight: 450;
+}
+
+.viewer-toolbar__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.viewer-button,
+.viewer-link,
+.file-picker-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: .35rem .7rem;
+  border: 1px solid #6b7785;
+  border-radius: .3rem;
+  color: var(--toolbar-ink);
+  background: transparent;
+  font: inherit;
+  font-size: .82rem;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.viewer-button:hover,
+.viewer-link:hover,
+.file-picker-label:hover { background: rgb(255 255 255 / 12%); }
+
+.viewer-button:focus-visible,
+.viewer-link:focus-visible,
+.file-picker-label:focus-within,
+.homework-document a:focus-visible {
+  outline: 3px solid #7dd3fc;
+  outline-offset: 2px;
+}
+
+.file-picker-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viewer-status {
+  min-height: 1.5rem;
+  padding: .35rem 0;
+  color: #d6dde6;
+  font-size: .78rem;
+}
+
+.homework-shell {
+  width: min(calc(100% - 2rem), 8.5in);
+  margin: 2rem auto 4rem;
+}
+
+.homework-document {
+  min-height: 11in;
+  padding: .55in .6in .65in;
+  color: #111;
+  background: var(--paper);
+  box-shadow: 0 0.08in 0.32in rgb(0 0 0 / 18%);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.32;
+}
+
+.homework-document > :first-child { margin-top: 0; }
+.homework-document > :last-child { margin-bottom: 0; }
+
+.homework-document h1 {
+  margin: 0 0 .28in;
+  color: #111;
+  font-size: 27pt;
+  letter-spacing: -.02em;
+  line-height: 1.04;
+}
+
+.homework-document h2 {
+  margin: .24in 0 .12in;
+  font-size: 19pt;
+  line-height: 1.1;
+}
+
+.homework-document h3 {
+  margin: .2in 0 .1in;
+  font-size: 15pt;
+  line-height: 1.14;
+}
+
+.homework-document p { margin: 0 0 .12in; }
+
+.homework-document ul,
+.homework-document ol {
+  margin: .05in 0 .14in;
+  padding-left: .25in;
+}
+
+.homework-document li { margin: 0 0 .045in; }
+
+.homework-document a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: .08em;
+}
+
+.homework-document blockquote {
+  margin: .12in 0 .17in;
+  padding: .04in 0 .04in .14in;
+  border-left: 3px solid #d3d7de;
+  color: #303030;
+}
+
+.homework-document code,
+.homework-document pre {
+  font-family: Courier, "Courier New", monospace;
+}
+
+.homework-document pre {
+  overflow-x: auto;
+  padding: .12in;
+  border: 1px solid var(--line);
+  border-radius: .25rem;
+  background: #f6f7f9;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.viewer-message {
+  padding: .2in;
+  border: 1px solid var(--line);
+  border-radius: .25rem;
+  background: #f7f8fa;
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+.viewer-message h1 {
+  margin: 0 0 .5rem;
+  font-size: 1.15rem;
+  letter-spacing: normal;
+}
+
+.viewer-message p:last-child { margin-bottom: 0; }
+.viewer-message--error { border-color: #c86b6b; background: #fff5f5; }
+
+@media (max-width: 48rem) {
+  .viewer-toolbar__inner {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: .65rem 0;
+  }
+
+  .viewer-status { padding-bottom: .5rem; }
+  .homework-shell { width: 100%; margin: 0; }
+  .homework-document {
+    min-height: 100vh;
+    padding: clamp(1rem, 8vw, .65in);
+    box-shadow: none;
+  }
+  .homework-document h1 { font-size: clamp(24px, 8vw, 36px); }
+  .homework-document h2 { font-size: clamp(20px, 5.8vw, 27px); }
+  .homework-document h3 { font-size: clamp(17px, 4.8vw, 22px); }
+}
+
+@page { size: letter; margin: .55in .6in; }
+
+@media print {
+  html, body { background: #fff; }
+  .viewer-toolbar { display: none; }
+  .homework-shell { width: auto; margin: 0; }
+  .homework-document {
+    min-height: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+  .homework-document h1,
+  .homework-document h2,
+  .homework-document h3 { break-after: avoid-page; }
+  .homework-document pre,
+  .homework-document blockquote { break-inside: avoid-page; }
+  .homework-document p,
+  .homework-document li { orphans: 2; widows: 2; }
+}

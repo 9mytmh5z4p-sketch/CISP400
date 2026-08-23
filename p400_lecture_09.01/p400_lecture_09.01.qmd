@@ -1,0 +1,1 @@
+{{< include topic_functors.qmd >}}\n{{< include topic_range_for_each.qmd >}}\n{{< include topic_lambda_expressions.qmd >}}\n{{< include topic_lambda_use_cases.qmd >}}\n{{< include topic_activities.qmd >}}\n

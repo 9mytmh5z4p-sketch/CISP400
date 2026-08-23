@@ -1,0 +1,73 @@
+<!-- Topic 3: Course Planning -->
+<!-- Slides 8–13 -->
+# Course Planning
+
+## Course Logistics
+
+This slide develops the authoritative source material on **course logistics**.
+
+::: notes
+Slides 8–13
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Course Logistics
+
+This slide develops the authoritative source material on **course logistics**.
+
+::: notes
+
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Course Logistics
+
+This slide develops the authoritative source material on **course logistics**.
+
+::: notes
+
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## Upcoming Topics
+
+This slide develops the authoritative source material on **upcoming topics**.
+
+::: notes
+
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## Upcoming Topics
+
+This slide develops the authoritative source material on **upcoming topics**.
+
+::: notes
+
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Upcoming Topics
+
+This slide develops the authoritative source material on **upcoming topics**.
+
+::: notes
+
+:::
+
+<!-- Slide 13 -->

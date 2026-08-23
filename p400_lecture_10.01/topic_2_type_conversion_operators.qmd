@@ -1,0 +1,217 @@
+<!-- Topic 2: Type Conversion Operators -->
+<!-- Slides 7–24 -->
+# Type Conversion Operators
+
+## Conversion Operators
+
+This slide presents the source material for **Conversion Operators** from the authoritative lecture deck.
+
+::: notes
+Slides 7–24
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## Writing Conversion Operators
+
+This slide presents the source material for **Writing Conversion Operators** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Conversion Example
+
+This slide presents the source material for **Conversion Example** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Conversion Example
+
+This slide presents the source material for **Conversion Example** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## Special Operator Functions
+
+This slide presents the source material for **Special Operator Functions** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## Programming Exercise
+
+This slide presents the source material for **Programming Exercise** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Exercise Goals
+
+This slide presents the source material for **Exercise Goals** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## Exercise
+
+This slide presents the source material for **Exercise** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 14 -->
+
+---
+
+## Exercise
+
+This slide presents the source material for **Exercise** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## Exercise Setup
+
+This slide presents the source material for **Exercise Setup** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 16 -->
+
+---
+
+## Primitive Conversion
+
+This slide presents the source material for **Primitive Conversion** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 17 -->
+
+---
+
+## What Happens When
+
+This slide presents the source material for **What Happens When** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 18 -->
+
+---
+
+## Placeholders
+
+This slide presents the source material for **Placeholders** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## Segmentation Fault
+
+This slide presents the source material for **Segmentation Fault** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## Unions and Variants
+
+This slide presents the source material for **Unions and Variants** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 21 -->
+
+---
+
+## Video Resource
+
+This slide presents the source material for **Video Resource** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 22 -->
+
+---
+
+## Video
+
+This slide presents the source material for **Video** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## Conversion Boundary
+
+This slide presents the source material for **Conversion Boundary** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 24 -->

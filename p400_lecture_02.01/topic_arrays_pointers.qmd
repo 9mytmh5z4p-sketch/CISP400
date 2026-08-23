@@ -1,0 +1,21 @@
+<!-- Topic: Arrays and Pointers -->
+<!-- Slides 20–21 -->
+
+# Arrays and Pointers
+
+![](images/source_pages/slide-20.png){width="100%" fig-alt="Arrays and pointers"}
+
+::: notes
+Slides 20–21
+Source slides 20–21 from the authoritative PDF.
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## <span style="display:none">Source Slide 21</span>
+
+![](images/source_pages/slide-21.png){width="100%" fig-alt="Arrays and pointers"}
+
+<!-- Slide 21 -->

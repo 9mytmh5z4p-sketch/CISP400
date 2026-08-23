@@ -1,0 +1,93 @@
+<!-- Topic: Selecting Members of Objects -->
+<!-- Slides 15–25 -->
+
+# Selecting Members of Objects
+
+![](images/source_pages/slide-15.png){width="100%" fig-alt="Selecting Members of Objects"}
+
+::: notes
+Slides 15–25
+Source slide 15 from the authoritative PDF.
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## <span style="display:none">Source Slide 16</span>
+
+![](images/source_pages/slide-16.png){width="100%" fig-alt="What do we do when we need to access pointers"}
+
+<!-- Slide 16 -->
+
+---
+
+## <span style="display:none">Source Slide 17</span>
+
+![](images/source_pages/slide-17.png){width="100%" fig-alt="Source Slide 17"}
+
+<!-- Slide 17 -->
+
+---
+
+## <span style="display:none">Source Slide 18</span>
+
+![](images/source_pages/slide-18.png){width="100%" fig-alt="Source Slide 18"}
+
+<!-- Slide 18 -->
+
+---
+
+## <span style="display:none">Source Slide 19</span>
+
+![](images/source_pages/slide-19.png){width="100%" fig-alt="Use the parentheses to make sure the * binds rst."}
+
+<!-- Slide 19 -->
+
+---
+
+## <span style="display:none">Source Slide 20</span>
+
+![](images/source_pages/slide-20.png){width="100%" fig-alt="Turn our attention to two pointers."}
+
+<!-- Slide 20 -->
+
+---
+
+## <span style="display:none">Source Slide 21</span>
+
+![](images/source_pages/slide-21.png){width="100%" fig-alt="Source Slide 21"}
+
+<!-- Slide 21 -->
+
+---
+
+## <span style="display:none">Source Slide 22</span>
+
+![](images/source_pages/slide-22.png){width="100%" fig-alt="Source Slide 22"}
+
+<!-- Slide 22 -->
+
+---
+
+## <span style="display:none">Source Slide 23</span>
+
+![](images/source_pages/slide-23.png){width="100%" fig-alt="Parentheses to the rescue again."}
+
+<!-- Slide 23 -->
+
+---
+
+## <span style="display:none">Source Slide 24</span>
+
+![](images/source_pages/slide-24.png){width="100%" fig-alt="The structure pointer operator can also help us."}
+
+<!-- Slide 24 -->
+
+---
+
+## <span style="display:none">Source Slide 25</span>
+
+![](images/source_pages/slide-25.png){width="100%" fig-alt="Source Slide 25"}
+
+<!-- Slide 25 -->

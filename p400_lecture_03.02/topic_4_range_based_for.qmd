@@ -1,0 +1,176 @@
+<!-- Topic 4: Range-Based For Loops -->
+<!-- Slides 28-39 -->
+
+# Range-Based For Loops
+<!-- Slide 28 -->
+
+## When Every Value Matters {.smaller}
+
++ How can a program use every value in a vector?
++ A range-based `for` loop visits each value without writing position numbers.
+
+::: notes
+Slides 28-39
+:::
+
+<!-- Slide 29 -->
+
+---
+
+## The Range-Based For Loop
+
+The range-based `for` loop has this shape:
+
+```cpp
+for (int score : scores) {
+    cout << score << endl;
+}
+```
+
+The loop body runs once for each value in `scores`.
+
+<!-- Slide 30 -->
+
+---
+
+## Read It Like English
+
+```cpp
+for (int score : scores)
+```
+
+Read this as:
+
+> for each `score` in `scores`
+
+The vector name is plural; the loop variable name is singular.
+
+<!-- Slide 31 -->
+
+---
+
+## Display Every Value
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    vector<int> scores = {88, 92, 75};
+
+    for (int score : scores) {
+        cout << score << endl;
+    }
+
+    return 0;
+}
+```
+
+<!-- Slide 32 -->
+
+---
+
+## Execution Trace: For Each
+
+| Trip | score | Output |
+|---:|---:|---|
+| 1 | 88 | `88` |
+| 2 | 92 | `92` |
+| 3 | 75 | `75` |
+
+The loop variable receives one value at a time.
+
+<!-- Slide 33 -->
+
+---
+
+## The Loop Variable Is a Copy
+
+In this form, the loop variable stores a copy of each vector value.
+
+```cpp
+for (int score : scores) {
+    score = 100;
+}
+```
+
+Changing `score` does not change the original vector.
+
+<!-- Slide 34 -->
+
+---
+
+## One Value Per Trip
+
+The loop body runs once for each value.
+
+If the vector has three values, the body runs three times.
+
+If the vector has five values, the body runs five times.
+
+<!-- Slide 35 -->
+
+---
+
+## Example: Print a Shopping List
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+int main() {
+    vector<string> items = {"eggs", "rice", "apples"};
+
+    for (string item : items) {
+        cout << "- " << item << endl;
+    }
+
+    return 0;
+}
+```
+
+<!-- Slide 36 -->
+
+---
+
+## Loop Body Scope
+
+```cpp
+int count = 0;
+vector<int> scores = {88, 92};
+
+for (int score : scores) {
+    count = count + 1;
+    cout << score << endl;
+}
+
+cout << count << endl;
+// cout << score << endl;  // score is not available here
+```
+
+The loop body creates a new level of scope.
+
+<!-- Slide 37 -->
+
+---
+
+## Common Practices
+
++ Use a plural name for the vector and a singular name for the loop variable.
++ Use range-based `for` when every value should be read.
++ Keep the loop body focused on one repeated action.
+
+<!-- Slide 38 -->
+
+---
+
+## Summary
+
++ A range-based `for` loop visits every value in a vector.
++ The loop variable receives one value per trip.
++ The loop body has its own scope.
+
+<!-- Slide 39 -->

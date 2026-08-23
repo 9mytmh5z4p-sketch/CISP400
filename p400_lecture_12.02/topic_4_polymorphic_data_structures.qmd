@@ -1,0 +1,85 @@
+<!-- Topic 4: Polymorphic Data Structures -->
+<!-- Slides 30–36 -->
+# Polymorphic Data Structures
+
+## Inheritance Questions
+
+This slide develops the authoritative source material on **inheritance questions**.
+
+::: notes
+Slides 30–36
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## Inheritance Questions
+
+This slide develops the authoritative source material on **inheritance questions**.
+
+::: notes
+
+:::
+
+<!-- Slide 31 -->
+
+---
+
+## Inheritance Questions
+
+This slide develops the authoritative source material on **inheritance questions**.
+
+::: notes
+
+:::
+
+<!-- Slide 32 -->
+
+---
+
+## Traversing Object Data Structures
+
+This slide develops the authoritative source material on **traversing object data structures**.
+
+::: notes
+
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## Traversing Object Data Structures
+
+This slide develops the authoritative source material on **traversing object data structures**.
+
+::: notes
+
+:::
+
+<!-- Slide 34 -->
+
+---
+
+## Traversing Object Data Structures
+
+This slide develops the authoritative source material on **traversing object data structures**.
+
+::: notes
+
+:::
+
+<!-- Slide 35 -->
+
+---
+
+## Traversing Object Data Structures
+
+This slide develops the authoritative source material on **traversing object data structures**.
+
+::: notes
+
+:::
+
+<!-- Slide 36 -->

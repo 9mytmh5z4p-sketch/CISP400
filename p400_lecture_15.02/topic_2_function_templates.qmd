@@ -1,0 +1,121 @@
+<!-- Topic 2: Function Templates -->
+<!-- Slides 6–15 -->
+# Function Templates
+
+## Function Templates
+
+This slide develops the authoritative source material on **function templates**.
+
+::: notes
+Slides 6–15
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Function Templates
+
+This slide develops the authoritative source material on **function templates**.
+
+::: notes
+
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## Function Templates
+
+This slide develops the authoritative source material on **function templates**.
+
+::: notes
+
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Function Templates
+
+This slide develops the authoritative source material on **function templates**.
+
+::: notes
+
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Function Templates
+
+This slide develops the authoritative source material on **function templates**.
+
+::: notes
+
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## Function Templates
+
+This slide develops the authoritative source material on **function templates**.
+
+::: notes
+
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## Function Templates
+
+This slide develops the authoritative source material on **function templates**.
+
+::: notes
+
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Function Templates
+
+This slide develops the authoritative source material on **function templates**.
+
+::: notes
+
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## Function Templates
+
+This slide develops the authoritative source material on **function templates**.
+
+::: notes
+
+:::
+
+<!-- Slide 14 -->
+
+---
+
+## Function Templates
+
+This slide develops the authoritative source material on **function templates**.
+
+::: notes
+
+:::
+
+<!-- Slide 15 -->

@@ -1,0 +1,145 @@
+<!-- Topic 3: Inheritance Design -->
+<!-- Slides 13–24 -->
+# Inheritance Design
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+Slides 13–24
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 14 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 16 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 17 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 18 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 21 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 22 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 24 -->

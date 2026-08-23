@@ -1,0 +1,133 @@
+<!-- Topic 7: Aggregation Review -->
+<!-- Slides 59–69 -->
+# Aggregation Review
+
+## Aggregation Review
+
+This slide develops the authoritative source material on **aggregation review**.
+
+::: notes
+Slides 59–69
+:::
+
+<!-- Slide 59 -->
+
+---
+
+## Aggregation Review
+
+This slide develops the authoritative source material on **aggregation review**.
+
+::: notes
+
+:::
+
+<!-- Slide 60 -->
+
+---
+
+## Aggregation Review
+
+This slide develops the authoritative source material on **aggregation review**.
+
+::: notes
+
+:::
+
+<!-- Slide 61 -->
+
+---
+
+## Aggregation Review
+
+This slide develops the authoritative source material on **aggregation review**.
+
+::: notes
+
+:::
+
+<!-- Slide 62 -->
+
+---
+
+## Aggregation Review
+
+This slide develops the authoritative source material on **aggregation review**.
+
+::: notes
+
+:::
+
+<!-- Slide 63 -->
+
+---
+
+## Aggregation Review
+
+This slide develops the authoritative source material on **aggregation review**.
+
+::: notes
+
+:::
+
+<!-- Slide 64 -->
+
+---
+
+## Inheritance Examples
+
+This slide develops the authoritative source material on **inheritance examples**.
+
+::: notes
+
+:::
+
+<!-- Slide 65 -->
+
+---
+
+## Inheritance Examples
+
+This slide develops the authoritative source material on **inheritance examples**.
+
+::: notes
+
+:::
+
+<!-- Slide 66 -->
+
+---
+
+## Inheritance Examples
+
+This slide develops the authoritative source material on **inheritance examples**.
+
+::: notes
+
+:::
+
+<!-- Slide 67 -->
+
+---
+
+## Inheritance Examples
+
+This slide develops the authoritative source material on **inheritance examples**.
+
+::: notes
+
+:::
+
+<!-- Slide 68 -->
+
+---
+
+## Inheritance Examples
+
+This slide develops the authoritative source material on **inheritance examples**.
+
+::: notes
+
+:::
+
+<!-- Slide 69 -->

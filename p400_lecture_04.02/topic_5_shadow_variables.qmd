@@ -1,0 +1,160 @@
+<!-- Topic 5: Shadow Variables -->
+<!-- Slides 49-59 -->
+
+# Shadow Variables
+<!-- Slide 49 -->
+
+## Which Variable Are We Using? {.smaller}
+
++ A program can have the same name in more than one scope.
++ The closest visible declaration wins.
++ That rule can make a trace surprising.
+
+::: notes
+Slides 49-59
+:::
+
+<!-- Slide 50 -->
+
+---
+
+## A Shadow Variable Hides Another Name
+
+```cpp
+int value = 100;
+
+if (value > 0) {
+    int value = 5;
+    cout << value << endl;
+}
+
+cout << value << endl;
+```
+
+The inner `value` hides the outer `value` inside the block.
+
+<!-- Slide 51 -->
+
+---
+
+## Loop Shadowing Review
+
+```cpp
+int score = 0;
+vector<int> scores = {85, 90, 95};
+
+for (int score : scores) {
+    cout << score << endl;
+}
+
+cout << score << endl;
+```
+
+The loop variable `score` is separate from the outer `score`.
+
+<!-- Slide 52 -->
+
+---
+
+## Why the Outer Variable Does Not Change
+
+```cpp
+int total = 0;
+vector<int> scores = {85, 90, 95};
+
+for (int total : scores) {
+    cout << total << endl;
+}
+
+cout << "Total: " << total << endl;
+```
+
+The loop prints each score, but the outer `total` is still `0`.
+
+<!-- Slide 53 -->
+
+---
+
+## Shadowing in Function Code
+
+```cpp
+int total(vector<int> scores) {
+    int total = 0;
+
+    for (int score : scores) {
+        total = total + score;
+    }
+
+    return total;
+}
+```
+
+This local `total` belongs only to the function call.
+
+<!-- Slide 54 -->
+
+---
+
+## Shadowing a Parameter
+
+```cpp
+void displayScore(int score) {
+    int score = 0;  // error: same scope
+    cout << score << endl;
+}
+```
+
+C++ rejects this because the parameter and local declaration are in the same function scope.
+
+<!-- Slide 55 -->
+
+---
+
+## Shadowing Inside a Nested Block
+
+```cpp
+void displayScore(int score) {
+    if (score < 0) {
+        int score = 0;
+        cout << score << endl;
+    }
+}
+```
+
+The nested declaration hides the parameter only inside the `if` block.
+
+<!-- Slide 56 -->
+
+---
+
+## The Bug Pattern
+
++ The code compiles.
++ The name looks familiar.
++ The program updates a different variable than the one the programmer intended.
+
+Shadowing is dangerous because it looks like ordinary variable use.
+
+<!-- Slide 57 -->
+
+---
+
+## Finding Shadow Variables
+
++ Mark every declaration.
++ Draw a box around each scope.
++ For each use of a name, choose the closest visible declaration.
+
+This tracing method works for loops, nested blocks, and functions.
+
+<!-- Slide 58 -->
+
+---
+
+## Summary
+
++ A shadow variable is a new variable that hides another visible name.
++ Shadowing is a scope bug when the wrong variable receives attention.
++ Use distinct names when different variables have different jobs.
+
+<!-- Slide 59 -->

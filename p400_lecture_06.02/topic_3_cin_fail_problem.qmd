@@ -1,0 +1,102 @@
+<!-- Topic 3: The cin Fail Problem -->
+<!-- Slides 22-30 -->
+
+# The cin Fail Problem
+<!-- Slide 22 -->
+
+## When Input Breaks the Program {.smaller}
+
++ What happens when the user enters the wrong type of data?
++ The input operation can fail, and the program needs a way to notice.
+
+::: notes
+Slides 22-30
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## What cin Was Expecting
+
+```cpp
+int age;
+cin >> age;
+```
+
+This statement expects input that can become an `int`. Text such as `hello` cannot be stored in `age`.
+
+<!-- Slide 24 -->
+
+---
+
+## Testing cin.fail()
+
+```cpp
+int age;
+cin >> age;
+
+if (cin.fail()) {
+    cout << "Age must be a whole number.";
+}
+```
+
+`cin.fail()` is a condition. It is true when the previous input operation failed.
+
+<!-- Slide 25 -->
+
+---
+
+## Detecting Is Not Fixing
+
+`cin.fail()` tells the program that input failed.
+
+It does not repair the stream, remove the bad input, or ask the user again. Those actions must be written separately.
+
+<!-- Slide 26 -->
+
+---
+
+## The Stream Stays Failed
+
+After a failed extraction, later input attempts may not work.
+
+The stream is still carrying the failed state. The bad input may also still be waiting to be read.
+
+<!-- Slide 27 -->
+
+---
+
+## A First Recovery Pattern
+
+```cpp
+if (cin.fail()) {
+    cin.clear();
+    cin.ignore(1000, '\n');
+    cout << "Please enter a whole number.";
+}
+```
+
+The condition detects the problem. The recovery code clears the error state and removes the bad input.
+
+<!-- Slide 28 -->
+
+---
+
+## Why This Is Still an if Statement
+
+The recovery block should run only when input failed.
+
+That makes `cin.fail()` a practical example of one-way selection: if the problem happened, respond to it.
+
+<!-- Slide 29 -->
+
+---
+
+## Summary
+
+- Input can fail when the user enters a value that does not match the expected type.
+- `cin.fail()` detects that failed state.
+- Detection and recovery are separate parts of the program.
+
+<!-- Slide 30 -->

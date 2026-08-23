@@ -1,0 +1,29 @@
+<!-- Topic: Programming Exercise III -->
+<!-- Slides 4–6 -->
+
+# Programming Exercise III
+
+![](images/source_pages/slide-04.png){width="100%" fig-alt="Programming Exercise III"}
+
+::: notes
+Slides 4–6
+Source slide 4 from the authoritative PDF.
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## <span style="display:none">Source Slide 5</span>
+
+![](images/source_pages/slide-05.png){width="100%" fig-alt="Programming Exercise"}
+
+<!-- Slide 5 -->
+
+---
+
+## <span style="display:none">Source Slide 6</span>
+
+![](images/source_pages/slide-06.png){width="100%" fig-alt="Programming Exercise"}
+
+<!-- Slide 6 -->

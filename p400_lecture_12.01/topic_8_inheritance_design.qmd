@@ -1,0 +1,205 @@
+<!-- Topic 8: Inheritance Design -->
+<!-- Slides 74–90 -->
+# Inheritance Design
+
+## Using Inheritance
+
+This slide develops the authoritative source material on **using inheritance**.
+
+::: notes
+Slides 74–90
+:::
+
+<!-- Slide 74 -->
+
+---
+
+## Using Inheritance
+
+This slide develops the authoritative source material on **using inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 75 -->
+
+---
+
+## Using Inheritance
+
+This slide develops the authoritative source material on **using inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 76 -->
+
+---
+
+## Using Inheritance
+
+This slide develops the authoritative source material on **using inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 77 -->
+
+---
+
+## Using Inheritance
+
+This slide develops the authoritative source material on **using inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 78 -->
+
+---
+
+## Using Inheritance
+
+This slide develops the authoritative source material on **using inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 79 -->
+
+---
+
+## Using Inheritance
+
+This slide develops the authoritative source material on **using inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 80 -->
+
+---
+
+## Using Inheritance
+
+This slide develops the authoritative source material on **using inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 81 -->
+
+---
+
+## Using Inheritance
+
+This slide develops the authoritative source material on **using inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 82 -->
+
+---
+
+## Using Inheritance
+
+This slide develops the authoritative source material on **using inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 83 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 84 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 85 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 86 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 87 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 88 -->
+
+---
+
+## Coding Practice
+
+This slide develops the authoritative source material on **coding practice**.
+
+::: notes
+
+:::
+
+<!-- Slide 89 -->
+
+---
+
+## Coding Practice
+
+This slide develops the authoritative source material on **coding practice**.
+
+::: notes
+
+:::
+
+<!-- Slide 90 -->

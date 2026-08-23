@@ -1,0 +1,109 @@
+<!-- Topic 2: Inheritance Versus Composition -->
+<!-- Slides 18–26 -->
+# Inheritance Versus Composition
+
+## Inheritance Versus Composition
+
+This slide develops the authoritative source material on **inheritance versus composition**.
+
+::: notes
+Slides 18–26
+:::
+
+<!-- Slide 18 -->
+
+---
+
+## Inheritance Versus Composition
+
+This slide develops the authoritative source material on **inheritance versus composition**.
+
+::: notes
+
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## Inheritance Versus Composition
+
+This slide develops the authoritative source material on **inheritance versus composition**.
+
+::: notes
+
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## Inheritance Versus Composition
+
+This slide develops the authoritative source material on **inheritance versus composition**.
+
+::: notes
+
+:::
+
+<!-- Slide 21 -->
+
+---
+
+## Inheritance Versus Composition
+
+This slide develops the authoritative source material on **inheritance versus composition**.
+
+::: notes
+
+:::
+
+<!-- Slide 22 -->
+
+---
+
+## Inheritance Versus Composition
+
+This slide develops the authoritative source material on **inheritance versus composition**.
+
+::: notes
+
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## Inheritance Versus Composition
+
+This slide develops the authoritative source material on **inheritance versus composition**.
+
+::: notes
+
+:::
+
+<!-- Slide 24 -->
+
+---
+
+## Inheritance Versus Composition
+
+This slide develops the authoritative source material on **inheritance versus composition**.
+
+::: notes
+
+:::
+
+<!-- Slide 25 -->
+
+---
+
+## Inheritance Versus Composition
+
+This slide develops the authoritative source material on **inheritance versus composition**.
+
+::: notes
+
+:::
+
+<!-- Slide 26 -->

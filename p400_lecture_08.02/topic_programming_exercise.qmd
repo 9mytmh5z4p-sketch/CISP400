@@ -1,0 +1,21 @@
+<!-- Topic: Programming Exercise -->
+<!-- Slides 56–57 -->
+
+# Programming Exercise
+
+![](images/source_pages/slide-56.png){width="100%" fig-alt="Programming Exercise"}
+
+::: notes
+Slides 56–57
+Source slide 56 from the authoritative PDF.
+:::
+
+<!-- Slide 56 -->
+
+---
+
+## <span style="display:none">Source Slide 57</span>
+
+![](images/source_pages/slide-57.png){width="100%" fig-alt="Programming Exercise"}
+
+<!-- Slide 57 -->

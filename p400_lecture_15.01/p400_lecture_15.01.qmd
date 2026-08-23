@@ -1,0 +1,35 @@
+# Last Time
+
+::: {.incremental}
++ **Polymorphism**
++ **Abstract base classes**
+:::
+
+# Today's Agenda
+
+- STL Preview
+- Course Planning
+- Design Exercise
+- STL Preview
+- Vectors of Vectors
+- Next Time
+
+{{< include topic_1_course_framing.qmd >}}
+{{< include topic_2_stl_preview.qmd >}}
+{{< include topic_3_course_planning.qmd >}}
+{{< include topic_4_design_exercise.qmd >}}
+{{< include topic_5_stl_preview.qmd >}}
+{{< include topic_6_vectors_of_vectors.qmd >}}
+{{< include topic_7_next_time.qmd >}}
+
+---
+# Key Takeaways
+
+- Templates let one algorithm work across compatible types.
+- Generic code is resolved by the compiler and can be specialized when needed.
+
+---
+# Next Time
+
+---
+# Appendix

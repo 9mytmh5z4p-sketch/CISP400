@@ -1,0 +1,217 @@
+<!-- Topic 4: Object Conversions -->
+<!-- Slides 33–50 -->
+# Object Conversions
+
+## Object Conversion
+
+This slide presents the source material for **Object Conversion** from the authoritative lecture deck.
+
+::: notes
+Slides 33–50
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## Object-to-Object Conversion
+
+This slide presents the source material for **Object-to-Object Conversion** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 34 -->
+
+---
+
+## Assignment Operator
+
+This slide presents the source material for **Assignment Operator** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 35 -->
+
+---
+
+## Type Conversion Operator
+
+This slide presents the source material for **Type Conversion Operator** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 36 -->
+
+---
+
+## Generic Conversion Operator
+
+This slide presents the source material for **Generic Conversion Operator** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 37 -->
+
+---
+
+## Preferred Conversion Syntax
+
+This slide presents the source material for **Preferred Conversion Syntax** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 38 -->
+
+---
+
+## Conversion Constructor
+
+This slide presents the source material for **Conversion Constructor** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 39 -->
+
+---
+
+## Generic Constructor Format
+
+This slide presents the source material for **Generic Constructor Format** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 40 -->
+
+---
+
+## Conversion Context
+
+This slide presents the source material for **Conversion Context** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 41 -->
+
+---
+
+## Four Places for Conversion
+
+This slide presents the source material for **Four Places for Conversion** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 42 -->
+
+---
+
+## Copy Initialization
+
+This slide presents the source material for **Copy Initialization** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 43 -->
+
+---
+
+## Assignment
+
+This slide presents the source material for **Assignment** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 44 -->
+
+---
+
+## Passing to a Function
+
+This slide presents the source material for **Passing to a Function** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 45 -->
+
+---
+
+## Conversion on Return
+
+This slide presents the source material for **Conversion on Return** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 46 -->
+
+---
+
+## Conversion Constructors and Templates
+
+This slide presents the source material for **Conversion Constructors and Templates** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 47 -->
+
+---
+
+## Templated Conversion Operator
+
+This slide presents the source material for **Templated Conversion Operator** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 48 -->
+
+---
+
+## Compiler-Generated Conversion
+
+This slide presents the source material for **Compiler-Generated Conversion** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 49 -->
+
+---
+
+## Template Example
+
+This slide presents the source material for **Template Example** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 50 -->

@@ -1,0 +1,29 @@
+<!-- Topic: Pointers and the Address Operator -->
+<!-- Slides 17–19 -->
+
+# Pointers and the Address Operator
+
+![](images/source_pages/slide-17.png){width="100%" fig-alt="Pointers and the Address Operator"}
+
+::: notes
+Slides 17–19
+Source slide 17 from the authoritative PDF.
+:::
+
+<!-- Slide 17 -->
+
+---
+
+## <span style="display:none">Source Slide 18</span>
+
+![](images/source_pages/slide-18.png){width="100%" fig-alt="Source Slide 18"}
+
+<!-- Slide 18 -->
+
+---
+
+## <span style="display:none">Source Slide 19</span>
+
+![](images/source_pages/slide-19.png){width="100%" fig-alt="Source Slide 19"}
+
+<!-- Slide 19 -->

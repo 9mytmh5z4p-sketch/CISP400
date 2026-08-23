@@ -1,0 +1,141 @@
+<!-- Topic: Methods -->
+<!-- Slides 9–25 -->
+
+# Methods
+
+![](images/source_pages/slide-09.png){width="100%" fig-alt="Methods"}
+
+::: notes
+Slides 9–25
+Source slide 9 from the authoritative PDF.
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## <span style="display:none">Source Slide 10</span>
+
+![](images/source_pages/slide-10.png){width="100%" fig-alt="Exercise Goals"}
+
+<!-- Slide 10 -->
+
+---
+
+## <span style="display:none">Source Slide 11</span>
+
+![](images/source_pages/slide-11.png){width="100%" fig-alt="Programming Exercise"}
+
+<!-- Slide 11 -->
+
+---
+
+## <span style="display:none">Source Slide 12</span>
+
+![](images/source_pages/slide-12.png){width="100%" fig-alt="Source Slide 12"}
+
+<!-- Slide 12 -->
+
+---
+
+## <span style="display:none">Source Slide 13</span>
+
+![](images/source_pages/slide-13.png){width="100%" fig-alt="7.3 Introduction to"}
+
+<!-- Slide 13 -->
+
+---
+
+## <span style="display:none">Source Slide 14</span>
+
+![](images/source_pages/slide-14.png){width="100%" fig-alt="Photo Credit: https://qph.ec.quoracdn.net/main-qimg-021242ab769010da96e2a2ecb7fb266a"}
+
+<!-- Slide 14 -->
+
+---
+
+## <span style="display:none">Source Slide 15</span>
+
+![](images/source_pages/slide-15.png){width="100%" fig-alt="Photo Credit: https://3.bp.blogspot.com/-y8do_JdFx6c/V3_dywgZzPI/AAAAAAAAGZY/catSBAx1g-ciuT6LxvvnjYAfvEWH2jAmQCLcB/s1600"}
+
+<!-- Slide 15 -->
+
+---
+
+## <span style="display:none">Source Slide 16</span>
+
+![](images/source_pages/slide-16.png){width="100%" fig-alt="Photo Credit: https://iandunn.name/content/presentations/wp-oop-mvc/images/object-instantiation.png"}
+
+<!-- Slide 16 -->
+
+---
+
+## <span style="display:none">Source Slide 17</span>
+
+![](images/source_pages/slide-17.png){width="100%" fig-alt="7.4 Creating and"}
+
+<!-- Slide 17 -->
+
+---
+
+## <span style="display:none">Source Slide 18</span>
+
+![](images/source_pages/slide-18.png){width="100%" fig-alt="Source Slide 18"}
+
+<!-- Slide 18 -->
+
+---
+
+## <span style="display:none">Source Slide 19</span>
+
+![](images/source_pages/slide-19.png){width="100%" fig-alt="7.5 De ning Member"}
+
+<!-- Slide 19 -->
+
+---
+
+## <span style="display:none">Source Slide 20</span>
+
+![](images/source_pages/slide-20.png){width="100%" fig-alt="• Classes group data and associated behaviors."}
+
+<!-- Slide 20 -->
+
+---
+
+## <span style="display:none">Source Slide 21</span>
+
+![](images/source_pages/slide-21.png){width="100%" fig-alt="• We use methods!"}
+
+<!-- Slide 21 -->
+
+---
+
+## <span style="display:none">Source Slide 22</span>
+
+![](images/source_pages/slide-22.png){width="100%" fig-alt="Methods"}
+
+<!-- Slide 22 -->
+
+---
+
+## <span style="display:none">Source Slide 23</span>
+
+![](images/source_pages/slide-23.png){width="100%" fig-alt="Method"}
+
+<!-- Slide 23 -->
+
+---
+
+## <span style="display:none">Source Slide 24</span>
+
+![](images/source_pages/slide-24.png){width="100%" fig-alt="Another example"}
+
+<!-- Slide 24 -->
+
+---
+
+## <span style="display:none">Source Slide 25</span>
+
+![](images/source_pages/slide-25.png){width="100%" fig-alt="Source Slide 25"}
+
+<!-- Slide 25 -->

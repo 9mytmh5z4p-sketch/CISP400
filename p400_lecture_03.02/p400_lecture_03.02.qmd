@@ -1,0 +1,3 @@
+{{< include topic_course_framing.qmd >}}
+{{< include topic_programming_exercise.qmd >}}
+

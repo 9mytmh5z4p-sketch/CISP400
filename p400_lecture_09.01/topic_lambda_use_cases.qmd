@@ -1,0 +1,399 @@
+<!-- Topic: Lambda Use Cases Closures and Callbacks -->
+<!-- Slides 46–85 -->
+
+# Lambda Use Cases Closures and Callbacks
+
+## Source Slide 46
+
+::: notes
+Slides 46–85
+Source text extracted from the authoritative Keynote deck.
+:::
+
+<!-- Slide 46 -->
+
+---
+
+## Programming Exercise
+
+- Setup code to validate an input str!
+- ,to enter a s
+- lnce.
+- Overload the operator()
+
+<!-- Slide 47 -->
+
+---
+
+## Programming Exercise
+
+- Create a class to manage your dynamic array(s)
+- Overload the operator[] to prevent out of bounds errors.
+- Discuss what other features y
+- Hshould have and how
+
+<!-- Slide 48 -->
+
+---
+
+## decimal5
+
+- I-< S`HD
+- Type in lambda.cpp5
+- Comparison of a functor and a
+
+<!-- Slide 49 -->
+
+---
+
+## Programming Exercise
+
+- Create an array of 10 ints. Popul
+- Xthis any way you want.
+- <l lambda to add 2 consecutive
+- Kh together (i.e. element 0 +
+
+<!-- Slide 50 -->
+
+---
+
+## Exercise Goals
+
+- u_Increase Topic Mastery
+- Construct Knowledge
+- Give you data to evaluate how well you are learning.
+
+<!-- Slide 51 -->
+
+---
+
+## )>@C
+
+- 5e$T
+
+<!-- Slide 52 -->
+
+---
+
+## Programming Exercise
+
+- u0(T
+- ]4 N
+
+<!-- Slide 53 -->
+
+---
+
+## )>@C
+
+- Note the auto - makes it easier if we change t
+- (@rray types
+- Also n
+- ref var element. Looping shouldn't
+
+<!-- Slide 54 -->
+
+---
+
+## J-<PD
+
+- )>@C
+- Shows that for each doesn
+- t always work.
+- The array decayed into a pointer w/o a size indication. Remember, we need a size parameter when
+
+<!-- Slide 55 -->
+
+---
+
+## )>@C
+
+- Not only can this for_each handle pointers, it expects them.
+- Look how we call the function - no () to pass parameters
+- Note: auto
+- x(not be used
+
+<!-- Slide 56 -->
+
+---
+
+## )>@C
+
+- RiNow build a simple functor and run it.
+- Note the disposable obj1 - wouldn't want to
+- Lhat for production
+
+<!-- Slide 57 -->
+
+---
+
+## )>@C
+
+- This shows we are using manually created pointers. Note: Fibonacci not used.
+- Snap with new -
+- return
+- e anyway.
+
+<!-- Slide 58 -->
+
+---
+
+## J-<P:r^D
+
+- )>@C
+- C@Manually worrying about the pointers is a pain. Let's fix that.
+
+<!-- Slide 59 -->
+
+---
+
+## )>@C
+
+- Another functor example - with overloading
+
+<!-- Slide 60 -->
+
+---
+
+## Range Based Loops
+
+- t handle pointers in any flavor.5
+- $5F873811-C985-486B-9637-CD37853DED65
+
+<!-- Slide 61 -->
+
+---
+
+## Lambda and Functor Use Cases
+
+- 6D%J%
+- decimal?a
+
+<!-- Slide 62 -->
+
+---
+
+## )>lY
+
+- Use Cases
+- JStandard Template Library
+- (std::sort(),
+- for_each
+
+<!-- Slide 63 -->
+
+---
+
+## )>@C
+
+- @hfind_if returns an iterator to the first element that satisfies
+- !8predicate, else
+
+<!-- Slide 64 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 65 -->
+
+---
+
+## )>lY
+
+- Use Cases
+- ]Standard Template Library
+- (std::sort(),
+- for_each
+
+<!-- Slide 66 -->
+
+---
+
+## )>@C
+
+- zThe lambda itself is the closure.
+- Lan object which allows functions to capture variables out of their context.
+
+<!-- Slide 67 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 68 -->
+
+---
+
+## s the big deal?
+
+- $8D0BC8A8-79BC-4479-8004-BCC68A2F30C4
+- tgw!G-
+- The class definition
+- captures this
+
+<!-- Slide 69 -->
+
+---
+
+## )>lY
+
+- Use Cases
+- SStandard Template Library
+- (std::sort(),
+- for_each
+
+<!-- Slide 70 -->
+
+---
+
+## )>lY
+
+- Use Cases
+- ]Standard Template Library
+- (std::sort(),
+- for_each
+
+<!-- Slide 71 -->
+
+---
+
+## 7This is a traditional callback with a func
+
+- 4 pointer.
+- $593F8C43-92BC-4AB1-9979-5326ED5ECBAD
+- Ex.cpp
+- 0 in line 9.
+
+<!-- Slide 72 -->
+
+---
+
+## G42!B!
+
+- It works, but
+- $9FE026E9-92D1-4A25-94AA-EC752051011D
+
+<!-- Slide 73 -->
+
+---
+
+## )>lY
+
+- Callbacks
+- CYA code passed as an argument to another function or object intended
+- 'Dbe executed later.5
+
+<!-- Slide 74 -->
+
+---
+
+## When to use them?
+
+- Asynchronous Programming: To specify what should happen after completing a task (e.g., a database query or file read).
+- Event-Driven P:w
+- respondAN
+- }s like button clicks, data availability, or system notifications.
+
+<!-- Slide 75 -->
+
+---
+
+## 1:PAb
+
+- )>@C
+
+<!-- Slide 76 -->
+
+---
+
+## Another example
+
+- 5c$T
+
+<!-- Slide 77 -->
+
+---
+
+## Why closures matter
+
+- You can write short, powerful code
+- Replace functors and boilerplate
+- Enable
+- ional-style programming
+
+<!-- Slide 78 -->
+
+---
+
+## F-:(+C
+
+- G42!B!
+- It works, but
+- $9FE026E9-92D1-4A25-94AA-EC752051011D
+- PVCan
+
+<!-- Slide 79 -->
+
+---
+
+## Lambda is a much better solution
+
+- u'$T
+
+<!-- Slide 80 -->
+
+---
+
+## There
+
+- s the lambda!
+- $A58E234C-3C38-4F32-B7CE-7696C29E21F5
+
+<!-- Slide 81 -->
+
+---
+
+## std::function
+
+- $41845423-722D-46F5-9555-4A1062D44DA2
+- 5c$T
+- D is a type-erased
+- C wrapper in C++. It lets you store and pass around any callable
+
+<!-- Slide 82 -->
+
+---
+
+## )>/]
+
+- std::function
+- Type Erasure - don
+- t need to know the lambda/%
+- ior type
+
+<!-- Slide 83 -->
+
+---
+
+## n+D8
+
+- hBy default: lambdas that capture by value are const.
+- This allows the l
+- 9$ to change
+- Hinternal copy.
+
+<!-- Slide 84 -->
+
+---
+
+## Desk Check Exercise
+
+- Pair up
+- Manually determine the output of
+- qfollowing code?
+- DO NOT TYPE THIS IN AND EXECUTE IT.
+
+<!-- Slide 85 -->

@@ -1,0 +1,150 @@
+<!-- Topic: Class Templates -->
+<!-- Slides 25–40 -->
+
+# Class Templates
+
+## Exercise
+
+::: notes
+Slides 25–40
+Source text extracted from the authoritative Keynote deck.
+:::
+
+<!-- Slide 25 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 26 -->
+
+---
+
+## Lightning Review Questions
+
+- t9Fire up ChatGPT!
+- What other q1
+- X do you have for me?
+- decimal5
+
+<!-- Slide 27 -->
+
+---
+
+## All at Once
+
+- apple:appear
+- Lightning Review
+- 6D%>%
+- decimal5
+
+<!-- Slide 28 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 29 -->
+
+---
+
+## 1Part of the template class in SimpleVector(mod).h
+
+- 6Da(
+- Have students download
+- <.h file.
+- Discuss
+
+<!-- Slide 30 -->
+
+---
+
+## )>@C
+
+- We have a working exception.
+- Note: You can throw without a try .. catch block. The program will compile and run. But, it
+- 4rash after the
+- /X class is instantiated
+
+<!-- Slide 31 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 32 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 33 -->
+
+---
+
+## -6lY
+
+- The class
+- MCaB%
+- push/pop
+
+<!-- Slide 34 -->
+
+---
+
+## -6lY
+
+- The class
+- MCaB%
+
+<!-- Slide 35 -->
+
+---
+
+## -6XT
+
+- main
+- 6Da(i
+
+<!-- Slide 36 -->
+
+---
+
+## decimal?!
+
+- @FWe can apply inheritance to class templates just like any other
+
+<!-- Slide 37 -->
+
+---
+
+## $16.1 Class Templates and Inheritance
+
+- 6D%R%2
+- decimal?a
+
+<!-- Slide 38 -->
+
+---
+
+## )>@C
+
+- 6D%!%
+- 5c$T
+- decimal?ap
+
+<!-- Slide 39 -->
+
+---
+
+## Exercise Goals
+
+- a_Increase Topic Mastery
+- Construct Knowledge
+- Give you data to evaluate how well you are learning.
+
+<!-- Slide 40 -->

@@ -1,0 +1,48 @@
+<!-- Topic: Activities and Desk Check -->
+<!-- Slides 86–90 -->
+
+# Activities and Desk Check
+
+## s My Output?
+
+::: notes
+Slides 86–90
+Source text extracted from the authoritative Keynote deck.
+:::
+
+<!-- Slide 86 -->
+
+---
+
+## Exercise Goals
+
+- 3Review of code syntax
+- Check understanding of
+
+<!-- Slide 87 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 88 -->
+
+---
+
+## )>@C
+
+- Answer code
+
+<!-- Slide 89 -->
+
+---
+
+## )>hX
+
+- Locality
+- TDHDZ
+- FDUgh, tough to read!
+- A lambda can be built right above where you are.
+
+<!-- Slide 90 -->

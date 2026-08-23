@@ -1,0 +1,130 @@
+<!-- Topic 3: Reference Variables as Parameters -->
+<!-- Slides 22-31 -->
+
+# Reference Variables as Parameters
+<!-- Slide 22 -->
+
+## Where Does the Ampersand Go? {.smaller}
+
++ A reference parameter is marked in the parameter list.
++ The function call still looks ordinary.
++ That makes the prototype especially important.
+
+::: notes
+Slides 22-31
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## Prototype Syntax
+
+```cpp
+void addTax(double& price);
+```
+
++ The `&` belongs with the parameter type.
++ `price` will alias the caller's variable.
++ The prototype warns the caller that the argument may change.
+
+<!-- Slide 24 -->
+
+---
+
+## Definition Syntax
+
+```cpp
+void addTax(double& price) {
+    price = price * 1.0825;
+}
+```
+
+The prototype and definition must agree on the reference marker.
+
+<!-- Slide 25 -->
+
+---
+
+## Call Syntax Looks Ordinary
+
+```cpp
+int main() {
+    double mealPrice = 18.00;
+    addTax(mealPrice);
+    cout << mealPrice << endl;
+    return 0;
+}
+```
+
+Nothing in the call itself shows that `mealPrice` can change.
+
+<!-- Slide 26 -->
+
+---
+
+## Reference Parameters Need Variables
+
+```cpp
+addTax(mealPrice);  // works
+addTax(18.00);      // error
+```
+
+A non-const reference parameter needs a variable it can alias.
+
+<!-- Slide 27 -->
+
+---
+
+## Multiple Reference Parameters
+
+```cpp
+void addTax(double& subtotal, double& tax) {
+    tax = subtotal * 0.0825;
+    subtotal = subtotal + tax;
+}
+```
+
+Both reference parameters can update caller-owned variables.
+
+<!-- Slide 28 -->
+
+---
+
+## Input and Output Parameters
+
+```cpp
+void applyDiscount(double percent, double& price) {
+    price = price - (price * percent);
+}
+```
+
++ `percent` gives the function an input value.
++ `price` gives the function a variable it can update.
++ The parameter list shows which data can change.
+
+<!-- Slide 29 -->
+
+---
+
+## Reading Function Contracts with References
+
+```cpp
+void getDimensions(double& width, double& height);
+double area(double width, double height);
+void displayArea(double area);
+```
+
+Check prototypes for `&` before assuming a function only reads its arguments.
+
+<!-- Slide 30 -->
+
+---
+
+## Summary
+
++ Reference parameters are marked with `&` in prototypes and definitions.
++ Calls look ordinary, so the prototype carries the warning.
++ A reference parameter can let a function update caller data.
+
+<!-- Slide 31 -->

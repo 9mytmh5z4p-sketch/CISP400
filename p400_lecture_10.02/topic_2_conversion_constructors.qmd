@@ -1,0 +1,157 @@
+<!-- Topic 2: Conversion Constructors -->
+<!-- Slides 8–20 -->
+# Conversion Constructors
+
+## The Opposite Conversion
+
+This slide presents the source material for **The Opposite Conversion** from the authoritative lecture deck.
+
+::: notes
+Slides 8–20
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Conversion Context
+
+This slide presents the source material for **Conversion Context** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Conversion Context
+
+This slide presents the source material for **Conversion Context** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## Convert Constructors
+
+This slide presents the source material for **Convert Constructors** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## Programming Exercise
+
+This slide presents the source material for **Programming Exercise** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Exercise Goals
+
+This slide presents the source material for **Exercise Goals** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## Exercise
+
+This slide presents the source material for **Exercise** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 14 -->
+
+---
+
+## Exercise
+
+This slide presents the source material for **Exercise** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## Repeat Conversion Constructor
+
+This slide presents the source material for **Repeat Conversion Constructor** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 16 -->
+
+---
+
+## Exercise Transition
+
+This slide presents the source material for **Exercise Transition** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 17 -->
+
+---
+
+## Key Takeaway
+
+This slide presents the source material for **Key Takeaway** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 18 -->
+
+---
+
+## Agenda
+
+This slide presents the source material for **Agenda** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## Agenda
+
+This slide presents the source material for **Agenda** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 20 -->

@@ -1,0 +1,46 @@
+# Last Time
+
+::: {.incremental}
++ **Polymorphism**
++ **Abstract base classes**
+:::
+
+# Today's Agenda
+
+- Templates Overview
+- Function Templates
+- Project Preflight
+- Template Motivation
+- Template Context
+- Desk Check Exercise
+- Multiple Template Arguments
+- Template Review
+- Peer Review and Advice
+- Program Maintenance
+- Lightning Review
+- Template Options and Practice
+
+{{< include topic_1_templates_overview.qmd >}}
+{{< include topic_2_function_templates.qmd >}}
+{{< include topic_3_project_preflight.qmd >}}
+{{< include topic_4_template_motivation.qmd >}}
+{{< include topic_5_template_context.qmd >}}
+{{< include topic_6_desk_check_exercise.qmd >}}
+{{< include topic_7_multiple_template_arguments.qmd >}}
+{{< include topic_8_template_review.qmd >}}
+{{< include topic_9_peer_review_and_advice.qmd >}}
+{{< include topic_10_program_maintenance.qmd >}}
+{{< include topic_11_lightning_review.qmd >}}
+{{< include topic_12_template_options_and_practice.qmd >}}
+
+---
+# Key Takeaways
+
+- Templates let one algorithm work across compatible types.
+- Generic code is resolved by the compiler and can be specialized when needed.
+
+---
+# Next Time
+
+---
+# Appendix

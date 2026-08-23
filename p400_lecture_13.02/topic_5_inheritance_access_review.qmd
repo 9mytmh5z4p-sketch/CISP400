@@ -1,0 +1,49 @@
+<!-- Topic 5: Inheritance Access Review -->
+<!-- Slides 31–34 -->
+# Inheritance Access Review
+
+## Inheritance Access Review
+
+This slide develops the authoritative source material on **inheritance access review**.
+
+::: notes
+Slides 31–34
+:::
+
+<!-- Slide 31 -->
+
+---
+
+## Inheritance Access Review
+
+This slide develops the authoritative source material on **inheritance access review**.
+
+::: notes
+
+:::
+
+<!-- Slide 32 -->
+
+---
+
+## Inheritance Access Review
+
+This slide develops the authoritative source material on **inheritance access review**.
+
+::: notes
+
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## Inheritance Access Review
+
+This slide develops the authoritative source material on **inheritance access review**.
+
+::: notes
+
+:::
+
+<!-- Slide 34 -->

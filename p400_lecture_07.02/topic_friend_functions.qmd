@@ -1,0 +1,189 @@
+<!-- Topic: Friend Functions and Stream Operators -->
+<!-- Slides 34–56 -->
+
+# Friend Functions and Stream Operators
+
+![](images/source_pages/slide-34.png){width="100%" fig-alt="Friend Functions and Stream Operators"}
+
+::: notes
+Slides 34–56
+Source slide 34 from the authoritative PDF.
+:::
+
+<!-- Slide 34 -->
+
+---
+
+## <span style="display:none">Source Slide 35</span>
+
+![](images/source_pages/slide-35.png){width="100%" fig-alt="For your consideration …"}
+
+<!-- Slide 35 -->
+
+---
+
+## <span style="display:none">Source Slide 36</span>
+
+![](images/source_pages/slide-36.png){width="100%" fig-alt="Source Slide 36"}
+
+<!-- Slide 36 -->
+
+---
+
+## <span style="display:none">Source Slide 37</span>
+
+![](images/source_pages/slide-37.png){width="100%" fig-alt="• we’d really like to print the C++ way, with the"}
+
+<!-- Slide 37 -->
+
+---
+
+## <span style="display:none">Source Slide 38</span>
+
+![](images/source_pages/slide-38.png){width="100%" fig-alt="How we’d like to do it."}
+
+<!-- Slide 38 -->
+
+---
+
+## <span style="display:none">Source Slide 39</span>
+
+![](images/source_pages/slide-39.png){width="100%" fig-alt="Overloading Operators"}
+
+<!-- Slide 39 -->
+
+---
+
+## <span style="display:none">Source Slide 40</span>
+
+![](images/source_pages/slide-40.png){width="100%" fig-alt="• There are two ways we can overload operators:"}
+
+<!-- Slide 40 -->
+
+---
+
+## <span style="display:none">Source Slide 41</span>
+
+![](images/source_pages/slide-41.png){width="100%" fig-alt="1. Make the overloaded operator"}
+
+<!-- Slide 41 -->
+
+---
+
+## <span style="display:none">Source Slide 42</span>
+
+![](images/source_pages/slide-42.png){width="100%" fig-alt="• Consider overloading the >> and << operators …"}
+
+<!-- Slide 42 -->
+
+---
+
+## <span style="display:none">Source Slide 43</span>
+
+![](images/source_pages/slide-43.png){width="100%" fig-alt="• meaning …"}
+
+<!-- Slide 43 -->
+
+---
+
+## <span style="display:none">Source Slide 44</span>
+
+![](images/source_pages/slide-44.png){width="100%" fig-alt="• But, our free function also needs access to the"}
+
+<!-- Slide 44 -->
+
+---
+
+## <span style="display:none">Source Slide 45</span>
+
+![](images/source_pages/slide-45.png){width="100%" fig-alt="operator<<"}
+
+<!-- Slide 45 -->
+
+---
+
+## <span style="display:none">Source Slide 46</span>
+
+![](images/source_pages/slide-46.png){width="100%" fig-alt="• we can solve this"}
+
+<!-- Slide 46 -->
+
+---
+
+## <span style="display:none">Source Slide 47</span>
+
+![](images/source_pages/slide-47.png){width="100%" fig-alt="Friends"}
+
+<!-- Slide 47 -->
+
+---
+
+## <span style="display:none">Source Slide 48</span>
+
+![](images/source_pages/slide-48.png){width="100%" fig-alt="“A friend is a function that is not a member of a"}
+
+<!-- Slide 48 -->
+
+---
+
+## <span style="display:none">Source Slide 49</span>
+
+![](images/source_pages/slide-49.png){width="100%" fig-alt="Why would we want to do this?"}
+
+<!-- Slide 49 -->
+
+---
+
+## <span style="display:none">Source Slide 50</span>
+
+![](images/source_pages/slide-50.png){width="100%" fig-alt="OK … and we want to do this because …"}
+
+<!-- Slide 50 -->
+
+---
+
+## <span style="display:none">Source Slide 51</span>
+
+![](images/source_pages/slide-51.png){width="100%" fig-alt="• Your class controls who its friends are."}
+
+<!-- Slide 51 -->
+
+---
+
+## <span style="display:none">Source Slide 52</span>
+
+![](images/source_pages/slide-52.png){width="100%" fig-alt="Source Slide 52"}
+
+<!-- Slide 52 -->
+
+---
+
+## <span style="display:none">Source Slide 53</span>
+
+![](images/source_pages/slide-53.png){width="100%" fig-alt="Source Slide 53"}
+
+<!-- Slide 53 -->
+
+---
+
+## <span style="display:none">Source Slide 54</span>
+
+![](images/source_pages/slide-54.png){width="100%" fig-alt="Source Slide 54"}
+
+<!-- Slide 54 -->
+
+---
+
+## <span style="display:none">Source Slide 55</span>
+
+![](images/source_pages/slide-55.png){width="100%" fig-alt="Source Slide 55"}
+
+<!-- Slide 55 -->
+
+---
+
+## <span style="display:none">Source Slide 56</span>
+
+![](images/source_pages/slide-56.png){width="100%" fig-alt="“Don’t think of a friend as something outside of"}
+
+<!-- Slide 56 -->

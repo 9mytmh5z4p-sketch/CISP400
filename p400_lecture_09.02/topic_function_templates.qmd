@@ -1,0 +1,230 @@
+<!-- Topic: Function Templates -->
+<!-- Slides 1–24 -->
+
+# Function Templates
+
+## +CISP 400
+
+::: notes
+Slides 1–24
+Source text extracted from the authoritative Keynote deck.
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 2 -->
+
+---
+
+## decimal5!
+
+- \>0lC
+- !Where
+- s this fit in the course?Q
+- $D5FAC525-2847-4BD1-B388-99380FDE1AC1
+
+<!-- Slide 3 -->
+
+---
+
+## w16.1 Excep!
+
+- 16.2 Func
+- Template
+- 3 Class6
+- < and Inheritance
+
+<!-- Slide 4 -->
+
+---
+
+## w16.1 Excep!
+
+- 16.2 Func
+- Template
+- 3 Class6
+- < and Inheritance
+
+<!-- Slide 5 -->
+
+---
+
+## 16.3 Class Templates
+
+- 6D%B%"
+- decimal?
+
+<!-- Slide 6 -->
+
+---
+
+## p. 1007
+
+- Templates may also be used to create generic classes and abstract data types.
+- decimal?
+
+<!-- Slide 7 -->
+
+---
+
+## apple:bc-appear
+
+- Function template - used whenever we need s
+- s containing the same logic, but different types.
+- Class
+- UH$T
+
+<!-- Slide 8 -->
+
+---
+
+## Function Template
+
+- Class
+- RmNP0k
+
+<!-- Slide 9 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 10 -->
+
+---
+
+## Programming Exercise
+
+- Solve the following:
+- Write a template function which takes a vector of a generic type as a parameter and reverses
+- /(elements of
+- . Then wb
+
+<!-- Slide 11 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 12 -->
+
+---
+
+## How do container classes such as vectors deal with handling different types?
+
+- Does it make sense to have a
+- a bunch of function templates?
+- decimal?
+
+<!-- Slide 13 -->
+
+---
+
+## There is no next time!
+
+- $FF9BCEEB-4623-4293-BD4B-DB07D20614EF
+
+<!-- Slide 14 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 15 -->
+
+---
+
+## decimal5
+
+
+<!-- Slide 16 -->
+
+---
+
+## s this section about?
+
+- $F86243C1-0E01-4266-A5EF-FCE6150CCFFD
+- decimal5
+
+<!-- Slide 17 -->
+
+---
+
+## w16.1 Excep!
+
+- 16.2 Func
+- Template
+- 3 Class6
+- < and Inheritance
+
+<!-- Slide 18 -->
+
+---
+
+## )>TS
+
+- 6D!1
+- 5s(T
+- decimal3
+- a5iKa34
+
+<!-- Slide 19 -->
+
+---
+
+## )>hX
+
+- Exercise
+- Update your vector code from last week.
+- Make it a class template. Test using different types.
+- Create
+
+<!-- Slide 20 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 21 -->
+
+---
+
+## decimal5!
+
+- F-:(dC
+- Programming Exercise
+- $REPLACE ME WITH THE ASSIGNMENT SLIDE5
+- FThe point of the followup is to go over
+
+<!-- Slide 22 -->
+
+---
+
+## Programming Exercise
+
+- Write a definition of the func
+- Ltemplate which swaps
+- contents
+- 24wo variables.
+
+<!-- Slide 23 -->
+
+---
+
+## Exercise
+
+- $2AD48DA8-111F-4A74-8ACC-B8E58209E639
+- Programming 5
+- $Debriefing5
+- 6De,e
+
+<!-- Slide 24 -->

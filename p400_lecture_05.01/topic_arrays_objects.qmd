@@ -1,0 +1,181 @@
+<!-- Topic: Arrays of Objects -->
+<!-- Slides 37–58 -->
+
+# Arrays of Objects
+
+![](images/source_pages/slide-37.png){width="100%" fig-alt="Arrays of Objects"}
+
+::: notes
+Slides 37–58
+Source slide 37 from the authoritative PDF.
+:::
+
+<!-- Slide 37 -->
+
+---
+
+## <span style="display:none">Source Slide 38</span>
+
+![](images/source_pages/slide-38.png){width="100%" fig-alt="• Can we create arrays of objects or structs?"}
+
+<!-- Slide 38 -->
+
+---
+
+## <span style="display:none">Source Slide 39</span>
+
+![](images/source_pages/slide-39.png){width="100%" fig-alt="• Let’s go ahead and build one on the stack …"}
+
+<!-- Slide 39 -->
+
+---
+
+## <span style="display:none">Source Slide 40</span>
+
+![](images/source_pages/slide-40.png){width="100%" fig-alt="Source Slide 40"}
+
+<!-- Slide 40 -->
+
+---
+
+## <span style="display:none">Source Slide 41</span>
+
+![](images/source_pages/slide-41.png){width="100%" fig-alt="Source Slide 41"}
+
+<!-- Slide 41 -->
+
+---
+
+## <span style="display:none">Source Slide 42</span>
+
+![](images/source_pages/slide-42.png){width="100%" fig-alt="• What’s happening here?"}
+
+<!-- Slide 42 -->
+
+---
+
+## <span style="display:none">Source Slide 43</span>
+
+![](images/source_pages/slide-43.png){width="100%" fig-alt="• What’s happening here?"}
+
+<!-- Slide 43 -->
+
+---
+
+## <span style="display:none">Source Slide 44</span>
+
+![](images/source_pages/slide-44.png){width="100%" fig-alt="Ok,"}
+
+<!-- Slide 44 -->
+
+---
+
+## <span style="display:none">Source Slide 45</span>
+
+![](images/source_pages/slide-45.png){width="100%" fig-alt="Ok,"}
+
+<!-- Slide 45 -->
+
+---
+
+## <span style="display:none">Source Slide 46</span>
+
+![](images/source_pages/slide-46.png){width="100%" fig-alt="Source Slide 46"}
+
+<!-- Slide 46 -->
+
+---
+
+## <span style="display:none">Source Slide 47</span>
+
+![](images/source_pages/slide-47.png){width="100%" fig-alt="Source Slide 47"}
+
+<!-- Slide 47 -->
+
+---
+
+## <span style="display:none">Source Slide 48</span>
+
+![](images/source_pages/slide-48.png){width="100%" fig-alt="• We constructed an array of objects on the heap."}
+
+<!-- Slide 48 -->
+
+---
+
+## <span style="display:none">Source Slide 49</span>
+
+![](images/source_pages/slide-49.png){width="100%" fig-alt="• In the meantime, let’s make this array dynamic …"}
+
+<!-- Slide 49 -->
+
+---
+
+## <span style="display:none">Source Slide 50</span>
+
+![](images/source_pages/slide-50.png){width="100%" fig-alt="Source Slide 50"}
+
+<!-- Slide 50 -->
+
+---
+
+## <span style="display:none">Source Slide 51</span>
+
+![](images/source_pages/slide-51.png){width="100%" fig-alt="Source Slide 51"}
+
+<!-- Slide 51 -->
+
+---
+
+## <span style="display:none">Source Slide 52</span>
+
+![](images/source_pages/slide-52.png){width="100%" fig-alt="C++ Ninja Solution"}
+
+<!-- Slide 52 -->
+
+---
+
+## <span style="display:none">Source Slide 53</span>
+
+![](images/source_pages/slide-53.png){width="100%" fig-alt="Source Slide 53"}
+
+<!-- Slide 53 -->
+
+---
+
+## <span style="display:none">Source Slide 54</span>
+
+![](images/source_pages/slide-54.png){width="100%" fig-alt="Source Slide 54"}
+
+<!-- Slide 54 -->
+
+---
+
+## <span style="display:none">Source Slide 55</span>
+
+![](images/source_pages/slide-55.png){width="100%" fig-alt="Source Slide 55"}
+
+<!-- Slide 55 -->
+
+---
+
+## <span style="display:none">Source Slide 56</span>
+
+![](images/source_pages/slide-56.png){width="100%" fig-alt="Source Slide 56"}
+
+<!-- Slide 56 -->
+
+---
+
+## <span style="display:none">Source Slide 57</span>
+
+![](images/source_pages/slide-57.png){width="100%" fig-alt="Source Slide 57"}
+
+<!-- Slide 57 -->
+
+---
+
+## <span style="display:none">Source Slide 58</span>
+
+![](images/source_pages/slide-58.png){width="100%" fig-alt="Source Slide 58"}
+
+<!-- Slide 58 -->

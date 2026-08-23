@@ -1,0 +1,61 @@
+<!-- Topic: Reference Variables -->
+<!-- Slides 53–59 -->
+
+# Reference Variables
+
+![](images/source_pages/slide-53.png){width="100%" fig-alt="Reference Variables"}
+
+::: notes
+Slides 53–59
+Source slide 53 from the authoritative PDF.
+:::
+
+<!-- Slide 53 -->
+
+---
+
+## <span style="display:none">Source Slide 54</span>
+
+![](images/source_pages/slide-54.png){width="100%" fig-alt="Problem: Pointers allow access to anything"}
+
+<!-- Slide 54 -->
+
+---
+
+## <span style="display:none">Source Slide 55</span>
+
+![](images/source_pages/slide-55.png){width="100%" fig-alt="Reference Variables"}
+
+<!-- Slide 55 -->
+
+---
+
+## <span style="display:none">Source Slide 56</span>
+
+![](images/source_pages/slide-56.png){width="100%" fig-alt="• A reference variable allows us to create a link to the"}
+
+<!-- Slide 56 -->
+
+---
+
+## <span style="display:none">Source Slide 57</span>
+
+![](images/source_pages/slide-57.png){width="100%" fig-alt="Comparison between Pointers and Reference"}
+
+<!-- Slide 57 -->
+
+---
+
+## <span style="display:none">Source Slide 58</span>
+
+![](images/source_pages/slide-58.png){width="100%" fig-alt="Contrast between Pointers and Reference"}
+
+<!-- Slide 58 -->
+
+---
+
+## <span style="display:none">Source Slide 59</span>
+
+![](images/source_pages/slide-59.png){width="100%" fig-alt="• The advantages and disadvantages mean that"}
+
+<!-- Slide 59 -->

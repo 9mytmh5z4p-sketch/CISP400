@@ -1,0 +1,37 @@
+<!-- Topic: Desk Check -->
+<!-- Slides 33–36 -->
+
+# Desk Check
+
+![](images/source_pages/slide-33.png){width="100%" fig-alt="Desk Check"}
+
+::: notes
+Slides 33–36
+Source slide 33 from the authoritative PDF.
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## <span style="display:none">Source Slide 34</span>
+
+![](images/source_pages/slide-34.png){width="100%" fig-alt="Desk Check Exercise"}
+
+<!-- Slide 34 -->
+
+---
+
+## <span style="display:none">Source Slide 35</span>
+
+![](images/source_pages/slide-35.png){width="100%" fig-alt="Source Slide 35"}
+
+<!-- Slide 35 -->
+
+---
+
+## <span style="display:none">Source Slide 36</span>
+
+![](images/source_pages/slide-36.png){width="100%" fig-alt="Source Slide 36"}
+
+<!-- Slide 36 -->

@@ -1,0 +1,93 @@
+<!-- Topic: Lecture Wrap-Up -->
+<!-- Slides 64–74 -->
+
+# Lecture Wrap-Up
+
+![](images/source_pages/slide-64.png){width="100%" fig-alt="Lecture Wrap-Up"}
+
+::: notes
+Slides 64–74
+Source slide 64 from the authoritative PDF.
+:::
+
+<!-- Slide 64 -->
+
+---
+
+## <span style="display:none">Source Slide 65</span>
+
+![](images/source_pages/slide-65.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 65 -->
+
+---
+
+## <span style="display:none">Source Slide 66</span>
+
+![](images/source_pages/slide-66.png){width="100%" fig-alt="Key Takeaway"}
+
+<!-- Slide 66 -->
+
+---
+
+## <span style="display:none">Source Slide 67</span>
+
+![](images/source_pages/slide-67.png){width="100%" fig-alt="67"}
+
+<!-- Slide 67 -->
+
+---
+
+## <span style="display:none">Source Slide 68</span>
+
+![](images/source_pages/slide-68.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 68 -->
+
+---
+
+## <span style="display:none">Source Slide 69</span>
+
+![](images/source_pages/slide-69.png){width="100%" fig-alt="We x this …"}
+
+<!-- Slide 69 -->
+
+---
+
+## <span style="display:none">Source Slide 70</span>
+
+![](images/source_pages/slide-70.png){width="100%" fig-alt="Source Slide 70"}
+
+<!-- Slide 70 -->
+
+---
+
+## <span style="display:none">Source Slide 71</span>
+
+![](images/source_pages/slide-71.png){width="100%" fig-alt="Source Slide 71"}
+
+<!-- Slide 71 -->
+
+---
+
+## <span style="display:none">Source Slide 72</span>
+
+![](images/source_pages/slide-72.png){width="100%" fig-alt="• Now let’s put joan in her own scope and then go"}
+
+<!-- Slide 72 -->
+
+---
+
+## <span style="display:none">Source Slide 73</span>
+
+![](images/source_pages/slide-73.png){width="100%" fig-alt="Source Slide 73"}
+
+<!-- Slide 73 -->
+
+---
+
+## <span style="display:none">Source Slide 74</span>
+
+![](images/source_pages/slide-74.png){width="100%" fig-alt="Source Slide 74"}
+
+<!-- Slide 74 -->

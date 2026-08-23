@@ -1,0 +1,143 @@
+<!-- Topic 3: Enumerations -->
+<!-- Slides 29-40 -->
+
+# Enumerations
+<!-- Slide 29 -->
+
+## What Are The Legal Choices? {.smaller}
+
+- Some variables should hold one option from a small set.
+- Menu choices, states, and categories are common examples.
+
+::: notes
+Slides 29-40
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## Why Not Just Use Numbers?
+
+- Numbers are compact but easy to misread.
+- `1`, `2`, and `3` do not explain what state the program is in.
+- Named choices make conditions and dispatch logic easier to read.
+
+<!-- Slide 31 -->
+
+---
+
+## Why enum Instead Of Separate Constants?
+
+- Separate constants give individual values names.
+- An enum groups related choices under one concept.
+- That grouping signals that the values belong to the same legal set.
+
+<!-- Slide 32 -->
+
+---
+
+## Basic enum Syntax
+
+```cpp
+enum MenuChoice {
+    ADD_STUDENT = 1,
+    PRINT_ROSTER = 2,
+    QUIT = 0
+};
+```
+
+<!-- Slide 33 -->
+
+---
+
+## Enumerator Values
+
+- Enumerator names map to integer values.
+- Values can be assigned explicitly.
+- If no value is assigned, C++ counts upward from the previous value.
+
+<!-- Slide 34 -->
+
+---
+
+## Using enum Values
+
+```cpp
+MenuChoice choice = ADD_STUDENT;
+
+if (choice == ADD_STUDENT) {
+    cout << "Add student" << endl;
+}
+```
+
+<!-- Slide 35 -->
+
+---
+
+## enum With switch
+
+```cpp
+switch (choice) {
+case ADD_STUDENT:
+    cout << "Add student" << endl;
+    break;
+case PRINT_ROSTER:
+    cout << "Print roster" << endl;
+    break;
+case QUIT:
+    cout << "Goodbye" << endl;
+    break;
+}
+```
+
+<!-- Slide 36 -->
+
+---
+
+## Input Still Needs Translation
+
+- Console input does not arrive as an enum.
+- Read the client input first.
+- Validate the raw input, then translate it into the named choice.
+
+<!-- Slide 37 -->
+
+---
+
+## A Small Translation Step
+
+```cpp
+int rawChoice;
+cin >> rawChoice;
+
+while (rawChoice != ADD_STUDENT &&
+       rawChoice != PRINT_ROSTER &&
+       rawChoice != QUIT) {
+    cout << "Choose 1, 2, or 0: ";
+    cin >> rawChoice;
+}
+
+MenuChoice choice = static_cast<MenuChoice>(rawChoice);
+```
+
+<!-- Slide 38 -->
+
+---
+
+## When enum Fits
+
+- Use enum for closed sets of named choices.
+- Avoid enum for open-ended quantities.
+- Avoid enum for arbitrary text values.
+
+<!-- Slide 39 -->
+
+---
+
+## Summary
+
+- Enumerations replace mystery values with named choices.
+- They work best after validation has limited the value to the legal set.
+
+<!-- Slide 40 -->

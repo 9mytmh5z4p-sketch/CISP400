@@ -1,0 +1,217 @@
+<!-- Topic 2: Class Relationships -->
+<!-- Slides 7–24 -->
+# Class Relationships
+
+## Relationships
+
+This slide develops the authoritative source material on **relationships**.
+
+::: notes
+Slides 7–24
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## Relationship Overview
+
+This slide develops the authoritative source material on **relationship overview**.
+
+::: notes
+
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Relationship Overview
+
+This slide develops the authoritative source material on **relationship overview**.
+
+::: notes
+
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Aggregation Design
+
+This slide develops the authoritative source material on **aggregation design**.
+
+::: notes
+
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## Aggregation Design
+
+This slide develops the authoritative source material on **aggregation design**.
+
+::: notes
+
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## Aggregation Design
+
+This slide develops the authoritative source material on **aggregation design**.
+
+::: notes
+
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Aggregation Design
+
+This slide develops the authoritative source material on **aggregation design**.
+
+::: notes
+
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## Strong Aggregation
+
+This slide develops the authoritative source material on **strong aggregation**.
+
+::: notes
+
+:::
+
+<!-- Slide 14 -->
+
+---
+
+## Strong Aggregation
+
+This slide develops the authoritative source material on **strong aggregation**.
+
+::: notes
+
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## Strong Aggregation
+
+This slide develops the authoritative source material on **strong aggregation**.
+
+::: notes
+
+:::
+
+<!-- Slide 16 -->
+
+---
+
+## Relationship Types
+
+This slide develops the authoritative source material on **relationship types**.
+
+::: notes
+
+:::
+
+<!-- Slide 17 -->
+
+---
+
+## Relationship Types
+
+This slide develops the authoritative source material on **relationship types**.
+
+::: notes
+
+:::
+
+<!-- Slide 18 -->
+
+---
+
+## Relationship Types
+
+This slide develops the authoritative source material on **relationship types**.
+
+::: notes
+
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## Relationship Types
+
+This slide develops the authoritative source material on **relationship types**.
+
+::: notes
+
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## Modeling Relationships
+
+This slide develops the authoritative source material on **modeling relationships**.
+
+::: notes
+
+:::
+
+<!-- Slide 21 -->
+
+---
+
+## Modeling Relationships
+
+This slide develops the authoritative source material on **modeling relationships**.
+
+::: notes
+
+:::
+
+<!-- Slide 22 -->
+
+---
+
+## Modeling Relationships
+
+This slide develops the authoritative source material on **modeling relationships**.
+
+::: notes
+
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## Modeling Relationships
+
+This slide develops the authoritative source material on **modeling relationships**.
+
+::: notes
+
+:::
+
+<!-- Slide 24 -->

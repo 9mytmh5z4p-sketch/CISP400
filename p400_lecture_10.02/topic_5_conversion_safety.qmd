@@ -1,0 +1,73 @@
+<!-- Topic 5: Conversion Safety -->
+<!-- Slides 51–56 -->
+# Conversion Safety
+
+## Unintended Conversions
+
+This slide presents the source material for **Unintended Conversions** from the authoritative lecture deck.
+
+::: notes
+Slides 51–56
+:::
+
+<!-- Slide 51 -->
+
+---
+
+## Video
+
+This slide presents the source material for **Video** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 52 -->
+
+---
+
+## Constructor Hijacking
+
+This slide presents the source material for **Constructor Hijacking** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 53 -->
+
+---
+
+## Strange Conversions
+
+This slide presents the source material for **Strange Conversions** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 54 -->
+
+---
+
+## Type Safety
+
+This slide presents the source material for **Type Safety** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 55 -->
+
+---
+
+## Use Explicit or Delete
+
+This slide presents the source material for **Use Explicit or Delete** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 56 -->

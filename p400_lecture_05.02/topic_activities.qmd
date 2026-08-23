@@ -1,0 +1,85 @@
+<!-- Topic: Activities and Wrap-Up -->
+<!-- Slides 37–46 -->
+
+# Activities and Wrap-Up
+
+![](images/source_pages/slide-37.png){width="100%" fig-alt="Activities and Wrap-Up"}
+
+::: notes
+Slides 37–46
+Source slide 37 from the authoritative PDF.
+:::
+
+<!-- Slide 37 -->
+
+---
+
+## <span style="display:none">Source Slide 38</span>
+
+![](images/source_pages/slide-38.png){width="100%" fig-alt="Theme for Today"}
+
+<!-- Slide 38 -->
+
+---
+
+## <span style="display:none">Source Slide 39</span>
+
+![](images/source_pages/slide-39.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 39 -->
+
+---
+
+## <span style="display:none">Source Slide 40</span>
+
+![](images/source_pages/slide-40.png){width="100%" fig-alt="What’s Next?"}
+
+<!-- Slide 40 -->
+
+---
+
+## <span style="display:none">Source Slide 41</span>
+
+![](images/source_pages/slide-41.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 41 -->
+
+---
+
+## <span style="display:none">Source Slide 42</span>
+
+![](images/source_pages/slide-42.png){width="100%" fig-alt="Homework 2 due Sunday."}
+
+<!-- Slide 42 -->
+
+---
+
+## <span style="display:none">Source Slide 43</span>
+
+![](images/source_pages/slide-43.png){width="100%" fig-alt="Dueling Questions"}
+
+<!-- Slide 43 -->
+
+---
+
+## <span style="display:none">Source Slide 44</span>
+
+![](images/source_pages/slide-44.png){width="100%" fig-alt="Exercise Goals"}
+
+<!-- Slide 44 -->
+
+---
+
+## <span style="display:none">Source Slide 45</span>
+
+![](images/source_pages/slide-45.png){width="100%" fig-alt="Dueling Questions"}
+
+<!-- Slide 45 -->
+
+---
+
+## <span style="display:none">Source Slide 46</span>
+
+![](images/source_pages/slide-46.png){width="100%" fig-alt="Dueling Questions"}
+
+<!-- Slide 46 -->

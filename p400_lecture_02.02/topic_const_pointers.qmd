@@ -1,0 +1,141 @@
+<!-- Topic: Pointers to Constants and Constant Pointers -->
+<!-- Slides 27–43 -->
+
+# Pointers to Constants and Constant Pointers
+
+![](images/source_pages/slide-27.png){width="100%" fig-alt="Pointers to Constants and Constant Pointers"}
+
+::: notes
+Slides 27–43
+Source slide 27 from the authoritative PDF.
+:::
+
+<!-- Slide 27 -->
+
+---
+
+## <span style="display:none">Source Slide 28</span>
+
+![](images/source_pages/slide-28.png){width="100%" fig-alt="Things get tricky when we start to mix const and"}
+
+<!-- Slide 28 -->
+
+---
+
+## <span style="display:none">Source Slide 29</span>
+
+![](images/source_pages/slide-29.png){width="100%" fig-alt="• Pointer to a constant."}
+
+<!-- Slide 29 -->
+
+---
+
+## <span style="display:none">Source Slide 30</span>
+
+![](images/source_pages/slide-30.png){width="100%" fig-alt="Why use const?"}
+
+<!-- Slide 30 -->
+
+---
+
+## <span style="display:none">Source Slide 31</span>
+
+![](images/source_pages/slide-31.png){width="100%" fig-alt="Source Slide 31"}
+
+<!-- Slide 31 -->
+
+---
+
+## <span style="display:none">Source Slide 32</span>
+
+![](images/source_pages/slide-32.png){width="100%" fig-alt="Pointer to a constant."}
+
+<!-- Slide 32 -->
+
+---
+
+## <span style="display:none">Source Slide 33</span>
+
+![](images/source_pages/slide-33.png){width="100%" fig-alt="const int* pAge"}
+
+<!-- Slide 33 -->
+
+---
+
+## <span style="display:none">Source Slide 34</span>
+
+![](images/source_pages/slide-34.png){width="100%" fig-alt="Download this."}
+
+<!-- Slide 34 -->
+
+---
+
+## <span style="display:none">Source Slide 35</span>
+
+![](images/source_pages/slide-35.png){width="100%" fig-alt="const pointer"}
+
+<!-- Slide 35 -->
+
+---
+
+## <span style="display:none">Source Slide 36</span>
+
+![](images/source_pages/slide-36.png){width="100%" fig-alt="int age = 22;"}
+
+<!-- Slide 36 -->
+
+---
+
+## <span style="display:none">Source Slide 37</span>
+
+![](images/source_pages/slide-37.png){width="100%" fig-alt="int* const cPtr = &age;"}
+
+<!-- Slide 37 -->
+
+---
+
+## <span style="display:none">Source Slide 38</span>
+
+![](images/source_pages/slide-38.png){width="100%" fig-alt="Constant pointers to constants"}
+
+<!-- Slide 38 -->
+
+---
+
+## <span style="display:none">Source Slide 39</span>
+
+![](images/source_pages/slide-39.png){width="100%" fig-alt="int age = 22;"}
+
+<!-- Slide 39 -->
+
+---
+
+## <span style="display:none">Source Slide 40</span>
+
+![](images/source_pages/slide-40.png){width="100%" fig-alt="const int* const cPtr = &age;"}
+
+<!-- Slide 40 -->
+
+---
+
+## <span style="display:none">Source Slide 41</span>
+
+![](images/source_pages/slide-41.png){width="100%" fig-alt="41"}
+
+<!-- Slide 41 -->
+
+---
+
+## <span style="display:none">Source Slide 42</span>
+
+![](images/source_pages/slide-42.png){width="100%" fig-alt="• Pointer to a constant - can’t change data."}
+
+<!-- Slide 42 -->
+
+---
+
+## <span style="display:none">Source Slide 43</span>
+
+![](images/source_pages/slide-43.png){width="100%" fig-alt="Change Change"}
+
+<!-- Slide 43 -->

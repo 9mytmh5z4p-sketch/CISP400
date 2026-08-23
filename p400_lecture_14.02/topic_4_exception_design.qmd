@@ -1,0 +1,109 @@
+<!-- Topic 4: Exception Design -->
+<!-- Slides 25–33 -->
+# Exception Design
+
+## Debugging and Review
+
+This slide develops the authoritative source material on **debugging and review**.
+
+::: notes
+Slides 25–33
+:::
+
+<!-- Slide 25 -->
+
+---
+
+## Debugging and Review
+
+This slide develops the authoritative source material on **debugging and review**.
+
+::: notes
+
+:::
+
+<!-- Slide 26 -->
+
+---
+
+## Debugging and Review
+
+This slide develops the authoritative source material on **debugging and review**.
+
+::: notes
+
+:::
+
+<!-- Slide 27 -->
+
+---
+
+## Debugging and Review
+
+This slide develops the authoritative source material on **debugging and review**.
+
+::: notes
+
+:::
+
+<!-- Slide 28 -->
+
+---
+
+## Debugging and Review
+
+This slide develops the authoritative source material on **debugging and review**.
+
+::: notes
+
+:::
+
+<!-- Slide 29 -->
+
+---
+
+## Debugging and Review
+
+This slide develops the authoritative source material on **debugging and review**.
+
+::: notes
+
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## Debugging and Review
+
+This slide develops the authoritative source material on **debugging and review**.
+
+::: notes
+
+:::
+
+<!-- Slide 31 -->
+
+---
+
+## Debugging and Review
+
+This slide develops the authoritative source material on **debugging and review**.
+
+::: notes
+
+:::
+
+<!-- Slide 32 -->
+
+---
+
+## Debugging and Review
+
+This slide develops the authoritative source material on **debugging and review**.
+
+::: notes
+
+:::
+
+<!-- Slide 33 -->

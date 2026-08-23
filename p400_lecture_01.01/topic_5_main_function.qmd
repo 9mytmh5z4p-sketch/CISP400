@@ -1,0 +1,181 @@
+<!-- Topic 5: The main() Function -->
+<!-- Total slides: 8 -->
+
+# The main() Function
+
+---
+
+## Where execution begins {.smaller}
+
++ Every C++ program starts in exactly one place: the `main()` function.
++ No matter how large or complex the program, execution always begins at `main()` and the OS always receives a result when `main()` returns.
+
+::: notes
+Total slides: 8
+Students have now seen main() as part of the program structure. This section explains what main() actually is and why it is the way it is. The goal is not syntax memorization — it is building a mental model of program execution.
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## The `main()` declaration {.smaller}
+
+```{.cpp code-line-numbers="8"}
+// intro.cpp
+// Dr. Fowler
+// 1/1/26
+// CISP400 introductory program.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int age = 25;
+    string name = "Pat Smith";
+
+    cout << "I'm " << name << ", age: " << age << endl;
+    cout << "I love to code!\n";
+
+    return 0;
+}
+```
+
+::: notes
+Three parts on line 8: 'int' is the return type, 'main' is the function name, '()' is the parameter list (empty here). Every function in C++ has these three parts. Students will write many functions later in the course — main() is the first one they see.
+:::
+
+<!-- Slide 2 -->
+
+---
+
+## Why `main` returns `int` {.smaller}
+
++ The return value of `main` is sent to the operating system when the program finishes.
++ `0` means the program ran successfully.
++ Any non-zero value signals an error condition.
+
+```{.cpp}
+return 0;    // tell the OS: everything worked
+return 1;    // tell the OS: something went wrong
+```
+
+::: notes
+Students may wonder why a function that "just runs the program" needs to return a value. The OS uses the return value for scripting and automation — if a program exits with a non-zero code, a shell script can detect the failure and respond. In this class, students always return 0. The deeper significance becomes clear when they write programs that interact with other programs.
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Curly braces define a block {.smaller}
+
+```{.cpp code-line-numbers="9|17"}
+// intro.cpp
+// Dr. Fowler
+// 1/1/26
+// CISP400 introductory program.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int age = 25;
+    string name = "Pat Smith";
+
+    cout << "I'm " << name << ", age: " << age << endl;
+    cout << "I love to code!\n";
+
+    return 0;
+}
+```
+
+::: notes
+The opening brace on line 9 and closing brace on line 17 define the block — everything inside belongs to main(). Blocks control scope and lifetime: variables declared inside this block exist only while the block is executing. Not all languages use braces; Python uses indentation. C++ uses braces.
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Block scope and variable lifetime {.smaller}
+
++ Everything between `{` and `}` belongs to the block.
++ Variables declared inside a block exist only while that block is executing.
++ Blocks can be nested — a block inside a block inside a block.
+
+::: notes
+The concept of scope — where a variable is accessible — is one of the most important in C++. Blocks are the mechanism. Students will encounter scope errors within the first few weeks. The mental model: a block is a container; when the container closes, everything inside it is gone.
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## Statements inside `main()` {.smaller}
+
+```{.cpp code-line-numbers="10-11|13-14"}
+// intro.cpp
+// Dr. Fowler
+// 1/1/26
+// CISP400 introductory program.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int age = 25;
+    string name = "Pat Smith";
+
+    cout << "I'm " << name << ", age: " << age << endl;
+    cout << "I love to code!\n";
+
+    return 0;
+}
+```
+
+::: notes
+Statements execute top to bottom, one at a time. Each statement ends with a semicolon — the semicolon is the terminator, not a separator. Forgetting a semicolon is one of the most common beginner errors, and the compiler error message it produces ('expected ';' before...' ) is one of the first students will see.
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## `return 0` {.smaller}
+
+```{.cpp code-line-numbers="16"}
+// intro.cpp
+// Dr. Fowler
+// 1/1/26
+// CISP400 introductory program.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int age = 25;
+    string name = "Pat Smith";
+
+    cout << "I'm " << name << ", age: " << age << endl;
+    cout << "I love to code!\n";
+
+    return 0;
+}
+```
+
+::: notes
+return 0 is the last statement in main(). It closes the function and sends 0 to the OS. In this class, every main() ends with return 0. Students should write it reflexively — as part of the template, not as an afterthought.
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## Summary {.smaller}
+
++ `main()` is the entry point — execution always starts here.
++ Statements inside main() run top to bottom; each ends with a semicolon.
++ `return 0` closes main() and tells the operating system the program finished successfully.
+
+<!-- Slide 8 -->

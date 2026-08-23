@@ -1,0 +1,25 @@
+<!-- Topic 8: Template Review -->
+<!-- Slides 46–47 -->
+# Template Review
+
+## Template Review
+
+This slide develops the authoritative source material on **template review**.
+
+::: notes
+Slides 46–47
+:::
+
+<!-- Slide 46 -->
+
+---
+
+## Template Review
+
+This slide develops the authoritative source material on **template review**.
+
+::: notes
+
+:::
+
+<!-- Slide 47 -->

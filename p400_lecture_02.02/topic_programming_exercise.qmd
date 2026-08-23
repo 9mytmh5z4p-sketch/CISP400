@@ -1,0 +1,29 @@
+<!-- Topic: Programming Exercise -->
+<!-- Slides 72–74 -->
+
+# Programming Exercise
+
+![](images/source_pages/slide-72.png){width="100%" fig-alt="Programming Exercise"}
+
+::: notes
+Slides 72–74
+Source slide 72 from the authoritative PDF.
+:::
+
+<!-- Slide 72 -->
+
+---
+
+## <span style="display:none">Source Slide 73</span>
+
+![](images/source_pages/slide-73.png){width="100%" fig-alt="Exercise Goals"}
+
+<!-- Slide 73 -->
+
+---
+
+## <span style="display:none">Source Slide 74</span>
+
+![](images/source_pages/slide-74.png){width="100%" fig-alt="Programming Exercise"}
+
+<!-- Slide 74 -->

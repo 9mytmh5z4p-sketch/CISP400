@@ -1,0 +1,157 @@
+<!-- Topic: The this Pointer and Constant Member Functions -->
+<!-- Slides 30–48 -->
+
+# The this Pointer and Constant Member Functions
+
+![](images/source_pages/slide-30.png){width="100%" fig-alt="The this Pointer and Constant Member Functions"}
+
+::: notes
+Slides 30–48
+Source slide 30 from the authoritative PDF.
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## <span style="display:none">Source Slide 31</span>
+
+![](images/source_pages/slide-31.png){width="100%" fig-alt="7.7 Destructors"}
+
+<!-- Slide 31 -->
+
+---
+
+## <span style="display:none">Source Slide 32</span>
+
+![](images/source_pages/slide-32.png){width="100%" fig-alt="Source Slide 32"}
+
+<!-- Slide 32 -->
+
+---
+
+## <span style="display:none">Source Slide 33</span>
+
+![](images/source_pages/slide-33.png){width="100%" fig-alt="• Constructors!"}
+
+<!-- Slide 33 -->
+
+---
+
+## <span style="display:none">Source Slide 34</span>
+
+![](images/source_pages/slide-34.png){width="100%" fig-alt="11.1 The this pointer"}
+
+<!-- Slide 34 -->
+
+---
+
+## <span style="display:none">Source Slide 35</span>
+
+![](images/source_pages/slide-35.png){width="100%" fig-alt="The Problem"}
+
+<!-- Slide 35 -->
+
+---
+
+## <span style="display:none">Source Slide 36</span>
+
+![](images/source_pages/slide-36.png){width="100%" fig-alt="Problem"}
+
+<!-- Slide 36 -->
+
+---
+
+## <span style="display:none">Source Slide 37</span>
+
+![](images/source_pages/slide-37.png){width="100%" fig-alt="Source Slide 37"}
+
+<!-- Slide 37 -->
+
+---
+
+## <span style="display:none">Source Slide 38</span>
+
+![](images/source_pages/slide-38.png){width="100%" fig-alt="• Referring to parts of an object."}
+
+<!-- Slide 38 -->
+
+---
+
+## <span style="display:none">Source Slide 39</span>
+
+![](images/source_pages/slide-39.png){width="100%" fig-alt="this pointer"}
+
+<!-- Slide 39 -->
+
+---
+
+## <span style="display:none">Source Slide 40</span>
+
+![](images/source_pages/slide-40.png){width="100%" fig-alt="Source Slide 40"}
+
+<!-- Slide 40 -->
+
+---
+
+## <span style="display:none">Source Slide 41</span>
+
+![](images/source_pages/slide-41.png){width="100%" fig-alt="• Constructors!"}
+
+<!-- Slide 41 -->
+
+---
+
+## <span style="display:none">Source Slide 42</span>
+
+![](images/source_pages/slide-42.png){width="100%" fig-alt="What’s Going On?"}
+
+<!-- Slide 42 -->
+
+---
+
+## <span style="display:none">Source Slide 43</span>
+
+![](images/source_pages/slide-43.png){width="100%" fig-alt="Use Case"}
+
+<!-- Slide 43 -->
+
+---
+
+## <span style="display:none">Source Slide 44</span>
+
+![](images/source_pages/slide-44.png){width="100%" fig-alt="First Example"}
+
+<!-- Slide 44 -->
+
+---
+
+## <span style="display:none">Source Slide 45</span>
+
+![](images/source_pages/slide-45.png){width="100%" fig-alt="Source Slide 45"}
+
+<!-- Slide 45 -->
+
+---
+
+## <span style="display:none">Source Slide 46</span>
+
+![](images/source_pages/slide-46.png){width="100%" fig-alt="Second Example"}
+
+<!-- Slide 46 -->
+
+---
+
+## <span style="display:none">Source Slide 47</span>
+
+![](images/source_pages/slide-47.png){width="100%" fig-alt="Source Slide 47"}
+
+<!-- Slide 47 -->
+
+---
+
+## <span style="display:none">Source Slide 48</span>
+
+![](images/source_pages/slide-48.png){width="100%" fig-alt="What this means …"}
+
+<!-- Slide 48 -->

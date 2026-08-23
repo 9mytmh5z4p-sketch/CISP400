@@ -1,0 +1,69 @@
+<!-- Topic: Lecture Wrap-Up -->
+<!-- Slides 42–49 -->
+
+# Lecture Wrap-Up
+
+![](images/source_pages/slide-42.png){width="100%" fig-alt="Lecture Wrap-Up"}
+
+::: notes
+Slides 42–49
+Source slide 42 from the authoritative PDF.
+:::
+
+<!-- Slide 42 -->
+
+---
+
+## <span style="display:none">Source Slide 43</span>
+
+![](images/source_pages/slide-43.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 43 -->
+
+---
+
+## <span style="display:none">Source Slide 44</span>
+
+![](images/source_pages/slide-44.png){width="100%" fig-alt="What’s Next?"}
+
+<!-- Slide 44 -->
+
+---
+
+## <span style="display:none">Source Slide 45</span>
+
+![](images/source_pages/slide-45.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 45 -->
+
+---
+
+## <span style="display:none">Source Slide 46</span>
+
+![](images/source_pages/slide-46.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 46 -->
+
+---
+
+## <span style="display:none">Source Slide 47</span>
+
+![](images/source_pages/slide-47.png){width="100%" fig-alt="Homework 2 due Sunday."}
+
+<!-- Slide 47 -->
+
+---
+
+## <span style="display:none">Source Slide 48</span>
+
+![](images/source_pages/slide-48.png){width="100%" fig-alt="Modify This"}
+
+<!-- Slide 48 -->
+
+---
+
+## <span style="display:none">Source Slide 49</span>
+
+![](images/source_pages/slide-49.png){width="100%" fig-alt="Source Slide 49"}
+
+<!-- Slide 49 -->

@@ -1,0 +1,45 @@
+<!-- Topic: Lecture Wrap-Up -->
+<!-- Slides 66–70 -->
+
+# Lecture Wrap-Up
+
+![](images/source_pages/slide-66.png){width="100%" fig-alt="Lecture Wrap-Up"}
+
+::: notes
+Slides 66–70
+Source slide 66 from the authoritative PDF.
+:::
+
+<!-- Slide 66 -->
+
+---
+
+## <span style="display:none">Source Slide 67</span>
+
+![](images/source_pages/slide-67.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 67 -->
+
+---
+
+## <span style="display:none">Source Slide 68</span>
+
+![](images/source_pages/slide-68.png){width="100%" fig-alt="68"}
+
+<!-- Slide 68 -->
+
+---
+
+## <span style="display:none">Source Slide 69</span>
+
+![](images/source_pages/slide-69.png){width="100%" fig-alt="Ch 11 - More OOP"}
+
+<!-- Slide 69 -->
+
+---
+
+## <span style="display:none">Source Slide 70</span>
+
+![](images/source_pages/slide-70.png){width="100%" fig-alt="Homework 2 Peer Review due Sunday."}
+
+<!-- Slide 70 -->

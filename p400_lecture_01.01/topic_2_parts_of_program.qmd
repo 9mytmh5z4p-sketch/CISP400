@@ -1,0 +1,146 @@
+<!-- Topic 2: Parts of a C++ Program -->
+<!-- Total slides: 6 -->
+
+# Parts of a C++ Program
+
+---
+
+## Two parts, every time {.smaller}
+
++ Every C++ program — from a five-line hello world to a million-line operating system — has the same two structural parts.
++ Before you can read or write any program, you need to know what those two parts are and what each one does.
+
+::: notes
+Total slides: 6
+This section establishes the mental model students will use for the rest of the semester. Do not show the code yet — name the two parts first (top matter, main function), then reveal them on the next slides. The two-part model is the frame; the syntax fills it in.
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## Part 1: Top Matter {.smaller}
+
+```{.cpp code-line-numbers="1-6"}
+// intro.cpp
+// Dr. Fowler
+// 1/1/26
+// CISP400 introductory program.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int age = 25;
+    string name = "Pat Smith";
+
+    cout << "I'm " << name << ", age: " << age << endl;
+    cout << "I love to code!\n";
+
+    return 0;
+}
+```
+
+::: notes
+Top matter (lines 1–6) sets up the programming environment before execution begins. It is the context that makes the rest of the program possible. Students should learn to write it first — before main — and to write it the same way every time. Cover each element briefly; the next topic (Top Matter) will go deeper.
+:::
+
+<!-- Slide 2 -->
+
+---
+
+## Part 2: The main() Function {.smaller}
+
+```{.cpp code-line-numbers="8-17"}
+// intro.cpp
+// Dr. Fowler
+// 1/1/26
+// CISP400 introductory program.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int age = 25;
+    string name = "Pat Smith";
+
+    cout << "I'm " << name << ", age: " << age << endl;
+    cout << "I love to code!\n";
+
+    return 0;
+}
+```
+
+::: notes
+The main() function (lines 8–17) is where execution begins and where the actual work of the program happens. Every statement students will write this semester lives inside a main() function. Execution starts at line 8 and ends at return 0.
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## A complete C++ program {.smaller}
+
+```{.cpp}
+// intro.cpp
+// Dr. Fowler
+// 1/1/26
+// CISP400 introductory program.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int age = 25;
+    string name = "Pat Smith";
+
+    cout << "I'm " << name << ", age: " << age << endl;
+    cout << "I love to code!\n";
+
+    return 0;
+}
+```
+
+::: notes
+Now show the full program without any highlighting so students see both parts together as a whole. This is the canonical first program — students will see it again in the Top Matter and main() function topics. Point out the blank line between the two parts; it is a convention, not a requirement, but good programs always have it.
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## The pattern holds for every program {.smaller}
+
+```{.cpp}
+// converter.cpp
+// Dr. Fowler
+// 1/1/26
+// Converts feet to inches.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int feet = 6;
+    int inches = feet * 12;
+
+    cout << feet << " feet = " << inches << " inches." << endl;
+
+    return 0;
+}
+```
+
+::: notes
+A second program with different content but identical structure: SFH and includes at the top, main() below. The structure does not change because the problem changed. Point out to students: once you know the pattern, you know where to look in any program you encounter.
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## Summary {.smaller}
+
++ Every C++ program has two parts: **top matter** (environment setup) and **the main() function** (where execution begins).
++ The structure does not change with the problem — only the content inside main() changes.
+
+<!-- Slide 6 -->

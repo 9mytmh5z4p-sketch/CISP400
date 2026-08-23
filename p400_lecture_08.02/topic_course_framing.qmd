@@ -1,0 +1,53 @@
+<!-- Topic: Course Framing -->
+<!-- Slides 1–6 -->
+
+# Course Framing
+
+![](images/source_pages/slide-01.png){width="100%" fig-alt="Course Framing"}
+
+::: notes
+Slides 1–6
+Source slide 1 from the authoritative PDF.
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## <span style="display:none">Source Slide 2</span>
+
+![](images/source_pages/slide-02.png){width="100%" fig-alt="Chapter 11"}
+
+<!-- Slide 2 -->
+
+---
+
+## <span style="display:none">Source Slide 3</span>
+
+![](images/source_pages/slide-03.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 3 -->
+
+---
+
+## <span style="display:none">Source Slide 4</span>
+
+![](images/source_pages/slide-04.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 4 -->
+
+---
+
+## <span style="display:none">Source Slide 5</span>
+
+![](images/source_pages/slide-05.png){width="100%" fig-alt="Lightning Review"}
+
+<!-- Slide 5 -->
+
+---
+
+## <span style="display:none">Source Slide 6</span>
+
+![](images/source_pages/slide-06.png){width="100%" fig-alt="Lightning Review"}
+
+<!-- Slide 6 -->

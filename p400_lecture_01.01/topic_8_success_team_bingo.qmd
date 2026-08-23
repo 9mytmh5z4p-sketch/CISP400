@@ -1,0 +1,43 @@
+<!-- Topic 8: Success Team Bingo -->
+<!-- Slides 43–46 -->
+
+# Success Team Bingo
+
+Activity
+
+<!-- Slide 43 -->
+
+## Exercise Goals
+
++ Get to know your peers a bit better.
++ Practice socializing.
+
+::: notes
+Slides 43–46
+:::
+
+<!-- Slide 44 -->
+
+---
+
+<h2 style="display:none">Success Team Bingo Worksheet</h2>
+
+![Success Team Bingo handout](images/success_team_bingo.png){fig-align="center" width="44%"}
+
+<!-- Slide 45 -->
+
+---
+
+## Debrief {.smaller}
+
+What worked about this exercise?
+
+What could be improved about this exercise?
+
+Why did I ask you to do ….
+
+Connect the activity with course objectives/SLOs.
+
+Connect the activity with course readings.
+
+<!-- Slide 46 -->

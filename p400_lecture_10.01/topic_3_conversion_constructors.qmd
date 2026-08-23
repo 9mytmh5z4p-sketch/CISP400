@@ -1,0 +1,145 @@
+<!-- Topic 3: Conversion Constructors -->
+<!-- Slides 25–36 -->
+# Conversion Constructors
+
+## Conversion Constructors
+
+This slide presents the source material for **Conversion Constructors** from the authoritative lecture deck.
+
+::: notes
+Slides 25–36
+:::
+
+<!-- Slide 25 -->
+
+---
+
+## The Opposite Conversion
+
+This slide presents the source material for **The Opposite Conversion** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 26 -->
+
+---
+
+## Convert Constructors
+
+This slide presents the source material for **Convert Constructors** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 27 -->
+
+---
+
+## Conversion Constructor Code
+
+This slide presents the source material for **Conversion Constructor Code** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 28 -->
+
+---
+
+## 11.10 Convert Constructors
+
+This slide presents the source material for **11.10 Convert Constructors** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 29 -->
+
+---
+
+## Convert Constructor
+
+This slide presents the source material for **Convert Constructor** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## Agenda
+
+This slide presents the source material for **Agenda** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 31 -->
+
+---
+
+## Homework 4 Due
+
+This slide presents the source material for **Homework 4 Due** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 32 -->
+
+---
+
+## Course Context
+
+This slide presents the source material for **Course Context** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## Key Takeaway
+
+This slide presents the source material for **Key Takeaway** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 34 -->
+
+---
+
+## Agenda
+
+This slide presents the source material for **Agenda** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 35 -->
+
+---
+
+## What's This Section About?
+
+This slide presents the source material for **What's This Section About?** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 36 -->

@@ -1,0 +1,181 @@
+<!-- Topic: Shallow Copies and the Serialization Problem -->
+<!-- Slides 37–58 -->
+
+# Shallow Copies and the Serialization Problem
+
+![](images/source_pages/slide-37.png){width="100%" fig-alt="Shallow Copies and the Serialization Problem"}
+
+::: notes
+Slides 37–58
+Source slide 37 from the authoritative PDF.
+:::
+
+<!-- Slide 37 -->
+
+---
+
+## <span style="display:none">Source Slide 38</span>
+
+![](images/source_pages/slide-38.png){width="100%" fig-alt="Have you ever wondered what happens when we"}
+
+<!-- Slide 38 -->
+
+---
+
+## <span style="display:none">Source Slide 39</span>
+
+![](images/source_pages/slide-39.png){width="100%" fig-alt="We use memberwise assignment."}
+
+<!-- Slide 39 -->
+
+---
+
+## <span style="display:none">Source Slide 40</span>
+
+![](images/source_pages/slide-40.png){width="100%" fig-alt="This is called a Shallow Copy."}
+
+<!-- Slide 40 -->
+
+---
+
+## <span style="display:none">Source Slide 41</span>
+
+![](images/source_pages/slide-41.png){width="100%" fig-alt="• but sometimes, it is."}
+
+<!-- Slide 41 -->
+
+---
+
+## <span style="display:none">Source Slide 42</span>
+
+![](images/source_pages/slide-42.png){width="100%" fig-alt="Have you ever wondered what happens when we"}
+
+<!-- Slide 42 -->
+
+---
+
+## <span style="display:none">Source Slide 43</span>
+
+![](images/source_pages/slide-43.png){width="100%" fig-alt="Source Slide 43"}
+
+<!-- Slide 43 -->
+
+---
+
+## <span style="display:none">Source Slide 44</span>
+
+![](images/source_pages/slide-44.png){width="100%" fig-alt="Source Slide 44"}
+
+<!-- Slide 44 -->
+
+---
+
+## <span style="display:none">Source Slide 45</span>
+
+![](images/source_pages/slide-45.png){width="100%" fig-alt="Let’s see this example"}
+
+<!-- Slide 45 -->
+
+---
+
+## <span style="display:none">Source Slide 46</span>
+
+![](images/source_pages/slide-46.png){width="100%" fig-alt="Source Slide 46"}
+
+<!-- Slide 46 -->
+
+---
+
+## <span style="display:none">Source Slide 47</span>
+
+![](images/source_pages/slide-47.png){width="100%" fig-alt="Source Slide 47"}
+
+<!-- Slide 47 -->
+
+---
+
+## <span style="display:none">Source Slide 48</span>
+
+![](images/source_pages/slide-48.png){width="100%" fig-alt="This means …"}
+
+<!-- Slide 48 -->
+
+---
+
+## <span style="display:none">Source Slide 49</span>
+
+![](images/source_pages/slide-49.png){width="100%" fig-alt="Source Slide 49"}
+
+<!-- Slide 49 -->
+
+---
+
+## <span style="display:none">Source Slide 50</span>
+
+![](images/source_pages/slide-50.png){width="100%" fig-alt="• But the program works!"}
+
+<!-- Slide 50 -->
+
+---
+
+## <span style="display:none">Source Slide 51</span>
+
+![](images/source_pages/slide-51.png){width="100%" fig-alt="Source Slide 51"}
+
+<!-- Slide 51 -->
+
+---
+
+## <span style="display:none">Source Slide 52</span>
+
+![](images/source_pages/slide-52.png){width="100%" fig-alt="Source Slide 52"}
+
+<!-- Slide 52 -->
+
+---
+
+## <span style="display:none">Source Slide 53</span>
+
+![](images/source_pages/slide-53.png){width="100%" fig-alt="• This is actually very bad."}
+
+<!-- Slide 53 -->
+
+---
+
+## <span style="display:none">Source Slide 54</span>
+
+![](images/source_pages/slide-54.png){width="100%" fig-alt="Assignment operator"}
+
+<!-- Slide 54 -->
+
+---
+
+## <span style="display:none">Source Slide 55</span>
+
+![](images/source_pages/slide-55.png){width="100%" fig-alt="Copy constructor"}
+
+<!-- Slide 55 -->
+
+---
+
+## <span style="display:none">Source Slide 56</span>
+
+![](images/source_pages/slide-56.png){width="100%" fig-alt="function calls"}
+
+<!-- Slide 56 -->
+
+---
+
+## <span style="display:none">Source Slide 57</span>
+
+![](images/source_pages/slide-57.png){width="100%" fig-alt="Hard Drive"}
+
+<!-- Slide 57 -->
+
+---
+
+## <span style="display:none">Source Slide 58</span>
+
+![](images/source_pages/slide-58.png){width="100%" fig-alt="How do we x it?"}
+
+<!-- Slide 58 -->

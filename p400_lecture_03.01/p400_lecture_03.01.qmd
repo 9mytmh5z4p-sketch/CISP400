@@ -1,0 +1,11 @@
+{{< include topic_course_framing.qmd >}}
+{{< include topic_memory_model.qmd >}}
+{{< include topic_desk_check_1.qmd >}}
+{{< include topic_dynamic_memory.qmd >}}
+{{< include topic_pseudo_dynamic.qmd >}}
+{{< include topic_real_dynamic.qmd >}}
+{{< include topic_programming_exercise.qmd >}}
+{{< include topic_wrap_up.qmd >}}
+{{< include topic_desk_check_2.qmd >}}
+{{< include topic_homework_review.qmd >}}
+

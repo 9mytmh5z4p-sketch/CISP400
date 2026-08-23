@@ -1,0 +1,310 @@
+<!-- Topic 2: Data Types -->
+<!-- Slides 15-31 -->
+
+# Data Types
+<!-- Slide 15 -->
+
+## Why So Many Types? {.smaller}
+
++ Type controls memory: each type reserves a specific amount of space.
++ Type controls meaning: the same bits can be interpreted different ways.
++ Type controls behavior: operations depend on the kinds of values involved.
+
+::: notes
+Slides 15-31
+Frame type as a contract between the programmer and the computer, not as arbitrary vocabulary.
+:::
+
+<!-- Slide 16 -->
+
+---
+
+## The Type Families
+
+| Type | Keyword | Holds | Typical Use |
+|------|---------|-------|-------------|
+| Integer | `int` | whole numbers | counts, indexes, IDs |
+| Floating point | `double` | decimal numbers | measurements, averages |
+| Character | `char` | one character | grades, initials |
+| String | `string` | text | names, messages |
+| Boolean | `bool` | true or false | flags, conditions |
+| Void | `void` | no value | function return type |
+| Auto | `auto` | compiler-deduced | modern convenience |
+
+::: notes
+This slide is the map. Students will not master every row today, but they should know what each family is for.
+:::
+
+<!-- Slide 17 -->
+
+---
+
+## Integers
+
++ Integers store whole numbers only.
++ Use `int` for counts, indexes, ages, scores, and IDs.
++ Integers are exact, but they cannot store decimal parts.
+
+```{.cpp}
+int age = 25;
+int count = -3;
+int students = 0;
+```
+
+::: notes
+Connect this back to arithmetic: when integer values divide, the result can still be integer behavior.
+:::
+
+<!-- Slide 18 -->
+
+---
+
+## Integer Sizes
+
++ C++ has several integer sizes because different programs need different ranges.
++ More bytes means a larger range.
++ Unsigned types trade negative values for a larger positive range.
+
+| Type | Typical Size | Use |
+|------|--------------|-----|
+| `short` | 2 bytes | small whole numbers |
+| `int` | 4 bytes | default whole-number choice |
+| `long long` | 8 bytes | very large whole numbers |
+| `unsigned int` | 4 bytes | positive-only values |
+
+::: notes
+Avoid range memorization. The pattern matters: size affects range, and signedness affects whether negative values are allowed.
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## Unsigned Integers
+
++ An unsigned integer cannot represent negative values.
++ Assigning a negative value can wrap around to a large positive number.
++ Use unsigned types only when the domain truly cannot go below zero.
+
+```{.cpp}
+unsigned int speed = 100;
+unsigned int error = -1;    // compiles; stores a large value
+```
+
+::: notes
+This is a preview of a bug class that compiles cleanly but produces the wrong answer.
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## Which Integer Should I Use?
+
++ In this course, start with plain `int`.
++ Use `long long` only when the range might exceed about two billion.
++ Avoid unsigned types unless the positive-only rule is part of the problem.
+
+| Stored Value | Good Type |
+|--------------|-----------|
+| age | `int` |
+| score | `int` |
+| population | `long long` |
+| menu choice | `int` |
+
+::: notes
+The point is not to optimize memory in week one. The point is to choose a type that matches the meaning of the value.
+:::
+
+<!-- Slide 21 -->
+
+---
+
+## Floating Point Numbers
+
++ Floating point types store numbers with decimal parts.
++ Most decimal values are approximations in memory.
++ Use floating point values for measurements and averages, not counts.
+
+```{.cpp}
+double price = 99.95;
+double pi = 3.14159265358979;
+double tiny = 1.5e-10;
+```
+
+::: notes
+Students do not need the binary encoding yet. They do need the habit that floating point math is approximate.
+:::
+
+<!-- Slide 22 -->
+
+---
+
+## Float Vs. Double
+
++ `float` stores about 6 to 7 significant digits.
++ `double` stores about 15 significant digits.
++ In this course, use `double`.
+
+```{.cpp}
+float small = 10.0 / 3.0;
+double precise = 10.0 / 3.0;
+```
+
+::: notes
+The cost of double is rarely important in this course. The extra precision is useful immediately.
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## Characters
+
++ `char` stores one character.
++ Character literals use single quotes.
++ A character digit is not the same as a numeric digit.
+
+```{.cpp}
+char grade = 'A';
+char letter = 'z';
+char digit = '5';    // character, not number
+```
+
+::: notes
+Single quotes for `char`, double quotes for `string`. This is a small syntax distinction that prevents many early compile errors.
+:::
+
+<!-- Slide 24 -->
+
+---
+
+## Char And ASCII
+
++ A `char` is stored as a small integer.
++ ASCII maps those integer values to visible characters.
++ Character arithmetic works because characters have numeric codes.
+
+```{.cpp}
+char ch = 'M';    // stored as 77
+int code = ch;    // code is 77
+ch = ch + 1;      // now displays as 'N'
+```
+
+::: notes
+[Graphic suggestion: small ASCII table showing `A`, `M`, `N`, `a`, and `0` with their decimal codes.]
+:::
+
+<!-- Slide 25 -->
+
+---
+
+## Strings
+
++ `string` stores text: a sequence of characters.
++ String literals use double quotes.
++ Use `#include <string>` when working with strings.
+
+```{.cpp}
+#include <string>
+
+string name = "Pat Smith";
+string message = "Hello";
+string empty = "";
+```
+
+::: notes
+For now, students only need declaration and initialization. Member functions can wait.
+:::
+
+<!-- Slide 26 -->
+
+---
+
+## Booleans
+
++ `bool` stores one of two values: `true` or `false`.
++ Boolean variables are used for flags and conditions.
++ By default, `cout` prints `true` as `1` and `false` as `0`.
+
+```{.cpp}
+bool isOpen = true;
+bool isEmpty = false;
+
+cout << isOpen << endl;     // 1
+cout << isEmpty << endl;    // 0
+```
+
+::: notes
+Booleans will become central when selection and loops arrive. For now, treat them as yes/no storage.
+:::
+
+<!-- Slide 27 -->
+
+---
+
+## Void
+
++ `void` means no value.
++ You cannot create a normal variable with type `void`.
++ Later, `void` will describe functions that do not return a value.
+
+```{.cpp}
+void someValue;     // error
+void result = 99;   // error
+```
+
+::: notes
+Keep this separate from `auto`. `void` is the absence of a value, which is conceptually different from deducing a value's type.
+:::
+
+<!-- Slide 28 -->
+
+---
+
+## Auto
+
++ `auto` tells the compiler to deduce the type from the initializer.
++ The variable must be initialized immediately.
++ Explicit types are usually clearer while learning.
+
+```{.cpp}
+auto age = 78;        // int
+auto cost = 99.95;    // double
+auto grade = 'A';     // char
+```
+
+::: notes
+Students should recognize `auto` in code they read, but they should usually write explicit types while building the type model.
+:::
+
+<!-- Slide 29 -->
+
+---
+
+## Which Type Should I Use?
+
+| I Need To Store... | Use |
+|--------------------|-----|
+| a whole number | `int` |
+| a decimal number | `double` |
+| one character | `char` |
+| text | `string` |
+| a yes/no flag | `bool` |
+| no return value | `void` |
+
+::: notes
+This is the practical decision table students can use while writing first programs.
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## Summary
+
++ Type controls memory, interpretation, and allowed operations.
++ Use `int` for whole numbers and `double` for decimals.
++ Use `string` for text and `bool` for true/false flags.
+
+<!-- Slide 31 -->

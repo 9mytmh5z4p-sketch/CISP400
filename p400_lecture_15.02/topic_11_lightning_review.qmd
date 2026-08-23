@@ -1,0 +1,25 @@
+<!-- Topic 11: Lightning Review -->
+<!-- Slides 67–68 -->
+# Lightning Review
+
+## Lightning Review
+
+This slide develops the authoritative source material on **lightning review**.
+
+::: notes
+Slides 67–68
+:::
+
+<!-- Slide 67 -->
+
+---
+
+## Lightning Review
+
+This slide develops the authoritative source material on **lightning review**.
+
+::: notes
+
+:::
+
+<!-- Slide 68 -->

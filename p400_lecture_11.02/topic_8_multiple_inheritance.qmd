@@ -1,0 +1,157 @@
+<!-- Topic 8: Multiple Inheritance -->
+<!-- Slides 93–105 -->
+# Multiple Inheritance
+
+## Diamond Problem
+
+This slide develops the authoritative source material on **diamond problem**.
+
+::: notes
+Slides 93–105
+:::
+
+<!-- Slide 93 -->
+
+---
+
+## Diamond Problem
+
+This slide develops the authoritative source material on **diamond problem**.
+
+::: notes
+
+:::
+
+<!-- Slide 94 -->
+
+---
+
+## Multiple Inheritance
+
+This slide develops the authoritative source material on **multiple inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 95 -->
+
+---
+
+## Multiple Inheritance
+
+This slide develops the authoritative source material on **multiple inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 96 -->
+
+---
+
+## Multiple Inheritance
+
+This slide develops the authoritative source material on **multiple inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 97 -->
+
+---
+
+## Multiple Inheritance
+
+This slide develops the authoritative source material on **multiple inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 98 -->
+
+---
+
+## Multiple Inheritance
+
+This slide develops the authoritative source material on **multiple inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 99 -->
+
+---
+
+## Base Class Constructors
+
+This slide develops the authoritative source material on **base class constructors**.
+
+::: notes
+
+:::
+
+<!-- Slide 100 -->
+
+---
+
+## Base Class Constructors
+
+This slide develops the authoritative source material on **base class constructors**.
+
+::: notes
+
+:::
+
+<!-- Slide 101 -->
+
+---
+
+## Base Class Constructors
+
+This slide develops the authoritative source material on **base class constructors**.
+
+::: notes
+
+:::
+
+<!-- Slide 102 -->
+
+---
+
+## Base Class Constructors
+
+This slide develops the authoritative source material on **base class constructors**.
+
+::: notes
+
+:::
+
+<!-- Slide 103 -->
+
+---
+
+## Base Class Constructors
+
+This slide develops the authoritative source material on **base class constructors**.
+
+::: notes
+
+:::
+
+<!-- Slide 104 -->
+
+---
+
+## Base Class Constructors
+
+This slide develops the authoritative source material on **base class constructors**.
+
+::: notes
+
+:::
+
+<!-- Slide 105 -->

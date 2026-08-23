@@ -1,0 +1,145 @@
+<!-- Topic 4: Arrays of Class Objects -->
+<!-- Slides 25–36 -->
+# Arrays of Class Objects
+
+## Inheritance Exercise
+
+This slide develops the authoritative source material on **inheritance exercise**.
+
+::: notes
+Slides 25–36
+:::
+
+<!-- Slide 25 -->
+
+---
+
+## Inheritance Exercise
+
+This slide develops the authoritative source material on **inheritance exercise**.
+
+::: notes
+
+:::
+
+<!-- Slide 26 -->
+
+---
+
+## Inheritance Exercise
+
+This slide develops the authoritative source material on **inheritance exercise**.
+
+::: notes
+
+:::
+
+<!-- Slide 27 -->
+
+---
+
+## Arrays of Class Objects
+
+This slide develops the authoritative source material on **arrays of class objects**.
+
+::: notes
+
+:::
+
+<!-- Slide 28 -->
+
+---
+
+## Arrays of Class Objects
+
+This slide develops the authoritative source material on **arrays of class objects**.
+
+::: notes
+
+:::
+
+<!-- Slide 29 -->
+
+---
+
+## Arrays of Class Objects
+
+This slide develops the authoritative source material on **arrays of class objects**.
+
+::: notes
+
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## Arrays of Class Objects
+
+This slide develops the authoritative source material on **arrays of class objects**.
+
+::: notes
+
+:::
+
+<!-- Slide 31 -->
+
+---
+
+## Arrays of Class Objects
+
+This slide develops the authoritative source material on **arrays of class objects**.
+
+::: notes
+
+:::
+
+<!-- Slide 32 -->
+
+---
+
+## Arrays of Class Objects
+
+This slide develops the authoritative source material on **arrays of class objects**.
+
+::: notes
+
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## Arrays of Class Objects
+
+This slide develops the authoritative source material on **arrays of class objects**.
+
+::: notes
+
+:::
+
+<!-- Slide 34 -->
+
+---
+
+## Arrays of Class Objects
+
+This slide develops the authoritative source material on **arrays of class objects**.
+
+::: notes
+
+:::
+
+<!-- Slide 35 -->
+
+---
+
+## Arrays of Class Objects
+
+This slide develops the authoritative source material on **arrays of class objects**.
+
+::: notes
+
+:::
+
+<!-- Slide 36 -->

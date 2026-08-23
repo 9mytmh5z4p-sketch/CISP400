@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" width="720" height="200" font-family="-apple-system, 'Segoe UI', sans-serif">
+
+  <!-- Background -->
+  <rect width="720" height="200" fill="#f8fbfc" rx="10"/>
+
+  <!-- Title -->
+  <text x="360" y="28" text-anchor="middle" font-size="13" fill="#4b5563" font-weight="600" letter-spacing="0.05em">int scores[5]</text>
+
+  <!-- Array cells -->
+
+  <!-- Cell 0 -->
+  <rect x="90"  y="50" width="100" height="70" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" rx="4"/>
+  <text x="140" y="92" text-anchor="middle" font-size="26" font-weight="700" fill="#1e3a5f">88</text>
+
+  <!-- Cell 1 -->
+  <rect x="190" y="50" width="100" height="70" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" rx="0"/>
+  <text x="240" y="92" text-anchor="middle" font-size="26" font-weight="700" fill="#1e3a5f">72</text>
+
+  <!-- Cell 2 — highlighted -->
+  <rect x="290" y="50" width="100" height="70" fill="#dbeafe" stroke="#3b82f6" stroke-width="2" rx="0"/>
+  <text x="340" y="92" text-anchor="middle" font-size="26" font-weight="700" fill="#1d4ed8">95</text>
+
+  <!-- Cell 3 -->
+  <rect x="390" y="50" width="100" height="70" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" rx="0"/>
+  <text x="440" y="92" text-anchor="middle" font-size="26" font-weight="700" fill="#1e3a5f">61</text>
+
+  <!-- Cell 4 -->
+  <rect x="490" y="50" width="100" height="70" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" rx="4"/>
+  <text x="540" y="92" text-anchor="middle" font-size="26" font-weight="700" fill="#1e3a5f">84</text>
+
+  <!-- Index labels -->
+  <text x="140" y="142" text-anchor="middle" font-size="13" fill="#6b7280" font-family="'Courier New', monospace">scores[0]</text>
+  <text x="240" y="142" text-anchor="middle" font-size="13" fill="#6b7280" font-family="'Courier New', monospace">scores[1]</text>
+  <text x="340" y="142" text-anchor="middle" font-size="13" fill="#1d4ed8" font-weight="600" font-family="'Courier New', monospace">scores[2]</text>
+  <text x="440" y="142" text-anchor="middle" font-size="13" fill="#6b7280" font-family="'Courier New', monospace">scores[3]</text>
+  <text x="540" y="142" text-anchor="middle" font-size="13" fill="#6b7280" font-family="'Courier New', monospace">scores[4]</text>
+
+  <!-- Annotation: scores[2] = 95 -->
+  <line x1="340" y1="148" x2="340" y2="168" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="340" y="183" text-anchor="middle" font-size="12" fill="#1d4ed8" font-style="italic">scores[2] == 95</text>
+
+  <!-- Left bracket label -->
+  <text x="72" y="91" text-anchor="end" font-size="13" fill="#374151" font-family="'Courier New', monospace" font-weight="600">scores →</text>
+
+</svg>

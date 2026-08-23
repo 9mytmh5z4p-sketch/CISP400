@@ -1,0 +1,25 @@
+<!-- Topic 1: Course Framing -->
+<!-- Slides 1–2 -->
+# Course Framing
+
+## Course Framing
+
+This slide develops the authoritative source material on **course framing**.
+
+::: notes
+Slides 1–2
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## Course Framing
+
+This slide develops the authoritative source material on **course framing**.
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->

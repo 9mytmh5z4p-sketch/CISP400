@@ -1,0 +1,231 @@
+<!-- Topic 4: Top Matter -->
+<!-- Total slides: 11 -->
+
+# Top Matter
+
+---
+
+## The setup section {.smaller}
+
++ The lines before `main()` prepare the programming environment — without them, the rest of the program cannot compile or run.
++ You will write top matter the same way at the start of every program you produce in this class.
+
+::: notes
+Total slides: 11
+Top matter is not optional overhead — it is the scaffolding that makes the program possible. Frame it as: "before you write a single statement, you write top matter." Students who skip or corrupt top matter will get confusing errors. Establishing the habit early pays dividends all semester.
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## Three components of top matter {.smaller}
+
++ **Source File Header (SFH)** — documents the file: name, author, date, description.
++ **Preprocessor directives** — bring in external code the program needs (e.g., `#include`).
++ **Namespace specification** — controls how you refer to standard library names.
+
+::: notes
+All three components appear in every program students write this semester. They appear in this order, at the top of the file, every time. The next several slides cover each component individually.
+:::
+
+<!-- Slide 2 -->
+
+---
+
+## The Source File Header {.smaller}
+
+```{.cpp code-line-numbers="1-4"}
+// intro.cpp
+// Dr. Fowler
+// 1/1/26
+// CISP400 introductory program.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    ...
+}
+```
+
+::: notes
+Four lines, always in this order: program name, author name, date written, brief description. These are comments — the compiler ignores them — but they document who wrote the file and what it does. The author line: the author is the person who wrote the code. If a student uses AI to write code, they should understand what they are putting their name on.
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## The SFH template {.smaller}
+
+```{.cpp}
+// program name
+// author name
+// date written
+// brief description
+```
+
++ Every program submitted in this class must include these four lines.
++ Fill in the actual values — do not submit the template placeholders.
+
+::: notes
+Make the requirement explicit. Students who skip the SFH lose points and also produce code that is harder for anyone (including themselves) to identify and maintain. The brief description should be one sentence — what does this program do?
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## The `#include` directive {.smaller}
+
+```{.cpp code-line-numbers="5"}
+// intro.cpp
+// Dr. Fowler
+// 1/1/26
+// CISP400 introductory program.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    ...
+}
+```
+
++ `#include` tells the preprocessor to insert the contents of a header file into your source before compilation begins.
++ Without it, the compiler does not know what `cout` or `cin` are.
+
+::: notes
+The preprocessor runs before the C++ compiler. Think of #include as a copy-and-paste: the contents of <iostream> are inserted at that line before the compiler sees any of the code. Students do not need to understand the preprocessor in depth today — they need to understand that #include is mandatory and that forgetting it is a common error.
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## `#include <iostream>` {.smaller}
+
+```{.cpp}
+#include <iostream>
+```
+
++ `iostream` provides the tools for input and output.
++ Without it, `cout`, `cin`, and `endl` are not available.
+
+| Name | Purpose |
+|------|---------|
+| `cout` | Output to the terminal |
+| `cin` | Input from the keyboard |
+| `endl` | End the current line |
+
+::: notes
+Students will use cout immediately. cin comes up in the next few weeks. endl is used alongside cout. The important concept: these names come from the iostream header; without the #include, the compiler does not know they exist.
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Angle brackets vs. quotes {.smaller}
+
+```{.cpp}
+#include <iostream>    // standard library header — use angle brackets
+#include "myfile.h"    // user-defined header — use double quotes
+```
+
++ **Angle brackets `< >`** — search the standard library locations.
++ **Double quotes `" "`** — search the current project directory first, then standard locations.
+
+::: notes
+In this class, students will only use angle brackets. The double-quote form is for headers students write themselves — that happens in later courses. The distinction is worth stating once so students know why the brackets exist and do not mix them up.
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## C-style headers and `.h` files {.smaller}
+
+```{.cpp}
+#include <stdio.h>     // old C header — do not use in C++
+#include <cstdio>      // C++ version of the same header — acceptable
+#include <iostream>    // modern C++ header — preferred in this class
+```
+
++ Old C headers use the `.h` extension: `<math.h>`, `<stdio.h>`.
++ Modern C++ provides updated versions without `.h`: `<cmath>`, `<cstdio>`.
++ In this class, use only modern C++ headers — no `.h` files.
+
+::: notes
+Students may encounter .h headers in older tutorials or examples online. It is worth flagging that those are C-style headers, not C++ headers, and should not be used in this class. The C++ standard library headers have no extension at all: <iostream>, <vector>, <string>, <algorithm>.
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## `using namespace std` {.smaller}
+
+```{.cpp code-line-numbers="6"}
+// intro.cpp
+// Dr. Fowler
+// 1/1/26
+// CISP400 introductory program.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    ...
+}
+```
+
++ Without this line, every standard library name requires the `std::` prefix: `std::cout`, `std::cin`, `std::endl`.
++ With this line, you write `cout`, `cin`, and `endl` directly.
+
+::: notes
+A namespace is a named container that prevents name collisions between large codebases. The standard library lives in the 'std' namespace. 'using namespace std' brings all of those names into the current scope. In this class, always include it — it keeps code concise. Students will learn about the tradeoffs of namespace pollution in later courses.
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Complete top matter {.smaller}
+
+```{.cpp code-line-numbers="1-6"}
+// intro.cpp
+// Dr. Fowler
+// 1/1/26
+// CISP400 introductory program.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int age = 25;
+    string name = "Pat Smith";
+
+    cout << "I'm " << name << ", age: " << age << endl;
+    cout << "I love to code!\n";
+
+    return 0;
+}
+```
+
+::: notes
+All three components together: SFH (lines 1–4), #include directive (line 5), namespace specification (line 6). This block — six lines in this order — is what students write at the top of every program. After a few weeks it becomes automatic. The blank line after line 6 separates top matter from main() — a convention, not a requirement.
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## Summary {.smaller}
+
++ **SFH** documents the file — four lines: name, author, date, description.
++ **`#include <iostream>`** imports the input/output tools (`cout`, `cin`, `endl`).
++ **`using namespace std`** lets you write standard library names without the `std::` prefix.
+
+<!-- Slide 11 -->

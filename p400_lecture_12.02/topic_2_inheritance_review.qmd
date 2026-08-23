@@ -1,0 +1,193 @@
+<!-- Topic 2: Inheritance Review -->
+<!-- Slides 3–18 -->
+# Inheritance Review
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+Slides 3–18
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## Relationship Summary
+
+This slide develops the authoritative source material on **relationship summary**.
+
+::: notes
+
+:::
+
+<!-- Slide 14 -->
+
+---
+
+## Relationship Summary
+
+This slide develops the authoritative source material on **relationship summary**.
+
+::: notes
+
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## Relationship Summary
+
+This slide develops the authoritative source material on **relationship summary**.
+
+::: notes
+
+:::
+
+<!-- Slide 16 -->
+
+---
+
+## Relationship Summary
+
+This slide develops the authoritative source material on **relationship summary**.
+
+::: notes
+
+:::
+
+<!-- Slide 17 -->
+
+---
+
+## Relationship Summary
+
+This slide develops the authoritative source material on **relationship summary**.
+
+::: notes
+
+:::
+
+<!-- Slide 18 -->

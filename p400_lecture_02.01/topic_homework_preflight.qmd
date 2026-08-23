@@ -1,0 +1,45 @@
+<!-- Topic: Homework Preflight -->
+<!-- Slides 43–47 -->
+
+# Homework Preflight
+
+![](images/source_pages/slide-43.png){width="100%" fig-alt="Homework Preflight"}
+
+::: notes
+Slides 43–47
+Source slide 43 from the authoritative PDF.
+:::
+
+<!-- Slide 43 -->
+
+---
+
+## <span style="display:none">Source Slide 44</span>
+
+![](images/source_pages/slide-44.png){width="100%" fig-alt="Exercise Goals"}
+
+<!-- Slide 44 -->
+
+---
+
+## <span style="display:none">Source Slide 45</span>
+
+![](images/source_pages/slide-45.png){width="100%" fig-alt="Task"}
+
+<!-- Slide 45 -->
+
+---
+
+## <span style="display:none">Source Slide 46</span>
+
+![](images/source_pages/slide-46.png){width="100%" fig-alt="Task - II"}
+
+<!-- Slide 46 -->
+
+---
+
+## <span style="display:none">Source Slide 47</span>
+
+![](images/source_pages/slide-47.png){width="100%" fig-alt="Task - III"}
+
+<!-- Slide 47 -->

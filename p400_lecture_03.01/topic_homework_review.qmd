@@ -1,0 +1,37 @@
+<!-- Topic: Homework Peer Review -->
+<!-- Slides 72–75 -->
+
+# Homework Peer Review
+
+![](images/source_pages/slide-72.png){width="100%" fig-alt="Homework Peer Review"}
+
+::: notes
+Slides 72–75
+Source slide 72 from the authoritative PDF.
+:::
+
+<!-- Slide 72 -->
+
+---
+
+## <span style="display:none">Source Slide 73</span>
+
+![](images/source_pages/slide-73.png){width="100%" fig-alt="Hw Debrief"}
+
+<!-- Slide 73 -->
+
+---
+
+## <span style="display:none">Source Slide 74</span>
+
+![](images/source_pages/slide-74.png){width="100%" fig-alt="Process"}
+
+<!-- Slide 74 -->
+
+---
+
+## <span style="display:none">Source Slide 75</span>
+
+![](images/source_pages/slide-75.png){width="100%" fig-alt="Debrief"}
+
+<!-- Slide 75 -->

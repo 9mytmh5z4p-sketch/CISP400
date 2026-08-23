@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Live Markdown viewer for the CISP 400 course syllabus.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>CISP 400 - Course Syllabus</title>
+  <link rel="stylesheet" href="./syllabus-viewer.css">
+  <script defer src="./vendor/marked.umd.js"></script>
+  <script defer src="./syllabus-viewer.js"></script>
+</head>
+<body>
+  <header class="viewer-toolbar">
+    <div class="viewer-toolbar__inner">
+      <div class="viewer-toolbar__title">
+        Syllabus preview <code>p400-syllabus(LIVE).md</code>
+      </div>
+      <nav class="viewer-toolbar__actions" aria-label="Syllabus preview controls">
+        <button class="viewer-button" id="reload-markdown" type="button">Reload Markdown</button>
+        <label class="file-picker-label" for="markdown-file">
+          Open Markdown
+          <input class="file-picker-input" id="markdown-file" type="file" accept=".md,text/markdown,text/plain">
+        </label>
+      <a class="viewer-link" href="./p400-syllabus(LIVE).md" target="_blank" rel="noopener">View source</a>
+      </nav>
+    </div>
+    <div class="viewer-status" id="viewer-status" role="status" aria-live="polite">Preparing the syllabus...</div>
+  </header>
+
+  <main class="syllabus-shell">
+    <article class="syllabus-document" id="syllabus-document" aria-label="CISP 400 course syllabus" aria-busy="true">
+      <section class="viewer-message">
+        <h1>Loading syllabus</h1>
+        <p>The editable Markdown source is being rendered.</p>
+      </section>
+    </article>
+  </main>
+
+  <noscript>
+    <p>This page needs JavaScript to render the Markdown syllabus. You can still open <a href="./p400-syllabus(LIVE).md">the Markdown source</a> directly.</p>
+  </noscript>
+</body>
+</html>

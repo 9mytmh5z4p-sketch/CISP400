@@ -1,0 +1,36 @@
+# Last Time
+
+::: {.incremental}
++ **Object-oriented programming**
++ **Operator overloading**
+:::
+
+# Today's Agenda
+
+- Conversion Constructors
+- First-Class Objects
+- Object Conversions
+- Conversion Safety
+- Practice and Review
+
+{{< include topic_1_course_framing.qmd >}}
+{{< include topic_2_conversion_constructors.qmd >}}
+{{< include topic_3_first-class_objects.qmd >}}
+{{< include topic_4_object_conversions.qmd >}}
+{{< include topic_5_conversion_safety.qmd >}}
+{{< include topic_6_practice_and_review.qmd >}}
+
+---
+
+# Key Takeaways
+
+- Conversion syntax must preserve clear type intent.
+- Operators and constructors should maintain predictable object behavior.
+
+---
+
+# Next Time
+
+---
+
+# Appendix

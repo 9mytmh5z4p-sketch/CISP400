@@ -1,0 +1,229 @@
+<!-- Topic 2: Inheritance and Overriding -->
+<!-- Slides 3–21 -->
+# Inheritance and Overriding
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+Slides 3–21
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## Base Class Construction
+
+This slide develops the authoritative source material on **base class construction**.
+
+::: notes
+
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Base Class Construction
+
+This slide develops the authoritative source material on **base class construction**.
+
+::: notes
+
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Base Class Construction
+
+This slide develops the authoritative source material on **base class construction**.
+
+::: notes
+
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## Base Class Construction
+
+This slide develops the authoritative source material on **base class construction**.
+
+::: notes
+
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## Base Class Construction
+
+This slide develops the authoritative source material on **base class construction**.
+
+::: notes
+
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Base Class Construction
+
+This slide develops the authoritative source material on **base class construction**.
+
+::: notes
+
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## Base Class Construction
+
+This slide develops the authoritative source material on **base class construction**.
+
+::: notes
+
+:::
+
+<!-- Slide 14 -->
+
+---
+
+## Base Class Construction
+
+This slide develops the authoritative source material on **base class construction**.
+
+::: notes
+
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## Base Class Construction
+
+This slide develops the authoritative source material on **base class construction**.
+
+::: notes
+
+:::
+
+<!-- Slide 16 -->
+
+---
+
+## Base Class Construction
+
+This slide develops the authoritative source material on **base class construction**.
+
+::: notes
+
+:::
+
+<!-- Slide 17 -->
+
+---
+
+## Overriding Base Functions
+
+This slide develops the authoritative source material on **overriding base functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 18 -->
+
+---
+
+## Overriding Base Functions
+
+This slide develops the authoritative source material on **overriding base functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## Overriding Base Functions
+
+This slide develops the authoritative source material on **overriding base functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## Overriding Base Functions
+
+This slide develops the authoritative source material on **overriding base functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 21 -->

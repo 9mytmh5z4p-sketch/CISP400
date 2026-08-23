@@ -1,0 +1,45 @@
+<!-- Topic: Lecture Wrap-Up -->
+<!-- Slides 72–76 -->
+
+# Lecture Wrap-Up
+
+![](images/source_pages/slide-72.png){width="100%" fig-alt="Lecture Wrap-Up"}
+
+::: notes
+Slides 72–76
+Source slide 72 from the authoritative PDF.
+:::
+
+<!-- Slide 72 -->
+
+---
+
+## <span style="display:none">Source Slide 73</span>
+
+![](images/source_pages/slide-73.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 73 -->
+
+---
+
+## <span style="display:none">Source Slide 74</span>
+
+![](images/source_pages/slide-74.png){width="100%" fig-alt="What’s Next?"}
+
+<!-- Slide 74 -->
+
+---
+
+## <span style="display:none">Source Slide 75</span>
+
+![](images/source_pages/slide-75.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 75 -->
+
+---
+
+## <span style="display:none">Source Slide 76</span>
+
+![](images/source_pages/slide-76.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 76 -->

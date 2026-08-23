@@ -1,0 +1,144 @@
+<!-- Topic 2: Pass by Value and Pass by Reference -->
+<!-- Slides 12-21 -->
+
+# Pass by Value and Pass by Reference
+<!-- Slide 12 -->
+
+## What Crosses the Boundary? {.smaller}
+
++ When an argument goes into a function, does the function get the value or the variable?
++ C++ can copy the value or alias the caller's variable.
++ The parameter list tells us which one is happening.
+
+::: notes
+Slides 12-21
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## Pass by Value Review
+
+```cpp
+void addFive(int number);
+
+int main() {
+    int score = 10;
+    addFive(score);
+    cout << score << endl;
+    return 0;
+}
+
+void addFive(int number) {
+    number = number + 5;
+}
+```
+
+`score` is still `10` because the function changed a copy.
+
+<!-- Slide 14 -->
+
+---
+
+## Pass by Value Trace
+
+| Step | Frame | Name | Value |
+|---:|---|---|---:|
+| 1 | `main()` | `score` | 10 |
+| 2 | `addFive()` | `number` | 10 |
+| 3 | `addFive()` | `number` | 15 |
+| 4 | `main()` | `score` | 10 |
+
+The caller and the function have separate storage.
+
+<!-- Slide 15 -->
+
+---
+
+## Pass by Reference
+
+```cpp
+void addFive(int& number) {
+    number = number + 5;
+}
+```
+
++ `number` is a reference parameter.
++ It becomes another name for the caller's argument.
++ The function can change the caller's variable.
+
+<!-- Slide 16 -->
+
+---
+
+## Pass by Reference Trace
+
+| Step | Active Code | Important Data |
+|---:|---|---|
+| 1 | `int score = 10;` | `score` stores 10 |
+| 2 | `addFive(score);` | `number` aliases `score` |
+| 3 | `number = number + 5;` | `score` stores 15 |
+| 4 | `cout << score;` | output is 15 |
+
+The parameter name and caller name refer to the same storage.
+
+<!-- Slide 17 -->
+
+---
+
+## Before and After Example
+
+```cpp
+void resetValue(int number) {
+    number = 0;
+}
+
+void resetVariable(int& number) {
+    number = 0;
+}
+```
+
+The first function changes only its copy. The second changes the caller's variable.
+
+<!-- Slide 18 -->
+
+---
+
+## Swap Example
+
+```cpp
+void swapValues(int& first, int& second) {
+    int temp = first;
+    first = second;
+    second = temp;
+}
+```
+
+Swapping needs reference parameters because both caller variables must change.
+
+<!-- Slide 19 -->
+
+---
+
+## Boundary Model Update
+
++ Pass by value sends a copy across the function boundary.
++ Pass by reference sends an alias to caller-owned storage.
++ The boundary is still visible in the prototype.
+
+::: notes
+[Graphic suggestion: show pass by value as two boxes and pass by reference as two names attached to one caller box.]
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## Summary
+
++ Pass by value protects the caller's variable from changes inside the function.
++ Pass by reference lets a function change the caller's variable directly.
++ The `&` in the parameter list is the signal to trace carefully.
+
+<!-- Slide 21 -->

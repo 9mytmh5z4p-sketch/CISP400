@@ -1,0 +1,61 @@
+<!-- Topic 1: Templates Overview -->
+<!-- Slides 1–5 -->
+# Templates Overview
+
+## Templates Overview
+
+This slide develops the authoritative source material on **templates overview**.
+
+::: notes
+Slides 1–5
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## Templates Overview
+
+This slide develops the authoritative source material on **templates overview**.
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+---
+
+## Templates Overview
+
+This slide develops the authoritative source material on **templates overview**.
+
+::: notes
+
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Templates Overview
+
+This slide develops the authoritative source material on **templates overview**.
+
+::: notes
+
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Templates Overview
+
+This slide develops the authoritative source material on **templates overview**.
+
+::: notes
+
+:::
+
+<!-- Slide 5 -->

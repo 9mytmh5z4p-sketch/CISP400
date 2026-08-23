@@ -1,0 +1,53 @@
+<!-- Topic: Lecture Wrap-Up -->
+<!-- Slides 75–80 -->
+
+# Lecture Wrap-Up
+
+![](images/source_pages/slide-75.png){width="100%" fig-alt="Lecture Wrap-Up"}
+
+::: notes
+Slides 75–80
+Source slide 75 from the authoritative PDF.
+:::
+
+<!-- Slide 75 -->
+
+---
+
+## <span style="display:none">Source Slide 76</span>
+
+![](images/source_pages/slide-76.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 76 -->
+
+---
+
+## <span style="display:none">Source Slide 77</span>
+
+![](images/source_pages/slide-77.png){width="100%" fig-alt="What’s Next?"}
+
+<!-- Slide 77 -->
+
+---
+
+## <span style="display:none">Source Slide 78</span>
+
+![](images/source_pages/slide-78.png){width="100%" fig-alt="78"}
+
+<!-- Slide 78 -->
+
+---
+
+## <span style="display:none">Source Slide 79</span>
+
+![](images/source_pages/slide-79.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 79 -->
+
+---
+
+## <span style="display:none">Source Slide 80</span>
+
+![](images/source_pages/slide-80.png){width="100%" fig-alt="Hw 1 due Sunday."}
+
+<!-- Slide 80 -->

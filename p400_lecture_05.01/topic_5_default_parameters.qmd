@@ -1,0 +1,126 @@
+<!-- Topic 5: Default Parameters -->
+<!-- Slides 42-51 -->
+
+# Default Parameters
+<!-- Slide 42 -->
+
+## Can an Argument Be Optional? {.smaller}
+
++ Some function calls use the same value most of the time.
++ A default parameter lets the function provide that common value.
++ The caller can still override the default when needed.
+
+::: notes
+Slides 42-51
+:::
+
+<!-- Slide 43 -->
+
+---
+
+## Default Parameter Idea
+
+```cpp
+void printLine(char symbol = '-');
+```
+
+If the caller leaves out the argument, C++ uses the default value.
+
+<!-- Slide 44 -->
+
+---
+
+## Prototype with Defaults
+
+```cpp
+void printLine(char symbol = '-', int length = 20);
+```
+
++ Put default values in the prototype.
++ The prototype is the caller-facing contract.
++ Do not repeat the defaults in the function definition.
+
+<!-- Slide 45 -->
+
+---
+
+## Calling with All Arguments
+
+```cpp
+printLine('=', 40);
+```
+
++ `symbol` receives `'='`.
++ `length` receives `40`.
++ Both defaults are overridden.
+
+<!-- Slide 46 -->
+
+---
+
+## Calling with Some Arguments
+
+```cpp
+printLine('*');
+```
+
++ `symbol` receives `'*'`.
++ `length` uses the default value `20`.
++ Supplied arguments fill parameters from left to right.
+
+<!-- Slide 47 -->
+
+---
+
+## Right-to-Left Rule
+
+```cpp
+void displayBox(string text, char border = '*', int width = 30);
+```
+
+Once a parameter has a default, the parameters after it need defaults too.
+
+<!-- Slide 48 -->
+
+---
+
+## Defaults and Function Contracts
+
+```cpp
+void displayTotal(double total, int decimals = 2);
+```
+
++ The required data still appears first.
++ The default communicates the common case.
++ The caller sees what can be customized.
+
+<!-- Slide 49 -->
+
+---
+
+## Small Formatting Example
+
+```cpp
+void printLine(char symbol = '-', int length = 20);
+
+void printLine(char symbol, int length) {
+    for (int i = 0; i < length; i++) {
+        cout << symbol;
+    }
+    cout << endl;
+}
+```
+
+The function can be called as `printLine();`, `printLine('=');`, or `printLine('*', 10);`.
+
+<!-- Slide 50 -->
+
+---
+
+## Summary
+
++ Default parameters make common calls shorter.
++ Defaults belong in the prototype.
++ Defaulted parameters must be grouped at the end of the parameter list.
+
+<!-- Slide 51 -->

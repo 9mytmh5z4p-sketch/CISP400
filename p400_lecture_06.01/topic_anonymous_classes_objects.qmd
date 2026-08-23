@@ -1,0 +1,69 @@
+<!-- Topic: Anonymous Classes and Objects -->
+<!-- Slides 7–14 -->
+
+# Anonymous Classes and Objects
+
+![](images/source_pages/slide-07.png){width="100%" fig-alt="Anonymous Classes and Objects"}
+
+::: notes
+Slides 7–14
+Source slide 7 from the authoritative PDF.
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## <span style="display:none">Source Slide 8</span>
+
+![](images/source_pages/slide-08.png){width="100%" fig-alt="Anonymous classes"}
+
+<!-- Slide 8 -->
+
+---
+
+## <span style="display:none">Source Slide 9</span>
+
+![](images/source_pages/slide-09.png){width="100%" fig-alt="Anonymous Classes"}
+
+<!-- Slide 9 -->
+
+---
+
+## <span style="display:none">Source Slide 10</span>
+
+![](images/source_pages/slide-10.png){width="100%" fig-alt="Source Slide 10"}
+
+<!-- Slide 10 -->
+
+---
+
+## <span style="display:none">Source Slide 11</span>
+
+![](images/source_pages/slide-11.png){width="100%" fig-alt="Anonymous objects"}
+
+<!-- Slide 11 -->
+
+---
+
+## <span style="display:none">Source Slide 12</span>
+
+![](images/source_pages/slide-12.png){width="100%" fig-alt="Source Slide 12"}
+
+<!-- Slide 12 -->
+
+---
+
+## <span style="display:none">Source Slide 13</span>
+
+![](images/source_pages/slide-13.png){width="100%" fig-alt="Source Slide 13"}
+
+<!-- Slide 13 -->
+
+---
+
+## <span style="display:none">Source Slide 14</span>
+
+![](images/source_pages/slide-14.png){width="100%" fig-alt="Anonymous Object"}
+
+<!-- Slide 14 -->

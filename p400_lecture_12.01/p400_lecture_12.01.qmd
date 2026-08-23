@@ -1,0 +1,37 @@
+# Last Time
+
+::: {.incremental}
++ **Inheritance**
++ **Class relationships**
+:::
+
+# Today's Agenda
+
+- Inheritance and Overriding
+- Base Class Construction
+- Relationship Summary
+- Practice and Review
+- Multiple Inheritance
+- Access Specifiers
+- Inheritance Design
+
+{{< include topic_1_course_framing.qmd >}}
+{{< include topic_2_inheritance_and_overriding.qmd >}}
+{{< include topic_3_base_class_construction.qmd >}}
+{{< include topic_4_relationship_summary.qmd >}}
+{{< include topic_5_practice_and_review.qmd >}}
+{{< include topic_6_multiple_inheritance.qmd >}}
+{{< include topic_7_access_specifiers.qmd >}}
+{{< include topic_8_inheritance_design.qmd >}}
+
+---
+# Key Takeaways
+
+- Constructors, access rules, and overrides define how derived classes behave.
+- Inheritance is most useful when shared behavior and substitutability are clear.
+
+---
+# Next Time
+
+---
+# Appendix

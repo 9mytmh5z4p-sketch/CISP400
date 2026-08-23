@@ -1,0 +1,109 @@
+<!-- Topic: Returning and Reassigning Pointers -->
+<!-- Slides 50–62 -->
+
+# Returning and Reassigning Pointers
+
+![](images/source_pages/slide-50.png){width="100%" fig-alt="Returning and Reassigning Pointers"}
+
+::: notes
+Slides 50–62
+Source slide 50 from the authoritative PDF.
+:::
+
+<!-- Slide 50 -->
+
+---
+
+## <span style="display:none">Source Slide 51</span>
+
+![](images/source_pages/slide-51.png){width="100%" fig-alt="Source Slide 51"}
+
+<!-- Slide 51 -->
+
+---
+
+## <span style="display:none">Source Slide 52</span>
+
+![](images/source_pages/slide-52.png){width="100%" fig-alt="Now, that’s all well"}
+
+<!-- Slide 52 -->
+
+---
+
+## <span style="display:none">Source Slide 53</span>
+
+![](images/source_pages/slide-53.png){width="100%" fig-alt="• That is …"}
+
+<!-- Slide 53 -->
+
+---
+
+## <span style="display:none">Source Slide 54</span>
+
+![](images/source_pages/slide-54.png){width="100%" fig-alt="Pointer Reference Variable"}
+
+<!-- Slide 54 -->
+
+---
+
+## <span style="display:none">Source Slide 55</span>
+
+![](images/source_pages/slide-55.png){width="100%" fig-alt="getNumber(int* input) 0xFF"}
+
+<!-- Slide 55 -->
+
+---
+
+## <span style="display:none">Source Slide 56</span>
+
+![](images/source_pages/slide-56.png){width="100%" fig-alt="How can we change the pointer"}
+
+<!-- Slide 56 -->
+
+---
+
+## <span style="display:none">Source Slide 57</span>
+
+![](images/source_pages/slide-57.png){width="100%" fig-alt="Source Slide 57"}
+
+<!-- Slide 57 -->
+
+---
+
+## <span style="display:none">Source Slide 58</span>
+
+![](images/source_pages/slide-58.png){width="100%" fig-alt="Source Slide 58"}
+
+<!-- Slide 58 -->
+
+---
+
+## <span style="display:none">Source Slide 59</span>
+
+![](images/source_pages/slide-59.png){width="100%" fig-alt="Source Slide 59"}
+
+<!-- Slide 59 -->
+
+---
+
+## <span style="display:none">Source Slide 60</span>
+
+![](images/source_pages/slide-60.png){width="100%" fig-alt="Source Slide 60"}
+
+<!-- Slide 60 -->
+
+---
+
+## <span style="display:none">Source Slide 61</span>
+
+![](images/source_pages/slide-61.png){width="100%" fig-alt="Source Slide 61"}
+
+<!-- Slide 61 -->
+
+---
+
+## <span style="display:none">Source Slide 62</span>
+
+![](images/source_pages/slide-62.png){width="100%" fig-alt="Source Slide 62"}
+
+<!-- Slide 62 -->

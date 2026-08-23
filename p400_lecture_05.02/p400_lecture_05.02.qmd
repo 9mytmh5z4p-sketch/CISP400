@@ -1,0 +1,10 @@
+{{< include topic_course_framing.qmd >}}
+{{< include topic_homework_preflight.qmd >}}
+{{< include topic_selecting_members.qmd >}}
+{{< include topic_arrays_objects.qmd >}}
+{{< include topic_activities.qmd >}}
+{{< include topic_rai.qmd >}}
+{{< include topic_homework_review.qmd >}}
+{{< include topic_passing_objects.qmd >}}
+{{< include topic_summary.qmd >}}
+

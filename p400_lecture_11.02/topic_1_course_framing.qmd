@@ -1,0 +1,73 @@
+<!-- Topic 1: Course Framing -->
+<!-- Slides 1–6 -->
+# Course Framing
+
+## CISP 400
+
+This slide develops the authoritative source material on **cisp 400**.
+
+::: notes
+Slides 1–6
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## Chapter 11 More OOP
+
+This slide develops the authoritative source material on **chapter 11 more oop**.
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+---
+
+## Course Review
+
+This slide develops the authoritative source material on **course review**.
+
+::: notes
+
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Course Review
+
+This slide develops the authoritative source material on **course review**.
+
+::: notes
+
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Course Review
+
+This slide develops the authoritative source material on **course review**.
+
+::: notes
+
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## Course Review
+
+This slide develops the authoritative source material on **course review**.
+
+::: notes
+
+:::
+
+<!-- Slide 6 -->

@@ -1,0 +1,133 @@
+<!-- Topic: OOP Motivation and Progression -->
+<!-- Slides 4–19 -->
+
+# OOP Motivation and Progression
+
+![](images/source_pages/slide-04.png){width="100%" fig-alt="OOP Motivation and Progression"}
+
+::: notes
+Slides 4–19
+Source slide 4 from the authoritative PDF.
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## <span style="display:none">Source Slide 5</span>
+
+![](images/source_pages/slide-05.png){width="100%" fig-alt="Big Idea"}
+
+<!-- Slide 5 -->
+
+---
+
+## <span style="display:none">Source Slide 6</span>
+
+![](images/source_pages/slide-06.png){width="100%" fig-alt="Related to Previous"}
+
+<!-- Slide 6 -->
+
+---
+
+## <span style="display:none">Source Slide 7</span>
+
+![](images/source_pages/slide-07.png){width="100%" fig-alt="Chapter 7"}
+
+<!-- Slide 7 -->
+
+---
+
+## <span style="display:none">Source Slide 8</span>
+
+![](images/source_pages/slide-08.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 8 -->
+
+---
+
+## <span style="display:none">Source Slide 9</span>
+
+![](images/source_pages/slide-09.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 9 -->
+
+---
+
+## <span style="display:none">Source Slide 10</span>
+
+![](images/source_pages/slide-10.png){width="100%" fig-alt="Where’s"}
+
+<!-- Slide 10 -->
+
+---
+
+## <span style="display:none">Source Slide 11</span>
+
+![](images/source_pages/slide-11.png){width="100%" fig-alt="• As we learn more tools to program with …"}
+
+<!-- Slide 11 -->
+
+---
+
+## <span style="display:none">Source Slide 12</span>
+
+![](images/source_pages/slide-12.png){width="100%" fig-alt="Program This - Debrief"}
+
+<!-- Slide 12 -->
+
+---
+
+## <span style="display:none">Source Slide 13</span>
+
+![](images/source_pages/slide-13.png){width="100%" fig-alt="Exercise Goals"}
+
+<!-- Slide 13 -->
+
+---
+
+## <span style="display:none">Source Slide 14</span>
+
+![](images/source_pages/slide-14.png){width="100%" fig-alt="Programming Exercise"}
+
+<!-- Slide 14 -->
+
+---
+
+## <span style="display:none">Source Slide 15</span>
+
+![](images/source_pages/slide-15.png){width="100%" fig-alt="Source Slide 15"}
+
+<!-- Slide 15 -->
+
+---
+
+## <span style="display:none">Source Slide 16</span>
+
+![](images/source_pages/slide-16.png){width="100%" fig-alt="Source Slide 16"}
+
+<!-- Slide 16 -->
+
+---
+
+## <span style="display:none">Source Slide 17</span>
+
+![](images/source_pages/slide-17.png){width="100%" fig-alt="Source Slide 17"}
+
+<!-- Slide 17 -->
+
+---
+
+## <span style="display:none">Source Slide 18</span>
+
+![](images/source_pages/slide-18.png){width="100%" fig-alt="Source Slide 18"}
+
+<!-- Slide 18 -->
+
+---
+
+## <span style="display:none">Source Slide 19</span>
+
+![](images/source_pages/slide-19.png){width="100%" fig-alt="Source Slide 19"}
+
+<!-- Slide 19 -->

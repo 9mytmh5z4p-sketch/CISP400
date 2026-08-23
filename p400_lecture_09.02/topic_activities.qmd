@@ -1,0 +1,348 @@
+<!-- Topic: Generic Programming Activities -->
+<!-- Slides 55–88 -->
+
+# Generic Programming Activities
+
+## 3We can also cast it before we send the arguments
+
+::: notes
+Slides 55–88
+Source text extracted from the authoritative Keynote deck.
+:::
+
+<!-- Slide 55 -->
+
+---
+
+## All at Once
+
+- apple:appear
+- 3We can also cast it before we send the arguments
+- $F930C0A3-405F-4098-9C53-9159A55750DE
+- decimal5
+
+<!-- Slide 56 -->
+
+---
+
+## Template Options
+
+
+<!-- Slide 57 -->
+
+---
+
+## )>t[
+
+- We cast it.
+- 6D!9)
+- 5{,T
+- decimal5aP
+
+<!-- Slide 58 -->
+
+---
+
+## All at Once
+
+- apple:appear
+- All at:
+- But we have a problem.
+- 6D!D)$
+
+<!-- Slide 59 -->
+
+---
+
+## All at Once
+
+- apple:appear
+- All at:
+- INO! I mean how do we pass something with a variable number of parameters?
+- 6D!x)X
+
+<!-- Slide 60 -->
+
+---
+
+## All at Once
+
+- apple:appear
+- OK, so how do we mix types
+- $3CB31A10-195A-44BE-A8AE-1D59BED682F6
+- 6D!~)^
+
+<!-- Slide 61 -->
+
+---
+
+## All at Once
+
+- apple:appear
+- All at:
+- ,What if I want to pass more than 1 argument?
+- 6D!Z):
+
+<!-- Slide 62 -->
+
+---
+
+## F-:(/C
+
+- )>@C
+
+<!-- Slide 63 -->
+
+---
+
+## )>dW
+
+- Problem
+- Create a function templ
+- to handle multiplying the argument by 10 and return
+- !$at value.
+
+<!-- Slide 64 -->
+
+---
+
+## Purpose & Task
+
+- a]Reinforce new concept(s)
+- Fire up replit and code the following short (~10 minutes) problem
+- $C5C8B452-DE88-404E-9FF7-DC819A1B9E66
+- 6DA1iS
+
+<!-- Slide 65 -->
+
+---
+
+## decimal?!
+
+- When the funca
+- 0 is executed,
+- Lproper variable type
+- &0inserted for
+
+<!-- Slide 66 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 67 -->
+
+---
+
+## All at Onc
+
+- apple:bc-appear
+- decimal?A
+- >]template<class T>
+- void swap(T& a, T& b) {
+
+<!-- Slide 68 -->
+
+---
+
+## All at Once
+
+- apple:appear
+- ,-9P-
+- A%u%U
+- Template Prefix
+
+<!-- Slide 69 -->
+
+---
+
+## p.999
+
+- A function template is a
+- generic
+- hat can work with different data types.
+- $D45F70FB-E4A2-4CE9-8B9A-AA1B461D1EC6
+
+<!-- Slide 70 -->
+
+---
+
+## decimal?!
+
+- If you inspect the code,
+- Dwill notice, we do
+- H have template funca
+- < prototypes.
+
+<!-- Slide 71 -->
+
+---
+
+## decimal?!
+
+- !/@FC
+- "compiler does not resolve
+- Flexible
+- Dynamic Binding1
+
+<!-- Slide 72 -->
+
+---
+
+## )>pZ
+
+- Desk Check
+- Exercise5
+- u&(T
+- ]4 N
+
+<!-- Slide 73 -->
+
+---
+
+## TCan be a T (same as input type) or any other type (int, float, etc)
+
+- $void.
+- 6Da(
+
+<!-- Slide 74 -->
+
+---
+
+## All at Once
+
+- apple:bc-appear
+- INO,
+- OI mean how do we pass more than 1 type of parameterized argument?
+- 6D!x)X
+
+<!-- Slide 75 -->
+
+---
+
+## decimal?!
+
+- ,wint square(
+- Lnumber) {
+- return
+- double
+
+<!-- Slide 76 -->
+
+---
+
+## F-:()C
+
+- )>@C
+
+<!-- Slide 77 -->
+
+---
+
+## decimal?!
+
+- !/@FC
+- compiler resolves
+- Fast
+- Static Binding1
+
+<!-- Slide 78 -->
+
+---
+
+## decimal?!
+
+- Funcaw
+- templates allow the computer to derive
+- ypes for
+- \data we send it.
+
+<!-- Slide 79 -->
+
+---
+
+## 1<PHU
+
+- )>@C
+
+<!-- Slide 80 -->
+
+---
+
+## )>dW
+
+- Finally
+- We can force specialization.
+- That is, let
+- s say we want to use the template for everything but strings. For those,>C
+
+<!-- Slide 81 -->
+
+---
+
+## )>\U
+
+- Note:
+- I understand you can use the auto keyword for the return type (but I haven
+- t tested that).
+- I also Fb
+
+<!-- Slide 82 -->
+
+---
+
+## decimal?!
+
+- Historically, how would we have coded functions to handle this
+- Enter a number
+- "Dsquare: 3
+- $326884D9-301F-4985-9929-6CC8A0D8B3BE
+
+<!-- Slide 83 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 84 -->
+
+---
+
+## )>pZ
+
+- Quick Code
+- 6D%8%
+- 5z(T
+- decimal?a
+
+<!-- Slide 85 -->
+
+---
+
+## decimal?!
+
+- 5How to you think the library swap funca
+- , was coded?1
+
+<!-- Slide 86 -->
+
+---
+
+## 16.2 Function Templates
+
+- 6D%E%%
+- decimal?a
+
+<!-- Slide 87 -->
+
+---
+
+## decimal5!
+
+- x DEbEB
+- ,Final Project & Battleship due next Thursdayu
+- ]! >
+
+<!-- Slide 88 -->

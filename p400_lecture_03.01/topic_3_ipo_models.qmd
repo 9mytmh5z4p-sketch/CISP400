@@ -1,0 +1,161 @@
+<!-- Topic 3: IPO Models -->
+<!-- Slides 31-44 -->
+
+# IPO Models
+<!-- Slide 31 -->
+
+## Before Code, Name the Shape {.smaller}
+
++ How can we plan a program before writing statements?
++ IPO separates a problem into inputs, processing, and outputs.
+
+::: notes
+Slides 31-44
+:::
+
+<!-- Slide 32 -->
+
+---
+
+## What Is an IPO Model?
+
+An IPO model names the three major parts of a program.
+
++ **Input:** data the program receives.
++ **Processing:** work the program does.
++ **Output:** result the program produces.
+
+<!-- Slide 33 -->
+
+---
+
+## Input
+
+Inputs are the values the program needs before it can do useful work.
+
+They may come from the user, a file, a constant, or a system function.
+
+<!-- Slide 34 -->
+
+---
+
+## Processing
+
+Processing is the calculation, decision, or transformation applied to the input.
+
+This is where the program changes data into a useful result.
+
+<!-- Slide 35 -->
+
+---
+
+## Output
+
+Outputs are the values, messages, or reports the program produces.
+
+Good outputs answer the problem the program was written to solve.
+
+<!-- Slide 36 -->
+
+---
+
+## A Small IPO Table
+
+| Input | Processing | Output |
+|---|---|---|
+| quantity, price | total = quantity * price | total price |
+
+The table turns a word problem into a program plan.
+
+<!-- Slide 37 -->
+
+---
+
+## From IPO to Variables
+
+```cpp
+int quantity;
+double price;
+double total;
+
+total = quantity * price;
+```
+
+Inputs often become variables; processing becomes statements; output becomes `cout`.
+
+<!-- Slide 38 -->
+
+---
+
+## Common Practices
+
++ Identify the output first.
++ Work backward to the required inputs.
++ Name the processing step as a verb or formula.
+
+<!-- Slide 39 -->
+
+---
+
+## Date and Time IPO
+
+| Input | Processing | Output |
+|---|---|---|
+| current system time | store timestamp | printed timestamp |
+
+The program does not ask the user for the time; it asks the system.
+
+<!-- Slide 40 -->
+
+---
+
+## Date and Time Variables
+
+```cpp
+time_t now;   // a time type variable
+
+now = time(0);
+cout << now << endl;
+```
+
+The input comes from `time(0)`, the variable stores it, and `cout` displays it.
+
+<!-- Slide 41 -->
+
+---
+
+## Random Number IPO
+
+| Input | Processing | Output |
+|---|---|---|
+| seed, raw random value | raw % 6 + 1 | die roll |
+
+The processing step turns a large raw value into the range the program needs.
+
+<!-- Slide 42 -->
+
+---
+
+## Random Number Variables
+
+```cpp
+int raw;
+int roll;
+
+raw = rand();
+roll = raw % 6 + 1;
+```
+
+Separating `raw` and `roll` makes the design easier to trace.
+
+<!-- Slide 43 -->
+
+---
+
+## Summary
+
++ IPO identifies what comes in, what happens, and what comes out.
++ The model helps choose variables before coding.
++ A clear IPO plan makes code easier to write and test.
+
+<!-- Slide 44 -->

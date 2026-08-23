@@ -1,0 +1,117 @@
+<!-- Topic 1: Vectors -->
+<!-- Slides 3-11 -->
+
+# Vectors
+<!-- Slide 3 -->
+
+## One Variable, Many Values {.smaller}
+
+```cpp
+string employee1 = "Maya";
+string employee2 = "Ari";
+string employee3 = "Chen";
+string employee4 = "Jordan";
+string employee5 = "Sam";
+```
+
++ What would we have to do to process all five employees?
++ What would we have to change to add a new employee?
+
+::: notes
+Slides 3-11
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## The Problem
+
++ We can access the content of the `employee` variables, but we can't access those variables specifically through the program.
+
++ What we need is a way to structure the data so we can access the variables as well as the associated values - a `data structure`.
+
+<!-- Slide 5 -->
+
+---
+
+## Why This Is a Data Structure
+
++ A data structure organizes data so a program can work with it.
+
++ C++ has a frequently used data structure called a `vector`.
+
++ A `vector` organizes values in order, so the program can add, access, and process them as a group.
+
+<!-- Slide 6 -->
+
+---
+
+## A Vector IPO Model
+
+| Input | Processing | Output |
+|---|---|---|
+| three scores | store scores in a vector | printed score list |
+
+The IPO model helps identify why the vector exists before we write the code.
+
+<!-- Slide 7 -->
+
+---
+
+## Declaring a Vector
+
+Vectors require the `<vector>` header.
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<int> scores;
+```
+
+The type inside `< >` tells the vector what kind of values it stores.
+
+<!-- Slide 8 -->
+
+---
+
+## Initializing a Vector
+
+A vector can start with values already inside it.
+
+```cpp
+vector<int> scores = {88, 92, 75};
+vector<string> names = {"Maya", "Chen", "Ari"};
+```
+
+All values in one vector must have the same type.
+
+<!-- Slide 9 -->
+
+---
+
+## Vector Order Picture
+
+| Position | first | second | third |
+|---|---:|---:|---:|
+| Value | 88 | 92 | 75 |
+
+The values stay in order, so the vector can process them as one group.
+
+::: notes
+[Graphic suggestion: show one vector box labeled scores with three ordered cells.]
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## Summary
+
++ A vector stores many related values using one variable name.
++ Vectors are ordered, typed, and designed for grouped data.
++ This is our first data structure.
+
+<!-- Slide 11 -->

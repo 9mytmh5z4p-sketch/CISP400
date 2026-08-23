@@ -1,0 +1,37 @@
+<!-- Topic: Comparing Pointers -->
+<!-- Slides 23–26 -->
+
+# Comparing Pointers
+
+![](images/source_pages/slide-23.png){width="100%" fig-alt="Comparing Pointers"}
+
+::: notes
+Slides 23–26
+Source slide 23 from the authoritative PDF.
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## <span style="display:none">Source Slide 24</span>
+
+![](images/source_pages/slide-24.png){width="100%" fig-alt="We can use logical comparisons with pointers."}
+
+<!-- Slide 24 -->
+
+---
+
+## <span style="display:none">Source Slide 25</span>
+
+![](images/source_pages/slide-25.png){width="100%" fig-alt="Why Do This?"}
+
+<!-- Slide 25 -->
+
+---
+
+## <span style="display:none">Source Slide 26</span>
+
+![](images/source_pages/slide-26.png){width="100%" fig-alt="Common use"}
+
+<!-- Slide 26 -->

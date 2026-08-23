@@ -1,0 +1,118 @@
+<!-- Topic 4: The do-while Loop -->
+<!-- Slides 30-39 -->
+
+# The do-while Loop
+<!-- Slide 30 -->
+
+## When Must the Work Happen Once? {.smaller}
+
+- A `do-while` loop runs the body before testing the condition.
+- Use it when the program must act once before it can decide whether to repeat.
+
+::: notes
+Slides 30-39
+:::
+
+<!-- Slide 31 -->
+
+---
+
+## The Shape of a do-while Loop
+
+```cpp
+do {
+    statement;
+    statement;
+} while (condition);
+```
+
+The semicolon after the condition is part of the syntax.
+
+<!-- Slide 32 -->
+
+---
+
+## do-while Loop Control Flow
+
+![](images/do_loop.png){fig-alt="Control flow for a do-while loop" width="52%"}
+
+<!-- Slide 33 -->
+
+---
+
+## do-while in IPO
+
+| IPO Part | Example |
+|---|---|
+| Input | Ask at least once |
+| Process | Decide whether the value is acceptable |
+| Output | Prompt again or continue |
+
+The first pass happens before the loop can stop.
+
+<!-- Slide 34 -->
+
+---
+
+## A Prompt-Then-Check Example
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int choice;
+
+    do {
+        cout << "Enter 1 to continue or 0 to quit: ";
+        cin >> choice;
+    } while (choice != 0);
+
+    return 0;
+}
+```
+
+<!-- Slide 35 -->
+
+---
+
+## Trace the First Pass
+
+| Moment | `choice` | Condition `choice != 0` |
+|---|---:|---|
+| Before body | unknown | not tested yet |
+| After input | 1 | true |
+| After input | 0 | false |
+
+<!-- Slide 36 -->
+
+---
+
+## Menus and Validation
+
+- Menus usually need to display before the user can choose.
+- Prompts usually need to ask before the program can judge the answer.
+- That makes `do-while` a common fit for "ask, then check" designs.
+
+<!-- Slide 37 -->
+
+---
+
+## do-while vs. while
+
+| Use `while` when... | Use `do-while` when... |
+|---|---|
+| The test should happen first | The body must happen first |
+| Zero passes are possible | One pass is required |
+| Existing state controls entry | New input controls the next pass |
+
+<!-- Slide 38 -->
+
+---
+
+## Summary
+
+- A `do-while` loop tests after the body.
+- Use it when the first pass is part of getting the information needed to decide.
+
+<!-- Slide 39 -->

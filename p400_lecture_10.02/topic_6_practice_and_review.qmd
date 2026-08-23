@@ -1,0 +1,97 @@
+<!-- Topic 6: Practice and Review -->
+<!-- Slides 57–64 -->
+# Practice and Review
+
+## Conversion Review
+
+This slide presents the source material for **Conversion Review** from the authoritative lecture deck.
+
+::: notes
+Slides 57–64
+:::
+
+<!-- Slide 57 -->
+
+---
+
+## Conversion Error
+
+This slide presents the source material for **Conversion Error** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 58 -->
+
+---
+
+## Exercise Goals
+
+This slide presents the source material for **Exercise Goals** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 59 -->
+
+---
+
+## Desk Check Exercise
+
+This slide presents the source material for **Desk Check Exercise** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 60 -->
+
+---
+
+## Desk Check
+
+This slide presents the source material for **Desk Check** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 61 -->
+
+---
+
+## Overload Ambiguity
+
+This slide presents the source material for **Overload Ambiguity** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 62 -->
+
+---
+
+## Choosing an Overload
+
+This slide presents the source material for **Choosing an Overload** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 63 -->
+
+---
+
+## Review
+
+This slide presents the source material for **Review** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 64 -->

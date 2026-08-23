@@ -1,0 +1,90 @@
+<!-- Topic 1: The Conditional Operator -->
+<!-- Slides 3-10 -->
+
+# The Conditional Operator
+<!-- Slide 3 -->
+
+## A Shorter Two-Way Choice {.smaller}
+
+- The conditional operator is a compact way to choose between two values.
+- It is useful when a full `if/else` statement would be longer than the idea itself.
+
+::: notes
+Slides 3-10
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## The Shape of `?:`
+
+```cpp
+condition ? value_if_true : value_if_false
+```
+
+- The condition is tested first.
+- One of the two values is produced.
+
+<!-- Slide 5 -->
+
+---
+
+## An Expression, Not a Statement
+
+```cpp
+string status = score >= 70 ? "passing" : "not passing";
+```
+
+The conditional operator produces a value, so it can be used in an assignment, an output statement, or another expression.
+
+<!-- Slide 6 -->
+
+---
+
+## From if/else to `?:`
+
+```cpp
+if (age >= 18) {
+    label = "adult";
+} else {
+    label = "minor";
+}
+```
+
+```cpp
+label = age >= 18 ? "adult" : "minor";
+```
+
+<!-- Slide 7 -->
+
+---
+
+## When It Helps
+
+- Choose one of two short labels.
+- Choose one of two numeric values.
+- Keep a simple output statement readable.
+
+<!-- Slide 8 -->
+
+---
+
+## When It Hurts
+
+```cpp
+grade = score >= 90 ? "A" : score >= 80 ? "B" : score >= 70 ? "C" : "D";
+```
+
+Nested conditional operators are legal, but they are often harder to read than an `if/else if` chain.
+
+<!-- Slide 9 -->
+
+---
+
+## Summary
+
+- Use `?:` when the choice is simple, local, and easier to read as one expression.
+- Use a normal conditional statement when the decision needs more room.
+
+<!-- Slide 10 -->

@@ -1,0 +1,97 @@
+<!-- Topic 11: Exception Hierarchies -->
+<!-- Slides 80–87 -->
+# Exception Hierarchies
+
+## Exception Hierarchies
+
+This slide develops the authoritative source material on **exception hierarchies**.
+
+::: notes
+Slides 80–87
+:::
+
+<!-- Slide 80 -->
+
+---
+
+## Exception Hierarchies
+
+This slide develops the authoritative source material on **exception hierarchies**.
+
+::: notes
+
+:::
+
+<!-- Slide 81 -->
+
+---
+
+## Exception Hierarchies
+
+This slide develops the authoritative source material on **exception hierarchies**.
+
+::: notes
+
+:::
+
+<!-- Slide 82 -->
+
+---
+
+## Exception Hierarchies
+
+This slide develops the authoritative source material on **exception hierarchies**.
+
+::: notes
+
+:::
+
+<!-- Slide 83 -->
+
+---
+
+## Exception Hierarchies
+
+This slide develops the authoritative source material on **exception hierarchies**.
+
+::: notes
+
+:::
+
+<!-- Slide 84 -->
+
+---
+
+## Exception Hierarchies
+
+This slide develops the authoritative source material on **exception hierarchies**.
+
+::: notes
+
+:::
+
+<!-- Slide 85 -->
+
+---
+
+## Exception Hierarchies
+
+This slide develops the authoritative source material on **exception hierarchies**.
+
+::: notes
+
+:::
+
+<!-- Slide 86 -->
+
+---
+
+## Exception Hierarchies
+
+This slide develops the authoritative source material on **exception hierarchies**.
+
+::: notes
+
+:::
+
+<!-- Slide 87 -->

@@ -1,0 +1,10 @@
+{{< include topic_course_framing.qmd >}}
+{{< include topic_class_initialization.qmd >}}
+{{< include topic_dependency_relationships.qmd >}}
+{{< include topic_desk_check_1.qmd >}}
+{{< include topic_arrays_objects.qmd >}}
+{{< include topic_assertions.qmd >}}
+{{< include topic_desk_check_2.qmd >}}
+{{< include topic_programming_exercise.qmd >}}
+{{< include topic_wrap_up.qmd >}}
+

@@ -1,0 +1,149 @@
+<!-- Topic: Initializing Pointers -->
+<!-- Slides 25–42 -->
+
+# Initializing Pointers
+
+![](images/source_pages/slide-25.png){width="100%" fig-alt="Initializing Pointers"}
+
+::: notes
+Slides 25–42
+Source slide 25 from the authoritative PDF.
+:::
+
+<!-- Slide 25 -->
+
+---
+
+## <span style="display:none">Source Slide 26</span>
+
+![](images/source_pages/slide-26.png){width="100%" fig-alt="“Pointers may be initialized with the address of"}
+
+<!-- Slide 26 -->
+
+---
+
+## <span style="display:none">Source Slide 27</span>
+
+![](images/source_pages/slide-27.png){width="100%" fig-alt="If we don’t have data we want to point to (because we"}
+
+<!-- Slide 27 -->
+
+---
+
+## <span style="display:none">Source Slide 28</span>
+
+![](images/source_pages/slide-28.png){width="100%" fig-alt="• We can initialize it to 0"}
+
+<!-- Slide 28 -->
+
+---
+
+## <span style="display:none">Source Slide 29</span>
+
+![](images/source_pages/slide-29.png){width="100%" fig-alt="• C11 has built in keyword, nullptr, to initialize to 0."}
+
+<!-- Slide 29 -->
+
+---
+
+## <span style="display:none">Source Slide 30</span>
+
+![](images/source_pages/slide-30.png){width="100%" fig-alt="• Which means we can use 3 tests to see if a pointer"}
+
+<!-- Slide 30 -->
+
+---
+
+## <span style="display:none">Source Slide 31</span>
+
+![](images/source_pages/slide-31.png){width="100%" fig-alt="Sidebar: Brace Initialization"}
+
+<!-- Slide 31 -->
+
+---
+
+## <span style="display:none">Source Slide 32</span>
+
+![](images/source_pages/slide-32.png){width="100%" fig-alt="Why do you want to initialize"}
+
+<!-- Slide 32 -->
+
+---
+
+## <span style="display:none">Source Slide 33</span>
+
+![](images/source_pages/slide-33.png){width="100%" fig-alt="Reliability"}
+
+<!-- Slide 33 -->
+
+---
+
+## <span style="display:none">Source Slide 34</span>
+
+![](images/source_pages/slide-34.png){width="100%" fig-alt="Source Slide 34"}
+
+<!-- Slide 34 -->
+
+---
+
+## <span style="display:none">Source Slide 35</span>
+
+![](images/source_pages/slide-35.png){width="100%" fig-alt="The program runs ne."}
+
+<!-- Slide 35 -->
+
+---
+
+## <span style="display:none">Source Slide 36</span>
+
+![](images/source_pages/slide-36.png){width="100%" fig-alt="• Let’s go ahead and initialize this the correct way …"}
+
+<!-- Slide 36 -->
+
+---
+
+## <span style="display:none">Source Slide 37</span>
+
+![](images/source_pages/slide-37.png){width="100%" fig-alt="Source Slide 37"}
+
+<!-- Slide 37 -->
+
+---
+
+## <span style="display:none">Source Slide 38</span>
+
+![](images/source_pages/slide-38.png){width="100%" fig-alt="Source Slide 38"}
+
+<!-- Slide 38 -->
+
+---
+
+## <span style="display:none">Source Slide 39</span>
+
+![](images/source_pages/slide-39.png){width="100%" fig-alt="Logic Error"}
+
+<!-- Slide 39 -->
+
+---
+
+## <span style="display:none">Source Slide 40</span>
+
+![](images/source_pages/slide-40.png){width="100%" fig-alt="Source Slide 40"}
+
+<!-- Slide 40 -->
+
+---
+
+## <span style="display:none">Source Slide 41</span>
+
+![](images/source_pages/slide-41.png){width="100%" fig-alt="Source Slide 41"}
+
+<!-- Slide 41 -->
+
+---
+
+## <span style="display:none">Source Slide 42</span>
+
+![](images/source_pages/slide-42.png){width="100%" fig-alt="Note"}
+
+<!-- Slide 42 -->

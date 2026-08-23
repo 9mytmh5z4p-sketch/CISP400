@@ -1,0 +1,53 @@
+<!-- Topic: Pointers as Function Parameters -->
+<!-- Slides 44–49 -->
+
+# Pointers as Function Parameters
+
+![](images/source_pages/slide-44.png){width="100%" fig-alt="Pointers as Function Parameters"}
+
+::: notes
+Slides 44–49
+Source slide 44 from the authoritative PDF.
+:::
+
+<!-- Slide 44 -->
+
+---
+
+## <span style="display:none">Source Slide 45</span>
+
+![](images/source_pages/slide-45.png){width="100%" fig-alt="“A pointer can be used as a function parameter."}
+
+<!-- Slide 45 -->
+
+---
+
+## <span style="display:none">Source Slide 46</span>
+
+![](images/source_pages/slide-46.png){width="100%" fig-alt="Why do this?"}
+
+<!-- Slide 46 -->
+
+---
+
+## <span style="display:none">Source Slide 47</span>
+
+![](images/source_pages/slide-47.png){width="100%" fig-alt="Source Slide 47"}
+
+<!-- Slide 47 -->
+
+---
+
+## <span style="display:none">Source Slide 48</span>
+
+![](images/source_pages/slide-48.png){width="100%" fig-alt="48"}
+
+<!-- Slide 48 -->
+
+---
+
+## <span style="display:none">Source Slide 49</span>
+
+![](images/source_pages/slide-49.png){width="100%" fig-alt="Pointer Reference Variable"}
+
+<!-- Slide 49 -->

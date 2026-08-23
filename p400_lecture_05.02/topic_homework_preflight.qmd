@@ -1,0 +1,53 @@
+<!-- Topic: Homework Preflight -->
+<!-- Slides 9–14 -->
+
+# Homework Preflight
+
+![](images/source_pages/slide-09.png){width="100%" fig-alt="Homework Preflight"}
+
+::: notes
+Slides 9–14
+Source slide 9 from the authoritative PDF.
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## <span style="display:none">Source Slide 10</span>
+
+![](images/source_pages/slide-10.png){width="100%" fig-alt="Lightning Review"}
+
+<!-- Slide 10 -->
+
+---
+
+## <span style="display:none">Source Slide 11</span>
+
+![](images/source_pages/slide-11.png){width="100%" fig-alt="Homework 2 Pre ight"}
+
+<!-- Slide 11 -->
+
+---
+
+## <span style="display:none">Source Slide 12</span>
+
+![](images/source_pages/slide-12.png){width="100%" fig-alt="Debrief"}
+
+<!-- Slide 12 -->
+
+---
+
+## <span style="display:none">Source Slide 13</span>
+
+![](images/source_pages/slide-13.png){width="100%" fig-alt="Coding Exercise"}
+
+<!-- Slide 13 -->
+
+---
+
+## <span style="display:none">Source Slide 14</span>
+
+![](images/source_pages/slide-14.png){width="100%" fig-alt="Source Slide 14"}
+
+<!-- Slide 14 -->

@@ -1,0 +1,55 @@
+<!-- Topic: Lambda Expressions -->
+<!-- Slides 41–45 -->
+
+# Lambda Expressions
+
+## decimal5!
+
+::: notes
+Slides 41–45
+Source text extracted from the authoritative Keynote deck.
+:::
+
+<!-- Slide 41 -->
+
+---
+
+## )>`V
+
+- Agenda
+- Chapter 11 - More About Classes and OOP
+- The this poin
+- constant member functions
+
+<!-- Slide 42 -->
+
+---
+
+## )>`V
+
+- Agenda
+- Chapter 11 - More About Classes and OOP
+- The this poin
+- constant member functions
+
+<!-- Slide 43 -->
+
+---
+
+## By Bullet Group
+
+- apple:bc-appear
+- Skeleton Key_6625%
+- Key Takeaway1
+- Overloading operator() allows us to create code chunks we can pass around our program (Functors).
+
+<!-- Slide 44 -->
+
+---
+
+## s this section about?
+
+- $F86243C1-0E01-4266-A5EF-FCE6150CCFFD
+- decimal5
+
+<!-- Slide 45 -->

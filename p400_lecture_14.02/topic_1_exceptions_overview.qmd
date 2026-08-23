@@ -1,0 +1,49 @@
+<!-- Topic 1: Exceptions Overview -->
+<!-- Slides 1–4 -->
+# Exceptions Overview
+
+## Exceptions Overview
+
+This slide develops the authoritative source material on **exceptions overview**.
+
+::: notes
+Slides 1–4
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## Exceptions Overview
+
+This slide develops the authoritative source material on **exceptions overview**.
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+---
+
+## Exceptions Overview
+
+This slide develops the authoritative source material on **exceptions overview**.
+
+::: notes
+
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Exceptions Overview
+
+This slide develops the authoritative source material on **exceptions overview**.
+
+::: notes
+
+:::
+
+<!-- Slide 4 -->

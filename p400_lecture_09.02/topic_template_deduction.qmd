@@ -1,0 +1,113 @@
+<!-- Topic: Template Type Deduction and Specialization -->
+<!-- Slides 41–54 -->
+
+# Template Type Deduction and Specialization
+
+## Programming Exercise
+
+::: notes
+Slides 41–54
+Source text extracted from the authoritative Keynote deck.
+:::
+
+<!-- Slide 41 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 42 -->
+
+---
+
+## )>`V
+
+- Review
+
+<!-- Slide 43 -->
+
+---
+
+## $>:+C
+
+
+<!-- Slide 44 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 45 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 46 -->
+
+---
+
+## 0Tested - I can change this type to anything now.
+
+
+<!-- Slide 47 -->
+
+---
+
+## =Problem: How do we uniformly process data of differing types?
+
+- $5DC68920-5294-4A01-A18D-9A5BE4976E22
+- Copy code, change type, Hungarian notation
+- Func!
+- , Overloading
+
+<!-- Slide 48 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 49 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 50 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 51 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 52 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 53 -->
+
+---
+
+## Desk Check Exercise
+
+- Pair up
+- Manually determine the output of
+- qfollowing code?
+- DO NOT TYPE THIS IN AND EXECUTE IT.
+
+<!-- Slide 54 -->

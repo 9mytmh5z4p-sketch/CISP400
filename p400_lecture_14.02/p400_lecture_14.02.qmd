@@ -1,0 +1,44 @@
+# Last Time
+
+::: {.incremental}
++ **Polymorphism**
++ **Inheritance design**
+:::
+
+# Today's Agenda
+
+- Exceptions Overview
+- Why Exceptions
+- Try Catch and Throw
+- Exception Design
+- Abstract Classes and Exceptions
+- Exception and Class Keywords
+- Practice and Exercise
+- Exception Handling Details
+- Peer Review
+- Programming Exercise
+- Exception Hierarchies
+
+{{< include topic_1_exceptions_overview.qmd >}}
+{{< include topic_2_why_exceptions.qmd >}}
+{{< include topic_3_try_catch_and_throw.qmd >}}
+{{< include topic_4_exception_design.qmd >}}
+{{< include topic_5_abstract_classes_and_exceptions.qmd >}}
+{{< include topic_6_exception_and_class_keywords.qmd >}}
+{{< include topic_7_practice_and_exercise.qmd >}}
+{{< include topic_8_exception_handling_details.qmd >}}
+{{< include topic_9_peer_review.qmd >}}
+{{< include topic_10_programming_exercise.qmd >}}
+{{< include topic_11_exception_hierarchies.qmd >}}
+
+---
+# Key Takeaways
+
+- Abstract interfaces enforce the behavior a hierarchy requires.
+- Exceptions separate error detection from the code that handles an unusual event.
+
+---
+# Next Time
+
+---
+# Appendix

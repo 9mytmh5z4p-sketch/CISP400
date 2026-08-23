@@ -1,0 +1,37 @@
+<!-- Topic: Destructors -->
+<!-- Slides 38–41 -->
+
+# Destructors
+
+![](images/source_pages/slide-38.png){width="100%" fig-alt="Destructors"}
+
+::: notes
+Slides 38–41
+Source slide 38 from the authoritative PDF.
+:::
+
+<!-- Slide 38 -->
+
+---
+
+## <span style="display:none">Source Slide 39</span>
+
+![](images/source_pages/slide-39.png){width="100%" fig-alt="Source Slide 39"}
+
+<!-- Slide 39 -->
+
+---
+
+## <span style="display:none">Source Slide 40</span>
+
+![](images/source_pages/slide-40.png){width="100%" fig-alt="• Constructors!"}
+
+<!-- Slide 40 -->
+
+---
+
+## <span style="display:none">Source Slide 41</span>
+
+![](images/source_pages/slide-41.png){width="100%" fig-alt="Coding Exercise"}
+
+<!-- Slide 41 -->

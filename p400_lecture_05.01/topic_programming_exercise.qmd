@@ -1,0 +1,45 @@
+<!-- Topic: Programming Exercise -->
+<!-- Slides 67–71 -->
+
+# Programming Exercise
+
+![](images/source_pages/slide-67.png){width="100%" fig-alt="Programming Exercise"}
+
+::: notes
+Slides 67–71
+Source slide 67 from the authoritative PDF.
+:::
+
+<!-- Slide 67 -->
+
+---
+
+## <span style="display:none">Source Slide 68</span>
+
+![](images/source_pages/slide-68.png){width="100%" fig-alt="Source Slide 68"}
+
+<!-- Slide 68 -->
+
+---
+
+## <span style="display:none">Source Slide 69</span>
+
+![](images/source_pages/slide-69.png){width="100%" fig-alt="Programming Exercise"}
+
+<!-- Slide 69 -->
+
+---
+
+## <span style="display:none">Source Slide 70</span>
+
+![](images/source_pages/slide-70.png){width="100%" fig-alt="• Create a class Message with:"}
+
+<!-- Slide 70 -->
+
+---
+
+## <span style="display:none">Source Slide 71</span>
+
+![](images/source_pages/slide-71.png){width="100%" fig-alt="Source Slide 71"}
+
+<!-- Slide 71 -->

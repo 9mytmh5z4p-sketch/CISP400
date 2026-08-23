@@ -1,0 +1,96 @@
+<!-- Topic 6: Choosing a Loop -->
+<!-- Slides 50-57 -->
+
+# Choosing a Loop
+<!-- Slide 50 -->
+
+## Start With the Repetition Need {.smaller}
+
+- Do not start by picking syntax.
+- Start by asking what controls the repetition.
+
+::: notes
+Slides 50-57
+:::
+
+<!-- Slide 51 -->
+
+---
+
+## Use Range-Based for When You Have a Collection
+
+```cpp
+for (int score : scores) {
+    total += score;
+}
+```
+
+Use this when every item in the collection should be processed and the item value is enough.
+
+<!-- Slide 52 -->
+
+---
+
+## Use for When You Know the Count
+
+```cpp
+for (int hour = 1; hour <= totalHours; hour++) {
+    cout << hour << endl;
+}
+```
+
+Use this when the number of passes or the numeric range is known.
+
+<!-- Slide 53 -->
+
+---
+
+## Use while When You Must Test First
+
+```cpp
+while (moreData) {
+    processData();
+    moreData = checkForMoreData();
+}
+```
+
+Use this when the repeated work should happen only if the condition is already true.
+
+<!-- Slide 54 -->
+
+---
+
+## Use do-while When One Pass Is Required
+
+```cpp
+do {
+    displayMenu();
+    cin >> choice;
+} while (choice != 0);
+```
+
+Use this when the program must act once before it can decide whether to repeat.
+
+<!-- Slide 55 -->
+
+---
+
+## Decision Table
+
+| Repetition Need | Best Fit |
+|---|---|
+| Process every item in a collection | Range-based `for` |
+| Repeat a known number of times | `for` |
+| Repeat while a condition is true | `while` |
+| Run once, then decide whether to repeat | `do-while` |
+
+<!-- Slide 56 -->
+
+---
+
+## Summary
+
+- Choose the loop whose control structure matches the problem.
+- The goal is not to memorize loops; the goal is to match the design need.
+
+<!-- Slide 57 -->

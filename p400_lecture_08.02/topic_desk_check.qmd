@@ -1,0 +1,77 @@
+<!-- Topic: Desk Check -->
+<!-- Slides 69–77 -->
+
+# Desk Check
+
+![](images/source_pages/slide-69.png){width="100%" fig-alt="Desk Check"}
+
+::: notes
+Slides 69–77
+Source slide 69 from the authoritative PDF.
+:::
+
+<!-- Slide 69 -->
+
+---
+
+## <span style="display:none">Source Slide 70</span>
+
+![](images/source_pages/slide-70.png){width="100%" fig-alt="Source Slide 70"}
+
+<!-- Slide 70 -->
+
+---
+
+## <span style="display:none">Source Slide 71</span>
+
+![](images/source_pages/slide-71.png){width="100%" fig-alt="Source Slide 71"}
+
+<!-- Slide 71 -->
+
+---
+
+## <span style="display:none">Source Slide 72</span>
+
+![](images/source_pages/slide-72.png){width="100%" fig-alt="Move Operations"}
+
+<!-- Slide 72 -->
+
+---
+
+## <span style="display:none">Source Slide 73</span>
+
+![](images/source_pages/slide-73.png){width="100%" fig-alt="Source Slide 73"}
+
+<!-- Slide 73 -->
+
+---
+
+## <span style="display:none">Source Slide 74</span>
+
+![](images/source_pages/slide-74.png){width="100%" fig-alt="Source Slide 74"}
+
+<!-- Slide 74 -->
+
+---
+
+## <span style="display:none">Source Slide 75</span>
+
+![](images/source_pages/slide-75.png){width="100%" fig-alt="Source Slide 75"}
+
+<!-- Slide 75 -->
+
+---
+
+## <span style="display:none">Source Slide 76</span>
+
+![](images/source_pages/slide-76.png){width="100%" fig-alt="Source Slide 76"}
+
+<!-- Slide 76 -->
+
+---
+
+## <span style="display:none">Source Slide 77</span>
+
+![](images/source_pages/slide-77.png){width="100%" fig-alt="Source Slide 77"}
+
+<!-- Slide 77 -->

@@ -1,0 +1,37 @@
+<!-- Topic: Class Starters -->
+<!-- Slides 40–43 -->
+
+# Class Starters
+
+![](images/source_pages/slide-40.png){width="100%" fig-alt="Class Starters"}
+
+::: notes
+Slides 40–43
+Source slide 40 from the authoritative PDF.
+:::
+
+<!-- Slide 40 -->
+
+---
+
+## <span style="display:none">Source Slide 41</span>
+
+![](images/source_pages/slide-41.png){width="100%" fig-alt="What’s the difference …"}
+
+<!-- Slide 41 -->
+
+---
+
+## <span style="display:none">Source Slide 42</span>
+
+![](images/source_pages/slide-42.png){width="100%" fig-alt="42"}
+
+<!-- Slide 42 -->
+
+---
+
+## <span style="display:none">Source Slide 43</span>
+
+![](images/source_pages/slide-43.png){width="100%" fig-alt="Sentence Starters"}
+
+<!-- Slide 43 -->

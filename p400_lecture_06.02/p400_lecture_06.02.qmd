@@ -1,0 +1,10 @@
+{{< include topic_course_framing.qmd >}}
+{{< include topic_c_strings.qmd >}}
+{{< include topic_cstring_library.qmd >}}
+{{< include topic_conversions.qmd >}}
+{{< include topic_cstring_functions.qmd >}}
+{{< include topic_peer_review.qmd >}}
+{{< include topic_wrap_up.qmd >}}
+{{< include topic_homework_preflight.qmd >}}
+{{< include topic_lightning_review.qmd >}}
+

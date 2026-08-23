@@ -1,0 +1,129 @@
+<!-- Topic 2: Recovering From Bad cin Input -->
+<!-- Slides 18-28 -->
+
+# Recovering From Bad cin Input
+<!-- Slide 18 -->
+
+## When Input Breaks The Stream {.smaller}
+
+- If the client enters text where an `int` is expected, extraction fails.
+- The variable does not receive usable data.
+
+::: notes
+Slides 18-28
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## Range Failure vs Type Failure
+
+| Failure | What Happened |
+|---|---|
+| Range failure | The value was read, but it was outside the allowed range |
+| Type failure | The value could not be read as the requested type |
+
+<!-- Slide 20 -->
+
+---
+
+## Detecting Failed Extraction
+
+```cpp
+int score;
+
+cout << "Score: ";
+if (!(cin >> score)) {
+    cout << "That was not a whole number." << endl;
+}
+```
+
+<!-- Slide 21 -->
+
+---
+
+## Why The Same Bad Input Repeats
+
+- Failed extraction does not automatically remove the bad characters.
+- The next read sees the same bad input again.
+- The program must repair the stream before trying another read.
+
+<!-- Slide 22 -->
+
+---
+
+## What cin.clear() Fixes
+
+- `cin.clear()` resets the stream's error state.
+- It tells `cin` that future reads are allowed to happen.
+- It does not remove the bad input by itself.
+
+<!-- Slide 23 -->
+
+---
+
+## What cin.ignore() Removes
+
+- `cin.ignore()` discards characters waiting in the input buffer.
+- Validation code usually discards the rest of the line.
+- After ignoring the bad input, the next prompt can read fresh data.
+
+<!-- Slide 24 -->
+
+---
+
+## The Recovery Pattern
+
+```cpp
+int score;
+cout << "Score: ";
+
+while (!(cin >> score)) {
+    cin.clear();
+    cin.ignore(10000, '\n');
+    cout << "Enter a whole number: ";
+}
+```
+
+<!-- Slide 25 -->
+
+---
+
+## Combining Type And Range Checks
+
+```cpp
+int score;
+cout << "Score: ";
+
+while (!(cin >> score) || score < 0 || score > 100) {
+    cin.clear();
+    cin.ignore(10000, '\n');
+    cout << "Enter a whole number from 0 to 100: ";
+}
+```
+
+::: notes
+This compact pattern is easier to accept after students understand the two separate failure modes.
+:::
+
+<!-- Slide 26 -->
+
+---
+
+## Common Practices
+
+- Keep the recovery message specific.
+- Discard the rest of the line after a failed extraction.
+- Do not use a value until the read succeeds.
+
+<!-- Slide 27 -->
+
+---
+
+## Summary
+
+- Bad values can be rejected.
+- Bad extractions must be repaired before the program can keep reading.
+
+<!-- Slide 28 -->

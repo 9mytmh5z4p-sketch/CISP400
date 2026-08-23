@@ -1,0 +1,205 @@
+<!-- Topic 1: Abstract Base Classes -->
+<!-- Slides 1–17 -->
+# Abstract Base Classes
+
+## Polymorphism Review
+
+This slide develops the authoritative source material on **polymorphism review**.
+
+::: notes
+Slides 1–17
+:::
+
+<!-- Slide 1 -->
+
+---
+
+## Polymorphism Review
+
+This slide develops the authoritative source material on **polymorphism review**.
+
+::: notes
+
+:::
+
+<!-- Slide 2 -->
+
+---
+
+## Polymorphism Review
+
+This slide develops the authoritative source material on **polymorphism review**.
+
+::: notes
+
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Polymorphism Review
+
+This slide develops the authoritative source material on **polymorphism review**.
+
+::: notes
+
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Abstract Base Classes
+
+This slide develops the authoritative source material on **abstract base classes**.
+
+::: notes
+
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## Abstract Base Classes
+
+This slide develops the authoritative source material on **abstract base classes**.
+
+::: notes
+
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Abstract Base Classes
+
+This slide develops the authoritative source material on **abstract base classes**.
+
+::: notes
+
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## Abstract Base Classes
+
+This slide develops the authoritative source material on **abstract base classes**.
+
+::: notes
+
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Abstract Base Classes
+
+This slide develops the authoritative source material on **abstract base classes**.
+
+::: notes
+
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Abstract Base Classes
+
+This slide develops the authoritative source material on **abstract base classes**.
+
+::: notes
+
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## Abstract Base Classes
+
+This slide develops the authoritative source material on **abstract base classes**.
+
+::: notes
+
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## Abstract Base Classes
+
+This slide develops the authoritative source material on **abstract base classes**.
+
+::: notes
+
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Abstract Class Exercise
+
+This slide develops the authoritative source material on **abstract class exercise**.
+
+::: notes
+
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## Abstract Class Exercise
+
+This slide develops the authoritative source material on **abstract class exercise**.
+
+::: notes
+
+:::
+
+<!-- Slide 14 -->
+
+---
+
+## Abstract Class Exercise
+
+This slide develops the authoritative source material on **abstract class exercise**.
+
+::: notes
+
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## Abstract Class Exercise
+
+This slide develops the authoritative source material on **abstract class exercise**.
+
+::: notes
+
+:::
+
+<!-- Slide 16 -->
+
+---
+
+## Abstract Class Exercise
+
+This slide develops the authoritative source material on **abstract class exercise**.
+
+::: notes
+
+:::
+
+<!-- Slide 17 -->

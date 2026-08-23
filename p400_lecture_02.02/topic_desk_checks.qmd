@@ -1,0 +1,85 @@
+<!-- Topic: Desk Checks -->
+<!-- Slides 91–100 -->
+
+# Desk Checks
+
+![](images/source_pages/slide-91.png){width="100%" fig-alt="Desk Checks"}
+
+::: notes
+Slides 91–100
+Source slide 91 from the authoritative PDF.
+:::
+
+<!-- Slide 91 -->
+
+---
+
+## <span style="display:none">Source Slide 92</span>
+
+![](images/source_pages/slide-92.png){width="100%" fig-alt="Exercise Goals"}
+
+<!-- Slide 92 -->
+
+---
+
+## <span style="display:none">Source Slide 93</span>
+
+![](images/source_pages/slide-93.png){width="100%" fig-alt="Desk Check Exercise"}
+
+<!-- Slide 93 -->
+
+---
+
+## <span style="display:none">Source Slide 94</span>
+
+![](images/source_pages/slide-94.png){width="100%" fig-alt="94"}
+
+<!-- Slide 94 -->
+
+---
+
+## <span style="display:none">Source Slide 95</span>
+
+![](images/source_pages/slide-95.png){width="100%" fig-alt="95"}
+
+<!-- Slide 95 -->
+
+---
+
+## <span style="display:none">Source Slide 96</span>
+
+![](images/source_pages/slide-96.png){width="100%" fig-alt="Desk Check"}
+
+<!-- Slide 96 -->
+
+---
+
+## <span style="display:none">Source Slide 97</span>
+
+![](images/source_pages/slide-97.png){width="100%" fig-alt="Exercise Goals"}
+
+<!-- Slide 97 -->
+
+---
+
+## <span style="display:none">Source Slide 98</span>
+
+![](images/source_pages/slide-98.png){width="100%" fig-alt="Desk Check Exercise"}
+
+<!-- Slide 98 -->
+
+---
+
+## <span style="display:none">Source Slide 99</span>
+
+![](images/source_pages/slide-99.png){width="100%" fig-alt="Source Slide 99"}
+
+<!-- Slide 99 -->
+
+---
+
+## <span style="display:none">Source Slide 100</span>
+
+![](images/source_pages/slide-100.png){width="100%" fig-alt="Source Slide 100"}
+
+<!-- Slide 100 -->

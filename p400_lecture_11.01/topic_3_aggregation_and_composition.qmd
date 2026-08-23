@@ -1,0 +1,409 @@
+<!-- Topic 3: Aggregation and Composition -->
+<!-- Slides 25–58 -->
+# Aggregation and Composition
+
+## Composition Setup
+
+This slide develops the authoritative source material on **composition setup**.
+
+::: notes
+Slides 25–58
+:::
+
+<!-- Slide 25 -->
+
+---
+
+## Composition Setup
+
+This slide develops the authoritative source material on **composition setup**.
+
+::: notes
+
+:::
+
+<!-- Slide 26 -->
+
+---
+
+## Composition Setup
+
+This slide develops the authoritative source material on **composition setup**.
+
+::: notes
+
+:::
+
+<!-- Slide 27 -->
+
+---
+
+## Composition Context
+
+This slide develops the authoritative source material on **composition context**.
+
+::: notes
+
+:::
+
+<!-- Slide 28 -->
+
+---
+
+## Composition Context
+
+This slide develops the authoritative source material on **composition context**.
+
+::: notes
+
+:::
+
+<!-- Slide 29 -->
+
+---
+
+## Composition Context
+
+This slide develops the authoritative source material on **composition context**.
+
+::: notes
+
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## Composition Context
+
+This slide develops the authoritative source material on **composition context**.
+
+::: notes
+
+:::
+
+<!-- Slide 31 -->
+
+---
+
+## Programming Exercise
+
+This slide develops the authoritative source material on **programming exercise**.
+
+::: notes
+
+:::
+
+<!-- Slide 32 -->
+
+---
+
+## Programming Exercise
+
+This slide develops the authoritative source material on **programming exercise**.
+
+::: notes
+
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## Exercise Goals
+
+This slide develops the authoritative source material on **exercise goals**.
+
+::: notes
+
+:::
+
+<!-- Slide 34 -->
+
+---
+
+## Exercise Goals
+
+This slide develops the authoritative source material on **exercise goals**.
+
+::: notes
+
+:::
+
+<!-- Slide 35 -->
+
+---
+
+## Exercise Goals
+
+This slide develops the authoritative source material on **exercise goals**.
+
+::: notes
+
+:::
+
+<!-- Slide 36 -->
+
+---
+
+## Key Takeaway
+
+This slide develops the authoritative source material on **key takeaway**.
+
+::: notes
+
+:::
+
+<!-- Slide 37 -->
+
+---
+
+## Homework and Exercise Tasks
+
+This slide develops the authoritative source material on **homework and exercise tasks**.
+
+::: notes
+
+:::
+
+<!-- Slide 38 -->
+
+---
+
+## Homework and Exercise Tasks
+
+This slide develops the authoritative source material on **homework and exercise tasks**.
+
+::: notes
+
+:::
+
+<!-- Slide 39 -->
+
+---
+
+## Homework and Exercise Tasks
+
+This slide develops the authoritative source material on **homework and exercise tasks**.
+
+::: notes
+
+:::
+
+<!-- Slide 40 -->
+
+---
+
+## Homework and Exercise Tasks
+
+This slide develops the authoritative source material on **homework and exercise tasks**.
+
+::: notes
+
+:::
+
+<!-- Slide 41 -->
+
+---
+
+## Homework and Exercise Tasks
+
+This slide develops the authoritative source material on **homework and exercise tasks**.
+
+::: notes
+
+:::
+
+<!-- Slide 42 -->
+
+---
+
+## Homework and Exercise Tasks
+
+This slide develops the authoritative source material on **homework and exercise tasks**.
+
+::: notes
+
+:::
+
+<!-- Slide 43 -->
+
+---
+
+## Aggregation and Composition
+
+This slide develops the authoritative source material on **aggregation and composition**.
+
+::: notes
+
+:::
+
+<!-- Slide 44 -->
+
+---
+
+## Aggregation and Composition
+
+This slide develops the authoritative source material on **aggregation and composition**.
+
+::: notes
+
+:::
+
+<!-- Slide 45 -->
+
+---
+
+## Aggregation and Composition
+
+This slide develops the authoritative source material on **aggregation and composition**.
+
+::: notes
+
+:::
+
+<!-- Slide 46 -->
+
+---
+
+## Passing Data to Back-End Objects
+
+This slide develops the authoritative source material on **passing data to back-end objects**.
+
+::: notes
+
+:::
+
+<!-- Slide 47 -->
+
+---
+
+## Passing Data to Back-End Objects
+
+This slide develops the authoritative source material on **passing data to back-end objects**.
+
+::: notes
+
+:::
+
+<!-- Slide 48 -->
+
+---
+
+## Passing Data to Back-End Objects
+
+This slide develops the authoritative source material on **passing data to back-end objects**.
+
+::: notes
+
+:::
+
+<!-- Slide 49 -->
+
+---
+
+## Passing Data to Back-End Objects
+
+This slide develops the authoritative source material on **passing data to back-end objects**.
+
+::: notes
+
+:::
+
+<!-- Slide 50 -->
+
+---
+
+## Initialization Lists
+
+This slide develops the authoritative source material on **initialization lists**.
+
+::: notes
+
+:::
+
+<!-- Slide 51 -->
+
+---
+
+## Initialization Lists
+
+This slide develops the authoritative source material on **initialization lists**.
+
+::: notes
+
+:::
+
+<!-- Slide 52 -->
+
+---
+
+## Initialization Lists
+
+This slide develops the authoritative source material on **initialization lists**.
+
+::: notes
+
+:::
+
+<!-- Slide 53 -->
+
+---
+
+## Exercise Debrief
+
+This slide develops the authoritative source material on **exercise debrief**.
+
+::: notes
+
+:::
+
+<!-- Slide 54 -->
+
+---
+
+## Exercise Debrief
+
+This slide develops the authoritative source material on **exercise debrief**.
+
+::: notes
+
+:::
+
+<!-- Slide 55 -->
+
+---
+
+## Exercise Debrief
+
+This slide develops the authoritative source material on **exercise debrief**.
+
+::: notes
+
+:::
+
+<!-- Slide 56 -->
+
+---
+
+## Exercise Debrief
+
+This slide develops the authoritative source material on **exercise debrief**.
+
+::: notes
+
+:::
+
+<!-- Slide 57 -->
+
+---
+
+## Exercise Debrief
+
+This slide develops the authoritative source material on **exercise debrief**.
+
+::: notes
+
+:::
+
+<!-- Slide 58 -->

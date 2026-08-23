@@ -1,0 +1,45 @@
+<!-- Topic: Lecture Wrap-Up -->
+<!-- Slides 58–62 -->
+
+# Lecture Wrap-Up
+
+![](images/source_pages/slide-58.png){width="100%" fig-alt="Lecture Wrap-Up"}
+
+::: notes
+Slides 58–62
+Source slide 58 from the authoritative PDF.
+:::
+
+<!-- Slide 58 -->
+
+---
+
+## <span style="display:none">Source Slide 59</span>
+
+![](images/source_pages/slide-59.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 59 -->
+
+---
+
+## <span style="display:none">Source Slide 60</span>
+
+![](images/source_pages/slide-60.png){width="100%" fig-alt="Key Takeaway"}
+
+<!-- Slide 60 -->
+
+---
+
+## <span style="display:none">Source Slide 61</span>
+
+![](images/source_pages/slide-61.png){width="100%" fig-alt="61"}
+
+<!-- Slide 61 -->
+
+---
+
+## <span style="display:none">Source Slide 62</span>
+
+![](images/source_pages/slide-62.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 62 -->

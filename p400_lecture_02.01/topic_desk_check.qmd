@@ -1,0 +1,45 @@
+<!-- Topic: Desk Check -->
+<!-- Slides 66–70 -->
+
+# Desk Check
+
+![](images/source_pages/slide-66.png){width="100%" fig-alt="Desk Check"}
+
+::: notes
+Slides 66–70
+Source slide 66 from the authoritative PDF.
+:::
+
+<!-- Slide 66 -->
+
+---
+
+## <span style="display:none">Source Slide 67</span>
+
+![](images/source_pages/slide-67.png){width="100%" fig-alt="Exercise Goals"}
+
+<!-- Slide 67 -->
+
+---
+
+## <span style="display:none">Source Slide 68</span>
+
+![](images/source_pages/slide-68.png){width="100%" fig-alt="Desk Check Exercise"}
+
+<!-- Slide 68 -->
+
+---
+
+## <span style="display:none">Source Slide 69</span>
+
+![](images/source_pages/slide-69.png){width="100%" fig-alt="69"}
+
+<!-- Slide 69 -->
+
+---
+
+## <span style="display:none">Source Slide 70</span>
+
+![](images/source_pages/slide-70.png){width="100%" fig-alt="70"}
+
+<!-- Slide 70 -->

@@ -1,0 +1,123 @@
+<!-- Topic 4: Compound Conditions -->
+<!-- Slides 30-39 -->
+
+# Compound Conditions
+<!-- Slide 30 -->
+
+## Combining Questions {.smaller}
+
+- A compound condition joins two or more smaller conditions.
+- Logical operators let one decision ask a larger question.
+
+::: notes
+Slides 30-39
+:::
+
+<!-- Slide 31 -->
+
+---
+
+## The AND Operator `&&`
+
+```cpp
+if (age >= 18 && hasTicket) {
+    cout << "Enter";
+}
+```
+
+The whole condition is true only when both smaller conditions are true.
+
+<!-- Slide 32 -->
+
+---
+
+## The OR Operator `||`
+
+```cpp
+if (payment == "cash" || payment == "card") {
+    cout << "Payment accepted";
+}
+```
+
+The whole condition is true when at least one smaller condition is true.
+
+<!-- Slide 33 -->
+
+---
+
+## Short-Circuit Evaluation
+
+```cpp
+if (denominator != 0 && numerator / denominator > 2) {
+    cout << "Safe comparison";
+}
+```
+
+C++ can stop checking once the final answer is already known. Here, the division only happens if the denominator is not zero.
+
+<!-- Slide 34 -->
+
+---
+
+## The NOT Operator `!`
+
+```cpp
+if (!isOpen) {
+    cout << "Closed";
+}
+```
+
+The NOT operator reverses the truth value of a condition.
+
+<!-- Slide 35 -->
+
+---
+
+## Truth Tables
+
+| A | B | `A && B` | `A || B` |
+|---|---|---|---|
+| true | true | true | true |
+| true | false | false | true |
+| false | true | false | true |
+| false | false | false | false |
+
+<!-- Slide 36 -->
+
+---
+
+## Reading Compound Conditions Out Loud
+
+```cpp
+if (score >= 0 && score <= 100) {
+    cout << "Valid score";
+}
+```
+
+Read it as: "if score is at least 0 and score is at most 100."
+
+<!-- Slide 37 -->
+
+---
+
+## Reducing Extra Branches
+
+```cpp
+if (isWeekend || isHoliday) {
+    rate = 1.5;
+}
+```
+
+Logical operators can combine related questions instead of forcing separate branches for every combination.
+
+<!-- Slide 38 -->
+
+---
+
+## Summary
+
+- `&&` requires both conditions to be true.
+- `||` requires at least one condition to be true.
+- `!` reverses a condition.
+
+<!-- Slide 39 -->

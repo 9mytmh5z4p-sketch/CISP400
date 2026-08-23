@@ -1,0 +1,45 @@
+<!-- Topic: Lecture Wrap-Up -->
+<!-- Slides 60–64 -->
+
+# Lecture Wrap-Up
+
+![](images/source_pages/slide-60.png){width="100%" fig-alt="Lecture Wrap-Up"}
+
+::: notes
+Slides 60–64
+Source slide 60 from the authoritative PDF.
+:::
+
+<!-- Slide 60 -->
+
+---
+
+## <span style="display:none">Source Slide 61</span>
+
+![](images/source_pages/slide-61.png){width="100%" fig-alt="Ch 11 - More OOP"}
+
+<!-- Slide 61 -->
+
+---
+
+## <span style="display:none">Source Slide 62</span>
+
+![](images/source_pages/slide-62.png){width="100%" fig-alt="62"}
+
+<!-- Slide 62 -->
+
+---
+
+## <span style="display:none">Source Slide 63</span>
+
+![](images/source_pages/slide-63.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 63 -->
+
+---
+
+## <span style="display:none">Source Slide 64</span>
+
+![](images/source_pages/slide-64.png){width="100%" fig-alt="Programming Exercise"}
+
+<!-- Slide 64 -->

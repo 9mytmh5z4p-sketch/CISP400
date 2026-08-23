@@ -1,0 +1,97 @@
+<!-- Topic 7: Sealing Classes and Functions -->
+<!-- Slides 79–86 -->
+# Sealing Classes and Functions
+
+## Sealing Classes and Functions
+
+This slide develops the authoritative source material on **sealing classes and functions**.
+
+::: notes
+Slides 79–86
+:::
+
+<!-- Slide 79 -->
+
+---
+
+## Sealing Classes and Functions
+
+This slide develops the authoritative source material on **sealing classes and functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 80 -->
+
+---
+
+## Sealing Classes and Functions
+
+This slide develops the authoritative source material on **sealing classes and functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 81 -->
+
+---
+
+## Sealing Classes and Functions
+
+This slide develops the authoritative source material on **sealing classes and functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 82 -->
+
+---
+
+## Sealing Classes and Functions
+
+This slide develops the authoritative source material on **sealing classes and functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 83 -->
+
+---
+
+## Sealing Classes and Functions
+
+This slide develops the authoritative source material on **sealing classes and functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 84 -->
+
+---
+
+## Sealing Classes and Functions
+
+This slide develops the authoritative source material on **sealing classes and functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 85 -->
+
+---
+
+## Sealing Classes and Functions
+
+This slide develops the authoritative source material on **sealing classes and functions**.
+
+::: notes
+
+:::
+
+<!-- Slide 86 -->

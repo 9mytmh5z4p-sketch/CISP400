@@ -1,0 +1,29 @@
+<!-- Topic: Pointer Arithmetic -->
+<!-- Slides 22–24 -->
+
+# Pointer Arithmetic
+
+![](images/source_pages/slide-22.png){width="100%" fig-alt="Pointer arithmetic"}
+
+::: notes
+Slides 22–24
+Source slides 22–24 from the authoritative PDF.
+:::
+
+<!-- Slide 22 -->
+
+---
+
+## <span style="display:none">Source Slide 23</span>
+
+![](images/source_pages/slide-23.png){width="100%" fig-alt="Pointer arithmetic"}
+
+<!-- Slide 23 -->
+
+---
+
+## <span style="display:none">Source Slide 24</span>
+
+![](images/source_pages/slide-24.png){width="100%" fig-alt="Pointer arithmetic"}
+
+<!-- Slide 24 -->

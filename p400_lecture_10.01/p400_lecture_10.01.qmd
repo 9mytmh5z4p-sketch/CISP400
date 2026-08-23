@@ -1,0 +1,34 @@
+# Last Time
+
+::: {.incremental}
++ **Object-oriented programming**
++ **Operator overloading**
+:::
+
+# Today's Agenda
+
+- Type Conversion Operators
+- Conversion Constructors
+- Operator Chaining
+- Lambda and Functor Review
+
+{{< include topic_1_course_framing.qmd >}}
+{{< include topic_2_type_conversion_operators.qmd >}}
+{{< include topic_3_conversion_constructors.qmd >}}
+{{< include topic_4_operator_chaining.qmd >}}
+{{< include topic_5_lambda_and_functor_review.qmd >}}
+
+---
+
+# Key Takeaways
+
+- Conversion syntax must preserve clear type intent.
+- Operators and constructors should maintain predictable object behavior.
+
+---
+
+# Next Time
+
+---
+
+# Appendix

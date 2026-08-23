@@ -1,0 +1,61 @@
+<!-- Topic 2: STL Preview -->
+<!-- Slides 3–7 -->
+# STL Preview
+
+## Standard Template Library Preview
+
+This slide develops the authoritative source material on **standard template library preview**.
+
+::: notes
+Slides 3–7
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Standard Template Library Preview
+
+This slide develops the authoritative source material on **standard template library preview**.
+
+::: notes
+
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Standard Template Library Preview
+
+This slide develops the authoritative source material on **standard template library preview**.
+
+::: notes
+
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## Standard Template Library Preview
+
+This slide develops the authoritative source material on **standard template library preview**.
+
+::: notes
+
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Standard Template Library Preview
+
+This slide develops the authoritative source material on **standard template library preview**.
+
+::: notes
+
+:::
+
+<!-- Slide 7 -->

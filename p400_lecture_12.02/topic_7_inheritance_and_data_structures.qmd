@@ -1,0 +1,97 @@
+<!-- Topic 7: Inheritance and Data Structures -->
+<!-- Slides 47–54 -->
+# Inheritance and Data Structures
+
+## Coding Practice
+
+This slide develops the authoritative source material on **coding practice**.
+
+::: notes
+Slides 47–54
+:::
+
+<!-- Slide 47 -->
+
+---
+
+## Coding Practice
+
+This slide develops the authoritative source material on **coding practice**.
+
+::: notes
+
+:::
+
+<!-- Slide 48 -->
+
+---
+
+## Coding Practice
+
+This slide develops the authoritative source material on **coding practice**.
+
+::: notes
+
+:::
+
+<!-- Slide 49 -->
+
+---
+
+## Data Structures and Inheritance
+
+This slide develops the authoritative source material on **data structures and inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 50 -->
+
+---
+
+## Data Structures and Inheritance
+
+This slide develops the authoritative source material on **data structures and inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 51 -->
+
+---
+
+## Data Structures and Inheritance
+
+This slide develops the authoritative source material on **data structures and inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 52 -->
+
+---
+
+## Data Structures and Inheritance
+
+This slide develops the authoritative source material on **data structures and inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 53 -->
+
+---
+
+## Data Structures and Inheritance
+
+This slide develops the authoritative source material on **data structures and inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 54 -->

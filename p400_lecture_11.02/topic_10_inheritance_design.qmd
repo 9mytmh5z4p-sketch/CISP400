@@ -1,0 +1,349 @@
+<!-- Topic 10: Inheritance Design -->
+<!-- Slides 124–152 -->
+# Inheritance Design
+
+## Using Inheritance
+
+This slide develops the authoritative source material on **using inheritance**.
+
+::: notes
+Slides 124–152
+:::
+
+<!-- Slide 124 -->
+
+---
+
+## Using Inheritance
+
+This slide develops the authoritative source material on **using inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 125 -->
+
+---
+
+## Using Inheritance
+
+This slide develops the authoritative source material on **using inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 126 -->
+
+---
+
+## Using Inheritance
+
+This slide develops the authoritative source material on **using inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 127 -->
+
+---
+
+## Using Inheritance
+
+This slide develops the authoritative source material on **using inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 128 -->
+
+---
+
+## Using Inheritance
+
+This slide develops the authoritative source material on **using inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 129 -->
+
+---
+
+## Using Inheritance
+
+This slide develops the authoritative source material on **using inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 130 -->
+
+---
+
+## Destruction and Inheritance
+
+This slide develops the authoritative source material on **destruction and inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 131 -->
+
+---
+
+## Destruction and Inheritance
+
+This slide develops the authoritative source material on **destruction and inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 132 -->
+
+---
+
+## Destruction and Inheritance
+
+This slide develops the authoritative source material on **destruction and inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 133 -->
+
+---
+
+## Destruction and Inheritance
+
+This slide develops the authoritative source material on **destruction and inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 134 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 135 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 136 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 137 -->
+
+---
+
+## Inheritance Design
+
+This slide develops the authoritative source material on **inheritance design**.
+
+::: notes
+
+:::
+
+<!-- Slide 138 -->
+
+---
+
+## Virtual Inheritance
+
+This slide develops the authoritative source material on **virtual inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 139 -->
+
+---
+
+## Virtual Inheritance
+
+This slide develops the authoritative source material on **virtual inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 140 -->
+
+---
+
+## Virtual Inheritance
+
+This slide develops the authoritative source material on **virtual inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 141 -->
+
+---
+
+## Virtual Inheritance
+
+This slide develops the authoritative source material on **virtual inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 142 -->
+
+---
+
+## Virtual Inheritance
+
+This slide develops the authoritative source material on **virtual inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 143 -->
+
+---
+
+## Virtual Inheritance
+
+This slide develops the authoritative source material on **virtual inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 144 -->
+
+---
+
+## Virtual Inheritance
+
+This slide develops the authoritative source material on **virtual inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 145 -->
+
+---
+
+## Virtual Inheritance
+
+This slide develops the authoritative source material on **virtual inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 146 -->
+
+---
+
+## Inheritance in Other Languages
+
+This slide develops the authoritative source material on **inheritance in other languages**.
+
+::: notes
+
+:::
+
+<!-- Slide 147 -->
+
+---
+
+## Inheritance Examples
+
+This slide develops the authoritative source material on **inheritance examples**.
+
+::: notes
+
+:::
+
+<!-- Slide 148 -->
+
+---
+
+## Inheritance Examples
+
+This slide develops the authoritative source material on **inheritance examples**.
+
+::: notes
+
+:::
+
+<!-- Slide 149 -->
+
+---
+
+## Inheritance Examples
+
+This slide develops the authoritative source material on **inheritance examples**.
+
+::: notes
+
+:::
+
+<!-- Slide 150 -->
+
+---
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+
+:::
+
+<!-- Slide 151 -->
+
+---
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+
+:::
+
+<!-- Slide 152 -->

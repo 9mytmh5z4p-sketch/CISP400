@@ -1,0 +1,13 @@
+<!-- Topic: References -->
+<!-- Slides 71–71 -->
+
+# References
+
+![](images/source_pages/slide-71.png){width="100%" fig-alt="References"}
+
+::: notes
+Slides 71–71
+Source slide 71 from the authoritative PDF.
+:::
+
+<!-- Slide 71 -->

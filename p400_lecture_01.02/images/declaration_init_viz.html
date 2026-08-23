@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Declaration vs Initialization</title>
+<style>
+html { font-size: 200%; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  display: grid;
+  grid-template-columns: 1fr 72px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 6px 6px 8px;
+  gap: 5px;
+  overflow: hidden;
+}
+
+/* ── Status bar ─────────────────────────────────────── */
+.status-bar {
+  background: #1e293b;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 0.52rem;
+  font-weight: 600;
+  color: #94a3b8;
+  transition: color 0.3s, background 0.3s;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Panel row ──────────────────────────────────────── */
+.panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  flex: 1;
+  min-height: 0;
+}
+
+.panel {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 7px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.panel-label {
+  font-size: 0.40rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #64748b;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #334155;
+  margin-bottom: 2px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Phase badge ────────────────────────────────────── */
+.phase-badge {
+  display: inline-block;
+  font-size: 0.36rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 1px 5px;
+  border-radius: 8px;
+  background: #1e293b;
+  color: #475569;
+  border: 1px solid #334155;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+.phase-badge.declare { background: #172554; color: #93c5fd; border-color: #3b82f6; }
+.phase-badge.init    { background: #431407; color: #fdba74; border-color: #ea580c; }
+.phase-badge.done    { background: #052e16; color: #4ade80; border-color: #16a34a; }
+
+/* ── Code block ─────────────────────────────────────── */
+.code-block {
+  font-family: 'Courier New', monospace;
+  font-size: 0.48rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  flex: 1;
+  justify-content: center;
+}
+
+.code-line {
+  padding: 3px 6px;
+  border-radius: 3px;
+  color: #1e293b;
+  transition: color 0.3s, background 0.3s;
+  white-space: pre;
+  line-height: 1.5;
+}
+
+.code-line.idle  { color: #334155; }
+.code-line.done  { color: #475569; }
+.code-line.active {
+  color: #f8fafc;
+  background: #1d3461;
+  border-left: 2px solid #3b82f6;
+  padding-left: 4px;
+}
+
+.code-line.idle  .kw,
+.code-line.idle  .ty  { color: #1e3a5f; }
+.code-line.idle  .nu,
+.code-line.idle  .st  { color: #1a1a1a; }
+.code-line.idle  .cm  { color: #1e293b; }
+
+.code-line.done  .kw  { color: #2d4a7a; }
+.code-line.done  .ty  { color: #1a4a3a; }
+.code-line.done  .nu  { color: #5a3a00; }
+.code-line.done  .st  { color: #5a1a1a; }
+.code-line.done  .cm  { color: #2a3040; }
+
+.code-line.active .kw { color: #7dd3fc; }
+.code-line.active .ty { color: #34d399; }
+.code-line.active .nu { color: #fbbf24; }
+.code-line.active .st { color: #f87171; }
+.code-line.active .cm { color: #475569; }
+
+/* ── Memory panel ───────────────────────────────────── */
+.mem-header {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr 1fr;
+  gap: 4px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #334155;
+  flex-shrink: 0;
+  margin-bottom: 2px;
+}
+
+.mem-hcell {
+  font-size: 0.36rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #475569;
+  text-align: center;
+}
+.mem-hcell:first-child { text-align: left; }
+
+.mem-table {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  justify-content: center;
+}
+
+.mem-row {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr 1fr;
+  gap: 4px;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.mem-row.visible { opacity: 1; }
+
+.mem-cell {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 4px;
+  padding: 4px 5px;
+  font-size: 0.42rem;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  color: #475569;
+  transition: background 0.4s, border-color 0.4s, color 0.4s;
+}
+
+.mem-cell.name-cell {
+  color: #94a3b8;
+  font-weight: 700;
+  text-align: left;
+  font-size: 0.44rem;
+}
+
+.mem-cell.addr-cell {
+  color: #334155;
+  font-size: 0.36rem;
+}
+
+/* value states */
+.mem-cell.unknown {
+  color: #ef4444;
+  border-style: dashed;
+  border-color: #7f1d1d;
+}
+
+.mem-cell.active-fill {
+  color: #fdba74;
+  background: #431407;
+  border-color: #ea580c;
+}
+
+.mem-cell.filled {
+  color: #4ade80;
+  background: #052e16;
+  border-color: #16a34a;
+}
+
+/* ── Controls ───────────────────────────────────────── */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 8px;
+  border-left: 1px solid #1e293b;
+  background: #0a1120;
+}
+
+.btn {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  background: #1e293b;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 12px 7px;
+  font-size: 0.36rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  width: 100%;
+  text-align: center;
+}
+
+.btn:hover { background: #334155; color: #e2e8f0; border-color: #64748b; }
+.btn.primary { background: #1d3461; color: #93c5fd; border-color: #3b82f6; }
+.btn.primary:hover { background: #1e40af; color: #bfdbfe; }
+</style>
+</head>
+<body>
+
+<div class="content">
+  <div class="status-bar" id="status">Press Step or Play to begin.</div>
+
+  <div class="panels">
+
+    <!-- Code panel -->
+    <div class="panel">
+      <div class="panel-label">
+        Source Code
+        <span class="phase-badge" id="phase-badge">—</span>
+      </div>
+      <div class="code-block">
+        <div class="code-line idle" id="cl-0"><span class="cm">// Step 1: Declaration</span></div>
+        <div class="code-line idle" id="cl-1"><span class="ty">int</span>    <span class="kw">age</span><span>;</span></div>
+        <div class="code-line idle" id="cl-2"><span class="ty">string</span> <span class="kw">name</span><span>;</span></div>
+        <div class="code-line idle" id="cl-3">&nbsp;</div>
+        <div class="code-line idle" id="cl-4"><span class="cm">// Step 2: Initialization</span></div>
+        <div class="code-line idle" id="cl-5"><span class="kw">age</span>  <span>= </span><span class="nu">25</span><span>;</span></div>
+        <div class="code-line idle" id="cl-6"><span class="kw">name</span> <span>= </span><span class="st">"Pat"</span><span>;</span></div>
+      </div>
+    </div>
+
+    <!-- Memory panel -->
+    <div class="panel">
+      <div class="panel-label">Memory</div>
+      <div class="mem-header">
+        <div class="mem-hcell">Variable</div>
+        <div class="mem-hcell">Address</div>
+        <div class="mem-hcell">Value</div>
+      </div>
+      <div class="mem-table">
+        <div class="mem-row" id="row-age">
+          <div class="mem-cell name-cell">age</div>
+          <div class="mem-cell addr-cell">0xFA2</div>
+          <div class="mem-cell" id="val-age">—</div>
+        </div>
+        <div class="mem-row" id="row-name">
+          <div class="mem-cell name-cell">name</div>
+          <div class="mem-cell addr-cell">0xFA6</div>
+          <div class="mem-cell" id="val-name">—</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Controls -->
+<div class="controls">
+  <button class="btn primary" id="btn-play">▶ Play</button>
+  <button class="btn"         id="btn-step">Step</button>
+  <button class="btn"         id="btn-reset">Reset</button>
+</div>
+
+<script>
+function buildStates() {
+  return [
+    // 0 — declare age
+    {
+      status: "Step 1 — Declaration: the compiler reserves an int-sized slot in memory for 'age'.",
+      phase: "declare",
+      active: [1], done: [0],
+      ageVisible: true,  ageVal: "??",    ageClass: "unknown",
+      nameVisible: false, nameVal: "—",   nameClass: ""
+    },
+    // 1 — declare name
+    {
+      status: "Step 2 — Declaration: a string-sized slot is reserved for 'name'.",
+      phase: "declare",
+      active: [2], done: [0, 1],
+      ageVisible: true,  ageVal: "??",    ageClass: "unknown",
+      nameVisible: true, nameVal: "??",   nameClass: "unknown"
+    },
+    // 2 — post-declaration pause
+    {
+      status: "Step 3 — Both slots exist in memory. Neither holds a meaningful value yet — only garbage.",
+      phase: "declare",
+      active: [], done: [0, 1, 2],
+      ageVisible: true,  ageVal: "??",    ageClass: "unknown",
+      nameVisible: true, nameVal: "??",   nameClass: "unknown"
+    },
+    // 3 — initialize age
+    {
+      status: "Step 4 — Initialization: the value 25 is written into 'age's reserved slot.",
+      phase: "init",
+      active: [5], done: [0, 1, 2, 4],
+      ageVisible: true,  ageVal: "25",    ageClass: "active-fill",
+      nameVisible: true, nameVal: "??",   nameClass: "unknown"
+    },
+    // 4 — age settled
+    {
+      status: "Step 5 — 'age' is initialized. Its slot now holds a known, usable value.",
+      phase: "init",
+      active: [], done: [0, 1, 2, 4, 5],
+      ageVisible: true,  ageVal: "25",    ageClass: "filled",
+      nameVisible: true, nameVal: "??",   nameClass: "unknown"
+    },
+    // 5 — initialize name
+    {
+      status: "Step 6 — Initialization: \"Pat\" is written into 'name's reserved slot.",
+      phase: "init",
+      active: [6], done: [0, 1, 2, 4, 5],
+      ageVisible: true,  ageVal: "25",    ageClass: "filled",
+      nameVisible: true, nameVal: '"Pat"', nameClass: "active-fill"
+    },
+    // 6 — done
+    {
+      status: "Step 7 — Both variables initialized. Declaration reserves the slot; initialization fills it.",
+      phase: "done",
+      active: [], done: [0, 1, 2, 4, 5, 6],
+      ageVisible: true,  ageVal: "25",    ageClass: "filled",
+      nameVisible: true, nameVal: '"Pat"', nameClass: "filled"
+    }
+  ];
+}
+
+const STATES = buildStates();
+let cur = -1, playing = false, timer = null;
+
+function render(s) {
+  document.getElementById('status').textContent = s.status;
+
+  const badge = document.getElementById('phase-badge');
+  badge.className = 'phase-badge ' + s.phase;
+  badge.textContent = s.phase === 'declare' ? 'Declaration'
+                    : s.phase === 'init'    ? 'Initialization'
+                    :                         'Complete';
+
+  for (let i = 0; i < 7; i++) {
+    const el = document.getElementById('cl-' + i);
+    if (!el) continue;
+    el.className = 'code-line ' + (
+      s.active.includes(i) ? 'active' :
+      s.done.includes(i)   ? 'done'   : 'idle'
+    );
+  }
+
+  document.getElementById('row-age').classList.toggle('visible', s.ageVisible);
+  document.getElementById('row-name').classList.toggle('visible', s.nameVisible);
+
+  const va = document.getElementById('val-age');
+  va.textContent = s.ageVal;
+  va.className = 'mem-cell ' + s.ageClass;
+
+  const vn = document.getElementById('val-name');
+  vn.textContent = s.nameVal;
+  vn.className = 'mem-cell ' + s.nameClass;
+}
+
+function setPlaying(on) {
+  playing = on;
+  document.getElementById('btn-play').textContent = on ? '⏸ Pause' : '▶ Play';
+  if (on) {
+    timer = setInterval(() => {
+      advance();
+      if (cur >= STATES.length - 1) setPlaying(false);
+    }, 1400);
+  } else {
+    clearInterval(timer); timer = null;
+  }
+}
+
+function advance() {
+  if (cur >= STATES.length - 1) { reset(); return; }
+  cur++;
+  render(STATES[cur]);
+  if (cur === STATES.length - 1) setPlaying(false);
+}
+
+function reset() {
+  setPlaying(false);
+  cur = -1;
+  document.getElementById('status').textContent = 'Press Step or Play to begin.';
+  const badge = document.getElementById('phase-badge');
+  badge.className = 'phase-badge';
+  badge.textContent = '—';
+  for (let i = 0; i < 7; i++) {
+    const el = document.getElementById('cl-' + i);
+    if (el) el.className = 'code-line idle';
+  }
+  document.getElementById('row-age').classList.remove('visible');
+  document.getElementById('row-name').classList.remove('visible');
+  const va = document.getElementById('val-age');
+  va.textContent = '—'; va.className = 'mem-cell';
+  const vn = document.getElementById('val-name');
+  vn.textContent = '—'; vn.className = 'mem-cell';
+}
+
+document.getElementById('btn-play').addEventListener('click', () => setPlaying(!playing));
+document.getElementById('btn-step').addEventListener('click', advance);
+document.getElementById('btn-reset').addEventListener('click', reset);
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!-- Topic 6: Desk Check Exercise -->
+<!-- Slides 34–35 -->
+# Desk Check Exercise
+
+## Desk Check Exercise
+
+This slide develops the authoritative source material on **desk check exercise**.
+
+::: notes
+Slides 34–35
+:::
+
+<!-- Slide 34 -->
+
+---
+
+## Desk Check Exercise
+
+This slide develops the authoritative source material on **desk check exercise**.
+
+::: notes
+
+:::
+
+<!-- Slide 35 -->

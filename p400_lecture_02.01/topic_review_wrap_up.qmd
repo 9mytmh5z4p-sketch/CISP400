@@ -1,0 +1,45 @@
+<!-- Topic: Review Wrap-Up -->
+<!-- Slides 48–52 -->
+
+# Review Wrap-Up
+
+![](images/source_pages/slide-48.png){width="100%" fig-alt="Review Wrap-Up"}
+
+::: notes
+Slides 48–52
+Source slide 48 from the authoritative PDF.
+:::
+
+<!-- Slide 48 -->
+
+---
+
+## <span style="display:none">Source Slide 49</span>
+
+![](images/source_pages/slide-49.png){width="100%" fig-alt="C++ Overview"}
+
+<!-- Slide 49 -->
+
+---
+
+## <span style="display:none">Source Slide 50</span>
+
+![](images/source_pages/slide-50.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 50 -->
+
+---
+
+## <span style="display:none">Source Slide 51</span>
+
+![](images/source_pages/slide-51.png){width="100%" fig-alt="51"}
+
+<!-- Slide 51 -->
+
+---
+
+## <span style="display:none">Source Slide 52</span>
+
+![](images/source_pages/slide-52.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 52 -->

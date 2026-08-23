@@ -1,0 +1,29 @@
+<!-- Topic: Homework Peer Review -->
+<!-- Slides 49–51 -->
+
+# Homework Peer Review
+
+![](images/source_pages/slide-49.png){width="100%" fig-alt="Homework Peer Review"}
+
+::: notes
+Slides 49–51
+Source slide 49 from the authoritative PDF.
+:::
+
+<!-- Slide 49 -->
+
+---
+
+## <span style="display:none">Source Slide 50</span>
+
+![](images/source_pages/slide-50.png){width="100%" fig-alt="Hw Debrief"}
+
+<!-- Slide 50 -->
+
+---
+
+## <span style="display:none">Source Slide 51</span>
+
+![](images/source_pages/slide-51.png){width="100%" fig-alt="Process"}
+
+<!-- Slide 51 -->

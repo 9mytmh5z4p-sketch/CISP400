@@ -1,0 +1,61 @@
+<!-- Topic 4: Template Motivation -->
+<!-- Slides 22–26 -->
+# Template Motivation
+
+## Template Motivation
+
+This slide develops the authoritative source material on **template motivation**.
+
+::: notes
+Slides 22–26
+:::
+
+<!-- Slide 22 -->
+
+---
+
+## Template Motivation
+
+This slide develops the authoritative source material on **template motivation**.
+
+::: notes
+
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## Template Motivation
+
+This slide develops the authoritative source material on **template motivation**.
+
+::: notes
+
+:::
+
+<!-- Slide 24 -->
+
+---
+
+## Template Motivation
+
+This slide develops the authoritative source material on **template motivation**.
+
+::: notes
+
+:::
+
+<!-- Slide 25 -->
+
+---
+
+## Template Motivation
+
+This slide develops the authoritative source material on **template motivation**.
+
+::: notes
+
+:::
+
+<!-- Slide 26 -->

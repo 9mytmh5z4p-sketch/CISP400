@@ -1,0 +1,6 @@
+{{< include topic_course_framing.qmd >}}
+{{< include topic_constructors.qmd >}}
+{{< include topic_this_pointer.qmd >}}
+{{< include topic_static_members.qmd >}}
+{{< include topic_operator_preview.qmd >}}
+

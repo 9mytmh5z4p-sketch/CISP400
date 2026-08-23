@@ -1,0 +1,133 @@
+<!-- Topic 5: Object Slicing -->
+<!-- Slides 55–65 -->
+# Object Slicing
+
+## Object Slicing
+
+This slide develops the authoritative source material on **object slicing**.
+
+::: notes
+Slides 55–65
+:::
+
+<!-- Slide 55 -->
+
+---
+
+## Object Slicing
+
+This slide develops the authoritative source material on **object slicing**.
+
+::: notes
+
+:::
+
+<!-- Slide 56 -->
+
+---
+
+## Object Slicing
+
+This slide develops the authoritative source material on **object slicing**.
+
+::: notes
+
+:::
+
+<!-- Slide 57 -->
+
+---
+
+## Object Slicing
+
+This slide develops the authoritative source material on **object slicing**.
+
+::: notes
+
+:::
+
+<!-- Slide 58 -->
+
+---
+
+## Object Slicing
+
+This slide develops the authoritative source material on **object slicing**.
+
+::: notes
+
+:::
+
+<!-- Slide 59 -->
+
+---
+
+## Object Slicing
+
+This slide develops the authoritative source material on **object slicing**.
+
+::: notes
+
+:::
+
+<!-- Slide 60 -->
+
+---
+
+## Object Slicing
+
+This slide develops the authoritative source material on **object slicing**.
+
+::: notes
+
+:::
+
+<!-- Slide 61 -->
+
+---
+
+## Object Slicing
+
+This slide develops the authoritative source material on **object slicing**.
+
+::: notes
+
+:::
+
+<!-- Slide 62 -->
+
+---
+
+## Object Slicing
+
+This slide develops the authoritative source material on **object slicing**.
+
+::: notes
+
+:::
+
+<!-- Slide 63 -->
+
+---
+
+## Object Slicing
+
+This slide develops the authoritative source material on **object slicing**.
+
+::: notes
+
+:::
+
+<!-- Slide 64 -->
+
+---
+
+## Object Slicing
+
+This slide develops the authoritative source material on **object slicing**.
+
+::: notes
+
+:::
+
+<!-- Slide 65 -->

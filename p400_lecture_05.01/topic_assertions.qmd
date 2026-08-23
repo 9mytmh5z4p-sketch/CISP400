@@ -1,0 +1,37 @@
+<!-- Topic: Assertions -->
+<!-- Slides 59–62 -->
+
+# Assertions
+
+![](images/source_pages/slide-59.png){width="100%" fig-alt="Assertions"}
+
+::: notes
+Slides 59–62
+Source slide 59 from the authoritative PDF.
+:::
+
+<!-- Slide 59 -->
+
+---
+
+## <span style="display:none">Source Slide 60</span>
+
+![](images/source_pages/slide-60.png){width="100%" fig-alt="• We have the debugging process down."}
+
+<!-- Slide 60 -->
+
+---
+
+## <span style="display:none">Source Slide 61</span>
+
+![](images/source_pages/slide-61.png){width="100%" fig-alt="• IF statements"}
+
+<!-- Slide 61 -->
+
+---
+
+## <span style="display:none">Source Slide 62</span>
+
+![](images/source_pages/slide-62.png){width="100%" fig-alt="Assertions"}
+
+<!-- Slide 62 -->

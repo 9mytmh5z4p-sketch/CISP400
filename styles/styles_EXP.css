@@ -1,0 +1,159 @@
+
+/* This is the style sheet from lecture_02.02 yaml */
+    /* ===== Global slide layout ===== */
+    /*.reveal {
+      background-color: hotpink !important;
+    }
+    */
+    /* Left-align titles to match images/code */
+    .reveal h1 {
+      font-weight: 800;
+      text-decoration: underline;
+      text-decoration-thickness: 3px;
+      text-align: center;
+    }
+    .reveal h2 {
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-thickness: 2px; 
+      white-space: nowrap;
+    }
+    .reveal h3 {
+      font-weight: 600;
+    }
+
+    /* Code window sizing */
+    .reveal pre {
+      max-height: 98vh;
+      overflow-y: auto;
+    }
+
+    .reveal pre code {
+      font-size: 0.9em;
+      line-height: 1.20;
+      padding: 0.6em;
+    }
+
+    /* C++ code blocks only (Quarto/Pandoc correct selectors) */
+    .reveal pre.sourceCode.cpp,
+    .reveal pre.sourceCode.cpp code {
+      background-color: #ffffff !important;
+      color: #000000;
+    }
+
+    /* Optional: subtle border for contrast */
+    .reveal pre.sourceCode.cpp {
+      border: 1px solid #ccc;
+    }
+
+    /* Strong, visible line highlighting for code */
+    .reveal pre .line-highlight {
+      background-color: #fff3cd;   /* pale yellow */
+      display: block;
+      width: 100%;
+    }
+
+    /* Optional: emphasize the line number itself */
+    .reveal pre .line-highlight .hljs-ln-numbers {
+      font-weight: bold;
+      color: #b45309;
+    }
+
+    .reveal .highlight-line {
+    background-color: rgba(255, 235, 59, 0.08);
+    border-left: 6px solid #d97706;
+    padding-left: 0.5em;
+    }
+
+    /* Add to your styles.css */
+
+/* Variable Tracker Display */
+#variable-tracker {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #333;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: monospace;
+  z-index: 100;
+}
+
+/* Timer Display */
+.timer {
+  font-size: 2em;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.timer-expired {
+  color: #e74c3c;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Quiz Feedback */
+.feedback-correct {
+  color: #27ae60;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.feedback-incorrect {
+  color: #e74c3c;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.shake {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+/* Bookmark Icon */
+.bookmark-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2em;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Progress Tracker */
+#progress-tracker {
+  position: fixed;
+  bottom: 50px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 0.8em;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background: #1a1a1a !important;
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode .reveal {
+  background-color: #1a1a1a !important;
+}
+
+body.dark-mode .reveal h1,
+body.dark-mode .reveal h2,
+body.dark-mode .reveal h3 {
+  color: #e0e0e0 !important;
+}

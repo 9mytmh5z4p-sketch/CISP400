@@ -1,0 +1,121 @@
+<!-- Topic 8: Exception Handling Details -->
+<!-- Slides 54–63 -->
+# Exception Handling Details
+
+## Exception Handling Details
+
+This slide develops the authoritative source material on **exception handling details**.
+
+::: notes
+Slides 54–63
+:::
+
+<!-- Slide 54 -->
+
+---
+
+## Exception Handling Details
+
+This slide develops the authoritative source material on **exception handling details**.
+
+::: notes
+
+:::
+
+<!-- Slide 55 -->
+
+---
+
+## Exception Handling Details
+
+This slide develops the authoritative source material on **exception handling details**.
+
+::: notes
+
+:::
+
+<!-- Slide 56 -->
+
+---
+
+## Exception Handling Details
+
+This slide develops the authoritative source material on **exception handling details**.
+
+::: notes
+
+:::
+
+<!-- Slide 57 -->
+
+---
+
+## Exception Handling Details
+
+This slide develops the authoritative source material on **exception handling details**.
+
+::: notes
+
+:::
+
+<!-- Slide 58 -->
+
+---
+
+## Exception Handling Details
+
+This slide develops the authoritative source material on **exception handling details**.
+
+::: notes
+
+:::
+
+<!-- Slide 59 -->
+
+---
+
+## Exception Handling Details
+
+This slide develops the authoritative source material on **exception handling details**.
+
+::: notes
+
+:::
+
+<!-- Slide 60 -->
+
+---
+
+## Exception Handling Details
+
+This slide develops the authoritative source material on **exception handling details**.
+
+::: notes
+
+:::
+
+<!-- Slide 61 -->
+
+---
+
+## Exception Handling Details
+
+This slide develops the authoritative source material on **exception handling details**.
+
+::: notes
+
+:::
+
+<!-- Slide 62 -->
+
+---
+
+## Exception Handling Details
+
+This slide develops the authoritative source material on **exception handling details**.
+
+::: notes
+
+:::
+
+<!-- Slide 63 -->

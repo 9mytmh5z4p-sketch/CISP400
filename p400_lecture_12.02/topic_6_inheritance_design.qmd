@@ -1,0 +1,37 @@
+<!-- Topic 6: Inheritance Design -->
+<!-- Slides 44–46 -->
+# Inheritance Design
+
+## Inheritance Design Activity
+
+This slide develops the authoritative source material on **inheritance design activity**.
+
+::: notes
+Slides 44–46
+:::
+
+<!-- Slide 44 -->
+
+---
+
+## Inheritance Design Activity
+
+This slide develops the authoritative source material on **inheritance design activity**.
+
+::: notes
+
+:::
+
+<!-- Slide 45 -->
+
+---
+
+## Inheritance Design Activity
+
+This slide develops the authoritative source material on **inheritance design activity**.
+
+::: notes
+
+:::
+
+<!-- Slide 46 -->

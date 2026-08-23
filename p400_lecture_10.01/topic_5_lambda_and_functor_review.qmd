@@ -1,0 +1,361 @@
+<!-- Topic 5: Lambda and Functor Review -->
+<!-- Slides 61–90 -->
+# Lambda and Functor Review
+
+## Lightning Review Questions
+
+This slide presents the source material for **Lightning Review Questions** from the authoritative lecture deck.
+
+::: notes
+Slides 61–90
+:::
+
+<!-- Slide 61 -->
+
+---
+
+## Lightning Review
+
+This slide presents the source material for **Lightning Review** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 62 -->
+
+---
+
+## Lightning Review
+
+This slide presents the source material for **Lightning Review** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 63 -->
+
+---
+
+## Lambda Threshold Example
+
+This slide presents the source material for **Lambda Threshold Example** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 64 -->
+
+---
+
+## Lambda Threshold
+
+This slide presents the source material for **Lambda Threshold** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 65 -->
+
+---
+
+## Lambda Threshold
+
+This slide presents the source material for **Lambda Threshold** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 66 -->
+
+---
+
+## Lambda Threshold
+
+This slide presents the source material for **Lambda Threshold** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 67 -->
+
+---
+
+## Random Float Threshold
+
+This slide presents the source material for **Random Float Threshold** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 68 -->
+
+---
+
+## Float Comparison
+
+This slide presents the source material for **Float Comparison** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 69 -->
+
+---
+
+## Floating-Point Equality
+
+This slide presents the source material for **Floating-Point Equality** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 70 -->
+
+---
+
+## Threshold Comparison
+
+This slide presents the source material for **Threshold Comparison** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 71 -->
+
+---
+
+## Threshold Search
+
+This slide presents the source material for **Threshold Search** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 72 -->
+
+---
+
+## Threshold Search
+
+This slide presents the source material for **Threshold Search** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 73 -->
+
+---
+
+## Threshold Search
+
+This slide presents the source material for **Threshold Search** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 74 -->
+
+---
+
+## Threshold Search
+
+This slide presents the source material for **Threshold Search** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 75 -->
+
+---
+
+## Generic Lambda Format
+
+This slide presents the source material for **Generic Lambda Format** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 76 -->
+
+---
+
+## Lambda Function Body
+
+This slide presents the source material for **Lambda Function Body** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 77 -->
+
+---
+
+## Lambda in Context
+
+This slide presents the source material for **Lambda in Context** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 78 -->
+
+---
+
+## Preferred Lambda Syntax
+
+This slide presents the source material for **Preferred Lambda Syntax** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 79 -->
+
+---
+
+## Explicit Conversion
+
+This slide presents the source material for **Explicit Conversion** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 80 -->
+
+---
+
+## Manual Lambda Call
+
+This slide presents the source material for **Manual Lambda Call** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 81 -->
+
+---
+
+## Function Call Example
+
+This slide presents the source material for **Function Call Example** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 82 -->
+
+---
+
+## Lambda Example
+
+This slide presents the source material for **Lambda Example** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 83 -->
+
+---
+
+## Error Code
+
+This slide presents the source material for **Error Code** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 84 -->
+
+---
+
+## Desk Check Exercise
+
+This slide presents the source material for **Desk Check Exercise** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 85 -->
+
+---
+
+## Exercise Goals
+
+This slide presents the source material for **Exercise Goals** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 86 -->
+
+---
+
+## Desk Check Exercise
+
+This slide presents the source material for **Desk Check Exercise** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 87 -->
+
+---
+
+## Double and Integer Output
+
+This slide presents the source material for **Double and Integer Output** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 88 -->
+
+---
+
+## Review
+
+This slide presents the source material for **Review** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 89 -->
+
+---
+
+## Next Time
+
+This slide presents the source material for **Next Time** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 90 -->

@@ -1,0 +1,1951 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="p400_lecture_04.02_files/libs/clipboard/clipboard.min.js"></script>
+<script src="p400_lecture_04.02_files/libs/quarto-html/tabby.min.js"></script>
+<script src="p400_lecture_04.02_files/libs/quarto-html/popper.min.js"></script>
+<script src="p400_lecture_04.02_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="p400_lecture_04.02_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="p400_lecture_04.02_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="p400_lecture_04.02_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.26">
+
+  <meta name="author" content="Dr.&nbsp;Caleb Fowler">
+  <title>CISP 400 Object-Oriented Programming</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="p400_lecture_04.02_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="p400_lecture_04.02_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="p400_lecture_04.02_files/libs/revealjs/dist/theme/quarto-99eeafcedac04850354b682963cedae3.css">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <link href="p400_lecture_04.02_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="p400_lecture_04.02_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="p400_lecture_04.02_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="p400_lecture_04.02_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">CISP 400 Object-Oriented Programming</h1>
+  <p class="subtitle">C++</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Dr.&nbsp;Caleb Fowler 
+</div>
+</div>
+</div>
+
+</section>
+<section id="last-time" class="title-slide slide level1 center">
+<h1>Last Time</h1>
+<ul>
+<li class="fragment"><strong>Modular Programming</strong></li>
+<li class="fragment"><strong>Coding Functions</strong></li>
+<li class="fragment"><strong>Passing Data to a Function</strong></li>
+<li class="fragment"><strong>Returning Data from a Function</strong></li>
+<li class="fragment"><strong>Void Functions</strong></li>
+</ul>
+<aside class="notes">
+<p>Brief recall of lecture 04.01. Students should remember that functions give names to pieces of processing, parameters move data into a function, and return values send one answer back.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 1 -->
+</section>
+
+<section id="todays-agenda" class="title-slide slide level1 center">
+<h1>Today’s Agenda</h1>
+<ul>
+<li>Function Contracts</li>
+<li>Function Boundary Model</li>
+<li>Passing Vectors</li>
+<li>Scope</li>
+<li>Shadow Variables</li>
+<li>Stack Frame Model</li>
+</ul>
+<aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 2 -->
+<!-- Topic 1: Function Contracts -->
+<!-- Slides 3-13 -->
+</section>
+
+<section>
+<section id="function-contracts" class="title-slide slide level1 center">
+<h1>Function Contracts</h1>
+<!-- Slide 3 -->
+</section>
+<section id="what-does-this-function-promise" class="slide level2 smaller">
+<h2>What Does This Function Promise?</h2>
+<ul>
+<li>A function should make a promise the caller can understand.</li>
+<li>The name, parameters, and return type tell most of that story.</li>
+<li>The body explains how the promise is kept.</li>
+</ul>
+<aside class="notes">
+<p>Slides 3-13</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 4 -->
+</section>
+<section id="a-contract-has-three-parts" class="slide level2">
+<h2>A Contract Has Three Parts</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Part</th>
+<th>Question</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Inputs</td>
+<td>What data does the function need?</td>
+</tr>
+<tr class="even">
+<td>Result or action</td>
+<td>What does the function produce or do?</td>
+</tr>
+<tr class="odd">
+<td>Boundary</td>
+<td>What details stay inside the function?</td>
+</tr>
+</tbody>
+</table>
+<p>A contract lets the caller use the function without reading every line inside it.</p>
+<!-- Slide 5 -->
+</section>
+<section id="reading-a-prototype-as-a-contract" class="slide level2">
+<h2>Reading a Prototype as a Contract</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a><span class="dt">double</span> average<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores<span class="op">);</span></span>
+<span id="cb1-2"><a href=""></a><span class="dt">void</span> displayScores<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>average</code> needs a vector and sends back a <code>double</code>.</li>
+<li><code>displayScores</code> needs a vector and performs an action.</li>
+<li>The prototype tells the caller how to communicate with the function.</li>
+</ul>
+<!-- Slide 6 -->
+</section>
+<section id="caller-responsibilities" class="slide level2">
+<h2>Caller Responsibilities</h2>
+<ul>
+<li>Choose the argument values.</li>
+<li>Call the function at the right time.</li>
+<li>Store or use the return value if one comes back.</li>
+</ul>
+<p>The caller should not need to know how the function does its internal work.</p>
+<!-- Slide 7 -->
+</section>
+<section id="function-responsibilities" class="slide level2">
+<h2>Function Responsibilities</h2>
+<ul>
+<li>Use the data it receives.</li>
+<li>Complete one clear job.</li>
+<li>Keep temporary details inside the function body.</li>
+</ul>
+<p>The function should not depend on hidden outside state when parameters can provide the needed data.</p>
+<!-- Slide 8 -->
+</section>
+<section id="example-calculating-an-average" class="slide level2">
+<h2>Example: Calculating an Average</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Caller</strong></p>
+<ul>
+<li>Collect or already have the scores.</li>
+<li>Pass the vector to <code>average</code>.</li>
+<li>Store or display the returned value.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Function</strong></p>
+<ul>
+<li>Receive the vector parameter.</li>
+<li>Add the scores and divide by the count.</li>
+<li>Return the calculated average.</li>
+</ul>
+</div></div>
+<!-- Slide 9 -->
+</section>
+<section id="example-displaying-a-report" class="slide level2">
+<h2>Example: Displaying a Report</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Caller</strong></p>
+<ul>
+<li>Pass the title and calculated values.</li>
+<li>Decide when the report should appear.</li>
+<li>Continue after the display function finishes.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Function</strong></p>
+<ul>
+<li>Format the report.</li>
+<li>Print the values clearly.</li>
+<li>Avoid changing the data it was given.</li>
+</ul>
+</div></div>
+<!-- Slide 10 -->
+</section>
+<section id="contract-before-code" class="slide level2">
+<h2>Contract Before Code</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> getScores<span class="op">();</span></span>
+<span id="cb2-2"><a href=""></a><span class="dt">double</span> average<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores<span class="op">);</span></span>
+<span id="cb2-3"><a href=""></a><span class="dt">void</span> displayReport<span class="op">(</span><span class="dt">double</span> averageScore<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Prototypes can come from an IPO model.</li>
+<li>They outline the program before the function bodies exist.</li>
+<li>This keeps design work separate from implementation details.</li>
+</ul>
+<!-- Slide 11 -->
+</section>
+<section id="common-practices" class="slide level2">
+<h2>Common Practices</h2>
+<ul>
+<li>Use verb-based names such as <code>calculateTotal</code> or <code>displayReport</code>.</li>
+<li>Let the parameter list show what the function needs.</li>
+<li>Split a function when one contract starts promising unrelated jobs.</li>
+</ul>
+<!-- Slide 12 -->
+</section>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li>A function contract is the promise a function makes to its caller.</li>
+<li>Clear contracts make modular programs easier to read.</li>
+<li>The prototype is the first place to check the contract.</li>
+</ul>
+<!-- Slide 13 -->
+<!-- Topic 2: Function Boundary Model -->
+<!-- Slides 14-24 -->
+</section></section>
+<section>
+<section id="function-boundary-model" class="title-slide slide level1 center">
+<h1>Function Boundary Model</h1>
+<!-- Slide 14 -->
+</section>
+<section id="what-crosses-the-boundary" class="slide level2 smaller">
+<h2>What Crosses the Boundary?</h2>
+<ul>
+<li>A function call creates a controlled exchange.</li>
+<li>Arguments move data from the caller into the function.</li>
+<li>Return values move one result back to the caller.</li>
+</ul>
+<aside class="notes">
+<p>Slides 14-24</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 15 -->
+</section>
+<section id="the-boundary-around-a-function" class="slide level2">
+<h2>The Boundary Around a Function</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a><span class="dt">int</span> total<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-2"><a href=""></a>    <span class="dt">int</span> sum <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-3"><a href=""></a></span>
+<span id="cb3-4"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-5"><a href=""></a>        sum <span class="op">=</span> sum <span class="op">+</span> score<span class="op">;</span></span>
+<span id="cb3-6"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb3-7"><a href=""></a></span>
+<span id="cb3-8"><a href=""></a>    <span class="cf">return</span> sum<span class="op">;</span></span>
+<span id="cb3-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The function body is a separate region with its own local details.</p>
+<!-- Slide 16 -->
+</section>
+<section id="data-goes-in-through-parameters" class="slide level2">
+<h2>Data Goes In Through Parameters</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href=""></a><span class="dt">int</span> answer <span class="op">=</span> total<span class="op">(</span>quizScores<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>quizScores</code> is the caller’s argument.</li>
+<li><code>scores</code> is the function’s parameter.</li>
+<li>The parameter gives the function a name for the received data.</li>
+</ul>
+<!-- Slide 17 -->
+</section>
+<section id="data-comes-back-through-return-values" class="slide level2">
+<h2>Data Comes Back Through Return Values</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a><span class="cf">return</span> sum<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>A return value crosses back to the caller.</li>
+<li>The function call is replaced by that returned value.</li>
+<li>The caller decides where the value goes next.</li>
+</ul>
+<!-- Slide 18 -->
+</section>
+<section id="what-stays-inside" class="slide level2">
+<h2>What Stays Inside</h2>
+<ul>
+<li>Local variables stay inside the function.</li>
+<li>Temporary calculations stay inside the function.</li>
+<li>Helper details stay inside the function.</li>
+</ul>
+<p>This is why a caller can trust a small function without reading every internal step.</p>
+<!-- Slide 19 -->
+</section>
+<section id="what-the-caller-cannot-see" class="slide level2">
+<h2>What the Caller Cannot See</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href=""></a><span class="dt">int</span> total<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-2"><a href=""></a>    <span class="dt">int</span> sum <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-3"><a href=""></a>    <span class="cf">return</span> sum<span class="op">;</span></span>
+<span id="cb6-4"><a href=""></a><span class="op">}</span></span>
+<span id="cb6-5"><a href=""></a></span>
+<span id="cb6-6"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb6-7"><a href=""></a>    vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores <span class="op">=</span> <span class="op">{</span><span class="dv">10</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">30</span><span class="op">};</span></span>
+<span id="cb6-8"><a href=""></a>    cout <span class="op">&lt;&lt;</span> total<span class="op">(</span>scores<span class="op">)</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb6-9"><a href=""></a>    cout <span class="op">&lt;&lt;</span> sum <span class="op">&lt;&lt;</span> endl<span class="op">;</span>  <span class="co">// error</span></span>
+<span id="cb6-10"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-11"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>sum</code> belongs to <code>total()</code>, not to <code>main()</code>.</p>
+<!-- Slide 20 -->
+</section>
+<section id="boundary-model-calculate-total" class="slide level2">
+<h2>Boundary Model: Calculate Total</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Caller</strong></p>
+<ul>
+<li>Has a vector of scores.</li>
+<li>Calls <code>total(scores)</code>.</li>
+<li>Stores the returned integer.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Function</strong></p>
+<ul>
+<li>Receives the vector.</li>
+<li>Adds every score.</li>
+<li>Returns the sum.</li>
+</ul>
+</div></div>
+<!-- Slide 21 -->
+</section>
+<section id="boundary-model-display-results" class="slide level2">
+<h2>Boundary Model: Display Results</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a>displayResult<span class="op">(</span>totalScore<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>The caller supplies the value.</li>
+<li>No returned value is expected.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a><span class="dt">void</span> displayResult<span class="op">(</span><span class="dt">int</span> total<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Total: "</span> <span class="op">&lt;&lt;</span> total <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb8-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>The function prints the result.</li>
+<li>The visible effect is output.</li>
+</ul>
+</div></div>
+<!-- Slide 22 -->
+</section>
+<section id="design-check-too-much-crossing" class="slide level2">
+<h2>Design Check: Too Much Crossing</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href=""></a><span class="dt">void</span> printReport<span class="op">(</span>string name<span class="op">,</span> <span class="dt">int</span> score1<span class="op">,</span> <span class="dt">int</span> score2<span class="op">,</span></span>
+<span id="cb9-2"><a href=""></a>                 <span class="dt">int</span> score3<span class="op">,</span> <span class="dt">int</span> score4<span class="op">,</span> <span class="dt">int</span> score5<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>A long parameter list can be a design warning.</li>
+<li>The function may need a vector instead of many separate values.</li>
+<li>The function may be trying to do more than one job.</li>
+</ul>
+<!-- Slide 23 -->
+</section>
+<section id="summary-1" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li>Parameters are the main path into a function.</li>
+<li>Return values are the main path back to the caller.</li>
+<li>Modular design keeps details inside the boundary where they belong.</li>
+</ul>
+<!-- Slide 24 -->
+<!-- Topic 3: Passing Vectors -->
+<!-- Slides 25-36 -->
+</section></section>
+<section>
+<section id="passing-vectors" class="title-slide slide level1 center">
+<h1>Passing Vectors</h1>
+<!-- Slide 25 -->
+</section>
+<section id="can-a-function-receive-a-whole-vector" class="slide level2 smaller">
+<h2>Can a Function Receive a Whole Vector?</h2>
+<ul>
+<li>A vector is a value with many elements inside it.</li>
+<li>A function can receive that value through a parameter.</li>
+<li>The contract should say whether the function needs the whole collection.</li>
+</ul>
+<aside class="notes">
+<p>Slides 25-36</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 26 -->
+</section>
+<section id="vector-parameters" class="slide level2">
+<h2>Vector Parameters</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href=""></a><span class="dt">void</span> displayScores<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-2"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-3"><a href=""></a>        cout <span class="op">&lt;&lt;</span> score <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb10-4"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb10-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The parameter type includes the vector element type.</p>
+<!-- Slide 27 -->
+</section>
+<section id="calling-with-a-vector-argument" class="slide level2">
+<h2>Calling with a Vector Argument</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb11-2"><a href=""></a>    vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> quizScores <span class="op">=</span> <span class="op">{</span><span class="dv">9</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">8</span><span class="op">};</span></span>
+<span id="cb11-3"><a href=""></a></span>
+<span id="cb11-4"><a href=""></a>    displayScores<span class="op">(</span>quizScores<span class="op">);</span></span>
+<span id="cb11-5"><a href=""></a></span>
+<span id="cb11-6"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-7"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The argument is the caller’s vector.</p>
+<!-- Slide 28 -->
+</section>
+<section id="the-parameter-gets-a-copy" class="slide level2">
+<h2>The Parameter Gets a Copy</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href=""></a><span class="dt">void</span> displayScores<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>quizScores</code> belongs to <code>main()</code>.</li>
+<li><code>scores</code> belongs to <code>displayScores()</code>.</li>
+<li>With this syntax, the function receives its own copy.</li>
+</ul>
+<aside class="notes">
+<p>[Graphic suggestion: show two labeled vector boxes, one in main() and one inside displayScores(), with the same values but different names.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 29 -->
+</section>
+<section id="reading-vector-data-in-a-function" class="slide level2">
+<h2>Reading Vector Data in a Function</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href=""></a><span class="dt">int</span> total<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-2"><a href=""></a>    <span class="dt">int</span> sum <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb13-3"><a href=""></a></span>
+<span id="cb13-4"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-5"><a href=""></a>        sum <span class="op">=</span> sum <span class="op">+</span> score<span class="op">;</span></span>
+<span id="cb13-6"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb13-7"><a href=""></a></span>
+<span id="cb13-8"><a href=""></a>    <span class="cf">return</span> sum<span class="op">;</span></span>
+<span id="cb13-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The range-based loop reads each value from the parameter vector.</p>
+<!-- Slide 30 -->
+</section>
+<section id="returning-a-vector" class="slide level2">
+<h2>Returning a Vector</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> getScores<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb14-2"><a href=""></a>    vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores<span class="op">;</span></span>
+<span id="cb14-3"><a href=""></a></span>
+<span id="cb14-4"><a href=""></a>    scores<span class="op">.</span>push_back<span class="op">(</span><span class="dv">92</span><span class="op">);</span></span>
+<span id="cb14-5"><a href=""></a>    scores<span class="op">.</span>push_back<span class="op">(</span><span class="dv">87</span><span class="op">);</span></span>
+<span id="cb14-6"><a href=""></a>    scores<span class="op">.</span>push_back<span class="op">(</span><span class="dv">95</span><span class="op">);</span></span>
+<span id="cb14-7"><a href=""></a></span>
+<span id="cb14-8"><a href=""></a>    <span class="cf">return</span> scores<span class="op">;</span></span>
+<span id="cb14-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A function can build a vector and return it to the caller.</p>
+<!-- Slide 31 -->
+</section>
+<section id="vector-contract-examples" class="slide level2">
+<h2>Vector Contract Examples</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Prototype</th>
+<th>Contract</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>int total(vector&lt;int&gt; scores);</code></td>
+<td>receive a collection, return one number</td>
+</tr>
+<tr class="even">
+<td><code>double average(vector&lt;int&gt; scores);</code></td>
+<td>receive a collection, return one decimal</td>
+</tr>
+<tr class="odd">
+<td><code>vector&lt;int&gt; getScores();</code></td>
+<td>create a collection, return it</td>
+</tr>
+</tbody>
+</table>
+<!-- Slide 32 -->
+</section>
+<section id="when-should-a-function-receive-a-vector" class="slide level2">
+<h2>When Should a Function Receive a Vector?</h2>
+<ul>
+<li>Use a vector parameter when the function needs the collection as a whole.</li>
+<li>Totals, averages, maximums, and reports often need the whole collection.</li>
+<li>The caller should pass the vector instead of many separate variables.</li>
+</ul>
+<!-- Slide 33 -->
+</section>
+<section id="counter-example-one-element-at-a-time" class="slide level2">
+<h2>Counter Example: One Element at a Time</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href=""></a><span class="dt">void</span> displayScore<span class="op">(</span><span class="dt">int</span> score<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb15-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Score: "</span> <span class="op">&lt;&lt;</span> score <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb15-3"><a href=""></a><span class="op">}</span></span>
+<span id="cb15-4"><a href=""></a></span>
+<span id="cb15-5"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb15-6"><a href=""></a>    vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores <span class="op">=</span> <span class="op">{</span><span class="dv">92</span><span class="op">,</span> <span class="dv">87</span><span class="op">,</span> <span class="dv">95</span><span class="op">};</span></span>
+<span id="cb15-7"><a href=""></a></span>
+<span id="cb15-8"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb15-9"><a href=""></a>        displayScore<span class="op">(</span>score<span class="op">);</span></span>
+<span id="cb15-10"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb15-11"><a href=""></a></span>
+<span id="cb15-12"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb15-13"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The function receives one value because it only needs one value per call.</p>
+<!-- Slide 34 -->
+</section>
+<section id="when-should-a-function-return-a-vector" class="slide level2">
+<h2>When Should a Function Return a Vector?</h2>
+<ul>
+<li>Return a vector when the function creates a collection.</li>
+<li>Return a vector when the caller needs the completed collection.</li>
+<li>Do not return a vector when the caller only needs one calculated answer.</li>
+</ul>
+<!-- Slide 35 -->
+</section>
+<section id="summary-2" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li>Vectors cross function boundaries through parameters and return values.</li>
+<li>Passing a whole vector is useful when the function needs the collection.</li>
+<li>Passing one element at a time is clearer when the function only needs one value.</li>
+</ul>
+<!-- Slide 36 -->
+<!-- Topic 4: Scope -->
+<!-- Slides 37-48 -->
+</section></section>
+<section>
+<section id="scope" class="title-slide slide level1 center">
+<h1>Scope</h1>
+<!-- Slide 37 -->
+</section>
+<section id="now-scope-has-consequences" class="slide level2 smaller">
+<h2>Now Scope Has Consequences</h2>
+<ul>
+<li>You have seen block scope, loop scope, and compiler scope errors.</li>
+<li>Functions make scope affect program design.</li>
+<li>The question is no longer only “Will this compile?”</li>
+</ul>
+<aside class="notes">
+<p>Slides 37-48</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 38 -->
+</section>
+<section id="quick-recall-scope-means-visibility" class="slide level2">
+<h2>Quick Recall: Scope Means Visibility</h2>
+<ul>
+<li>Scope is the region where a name can be used.</li>
+<li>A name declared inside a block belongs to that block.</li>
+<li>Code outside the block cannot use that name.</li>
+</ul>
+<p>This rule becomes more important when a program is split across functions.</p>
+<!-- Slide 39 -->
+</section>
+<section id="from-loop-scope-to-function-scope" class="slide level2">
+<h2>From Loop Scope to Function Scope</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> score <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb16-3"><a href=""></a><span class="op">}</span></span>
+<span id="cb16-4"><a href=""></a></span>
+<span id="cb16-5"><a href=""></a><span class="co">// cout &lt;&lt; score &lt;&lt; endl;  // score is not visible here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Loop bodies create scope. Function bodies do the same thing on a larger design boundary.</p>
+<!-- Slide 40 -->
+</section>
+<section id="parameters-are-local-names" class="slide level2">
+<h2>Parameters Are Local Names</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href=""></a><span class="dt">void</span> displayDouble<span class="op">(</span><span class="dt">int</span> number<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb17-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> number <span class="op">*</span> <span class="dv">2</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb17-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>number</code> receives data from the caller.</li>
+<li>Inside the function, <code>number</code> is a local name.</li>
+<li>The caller cannot use <code>number</code> after the function call.</li>
+</ul>
+<!-- Slide 41 -->
+</section>
+<section id="same-data-different-names" class="slide level2">
+<h2>Same Data, Different Names</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href=""></a><span class="dt">void</span> displayScores<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> numbers<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb18-2"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> number <span class="op">:</span> numbers<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb18-3"><a href=""></a>        cout <span class="op">&lt;&lt;</span> number <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb18-4"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb18-5"><a href=""></a><span class="op">}</span></span>
+<span id="cb18-6"><a href=""></a></span>
+<span id="cb18-7"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb18-8"><a href=""></a>    vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores <span class="op">=</span> <span class="op">{</span><span class="dv">90</span><span class="op">,</span> <span class="dv">85</span><span class="op">,</span> <span class="dv">100</span><span class="op">};</span></span>
+<span id="cb18-9"><a href=""></a>    displayScores<span class="op">(</span>scores<span class="op">);</span></span>
+<span id="cb18-10"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb18-11"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The caller’s name and the parameter name do not need to match.</p>
+<!-- Slide 42 -->
+</section>
+<section id="same-name-different-scope" class="slide level2">
+<h2>Same Name, Different Scope</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href=""></a><span class="dt">int</span> scoreTotal<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb19-2"><a href=""></a>    <span class="dt">int</span> total <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb19-3"><a href=""></a></span>
+<span id="cb19-4"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb19-5"><a href=""></a>        total <span class="op">=</span> total <span class="op">+</span> score<span class="op">;</span></span>
+<span id="cb19-6"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb19-7"><a href=""></a></span>
+<span id="cb19-8"><a href=""></a>    <span class="cf">return</span> total<span class="op">;</span></span>
+<span id="cb19-9"><a href=""></a><span class="op">}</span></span>
+<span id="cb19-10"><a href=""></a></span>
+<span id="cb19-11"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb19-12"><a href=""></a>    <span class="dt">int</span> total <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb19-13"><a href=""></a>    vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores <span class="op">=</span> <span class="op">{</span><span class="dv">10</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">30</span><span class="op">};</span></span>
+<span id="cb19-14"><a href=""></a>    total <span class="op">=</span> scoreTotal<span class="op">(</span>scores<span class="op">);</span></span>
+<span id="cb19-15"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb19-16"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The two <code>total</code> variables are in different function scopes.</p>
+<!-- Slide 43 -->
+</section>
+<section id="why-this-matters-for-modular-design" class="slide level2">
+<h2>Why This Matters for Modular Design</h2>
+<ul>
+<li>A function can hide local details from the caller.</li>
+<li>The caller only needs the contract.</li>
+<li>The function body can use helper variables without cluttering the rest of the program.</li>
+</ul>
+<p>Scope is what makes that separation work.</p>
+<!-- Slide 44 -->
+</section>
+<section id="global-variables-break-the-model" class="slide level2">
+<h2>Global Variables Break the Model</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href=""></a><span class="dt">int</span> totalScore <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb20-2"><a href=""></a></span>
+<span id="cb20-3"><a href=""></a><span class="dt">void</span> addScore<span class="op">(</span><span class="dt">int</span> score<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb20-4"><a href=""></a>    totalScore <span class="op">=</span> totalScore <span class="op">+</span> score<span class="op">;</span></span>
+<span id="cb20-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>addScore</code> changes data that is not listed in its parameter list.</li>
+<li>The hidden dependency makes the contract incomplete.</li>
+<li>Beginners should prefer parameters and return values.</li>
+</ul>
+<!-- Slide 45 -->
+</section>
+<section id="scope-as-a-design-tool" class="slide level2">
+<h2>Scope as a Design Tool</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb21-1"><a href=""></a><span class="dt">double</span> average<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb21-2"><a href=""></a>    <span class="dt">int</span> sum <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb21-3"><a href=""></a></span>
+<span id="cb21-4"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb21-5"><a href=""></a>        sum <span class="op">=</span> sum <span class="op">+</span> score<span class="op">;</span></span>
+<span id="cb21-6"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb21-7"><a href=""></a></span>
+<span id="cb21-8"><a href=""></a>    <span class="cf">return</span> <span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;(</span>sum<span class="op">)</span> <span class="op">/</span> scores<span class="op">.</span>size<span class="op">();</span></span>
+<span id="cb21-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>sum</code> and <code>score</code> are protected inside the function that needs them.</p>
+<!-- Slide 46 -->
+</section>
+<section id="common-practices-1" class="slide level2">
+<h2>Common Practices</h2>
+<ul>
+<li>Declare variables close to where they are used.</li>
+<li>Pass data through parameters instead of globals.</li>
+<li>Return results instead of making outside variables change invisibly.</li>
+</ul>
+<!-- Slide 47 -->
+</section>
+<section id="summary-3" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li>Scope controls where names are visible.</li>
+<li>Function scope makes modular design possible.</li>
+<li>A clear contract uses scope to keep internal details internal.</li>
+</ul>
+<!-- Slide 48 -->
+<!-- Topic 5: Shadow Variables -->
+<!-- Slides 49-59 -->
+</section></section>
+<section>
+<section id="shadow-variables" class="title-slide slide level1 center">
+<h1>Shadow Variables</h1>
+<!-- Slide 49 -->
+</section>
+<section id="which-variable-are-we-using" class="slide level2 smaller">
+<h2>Which Variable Are We Using?</h2>
+<ul>
+<li>A program can have the same name in more than one scope.</li>
+<li>The closest visible declaration wins.</li>
+<li>That rule can make a trace surprising.</li>
+</ul>
+<aside class="notes">
+<p>Slides 49-59</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 50 -->
+</section>
+<section id="a-shadow-variable-hides-another-name" class="slide level2">
+<h2>A Shadow Variable Hides Another Name</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb22-1"><a href=""></a><span class="dt">int</span> value <span class="op">=</span> <span class="dv">100</span><span class="op">;</span></span>
+<span id="cb22-2"><a href=""></a></span>
+<span id="cb22-3"><a href=""></a><span class="cf">if</span> <span class="op">(</span>value <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb22-4"><a href=""></a>    <span class="dt">int</span> value <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb22-5"><a href=""></a>    cout <span class="op">&lt;&lt;</span> value <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb22-6"><a href=""></a><span class="op">}</span></span>
+<span id="cb22-7"><a href=""></a></span>
+<span id="cb22-8"><a href=""></a>cout <span class="op">&lt;&lt;</span> value <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The inner <code>value</code> hides the outer <code>value</code> inside the block.</p>
+<!-- Slide 51 -->
+</section>
+<section id="loop-shadowing-review" class="slide level2">
+<h2>Loop Shadowing Review</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb23-1"><a href=""></a><span class="dt">int</span> score <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb23-2"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores <span class="op">=</span> <span class="op">{</span><span class="dv">85</span><span class="op">,</span> <span class="dv">90</span><span class="op">,</span> <span class="dv">95</span><span class="op">};</span></span>
+<span id="cb23-3"><a href=""></a></span>
+<span id="cb23-4"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb23-5"><a href=""></a>    cout <span class="op">&lt;&lt;</span> score <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb23-6"><a href=""></a><span class="op">}</span></span>
+<span id="cb23-7"><a href=""></a></span>
+<span id="cb23-8"><a href=""></a>cout <span class="op">&lt;&lt;</span> score <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The loop variable <code>score</code> is separate from the outer <code>score</code>.</p>
+<!-- Slide 52 -->
+</section>
+<section id="why-the-outer-variable-does-not-change" class="slide level2">
+<h2>Why the Outer Variable Does Not Change</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb24-1"><a href=""></a><span class="dt">int</span> total <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb24-2"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores <span class="op">=</span> <span class="op">{</span><span class="dv">85</span><span class="op">,</span> <span class="dv">90</span><span class="op">,</span> <span class="dv">95</span><span class="op">};</span></span>
+<span id="cb24-3"><a href=""></a></span>
+<span id="cb24-4"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> total <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb24-5"><a href=""></a>    cout <span class="op">&lt;&lt;</span> total <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb24-6"><a href=""></a><span class="op">}</span></span>
+<span id="cb24-7"><a href=""></a></span>
+<span id="cb24-8"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="st">"Total: "</span> <span class="op">&lt;&lt;</span> total <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The loop prints each score, but the outer <code>total</code> is still <code>0</code>.</p>
+<!-- Slide 53 -->
+</section>
+<section id="shadowing-in-function-code" class="slide level2">
+<h2>Shadowing in Function Code</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb25-1"><a href=""></a><span class="dt">int</span> total<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb25-2"><a href=""></a>    <span class="dt">int</span> total <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb25-3"><a href=""></a></span>
+<span id="cb25-4"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb25-5"><a href=""></a>        total <span class="op">=</span> total <span class="op">+</span> score<span class="op">;</span></span>
+<span id="cb25-6"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb25-7"><a href=""></a></span>
+<span id="cb25-8"><a href=""></a>    <span class="cf">return</span> total<span class="op">;</span></span>
+<span id="cb25-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This local <code>total</code> belongs only to the function call.</p>
+<!-- Slide 54 -->
+</section>
+<section id="shadowing-a-parameter" class="slide level2">
+<h2>Shadowing a Parameter</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb26-1"><a href=""></a><span class="dt">void</span> displayScore<span class="op">(</span><span class="dt">int</span> score<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb26-2"><a href=""></a>    <span class="dt">int</span> score <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>  <span class="co">// error: same scope</span></span>
+<span id="cb26-3"><a href=""></a>    cout <span class="op">&lt;&lt;</span> score <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb26-4"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>C++ rejects this because the parameter and local declaration are in the same function scope.</p>
+<!-- Slide 55 -->
+</section>
+<section id="shadowing-inside-a-nested-block" class="slide level2">
+<h2>Shadowing Inside a Nested Block</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb27-1"><a href=""></a><span class="dt">void</span> displayScore<span class="op">(</span><span class="dt">int</span> score<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb27-2"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>score <span class="op">&lt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb27-3"><a href=""></a>        <span class="dt">int</span> score <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb27-4"><a href=""></a>        cout <span class="op">&lt;&lt;</span> score <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb27-5"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb27-6"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The nested declaration hides the parameter only inside the <code>if</code> block.</p>
+<!-- Slide 56 -->
+</section>
+<section id="the-bug-pattern" class="slide level2">
+<h2>The Bug Pattern</h2>
+<ul>
+<li>The code compiles.</li>
+<li>The name looks familiar.</li>
+<li>The program updates a different variable than the one the programmer intended.</li>
+</ul>
+<p>Shadowing is dangerous because it looks like ordinary variable use.</p>
+<!-- Slide 57 -->
+</section>
+<section id="finding-shadow-variables" class="slide level2">
+<h2>Finding Shadow Variables</h2>
+<ul>
+<li>Mark every declaration.</li>
+<li>Draw a box around each scope.</li>
+<li>For each use of a name, choose the closest visible declaration.</li>
+</ul>
+<p>This tracing method works for loops, nested blocks, and functions.</p>
+<!-- Slide 58 -->
+</section>
+<section id="summary-4" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li>A shadow variable is a new variable that hides another visible name.</li>
+<li>Shadowing is a scope bug when the wrong variable receives attention.</li>
+<li>Use distinct names when different variables have different jobs.</li>
+</ul>
+<!-- Slide 59 -->
+<!-- Topic 6: Stack Frame Model -->
+<!-- Slides 60-72 -->
+</section></section>
+<section>
+<section id="stack-frame-model" class="title-slide slide level1 center">
+<h1>Stack Frame Model</h1>
+<!-- Slide 60 -->
+</section>
+<section id="where-do-function-variables-go" class="slide level2 smaller">
+<h2>Where Do Function Variables Go?</h2>
+<ul>
+<li>Parameters and local variables need temporary storage.</li>
+<li>A function call creates that temporary workspace.</li>
+<li>The workspace disappears when the function returns.</li>
+</ul>
+<aside class="notes">
+<p>Slides 60-72</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 61 -->
+</section>
+<section id="a-stack-frame-is-one-function-call" class="slide level2">
+<h2>A Stack Frame Is One Function Call</h2>
+<ul>
+<li>A stack frame is the workspace for one active function call.</li>
+<li>It stores that call’s parameters and local variables.</li>
+<li>Each active function call has its own frame.</li>
+</ul>
+<aside class="notes">
+<p>[Graphic suggestion: show a single labeled box named average(scores), with parameter scores and local variable sum inside.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 62 -->
+</section>
+<section id="main-starts-the-stack" class="slide level2">
+<h2>Main Starts the Stack</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb28-1"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb28-2"><a href=""></a>    <span class="dt">int</span> score <span class="op">=</span> <span class="dv">90</span><span class="op">;</span></span>
+<span id="cb28-3"><a href=""></a>    cout <span class="op">&lt;&lt;</span> score <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb28-4"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb28-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>At program start, <code>main()</code> is the active frame.</p>
+<!-- Slide 63 -->
+</section>
+<section id="calling-a-function-adds-a-frame" class="slide level2">
+<h2>Calling a Function Adds a Frame</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb29-1"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb29-2"><a href=""></a>    <span class="dt">int</span> score <span class="op">=</span> <span class="dv">90</span><span class="op">;</span></span>
+<span id="cb29-3"><a href=""></a>    displayScore<span class="op">(</span>score<span class="op">);</span></span>
+<span id="cb29-4"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb29-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>When <code>displayScore(score)</code> runs, a new frame is placed above <code>main()</code>.</p>
+<!-- Slide 64 -->
+</section>
+<section id="returning-removes-the-frame" class="slide level2">
+<h2>Returning Removes the Frame</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb30-1"><a href=""></a><span class="dt">void</span> displayScore<span class="op">(</span><span class="dt">int</span> score<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb30-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> score <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb30-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>The function frame exists while the function runs.</li>
+<li>When the function finishes, its frame is removed.</li>
+<li>Execution continues in the caller.</li>
+</ul>
+<!-- Slide 65 -->
+</section>
+<section id="parameters-live-in-the-function-frame" class="slide level2">
+<h2>Parameters Live in the Function Frame</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb31-1"><a href=""></a><span class="dt">void</span> displayScore<span class="op">(</span><span class="dt">int</span> score<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb31-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> score <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb31-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>score</code> is stored in the <code>displayScore()</code> frame, even if the caller used a different name.</p>
+<!-- Slide 66 -->
+</section>
+<section id="local-variables-live-in-the-function-frame" class="slide level2">
+<h2>Local Variables Live in the Function Frame</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb32-1"><a href=""></a><span class="dt">double</span> average<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb32-2"><a href=""></a>    <span class="dt">int</span> sum <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb32-3"><a href=""></a></span>
+<span id="cb32-4"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb32-5"><a href=""></a>        sum <span class="op">=</span> sum <span class="op">+</span> score<span class="op">;</span></span>
+<span id="cb32-6"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb32-7"><a href=""></a></span>
+<span id="cb32-8"><a href=""></a>    <span class="cf">return</span> <span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;(</span>sum<span class="op">)</span> <span class="op">/</span> scores<span class="op">.</span>size<span class="op">();</span></span>
+<span id="cb32-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>scores</code>, <code>sum</code>, and the loop variable belong to the function call.</p>
+<!-- Slide 67 -->
+</section>
+<section id="return-values-leave-first" class="slide level2">
+<h2>Return Values Leave First</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb33-1"><a href=""></a><span class="dt">int</span> square<span class="op">(</span><span class="dt">int</span> number<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb33-2"><a href=""></a>    <span class="dt">int</span> result <span class="op">=</span> number <span class="op">*</span> number<span class="op">;</span></span>
+<span id="cb33-3"><a href=""></a>    <span class="cf">return</span> result<span class="op">;</span></span>
+<span id="cb33-4"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>The returned value crosses back to the caller.</li>
+<li>Then the function frame is removed.</li>
+<li>The caller keeps the returned value if it stores it.</li>
+</ul>
+<!-- Slide 68 -->
+</section>
+<section id="stack-frames-explain-scope" class="slide level2">
+<h2>Stack Frames Explain Scope</h2>
+<ul>
+<li>A caller cannot use names stored inside a function frame.</li>
+<li>A local variable disappears when its frame disappears.</li>
+<li>A parameter is local because it lives in the called function’s frame.</li>
+</ul>
+<p>Scope is the visibility rule. Stack frames show the storage behind the rule.</p>
+<!-- Slide 69 -->
+</section>
+<section id="stack-frames-explain-shadowing" class="slide level2">
+<h2>Stack Frames Explain Shadowing</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb34-1"><a href=""></a><span class="dt">void</span> displayScore<span class="op">(</span><span class="dt">int</span> score<span class="op">);</span></span>
+<span id="cb34-2"><a href=""></a></span>
+<span id="cb34-3"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb34-4"><a href=""></a>    <span class="dt">int</span> score <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb34-5"><a href=""></a>    displayScore<span class="op">(</span>score<span class="op">);</span></span>
+<span id="cb34-6"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb34-7"><a href=""></a><span class="op">}</span></span>
+<span id="cb34-8"><a href=""></a></span>
+<span id="cb34-9"><a href=""></a><span class="dt">void</span> displayScore<span class="op">(</span><span class="dt">int</span> score<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb34-10"><a href=""></a>    cout <span class="op">&lt;&lt;</span> score <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb34-11"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Both frames can have a name called <code>score</code>, but they are separate storage.</p>
+<!-- Slide 70 -->
+</section>
+<section id="trace-a-function-call" class="slide level2">
+<h2>Trace a Function Call</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Step</th>
+<th>Active Frame</th>
+<th>Important Data</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td><code>main()</code></td>
+<td><code>score = 10</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td><code>displayScore()</code></td>
+<td><code>score = 10</code> copy</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td><code>main()</code></td>
+<td>function frame is gone</td>
+</tr>
+</tbody>
+</table>
+<p>The same value can appear in different frames under the same or different names.</p>
+<!-- Slide 71 -->
+</section>
+<section id="summary-5" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li>A stack frame is the temporary workspace for one function call.</li>
+<li>Parameters and local variables live in that frame.</li>
+<li>Stack frames explain why function variables are temporary, local, and separate.</li>
+</ul>
+<!-- Slide 72 -->
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="key-takeaways" class="title-slide slide level1 center">
+<h1>Key Takeaways</h1>
+<ul>
+<li>A function contract tells the caller what a function needs and what it promises to do.</li>
+<li>A function boundary keeps caller responsibilities and function responsibilities separate.</li>
+<li>Vectors can cross function boundaries through parameters and return values.</li>
+<li>Scope controls where a name is visible.</li>
+<li>Shadow variables hide another visible name and can make a trace misleading.</li>
+<li>Stack frames explain why function variables are temporary, local, and separate.</li>
+</ul>
+<!-- Slide 73 -->
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="next-time" class="title-slide slide level1 center">
+<h1>Next Time</h1>
+<ul>
+<li>Function practice with references</li>
+<li>Function overloading</li>
+<li>Static local variables</li>
+</ul>
+<!-- Slide 74 -->
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="appendix" class="title-slide slide level1 center">
+<h1>Appendix</h1>
+<!-- Slide 75 -->
+</section>
+<section id="function-contracts-good-practices" class="slide level2">
+<h2>Function Contracts: Good Practices</h2>
+<ul>
+<li>Write the prototype before writing the function body.</li>
+<li>Use a name that describes the promised action or result.</li>
+<li>Keep the parameter list limited to data the function actually needs.</li>
+</ul>
+<!-- Slide 76 -->
+</section>
+<section id="function-contracts-common-mistakes" class="slide level2">
+<h2>Function Contracts: Common Mistakes</h2>
+<ul>
+<li>Naming a function after implementation details instead of purpose.</li>
+<li>Giving a function hidden dependencies that do not appear in the prototype.</li>
+<li>Mixing unrelated jobs into one function.</li>
+</ul>
+<!-- Slide 77 -->
+</section>
+<section id="function-contracts-more-examples" class="slide level2">
+<h2>Function Contracts: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb35-1"><a href=""></a><span class="dt">double</span> average<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores<span class="op">);</span></span>
+<span id="cb35-2"><a href=""></a><span class="dt">void</span> displayScores<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores<span class="op">);</span></span>
+<span id="cb35-3"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> getScores<span class="op">();</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Each prototype gives the caller a different promise.</p>
+<!-- Slide 78 -->
+</section>
+<section id="function-contracts-practice-problems" class="slide level2">
+<h2>Function Contracts: Practice Problems</h2>
+<ol type="1">
+<li>Write a prototype for a function that displays a course title.</li>
+<li>Write a prototype for a function that calculates the larger of two numbers.</li>
+<li>Identify the caller responsibility and function responsibility in <code>double average(vector&lt;int&gt; scores);</code>.</li>
+</ol>
+<!-- Slide 79 -->
+</section>
+<section id="function-contracts-ai-search-terms" class="slide level2">
+<h2>Function Contracts: AI Search Terms</h2>
+<ul>
+<li>“C++ function contract beginner”</li>
+<li>“C++ function prototype parameters return value”</li>
+<li>“C++ modular function design”</li>
+</ul>
+<!-- Slide 80 -->
+</section>
+<section id="function-contracts-questions-for-reflection" class="slide level2">
+<h2>Function Contracts: Questions for Reflection</h2>
+<ul>
+<li>Why can a prototype tell you a lot before you read the function body?</li>
+<li>What makes a function promise unclear?</li>
+</ul>
+<!-- Slide 81 -->
+</section>
+<section id="function-boundary-model-good-practices" class="slide level2">
+<h2>Function Boundary Model: Good Practices</h2>
+<ul>
+<li>Pass data into a function through parameters.</li>
+<li>Send one answer back with a return value when the caller needs a result.</li>
+<li>Keep temporary details inside the function body.</li>
+</ul>
+<!-- Slide 82 -->
+</section>
+<section id="function-boundary-model-common-mistakes" class="slide level2">
+<h2>Function Boundary Model: Common Mistakes</h2>
+<ul>
+<li>Expecting a local variable inside a function to be visible in <code>main()</code>.</li>
+<li>Passing more data than the function needs.</li>
+<li>Hiding important data flow through global variables.</li>
+</ul>
+<!-- Slide 83 -->
+</section>
+<section id="function-boundary-model-more-examples" class="slide level2">
+<h2>Function Boundary Model: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb36-1"><a href=""></a><span class="dt">int</span> total<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores<span class="op">);</span></span>
+<span id="cb36-2"><a href=""></a><span class="dt">void</span> displayTotal<span class="op">(</span><span class="dt">int</span> total<span class="op">);</span></span>
+<span id="cb36-3"><a href=""></a><span class="dt">bool</span> isPassing<span class="op">(</span><span class="dt">int</span> score<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The boundary is visible in each parameter list and return type.</p>
+<!-- Slide 84 -->
+</section>
+<section id="function-boundary-model-practice-problems" class="slide level2">
+<h2>Function Boundary Model: Practice Problems</h2>
+<ol type="1">
+<li>Draw the boundary around a function definition.</li>
+<li>Mark which values cross into the function.</li>
+<li>Mark which value crosses back to the caller.</li>
+</ol>
+<!-- Slide 85 -->
+</section>
+<section id="function-boundary-model-ai-search-terms" class="slide level2">
+<h2>Function Boundary Model: AI Search Terms</h2>
+<ul>
+<li>“C++ function parameter boundary”</li>
+<li>“C++ local variable function scope”</li>
+<li>“C++ function return value caller”</li>
+</ul>
+<!-- Slide 86 -->
+</section>
+<section id="function-boundary-model-questions-for-reflection" class="slide level2">
+<h2>Function Boundary Model: Questions for Reflection</h2>
+<ul>
+<li>Why is hidden data flow hard to debug?</li>
+<li>How does a clear boundary make a function easier to trust?</li>
+</ul>
+<!-- Slide 87 -->
+</section>
+<section id="passing-vectors-good-practices" class="slide level2">
+<h2>Passing Vectors: Good Practices</h2>
+<ul>
+<li>Pass a vector when the function needs the collection as a whole.</li>
+<li>Pass one element at a time when each call only needs one value.</li>
+<li>Return a vector when the function creates a collection for the caller.</li>
+</ul>
+<!-- Slide 88 -->
+</section>
+<section id="passing-vectors-common-mistakes" class="slide level2">
+<h2>Passing Vectors: Common Mistakes</h2>
+<ul>
+<li>Forgetting <code>#include &lt;vector&gt;</code>.</li>
+<li>Passing a whole vector when the function only needs one value.</li>
+<li>Expecting a pass-by-value parameter to change the caller’s vector.</li>
+</ul>
+<!-- Slide 89 -->
+</section>
+<section id="passing-vectors-more-examples" class="slide level2">
+<h2>Passing Vectors: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb37-1"><a href=""></a><span class="dt">int</span> countPassing<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores<span class="op">);</span></span>
+<span id="cb37-2"><a href=""></a><span class="dt">void</span> displayName<span class="op">(</span>string name<span class="op">);</span></span>
+<span id="cb37-3"><a href=""></a>vector<span class="op">&lt;</span>string<span class="op">&gt;</span> getNames<span class="op">();</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The parameter type should match the data each function needs.</p>
+<!-- Slide 90 -->
+</section>
+<section id="passing-vectors-practice-problems" class="slide level2">
+<h2>Passing Vectors: Practice Problems</h2>
+<ol type="1">
+<li>Decide whether <code>displayScore</code> should receive one <code>int</code> or a <code>vector&lt;int&gt;</code>.</li>
+<li>Write a prototype for a function that returns a vector of prices.</li>
+<li>Trace whether a vector parameter is the same variable as the caller’s vector.</li>
+</ol>
+<!-- Slide 91 -->
+</section>
+<section id="passing-vectors-ai-search-terms" class="slide level2">
+<h2>Passing Vectors: AI Search Terms</h2>
+<ul>
+<li>“C++ pass vector to function”</li>
+<li>“C++ return vector from function”</li>
+<li>“C++ range based for pass element to function”</li>
+</ul>
+<!-- Slide 92 -->
+</section>
+<section id="passing-vectors-questions-for-reflection" class="slide level2">
+<h2>Passing Vectors: Questions for Reflection</h2>
+<ul>
+<li>When is passing a whole vector clearer than passing one element?</li>
+<li>Why does the function contract matter more when the data is a collection?</li>
+</ul>
+<!-- Slide 93 -->
+</section>
+<section id="scope-good-practices" class="slide level2">
+<h2>Scope: Good Practices</h2>
+<ul>
+<li>Declare variables close to where they are used.</li>
+<li>Pass data through parameters instead of depending on global variables.</li>
+<li>Keep temporary variables inside the function that needs them.</li>
+</ul>
+<!-- Slide 94 -->
+</section>
+<section id="scope-common-mistakes" class="slide level2">
+<h2>Scope: Common Mistakes</h2>
+<ul>
+<li>Trying to use a variable after its block has ended.</li>
+<li>Assuming a parameter name is visible in the caller.</li>
+<li>Making a variable global only because a function needs it.</li>
+</ul>
+<!-- Slide 95 -->
+</section>
+<section id="scope-more-examples" class="slide level2">
+<h2>Scope: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb38-1"><a href=""></a><span class="dt">void</span> displayDouble<span class="op">(</span><span class="dt">int</span> number<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb38-2"><a href=""></a>    <span class="dt">int</span> doubled <span class="op">=</span> number <span class="op">*</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb38-3"><a href=""></a>    cout <span class="op">&lt;&lt;</span> doubled <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb38-4"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>number</code> and <code>doubled</code> belong to <code>displayDouble()</code>.</p>
+<!-- Slide 96 -->
+</section>
+<section id="scope-practice-problems" class="slide level2">
+<h2>Scope: Practice Problems</h2>
+<ol type="1">
+<li>Mark where a loop variable is visible.</li>
+<li>Mark where a function parameter is visible.</li>
+<li>Rewrite a global variable example using a parameter.</li>
+</ol>
+<!-- Slide 97 -->
+</section>
+<section id="scope-ai-search-terms" class="slide level2">
+<h2>Scope: AI Search Terms</h2>
+<ul>
+<li>“C++ function scope local variables”</li>
+<li>“C++ parameters local variables”</li>
+<li>“C++ global variables beginner”</li>
+</ul>
+<!-- Slide 98 -->
+</section>
+<section id="scope-questions-for-reflection" class="slide level2">
+<h2>Scope: Questions for Reflection</h2>
+<ul>
+<li>Why does modular design depend on local names?</li>
+<li>When does making a variable visible in more places make the program harder to understand?</li>
+</ul>
+<!-- Slide 99 -->
+</section>
+<section id="shadow-variables-good-practices" class="slide level2">
+<h2>Shadow Variables: Good Practices</h2>
+<ul>
+<li>Use different names when two variables mean different things.</li>
+<li>Watch for declarations inside nested blocks.</li>
+<li>Prefer names that describe the role of the value.</li>
+</ul>
+<!-- Slide 100 -->
+</section>
+<section id="shadow-variables-common-mistakes" class="slide level2">
+<h2>Shadow Variables: Common Mistakes</h2>
+<ul>
+<li>Declaring a new variable when you meant to update an existing one.</li>
+<li>Reusing a parameter name inside the same function.</li>
+<li>Assuming the outer variable changed because the visible name changed.</li>
+</ul>
+<!-- Slide 101 -->
+</section>
+<section id="shadow-variables-more-examples" class="slide level2">
+<h2>Shadow Variables: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb39-1"><a href=""></a><span class="dt">int</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb39-2"><a href=""></a></span>
+<span id="cb39-3"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> count <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb39-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> count <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb39-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The loop variable hides the outer <code>count</code> inside the loop.</p>
+<!-- Slide 102 -->
+</section>
+<section id="shadow-variables-practice-problems" class="slide level2">
+<h2>Shadow Variables: Practice Problems</h2>
+<ol type="1">
+<li>Circle every declaration in a short program.</li>
+<li>Draw boxes around each scope.</li>
+<li>Identify which declaration each variable use refers to.</li>
+</ol>
+<!-- Slide 103 -->
+</section>
+<section id="shadow-variables-ai-search-terms" class="slide level2">
+<h2>Shadow Variables: AI Search Terms</h2>
+<ul>
+<li>“C++ shadow variable”</li>
+<li>“C++ name hiding local variable”</li>
+<li>“C++ -Wshadow warning”</li>
+</ul>
+<!-- Slide 104 -->
+</section>
+<section id="shadow-variables-questions-for-reflection" class="slide level2">
+<h2>Shadow Variables: Questions for Reflection</h2>
+<ul>
+<li>Why can a shadow variable compile but still be wrong?</li>
+<li>Why does the closest visible declaration win?</li>
+</ul>
+<!-- Slide 105 -->
+</section>
+<section id="stack-frame-model-good-practices" class="slide level2">
+<h2>Stack Frame Model: Good Practices</h2>
+<ul>
+<li>Trace one active function call at a time.</li>
+<li>Put parameters and local variables in the frame where they belong.</li>
+<li>Remove a frame when its function returns.</li>
+</ul>
+<!-- Slide 106 -->
+</section>
+<section id="stack-frame-model-common-mistakes" class="slide level2">
+<h2>Stack Frame Model: Common Mistakes</h2>
+<ul>
+<li>Keeping a local variable alive after the function returns.</li>
+<li>Treating a parameter as the caller’s variable.</li>
+<li>Forgetting that each function call gets its own frame.</li>
+</ul>
+<!-- Slide 107 -->
+</section>
+<section id="stack-frame-model-more-examples" class="slide level2">
+<h2>Stack Frame Model: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb40-1"><a href=""></a><span class="dt">int</span> square<span class="op">(</span><span class="dt">int</span> number<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb40-2"><a href=""></a>    <span class="dt">int</span> result <span class="op">=</span> number <span class="op">*</span> number<span class="op">;</span></span>
+<span id="cb40-3"><a href=""></a>    <span class="cf">return</span> result<span class="op">;</span></span>
+<span id="cb40-4"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>number</code> and <code>result</code> live in the <code>square()</code> frame.</p>
+<!-- Slide 108 -->
+</section>
+<section id="stack-frame-model-practice-problems" class="slide level2">
+<h2>Stack Frame Model: Practice Problems</h2>
+<ol type="1">
+<li>Draw the stack before a function call.</li>
+<li>Add a frame for the called function.</li>
+<li>Remove the frame and write the returned value in the caller.</li>
+</ol>
+<!-- Slide 109 -->
+</section>
+<section id="stack-frame-model-ai-search-terms" class="slide level2">
+<h2>Stack Frame Model: AI Search Terms</h2>
+<ul>
+<li>“C++ stack frame beginner”</li>
+<li>“C++ call stack function parameters”</li>
+<li>“C++ local variables stack frame”</li>
+</ul>
+<!-- Slide 110 -->
+</section>
+<section id="stack-frame-model-questions-for-reflection" class="slide level2">
+<h2>Stack Frame Model: Questions for Reflection</h2>
+<ul>
+<li>How do stack frames explain why local variables disappear?</li>
+<li>How does the stack frame model make scope easier to trace?</li>
+</ul>
+<!-- Slide 111 -->
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>CISP 400 · Fowler</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="p400_lecture_04.02_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="p400_lecture_04.02_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="p400_lecture_04.02_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="p400_lecture_04.02_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="p400_lecture_04.02_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="p400_lecture_04.02_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="p400_lecture_04.02_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="p400_lecture_04.02_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="p400_lecture_04.02_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="p400_lecture_04.02_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

@@ -1,0 +1,85 @@
+<!-- Topic: Pointer Variables in Memory -->
+<!-- Slides 8–17 -->
+
+# Pointer Variables in Memory
+
+![](images/source_pages/slide-08.png){width="100%" fig-alt="Pointer Variables in Memory"}
+
+::: notes
+Slides 8–17
+Source slide 8 from the authoritative PDF.
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## <span style="display:none">Source Slide 9</span>
+
+![](images/source_pages/slide-09.png){width="100%" fig-alt="What does this"}
+
+<!-- Slide 9 -->
+
+---
+
+## <span style="display:none">Source Slide 10</span>
+
+![](images/source_pages/slide-10.png){width="100%" fig-alt="Source Slide 10"}
+
+<!-- Slide 10 -->
+
+---
+
+## <span style="display:none">Source Slide 11</span>
+
+![](images/source_pages/slide-11.png){width="100%" fig-alt="Pointer Activity I"}
+
+<!-- Slide 11 -->
+
+---
+
+## <span style="display:none">Source Slide 12</span>
+
+![](images/source_pages/slide-12.png){width="100%" fig-alt="• Create 2 ints and a pointer variable."}
+
+<!-- Slide 12 -->
+
+---
+
+## <span style="display:none">Source Slide 13</span>
+
+![](images/source_pages/slide-13.png){width="100%" fig-alt="• Point to the rst int."}
+
+<!-- Slide 13 -->
+
+---
+
+## <span style="display:none">Source Slide 14</span>
+
+![](images/source_pages/slide-14.png){width="100%" fig-alt="• Reassign the pointer to the second int."}
+
+<!-- Slide 14 -->
+
+---
+
+## <span style="display:none">Source Slide 15</span>
+
+![](images/source_pages/slide-15.png){width="100%" fig-alt="• Create a second pointer and also assign that to the"}
+
+<!-- Slide 15 -->
+
+---
+
+## <span style="display:none">Source Slide 16</span>
+
+![](images/source_pages/slide-16.png){width="100%" fig-alt="• Assign a different value to the second int."}
+
+<!-- Slide 16 -->
+
+---
+
+## <span style="display:none">Source Slide 17</span>
+
+![](images/source_pages/slide-17.png){width="100%" fig-alt="Source Slide 17"}
+
+<!-- Slide 17 -->

@@ -1,0 +1,194 @@
+<!-- Topic: Range-Based Loops and std::for_each -->
+<!-- Slides 21–40 -->
+
+# Range-Based Loops and std::for_each
+
+## Range Based Loops
+
+::: notes
+Slides 21–40
+Source text extracted from the authoritative Keynote deck.
+:::
+
+<!-- Slide 21 -->
+
+---
+
+## Range Based Loops
+
+- to iterate over a group of elements in some data structure (array, vector, etc)
+- VERY often used with what we will discuss today because making simple transformations
+- Hs usually the heart
+- `functors (and lambdas).
+
+<!-- Slide 22 -->
+
+---
+
+## )>@C
+
+- Note the auto - makes it easier if we change t
+- (@rray types
+- Also n
+- ref var element. Looping shouldn't
+
+<!-- Slide 23 -->
+
+---
+
+## )>@C
+
+- Just switching the data type.
+- We can put a counter in
+- '(loop to get
+- Tindex number, but it
+
+<!-- Slide 24 -->
+
+---
+
+## )>@C
+
+- Shows that for each doesn
+- t always work.
+- The array decayed into a pointer w/o a size indication. Remember, we need a size parameter when
+- pass
+
+<!-- Slide 25 -->
+
+---
+
+## )>@C
+
+- Not only can this for_each handle pointers, it expects them.
+- Look how we call the function - no () to pass parameters
+- Note: auto
+- x(not be used
+
+<!-- Slide 26 -->
+
+---
+
+## )>@C
+
+- C@Manually worrying about the pointers is a pain. Let's fix that.
+
+<!-- Slide 27 -->
+
+---
+
+## )>/]
+
+- std::for_each
+- %Handles pointers and array arguments.1
+- $E6ABD49D-0DEC-460C-8260-AA332EC589C8
+- u^$T
+
+<!-- Slide 28 -->
+
+---
+
+## )>@C
+
+- RiNow build a simple functor and run it.
+- Note the disposable obj1 - wouldn't want to
+- Lhat for production
+
+<!-- Slide 29 -->
+
+---
+
+## )>@C
+
+- This shows we are using manually created pointers. Note: Fibonacci not used.
+- Snap with new -
+- return
+- e anyway.
+
+<!-- Slide 30 -->
+
+---
+
+## functors are
+
+- $4F471A98-33D6-4F10-9C52-E0CE73F5C8E6
+- DHsmall
+- disposable
+- Often they return a boolean value - predicate
+
+<!-- Slide 31 -->
+
+---
+
+## Polluting the Namespace
+
+
+<!-- Slide 32 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 33 -->
+
+---
+
+## Easier to read
+
+
+<!-- Slide 34 -->
+
+---
+
+## )>@C
+
+
+<!-- Slide 35 -->
+
+---
+
+## C5&E=
+
+- )>@C
+- Another functor example - with overloading
+
+<!-- Slide 36 -->
+
+---
+
+## )>dW
+
+- Toss Up
+- L[Storing state
+- Can do it with Lambdas, but I don
+- t think it
+
+<!-- Slide 37 -->
+
+---
+
+## %State is stored in the object itself.
+
+- C%bE
+
+<!-- Slide 38 -->
+
+---
+
+## 1\!<>
+
+- )>@C
+- Storing state with a lambda.
+
+<!-- Slide 39 -->
+
+---
+
+## decimal5!
+
+- x DEb
+- Peer Review 3 due Sunday.u
+- ]! >
+
+<!-- Slide 40 -->

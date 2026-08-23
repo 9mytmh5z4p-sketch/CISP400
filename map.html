@@ -1,0 +1,1265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CISP400 Fall 2026 course map with weekly lecture progression, meeting dates, deadlines, and campus closures.">
+  <title>CISP400 — Object Oriented Programming in C++ Course Map</title>
+  <style>
+    :root {
+      --paper: #f5f1f7;
+      --paper-deep: #e9dfed;
+      --ink: #271b2b;
+      --muted: #706475;
+      --line: #d9ccde;
+      --panel: #fffaff;
+      --night: #25112f;
+      --night-soft: #38203f;
+      --unit-one: #874e9c;
+      --unit-one-soft: #eee4f2;
+      --unit-two: #7d279c;
+      --unit-two-soft: #ead8f0;
+      --unit-three: #72009c;
+      --unit-three-soft: #e7d0ef;
+      --accent: #874e9c;
+      --danger: #9f3e36;
+      --focus: #5c0a86;
+      --shadow: 0 12px 30px rgba(70, 35, 82, 0.1);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(90deg, rgba(114, 0, 156, 0.025) 1px, transparent 1px),
+        var(--paper);
+      background-size: 42px 42px;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    a { color: inherit; }
+
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .shell {
+      width: min(1510px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      background: var(--night);
+      color: #f8f4ea;
+      border-bottom: 5px solid var(--accent);
+    }
+
+    .header-inner {
+      min-height: 96px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .course-mark {
+      display: block;
+      width: 51px;
+      height: auto;
+      max-height: 58px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.18));
+    }
+
+    .course-kicker {
+      margin: 0 0 3px;
+      color: #dfd2e3;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .course-title {
+      margin: 0;
+      font-family: Iowan Old Style, Baskerville, Georgia, serif;
+      font-size: clamp(24px, 2vw, 34px);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .term-state {
+      display: grid;
+      grid-template-columns: auto auto;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .term-copy {
+      text-align: right;
+    }
+
+    .term-copy strong,
+    .term-copy span { display: block; }
+
+    .term-copy strong { font-size: 13px; }
+    .term-copy span { color: #c7b8cc; font-size: 12px; margin-top: 2px; }
+
+    .page-nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .page-nav a {
+      padding: 5px 8px;
+      border-radius: 7px;
+      color: #dfd2e3;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .page-nav a:hover,
+    .page-nav a[aria-current="page"] {
+      color: #fff;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .presemester-badge {
+      border: 1px solid rgba(222, 180, 235, 0.72);
+      border-radius: 999px;
+      padding: 7px 10px;
+      color: #e5c4ed;
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .presemester-badge[data-state="in-session"] {
+      border-color: rgba(205, 161, 220, 0.72);
+      color: #ddb6e8;
+    }
+
+    .presemester-badge[data-state="finals-period"] {
+      border-color: rgba(185, 132, 204, 0.72);
+      color: #d5a9e2;
+    }
+
+    .presemester-badge[data-state="term-complete"] {
+      border-color: rgba(218, 200, 224, 0.5);
+      color: #d9cbdc;
+    }
+
+    main { padding: 30px 0 56px; }
+
+    .intro-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 18px;
+    }
+
+    .intro-row h2 {
+      margin: 0;
+      font-family: Iowan Old Style, Baskerville, Georgia, serif;
+      font-size: clamp(28px, 2.5vw, 41px);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.035em;
+    }
+
+    .intro-row p {
+      max-width: 690px;
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .countdown {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-left: 18px;
+      border-left: 1px solid var(--line);
+    }
+
+    .countdown strong {
+      font-family: Iowan Old Style, Baskerville, Georgia, serif;
+      font-size: clamp(25px, 2.5vw, 38px);
+      line-height: 1;
+      color: var(--unit-one);
+      white-space: nowrap;
+    }
+
+    .countdown span {
+      display: block;
+      max-width: 125px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 750;
+      line-height: 1.25;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .map-frame {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .map-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 18px 12px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,0.45);
+    }
+
+    .map-meta strong {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .map-legend {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .legend-item { display: inline-flex; align-items: center; gap: 6px; }
+    .legend-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    .legend-line { width: 15px; height: 3px; border-radius: 3px; background: var(--danger); }
+
+    .semester-map { padding: 16px 18px 18px; }
+
+    .week-grid {
+      display: grid;
+      grid-template-columns: repeat(17, minmax(0, 1fr));
+      gap: 6px;
+    }
+
+    .week-button {
+      position: relative;
+      min-width: 0;
+      min-height: 142px;
+      padding: 10px 7px 8px;
+      border: 1px solid var(--line);
+      border-radius: 5px 5px 9px 9px;
+      background: #faf7f0;
+      color: var(--ink);
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+      transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+    }
+
+    .week-button::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      border-radius: 4px 0 0 4px;
+      background: var(--week-color);
+    }
+
+    .week-button:hover { transform: translateY(-2px); background: #fff; border-color: #ada392; }
+    .week-button[aria-pressed="true"] {
+      background: var(--night);
+      color: #fffdf8;
+      border-color: var(--night);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 14px rgba(56,20,68,0.22);
+    }
+
+    .week-button .w-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .w-slots {
+      display: grid;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .w-slot {
+      display: block;
+      min-width: 0;
+      padding-top: 5px;
+      border-top: 1px solid rgba(105,112,108,0.24);
+    }
+
+    .week-button[aria-pressed="true"] .w-slot { border-color: rgba(255,255,255,0.22); }
+
+    .w-slot-line,
+    .w-slot-code { display: block; }
+
+    .w-slot-line {
+      color: var(--ink);
+      font-size: 9px;
+      font-weight: 800;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .w-slot-line b {
+      color: var(--week-color);
+      font-size: 8px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .w-slot-code {
+      margin-top: 2px;
+      overflow: hidden;
+      color: var(--muted);
+      font-size: 8px;
+      font-weight: 750;
+      line-height: 1.15;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .w-slot.no-class .w-slot-code { color: var(--danger); }
+    .w-slot.finals .w-slot-code { color: var(--unit-three); }
+    .week-button[aria-pressed="true"] .w-slot-line { color: #fffdf8; }
+    .week-button[aria-pressed="true"] .w-slot-line b { color: #e5c4ed; }
+    .week-button[aria-pressed="true"] .w-slot-code { color: #cfbfd3; }
+    .week-button[aria-pressed="true"] .w-slot.no-class .w-slot-code { color: #ffaaa2; }
+
+    .week-button .w-event {
+      position: absolute;
+      top: 9px;
+      right: 7px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 2px #faf7f0;
+    }
+
+    .week-button .w-event.break { width: 12px; height: 4px; border-radius: 4px; background: var(--danger); }
+    .week-button[aria-pressed="true"] .w-event { box-shadow: 0 0 0 2px var(--night); }
+
+    .now-marker {
+      position: relative;
+      height: 22px;
+      margin: 9px 0 0;
+      overflow: hidden;
+    }
+
+    .today-note {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--unit-one);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .today-note::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--unit-one);
+    }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.58fr) minmax(330px, 0.72fr);
+      border-top: 1px solid var(--line);
+    }
+
+    .week-focus {
+      padding: 24px 26px 25px;
+      min-width: 0;
+    }
+
+    .focus-heading {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    .focus-eyebrow {
+      margin: 0 0 4px;
+      color: var(--selected-color, var(--unit-one));
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .focus-heading h3 {
+      margin: 0;
+      font-family: Iowan Old Style, Baskerville, Georgia, serif;
+      font-size: clamp(25px, 2vw, 34px);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+    }
+
+    .focus-heading .range {
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .lecture-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .lecture-card {
+      display: grid;
+      grid-template-columns: auto auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 13px;
+      min-height: 104px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      text-decoration: none;
+      transition: border-color 140ms ease, transform 140ms ease, box-shadow 140ms ease;
+    }
+
+    .lecture-card:hover {
+      border-color: var(--selected-color, var(--unit-one));
+      transform: translateY(-2px);
+      box-shadow: 0 7px 16px rgba(70,35,82,0.1);
+    }
+
+    .lecture-card.slot-static {
+      cursor: default;
+      background: #f7f3eb;
+    }
+
+    .lecture-card.slot-static:hover {
+      border-color: var(--line);
+      box-shadow: none;
+      transform: none;
+    }
+
+    .lecture-card.no-class { border-left: 5px solid var(--danger); }
+    .lecture-card.finals { border-left: 5px solid var(--unit-three); }
+
+    .meeting-date {
+      width: 51px;
+      padding-right: 12px;
+      border-right: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .meeting-date strong,
+    .meeting-date time { display: block; }
+
+    .meeting-date strong {
+      color: var(--selected-color, var(--unit-one));
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .meeting-date time {
+      margin-top: 4px;
+      color: var(--muted);
+      font-family: Iowan Old Style, Baskerville, Georgia, serif;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    .lecture-code {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--selected-soft, var(--unit-one-soft));
+      color: var(--selected-color, var(--unit-one));
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .slot-static .lecture-code {
+      border-radius: 8px;
+      font-size: 9px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .no-class .lecture-code { background: #f3deda; color: var(--danger); }
+    .finals .lecture-code { background: var(--unit-three-soft); color: var(--unit-three); }
+
+    .lecture-copy strong,
+    .lecture-copy span { display: block; }
+    .lecture-copy strong { font-size: 14px; line-height: 1.25; }
+    .lecture-copy span { margin-top: 5px; color: var(--muted); font-size: 10px; font-weight: 750; letter-spacing: 0.07em; text-transform: uppercase; }
+    .lecture-copy .inventory-topics { letter-spacing: 0; text-transform: none; }
+    .lecture-arrow { color: var(--muted); font-size: 20px; line-height: 1; }
+
+    .single-lecture .lecture-card { max-width: 540px; }
+
+    .week-notes {
+      padding: 24px 24px 25px;
+      background: var(--night);
+      color: #f8f4ea;
+      min-width: 0;
+    }
+
+    .notes-label {
+      margin: 0 0 14px;
+      color: #c8b8cc;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .milestone-list { display: grid; gap: 12px; }
+
+    .milestone {
+      display: grid;
+      grid-template-columns: 62px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.13);
+    }
+
+    .milestone:last-child { padding-bottom: 0; border-bottom: 0; }
+
+    .milestone time {
+      color: #e5c4ed;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .milestone strong { display: block; font-size: 13px; line-height: 1.25; }
+    .milestone span { display: block; margin-top: 3px; color: #c8b8cc; font-size: 11px; line-height: 1.35; }
+
+    .quiet-week {
+      margin: 0;
+      max-width: 310px;
+      color: #ddd1e0;
+      font-family: Iowan Old Style, Baskerville, Georgia, serif;
+      font-size: 20px;
+      line-height: 1.35;
+    }
+
+    .lower-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 0.75fr;
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .section-block {
+      background: rgba(255,253,248,0.82);
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      padding: 22px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-heading h3 {
+      margin: 0;
+      font-family: Iowan Old Style, Baskerville, Georgia, serif;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .section-heading span { color: var(--muted); font-size: 11px; }
+
+    .deadline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0 18px;
+    }
+
+    .deadline-item {
+      display: grid;
+      grid-template-columns: 65px 1fr;
+      gap: 10px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .deadline-item time {
+      color: var(--danger);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .deadline-item span { font-size: 12px; line-height: 1.35; }
+
+    .after-term {
+      position: relative;
+      overflow: hidden;
+      background: var(--night);
+      color: #f8f4ea;
+      border-color: var(--night);
+    }
+
+    .after-term h3 {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 20px;
+      font-family: Iowan Old Style, Baskerville, Georgia, serif;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .after-item {
+      position: relative;
+      z-index: 1;
+      padding: 15px 0;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .after-item:first-of-type { border-top: 0; padding-top: 0; }
+    .after-item time { display: block; margin-bottom: 5px; color: #e5c4ed; font-size: 11px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
+    .after-item strong { display: block; font-size: 14px; }
+    .after-item span { display: block; margin-top: 4px; color: #c8b8cc; font-size: 11px; line-height: 1.4; }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 26px 0 6px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .footer strong { color: var(--ink); }
+
+    @media (max-width: 1180px) {
+      .week-grid { grid-template-columns: repeat(9, minmax(0, 1fr)); }
+      .week-button:nth-child(n+10) { margin-top: 3px; }
+      .focus-grid { grid-template-columns: 1.35fr 0.75fr; }
+      .deadline-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 820px) {
+      .shell { width: min(100% - 28px, 760px); }
+      .header-inner { grid-template-columns: auto 1fr; min-height: 90px; }
+      .term-state { grid-column: 1 / -1; padding-bottom: 14px; justify-content: space-between; }
+      .term-copy { text-align: left; }
+      .page-nav { justify-content: flex-start; }
+      .intro-row { align-items: flex-start; flex-wrap: wrap; }
+      .countdown {
+        width: 100%;
+        padding: 12px 0 0;
+        border-top: 1px solid var(--line);
+        border-left: 0;
+      }
+      .map-meta { align-items: flex-start; flex-direction: column; gap: 7px; }
+      .semester-map { padding: 13px; }
+      .week-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+      .focus-grid, .lower-grid { grid-template-columns: 1fr; }
+      .lecture-list { grid-template-columns: 1fr; }
+      .single-lecture .lecture-card { max-width: none; }
+      .deadline-grid { grid-template-columns: 1fr; }
+      .week-notes { min-height: 210px; }
+    }
+
+    @media (max-width: 500px) {
+      body { font-size: 14px; }
+      .shell { width: min(100% - 20px, 460px); }
+      .course-mark { width: 42px; height: auto; max-height: 47px; }
+      .course-title { font-size: 23px; }
+      main { padding-top: 22px; }
+      .intro-row p { font-size: 12px; }
+      .map-legend { flex-wrap: wrap; gap: 8px 14px; }
+      .week-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .today-note { font-size: 9px; }
+      .today-note::before { width: 18px; }
+      .week-button { min-height: 132px; }
+      .week-button .w-label { font-size: 11px; }
+      .w-slot-line { font-size: 10px; }
+      .w-slot-line b, .w-slot-code { font-size: 9px; }
+      .week-focus, .week-notes { padding: 19px 17px; }
+      .focus-heading { flex-direction: column; gap: 8px; }
+      .lecture-card { grid-template-columns: auto auto minmax(0, 1fr); gap: 10px; }
+      .lecture-arrow { display: none; }
+      .deadline-item { grid-template-columns: 58px 1fr; }
+      .footer { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.001ms !important; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .site-header { background: #fff; color: #000; border-color: #000; }
+      .course-kicker, .term-copy span { color: #333; }
+      .presemester-badge { color: #000; border-color: #000; }
+      .map-frame, .section-block { box-shadow: none; }
+      .week-notes, .after-term { background: #fff; color: #000; border: 1px solid #999; }
+      .week-button[aria-pressed="true"] { background: #ddd; color: #000; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <img class="course-mark" src="img/p400%20ISO_C%2B%2B_Logo.png" alt="" width="638" height="718">
+      <div>
+        <p class="course-kicker">Folsom Lake College · CISP400 · Fall 2026</p>
+        <h1 class="course-title">Object Oriented Programming in C++</h1>
+      </div>
+      <div class="term-state">
+        <div class="term-copy">
+          <strong>Full Term · Aug 22–Dec 17, 2026</strong>
+          <span>CISP400 meets Mondays + Wednesdays</span>
+          <nav class="page-nav" aria-label="Course views">
+            <a href="calendar.html">Calendar</a>
+            <a href="map.html" aria-current="page">Course map</a>
+          </nav>
+        </div>
+        <span class="presemester-badge" id="term-badge">Pre-semester</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="intro-row" aria-labelledby="map-title">
+      <div>
+        <h2 id="map-title">The semester, mapped.</h2>
+        <p>Seventeen Monday–Wednesday course weeks move from familiar programming ideas to the machinery beneath them. Choose any week to see both meeting dates, open its lecture pages, and review nearby academic milestones.</p>
+      </div>
+      <div class="countdown" id="term-summary" aria-live="polite">
+        <strong id="term-summary-value">10</strong>
+        <span id="term-summary-label">days until the first class</span>
+      </div>
+    </section>
+
+    <section class="map-frame" aria-label="Interactive Fall 2026 semester map">
+      <div class="map-meta">
+        <strong>17-week course path</strong>
+        <div class="map-legend" aria-label="Map key">
+          <span class="legend-item"><span class="legend-dot" aria-hidden="true"></span>Academic milestone</span>
+          <span class="legend-item"><span class="legend-line" aria-hidden="true"></span>Campus closure or recess</span>
+          <span>Each week shows Monday + Wednesday</span>
+        </div>
+      </div>
+
+      <div class="semester-map">
+        <div class="week-grid" id="week-grid" aria-label="Choose an instructional week"></div>
+
+        <div class="now-marker" id="now-marker" aria-hidden="true">
+          <span class="today-note" id="today-note">Today · before Week 1</span>
+        </div>
+      </div>
+
+      <div class="focus-grid" id="week-detail">
+        <section class="week-focus" aria-live="polite" aria-atomic="true">
+          <div class="focus-heading">
+            <div>
+              <p class="focus-eyebrow" id="focus-unit">Lecture sequence</p>
+              <h3 id="focus-title">Week 1 · Introduction to C++</h3>
+            </div>
+            <span class="range" id="focus-range">Mon Aug 24 · Wed Aug 26</span>
+          </div>
+          <div class="lecture-list" id="lecture-list"></div>
+        </section>
+
+        <aside class="week-notes" aria-labelledby="notes-title">
+          <p class="notes-label" id="notes-title">Academic markers this week</p>
+          <div id="milestone-list"></div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="lower-grid">
+      <section class="section-block" aria-labelledby="deadlines-title">
+        <div class="section-heading">
+          <h3 id="deadlines-title">Term Milestones</h3>
+          <span>Published Fall 2026 dates</span>
+        </div>
+        <div class="deadline-grid">
+          <div class="deadline-item"><time datetime="2026-08-22">Aug 22</time><span>Classes start.</span></div>
+          <div class="deadline-item"><time datetime="2026-09-04">Sep 4</time><span>Last day to return a parking permit for a refund.</span></div>
+          <div class="deadline-item"><time datetime="2026-09-04">Sep 4</time><span>Last day to drop classes and qualify for a tuition refund.</span></div>
+          <div class="deadline-item"><time datetime="2026-09-06">Sep 6</time><span>Last day to drop classes without notation on record.</span></div>
+          <div class="deadline-item"><time datetime="2026-09-06">Sep 6</time><span>Last day to enroll in classes.</span></div>
+          <div class="deadline-item"><time datetime="2026-09-07">Sep 7</time><span>Labor Day — no classes; offices closed.</span></div>
+          <div class="deadline-item"><time datetime="2026-11-11">Nov 11</time><span>Veterans Day — no classes; offices closed.</span></div>
+          <div class="deadline-item"><time datetime="2026-11-17">Nov 17</time><span>Last day to withdraw with a “W” notation.</span></div>
+          <div class="deadline-item"><time datetime="2026-11-26">Nov 26–29</time><span>Thanksgiving Recess — no classes; offices closed.</span></div>
+          <div class="deadline-item"><time datetime="2026-12-11">Dec 11–17</time><span>Final exams.</span></div>
+          <div class="deadline-item"><time datetime="2026-12-17">Dec 17</time><span>Pass/no-pass petition, refund-request, and last-day-of-classes deadlines.</span></div>
+        </div>
+      </section>
+
+      <aside class="section-block after-term" aria-labelledby="after-title">
+        <h3 id="after-title">After the last class</h3>
+        <div class="after-item">
+          <time datetime="2026-12-18">Dec 18, 2026–Jan 3, 2027</time>
+          <strong>Winter Recess</strong>
+          <span>No classes; offices are open December 18, 21, and 22.</span>
+        </div>
+        <div class="after-item">
+          <time datetime="2027-01-04">January 4, 2027</time>
+          <strong>Grades due</strong>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="footer">
+      <span><strong>CISP400</strong> · Fall 2026 Course Map</span>
+      <span>Regular meetings are Mondays and Wednesdays. Final exam date and time remain to be assigned within Dec 11–17.</span>
+    </footer>
+  </main>
+
+  <script src="p400_inventory.js"></script>
+  <script>
+    (() => {
+      const lectureBase = "./";
+      const inventory = window.P400_INVENTORY || {};
+      const lectureTitles = window.P400_LECTURE_TITLES || {};
+
+      const courseStyle = {
+        label: "Lecture sequence",
+        color: "#874e9c",
+        soft: "#eee4f2"
+      };
+
+      const weeks = [
+        {
+          number: 1, unit: 1, title: "Introduction to C++", range: "Mon Aug 24 · Wed Aug 26",
+          sessions: [
+            { day: "Mon", date: "Aug 24", iso: "2026-08-24", type: "lecture", code: "01.01", title: "Introduction to Structured Programming" },
+            { day: "Wed", date: "Aug 26", iso: "2026-08-26", type: "lecture", code: "01.02", title: "Variables, Types, and Arithmetic" }
+          ],
+          milestones: [["Aug 22", "Classes start", "The published full term begins before CISP400’s first Monday meeting.", "term"]]
+        },
+        {
+          number: 2, unit: 1, title: "Variables and the Terminal", range: "Mon Aug 31 · Wed Sep 2",
+          sessions: [
+            { day: "Mon", date: "Aug 31", iso: "2026-08-31", type: "lecture", code: "02.01", title: "Variable Details — Conversion, Overflow, and Memory" },
+            { day: "Wed", date: "Sep 2", iso: "2026-09-02", type: "lecture", code: "02.02", title: "Terminal Interactions and Colors" }
+          ],
+          milestones: [["Sep 4", "Refund deadlines", "Parking permit return and drop-for-tuition-refund deadlines.", "deadline"]]
+        },
+        {
+          number: 3, unit: 1, title: "Labor Day and Software Design", range: "Mon Sep 7 · Wed Sep 9",
+          sessions: [
+            { day: "Mon", date: "Sep 7", iso: "2026-09-07", type: "no-class", label: "No class", title: "Labor Day", detail: "Campus closed" },
+            { day: "Wed", date: "Sep 9", iso: "2026-09-09", type: "lecture", code: "03.01", title: "Software Design" }
+          ],
+          milestones: [
+            ["Sep 6", "Enrollment record deadlines", "Last day to enroll; last day to drop without notation.", "deadline"],
+            ["Sep 7", "Labor Day", "No classes; offices closed.", "break"]
+          ]
+        },
+        {
+          number: 4, unit: 1, title: "Vectors and Modular Programs", range: "Mon Sep 14 · Wed Sep 16",
+          sessions: [
+            { day: "Mon", date: "Sep 14", iso: "2026-09-14", type: "lecture", code: "03.02", title: "Vectors and Range-Based Loops" },
+            { day: "Wed", date: "Sep 16", iso: "2026-09-16", type: "lecture", code: "04.01", title: "Modular Programming" }
+          ], milestones: []
+        },
+        {
+          number: 5, unit: 1, title: "Modular Design and Advanced Functions", range: "Mon Sep 21 · Wed Sep 23",
+          sessions: [
+            { day: "Mon", date: "Sep 21", iso: "2026-09-21", type: "lecture", code: "04.02", title: "Modular Design" },
+            { day: "Wed", date: "Sep 23", iso: "2026-09-23", type: "lecture", code: "05.01", title: "Advanced Functions" }
+          ], milestones: []
+        },
+        {
+          number: 6, unit: 1, title: "Overloading and Design Patterns", range: "Mon Sep 28 · Wed Sep 30",
+          sessions: [
+            { day: "Mon", date: "Sep 28", iso: "2026-09-28", type: "lecture", code: "05.02", title: "Overloading" },
+            { day: "Wed", date: "Sep 30", iso: "2026-09-30", type: "lecture", code: "06.01", title: "Design Patterns" }
+          ], milestones: []
+        },
+        {
+          number: 7, unit: 2, title: "Conditional Logic", range: "Mon Oct 5 · Wed Oct 7",
+          sessions: [
+            { day: "Mon", date: "Oct 5", iso: "2026-10-05", type: "lecture", code: "06.02", title: "Conditionals" },
+            { day: "Wed", date: "Oct 7", iso: "2026-10-07", type: "lecture", code: "07.01", title: "Conditionals, Part 2" }
+          ], milestones: []
+        },
+        {
+          number: 8, unit: 2, title: "Iteration and Nested Loops", range: "Mon Oct 12 · Wed Oct 14",
+          sessions: [
+            { day: "Mon", date: "Oct 12", iso: "2026-10-12", type: "lecture", code: "07.02", title: "Iteration" },
+            { day: "Wed", date: "Oct 14", iso: "2026-10-14", type: "lecture", code: "08.01", title: "Nested Loops and Multi-Dimensional Vectors" }
+          ], milestones: []
+        },
+        {
+          number: 9, unit: 2, title: "Menus and Reliable Loops", range: "Mon Oct 19 · Wed Oct 21",
+          sessions: [
+            { day: "Mon", date: "Oct 19", iso: "2026-10-19", type: "lecture", code: "08.02", title: "Menu Driven Programming" },
+            { day: "Wed", date: "Oct 21", iso: "2026-10-21", type: "lecture", code: "09.01", title: "Loop Control and Input Validation" }
+          ], milestones: []
+        },
+        {
+          number: 10, unit: 2, title: "Files and String Streams", range: "Mon Oct 26 · Wed Oct 28",
+          sessions: [
+            { day: "Mon", date: "Oct 26", iso: "2026-10-26", type: "lecture", code: "10.01", title: "File I/O and Assertions" },
+            { day: "Wed", date: "Oct 28", iso: "2026-10-28", type: "lecture", code: "11.01", title: "String Streams and Random Access" }
+          ], milestones: []
+        },
+        {
+          number: 11, unit: 3, title: "Arrays and Algorithms", range: "Mon Nov 2 · Wed Nov 4",
+          sessions: [
+            { day: "Mon", date: "Nov 2", iso: "2026-11-02", type: "lecture", code: "11.02", title: "Arrays and Indexing" },
+            { day: "Wed", date: "Nov 4", iso: "2026-11-04", type: "lecture", code: "12.01", title: "Array Functions, Algorithms, and Parallel Arrays" }
+          ], milestones: []
+        },
+        {
+          number: 12, unit: 3, title: "Modern Arrays and Veterans Day", range: "Mon Nov 9 · Wed Nov 11",
+          sessions: [
+            { day: "Mon", date: "Nov 9", iso: "2026-11-09", type: "lecture", code: "13.01", title: "Week 13, Lecture 01 – Multidimensional and Modern Arrays" },
+            { day: "Wed", date: "Nov 11", iso: "2026-11-11", type: "no-class", label: "No class", title: "Veterans Day", detail: "Campus closed" }
+          ],
+          milestones: [["Nov 11", "Veterans Day", "No classes; offices closed.", "break"]]
+        },
+        {
+          number: 13, unit: 3, title: "Pointer Foundations", range: "Mon Nov 16 · Wed Nov 18",
+          sessions: [
+            { day: "Mon", date: "Nov 16", iso: "2026-11-16", type: "lecture", code: "13.02", title: "Week 13, Lecture 02 – Pointer Foundations" },
+            { day: "Wed", date: "Nov 18", iso: "2026-11-18", type: "lecture", code: "14.01", title: "Week 14, Lecture 01 – Array Decay, Null Pointers, and Passing Pointers" }
+          ],
+          milestones: [["Nov 17", "Withdrawal deadline", "Last day to withdraw with a “W” notation.", "deadline"]]
+        },
+        {
+          number: 14, unit: 3, title: "Dynamic Memory", range: "Mon Nov 23 · Wed Nov 25",
+          sessions: [
+            { day: "Mon", date: "Nov 23", iso: "2026-11-23", type: "lecture", code: "14.02", title: "Dynamic Memory and Smart Pointers" },
+            { day: "Wed", date: "Nov 25", iso: "2026-11-25", type: "lecture", code: "15.01", title: "Pseudodynamic and Dynamic Memory" }
+          ],
+          milestones: [["Nov 26–29", "Thanksgiving Recess", "No classes; offices closed after Wednesday’s regular CISP400 meeting.", "break"]]
+        },
+        {
+          number: 15, unit: 3, title: "Records and Classes", range: "Mon Nov 30 · Wed Dec 2",
+          sessions: [
+            { day: "Mon", date: "Nov 30", iso: "2026-11-30", type: "lecture", code: "15.02", title: "Structures, Binary Records, and ADTs" },
+            { day: "Wed", date: "Dec 2", iso: "2026-12-02", type: "lecture", code: "16.01", title: "Classes & Member Functions" }
+          ], milestones: []
+        },
+        {
+          number: 16, unit: 3, title: "Object Lifecycles and Collections", range: "Mon Dec 7 · Wed Dec 9",
+          sessions: [
+            { day: "Mon", date: "Dec 7", iso: "2026-12-07", type: "lecture", code: "16.02", title: "Constructors & Destructors" },
+            { day: "Wed", date: "Dec 9", iso: "2026-12-09", type: "lecture", code: "17.01", title: "Arrays & Vectors of Objects" }
+          ],
+          milestones: [["Dec 11", "Final exams begin", "The published final-exam period runs December 11–17.", "term"]]
+        },
+        {
+          number: 17, unit: 3, title: "Finals Period", range: "Mon Dec 14 · Wed Dec 16",
+          sessions: [
+            { day: "Mon", date: "Dec 14", iso: "2026-12-14", type: "finals", label: "Finals", title: "Final-exam period", detail: "No exact CISP400 exam date or time assigned" },
+            { day: "Wed", date: "Dec 16", iso: "2026-12-16", type: "finals", label: "Finals", title: "Final-exam period", detail: "No exact CISP400 exam date or time assigned" }
+          ],
+          milestones: [
+            ["Dec 11–17", "Final exams", "The published exam period is shown without assigning CISP400 an exact exam date or time.", "term"],
+            ["Dec 17", "Last day of classes", "The full term ends.", "term"],
+            ["Dec 17", "Petition and refund deadlines", "Pass/no-pass petition and Business Services refund-request deadlines.", "deadline"]
+          ]
+        }
+      ];
+
+      const DAY_MS = 86400000;
+      const TERM_START = "2026-08-22";
+      const FIRST_CLASS = "2026-08-24";
+      const FINALS_START = "2026-12-11";
+      const TERM_END = "2026-12-17";
+
+      weeks.forEach((week) => week.sessions.forEach((session) => {
+        if (session.code) {
+          session.title = lectureTitles[session.code] || session.title;
+          session.topics = inventory[session.code] || [];
+        }
+      }));
+
+      const toLocalISO = (date) => {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      };
+
+      const toDayIndex = (iso) => {
+        const [year, month, day] = iso.split("-").map(Number);
+        return Math.floor(Date.UTC(year, month - 1, day) / DAY_MS);
+      };
+
+      const TODAY = toLocalISO(new Date());
+      const todayIndex = toDayIndex(TODAY);
+      const weekBounds = weeks.map((week) => {
+        const start = toDayIndex(week.sessions[0].iso);
+        return { week, start, end: start + 6 };
+      });
+
+      const weekContaining = (dayIndex) => {
+        const match = weekBounds.find(({ start, end }) => dayIndex >= start && dayIndex <= end);
+        return match ? match.week : null;
+      };
+
+      const chooseInitialWeek = () => {
+        if (TODAY < FIRST_CLASS) return weeks[0];
+        if (TODAY > TERM_END) return weeks[weeks.length - 1];
+
+        const currentWeek = weekContaining(todayIndex);
+        if (currentWeek) return currentWeek;
+
+        const nextWeek = weekBounds.find(({ start }) => start > todayIndex);
+        return nextWeek ? nextWeek.week : weeks[weeks.length - 1];
+      };
+
+      const initialWeek = chooseInitialWeek();
+
+      const weekGrid = document.getElementById("week-grid");
+      const focusUnit = document.getElementById("focus-unit");
+      const focusTitle = document.getElementById("focus-title");
+      const focusRange = document.getElementById("focus-range");
+      const lectureList = document.getElementById("lecture-list");
+      const milestoneList = document.getElementById("milestone-list");
+      const weekDetail = document.getElementById("week-detail");
+      const termBadge = document.getElementById("term-badge");
+      const termSummary = document.getElementById("term-summary");
+      const termSummaryValue = document.getElementById("term-summary-value");
+      const termSummaryLabel = document.getElementById("term-summary-label");
+      const nowMarker = document.getElementById("now-marker");
+      const todayNote = document.getElementById("today-note");
+
+      const updateLivingState = () => {
+        let state;
+        let badgeLabel;
+
+        if (TODAY < TERM_START) {
+          state = "pre-semester";
+          badgeLabel = "Pre-semester";
+        } else if (TODAY < FINALS_START) {
+          state = "in-session";
+          badgeLabel = "In session";
+        } else if (TODAY <= TERM_END) {
+          state = "finals-period";
+          badgeLabel = "Finals period";
+        } else {
+          state = "term-complete";
+          badgeLabel = "Term complete";
+        }
+
+        termBadge.dataset.state = state;
+        termBadge.textContent = badgeLabel;
+
+        let summaryValue;
+        let summaryLabel;
+        if (TODAY < FIRST_CLASS) {
+          const daysUntilClass = toDayIndex(FIRST_CLASS) - todayIndex;
+          summaryValue = String(daysUntilClass);
+          summaryLabel = `${daysUntilClass === 1 ? "day" : "days"} until the first class`;
+        } else if (TODAY < FINALS_START) {
+          const lectureDatesReached = weeks
+            .flatMap((week) => week.sessions)
+            .filter((session) => session.type === "lecture" && session.iso <= TODAY)
+            .length;
+          const currentWeek = weekContaining(todayIndex) || initialWeek;
+          summaryValue = `${lectureDatesReached}/30`;
+          summaryLabel = `lecture dates reached · Week ${currentWeek.number} of 16`;
+        } else if (TODAY <= TERM_END) {
+          summaryValue = "Finals";
+          summaryLabel = "exam period · Dec 11–17";
+        } else {
+          summaryValue = "Done";
+          summaryLabel = "Fall 2026 term complete";
+        }
+
+        termSummaryValue.textContent = summaryValue;
+        termSummaryLabel.textContent = summaryLabel;
+        termSummary.setAttribute("aria-label", `${summaryValue} ${summaryLabel}`);
+
+        const currentWeek = weekContaining(todayIndex);
+        if (TODAY < FIRST_CLASS) {
+          todayNote.textContent = "Today · before Week 1";
+        } else if (TODAY > TERM_END) {
+          todayNote.textContent = "Today · after Week 17";
+        } else if (currentWeek) {
+          todayNote.textContent = `Today · Week ${currentWeek.number}`;
+        } else {
+          todayNote.textContent = `Today · before Week ${initialWeek.number}`;
+        }
+      };
+
+      const positionTodayMarker = () => {
+        const button = weekGrid.querySelector(`[data-week="${initialWeek.number}"]`);
+        if (!button) return;
+
+        const idealLeft = button.offsetLeft + (button.offsetWidth - todayNote.offsetWidth) / 2;
+        const maximumLeft = Math.max(0, nowMarker.clientWidth - todayNote.offsetWidth);
+        todayNote.style.left = `${Math.max(0, Math.min(idealLeft, maximumLeft))}px`;
+      };
+
+      updateLivingState();
+
+      const makeLectureHref = (code) => {
+        const slug = `p400_lecture_${code}`;
+        return `${lectureBase}${slug}/${slug}.html`;
+      };
+
+      weeks.forEach((week) => {
+        const unit = courseStyle;
+        const button = document.createElement("button");
+        const hasBreak = week.milestones.some((item) => item[3] === "break");
+        const lectureCount = week.sessions.filter((session) => session.type === "lecture").length;
+        button.type = "button";
+        button.className = "week-button";
+        button.dataset.week = String(week.number);
+        button.setAttribute("aria-pressed", week.number === initialWeek.number ? "true" : "false");
+        button.setAttribute("aria-controls", "week-detail");
+        button.setAttribute("aria-label", `Week ${week.number}, ${week.range}, ${week.title}. ${lectureCount} lecture page${lectureCount === 1 ? "" : "s"}${week.milestones.length ? ", academic marker" : ""}.`);
+        button.style.setProperty("--week-color", unit.color);
+        button.innerHTML = `
+          <span class="w-label">Week ${week.number}</span>
+          <span class="w-slots">
+            ${week.sessions.map((session) => `
+              <span class="w-slot ${session.type}">
+                <span class="w-slot-line"><b>${session.day}</b> ${session.date}</span>
+                <span class="w-slot-code">${session.code || session.label}</span>
+              </span>
+            `).join("")}
+          </span>
+          ${week.milestones.length ? `<span class="w-event${hasBreak ? " break" : ""}" aria-hidden="true"></span>` : ""}
+        `;
+        button.addEventListener("click", () => selectWeek(week.number));
+        button.addEventListener("keydown", (event) => {
+          if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+          event.preventDefault();
+          const delta = event.key === "ArrowRight" ? 1 : -1;
+          const nextIndex = (week.number - 1 + delta + weeks.length) % weeks.length;
+          const nextWeek = weeks[nextIndex];
+          selectWeek(nextWeek.number);
+          weekGrid.querySelector(`[data-week="${nextWeek.number}"]`).focus();
+        });
+        weekGrid.appendChild(button);
+      });
+
+      function selectWeek(number) {
+        const week = weeks[number - 1];
+        const unit = courseStyle;
+
+        weekGrid.querySelectorAll(".week-button").forEach((button) => {
+          button.setAttribute("aria-pressed", button.dataset.week === String(number) ? "true" : "false");
+        });
+
+        weekDetail.style.setProperty("--selected-color", unit.color);
+        weekDetail.style.setProperty("--selected-soft", unit.soft);
+        focusUnit.textContent = unit.label;
+        focusTitle.textContent = `Week ${week.number} · ${week.title}`;
+        focusRange.textContent = week.range;
+
+        lectureList.className = "lecture-list";
+        lectureList.replaceChildren();
+        week.sessions.forEach((session) => {
+          const item = document.createElement(session.type === "lecture" ? "a" : "div");
+          item.className = `lecture-card${session.type === "lecture" ? "" : ` slot-static ${session.type}`}`;
+          if (session.type === "lecture") {
+            item.href = makeLectureHref(session.code);
+            item.setAttribute("aria-label", `Open ${session.day}, ${session.date}, lecture ${session.code}: ${session.title}`);
+          } else {
+            item.setAttribute("aria-label", `${session.day}, ${session.date}: ${session.title}. ${session.detail}`);
+          }
+          const topicText = session.topics && session.topics.length
+            ? `${session.topics.length} inventory topics · ${session.topics.slice(0, 3).join(" · ")}${session.topics.length > 3 ? " · …" : ""}`
+            : "No inventory topics recorded";
+          item.innerHTML = `
+            <span class="meeting-date"><strong>${session.day}</strong><time datetime="${session.iso}">${session.date}</time></span>
+            <span class="lecture-code">${session.code || session.label}</span>
+            <span class="lecture-copy"><strong>${session.title}</strong><span class="inventory-topics">${session.type === "lecture" ? topicText : session.detail}</span></span>
+            ${session.type === "lecture" ? `<span class="lecture-arrow" aria-hidden="true">↗</span>` : ""}
+          `;
+          lectureList.appendChild(item);
+        });
+
+        milestoneList.replaceChildren();
+        if (!week.milestones.length) {
+          const quiet = document.createElement("p");
+          quiet.className = "quiet-week";
+          quiet.textContent = "No published campus deadline or closure falls in this instructional week.";
+          milestoneList.appendChild(quiet);
+          return;
+        }
+
+        const list = document.createElement("div");
+        list.className = "milestone-list";
+        week.milestones.forEach(([date, title, detail]) => {
+          const item = document.createElement("div");
+          item.className = "milestone";
+          item.innerHTML = `<time>${date}</time><div><strong>${title}</strong><span>${detail}</span></div>`;
+          list.appendChild(item);
+        });
+        milestoneList.appendChild(list);
+      }
+
+      selectWeek(initialWeek.number);
+      requestAnimationFrame(positionTodayMarker);
+      window.addEventListener("resize", positionTodayMarker, { passive: true });
+    })();
+  </script>
+</body>
+</html>

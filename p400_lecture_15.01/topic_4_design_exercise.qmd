@@ -1,0 +1,37 @@
+<!-- Topic 4: Design Exercise -->
+<!-- Slides 14–16 -->
+# Design Exercise
+
+## Design Exercise
+
+This slide develops the authoritative source material on **design exercise**.
+
+::: notes
+Slides 14–16
+:::
+
+<!-- Slide 14 -->
+
+---
+
+## Design Exercise
+
+This slide develops the authoritative source material on **design exercise**.
+
+::: notes
+
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## Design Exercise
+
+This slide develops the authoritative source material on **design exercise**.
+
+::: notes
+
+:::
+
+<!-- Slide 16 -->

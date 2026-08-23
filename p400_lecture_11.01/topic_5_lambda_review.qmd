@@ -1,0 +1,61 @@
+<!-- Topic 5: Lambda Review -->
+<!-- Slides 72–76 -->
+# Lambda Review
+
+## Lambda Review
+
+This slide develops the authoritative source material on **lambda review**.
+
+::: notes
+Slides 72–76
+:::
+
+<!-- Slide 72 -->
+
+---
+
+## Lambda Review
+
+This slide develops the authoritative source material on **lambda review**.
+
+::: notes
+
+:::
+
+<!-- Slide 73 -->
+
+---
+
+## Lambda Review
+
+This slide develops the authoritative source material on **lambda review**.
+
+::: notes
+
+:::
+
+<!-- Slide 74 -->
+
+---
+
+## Lambda Review
+
+This slide develops the authoritative source material on **lambda review**.
+
+::: notes
+
+:::
+
+<!-- Slide 75 -->
+
+---
+
+## Code Together
+
+This slide develops the authoritative source material on **code together**.
+
+::: notes
+
+:::
+
+<!-- Slide 76 -->

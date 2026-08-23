@@ -1,0 +1,13 @@
+<!-- Topic: Lecture Summary -->
+<!-- Slides 62–62 -->
+
+# Lecture Summary
+
+![](images/source_pages/slide-62.png){width="100%" fig-alt="Lecture Summary"}
+
+::: notes
+Slides 62–62
+Source slide 62 from the authoritative PDF.
+:::
+
+<!-- Slide 62 -->

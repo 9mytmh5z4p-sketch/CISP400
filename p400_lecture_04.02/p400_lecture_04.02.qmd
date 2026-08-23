@@ -1,0 +1,6 @@
+{{< include topic_course_framing.qmd >}}
+{{< include topic_methods.qmd >}}
+{{< include topic_constructors.qmd >}}
+{{< include topic_destructors.qmd >}}
+{{< include topic_wrap_up.qmd >}}
+

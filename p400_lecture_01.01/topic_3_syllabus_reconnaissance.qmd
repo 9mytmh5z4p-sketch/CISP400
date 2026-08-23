@@ -1,0 +1,45 @@
+<!-- Topic 3: Syllabus Reconnaissance -->
+<!-- Slides 17–20 -->
+
+# Differences From Last Semester
+
+<!-- Slide 17 -->
+
+## Syllabus Reconnaissance
+
+Exercise
+
+::: notes
+Slides 17–20
+:::
+
+<!-- Slide 18 -->
+
+---
+
+## Exercise Goals
+
++ Increase your comfort with this class.
++ Increase your comfort asking questions.
++ Familiarize yourself with the syllabus.
+
+<!-- Slide 19 -->
+
+---
+
+## Procedure
+
+:::: {.columns}
+::: {.column width="70%"}
++ Scan the syllabus.
++ Find 3 things you think everyone should know.
++ What’s exciting to you?
++ What questions do you have?
+:::
+
+::: {.column width="30%"}
+![Five-minute countdown](images/five_minute_countdown.png){fig-align="center" width="72%"}
+:::
+::::
+
+<!-- Slide 20 -->

@@ -1,0 +1,121 @@
+<!-- Topic 2: Inheritance and Arrays -->
+<!-- Slides 3–12 -->
+# Inheritance and Arrays
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+Slides 3–12
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## Inheritance Review
+
+This slide develops the authoritative source material on **inheritance review**.
+
+::: notes
+
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Inheritance and Arrays
+
+This slide develops the authoritative source material on **inheritance and arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## Inheritance and Arrays
+
+This slide develops the authoritative source material on **inheritance and arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Inheritance and Arrays
+
+This slide develops the authoritative source material on **inheritance and arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Inheritance and Arrays
+
+This slide develops the authoritative source material on **inheritance and arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## Inheritance and Arrays
+
+This slide develops the authoritative source material on **inheritance and arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## Inheritance and Arrays
+
+This slide develops the authoritative source material on **inheritance and arrays**.
+
+::: notes
+
+:::
+
+<!-- Slide 12 -->
