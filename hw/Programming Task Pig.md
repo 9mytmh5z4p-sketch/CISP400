@@ -74,26 +74,6 @@ The first player to reach 100 grand points wins. During a turn, the active playe
 - **7.4.** Test the fixed random sequence, invalid menu choices, all three `RandomNumber()` error rules, rolling a 1, holding, computer decisions, multiple games, high-score updates, and memory cleanup.
 - **7.5.** Compile with warnings enabled, confirm that the output is logically correct, and verify the specification comments with `grep -i "specification" homework.cpp`.
 
-## Required Specification Comments
-
-Use the following labels immediately before the first code implementing each feature:
-
-```cpp
-// Specification C1 - Fixed Seed
-// Specification C2 - Student Name
-// Specification C3 - Numeric Menu
-// Specification C4 - ProgramGreeting
-// Specification B1 - Display Turn Stats
-// Specification B2 - Source File Header
-// Specification B3 - hiScore on Heap
-// Specification B4 - Display hiScore
-// Specification A1 - D6() function
-// Specification A2 - RandomNumber() function
-// Specification A3 - Protect RandomNumber() input
-// Specification A4 - Input Validation
-```
-
-Do not bunch all specification comments at the top of the source file. Place each label directly above the feature it documents.
 
 ## Submission Requirements
 
