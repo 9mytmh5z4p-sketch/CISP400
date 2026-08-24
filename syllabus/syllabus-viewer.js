@@ -6,6 +6,7 @@
   const documentElement = document.getElementById("syllabus-document");
   const statusElement = document.getElementById("viewer-status");
   const reloadButton = document.getElementById("reload-markdown");
+  const printButton = document.getElementById("print-syllabus");
   const fileInput = document.getElementById("markdown-file");
 
   const allowedTags = new Set([
@@ -217,6 +218,10 @@
 
   fileInput.addEventListener("change", function () {
     loadSelectedFile(fileInput.files && fileInput.files[0]);
+  });
+
+  printButton.addEventListener("click", function () {
+    window.print();
   });
 
   if (location.protocol === "file:") {
