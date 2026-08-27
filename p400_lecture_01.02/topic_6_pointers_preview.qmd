@@ -1,0 +1,49 @@
+<!-- Topic 6: Pointers Preview -->
+<!-- Slides 26–29 -->
+# Pointers Preview
+
+## What's This Section About?
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+Slides 26–29
+:::
+
+<!-- Slide 26 -->
+
+---
+
+## Agenda
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 27 -->
+
+---
+
+## <Untitled Slide 28>
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 28 -->
+
+---
+
+## Pointers Agenda
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 29 -->

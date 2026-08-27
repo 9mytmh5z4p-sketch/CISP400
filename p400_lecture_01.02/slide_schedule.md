@@ -1,52 +1,50 @@
-# Slide Schedule
-
 | No | Topic | Title | Type | Desc |
 |---:|---|---|---|---|
-| 1 | Course Framing | CISP 400 | title | Identify the course and instructor. |
-| 2 | Course Framing | Agenda | outline | Establish review of CISP 360 material as the day’s agenda. |
-| 3 | C++ Programming Review | Old Friends | section | Frame the upcoming syntax as familiar prerequisite-course material. |
-| 4 | C++ Programming Review | Variables | section | Signal a brief review of variables. |
-| 5 | C++ Programming Review | 4.2 The `if` statement | section | Introduce the conditional-statement portion of the review. |
-| 6 | C++ Programming Review | `if` statement | image | Show one-way `if` syntax and its true/false control flow. |
-| 7 | C++ Programming Review | `if/else` statement | image | Show two-way selection syntax and mutually exclusive branches. |
-| 8 | C++ Programming Review | `if/else if` statement | image | Show a chained sequence of conditions and statement sets. |
-| 9 | C++ Programming Review | Iteration | section | Introduce the loop portion of the review. |
-| 10 | C++ Programming Review | The Structure of `while` Loops | image | Show the pre-test flow of a `while` loop. |
-| 11 | C++ Programming Review | The Structure of `do while` Loops | image | Show the post-test flow of a `do while` loop. |
-| 12 | C++ Programming Review | The Design of `for` Loops | image | Show initialization test body and update order in a `for` loop. |
-| 13 | C++ Programming Review | Functions | section | Introduce the function portion of the review. |
-| 14 | C++ Programming Review | Function Prototypes and Return Type | demo | Identify prototypes and a function return type in a tax-rate program. |
-| 15 | Programming Exercise | Programming Exercise | activity | Begin the CISP 360 recall activity. |
-| 16 | Programming Exercise | Exercise Goals | outline | Explain that the activity measures recall of prerequisite material. |
-| 17 | Programming Exercise | Programming Exercise | exercise | Ask students to initialize and print a 50-element `double` array. |
-| 18 | Programming Exercise | Programming Exercise Debriefing | section | Move from independent work into solution discussion. |
-| 19 | Programming Exercise | Programming Exercise | exercise | Restate the array problem before reviewing a solution. |
-| 20 | Programming Exercise | Initial Array Solution | demo | Present an initial implementation of the array exercise. |
-| 21 | Programming Exercise | Program Output | demo | Reveal the output produced by the initial implementation. |
-| 22 | Programming Exercise | Programming Exercise | exercise | Restate the original requirements before decomposing them. |
-| 23 | Programming Exercise | Let’s Look at This Problem as if It Were a Homework Assignment … | material | Divide the prompt into specifications B1 A1 and C1. |
-| 24 | Programming Exercise | Solution Organized by Specifications | demo | Show a version organized with specification comments and a greeting function. |
-| 25 | Programming Exercise | Debrief | debrief | Prompt reflection on the activity and its relationship to course goals. |
-| 26 | Review Wrap-Up | What’s This Section About? | prompt | Ask students to identify the purpose of the review section. |
-| 27 | Review Wrap-Up | Agenda | outline | Revisit the stated review agenda. |
-| 28 | Next Time | Next Time | image | Transition from the review to the following material. |
-| 29 | Next Time | Agenda: Ch 10 - Pointers | outline | Preview the pointer subjects planned for a later lecture. |
-| 30 | Desk Check | Desk Check | activity | Begin a manual code-tracing exercise. |
-| 31 | Desk Check | Exercise Goals | outline | State that the exercise reviews and checks syntax knowledge. |
-| 32 | Desk Check | Desk Check Exercise | exercise | Direct pairs to determine output without executing the program. |
-| 33 | Desk Check | What’s the Output? | exercise | Present an array and conditional-tracing problem. |
-| 34 | Desk Check | What’s the Output? | demo | Reveal the program output after manual tracing. |
-| 35 | Coding for Reuse | Coding for Reuse | section | Introduce reusable-software design guidance. |
-| 36 | Coding for Reuse | Ideas for Writing Reusable Software | material | Present four principles concerning raw data error state testing and constants. |
-| 37 | Success Team Bingo | Success Team Bingo | activity | Begin the peer-introduction activity. |
-| 38 | Success Team Bingo | Exercise Goals | outline | Explain that the activity builds peer familiarity and social practice. |
-| 39 | Success Team Bingo | Success Team Bingo | image | Display the bingo worksheet and directions. |
-| 40 | Success Team Bingo | Debrief | debrief | Prompt reflection on the social activity and its course purpose. |
-| 41 | References | References | reference | Credit the Gaddis and Meyers sources. |
-| 42 | A Logging Function | A Logging Function | section | Introduce a function-based logging example. |
-| 43 | A Logging Function | What? | material | Define logging as recording troubleshooting and performance history to disk. |
-| 44 | A Logging Function | Why? | material | Contrast historical logs with the debugger’s current-state view. |
-| 45 | A Logging Function | When?/Use Case | material | Position logging as a normal development tool across languages. |
-| 46 | A Logging Function | How? | outline | Preview a function-based C++ logger and later OOP redesign. |
-| 47 | A Logging Function | Limitations | material | Note that logging increases resource use. |
-| 48 | A Logging Function | Basic Logger Implementation With Timestamps | demo | Demonstrate append-mode file logging and elapsed-time measurement. |
+| 1 | Course Framing | CISP 400 | outline | Introduce or develop cisp 400 |
+| 2 | Course Framing | Agenda | outline | Introduce or develop agenda |
+| 3 | CISP 360 Review: Variables and Conditionals | Old Friends | material | Introduce or develop old friends |
+| 4 | CISP 360 Review: Variables and Conditionals | Variables | material | Introduce or develop variables |
+| 5 | CISP 360 Review: Variables and Conditionals | 4.2 The if Statement | material | Introduce or develop 4.2 the if statement |
+| 6 | CISP 360 Review: Variables and Conditionals | if Statement | material | Introduce or develop if statement |
+| 7 | CISP 360 Review: Variables and Conditionals | if/else Statement | material | Introduce or develop if/else statement |
+| 8 | CISP 360 Review: Variables and Conditionals | if/else if Statement | material | Introduce or develop if/else if statement |
+| 9 | Iteration | Iteration | material | Introduce or develop iteration |
+| 10 | Iteration | <Untitled Slide 10> | outline | Introduce or develop <untitled slide 10> |
+| 11 | Iteration | <Untitled Slide 11> | outline | Introduce or develop <untitled slide 11> |
+| 12 | Iteration | <Untitled Slide 12> | outline | Introduce or develop <untitled slide 12> |
+| 13 | Functions | Functions | material | Introduce or develop functions |
+| 14 | Functions | Function Prototypes | material | Introduce or develop function prototypes |
+| 15 | Programming Exercise | Programming Exercise | exercise | Introduce or develop programming exercise |
+| 16 | Programming Exercise | Exercise Goals | exercise | Introduce or develop exercise goals |
+| 17 | Programming Exercise | Programming Exercise | exercise | Introduce or develop programming exercise |
+| 18 | Programming Exercise | Programming Exercise Debriefing | exercise | Introduce or develop programming exercise debriefing |
+| 19 | Programming Exercise | Programming Exercise | exercise | Introduce or develop programming exercise |
+| 20 | Programming Exercise | <Untitled Slide 20> | outline | Introduce or develop <untitled slide 20> |
+| 21 | Programming Exercise | <Untitled Slide 21> | outline | Introduce or develop <untitled slide 21> |
+| 22 | Programming Exercise | Programming Exercise | exercise | Introduce or develop programming exercise |
+| 23 | Programming Exercise | Homework-Style Specification | material | Introduce or develop homework-style specification |
+| 24 | Programming Exercise | <Untitled Slide 24> | outline | Introduce or develop <untitled slide 24> |
+| 25 | Programming Exercise | Debrief | exercise | Introduce or develop debrief |
+| 26 | Pointers Preview | What's This Section About? | outline | Introduce or develop what's this section about? |
+| 27 | Pointers Preview | Agenda | outline | Introduce or develop agenda |
+| 28 | Pointers Preview | <Untitled Slide 28> | outline | Introduce or develop <untitled slide 28> |
+| 29 | Pointers Preview | Pointers Agenda | outline | Introduce or develop pointers agenda |
+| 30 | Desk Check | Desk Check Exercise | exercise | Introduce or develop desk check exercise |
+| 31 | Desk Check | Exercise Goals | exercise | Introduce or develop exercise goals |
+| 32 | Desk Check | Desk Check Exercise | exercise | Introduce or develop desk check exercise |
+| 33 | Coding for Reuse | <Untitled Slide 33> | outline | Introduce or develop <untitled slide 33> |
+| 34 | Coding for Reuse | Coding for Reuse | material | Introduce or develop coding for reuse |
+| 35 | Coding for Reuse | Ideas for Writing Reusable Software | material | Introduce or develop ideas for writing reusable software |
+| 36 | Coding for Reuse | Ideas for Writing Reusable Software | material | Introduce or develop ideas for writing reusable software |
+| 37 | Success Team Bingo | Success Team Bingo | exercise | Introduce or develop success team bingo |
+| 38 | Success Team Bingo | Exercise Goals | exercise | Introduce or develop exercise goals |
+| 39 | Success Team Bingo | <Untitled Slide 39> | outline | Introduce or develop <untitled slide 39> |
+| 40 | Success Team Bingo | Debrief | exercise | Introduce or develop debrief |
+| 41 | References | References | material | Introduce or develop references |
+| 42 | Logging Function | A Logging Function | material | Introduce or develop a logging function |
+| 43 | Logging Function | What? | material | Introduce or develop what? |
+| 44 | Logging Function | Why? | material | Introduce or develop why? |
+| 45 | Logging Function | When? / Use Case | material | Introduce or develop when? / use case |
+| 46 | Logging Function | How? | material | Introduce or develop how? |
+| 47 | Logging Function | Limitations | material | Introduce or develop limitations |
+| 48 | Logging Function | <Untitled Slide 48> | outline | Introduce or develop <untitled slide 48> |

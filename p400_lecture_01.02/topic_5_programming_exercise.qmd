@@ -1,0 +1,133 @@
+<!-- Topic 5: Programming Exercise -->
+<!-- Slides 15–25 -->
+# Programming Exercise
+
+## Programming Exercise
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+Slides 15–25
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## Exercise Goals
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 16 -->
+
+---
+
+## Programming Exercise
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 17 -->
+
+---
+
+## Programming Exercise Debriefing
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 18 -->
+
+---
+
+## Programming Exercise
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## <Untitled Slide 20>
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## <Untitled Slide 21>
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 21 -->
+
+---
+
+## Programming Exercise
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 22 -->
+
+---
+
+## Homework-Style Specification
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## <Untitled Slide 24>
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 24 -->
+
+---
+
+## Debrief
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 25 -->

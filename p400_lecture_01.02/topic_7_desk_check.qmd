@@ -1,0 +1,37 @@
+<!-- Topic 7: Desk Check -->
+<!-- Slides 30–32 -->
+# Desk Check
+
+## Desk Check Exercise
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+Slides 30–32
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## Exercise Goals
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 31 -->
+
+---
+
+## Desk Check Exercise
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 32 -->

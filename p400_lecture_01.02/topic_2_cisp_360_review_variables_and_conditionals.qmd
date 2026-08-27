@@ -1,0 +1,73 @@
+<!-- Topic 2: CISP 360 Review: Variables and Conditionals -->
+<!-- Slides 3–8 -->
+# CISP 360 Review: Variables and Conditionals
+
+## Old Friends
+
+This slide presents the authoritative CISP 360 review material.
+
+::: notes
+Slides 3–8
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Variables
+
+This slide presents the authoritative CISP 360 review material.
+
+::: notes
+
+:::
+
+<!-- Slide 4 -->
+
+---
+
+## 4.2 The if Statement
+
+This slide presents the authoritative CISP 360 review material.
+
+::: notes
+
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## if Statement
+
+This slide presents the authoritative CISP 360 review material.
+
+::: notes
+
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## if/else Statement
+
+This slide presents the authoritative CISP 360 review material.
+
+::: notes
+
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## if/else if Statement
+
+This slide presents the authoritative CISP 360 review material.
+
+::: notes
+
+:::
+
+<!-- Slide 8 -->

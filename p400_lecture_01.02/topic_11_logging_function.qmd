@@ -1,0 +1,85 @@
+<!-- Topic 11: Logging Function -->
+<!-- Slides 42–48 -->
+# Logging Function
+
+## A Logging Function
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+Slides 42–48
+:::
+
+<!-- Slide 42 -->
+
+---
+
+## What?
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 43 -->
+
+---
+
+## Why?
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 44 -->
+
+---
+
+## When? / Use Case
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 45 -->
+
+---
+
+## How?
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 46 -->
+
+---
+
+## Limitations
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 47 -->
+
+---
+
+## <Untitled Slide 48>
+
+This slide presents the authoritative source material from the lecture PDF.
+
+::: notes
+
+:::
+
+<!-- Slide 48 -->

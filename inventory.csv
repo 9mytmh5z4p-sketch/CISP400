@@ -68,12 +68,6 @@ p400_lecture_08.01,4,memory,Shallow Copies and the Serialization Problem,standar
 p400_lecture_08.02,4,memory,Deep Copy,standard,18,no,allocate independent pointees; customize copy constructor and assignment operator; document copy policy
 p400_lecture_08.02,4,memory,Rvalue References and Move Operations,standard,18,no,lvalues and rvalues; move operations; temporary object transfer; copy versus move decisions
 p400_lecture_16.01,16,oop,Abstract Data Types - Part 2,high,,no,resume from 15.02 exposed-state limitation; abstraction versus encapsulation; private representation; public operations; constructors and valid initial state; member functions; class-enforced invariants; transition into object-oriented programming
-p400_lecture_01.02,1,review,Variables,standard,2,no,authoritative PDF rebuild; brief variables review; supersedes seeded Variables and Assignment entry
-p400_lecture_01.02,1,conditionals,Conditional Statements,standard,8,no,authoritative PDF rebuild; review conditional execution and multi-way selection
-p400_lecture_01.02,1,iteration,Iteration,standard,8,no,authoritative PDF rebuild; review repetition with while do-while and for loops
-p400_lecture_01.02,1,functions,Functions,standard,5,no,authoritative PDF rebuild; review function declarations calls parameters and return values
-p400_lecture_01.02,1,design,Coding for Reuse,standard,5,no,authoritative PDF rebuild; preserve raw input; prefer error state or exceptions; component testing; constants over literals
-p400_lecture_01.02,1,logging,A Logging Function,standard,12,no,authoritative PDF rebuild; disk-based troubleshooting history; function-based append logger; chrono timing; resource-use limitation
 
 
 
@@ -128,3 +122,9 @@ p400_lecture_15.02,15,templates,Function Templates,high,,no,template parameter s
 p400_lecture_15.02,15,templates,Template Arguments,high,,no,multiple type parameters; mixed argument types; explicit casts and deduction
 p400_lecture_15.02,15,templates,Template Specialization,standard,,no,explicit specialization for exceptional types; generic default with targeted override
 p400_lecture_15.02,15,maintenance,Generic Program Maintenance,standard,,no,reading unfamiliar template code; preserving behavior while changing implementation
+p400_lecture_01.02,1,review,Variables and Conditionals,high,,no,variable declarations and values; if; if/else; if/else if; prerequisite-course review
+p400_lecture_01.02,1,iteration,Iteration,high,,no,looping as a prerequisite review; repeated execution and control flow
+p400_lecture_01.02,1,functions,Functions,high,,no,function declarations; prototypes; return values; parameter passing
+p400_lecture_01.02,1,pointers,Pointers Preview,standard,,yes,chapter 10 roadmap; pointer variables; address operator; dynamic memory and smart pointers deferred
+p400_lecture_01.02,1,design,Coding for Reuse,standard,,no,preserve raw input; error-state design; component testing; named constants
+p400_lecture_01.02,1,debugging,Logging Function,high,,no,logging definition; history versus current debugger state; use cases; design limitations

@@ -28,72 +28,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="p400_lecture_01.02_files/libs/revealjs/dist/theme/quarto-99eeafcedac04850354b682963cedae3.css">
   <link rel="stylesheet" href="../styles/styles.css">
@@ -209,14 +143,36 @@ Dr.&nbsp;Caleb Fowler
 <section id="last-time" class="title-slide slide level1 center">
 <h1>Last Time</h1>
 <ul>
-<li class="fragment"><strong>Course Overview</strong></li>
-<li class="fragment"><strong>Parts of a C++ Program</strong></li>
-<li class="fragment"><strong>Common Elements</strong></li>
-<li class="fragment"><strong>Top Matter</strong></li>
-<li class="fragment"><strong>The main() Function</strong></li>
+<li class="fragment"><strong>Course introduction</strong></li>
+<li class="fragment"><strong>CISP 360 foundations</strong></li>
 </ul>
+</section>
+
+<section id="todays-agenda" class="title-slide slide level1 center">
+<h1>Today’s Agenda</h1>
+<ul>
+<li>CISP 360 Review: Variables and Conditionals</li>
+<li>Iteration</li>
+<li>Functions</li>
+<li>Programming Exercise</li>
+<li>Pointers Preview</li>
+<li>Coding for Reuse</li>
+<li>Logging Function</li>
+</ul>
+<!-- Topic 1: Course Framing -->
+<!-- Slides 1–2 -->
+</section>
+
+<section>
+<section id="course-framing" class="title-slide slide level1 center">
+<h1>Course Framing</h1>
+
+</section>
+<section id="cisp-400" class="slide level2">
+<h2>CISP 400</h2>
+<p>This slide presents the authoritative CISP 360 review material.</p>
 <aside class="notes">
-<p>Students should be able to recognize top matter, main(), reserved words, identifiers, literals, and comments in a short C++ program.</p>
+<p>Slides 1–2</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -230,14 +186,9 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 1 -->
 </section>
-
-<section id="todays-agenda" class="title-slide slide level1 center">
-<h1>Today’s Agenda</h1>
-<ul>
-<li>Variables and Assignment</li>
-<li>Data Types</li>
-<li>Arithmetic Operators</li>
-</ul>
+<section id="agenda" class="slide level2">
+<h2>Agenda</h2>
+<p>This slide presents the authoritative CISP 360 review material.</p>
 <aside class="notes">
 
 <style type="text/css">
@@ -252,24 +203,37 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 2 -->
-<!-- Topic 1: Variables and Assignment -->
-<!-- Slides 3-14 -->
-</section>
-
+<!-- Topic 2: CISP 360 Review: Variables and Conditionals -->
+<!-- Slides 3–8 -->
+</section></section>
 <section>
-<section id="variables-and-assignment" class="title-slide slide level1 center">
-<h1>Variables and Assignment</h1>
+<section id="cisp-360-review-variables-and-conditionals" class="title-slide slide level1 center">
+<h1>CISP 360 Review: Variables and Conditionals</h1>
+
+</section>
+<section id="old-friends" class="slide level2">
+<h2>Old Friends</h2>
+<p>This slide presents the authoritative CISP 360 review material.</p>
+<aside class="notes">
+<p>Slides 3–8</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 3 -->
 </section>
-<section id="a-named-spot-in-memory" class="slide level2 smaller">
-<h2>A Named Spot In Memory</h2>
-<ul>
-<li>A variable is a named memory location that holds a value.</li>
-<li>The value can change while the program runs.</li>
-<li>A literal is fixed in the source code; a variable is under program control.</li>
-</ul>
+<section id="variables" class="slide level2">
+<h2>Variables</h2>
+<p>This slide presents the authoritative CISP 360 review material.</p>
 <aside class="notes">
-<p>Slides 3-14 Frame variables as the first tool students get for making programs respond to changing data.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -283,36 +247,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 4 -->
 </section>
-<section id="what-declaration-does" class="slide level2">
-<h2>What Declaration Does</h2>
-<ul>
-<li>Declaring a variable asks the computer to reserve a named spot in memory.</li>
-<li>The type tells the computer how much memory to reserve.</li>
-<li>The name is how the program refers to that spot later.</li>
-</ul>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Variable</th>
-<th>Address</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>age</code></td>
-<td><code>0xFA2</code></td>
-<td>unknown</td>
-</tr>
-<tr class="even">
-<td><code>name</code></td>
-<td><code>0xFA6</code></td>
-<td>unknown</td>
-</tr>
-</tbody>
-</table>
+<section id="the-if-statement" class="slide level2">
+<h2>4.2 The if Statement</h2>
+<p>This slide presents the authoritative CISP 360 review material.</p>
 <aside class="notes">
-<p>The addresses are illustrative. Students only need the idea that a variable lives somewhere specific in memory. [Graphic suggestion: redraw the declaration/init memory model as labeled memory boxes.]</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -326,15 +265,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 5 -->
 </section>
-<section id="declaration-syntax" class="slide level2">
-<h2>Declaration Syntax</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a><span class="dt">int</span> age<span class="op">;</span></span>
-<span id="cb1-2"><a href=""></a><span class="dt">double</span> price<span class="op">;</span></span>
-<span id="cb1-3"><a href=""></a><span class="dt">char</span> grade<span class="op">;</span></span>
-<span id="cb1-4"><a href=""></a>string name<span class="op">;</span></span>
-<span id="cb1-5"><a href=""></a><span class="dt">bool</span> isOver<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="if-statement" class="slide level2">
+<h2>if Statement</h2>
+<p>This slide presents the authoritative CISP 360 review material.</p>
 <aside class="notes">
-<p>The pattern is type, then name, then semicolon. These declarations create variables, but they do not give most of them useful values yet.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -348,17 +283,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 6 -->
 </section>
-<section id="initialization" class="slide level2">
-<h2>Initialization</h2>
-<ul>
-<li>Declaration reserves the memory slot.</li>
-<li>Initialization puts the first value into it.</li>
-<li>Always initialize a variable before reading from it.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a><span class="dt">int</span> age<span class="op">;</span>      <span class="co">// declared; value is unknown</span></span>
-<span id="cb2-2"><a href=""></a>age <span class="op">=</span> <span class="dv">25</span><span class="op">;</span>     <span class="co">// initialized; value is 25</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="ifelse-statement" class="slide level2">
+<h2>if/else Statement</h2>
+<p>This slide presents the authoritative CISP 360 review material.</p>
 <aside class="notes">
-<p>Keep the two-step version first so students can see that declaration and initialization are separate actions.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -372,17 +301,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 7 -->
 </section>
-<section id="assignment-is-not-equality" class="slide level2">
-<h2>Assignment Is Not Equality</h2>
-<ul>
-<li>In C++, <code>=</code> is the assignment operator.</li>
-<li>It means: evaluate the right side, then store the result in the variable on the left.</li>
-<li>The old value is replaced.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a><span class="dt">int</span> age <span class="op">=</span> <span class="dv">25</span><span class="op">;</span></span>
-<span id="cb3-2"><a href=""></a>age <span class="op">=</span> age <span class="op">+</span> <span class="dv">1</span><span class="op">;</span>    <span class="co">// age becomes 26</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="ifelse-if-statement" class="slide level2">
+<h2>if/else if Statement</h2>
+<p>This slide presents the authoritative CISP 360 review material.</p>
 <aside class="notes">
-<p>This is the key math-to-programming correction. The second line is impossible as algebra but normal as a programming instruction.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -395,20 +318,19 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 8 -->
+<!-- Topic 3: Iteration -->
+<!-- Slides 9–12 -->
+</section></section>
+<section>
+<section id="iteration" class="title-slide slide level1 center">
+<h1>Iteration</h1>
+
 </section>
-<section id="declaration-and-initialization-together" class="slide level2">
-<h2>Declaration And Initialization Together</h2>
-<ul>
-<li>Most variables should be declared and initialized in one statement.</li>
-<li>This gives the variable a name, a type, and a useful first value immediately.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href=""></a><span class="dt">int</span> age <span class="op">=</span> <span class="dv">25</span><span class="op">;</span></span>
-<span id="cb4-2"><a href=""></a><span class="dt">double</span> price <span class="op">=</span> <span class="fl">19.95</span><span class="op">;</span></span>
-<span id="cb4-3"><a href=""></a><span class="dt">char</span> grade <span class="op">=</span> <span class="ch">'A'</span><span class="op">;</span></span>
-<span id="cb4-4"><a href=""></a>string name <span class="op">=</span> <span class="st">"Pat"</span><span class="op">;</span></span>
-<span id="cb4-5"><a href=""></a><span class="dt">bool</span> isPassing <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="iteration-1" class="slide level2">
+<h2>Iteration</h2>
+<p>This slide presents the authoritative CISP 360 review material.</p>
 <aside class="notes">
-<p>This is the form students should write most often at the beginning of the course.</p>
+<p>Slides 9–12</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -422,19 +344,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 9 -->
 </section>
-<section id="constants" class="slide level2">
-<h2>Constants</h2>
-<ul>
-<li><code>const</code> makes a variable read-only after initialization.</li>
-<li>Use it for values that should not change while the program runs.</li>
-<li>A constant must be initialized when it is declared.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a><span class="at">const</span> <span class="dt">double</span> TAX_RATE <span class="op">=</span> <span class="fl">0.0825</span><span class="op">;</span></span>
-<span id="cb5-2"><a href=""></a><span class="at">const</span> <span class="dt">int</span> MAX_SCORE <span class="op">=</span> <span class="dv">100</span><span class="op">;</span></span>
-<span id="cb5-3"><a href=""></a></span>
-<span id="cb5-4"><a href=""></a>TAX_RATE <span class="op">=</span> <span class="fl">0.09</span><span class="op">;</span>    <span class="co">// error</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="untitled-slide-10" class="slide level2">
+<h2>&lt;Untitled Slide 10&gt;</h2>
+<p>This slide presents the authoritative CISP 360 review material.</p>
 <aside class="notes">
-<p>Use constants for values that represent a rule, limit, or fixed setting. The compiler enforces the promise.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -448,41 +362,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 10 -->
 </section>
-<section id="other-initialization-forms" class="slide level2">
-<h2>Other Initialization Forms</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Form</th>
-<th>Example</th>
-<th>What to Know</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Default</td>
-<td><code>int age;</code></td>
-<td>no useful value yet</td>
-</tr>
-<tr class="even">
-<td>Direct</td>
-<td><code>int age = 10;</code></td>
-<td>course default</td>
-</tr>
-<tr class="odd">
-<td>Value</td>
-<td><code>int age{};</code></td>
-<td>zero-initializes</td>
-</tr>
-<tr class="even">
-<td>List</td>
-<td><code>int age{10};</code></td>
-<td>modern C++ form</td>
-</tr>
-</tbody>
-</table>
+<section id="untitled-slide-11" class="slide level2">
+<h2>&lt;Untitled Slide 11&gt;</h2>
+<p>This slide presents the authoritative CISP 360 review material.</p>
 <aside class="notes">
-<p>The goal is recognition, not memorization. Students will see brace forms in references and examples outside class.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -496,15 +380,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 11 -->
 </section>
-<section id="which-form-should-i-use" class="slide level2">
-<h2>Which Form Should I Use?</h2>
-<ul>
-<li>Start with direct initialization: <code>int age = 10;</code>.</li>
-<li>Use <code>const</code> when the value should not change.</li>
-<li>Recognize brace initialization when reading modern C++ examples.</li>
-</ul>
+<section id="untitled-slide-12" class="slide level2">
+<h2>&lt;Untitled Slide 12&gt;</h2>
+<p>This slide presents the authoritative CISP 360 review material.</p>
 <aside class="notes">
-<p>Direct initialization keeps the type and starting value visible, which helps beginners read their own code.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -517,23 +397,19 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 12 -->
+<!-- Topic 4: Functions -->
+<!-- Slides 13–14 -->
+</section></section>
+<section>
+<section id="functions" class="title-slide slide level1 center">
+<h1>Functions</h1>
+
 </section>
-<section id="variable-naming-rules" class="slide level2">
-<h2>Variable Naming Rules</h2>
-<ul>
-<li>Must start with a letter or underscore, not a digit.</li>
-<li>Can contain letters, digits, and underscores.</li>
-<li>Cannot be a reserved word.</li>
-<li>Names are case-sensitive.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href=""></a><span class="dt">int</span> age<span class="op">;</span></span>
-<span id="cb6-2"><a href=""></a><span class="dt">double</span> taxRate<span class="op">;</span></span>
-<span id="cb6-3"><a href=""></a>string first_name<span class="op">;</span></span>
-<span id="cb6-4"><a href=""></a></span>
-<span id="cb6-5"><a href=""></a><span class="dt">int</span> <span class="dv">2</span><span class="er">fast</span><span class="op">;</span>      <span class="co">// error</span></span>
-<span id="cb6-6"><a href=""></a><span class="dt">int</span> <span class="cf">return</span><span class="op">;</span>     <span class="co">// error</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="functions-1" class="slide level2">
+<h2>Functions</h2>
+<p>This slide presents the authoritative CISP 360 review material.</p>
 <aside class="notes">
-<p>Variable names should usually be nouns because variables hold things: age, score, total, name, taxRate.</p>
+<p>Slides 13–14</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -547,31 +423,54 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 13 -->
 </section>
-<section id="summary" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>A variable is a named, typed memory location.</li>
-<li>Declaration reserves the space; initialization fills it.</li>
-<li>Assignment updates the stored value.</li>
-</ul>
+<section id="function-prototypes" class="slide level2">
+<h2>Function Prototypes</h2>
+<p>This slide presents the authoritative CISP 360 review material.</p>
+<aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 14 -->
-<!-- Topic 2: Data Types -->
-<!-- Slides 15-31 -->
+<!-- Topic 5: Programming Exercise -->
+<!-- Slides 15–25 -->
 </section></section>
 <section>
-<section id="data-types" class="title-slide slide level1 center">
-<h1>Data Types</h1>
+<section id="programming-exercise" class="title-slide slide level1 center">
+<h1>Programming Exercise</h1>
+
+</section>
+<section id="programming-exercise-1" class="slide level2">
+<h2>Programming Exercise</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
+<aside class="notes">
+<p>Slides 15–25</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 15 -->
 </section>
-<section id="why-so-many-types" class="slide level2 smaller">
-<h2>Why So Many Types?</h2>
-<ul>
-<li>Type controls memory: each type reserves a specific amount of space.</li>
-<li>Type controls meaning: the same bits can be interpreted different ways.</li>
-<li>Type controls behavior: operations depend on the kinds of values involved.</li>
-</ul>
+<section id="exercise-goals" class="slide level2">
+<h2>Exercise Goals</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>Slides 15-31 Frame type as a contract between the programmer and the computer, not as arbitrary vocabulary.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -585,64 +484,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 16 -->
 </section>
-<section id="the-type-families" class="slide level2">
-<h2>The Type Families</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Type</th>
-<th>Keyword</th>
-<th>Holds</th>
-<th>Typical Use</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Integer</td>
-<td><code>int</code></td>
-<td>whole numbers</td>
-<td>counts, indexes, IDs</td>
-</tr>
-<tr class="even">
-<td>Floating point</td>
-<td><code>double</code></td>
-<td>decimal numbers</td>
-<td>measurements, averages</td>
-</tr>
-<tr class="odd">
-<td>Character</td>
-<td><code>char</code></td>
-<td>one character</td>
-<td>grades, initials</td>
-</tr>
-<tr class="even">
-<td>String</td>
-<td><code>string</code></td>
-<td>text</td>
-<td>names, messages</td>
-</tr>
-<tr class="odd">
-<td>Boolean</td>
-<td><code>bool</code></td>
-<td>true or false</td>
-<td>flags, conditions</td>
-</tr>
-<tr class="even">
-<td>Void</td>
-<td><code>void</code></td>
-<td>no value</td>
-<td>function return type</td>
-</tr>
-<tr class="odd">
-<td>Auto</td>
-<td><code>auto</code></td>
-<td>compiler-deduced</td>
-<td>modern convenience</td>
-</tr>
-</tbody>
-</table>
+<section id="programming-exercise-2" class="slide level2">
+<h2>Programming Exercise</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>This slide is the map. Students will not master every row today, but they should know what each family is for.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -656,18 +502,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 17 -->
 </section>
-<section id="integers" class="slide level2">
-<h2>Integers</h2>
-<ul>
-<li>Integers store whole numbers only.</li>
-<li>Use <code>int</code> for counts, indexes, ages, scores, and IDs.</li>
-<li>Integers are exact, but they cannot store decimal parts.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a><span class="dt">int</span> age <span class="op">=</span> <span class="dv">25</span><span class="op">;</span></span>
-<span id="cb7-2"><a href=""></a><span class="dt">int</span> count <span class="op">=</span> <span class="op">-</span><span class="dv">3</span><span class="op">;</span></span>
-<span id="cb7-3"><a href=""></a><span class="dt">int</span> students <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="programming-exercise-debriefing" class="slide level2">
+<h2>Programming Exercise Debriefing</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>Connect this back to arithmetic: when integer values divide, the result can still be integer behavior.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -681,46 +520,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 18 -->
 </section>
-<section id="integer-sizes" class="slide level2">
-<h2>Integer Sizes</h2>
-<ul>
-<li>C++ has several integer sizes because different programs need different ranges.</li>
-<li>More bytes means a larger range.</li>
-<li>Unsigned types trade negative values for a larger positive range.</li>
-</ul>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Type</th>
-<th>Typical Size</th>
-<th>Use</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>short</code></td>
-<td>2 bytes</td>
-<td>small whole numbers</td>
-</tr>
-<tr class="even">
-<td><code>int</code></td>
-<td>4 bytes</td>
-<td>default whole-number choice</td>
-</tr>
-<tr class="odd">
-<td><code>long long</code></td>
-<td>8 bytes</td>
-<td>very large whole numbers</td>
-</tr>
-<tr class="even">
-<td><code>unsigned int</code></td>
-<td>4 bytes</td>
-<td>positive-only values</td>
-</tr>
-</tbody>
-</table>
+<section id="programming-exercise-3" class="slide level2">
+<h2>Programming Exercise</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>Avoid range memorization. The pattern matters: size affects range, and signedness affects whether negative values are allowed.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -734,17 +538,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 19 -->
 </section>
-<section id="unsigned-integers" class="slide level2">
-<h2>Unsigned Integers</h2>
-<ul>
-<li>An unsigned integer cannot represent negative values.</li>
-<li>Assigning a negative value can wrap around to a large positive number.</li>
-<li>Use unsigned types only when the domain truly cannot go below zero.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a><span class="dt">unsigned</span> <span class="dt">int</span> speed <span class="op">=</span> <span class="dv">100</span><span class="op">;</span></span>
-<span id="cb8-2"><a href=""></a><span class="dt">unsigned</span> <span class="dt">int</span> error <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span>    <span class="co">// compiles; stores a large value</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="untitled-slide-20" class="slide level2">
+<h2>&lt;Untitled Slide 20&gt;</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>This is a preview of a bug class that compiles cleanly but produces the wrong answer.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -758,41 +556,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 20 -->
 </section>
-<section id="which-integer-should-i-use" class="slide level2">
-<h2>Which Integer Should I Use?</h2>
-<ul>
-<li>In this course, start with plain <code>int</code>.</li>
-<li>Use <code>long long</code> only when the range might exceed about two billion.</li>
-<li>Avoid unsigned types unless the positive-only rule is part of the problem.</li>
-</ul>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Stored Value</th>
-<th>Good Type</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>age</td>
-<td><code>int</code></td>
-</tr>
-<tr class="even">
-<td>score</td>
-<td><code>int</code></td>
-</tr>
-<tr class="odd">
-<td>population</td>
-<td><code>long long</code></td>
-</tr>
-<tr class="even">
-<td>menu choice</td>
-<td><code>int</code></td>
-</tr>
-</tbody>
-</table>
+<section id="untitled-slide-21" class="slide level2">
+<h2>&lt;Untitled Slide 21&gt;</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>The point is not to optimize memory in week one. The point is to choose a type that matches the meaning of the value.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -806,18 +574,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 21 -->
 </section>
-<section id="floating-point-numbers" class="slide level2">
-<h2>Floating Point Numbers</h2>
-<ul>
-<li>Floating point types store numbers with decimal parts.</li>
-<li>Most decimal values are approximations in memory.</li>
-<li>Use floating point values for measurements and averages, not counts.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href=""></a><span class="dt">double</span> price <span class="op">=</span> <span class="fl">99.95</span><span class="op">;</span></span>
-<span id="cb9-2"><a href=""></a><span class="dt">double</span> pi <span class="op">=</span> <span class="fl">3.14159265358979</span><span class="op">;</span></span>
-<span id="cb9-3"><a href=""></a><span class="dt">double</span> tiny <span class="op">=</span> <span class="fl">1.5e-10</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="programming-exercise-4" class="slide level2">
+<h2>Programming Exercise</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>Students do not need the binary encoding yet. They do need the habit that floating point math is approximate.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -831,17 +592,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 22 -->
 </section>
-<section id="float-vs.-double" class="slide level2">
-<h2>Float Vs. Double</h2>
-<ul>
-<li><code>float</code> stores about 6 to 7 significant digits.</li>
-<li><code>double</code> stores about 15 significant digits.</li>
-<li>In this course, use <code>double</code>.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href=""></a><span class="dt">float</span> small <span class="op">=</span> <span class="fl">10.0</span> <span class="op">/</span> <span class="fl">3.0</span><span class="op">;</span></span>
-<span id="cb10-2"><a href=""></a><span class="dt">double</span> precise <span class="op">=</span> <span class="fl">10.0</span> <span class="op">/</span> <span class="fl">3.0</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="homework-style-specification" class="slide level2">
+<h2>Homework-Style Specification</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>The cost of double is rarely important in this course. The extra precision is useful immediately.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -855,18 +610,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 23 -->
 </section>
-<section id="characters" class="slide level2">
-<h2>Characters</h2>
-<ul>
-<li><code>char</code> stores one character.</li>
-<li>Character literals use single quotes.</li>
-<li>A character digit is not the same as a numeric digit.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href=""></a><span class="dt">char</span> grade <span class="op">=</span> <span class="ch">'A'</span><span class="op">;</span></span>
-<span id="cb11-2"><a href=""></a><span class="dt">char</span> letter <span class="op">=</span> <span class="ch">'z'</span><span class="op">;</span></span>
-<span id="cb11-3"><a href=""></a><span class="dt">char</span> digit <span class="op">=</span> <span class="ch">'5'</span><span class="op">;</span>    <span class="co">// character, not number</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="untitled-slide-24" class="slide level2">
+<h2>&lt;Untitled Slide 24&gt;</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>Single quotes for <code>char</code>, double quotes for <code>string</code>. This is a small syntax distinction that prevents many early compile errors.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -880,18 +628,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 24 -->
 </section>
-<section id="char-and-ascii" class="slide level2">
-<h2>Char And ASCII</h2>
-<ul>
-<li>A <code>char</code> is stored as a small integer.</li>
-<li>ASCII maps those integer values to visible characters.</li>
-<li>Character arithmetic works because characters have numeric codes.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href=""></a><span class="dt">char</span> ch <span class="op">=</span> <span class="ch">'M'</span><span class="op">;</span>    <span class="co">// stored as 77</span></span>
-<span id="cb12-2"><a href=""></a><span class="dt">int</span> code <span class="op">=</span> ch<span class="op">;</span>    <span class="co">// code is 77</span></span>
-<span id="cb12-3"><a href=""></a>ch <span class="op">=</span> ch <span class="op">+</span> <span class="dv">1</span><span class="op">;</span>      <span class="co">// now displays as 'N'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="debrief" class="slide level2">
+<h2>Debrief</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>[Graphic suggestion: small ASCII table showing <code>A</code>, <code>M</code>, <code>N</code>, <code>a</code>, and <code>0</code> with their decimal codes.]</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -904,21 +645,19 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 25 -->
+<!-- Topic 6: Pointers Preview -->
+<!-- Slides 26–29 -->
+</section></section>
+<section>
+<section id="pointers-preview" class="title-slide slide level1 center">
+<h1>Pointers Preview</h1>
+
 </section>
-<section id="strings" class="slide level2">
-<h2>Strings</h2>
-<ul>
-<li><code>string</code> stores text: a sequence of characters.</li>
-<li>String literals use double quotes.</li>
-<li>Use <code>#include &lt;string&gt;</code> when working with strings.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
-<span id="cb13-2"><a href=""></a></span>
-<span id="cb13-3"><a href=""></a>string name <span class="op">=</span> <span class="st">"Pat Smith"</span><span class="op">;</span></span>
-<span id="cb13-4"><a href=""></a>string message <span class="op">=</span> <span class="st">"Hello"</span><span class="op">;</span></span>
-<span id="cb13-5"><a href=""></a>string empty <span class="op">=</span> <span class="st">""</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="whats-this-section-about" class="slide level2">
+<h2>What’s This Section About?</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>For now, students only need declaration and initialization. Member functions can wait.</p>
+<p>Slides 26–29</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -932,20 +671,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 26 -->
 </section>
-<section id="booleans" class="slide level2">
-<h2>Booleans</h2>
-<ul>
-<li><code>bool</code> stores one of two values: <code>true</code> or <code>false</code>.</li>
-<li>Boolean variables are used for flags and conditions.</li>
-<li>By default, <code>cout</code> prints <code>true</code> as <code>1</code> and <code>false</code> as <code>0</code>.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href=""></a><span class="dt">bool</span> isOpen <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb14-2"><a href=""></a><span class="dt">bool</span> isEmpty <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
-<span id="cb14-3"><a href=""></a></span>
-<span id="cb14-4"><a href=""></a>cout <span class="op">&lt;&lt;</span> isOpen <span class="op">&lt;&lt;</span> endl<span class="op">;</span>     <span class="co">// 1</span></span>
-<span id="cb14-5"><a href=""></a>cout <span class="op">&lt;&lt;</span> isEmpty <span class="op">&lt;&lt;</span> endl<span class="op">;</span>    <span class="co">// 0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="agenda-1" class="slide level2">
+<h2>Agenda</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>Booleans will become central when selection and loops arrive. For now, treat them as yes/no storage.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -959,17 +689,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 27 -->
 </section>
-<section id="void" class="slide level2">
-<h2>Void</h2>
-<ul>
-<li><code>void</code> means no value.</li>
-<li>You cannot create a normal variable with type <code>void</code>.</li>
-<li>Later, <code>void</code> will describe functions that do not return a value.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href=""></a><span class="dt">void</span> someValue<span class="op">;</span>     <span class="co">// error</span></span>
-<span id="cb15-2"><a href=""></a><span class="dt">void</span> result <span class="op">=</span> <span class="dv">99</span><span class="op">;</span>   <span class="co">// error</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="untitled-slide-28" class="slide level2">
+<h2>&lt;Untitled Slide 28&gt;</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>Keep this separate from <code>auto</code>. <code>void</code> is the absence of a value, which is conceptually different from deducing a value’s type.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -983,18 +707,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 28 -->
 </section>
-<section id="auto" class="slide level2">
-<h2>Auto</h2>
-<ul>
-<li><code>auto</code> tells the compiler to deduce the type from the initializer.</li>
-<li>The variable must be initialized immediately.</li>
-<li>Explicit types are usually clearer while learning.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href=""></a><span class="kw">auto</span> age <span class="op">=</span> <span class="dv">78</span><span class="op">;</span>        <span class="co">// int</span></span>
-<span id="cb16-2"><a href=""></a><span class="kw">auto</span> cost <span class="op">=</span> <span class="fl">99.95</span><span class="op">;</span>    <span class="co">// double</span></span>
-<span id="cb16-3"><a href=""></a><span class="kw">auto</span> grade <span class="op">=</span> <span class="ch">'A'</span><span class="op">;</span>     <span class="co">// char</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="pointers-agenda" class="slide level2">
+<h2>Pointers Agenda</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>Students should recognize <code>auto</code> in code they read, but they should usually write explicit types while building the type model.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1007,45 +724,19 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 29 -->
+<!-- Topic 7: Desk Check -->
+<!-- Slides 30–32 -->
+</section></section>
+<section>
+<section id="desk-check" class="title-slide slide level1 center">
+<h1>Desk Check</h1>
+
 </section>
-<section id="which-type-should-i-use" class="slide level2">
-<h2>Which Type Should I Use?</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>I Need To Store…</th>
-<th>Use</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>a whole number</td>
-<td><code>int</code></td>
-</tr>
-<tr class="even">
-<td>a decimal number</td>
-<td><code>double</code></td>
-</tr>
-<tr class="odd">
-<td>one character</td>
-<td><code>char</code></td>
-</tr>
-<tr class="even">
-<td>text</td>
-<td><code>string</code></td>
-</tr>
-<tr class="odd">
-<td>a yes/no flag</td>
-<td><code>bool</code></td>
-</tr>
-<tr class="even">
-<td>no return value</td>
-<td><code>void</code></td>
-</tr>
-</tbody>
-</table>
+<section id="desk-check-exercise" class="slide level2">
+<h2>Desk Check Exercise</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>This is the practical decision table students can use while writing first programs.</p>
+<p>Slides 30–32</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1059,31 +750,54 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 30 -->
 </section>
-<section id="summary-1" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>Type controls memory, interpretation, and allowed operations.</li>
-<li>Use <code>int</code> for whole numbers and <code>double</code> for decimals.</li>
-<li>Use <code>string</code> for text and <code>bool</code> for true/false flags.</li>
-</ul>
+<section id="exercise-goals-1" class="slide level2">
+<h2>Exercise Goals</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
+<aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 31 -->
-<!-- Topic 3: Arithmetic Operators -->
-<!-- Slides 32-45 -->
+</section>
+<section id="desk-check-exercise-1" class="slide level2">
+<h2>Desk Check Exercise</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
+<aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 32 -->
+<!-- Topic 8: Coding for Reuse -->
+<!-- Slides 33–36 -->
 </section></section>
 <section>
-<section id="arithmetic-operators" class="title-slide slide level1 center">
-<h1>Arithmetic Operators</h1>
-<!-- Slide 32 -->
+<section id="coding-for-reuse" class="title-slide slide level1 center">
+<h1>Coding for Reuse</h1>
+
 </section>
-<section id="tools-for-transforming-data" class="slide level2 smaller">
-<h2>Tools For Transforming Data</h2>
-<ul>
-<li>Structured programs store data, transform it, and produce output.</li>
-<li>Arithmetic operators are the first tools for computing new values.</li>
-<li>Operator behavior depends on the types of the operands.</li>
-</ul>
+<section id="untitled-slide-33" class="slide level2">
+<h2>&lt;Untitled Slide 33&gt;</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>Slides 32-45 Connect this section back to the larger course framing: data plus transformations.</p>
+<p>Slides 33–36</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1097,52 +811,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 33 -->
 </section>
-<section id="the-five-arithmetic-operators" class="slide level2">
-<h2>The Five Arithmetic Operators</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Operator</th>
-<th>Meaning</th>
-<th>Example</th>
-<th>Result</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>+</code></td>
-<td>addition</td>
-<td><code>4 + 2</code></td>
-<td><code>6</code></td>
-</tr>
-<tr class="even">
-<td><code>-</code></td>
-<td>subtraction</td>
-<td><code>4 - 2</code></td>
-<td><code>2</code></td>
-</tr>
-<tr class="odd">
-<td><code>*</code></td>
-<td>multiplication</td>
-<td><code>4 * 2</code></td>
-<td><code>8</code></td>
-</tr>
-<tr class="even">
-<td><code>/</code></td>
-<td>division</td>
-<td><code>4 / 2</code></td>
-<td><code>2</code></td>
-</tr>
-<tr class="odd">
-<td><code>%</code></td>
-<td>modulus</td>
-<td><code>5 % 2</code></td>
-<td><code>1</code></td>
-</tr>
-</tbody>
-</table>
+<section id="coding-for-reuse-1" class="slide level2">
+<h2>Coding for Reuse</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>Flag the symbols that differ from handwritten math: <code>*</code>, <code>/</code>, and <code>%</code>.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1156,23 +829,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 34 -->
 </section>
-<section id="arithmetic-in-code" class="slide level2">
-<h2>Arithmetic In Code</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb17-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb17-3"><a href=""></a></span>
-<span id="cb17-4"><a href=""></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb17-5"><a href=""></a><span class="op">{</span></span>
-<span id="cb17-6"><a href=""></a>    <span class="dt">double</span> hats <span class="op">=</span> <span class="fl">3.14</span><span class="op">;</span></span>
-<span id="cb17-7"><a href=""></a>    <span class="dt">double</span> heads <span class="op">=</span> <span class="fl">7.89</span><span class="op">;</span></span>
-<span id="cb17-8"><a href=""></a></span>
-<span id="cb17-9"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"sum: "</span> <span class="op">&lt;&lt;</span> hats <span class="op">+</span> heads <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb17-10"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"product: "</span> <span class="op">&lt;&lt;</span> hats <span class="op">*</span> heads <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb17-11"><a href=""></a></span>
-<span id="cb17-12"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb17-13"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="ideas-for-writing-reusable-software" class="slide level2">
+<h2>Ideas for Writing Reusable Software</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>Expressions can appear directly inside output statements. They are evaluated first, then the result is printed.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1186,18 +847,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 35 -->
 </section>
-<section id="integer-division" class="slide level2">
-<h2>Integer Division</h2>
-<ul>
-<li>When both operands are integers, <code>/</code> performs integer division.</li>
-<li>The remainder is dropped.</li>
-<li>This is truncation, not rounding.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href=""></a><span class="dt">int</span> a <span class="op">=</span> <span class="dv">9</span> <span class="op">/</span> <span class="dv">5</span><span class="op">;</span>    <span class="co">// 1</span></span>
-<span id="cb18-2"><a href=""></a><span class="dt">int</span> b <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="dv">2</span><span class="op">;</span>    <span class="co">// 0</span></span>
-<span id="cb18-3"><a href=""></a><span class="dt">int</span> c <span class="op">=</span> <span class="dv">7</span> <span class="op">/</span> <span class="dv">2</span><span class="op">;</span>    <span class="co">// 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="ideas-for-writing-reusable-software-1" class="slide level2">
+<h2>Ideas for Writing Reusable Software</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>This is the first place where type visibly changes arithmetic behavior.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1210,20 +864,19 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 36 -->
+<!-- Topic 9: Success Team Bingo -->
+<!-- Slides 37–40 -->
+</section></section>
+<section>
+<section id="success-team-bingo" class="title-slide slide level1 center">
+<h1>Success Team Bingo</h1>
+
 </section>
-<section id="floating-point-division" class="slide level2">
-<h2>Floating Point Division</h2>
-<ul>
-<li>If either operand is floating point, the result is floating point.</li>
-<li>The operands determine the division behavior before assignment happens.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href=""></a><span class="dt">double</span> a <span class="op">=</span> <span class="fl">9.0</span> <span class="op">/</span> <span class="dv">5</span><span class="op">;</span>    <span class="co">// 1.8</span></span>
-<span id="cb19-2"><a href=""></a><span class="dt">double</span> b <span class="op">=</span> <span class="dv">9</span> <span class="op">/</span> <span class="fl">5.0</span><span class="op">;</span>    <span class="co">// 1.8</span></span>
-<span id="cb19-3"><a href=""></a><span class="dt">double</span> c <span class="op">=</span> <span class="dv">9</span> <span class="op">/</span> <span class="dv">5</span><span class="op">;</span>      <span class="co">// 1.0</span></span>
-<span id="cb19-4"><a href=""></a></span>
-<span id="cb19-5"><a href=""></a><span class="dt">int</span> d <span class="op">=</span> <span class="fl">9.0</span> <span class="op">/</span> <span class="dv">5</span><span class="op">;</span>       <span class="co">// 1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="success-team-bingo-1" class="slide level2">
+<h2>Success Team Bingo</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>The third line is the trap: storing into a double is too late if the expression already used integer division.</p>
+<p>Slides 37–40</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1237,15 +890,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 37 -->
 </section>
-<section id="division-by-zero" class="slide level2">
-<h2>Division By Zero</h2>
-<ul>
-<li>Integer division by zero is undefined behavior and often crashes.</li>
-<li>Floating point division by zero may produce infinity or NaN.</li>
-<li>The compiler may accept both because the syntax is legal.</li>
-</ul>
+<section id="exercise-goals-2" class="slide level2">
+<h2>Exercise Goals</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>Make the distinction between compile-time syntax checks and runtime behavior.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1259,24 +908,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 38 -->
 </section>
-<section id="the-compiler-is-not-your-safety-net" class="slide level2">
-<h2>The Compiler Is Not Your Safety Net</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb20-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb20-3"><a href=""></a></span>
-<span id="cb20-4"><a href=""></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb20-5"><a href=""></a><span class="op">{</span></span>
-<span id="cb20-6"><a href=""></a>    <span class="dt">int</span> a <span class="op">=</span> <span class="dv">9</span><span class="op">;</span></span>
-<span id="cb20-7"><a href=""></a>    <span class="dt">double</span> b <span class="op">=</span> <span class="fl">9.0</span><span class="op">;</span></span>
-<span id="cb20-8"><a href=""></a>    <span class="dt">int</span> z <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb20-9"><a href=""></a></span>
-<span id="cb20-10"><a href=""></a>    cout <span class="op">&lt;&lt;</span> a <span class="op">/</span> z <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb20-11"><a href=""></a>    cout <span class="op">&lt;&lt;</span> b <span class="op">/</span> z <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb20-12"><a href=""></a></span>
-<span id="cb20-13"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb20-14"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="untitled-slide-39" class="slide level2">
+<h2>&lt;Untitled Slide 39&gt;</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>The program can compile because the grammar is valid. The bug appears when the program runs.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1290,19 +926,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 39 -->
 </section>
-<section id="the-modulus-operator" class="slide level2">
-<h2>The Modulus Operator</h2>
-<ul>
-<li><code>%</code> gives the remainder after integer division.</li>
-<li>It works with integers only.</li>
-<li>It is useful for divisibility, even/odd checks, and extracting digits.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb21-1"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="dv">10</span> <span class="op">%</span> <span class="dv">3</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span>    <span class="co">// 1</span></span>
-<span id="cb21-2"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="dv">15</span> <span class="op">%</span> <span class="dv">5</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span>    <span class="co">// 0</span></span>
-<span id="cb21-3"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="dv">7</span> <span class="op">%</span> <span class="dv">2</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span>     <span class="co">// 1</span></span>
-<span id="cb21-4"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="dv">42</span> <span class="op">%</span> <span class="dv">10</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span>   <span class="co">// 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="debrief-1" class="slide level2">
+<h2>Debrief</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>Modulus appears later in loops, games, menus, and algorithms that wrap around a range.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1315,19 +943,19 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 40 -->
+<!-- Topic 10: References -->
+<!-- Slides 41–41 -->
+</section></section>
+<section>
+<section id="references" class="title-slide slide level1 center">
+<h1>References</h1>
+
 </section>
-<section id="mathematical-expressions" class="slide level2">
-<h2>Mathematical Expressions</h2>
-<ul>
-<li>An expression evaluates to a single value.</li>
-<li>That value can be stored, printed, or used inside a larger expression.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb22-1"><a href=""></a><span class="dt">int</span> result1 <span class="op">=</span> <span class="dv">5</span> <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> <span class="dv">2</span><span class="op">;</span>      <span class="co">// 11</span></span>
-<span id="cb22-2"><a href=""></a><span class="dt">int</span> result2 <span class="op">=</span> <span class="op">(</span><span class="dv">5</span> <span class="op">+</span> <span class="dv">3</span><span class="op">)</span> <span class="op">*</span> <span class="dv">2</span><span class="op">;</span>    <span class="co">// 16</span></span>
-<span id="cb22-3"><a href=""></a><span class="dt">int</span> result3 <span class="op">=</span> <span class="dv">10</span> <span class="op">-</span> <span class="dv">6</span> <span class="op">/</span> <span class="dv">2</span><span class="op">;</span>     <span class="co">// 7</span></span>
-<span id="cb22-4"><a href=""></a><span class="dt">double</span> avg <span class="op">=</span> <span class="op">(</span>a <span class="op">+</span> b <span class="op">+</span> c<span class="op">)</span> <span class="op">/</span> <span class="fl">3.0</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="references-1" class="slide level2">
+<h2>References</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>Use the average line to reinforce floating point division from integer inputs.</p>
+<p>Slides 41–41</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1340,45 +968,19 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 41 -->
+<!-- Topic 11: Logging Function -->
+<!-- Slides 42–48 -->
+</section></section>
+<section>
+<section id="logging-function" class="title-slide slide level1 center">
+<h1>Logging Function</h1>
+
 </section>
-<section id="order-of-precedence" class="slide level2">
-<h2>Order Of Precedence</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Priority</th>
-<th>Operator</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td><code>()</code></td>
-<td>parentheses</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td><code>-</code></td>
-<td>unary negation</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td><code>*</code> <code>/</code> <code>%</code></td>
-<td>multiply, divide, modulus</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td><code>+</code> <code>-</code></td>
-<td>add, subtract</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>When intent is not obvious, add parentheses.</li>
-</ul>
+<section id="a-logging-function" class="slide level2">
+<h2>A Logging Function</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>Students do not need the full C++ precedence table yet. This is the arithmetic subset they need today.</p>
+<p>Slides 42–48</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1392,15 +994,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 42 -->
 </section>
-<section id="associativity" class="slide level2">
-<h2>Associativity</h2>
-<ul>
-<li>When operators have equal precedence, arithmetic evaluates left to right.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb23-1"><a href=""></a><span class="dt">int</span> a <span class="op">=</span> <span class="dv">10</span> <span class="op">-</span> <span class="dv">3</span> <span class="op">-</span> <span class="dv">2</span><span class="op">;</span>    <span class="co">// (10 - 3) - 2 = 5</span></span>
-<span id="cb23-2"><a href=""></a><span class="dt">int</span> b <span class="op">=</span> <span class="dv">12</span> <span class="op">/</span> <span class="dv">6</span> <span class="op">/</span> <span class="dv">2</span><span class="op">;</span>    <span class="co">// (12 / 6) / 2 = 1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="what" class="slide level2">
+<h2>What?</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>Associativity explains cases where precedence alone does not decide the grouping.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1414,20 +1012,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 43 -->
 </section>
-<section id="the-cmath-header" class="slide level2">
-<h2>The <code>cmath</code> Header</h2>
-<ul>
-<li>C++ has five built-in arithmetic operators.</li>
-<li>Powers, square roots, trigonometry, and logarithms are functions.</li>
-<li>Those functions require <code>#include &lt;cmath&gt;</code>.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb24-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;cmath&gt;</span></span>
-<span id="cb24-2"><a href=""></a></span>
-<span id="cb24-3"><a href=""></a><span class="dt">double</span> root <span class="op">=</span> sqrt<span class="op">(</span><span class="fl">16.0</span><span class="op">);</span></span>
-<span id="cb24-4"><a href=""></a><span class="dt">double</span> power <span class="op">=</span> pow<span class="op">(</span><span class="fl">2.0</span><span class="op">,</span> <span class="fl">10.0</span><span class="op">);</span></span>
-<span id="cb24-5"><a href=""></a><span class="dt">double</span> distance <span class="op">=</span> abs<span class="op">(-</span><span class="fl">7.5</span><span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="why" class="slide level2">
+<h2>Why?</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
 <aside class="notes">
-<p>Brief recognition slide only. The main point is that <code>^</code> is not exponentiation in C++.</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1441,227 +1030,97 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 44 -->
 </section>
-<section id="summary-2" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>Arithmetic operators transform numeric data.</li>
-<li>Integer division drops the remainder.</li>
-<li>Precedence and associativity determine evaluation order; parentheses make intent clear.</li>
-</ul>
+<section id="when-use-case" class="slide level2">
+<h2>When? / Use Case</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
+<aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 45 -->
 </section>
-<section class="slide level2">
+<section id="how" class="slide level2">
+<h2>How?</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
+<aside class="notes">
 
-</section></section>
-<section>
-<section id="key-takeaways" class="title-slide slide level1 center">
-<h1>Key Takeaways</h1>
-<ul>
-<li>Variables are named, typed memory locations.</li>
-<li>Declaration reserves space; initialization gives a first value; assignment updates the value.</li>
-<li>Type controls memory, interpretation, and operator behavior.</li>
-<li>Use <code>int</code> for whole numbers, <code>double</code> for decimals, <code>string</code> for text, and <code>bool</code> for flags.</li>
-<li>Integer division drops the remainder unless at least one operand is floating point.</li>
-</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 46 -->
 </section>
-<section class="slide level2">
+<section id="limitations" class="slide level2">
+<h2>Limitations</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
+<aside class="notes">
 
-</section></section>
-<section>
-<section id="next-time" class="title-slide slide level1 center">
-<h1>Next Time</h1>
-<ul>
-<li>Displaying output with <code>cout</code></li>
-<li>Reading input with <code>cin</code></li>
-<li>Formatting terminal output</li>
-</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 47 -->
 </section>
-<section class="slide level2">
+<section id="untitled-slide-48" class="slide level2">
+<h2>&lt;Untitled Slide 48&gt;</h2>
+<p>This slide presents the authoritative source material from the lecture PDF.</p>
+<aside class="notes">
 
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 48 -->
+<table class="caption-top" style="width:6%;">
+<colgroup>
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th># Key Takeaways</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td># Next Time</td>
+</tr>
+</tbody>
+</table>
 </section></section>
-<section>
 <section id="appendix" class="title-slide slide level1 center">
 <h1>Appendix</h1>
-<!-- Slide 48 -->
-</section>
-<section id="variables-and-assignment-good-practices" class="slide level2">
-<h2>Variables and Assignment: Good Practices</h2>
-<ul>
-<li>Initialize variables where they are declared.</li>
-<li>Name variables after the value they represent.</li>
-<li>Use <code>const</code> for values that should not change.</li>
-</ul>
-<!-- Slide 49 -->
-</section>
-<section id="variables-and-assignment-common-mistakes" class="slide level2">
-<h2>Variables and Assignment: Common Mistakes</h2>
-<ul>
-<li>Reading a variable before assigning it a useful value.</li>
-<li>Treating <code>=</code> like mathematical equality.</li>
-<li>Using vague names such as <code>x</code>, <code>num</code>, or <code>temp</code> when the value has a clear meaning.</li>
-</ul>
-<!-- Slide 50 -->
-</section>
-<section id="variables-and-assignment-more-examples" class="slide level2">
-<h2>Variables and Assignment: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb25-1"><a href=""></a><span class="dt">int</span> total <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb25-2"><a href=""></a><span class="dt">int</span> firstScore <span class="op">=</span> <span class="dv">85</span><span class="op">;</span></span>
-<span id="cb25-3"><a href=""></a><span class="dt">int</span> secondScore <span class="op">=</span> <span class="dv">92</span><span class="op">;</span></span>
-<span id="cb25-4"><a href=""></a></span>
-<span id="cb25-5"><a href=""></a>total <span class="op">=</span> firstScore <span class="op">+</span> secondScore<span class="op">;</span></span>
-<span id="cb25-6"><a href=""></a></span>
-<span id="cb25-7"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="st">"Total: "</span> <span class="op">&lt;&lt;</span> total <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 51 -->
-</section>
-<section id="variables-and-assignment-practice-problems" class="slide level2">
-<h2>Variables and Assignment: Practice Problems</h2>
-<ol type="1">
-<li>Declare and initialize one variable of each basic type.</li>
-<li>Write a program that swaps the values of two integer variables using a third variable.</li>
-<li>Trace <code>int x = 5; x = x * 2; x = x + 3;</code>.</li>
-</ol>
-<!-- Slide 52 -->
-</section>
-<section id="variables-and-assignment-ai-search-terms" class="slide level2">
-<h2>Variables and Assignment: AI Search Terms</h2>
-<ul>
-<li>“C++ variable declaration initialization assignment”</li>
-<li>“C++ assignment operator vs equality”</li>
-<li>“C++ const variable beginner”</li>
-<li>“C++ variable naming rules”</li>
-<li>“C++ uninitialized variable”</li>
-</ul>
-<!-- Slide 53 -->
-</section>
-<section id="variables-and-assignment-questions-for-reflection" class="slide level2">
-<h2>Variables and Assignment: Questions for Reflection</h2>
-<ul>
-<li>Why does C++ allow a variable to exist before it has a useful value?</li>
-<li>What does <code>age = age + 1</code> mean as a programming instruction?</li>
-<li>How does a good variable name make debugging easier?</li>
-</ul>
-<!-- Slide 54 -->
-</section>
-<section id="data-types-good-practices" class="slide level2">
-<h2>Data Types: Good Practices</h2>
-<ul>
-<li>Use <code>int</code> for whole-number counts and indexes.</li>
-<li>Use <code>double</code> for decimal calculations.</li>
-<li>Use <code>bool</code> for yes/no states instead of storing flags as integers.</li>
-</ul>
-<!-- Slide 55 -->
-</section>
-<section id="data-types-common-mistakes" class="slide level2">
-<h2>Data Types: Common Mistakes</h2>
-<ul>
-<li>Storing decimal values in <code>int</code> variables.</li>
-<li>Confusing <code>'A'</code> with <code>"A"</code>.</li>
-<li>Using <code>auto</code> before you can confidently predict the deduced type.</li>
-</ul>
-<!-- Slide 56 -->
-</section>
-<section id="data-types-more-examples" class="slide level2">
-<h2>Data Types: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb26-1"><a href=""></a>string name <span class="op">=</span> <span class="st">"Ari"</span><span class="op">;</span></span>
-<span id="cb26-2"><a href=""></a><span class="dt">int</span> age <span class="op">=</span> <span class="dv">19</span><span class="op">;</span></span>
-<span id="cb26-3"><a href=""></a><span class="dt">double</span> gpa <span class="op">=</span> <span class="fl">3.75</span><span class="op">;</span></span>
-<span id="cb26-4"><a href=""></a><span class="dt">char</span> grade <span class="op">=</span> <span class="ch">'A'</span><span class="op">;</span></span>
-<span id="cb26-5"><a href=""></a><span class="dt">bool</span> isPassing <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb26-6"><a href=""></a></span>
-<span id="cb26-7"><a href=""></a>cout <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> <span class="st">" has GPA "</span> <span class="op">&lt;&lt;</span> gpa <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 57 -->
-</section>
-<section id="data-types-practice-problems" class="slide level2">
-<h2>Data Types: Practice Problems</h2>
-<ol type="1">
-<li>Pick a type for each value: age, price, first initial, full name, passing status.</li>
-<li>Store <code>3.9</code> in an <code>int</code> and observe the result.</li>
-<li>Print a <code>bool</code> value and explain why the output is numeric.</li>
-</ol>
-<!-- Slide 58 -->
-</section>
-<section id="data-types-ai-search-terms" class="slide level2">
-<h2>Data Types: AI Search Terms</h2>
-<ul>
-<li>“C++ fundamental data types”</li>
-<li>“C++ int vs double”</li>
-<li>“C++ char ASCII”</li>
-<li>“C++ string include”</li>
-<li>“C++ bool prints 1 0”</li>
-</ul>
-<!-- Slide 59 -->
-</section>
-<section id="data-types-questions-for-reflection" class="slide level2">
-<h2>Data Types: Questions for Reflection</h2>
-<ul>
-<li>Why should a count usually be an <code>int</code> instead of a <code>double</code>?</li>
-<li>What information does a type give to someone reading your code?</li>
-<li>Why might hiding a type with <code>auto</code> be unhelpful while learning?</li>
-</ul>
-<!-- Slide 60 -->
-</section>
-<section id="arithmetic-operators-good-practices" class="slide level2">
-<h2>Arithmetic Operators: Good Practices</h2>
-<ul>
-<li>Use a floating point operand when a division should produce a decimal result.</li>
-<li>Add parentheses when operator order is not obvious.</li>
-<li>Check a denominator before dividing by a variable.</li>
-</ul>
-<!-- Slide 61 -->
-</section>
-<section id="arithmetic-operators-common-mistakes" class="slide level2">
-<h2>Arithmetic Operators: Common Mistakes</h2>
-<ul>
-<li>Expecting integer division to round.</li>
-<li>Expecting <code>^</code> to mean exponentiation.</li>
-<li>Dividing by zero and assuming the compiler will catch it.</li>
-</ul>
-<!-- Slide 62 -->
-</section>
-<section id="arithmetic-operators-more-examples" class="slide level2">
-<h2>Arithmetic Operators: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb27-1"><a href=""></a><span class="dt">int</span> total <span class="op">=</span> <span class="dv">267</span><span class="op">;</span></span>
-<span id="cb27-2"><a href=""></a><span class="dt">int</span> count <span class="op">=</span> <span class="dv">4</span><span class="op">;</span></span>
-<span id="cb27-3"><a href=""></a></span>
-<span id="cb27-4"><a href=""></a><span class="dt">double</span> average <span class="op">=</span> total <span class="op">/</span> <span class="fl">4.0</span><span class="op">;</span></span>
-<span id="cb27-5"><a href=""></a><span class="dt">int</span> onesDigit <span class="op">=</span> total <span class="op">%</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="cb27-6"><a href=""></a></span>
-<span id="cb27-7"><a href=""></a>cout <span class="op">&lt;&lt;</span> average <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb27-8"><a href=""></a>cout <span class="op">&lt;&lt;</span> onesDigit <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 63 -->
-</section>
-<section id="arithmetic-operators-practice-problems" class="slide level2">
-<h2>Arithmetic Operators: Practice Problems</h2>
-<ol type="1">
-<li>Compute the sum, difference, product, quotient, and remainder for two integers.</li>
-<li>Predict <code>17 % 5</code>, then verify it in code.</li>
-<li>Write an expression that converts minutes into hours and remaining minutes.</li>
-</ol>
-<!-- Slide 64 -->
-</section>
-<section id="arithmetic-operators-ai-search-terms" class="slide level2">
-<h2>Arithmetic Operators: AI Search Terms</h2>
-<ul>
-<li>“C++ arithmetic operators”</li>
-<li>“C++ integer division”</li>
-<li>“C++ modulus operator examples”</li>
-<li>“C++ operator precedence arithmetic”</li>
-<li>“C++ cmath pow sqrt”</li>
-</ul>
-<!-- Slide 65 -->
-</section>
-<section id="arithmetic-operators-questions-for-reflection" class="slide level2">
-<h2>Arithmetic Operators: Questions for Reflection</h2>
-<ul>
-<li>Should integer division warn when it drops a remainder?</li>
-<li>Why does storing <code>9 / 5</code> in a <code>double</code> still produce <code>1.0</code>?</li>
-<li>When do parentheses improve code even if they are not required?</li>
-</ul>
-<!-- Slide 66 -->
 
-</section></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
