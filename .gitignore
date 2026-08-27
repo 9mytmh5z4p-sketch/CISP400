@@ -9,6 +9,10 @@
 .quarto/
 **/*.quarto_ipynb
 **/*_files/
+# Reveal.js lectures need their generated CSS and JavaScript support folders.
+# Keep those assets for lecture directories so the HTML presentations work on GitHub Pages.
+!p400_lecture_*/**/*_files/
+!p400_lecture_*/**/*_files/**
 
 # Local prior-lecture source materials
 *.key
@@ -29,3 +33,5 @@ __pycache__/
 .env
 .env.*
 !.env.example
+
+/.quarto/
