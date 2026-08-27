@@ -1,10 +1,10 @@
-<!-- Topic 2: CISP 360 Review: Variables and Conditionals -->
+<!-- Topic: CISP 360 Review: Variables and Conditionals -->
 <!-- Slides 3–8 -->
-# CISP 360 Review: Variables and Conditionals
+# <span style="display:none">CISP 360 Review: Variables and Conditionals</span>
 
-## Old Friends
+## <span style="display:none">Old Friends</span>
 
-This slide presents the authoritative CISP 360 review material.
+![](images/pdf_source_pages/page-03.png){width="100%"}
 
 ::: notes
 Slides 3–8
@@ -14,9 +14,9 @@ Slides 3–8
 
 ---
 
-## Variables
+## <span style="display:none">Variables</span>
 
-This slide presents the authoritative CISP 360 review material.
+![](images/pdf_source_pages/page-04.png){width="100%"}
 
 ::: notes
 
@@ -26,9 +26,9 @@ This slide presents the authoritative CISP 360 review material.
 
 ---
 
-## 4.2 The if Statement
+## <span style="display:none">4.2 The if Statement</span>
 
-This slide presents the authoritative CISP 360 review material.
+![](images/pdf_source_pages/page-05.png){width="100%"}
 
 ::: notes
 
@@ -38,9 +38,9 @@ This slide presents the authoritative CISP 360 review material.
 
 ---
 
-## if Statement
+## <span style="display:none">if Statement</span>
 
-This slide presents the authoritative CISP 360 review material.
+![](images/pdf_source_pages/page-06.png){width="100%"}
 
 ::: notes
 
@@ -50,9 +50,9 @@ This slide presents the authoritative CISP 360 review material.
 
 ---
 
-## if/else Statement
+## <span style="display:none">if/else Statement</span>
 
-This slide presents the authoritative CISP 360 review material.
+![](images/pdf_source_pages/page-07.png){width="100%"}
 
 ::: notes
 
@@ -62,9 +62,9 @@ This slide presents the authoritative CISP 360 review material.
 
 ---
 
-## if/else if Statement
+## <span style="display:none">if/else if Statement</span>
 
-This slide presents the authoritative CISP 360 review material.
+![](images/pdf_source_pages/page-08.png){width="100%"}
 
 ::: notes
 

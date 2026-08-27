@@ -1,10 +1,10 @@
-<!-- Topic 9: Success Team Bingo -->
+<!-- Topic: Success Team Bingo -->
 <!-- Slides 37–40 -->
-# Success Team Bingo
+# <span style="display:none">Success Team Bingo</span>
 
-## Success Team Bingo
+## <span style="display:none">Success Team Bingo</span>
 
-This slide presents the authoritative source material from the lecture PDF.
+![](images/pdf_source_pages/page-37.png){width="100%"}
 
 ::: notes
 Slides 37–40
@@ -14,9 +14,9 @@ Slides 37–40
 
 ---
 
-## Exercise Goals
+## <span style="display:none">Exercise Goals</span>
 
-This slide presents the authoritative source material from the lecture PDF.
+![](images/pdf_source_pages/page-38.png){width="100%"}
 
 ::: notes
 
@@ -26,9 +26,9 @@ This slide presents the authoritative source material from the lecture PDF.
 
 ---
 
-## <Untitled Slide 39>
+## <span style="display:none"><Untitled Slide 39></span>
 
-This slide presents the authoritative source material from the lecture PDF.
+![](images/pdf_source_pages/page-39.png){width="100%"}
 
 ::: notes
 
@@ -38,9 +38,9 @@ This slide presents the authoritative source material from the lecture PDF.
 
 ---
 
-## Debrief
+## <span style="display:none">Debrief</span>
 
-This slide presents the authoritative source material from the lecture PDF.
+![](images/pdf_source_pages/page-40.png){width="100%"}
 
 ::: notes
 

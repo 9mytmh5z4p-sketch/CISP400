@@ -1,10 +1,10 @@
-<!-- Topic 3: Iteration -->
+<!-- Topic: Iteration -->
 <!-- Slides 9–12 -->
-# Iteration
+# <span style="display:none">Iteration</span>
 
-## Iteration
+## <span style="display:none">Iteration</span>
 
-This slide presents the authoritative CISP 360 review material.
+![](images/pdf_source_pages/page-09.png){width="100%"}
 
 ::: notes
 Slides 9–12
@@ -14,9 +14,9 @@ Slides 9–12
 
 ---
 
-## <Untitled Slide 10>
+## <span style="display:none"><Untitled Slide 10></span>
 
-This slide presents the authoritative CISP 360 review material.
+![](images/pdf_source_pages/page-10.png){width="100%"}
 
 ::: notes
 
@@ -26,9 +26,9 @@ This slide presents the authoritative CISP 360 review material.
 
 ---
 
-## <Untitled Slide 11>
+## <span style="display:none"><Untitled Slide 11></span>
 
-This slide presents the authoritative CISP 360 review material.
+![](images/pdf_source_pages/page-11.png){width="100%"}
 
 ::: notes
 
@@ -38,9 +38,9 @@ This slide presents the authoritative CISP 360 review material.
 
 ---
 
-## <Untitled Slide 12>
+## <span style="display:none"><Untitled Slide 12></span>
 
-This slide presents the authoritative CISP 360 review material.
+![](images/pdf_source_pages/page-12.png){width="100%"}
 
 ::: notes
 

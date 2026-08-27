@@ -1,10 +1,10 @@
-<!-- Topic 4: Functions -->
+<!-- Topic: Functions -->
 <!-- Slides 13–14 -->
-# Functions
+# <span style="display:none">Functions</span>
 
-## Functions
+## <span style="display:none">Functions</span>
 
-This slide presents the authoritative CISP 360 review material.
+![](images/pdf_source_pages/page-13.png){width="100%"}
 
 ::: notes
 Slides 13–14
@@ -14,9 +14,9 @@ Slides 13–14
 
 ---
 
-## Function Prototypes
+## <span style="display:none">Function Prototypes</span>
 
-This slide presents the authoritative CISP 360 review material.
+![](images/pdf_source_pages/page-14.png){width="100%"}
 
 ::: notes
 

@@ -1,10 +1,10 @@
-<!-- Topic 11: Logging Function -->
+<!-- Topic: Logging Function -->
 <!-- Slides 42–48 -->
-# Logging Function
+# <span style="display:none">Logging Function</span>
 
-## A Logging Function
+## <span style="display:none">A Logging Function</span>
 
-This slide presents the authoritative source material from the lecture PDF.
+![](images/pdf_source_pages/page-42.png){width="100%"}
 
 ::: notes
 Slides 42–48
@@ -14,9 +14,9 @@ Slides 42–48
 
 ---
 
-## What?
+## <span style="display:none">What?</span>
 
-This slide presents the authoritative source material from the lecture PDF.
+![](images/pdf_source_pages/page-43.png){width="100%"}
 
 ::: notes
 
@@ -26,9 +26,9 @@ This slide presents the authoritative source material from the lecture PDF.
 
 ---
 
-## Why?
+## <span style="display:none">Why?</span>
 
-This slide presents the authoritative source material from the lecture PDF.
+![](images/pdf_source_pages/page-44.png){width="100%"}
 
 ::: notes
 
@@ -38,9 +38,9 @@ This slide presents the authoritative source material from the lecture PDF.
 
 ---
 
-## When? / Use Case
+## <span style="display:none">When? / Use Case</span>
 
-This slide presents the authoritative source material from the lecture PDF.
+![](images/pdf_source_pages/page-45.png){width="100%"}
 
 ::: notes
 
@@ -50,9 +50,9 @@ This slide presents the authoritative source material from the lecture PDF.
 
 ---
 
-## How?
+## <span style="display:none">How?</span>
 
-This slide presents the authoritative source material from the lecture PDF.
+![](images/pdf_source_pages/page-46.png){width="100%"}
 
 ::: notes
 
@@ -62,9 +62,9 @@ This slide presents the authoritative source material from the lecture PDF.
 
 ---
 
-## Limitations
+## <span style="display:none">Limitations</span>
 
-This slide presents the authoritative source material from the lecture PDF.
+![](images/pdf_source_pages/page-47.png){width="100%"}
 
 ::: notes
 
@@ -74,9 +74,9 @@ This slide presents the authoritative source material from the lecture PDF.
 
 ---
 
-## <Untitled Slide 48>
+## <span style="display:none"><Untitled Slide 48></span>
 
-This slide presents the authoritative source material from the lecture PDF.
+![](images/pdf_source_pages/page-48.png){width="100%"}
 
 ::: notes
 

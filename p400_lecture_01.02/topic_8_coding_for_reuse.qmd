@@ -1,10 +1,10 @@
-<!-- Topic 8: Coding for Reuse -->
+<!-- Topic: Coding for Reuse -->
 <!-- Slides 33–36 -->
-# Coding for Reuse
+# <span style="display:none">Coding for Reuse</span>
 
-## <Untitled Slide 33>
+## <span style="display:none"><Untitled Slide 33></span>
 
-This slide presents the authoritative source material from the lecture PDF.
+![](images/pdf_source_pages/page-33.png){width="100%"}
 
 ::: notes
 Slides 33–36
@@ -14,9 +14,9 @@ Slides 33–36
 
 ---
 
-## Coding for Reuse
+## <span style="display:none">Coding for Reuse</span>
 
-This slide presents the authoritative source material from the lecture PDF.
+![](images/pdf_source_pages/page-34.png){width="100%"}
 
 ::: notes
 
@@ -26,9 +26,9 @@ This slide presents the authoritative source material from the lecture PDF.
 
 ---
 
-## Ideas for Writing Reusable Software
+## <span style="display:none">Ideas for Writing Reusable Software</span>
 
-This slide presents the authoritative source material from the lecture PDF.
+![](images/pdf_source_pages/page-35.png){width="100%"}
 
 ::: notes
 
@@ -38,9 +38,9 @@ This slide presents the authoritative source material from the lecture PDF.
 
 ---
 
-## Ideas for Writing Reusable Software
+## <span style="display:none">Ideas for Writing Reusable Software</span>
 
-This slide presents the authoritative source material from the lecture PDF.
+![](images/pdf_source_pages/page-36.png){width="100%"}
 
 ::: notes
 

@@ -1,10 +1,10 @@
-<!-- Topic 10: References -->
+<!-- Topic: References -->
 <!-- Slides 41–41 -->
-# References
+# <span style="display:none">References</span>
 
-## References
+## <span style="display:none">References</span>
 
-This slide presents the authoritative source material from the lecture PDF.
+![](images/pdf_source_pages/page-41.png){width="100%"}
 
 ::: notes
 Slides 41–41

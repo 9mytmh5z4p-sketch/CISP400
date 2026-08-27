@@ -1,10 +1,10 @@
-<!-- Topic 1: Course Framing -->
+<!-- Topic: Course Framing -->
 <!-- Slides 1–2 -->
-# Course Framing
+# <span style="display:none">Course Framing</span>
 
-## CISP 400
+## <span style="display:none">CISP 400</span>
 
-This slide presents the authoritative CISP 360 review material.
+![](images/pdf_source_pages/page-01.png){width="100%"}
 
 ::: notes
 Slides 1–2
@@ -14,9 +14,9 @@ Slides 1–2
 
 ---
 
-## Agenda
+## <span style="display:none">Agenda</span>
 
-This slide presents the authoritative CISP 360 review material.
+![](images/pdf_source_pages/page-02.png){width="100%"}
 
 ::: notes
 
