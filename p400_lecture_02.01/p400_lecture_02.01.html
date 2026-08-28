@@ -28,72 +28,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="p400_lecture_02.01_files/libs/revealjs/dist/theme/quarto-99eeafcedac04850354b682963cedae3.css">
   <link rel="stylesheet" href="../styles/styles.css">
@@ -206,15 +140,17 @@ Dr.&nbsp;Caleb Fowler
 </div>
 
 </section>
-<section id="last-time" class="title-slide slide level1 center">
-<h1>Last Time</h1>
-<ul>
-<li class="fragment"><strong>Variables and Assignment</strong></li>
-<li class="fragment"><strong>Data Types</strong></li>
-<li class="fragment"><strong>Arithmetic Operators</strong></li>
-</ul>
-<aside class="notes">
-<p>Brief recall of lecture 01.02. Students should be comfortable declaring and initializing variables of all basic types and writing arithmetic expressions. This lecture goes deeper into how the compiler processes that code and what happens at the boundaries between types.</p>
+<section class="slide level2">
+
+<!-- Topic: Course Framing -->
+<!-- Slides 1–3 -->
+</section>
+<section>
+<section id="course-framing" class="title-slide slide level1 center">
+<h1>Course Framing</h1>
+
+<img data-src="images/source_pages/slide-01.png" style="width:100.0%" alt="Course Framing" class="r-stretch"><aside class="notes">
+<p>Slides 1–3 Source slide 1 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -228,49 +164,24 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 1 -->
 </section>
+<section id="source-slide-2" class="slide level2">
+<h2><span style="display:none">Source Slide 2</span></h2>
 
-<section id="todays-agenda" class="title-slide slide level1 center">
-<h1>Today’s Agenda</h1>
-<ul>
-<li>How the Compiler Works</li>
-<li>The Symbol Table</li>
-<li>Data Type Conversion and Casting</li>
-<li>Signed vs Unsigned Variables</li>
-<li>Overflow and Underflow</li>
-<li>Fixed-Width Integers and size_t</li>
-<li>Determining Variable Size</li>
-</ul>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 <!-- Slide 2 -->
-<!-- Topic 1: How the Compiler Works -->
-<!-- Slides 3-20 -->
-</section>
+<img data-src="images/source_pages/slide-02.png" style="width:100.0%" alt="Last Time" class="r-stretch"></section>
+<section id="source-slide-3" class="slide level2">
+<h2><span style="display:none">Source Slide 3</span></h2>
 
-<section>
-<section id="how-the-compiler-works" class="title-slide slide level1 center">
-<h1>How the Compiler Works</h1>
 <!-- Slide 3 -->
-</section>
-<section id="what-happens-when-you-press-build" class="slide level2 smaller">
-<h2>What happens when you press “build”?</h2>
-<ul>
-<li>The compiler transforms your source code through several distinct stages into an executable program.</li>
-<li>Understanding this process helps you read error messages, locate bugs faster, and write code that compiles cleanly.</li>
-</ul>
-<aside class="notes">
-<p>Slides 3-20 Frame this as practical knowledge, not theory. Every error message a student sees — “undeclared identifier,” “undefined reference,” “no matching function” — comes from one of the three stages. Knowing which stage produced the error tells you where to look.</p>
+<!-- Topic: Programming Exercise -->
+<!-- Slides 4–8 -->
+<img data-src="images/source_pages/slide-03.png" style="width:100.0%" alt="• Class introduction, some C++ stuff." class="r-stretch"></section></section>
+<section>
+<section id="programming-exercise" class="title-slide slide level1 center">
+<h1>Programming Exercise</h1>
+
+<img data-src="images/source_pages/slide-04.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"><aside class="notes">
+<p>Slides 4–8 Source slide 4 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -284,82 +195,34 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 4 -->
 </section>
-<section id="the-three-stages" class="slide level2">
-<h2>The three stages</h2>
-<ul>
-<li><strong>Stage 1 — Preprocessing:</strong> resolves <code>#include</code>, <code>#define</code>, and macro directives before the compiler ever sees your code.</li>
-<li><strong>Stage 2 — Compilation:</strong> type-checks the source and translates it to object code.</li>
-<li><strong>Stage 3 — Linking:</strong> combines object files and resolves references to library functions.</li>
-</ul>
+<section id="source-slide-5" class="slide level2">
+<h2><span style="display:none">Source Slide 5</span></h2>
 
-<img data-src="images/0201pipeline.png" class="r-stretch"><aside class="notes">
-<p>[Graphic suggestion: horizontal pipeline diagram — source → preprocessor → expanded source → compiler → object file → linker (+ library) → executable.]</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 <!-- Slide 5 -->
-</section>
-<section id="stage-1-preprocessing" class="slide level2">
-<h2>Stage 1: Preprocessing</h2>
-<ul>
-<li>Runs before compilation; processes all directives that start with <code>#</code>.</li>
-<li>Expands <code>#include</code> by inserting the full contents of the header file verbatim.</li>
-<li>Removes comments; output is still C++ source, not object code.</li>
-</ul>
-<aside class="notes">
-<p>Students sometimes think the preprocessor is part of the compiler — it is not. It is a separate text-processing step that knows nothing about C++ syntax. The preprocessor cannot catch type errors or undefined variables. It simply performs textual substitution.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-05.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"></section>
+<section id="source-slide-6" class="slide level2">
+<h2><span style="display:none">Source Slide 6</span></h2>
+
 <!-- Slide 6 -->
-</section>
-<section id="preprocessing-directives" class="slide level2">
-<h2>Preprocessing directives</h2>
-<ul>
-<li><code>#include &lt;file&gt;</code> — inserts a header file’s contents verbatim at that point in the source.</li>
-<li><code>#define NAME value</code> — textual substitution; every occurrence of NAME is replaced before compilation.</li>
-<li><code>#pragma once</code> — prevents a header from being inserted more than once per translation unit.</li>
-</ul>
-<aside class="notes">
-<p>Without pragma once (or header guards), including the same header twice from different files causes redeclaration errors at compile time. Students will see both pragma once and the classic #ifndef/#define/#endif pattern in code they read.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-06.png" style="width:100.0%" alt="6" class="r-stretch"></section>
+<section id="source-slide-7" class="slide level2">
+<h2><span style="display:none">Source Slide 7</span></h2>
+
 <!-- Slide 7 -->
-</section>
-<section id="stage-2-compilation" class="slide level2">
-<h2>Stage 2: Compilation</h2>
-<ul>
-<li>Takes preprocessed source and checks syntax and type correctness.</li>
-<li>Translates valid C++ into processor-specific object code.</li>
-<li>One <code>.cpp</code> file → one <code>.o</code> object file.</li>
-</ul>
-<aside class="notes">
-<p>This is the stage students interact with most — syntax errors and type errors both appear here. The compiler processes one .cpp file at a time; it has no knowledge of other .cpp files. Definitions are resolved at link time.</p>
+<img data-src="images/source_pages/slide-07.png" style="width:100.0%" alt="7" class="r-stretch"></section>
+<section id="source-slide-8" class="slide level2">
+<h2><span style="display:none">Source Slide 8</span></h2>
+
+<!-- Slide 8 -->
+<!-- Topic: Pointer Motivation and Memory Addresses -->
+<!-- Slides 9–16 -->
+<img data-src="images/source_pages/slide-08.png" style="width:100.0%" alt="Debrief" class="r-stretch"></section></section>
+<section>
+<section id="pointer-motivation-and-memory-addresses" class="title-slide slide level1 center">
+<h1>Pointer Motivation and Memory Addresses</h1>
+
+<img data-src="images/source_pages/slide-09.png" style="width:100.0%" alt="Pointer Motivation and Memory Addresses" class="r-stretch"><aside class="notes">
+<p>Slides 9–16 Source slide 9 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -371,153 +234,51 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 8 -->
-</section>
-<section id="what-the-compiler-checks" class="slide level2">
-<h2>What the compiler checks</h2>
-<ul>
-<li><strong>Syntax errors</strong> — missing braces, semicolons, or mismatched delimiters.</li>
-<li><strong>Type errors</strong> — mismatched types in assignments or operations.</li>
-<li><strong>Scope and declaration errors</strong> — using identifiers that are undeclared or redeclared.</li>
-</ul>
-<!-- Slide 16 -->
-</section>
-<section id="what-the-compiler-checks-syntax-errors" class="slide level2">
-<h2>What the compiler checks: syntax errors</h2>
-<ul>
-<li><strong>Syntax</strong> — does your code follow C++ grammar rules? Missing braces, semicolons, or mismatched delimiters are caught here.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb1-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"hello"</span><span class="op">;</span>   <span class="co">// ERROR: missing { before function body</span></span>
-<span id="cb1-3"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb1-4"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>error: expected '{' before 'cout'</code></pre>
 <!-- Slide 9 -->
 </section>
-<section id="what-the-compiler-checks-type-errors" class="slide level2">
-<h2>What the compiler checks: type errors</h2>
-<ul>
-<li><strong>Types</strong> — do variable types match in assignments and operations? C++ is statically typed — mismatches are caught at compile time, not at runtime.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a><span class="dt">int</span> age <span class="op">=</span> <span class="dv">25</span><span class="op">;</span></span>
-<span id="cb3-2"><a href=""></a>age <span class="op">=</span> <span class="st">"twenty-five"</span><span class="op">;</span>   <span class="co">// ERROR: can't store a string in an int</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>error: invalid conversion from 'const char*' to 'int'</code></pre>
-<!-- Slide 11 -->
-</section>
-<section id="what-the-compiler-checks-scope-and-declaration-errors" class="slide level2">
-<h2>What the compiler checks: scope and declaration errors</h2>
-<ul>
-<li><strong>Scope and declarations</strong> — are all variables and functions declared before use? Do names conflict within the same scope?</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb5-2"><a href=""></a><span class="op">{</span></span>
-<span id="cb5-3"><a href=""></a>    count <span class="op">=</span> <span class="dv">10</span><span class="op">;</span>   <span class="co">// ERROR: 'count' was never declared</span></span>
-<span id="cb5-4"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb5-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>error: 'count' was not declared in this scope</code></pre>
-<aside class="notes">
-<p>Static typing is a key C++ strength: an entire class of bugs that would appear only at runtime in Python or JavaScript are caught at compile time in C++.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 12 -->
-</section>
-<section id="stage-3-linking" class="slide level2">
-<h2>Stage 3: Linking</h2>
-<ul>
-<li>Combines multiple <code>.o</code> object files into a single executable.</li>
-<li>Resolves references to library functions (e.g., <code>cout</code> from <code>&lt;iostream&gt;</code>).</li>
-<li>Reports “undefined reference” when a called function has no definition anywhere.</li>
-</ul>
-<aside class="notes">
-<p>The most common linker error beginners see: “undefined reference to ‘main’” (forgot to write main) or “undefined reference to ‘sqrt’” (forgot to link the math library). These are not compile errors — the code compiled fine; the linker just cannot find the implementation.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 13 -->
-</section>
-<section id="translation-units" class="slide level2">
-<h2>Translation units</h2>
-<ul>
-<li>Each <code>.cpp</code> file is compiled independently — it is called a <strong>translation unit</strong>.</li>
-<li>The compiler sees one <code>.cpp</code> file at a time and has no knowledge of other <code>.cpp</code> files until linking.</li>
-<li>Declarations go in <code>.h</code> files so the preprocessor can copy them into every <code>.cpp</code> that needs them.</li>
-</ul>
-<aside class="notes">
-<p>This explains why a function defined in another .cpp causes an “undeclared” error: the compiler only sees the .cpp it is currently compiling. The declaration in the header gives the compiler what it needs for type checking; the linker handles connecting the call to the definition.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 14 -->
-</section>
-<section id="translation-units-code-example" class="slide level2">
-<h2>Translation units: code example</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a><span class="co">// math.h — declaration only (shared via #include)</span></span>
-<span id="cb7-2"><a href=""></a><span class="dt">int</span> add<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">);</span></span>
-<span id="cb7-3"><a href=""></a></span>
-<span id="cb7-4"><a href=""></a><span class="co">// math.cpp — definition in its own translation unit</span></span>
-<span id="cb7-5"><a href=""></a><span class="dt">int</span> add<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span> <span class="cf">return</span> a <span class="op">+</span> b<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb7-6"><a href=""></a></span>
-<span id="cb7-7"><a href=""></a><span class="co">// main.cpp — sees the declaration via #include, not the definition</span></span>
-<span id="cb7-8"><a href=""></a><span class="pp">#include </span><span class="im">"math.h"</span></span>
-<span id="cb7-9"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span> <span class="cf">return</span> add<span class="op">(</span><span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">);</span> <span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 15 -->
-</section>
-<section id="translation-units-for-your-general-knowledge" class="slide level2">
-<h2>Translation units — for your general knowledge</h2>
-<ul>
-<li>The concept of <strong>translation units</strong> is part of how C++ works under the hood.</li>
-<li>You do not need to worry about this for this course.</li>
-<li>You may come across the term in your readings or online — now you know what it means.</li>
-</ul>
-<aside class="notes">
-<p>This is a gentle landing after a fairly dense concept. Students at this level do not need to write multi-file programs yet. The goal is to explain why declarations go in headers without making translation units feel like a test target.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="source-slide-10" class="slide level2">
+<h2><span style="display:none">Source Slide 10</span></h2>
+
 <!-- Slide 10 -->
-</section>
-<section id="reading-error-messages-by-stage" class="slide level2">
-<h2>Reading error messages by stage</h2>
-<ul>
-<li>Errors that mention <strong>line numbers in your source file</strong> → compile-time errors (Stage 2).</li>
-<li>Errors that say <strong>“undefined reference”</strong> or <strong>“symbol not found”</strong> → linker errors (Stage 3).</li>
-<li>Errors that say <strong>“no such file”</strong> or <strong>“invalid preprocessing directive”</strong> → preprocessor errors (Stage 1).</li>
-</ul>
-<aside class="notes">
-<p>Teaching students to categorize errors by stage is a practical debugging skill. A linker error means the code compiled correctly — the problem is a missing definition, not a syntax mistake.</p>
+<img data-src="images/source_pages/slide-10.png" style="width:100.0%" alt="What’s this chapter" class="r-stretch"></section>
+<section id="source-slide-11" class="slide level2">
+<h2><span style="display:none">Source Slide 11</span></h2>
+
+<!-- Slide 11 -->
+<img data-src="images/source_pages/slide-11.png" style="width:100.0%" alt="C++ Overview" class="r-stretch"></section>
+<section id="source-slide-12" class="slide level2">
+<h2><span style="display:none">Source Slide 12</span></h2>
+
+<!-- Slide 12 -->
+<img data-src="images/source_pages/slide-12.png" style="width:100.0%" alt="in CISP 360, you learned C++ has 3 types of" class="r-stretch"></section>
+<section id="source-slide-13" class="slide level2">
+<h2><span style="display:none">Source Slide 13</span></h2>
+
+<!-- Slide 13 -->
+<img data-src="images/source_pages/slide-13.png" style="width:100.0%" alt="Big Idea" class="r-stretch"></section>
+<section id="source-slide-14" class="slide level2">
+<h2><span style="display:none">Source Slide 14</span></h2>
+
+<!-- Slide 14 -->
+<img data-src="images/source_pages/slide-14.png" style="width:100.0%" alt="Related to Previous" class="r-stretch"></section>
+<section id="source-slide-15" class="slide level2">
+<h2><span style="display:none">Source Slide 15</span></h2>
+
+<!-- Slide 15 -->
+<img data-src="images/source_pages/slide-15.png" style="width:100.0%" alt="Agenda" class="r-stretch"></section>
+<section id="source-slide-16" class="slide level2">
+<h2><span style="display:none">Source Slide 16</span></h2>
+
+<!-- Slide 16 -->
+<!-- Topic: Pointers and the Address Operator -->
+<!-- Slides 17–19 -->
+<img data-src="images/source_pages/slide-16.png" style="width:100.0%" alt="Agenda" class="r-stretch"></section></section>
+<section>
+<section id="pointers-and-the-address-operator" class="title-slide slide level1 center">
+<h1>Pointers and the Address Operator</h1>
+
+<img data-src="images/source_pages/slide-17.png" style="width:100.0%" alt="Pointers and the Address Operator" class="r-stretch"><aside class="notes">
+<p>Slides 17–19 Source slide 17 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -531,45 +292,50 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 17 -->
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
+<section id="source-slide-18" class="slide level2">
+<h2><span style="display:none">Source Slide 18</span></h2>
 
 <!-- Slide 18 -->
-<img data-src="images/error_by_stage.png" class="r-stretch"></section>
-<section id="static-typing-a-c-strength" class="slide level2">
-<h2>Static typing — a C++ strength</h2>
-<div class="columns">
-<div class="column" style="width:45%;">
-<p><img data-src="images/static_typing_strong.png"></p>
-</div><div class="column" style="width:55%;">
-<p>Static typing is a key C++ strength: an entire class of bugs that would appear only at runtime in Python or JavaScript are caught at compile time in C++.</p>
-</div></div>
+<img data-src="images/source_pages/slide-18.png" style="width:100.0%" alt="Source Slide 18" class="r-stretch"></section>
+<section id="source-slide-19" class="slide level2">
+<h2><span style="display:none">Source Slide 19</span></h2>
+
 <!-- Slide 19 -->
-</section>
-<section id="summary" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>The compiler transforms source code through preprocessing, compilation, and linking.</li>
-<li>Understanding these stages helps you interpret error messages and locate bugs faster.</li>
-<li>Compile errors → Stage 2. Linker errors → Stage 3. File-not-found → Stage 1.</li>
-</ul>
-<!-- Slide 20 -->
-<!-- Topic 2: The Symbol Table -->
-<!-- Slides 21-28 -->
-</section></section>
+<!-- Topic: Arrays and Pointers -->
+<!-- Slides 20–21 -->
+<img data-src="images/source_pages/slide-19.png" style="width:100.0%" alt="Source Slide 19" class="r-stretch"></section></section>
 <section>
-<section id="the-symbol-table" class="title-slide slide level1 center">
-<h1>The Symbol Table</h1>
-<!-- Slide 21 -->
+<section id="arrays-and-pointers" class="title-slide slide level1 center">
+<h1>Arrays and Pointers</h1>
+
+<img data-src="images/source_pages/slide-20.png" style="width:100.0%" alt="Arrays and pointers" class="r-stretch"><aside class="notes">
+<p>Slides 20–21 Source slides 20–21 from the authoritative PDF.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 20 -->
 </section>
-<section id="what-problems-does-the-compiler-face-tracking-every-identifier" class="slide level2 smaller">
-<h2>What problems does the compiler face tracking every identifier?</h2>
-<ul>
-<li>The symbol table is the compiler’s internal database that records every identifier — variable, function, or type — along with its name, type, scope, and location.</li>
-<li>Every type mismatch, undeclared variable, and redeclaration error traces back to this table.</li>
-</ul>
-<aside class="notes">
-<p>Slides 21-28 Frame this as the mechanism behind error messages students already encounter. “Undeclared identifier” means: the compiler searched the symbol table and found no entry. “Redeclaration” means: the compiler found an entry already. Once students understand the table, the error messages make sense.</p>
+<section id="source-slide-21" class="slide level2">
+<h2><span style="display:none">Source Slide 21</span></h2>
+
+<!-- Slide 21 -->
+<!-- Topic: Pointer Arithmetic -->
+<!-- Slides 22–24 -->
+<img data-src="images/source_pages/slide-21.png" style="width:100.0%" alt="Arrays and pointers" class="r-stretch"></section></section>
+<section>
+<section id="pointer-arithmetic" class="title-slide slide level1 center">
+<h1>Pointer Arithmetic</h1>
+
+<img data-src="images/source_pages/slide-22.png" style="width:100.0%" alt="Pointer arithmetic" class="r-stretch"><aside class="notes">
+<p>Slides 22–24 Source slides 22–24 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -583,47 +349,24 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 22 -->
 </section>
-<section id="what-goes-in-the-symbol-table" class="slide level2">
-<h2>What goes in the symbol table?</h2>
+<section id="source-slide-23" class="slide level2">
+<h2><span style="display:none">Source Slide 23</span></h2>
 
-<img data-src="images/2-panel_symbol_table.png" class="r-stretch"><aside class="notes">
-<p>Two-panel diagram: source code on the left, symbol table entries on the right with arrows connecting each identifier to its row. Name, type, scope, and address are the four fields. This image replaces the text description — the visual makes the mapping between code and table entries concrete.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 <!-- Slide 23 -->
-</section>
-<section id="how-the-compiler-uses-it" class="slide level2">
-<h2>How the compiler uses it</h2>
-<ul>
-<li><strong>Type checking</strong> — when you write <code>int x = "hello"</code>, the compiler looks up <code>x</code> in the table, sees <code>int</code>, and rejects the string.</li>
-<li><strong>Scope resolution</strong> — when you reference <code>count</code>, the compiler searches from the innermost scope outward.</li>
-<li><strong>Duplicate detection</strong> — if you declare the same name twice in the same scope, the compiler finds the first entry and rejects the second.</li>
-<li><strong>Code generation</strong> — addresses stored in the table tell the compiler where to read and write each variable.</li>
-</ul>
+<img data-src="images/source_pages/slide-23.png" style="width:100.0%" alt="Pointer arithmetic" class="r-stretch"></section>
+<section id="source-slide-24" class="slide level2">
+<h2><span style="display:none">Source Slide 24</span></h2>
+
 <!-- Slide 24 -->
-</section>
-<section id="undeclared-identifier-error" class="slide level2">
-<h2>Undeclared identifier error</h2>
-<ul>
-<li><strong>Missing entry</strong> — the compiler searches the symbol table and cannot find <code>count</code>.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb8-2"><a href=""></a><span class="op">{</span></span>
-<span id="cb8-3"><a href=""></a>    count <span class="op">=</span> <span class="dv">10</span><span class="op">;</span>   <span class="co">// error: 'count' was not declared in this scope</span></span>
-<span id="cb8-4"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb8-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>error: 'count' was not declared in this scope</code></pre>
-<aside class="notes">
-<p>The compiler searched the symbol table — starting in main()‘s scope, then global scope — and found no entry for ’count’. The fix is always the same: declare the variable before you use it. The error message tells students exactly what went wrong and where to look.</p>
+<!-- Topic: Initializing Pointers -->
+<!-- Slides 25–42 -->
+<img data-src="images/source_pages/slide-24.png" style="width:100.0%" alt="Pointer arithmetic" class="r-stretch"></section></section>
+<section>
+<section id="initializing-pointers" class="title-slide slide level1 center">
+<h1>Initializing Pointers</h1>
+
+<img data-src="images/source_pages/slide-25.png" style="width:100.0%" alt="Initializing Pointers" class="r-stretch"><aside class="notes">
+<p>Slides 25–42 Source slide 25 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -637,357 +380,99 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 25 -->
 </section>
-<section id="redeclaration-error" class="slide level2">
-<h2>Redeclaration error</h2>
-<ul>
-<li><strong>Duplicate entry</strong> — the compiler already has an <code>x</code> in this scope.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href=""></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb10-2"><a href=""></a><span class="op">{</span></span>
-<span id="cb10-3"><a href=""></a>    <span class="dt">int</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
-<span id="cb10-4"><a href=""></a>    <span class="dt">int</span> x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span>   <span class="co">// error: redeclaration of 'int x'</span></span>
-<span id="cb10-5"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb10-6"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>error: redeclaration of 'int x'</code></pre>
-<aside class="notes">
-<p>The compiler found ‘x’ already in the symbol table for this scope and cannot add a second entry with the same name. Each identifier can have only one entry per scope. The solution: either rename the second variable or remove the redundant declaration.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="source-slide-26" class="slide level2">
+<h2><span style="display:none">Source Slide 26</span></h2>
+
 <!-- Slide 26 -->
-</section>
-<section id="type-mismatch-error" class="slide level2">
-<h2>Type mismatch error</h2>
-<ul>
-<li><strong>Wrong type</strong> — the table says <code>age</code> is an <code>int</code>, but the assignment provides text.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href=""></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb12-2"><a href=""></a><span class="op">{</span></span>
-<span id="cb12-3"><a href=""></a>    <span class="dt">int</span> age <span class="op">=</span> <span class="dv">25</span><span class="op">;</span></span>
-<span id="cb12-4"><a href=""></a>    age <span class="op">=</span> <span class="st">"twenty-five"</span><span class="op">;</span>  <span class="co">// error: invalid conversion from 'const char*' to 'int'</span></span>
-<span id="cb12-5"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb12-6"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>error: invalid conversion from 'const char*' to 'int'</code></pre>
-<aside class="notes">
-<p>The symbol table records ‘age’ as type int. When the compiler evaluates the assignment, it checks the incoming value’s type (const char*) against the table entry (int) and rejects it. This is static type checking at work.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-26.png" style="width:100.0%" alt="“Pointers may be initialized with the address of" class="r-stretch"></section>
+<section id="source-slide-27" class="slide level2">
+<h2><span style="display:none">Source Slide 27</span></h2>
+
 <!-- Slide 27 -->
-</section>
-<section id="summary-1" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>The symbol table records every identifier: name, type, scope, and address.</li>
-<li>Type mismatches, undeclared variables, and redeclarations all stem from symbol table violations.</li>
-<li>Understanding the table turns cryptic compiler error messages into actionable information.</li>
-</ul>
+<img data-src="images/source_pages/slide-27.png" style="width:100.0%" alt="If we don’t have data we want to point to (because we" class="r-stretch"></section>
+<section id="source-slide-28" class="slide level2">
+<h2><span style="display:none">Source Slide 28</span></h2>
+
 <!-- Slide 28 -->
-<!-- Topic 3: Data Type Conversion and Casting -->
-<!-- Slides 29-46 -->
-</section></section>
-<section>
-<section id="data-type-conversion-and-casting" class="title-slide slide level1 center">
-<h1>Data Type Conversion and Casting</h1>
+<img data-src="images/source_pages/slide-28.png" style="width:100.0%" alt="• We can initialize it to 0" class="r-stretch"></section>
+<section id="source-slide-29" class="slide level2">
+<h2><span style="display:none">Source Slide 29</span></h2>
+
 <!-- Slide 29 -->
-</section>
-<section id="conversion-question" class="slide level2">
-<h2>Conversion Question</h2>
-<p>What happens when we ask the computer to move data from one type to a different type variable?</p>
-<!-- Slide 32 -->
-</section>
-<section id="type-coercion-the-compiler-converts-automatically" class="slide level2 smaller">
-<h2>Type coercion — the compiler converts automatically</h2>
-<ul>
-<li>The compiler automatically promotes the lower-ranking type to match the higher-ranking type.</li>
-<li><strong>Promotion</strong> — moving up the ranking. No data is lost.</li>
-<li><strong>Demotion</strong> — moving down the ranking. Data may be lost.</li>
-</ul>
+<img data-src="images/source_pages/slide-29.png" style="width:100.0%" alt="• C11 has built in keyword, nullptr, to initialize to 0." class="r-stretch"></section>
+<section id="source-slide-30" class="slide level2">
+<h2><span style="display:none">Source Slide 30</span></h2>
+
 <!-- Slide 30 -->
-</section>
-<section id="data-type-ranking" class="slide level2">
-<h2>Data type ranking</h2>
-<div class="columns">
-<div class="column" style="width:45%;">
-<p>When two operands of different types appear in an expression, the lower-ranking type is promoted to the higher before the operation executes.</p>
-<p>The result of a mixed-type expression follows the higher-ranking operand.</p>
-</div><div class="column" style="width:55%;">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: center;">Rank</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1 (highest)</td>
-<td><code>long double</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td><code>double</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td><code>float</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td><code>unsigned long long</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td><code>long long</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6</td>
-<td><code>unsigned long</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">7</td>
-<td><code>long</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">8</td>
-<td><code>unsigned int</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">9 (lowest)</td>
-<td><code>int</code></td>
-</tr>
-</tbody>
-</table>
-</div></div>
-<aside class="notes">
-<p>Data Type Ranking table (Table 3-7 from the original lecture). The result of any mixed-type expression takes the type of the higher-ranking operand. Note abbreviated names: long = long int, long long = long long int, etc.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-30.png" style="width:100.0%" alt="• Which means we can use 3 tests to see if a pointer" class="r-stretch"></section>
+<section id="source-slide-31" class="slide level2">
+<h2><span style="display:none">Source Slide 31</span></h2>
+
 <!-- Slide 31 -->
-</section>
-<section id="three-rules-of-coercion" class="slide level2">
-<h2>Three rules of coercion</h2>
-<ul>
-<li><strong>Rule 1:</strong> <code>char</code>, <code>short</code>, and <code>unsigned short</code> are automatically promoted to <code>int</code> in any expression.</li>
-<li><strong>Rule 2:</strong> When two operands of different types appear in an operation, the lower-ranking type is promoted to the higher-ranking type.</li>
-<li><strong>Rule 3:</strong> The final value of an expression is converted to the type of the variable it is being assigned to.</li>
-</ul>
-<aside class="notes">
-<p>Rule 3 is where demotion happens. If you compute a double result and assign it to an int, the decimal part is silently dropped — no error, no warning by default. This is the most common source of unexpected results in beginner programs.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-31.png" style="width:100.0%" alt="Sidebar: Brace Initialization" class="r-stretch"></section>
+<section id="source-slide-32" class="slide level2">
+<h2><span style="display:none">Source Slide 32</span></h2>
+
+<!-- Slide 32 -->
+<img data-src="images/source_pages/slide-32.png" style="width:100.0%" alt="Why do you want to initialize" class="r-stretch"></section>
+<section id="source-slide-33" class="slide level2">
+<h2><span style="display:none">Source Slide 33</span></h2>
+
 <!-- Slide 33 -->
-</section>
-<section id="promotion-moving-up" class="slide level2">
-<h2>Promotion — moving up</h2>
-<ul>
-<li>Promotion happens when a smaller type is used where a larger type is expected.</li>
-<li>No data is lost. C++ performs this automatically.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href=""></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
-<span id="cb14-2"><a href=""></a><span class="dt">double</span> y <span class="op">=</span> x<span class="op">;</span>        <span class="co">// int promoted to double; y = 5.0</span></span>
-<span id="cb14-3"><a href=""></a></span>
-<span id="cb14-4"><a href=""></a><span class="dt">char</span> c <span class="op">=</span> <span class="ch">'A'</span><span class="op">;</span></span>
-<span id="cb14-5"><a href=""></a><span class="dt">int</span> val <span class="op">=</span> c<span class="op">;</span>         <span class="co">// char promoted to int; val = 65</span></span>
-<span id="cb14-6"><a href=""></a></span>
-<span id="cb14-7"><a href=""></a><span class="dt">int</span> a <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="cb14-8"><a href=""></a><span class="dt">double</span> r <span class="op">=</span> a <span class="op">/</span> <span class="fl">2.0</span><span class="op">;</span>  <span class="co">// a promoted before division; r = 5.0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<img data-src="images/source_pages/slide-33.png" style="width:100.0%" alt="Reliability" class="r-stretch"></section>
+<section id="source-slide-34" class="slide level2">
+<h2><span style="display:none">Source Slide 34</span></h2>
+
 <!-- Slide 34 -->
-</section>
-<section id="demotion-moving-down" class="slide level2">
-<h2>Demotion — moving down</h2>
-<ul>
-<li>Demotion (narrowing) happens when a larger type is assigned to a smaller type.</li>
-<li><strong>Data loss is likely.</strong> The compiler may warn but will not always stop you.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href=""></a><span class="dt">double</span> x <span class="op">=</span> <span class="fl">3.7</span><span class="op">;</span></span>
-<span id="cb15-2"><a href=""></a><span class="dt">int</span> y <span class="op">=</span> x<span class="op">;</span>             <span class="co">// Warning: y = 3 (decimal discarded — not rounded)</span></span>
-<span id="cb15-3"><a href=""></a></span>
-<span id="cb15-4"><a href=""></a><span class="dt">long</span> bigNum <span class="op">=</span> <span class="dv">100000</span><span class="op">;</span></span>
-<span id="cb15-5"><a href=""></a><span class="dt">short</span> s <span class="op">=</span> bigNum<span class="op">;</span>      <span class="co">// Warning: may overflow</span></span>
-<span id="cb15-6"><a href=""></a></span>
-<span id="cb15-7"><a href=""></a><span class="dt">int</span> a <span class="op">=</span> <span class="dv">7</span><span class="op">,</span> b <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
-<span id="cb15-8"><a href=""></a><span class="dt">int</span> result <span class="op">=</span> a <span class="op">/</span> b<span class="op">;</span>    <span class="co">// result = 3, not 3.5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<img data-src="images/source_pages/slide-34.png" style="width:100.0%" alt="Source Slide 34" class="r-stretch"></section>
+<section id="source-slide-35" class="slide level2">
+<h2><span style="display:none">Source Slide 35</span></h2>
+
 <!-- Slide 35 -->
-</section>
-<section id="the-problem-integer-division-gives-the-wrong-answer" class="slide level2">
-<h2>The problem: integer division gives the wrong answer</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href=""></a><span class="co">// 3-7x.cpp — casting &amp; expressions</span></span>
-<span id="cb16-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb16-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb16-4"><a href=""></a></span>
-<span id="cb16-5"><a href=""></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb16-6"><a href=""></a><span class="op">{</span></span>
-<span id="cb16-7"><a href=""></a>    <span class="dt">int</span> books<span class="op">,</span> months<span class="op">;</span></span>
-<span id="cb16-8"><a href=""></a>    <span class="dt">double</span> booksPerMonth<span class="op">;</span></span>
-<span id="cb16-9"><a href=""></a></span>
-<span id="cb16-10"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"How many books: "</span><span class="op">;</span></span>
-<span id="cb16-11"><a href=""></a>    cin <span class="op">&gt;&gt;</span> books<span class="op">;</span></span>
-<span id="cb16-12"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"How many months to read them? "</span><span class="op">;</span></span>
-<span id="cb16-13"><a href=""></a>    cin <span class="op">&gt;&gt;</span> months<span class="op">;</span></span>
-<span id="cb16-14"><a href=""></a></span>
-<span id="cb16-15"><a href=""></a>    booksPerMonth <span class="op">=</span> books <span class="op">/</span> months<span class="op">;</span>   <span class="co">// integer division — decimal dropped!</span></span>
-<span id="cb16-16"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"That is "</span> <span class="op">&lt;&lt;</span> booksPerMonth <span class="op">&lt;&lt;</span> <span class="st">" books per month.</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb16-17"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb16-18"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<aside class="notes">
-<p>Input: books = 10, months = 6. Expected: 1.66667. Actual: 1. Why? books and months are both int. Integer division runs first and produces 1. That 1 is then assigned to a double — so booksPerMonth becomes 1.0, not 1.66667. The type of the variable receiving the result does not affect the division. The fix is on the next slide.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-35.png" style="width:100.0%" alt="The program runs ne." class="r-stretch"></section>
+<section id="source-slide-36" class="slide level2">
+<h2><span style="display:none">Source Slide 36</span></h2>
+
 <!-- Slide 36 -->
-</section>
-<section id="integer-division-output" class="slide level2">
-<h2>Integer Division Output</h2>
-<div class="columns">
-<div class="column" style="width:54%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp smaller number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb17-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb17-3"><a href=""></a></span>
-<span id="cb17-4"><a href=""></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb17-5"><a href=""></a><span class="op">{</span></span>
-<span id="cb17-6"><a href=""></a>    <span class="dt">int</span> books<span class="op">,</span> months<span class="op">;</span></span>
-<span id="cb17-7"><a href=""></a>    <span class="dt">double</span> booksPerMonth<span class="op">;</span></span>
-<span id="cb17-8"><a href=""></a></span>
-<span id="cb17-9"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"How many books: "</span><span class="op">;</span></span>
-<span id="cb17-10"><a href=""></a>    cin <span class="op">&gt;&gt;</span> books<span class="op">;</span></span>
-<span id="cb17-11"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"How many months to read them? "</span><span class="op">;</span></span>
-<span id="cb17-12"><a href=""></a>    cin <span class="op">&gt;&gt;</span> months<span class="op">;</span></span>
-<span id="cb17-13"><a href=""></a></span>
-<span id="cb17-14"><a href=""></a>    booksPerMonth <span class="op">=</span> books <span class="op">/</span> months<span class="op">;</span></span>
-<span id="cb17-15"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"That is "</span> <span class="op">&lt;&lt;</span> booksPerMonth</span>
-<span id="cb17-16"><a href=""></a>         <span class="op">&lt;&lt;</span> <span class="st">" books per month.</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb17-17"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb17-18"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column" style="width:46%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a href=""></a>How many books: 10</span>
-<span id="cb18-2"><a href=""></a>How many months to read them? 3</span>
-<span id="cb18-3"><a href=""></a>That is 3 books per month.</span>
-<span id="cb18-4"><a href=""></a></span>
-<span id="cb18-5"><a href=""></a></span>
-<span id="cb18-6"><a href=""></a>=== Code Execution Successful ===</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The decimal part was dropped before the result was stored in <code>booksPerMonth</code>.</p>
-</div></div>
+<img data-src="images/source_pages/slide-36.png" style="width:100.0%" alt="• Let’s go ahead and initialize this the correct way …" class="r-stretch"></section>
+<section id="source-slide-37" class="slide level2">
+<h2><span style="display:none">Source Slide 37</span></h2>
+
 <!-- Slide 37 -->
-</section>
-<section id="the-fix-cast-one-operand-to-double" class="slide level2">
-<h2>The fix: cast one operand to double</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href=""></a><span class="co">// Without cast — integer division, wrong answer</span></span>
-<span id="cb19-2"><a href=""></a>booksPerMonth <span class="op">=</span> books <span class="op">/</span> months<span class="op">;</span></span>
-<span id="cb19-3"><a href=""></a><span class="co">// Input: 10 books, 6 months → output: 1</span></span>
-<span id="cb19-4"><a href=""></a></span>
-<span id="cb19-5"><a href=""></a><span class="co">// With static_cast — floating point division, correct answer</span></span>
-<span id="cb19-6"><a href=""></a>booksPerMonth <span class="op">=</span> <span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;(</span>books<span class="op">)</span> <span class="op">/</span> months<span class="op">;</span></span>
-<span id="cb19-7"><a href=""></a><span class="co">// Input: 10 books, 6 months → output: 1.66667</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<aside class="notes">
-<p>Casting one operand to double forces the entire division to use floating point. Only one operand needs to be cast — the other is promoted automatically by coercion rule 2. The pattern static_cast<double>(intVariable) is the idiomatic C++ way to get a decimal result from integer operands.</double></p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-37.png" style="width:100.0%" alt="Source Slide 37" class="r-stretch"></section>
+<section id="source-slide-38" class="slide level2">
+<h2><span style="display:none">Source Slide 38</span></h2>
+
 <!-- Slide 38 -->
-</section>
-<section id="type-casting-you-control-the-conversion" class="slide level2">
-<h2>Type casting — you control the conversion</h2>
-<ul>
-<li>Type casting is explicitly telling the compiler to convert from one type to another.</li>
-<li>It is better to be explicit with your code than to rely on the compiler doing something automatically.</li>
-<li>Three syntactic forms exist in C++. Only one is recommended.</li>
-</ul>
+<img data-src="images/source_pages/slide-38.png" style="width:100.0%" alt="Source Slide 38" class="r-stretch"></section>
+<section id="source-slide-39" class="slide level2">
+<h2><span style="display:none">Source Slide 39</span></h2>
+
 <!-- Slide 39 -->
-</section>
-<section id="three-cast-forms" class="slide level2">
-<h2>Three cast forms</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href=""></a><span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">to_type</span><span class="op">&gt;(</span>value<span class="op">)</span>    <span class="co">// C++ static cast — preferred</span></span>
-<span id="cb20-2"><a href=""></a><span class="op">(</span><span class="dt">to_type</span><span class="op">)</span>value                 <span class="co">// C style — prefix notation — avoid</span></span>
-<span id="cb20-3"><a href=""></a><span class="dt">to_type</span><span class="op">(</span>value<span class="op">)</span>                 <span class="co">// pre-standard C++ functional — avoid</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<img data-src="images/source_pages/slide-39.png" style="width:100.0%" alt="Logic Error" class="r-stretch"></section>
+<section id="source-slide-40" class="slide level2">
+<h2><span style="display:none">Source Slide 40</span></h2>
+
 <!-- Slide 40 -->
-</section>
-<section id="static_cast-the-c-way" class="slide level2">
-<h2><code>static_cast</code> — the C++ way</h2>
-<ul>
-<li><code>static_cast&lt;TargetType&gt;(value)</code> is the preferred form for numeric conversion.</li>
-<li>Makes your intent explicit and is easy to find in a codebase.</li>
-<li>Use it any time you need an intentional narrowing or explicit promotion.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb21-1"><a href=""></a><span class="dt">double</span> x <span class="op">=</span> <span class="fl">3.7</span><span class="op">;</span></span>
-<span id="cb21-2"><a href=""></a><span class="dt">int</span> y <span class="op">=</span> <span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;(</span>x<span class="op">);</span>              <span class="co">// explicit truncation; y = 3</span></span>
-<span id="cb21-3"><a href=""></a></span>
-<span id="cb21-4"><a href=""></a><span class="dt">int</span> dividend <span class="op">=</span> <span class="dv">7</span><span class="op">,</span> divisor <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
-<span id="cb21-5"><a href=""></a><span class="dt">double</span> r <span class="op">=</span> <span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;(</span>dividend<span class="op">)</span> <span class="op">/</span> divisor<span class="op">;</span>  <span class="co">// r = 3.5</span></span>
-<span id="cb21-6"><a href=""></a></span>
-<span id="cb21-7"><a href=""></a><span class="dt">char</span> letter <span class="op">=</span> <span class="ch">'Z'</span><span class="op">;</span></span>
-<span id="cb21-8"><a href=""></a><span class="dt">int</span> ascii <span class="op">=</span> <span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;(</span>letter<span class="op">);</span>     <span class="co">// ascii = 90</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<img data-src="images/source_pages/slide-40.png" style="width:100.0%" alt="Source Slide 40" class="r-stretch"></section>
+<section id="source-slide-41" class="slide level2">
+<h2><span style="display:none">Source Slide 41</span></h2>
+
 <!-- Slide 41 -->
-</section>
-<section id="c-style-casts-avoid" class="slide level2">
-<h2>C-style casts — avoid</h2>
-<ul>
-<li>Syntax: <code>(TargetType)value</code> — carried over from C.</li>
-<li>Works, but is not recommended in modern C++.</li>
-<li>Hard to search for in a large codebase; hides intent; performs dangerous conversions without warning.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb22-1"><a href=""></a><span class="dt">double</span> x <span class="op">=</span> <span class="fl">3.7</span><span class="op">;</span></span>
-<span id="cb22-2"><a href=""></a><span class="dt">int</span> y <span class="op">=</span> <span class="op">(</span><span class="dt">int</span><span class="op">)</span>x<span class="op">;</span>    <span class="co">// works, but avoid</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<img data-src="images/source_pages/slide-41.png" style="width:100.0%" alt="Source Slide 41" class="r-stretch"></section>
+<section id="source-slide-42" class="slide level2">
+<h2><span style="display:none">Source Slide 42</span></h2>
+
 <!-- Slide 42 -->
-</section>
-<section id="functional-notation-avoid" class="slide level2">
-<h2>Functional Notation — Avoid</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb23-1"><a href=""></a><span class="dt">int</span><span class="op">(</span><span class="fl">3.7</span><span class="op">)</span>       <span class="co">// result: 3</span></span>
-<span id="cb23-2"><a href=""></a><span class="dt">double</span><span class="op">(</span><span class="dv">7</span><span class="op">)</span>      <span class="co">// result: 7.0</span></span>
-<span id="cb23-3"><a href=""></a><span class="dt">char</span><span class="op">(</span><span class="dv">65</span><span class="op">)</span>       <span class="co">// result: 'A'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This is a very old style. It’s hard to read with modern code.</p>
-<aside class="notes">
-<p>Students will encounter both older forms in textbooks and older code. They should be able to read them but should write static_cast in their own programs. The main problem with older cast syntax is that it can hide intent and bypass safety checks that static_cast enforces.</p>
+<!-- Topic: Homework Preflight -->
+<!-- Slides 43–47 -->
+<img data-src="images/source_pages/slide-42.png" style="width:100.0%" alt="Note" class="r-stretch"></section></section>
+<section>
+<section id="homework-preflight" class="title-slide slide level1 center">
+<h1>Homework Preflight</h1>
+
+<img data-src="images/source_pages/slide-43.png" style="width:100.0%" alt="Homework Preflight" class="r-stretch"><aside class="notes">
+<p>Slides 43–47 Source slide 43 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1001,62 +486,34 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 43 -->
 </section>
-<section id="three-conversion-forms-together" class="slide level2">
-<h2>Three conversion forms together</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb24-1"><a href=""></a><span class="dt">double</span> value <span class="op">=</span> <span class="fl">3.7</span><span class="op">;</span></span>
-<span id="cb24-2"><a href=""></a></span>
-<span id="cb24-3"><a href=""></a><span class="dt">int</span> preferred <span class="op">=</span> <span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;(</span>value<span class="op">);</span>  <span class="co">// C++ style</span></span>
-<span id="cb24-4"><a href=""></a><span class="dt">int</span> oldStyle  <span class="op">=</span> <span class="op">(</span><span class="dt">int</span><span class="op">)</span>value<span class="op">;</span>               <span class="co">// C style</span></span>
-<span id="cb24-5"><a href=""></a><span class="dt">int</span> function  <span class="op">=</span> <span class="dt">int</span><span class="op">(</span>value<span class="op">);</span>               <span class="co">// functional notation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>All three convert <code>3.7</code> to <code>3</code>, but <code>static_cast</code> is the form we write in modern C++.</p>
+<section id="source-slide-44" class="slide level2">
+<h2><span style="display:none">Source Slide 44</span></h2>
+
 <!-- Slide 44 -->
-</section>
-<section id="when-to-cast-and-when-not-to" class="slide level2">
-<h2>When to cast and when not to</h2>
-<ul>
-<li>Use a cast to <strong>express intent</strong> — when you know truncation or conversion is correct.</li>
-<li>Do <strong>not</strong> cast just to silence a compiler warning without fixing the underlying mismatch.</li>
-<li>A cast that hides a narrowing bug is worse than the warning it suppressed.</li>
-</ul>
-<aside class="notes">
-<p>This is the discipline point. Students sometimes discover they can make warnings disappear with a cast and treat that as solving the problem. It is not — it is hiding the symptom. The right response to a narrowing warning is to understand why the narrowing occurs and whether it is safe. If it is safe, cast with intent. If it is not safe, fix the types.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-44.png" style="width:100.0%" alt="Exercise Goals" class="r-stretch"></section>
+<section id="source-slide-45" class="slide level2">
+<h2><span style="display:none">Source Slide 45</span></h2>
+
 <!-- Slide 45 -->
-</section>
-<section id="summary-2" class="slide level2 smaller">
-<h2>Summary</h2>
-<ul>
-<li>Implicit coercion promotes the lower-ranking type automatically; narrowing silently loses data.</li>
-<li>Use <code>static_cast&lt;&gt;</code> to make conversions explicit and intentional.</li>
-<li>Never cast just to silence a warning — the warning usually means there is a real issue to address.</li>
-</ul>
+<img data-src="images/source_pages/slide-45.png" style="width:100.0%" alt="Task" class="r-stretch"></section>
+<section id="source-slide-46" class="slide level2">
+<h2><span style="display:none">Source Slide 46</span></h2>
+
 <!-- Slide 46 -->
-<!-- Topic 5: Signed vs Unsigned Variables -->
-<!-- Slides 47-57 -->
-</section></section>
-<section>
-<section id="signed-vs-unsigned-variables" class="title-slide slide level1 center">
-<h1>Signed vs Unsigned Variables</h1>
+<img data-src="images/source_pages/slide-46.png" style="width:100.0%" alt="Task - II" class="r-stretch"></section>
+<section id="source-slide-47" class="slide level2">
+<h2><span style="display:none">Source Slide 47</span></h2>
+
 <!-- Slide 47 -->
-</section>
-<section id="how-does-a-variable-store-negative-numbers" class="slide level2 smaller">
-<h2>How does a variable store negative numbers?</h2>
-<ul>
-<li>The difference between signed and unsigned is not just range — it affects overflow behavior, comparison logic, and compatibility with standard library types.</li>
-<li>Most bugs in this area appear silently — no compile error, wrong answer.</li>
-</ul>
-<aside class="notes">
-<p>Slides 47-57 Connect to the overflow topic: students now know unsigned overflow wraps and signed overflow is undefined. This section explains why — it is in the bit representation. The mixing-types trap is the most practically important part.</p>
+<!-- Topic: Review Wrap-Up -->
+<!-- Slides 48–52 -->
+<img data-src="images/source_pages/slide-47.png" style="width:100.0%" alt="Task - III" class="r-stretch"></section></section>
+<section>
+<section id="review-wrap-up" class="title-slide slide level1 center">
+<h1>Review Wrap-Up</h1>
+
+<img data-src="images/source_pages/slide-48.png" style="width:100.0%" alt="Review Wrap-Up" class="r-stretch"><aside class="notes">
+<p>Slides 48–52 Source slide 48 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1070,223 +527,85 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 48 -->
 </section>
-<section id="signed-the-msb-is-the-sign-bit" class="slide level2">
-<h2>Signed: the MSB is the sign bit</h2>
-<ul>
-<li>A signed integer uses the most significant bit (MSB) as a <strong>sign bit</strong>.</li>
-<li>In <strong>two’s complement</strong> — the format used on all modern hardware — a 1 in the MSB means negative, 0 means non-negative.</li>
-<li>A 32-bit signed <code>int</code> uses 31 bits for magnitude and 1 bit for sign.</li>
-</ul>
-<aside class="notes">
-<p>[Graphic suggestion: 32-bit layout diagram showing bit 31 labeled “sign bit” and bits 0–30 labeled “magnitude.”] Two’s complement makes addition work without special-casing negative numbers — the hardware uses the same addition circuit for both. Students do not need to understand two’s complement arithmetic in detail, but they should know the MSB encodes sign.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="source-slide-49" class="slide level2">
+<h2><span style="display:none">Source Slide 49</span></h2>
+
 <!-- Slide 49 -->
-</section>
-<section id="section-1" class="slide level2">
-<h2></h2>
+<img data-src="images/source_pages/slide-49.png" style="width:100.0%" alt="C++ Overview" class="r-stretch"></section>
+<section id="source-slide-50" class="slide level2">
+<h2><span style="display:none">Source Slide 50</span></h2>
 
 <!-- Slide 50 -->
-<img data-src="images/signedBit.jpg" style="width:52.0%" class="r-stretch"></section>
-<section id="unsigned-all-bits-for-magnitude" class="slide level2 smaller">
-<h2>Unsigned: all bits for magnitude</h2>
-<ul>
-<li>An unsigned variable has no sign bit — all bits represent magnitude.</li>
-<li>A 32-bit <code>unsigned int</code> uses all 32 bits, doubling the positive range.</li>
-</ul>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Type</th>
-<th>Minimum</th>
-<th>Maximum</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>int</code> (signed)</td>
-<td>−2,147,483,648</td>
-<td>+2,147,483,647</td>
-</tr>
-<tr class="even">
-<td><code>unsigned int</code></td>
-<td>0</td>
-<td>+4,294,967,295</td>
-</tr>
-<tr class="odd">
-<td><code>short</code> (signed)</td>
-<td>−32,768</td>
-<td>+32,767</td>
-</tr>
-<tr class="even">
-<td><code>unsigned short</code></td>
-<td>0</td>
-<td>+65,535</td>
-</tr>
-</tbody>
-</table>
+<img data-src="images/source_pages/slide-50.png" style="width:100.0%" alt="Agenda" class="r-stretch"></section>
+<section id="source-slide-51" class="slide level2">
+<h2><span style="display:none">Source Slide 51</span></h2>
+
 <!-- Slide 51 -->
-</section>
-<section id="when-to-use-unsigned" class="slide level2 smaller">
-<h2>When to use unsigned</h2>
-<ul>
-<li>Use unsigned when the value can never be negative: sizes, counts, array indexes.</li>
-<li>Use unsigned for bit manipulation: flags, masks, bitwise operations.</li>
-<li>Use <code>size_t</code> (unsigned) when matching the return type of <code>.size()</code> on containers.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb25-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">size_t</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> vec<span class="op">.</span>size<span class="op">();</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb25-2"><a href=""></a>    <span class="co">// size_t matches vec.size() type — no sign-comparison warning</span></span>
-<span id="cb25-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<img data-src="images/source_pages/slide-51.png" style="width:100.0%" alt="51" class="r-stretch"></section>
+<section id="source-slide-52" class="slide level2">
+<h2><span style="display:none">Source Slide 52</span></h2>
+
 <!-- Slide 52 -->
-</section>
-<section id="when-to-use-signed" class="slide level2 smaller">
-<h2>When to use signed</h2>
-<ul>
-<li>Use signed for all general arithmetic unless there is a specific reason for unsigned.</li>
-<li>Signed is the default for <code>int</code>, <code>short</code>, and <code>long</code>.</li>
-<li>If a variable can ever be negative — even theoretically — use signed.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb26-1"><a href=""></a><span class="dt">int</span> temperature <span class="op">=</span> <span class="op">-</span><span class="dv">15</span><span class="op">;</span>   <span class="co">// can be negative</span></span>
-<span id="cb26-2"><a href=""></a><span class="dt">int</span> balance     <span class="op">=</span> <span class="op">-</span><span class="dv">200</span><span class="op">;</span>  <span class="co">// account overdraft</span></span>
-<span id="cb26-3"><a href=""></a><span class="dt">int</span> velocity    <span class="op">=</span> <span class="op">-</span><span class="dv">50</span><span class="op">;</span>   <span class="co">// moving in reverse</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Topic: Reference Variables -->
+<!-- Slides 53–59 -->
+<img data-src="images/source_pages/slide-52.png" style="width:100.0%" alt="Agenda" class="r-stretch"></section></section>
+<section>
+<section id="reference-variables" class="title-slide slide level1 center">
+<h1>Reference Variables</h1>
+
+<img data-src="images/source_pages/slide-53.png" style="width:100.0%" alt="Reference Variables" class="r-stretch"><aside class="notes">
+<p>Slides 53–59 Source slide 53 from the authoritative PDF.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 53 -->
 </section>
-<section id="mixing-signed-and-unsigned-the-trap" class="slide level2 smaller">
-<h2>Mixing signed and unsigned — the trap</h2>
-<ul>
-<li>When a signed and unsigned value appear in the same expression, the signed value is <strong>implicitly converted to unsigned</strong>.</li>
-<li>A negative signed value becomes a very large positive unsigned value.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb27-1"><a href=""></a><span class="dt">int</span>          s <span class="op">=</span>  <span class="op">-</span><span class="dv">5</span><span class="op">;</span></span>
-<span id="cb27-2"><a href=""></a><span class="dt">unsigned</span> <span class="dt">int</span> u <span class="op">=</span>  <span class="dv">10</span><span class="op">;</span></span>
-<span id="cb27-3"><a href=""></a></span>
-<span id="cb27-4"><a href=""></a><span class="cf">if</span> <span class="op">(</span>s <span class="op">&lt;</span> u<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb27-5"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"s &lt; u</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>      <span class="co">// looks like it should print...</span></span>
-<span id="cb27-6"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb27-7"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"NOT s &lt; u</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>  <span class="co">// ...but this prints instead</span></span>
-<span id="cb27-8"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<aside class="notes">
-<p>-5 is converted to unsigned int: it becomes 4,294,967,291. The comparison 4294967291 &lt; 10 is false. This is a real source of security bugs in C++ — bounds checks that silently invert. Enable -Wsign-compare in g++ to catch this at compile time. The fix: use a consistent type throughout, or cast explicitly.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="source-slide-54" class="slide level2">
+<h2><span style="display:none">Source Slide 54</span></h2>
+
 <!-- Slide 54 -->
-</section>
-<section id="overflow-behavior-differs" class="slide level2 smaller">
-<h2>Overflow behavior differs</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb28-1"><a href=""></a><span class="dt">int</span> s <span class="op">=</span> INT_MAX<span class="op">;</span></span>
-<span id="cb28-2"><a href=""></a>s<span class="op">++;</span>              <span class="co">// undefined behavior — signed overflow</span></span>
-<span id="cb28-3"><a href=""></a></span>
-<span id="cb28-4"><a href=""></a><span class="dt">unsigned</span> <span class="dt">int</span> u <span class="op">=</span> UINT_MAX<span class="op">;</span></span>
-<span id="cb28-5"><a href=""></a>u<span class="op">++;</span>              <span class="co">// well-defined: wraps to 0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<aside class="notes">
-<p>Revisit the overflow topic here in the signed/unsigned context. The behavior difference is fundamental: it comes from the language standard, not from hardware. Signed overflow being undefined is intentional — it lets the compiler assume it never happens and optimize aggressively.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-54.png" style="width:100.0%" alt="Problem: Pointers allow access to anything" class="r-stretch"></section>
+<section id="source-slide-55" class="slide level2">
+<h2><span style="display:none">Source Slide 55</span></h2>
+
 <!-- Slide 55 -->
-</section>
-<section id="enabling-sign-comparison-warnings" class="slide level2 smaller">
-<h2>Enabling sign-comparison warnings</h2>
-<ul>
-<li>The compiler can warn you when signed and unsigned values are compared.</li>
-<li>Add <code>-Wsign-compare</code> to your build flags (included in <code>-Wall</code>).</li>
-</ul>
-<pre><code>g++ -Wall -Wextra myprogram.cpp</code></pre>
-<pre><code>warning: comparison of integer expressions of different signedness:
-'int' and 'unsigned int' [-Wsign-compare]</code></pre>
-<aside class="notes">
-<p>-Wall enables most common warnings including -Wsign-compare. Students should compile with -Wall from the start — it catches a wide class of common mistakes. The goal is zero warnings, not just zero errors.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-55.png" style="width:100.0%" alt="Reference Variables" class="r-stretch"></section>
+<section id="source-slide-56" class="slide level2">
+<h2><span style="display:none">Source Slide 56</span></h2>
+
 <!-- Slide 56 -->
-</section>
-<section id="summary-3" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>Signed is the safe default for general arithmetic; unsigned is appropriate for sizes, indexes, and bit operations.</li>
-<li>Mixing the two in comparisons or arithmetic silently converts signed to unsigned — a common source of logic bugs.</li>
-<li>Enable <code>-Wall</code> and address sign-comparison warnings rather than casting them away.</li>
-</ul>
+<img data-src="images/source_pages/slide-56.png" style="width:100.0%" alt="• A reference variable allows us to create a link to the" class="r-stretch"></section>
+<section id="source-slide-57" class="slide level2">
+<h2><span style="display:none">Source Slide 57</span></h2>
+
 <!-- Slide 57 -->
-<!-- Topic 4: Overflow and Underflow -->
-<!-- Slides 58-72 -->
-</section></section>
-<section>
-<section id="overflow-and-underflow" class="title-slide slide level1 center">
-<h1>Overflow and Underflow</h1>
+<img data-src="images/source_pages/slide-57.png" style="width:100.0%" alt="Comparison between Pointers and Reference" class="r-stretch"></section>
+<section id="source-slide-58" class="slide level2">
+<h2><span style="display:none">Source Slide 58</span></h2>
+
 <!-- Slide 58 -->
-</section>
-<section id="what-happens-when-a-value-exceeds-its-types-range" class="slide level2 smaller">
-<h2>What happens when a value exceeds its type’s range?</h2>
-<ul>
-<li>Every numeric type has a fixed range. Assign a value outside that range and the result is not what you expect.</li>
-<li><strong>Overflow</strong> — value exceeds the maximum.</li>
-<li><strong>Underflow</strong> — value drops below the minimum (or, for floating point, below the smallest representable positive value).</li>
-<li>The compiler does not always warn you, and the behavior differs between signed and unsigned types.</li>
-</ul>
-<aside class="notes">
-<p>Slides 58-72 Frame this as a consequence of the type system. Students now understand that types have fixed sizes. This section shows what happens at the boundaries. The signed/unsigned distinction is critical here — one behavior is undefined, the other is well-defined.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-58.png" style="width:100.0%" alt="Contrast between Pointers and Reference" class="r-stretch"></section>
+<section id="source-slide-59" class="slide level2">
+<h2><span style="display:none">Source Slide 59</span></h2>
+
 <!-- Slide 59 -->
-</section>
-<section id="signed-overflow-undefined-behavior" class="slide level2 smaller">
-<h2>Signed overflow — undefined behavior</h2>
-<ul>
-<li>For <strong>signed</strong> integers, overflow is <strong>undefined behavior</strong> in C++.</li>
-<li>The compiler is free to assume it never happens — which can produce counter-intuitive optimizations.</li>
-<li>In practice on most platforms it wraps around, but you cannot rely on this.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb31-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;climits&gt;</span></span>
-<span id="cb31-2"><a href=""></a></span>
-<span id="cb31-3"><a href=""></a><span class="dt">int</span> x <span class="op">=</span> INT_MAX<span class="op">;</span>   <span class="co">// 2,147,483,647</span></span>
-<span id="cb31-4"><a href=""></a>x<span class="op">++;</span>               <span class="co">// undefined behavior — do NOT rely on any result</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<aside class="notes">
-<p>Undefined behavior means the C++ standard places no requirement on what happens. The compiler may assume signed overflow never occurs and optimize accordingly — which can eliminate safety checks, infinite loops, and other constructs that depend on overflow behavior. This is not theoretical: real compilers (GCC, Clang) aggressively exploit undefined behavior for optimization.</p>
+<!-- Topic: Debugging Exercise -->
+<!-- Slides 60–65 -->
+<img data-src="images/source_pages/slide-59.png" style="width:100.0%" alt="• The advantages and disadvantages mean that" class="r-stretch"></section></section>
+<section>
+<section id="debugging-exercise" class="title-slide slide level1 center">
+<h1>Debugging Exercise</h1>
+
+<img data-src="images/source_pages/slide-60.png" style="width:100.0%" alt="Debugging Exercise" class="r-stretch"><aside class="notes">
+<p>Slides 60–65 Source slide 60 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1300,72 +619,39 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 60 -->
 </section>
-<section id="unsigned-overflow-well-defined-wrapping" class="slide level2 smaller">
-<h2>Unsigned overflow — well-defined wrapping</h2>
-<ul>
-<li>For <strong>unsigned</strong> integers, overflow is <strong>well-defined</strong>: the value wraps modulo 2ⁿ (where n is the bit width).</li>
-<li>An unsigned value that exceeds the maximum wraps back to zero.</li>
-<li>An unsigned value that goes below zero wraps to the maximum.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb32-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;climits&gt;</span></span>
-<span id="cb32-2"><a href=""></a></span>
-<span id="cb32-3"><a href=""></a><span class="dt">unsigned</span> <span class="dt">int</span> u <span class="op">=</span> UINT_MAX<span class="op">;</span>  <span class="co">// 4,294,967,295</span></span>
-<span id="cb32-4"><a href=""></a>u<span class="op">++;</span>                        <span class="co">// wraps to 0 — well-defined</span></span>
-<span id="cb32-5"><a href=""></a></span>
-<span id="cb32-6"><a href=""></a><span class="dt">unsigned</span> <span class="dt">int</span> v <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb32-7"><a href=""></a>v<span class="op">--;</span>                        <span class="co">// wraps to 4,294,967,295 — well-defined</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<aside class="notes">
-<p>This is one of the few cases where signed and unsigned types have genuinely different semantics at the language level. Unsigned overflow being well-defined makes it usable in hash functions, checksums, and modular arithmetic. Signed overflow being undefined is a source of real bugs in security-critical code.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="source-slide-61" class="slide level2">
+<h2><span style="display:none">Source Slide 61</span></h2>
+
 <!-- Slide 61 -->
-</section>
-<section id="section-2" class="slide level2" data-background-iframe="images/signed_unsigned_overflow_viz.html" data-background-interactive="true">
-<h2></h2>
+<img data-src="images/source_pages/slide-61.png" style="width:100.0%" alt="Debug12-11.cpp" class="r-stretch"></section>
+<section id="source-slide-62" class="slide level2">
+<h2><span style="display:none">Source Slide 62</span></h2>
+
 <!-- Slide 62 -->
-</section>
-<section id="numeric_limits-querying-type-boundaries" class="slide level2 smaller">
-<h2><code>numeric_limits</code> — querying type boundaries</h2>
-<ul>
-<li><code>std::numeric_limits&lt;T&gt;</code> from <code>&lt;limits&gt;</code> provides the exact min and max for any numeric type.</li>
-<li>More reliable than <code>INT_MAX</code> macros from <code>&lt;climits&gt;</code> — works with any type including user-defined ones.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb33-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;limits&gt;</span></span>
-<span id="cb33-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb33-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb33-4"><a href=""></a></span>
-<span id="cb33-5"><a href=""></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb33-6"><a href=""></a><span class="op">{</span></span>
-<span id="cb33-7"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"int max: "</span>    <span class="op">&lt;&lt;</span> numeric_limits<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;::</span>max<span class="op">()</span>    <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb33-8"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"int min: "</span>    <span class="op">&lt;&lt;</span> numeric_limits<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;::</span>min<span class="op">()</span>    <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb33-9"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"uint max: "</span>   <span class="op">&lt;&lt;</span> numeric_limits<span class="op">&lt;</span><span class="dt">unsigned</span> <span class="dt">int</span><span class="op">&gt;::</span>max<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb33-10"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"double max: "</span> <span class="op">&lt;&lt;</span> numeric_limits<span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;::</span>max<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb33-11"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<img data-src="images/source_pages/slide-62.png" style="width:100.0%" alt="Exercise Goals" class="r-stretch"></section>
+<section id="source-slide-63" class="slide level2">
+<h2><span style="display:none">Source Slide 63</span></h2>
+
 <!-- Slide 63 -->
-</section>
-<section id="worked-example-short-overflow" class="slide level2">
-<h2>Worked example: short overflow</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb34-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb34-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb34-3"><a href=""></a></span>
-<span id="cb34-4"><a href=""></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb34-5"><a href=""></a><span class="op">{</span></span>
-<span id="cb34-6"><a href=""></a>    <span class="dt">short</span> s <span class="op">=</span> <span class="dv">32767</span><span class="op">;</span>   <span class="co">// SHRT_MAX</span></span>
-<span id="cb34-7"><a href=""></a>    cout <span class="op">&lt;&lt;</span> s <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span> <span class="co">// 32767</span></span>
-<span id="cb34-8"><a href=""></a>    s<span class="op">++;</span></span>
-<span id="cb34-9"><a href=""></a>    cout <span class="op">&lt;&lt;</span> s <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span> <span class="co">// -32768 on most platforms (undefined for signed)</span></span>
-<span id="cb34-10"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<aside class="notes">
-<p>On most platforms with most compilers, signed overflow wraps two’s complement — 32767 + 1 = -32768. But this is implementation-defined behavior, not guaranteed. The example illustrates why you should never write code that depends on this. Use unsigned types and explicit modular arithmetic when you need wrap-around behavior.</p>
+<img data-src="images/source_pages/slide-63.png" style="width:100.0%" alt="Debug Exercise" class="r-stretch"></section>
+<section id="source-slide-64" class="slide level2">
+<h2><span style="display:none">Source Slide 64</span></h2>
+
+<!-- Slide 64 -->
+<img data-src="images/source_pages/slide-64.png" style="width:100.0%" alt="Source Slide 64" class="r-stretch"></section>
+<section id="source-slide-65" class="slide level2">
+<h2><span style="display:none">Source Slide 65</span></h2>
+
+<!-- Slide 65 -->
+<!-- Topic: Desk Check -->
+<!-- Slides 66–70 -->
+<img data-src="images/source_pages/slide-65.png" style="width:100.0%" alt="Source Slide 65" class="r-stretch"></section></section>
+<section>
+<section id="desk-check" class="title-slide slide level1 center">
+<h1>Desk Check</h1>
+
+<img data-src="images/source_pages/slide-66.png" style="width:100.0%" alt="Desk Check" class="r-stretch"><aside class="notes">
+<p>Slides 66–70 Source slide 66 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1377,125 +663,35 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 64 -->
-</section>
-<section id="worked-example-unsigned-underflow" class="slide level2">
-<h2>Worked example: unsigned underflow</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb35-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb35-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb35-3"><a href=""></a></span>
-<span id="cb35-4"><a href=""></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb35-5"><a href=""></a><span class="op">{</span></span>
-<span id="cb35-6"><a href=""></a>    <span class="dt">unsigned</span> <span class="dt">int</span> u <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb35-7"><a href=""></a>    cout <span class="op">&lt;&lt;</span> u <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>  <span class="co">// 0</span></span>
-<span id="cb35-8"><a href=""></a>    u<span class="op">--;</span></span>
-<span id="cb35-9"><a href=""></a>    cout <span class="op">&lt;&lt;</span> u <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>  <span class="co">// 4,294,967,295 — wraps (well-defined)</span></span>
-<span id="cb35-10"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 65 -->
-</section>
-<section id="section-3" class="slide level2" data-background-iframe="images/unsigned_underflow_viz.html" data-background-interactive="true">
-<h2></h2>
 <!-- Slide 66 -->
 </section>
-<section id="worked-example-int_max-1" class="slide level2">
-<h2>Worked example: INT_MAX + 1</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb36-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb36-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;climits&gt;</span></span>
-<span id="cb36-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb36-4"><a href=""></a></span>
-<span id="cb36-5"><a href=""></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb36-6"><a href=""></a><span class="op">{</span></span>
-<span id="cb36-7"><a href=""></a>    <span class="dt">int</span> x <span class="op">=</span> INT_MAX<span class="op">;</span></span>
-<span id="cb36-8"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"x     = "</span> <span class="op">&lt;&lt;</span> x     <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>  <span class="co">// 2147483647</span></span>
-<span id="cb36-9"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"x + 1 = "</span> <span class="op">&lt;&lt;</span> x <span class="op">+</span> <span class="dv">1</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span> <span class="co">// undefined behavior</span></span>
-<span id="cb36-10"><a href=""></a></span>
-<span id="cb36-11"><a href=""></a>    <span class="dt">unsigned</span> <span class="dt">int</span> u <span class="op">=</span> INT_MAX<span class="op">;</span></span>
-<span id="cb36-12"><a href=""></a>    u<span class="op">++;</span></span>
-<span id="cb36-13"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"u     = "</span> <span class="op">&lt;&lt;</span> u <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>      <span class="co">// 2147483648 — well-defined</span></span>
-<span id="cb36-14"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="source-slide-67" class="slide level2">
+<h2><span style="display:none">Source Slide 67</span></h2>
+
 <!-- Slide 67 -->
-</section>
-<section id="floating-point-underflow" class="slide level2">
-<h2>Floating point underflow</h2>
-<ul>
-<li>Floating point underflow occurs when a positive value becomes too small to represent — the result rounds to zero.</li>
-<li>Unlike integer overflow, floating point underflow is generally not catastrophic — it produces zero rather than garbage.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb37-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;limits&gt;</span></span>
-<span id="cb37-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb37-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb37-4"><a href=""></a></span>
-<span id="cb37-5"><a href=""></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb37-6"><a href=""></a><span class="op">{</span></span>
-<span id="cb37-7"><a href=""></a>    <span class="dt">double</span> tiny <span class="op">=</span> numeric_limits<span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;::</span>min<span class="op">();</span>  <span class="co">// ~2.2e-308</span></span>
-<span id="cb37-8"><a href=""></a>    tiny <span class="op">/=</span> <span class="fl">2.0</span><span class="op">;</span></span>
-<span id="cb37-9"><a href=""></a>    cout <span class="op">&lt;&lt;</span> tiny <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>  <span class="co">// may print 0 or a denormalized value</span></span>
-<span id="cb37-10"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<aside class="notes">
-<p>Floating point has two special cases: overflow (result becomes infinity) and underflow (result becomes zero or a denormalized number). Neither crashes the program, but both produce incorrect results. This is different from integer overflow, which is undefined behavior for signed types.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-67.png" style="width:100.0%" alt="Exercise Goals" class="r-stretch"></section>
+<section id="source-slide-68" class="slide level2">
+<h2><span style="display:none">Source Slide 68</span></h2>
+
 <!-- Slide 68 -->
-</section>
-<section id="detecting-overflow-before-it-happens" class="slide level2">
-<h2>Detecting overflow before it happens</h2>
-<ul>
-<li>The safest approach: check whether the operation would overflow <strong>before</strong> performing it.</li>
-<li>For addition: if <code>a &gt; INT_MAX - b</code>, then <code>a + b</code> would overflow.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb38-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;climits&gt;</span></span>
-<span id="cb38-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb38-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb38-4"><a href=""></a></span>
-<span id="cb38-5"><a href=""></a><span class="dt">bool</span> safeAdd<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">,</span> <span class="dt">int</span> <span class="op">&amp;</span>result<span class="op">)</span></span>
-<span id="cb38-6"><a href=""></a><span class="op">{</span></span>
-<span id="cb38-7"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>b <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> a <span class="op">&gt;</span> INT_MAX <span class="op">-</span> b<span class="op">)</span> <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span>  <span class="co">// would overflow</span></span>
-<span id="cb38-8"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>b <span class="op">&lt;</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> a <span class="op">&lt;</span> INT_MIN <span class="op">-</span> b<span class="op">)</span> <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span>  <span class="co">// would underflow</span></span>
-<span id="cb38-9"><a href=""></a>    result <span class="op">=</span> a <span class="op">+</span> b<span class="op">;</span></span>
-<span id="cb38-10"><a href=""></a>    <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb38-11"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<aside class="notes">
-<p>This is the defensive programming pattern for integer arithmetic. Checking after the addition is too late — the overflow has already produced undefined behavior. The check must happen before the operation using rearranged algebra that avoids overflow in the check itself.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-68.png" style="width:100.0%" alt="Desk Check Exercise" class="r-stretch"></section>
+<section id="source-slide-69" class="slide level2">
+<h2><span style="display:none">Source Slide 69</span></h2>
+
 <!-- Slide 69 -->
-</section>
-<section id="what-to-do-in-practice" class="slide level2">
-<h2>What to do in practice</h2>
-<ul>
-<li>For general arithmetic: use <code>int</code> or <code>long long</code> and validate inputs to ensure they stay in range.</li>
-<li>For counters and indexes that can never be negative: use <code>unsigned</code> and know that decrement below zero wraps.</li>
-<li>When exact range matters: use <code>numeric_limits&lt;T&gt;::max()</code> rather than hardcoded values.</li>
-<li>When overflow is a real risk: detect before the operation, not after.</li>
-</ul>
+<img data-src="images/source_pages/slide-69.png" style="width:100.0%" alt="69" class="r-stretch"></section>
+<section id="source-slide-70" class="slide level2">
+<h2><span style="display:none">Source Slide 70</span></h2>
+
 <!-- Slide 70 -->
-</section>
-<section id="the-compiler-will-not-save-you" class="slide level2">
-<h2>The compiler will not save you</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb39-1"><a href=""></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">2000000000</span><span class="op">;</span></span>
-<span id="cb39-2"><a href=""></a><span class="dt">int</span> y <span class="op">=</span> <span class="dv">2000000000</span><span class="op">;</span></span>
-<span id="cb39-3"><a href=""></a><span class="dt">int</span> z <span class="op">=</span> x <span class="op">+</span> y<span class="op">;</span>     <span class="co">// undefined behavior — no compile error, no warning</span></span>
-<span id="cb39-4"><a href=""></a>cout <span class="op">&lt;&lt;</span> z <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span> <span class="co">// may print -294967296 or anything else</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<aside class="notes">
-<p>Compile this and run it to show students what undefined behavior looks like in practice. The output depends on the compiler, optimization level, and platform. Some compilers emit a warning with -ftrapv (which traps on signed overflow). The lesson: overflow does not announce itself — you have to think about whether it can happen.</p>
+<!-- Topic: References -->
+<!-- Slides 71–71 -->
+<img data-src="images/source_pages/slide-70.png" style="width:100.0%" alt="70" class="r-stretch"></section></section>
+<section id="references" class="title-slide slide level1 center">
+<h1>References</h1>
+
+<img data-src="images/source_pages/slide-71.png" style="width:100.0%" alt="References" class="r-stretch"><aside class="notes">
+<p>Slides 71–71 Source slide 71 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1508,724 +704,8 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 71 -->
-</section>
-<section id="summary-4" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>Signed integer overflow is undefined behavior — never rely on it.</li>
-<li>Unsigned integer overflow wraps modulo 2ⁿ — well-defined and sometimes intentional.</li>
-<li>Use <code>numeric_limits&lt;T&gt;</code> to query type boundaries portably.</li>
-<li>Detect potential overflow before the operation, not after.</li>
-</ul>
-<!-- Slide 72 -->
-<!-- Topic 6: Fixed-Width Integers and size_t -->
-<!-- Slides 73-82 -->
-</section></section>
-<section>
-<section id="fixed-width-integers-and-size_t" class="title-slide slide level1 center">
-<h1>Fixed-Width Integers and size_t</h1>
-<!-- Slide 73 -->
-</section>
-<section id="what-if-int-is-a-different-size-on-a-different-machine" class="slide level2 smaller">
-<h2>What if <code>int</code> is a different size on a different machine?</h2>
-<ul>
-<li>The standard types <code>int</code>, <code>short</code>, and <code>long</code> have minimum guaranteed sizes but no maximum.</li>
-<li>Code that assumes a fixed size silently breaks when compiled on a different platform.</li>
-<li>C++ provides fixed-width integer types that guarantee an exact size everywhere.</li>
-</ul>
-<aside class="notes">
-<p>Slides 73-82 This is a practical portability topic. Students writing code for embedded systems, network protocols, or binary file formats will encounter this immediately. The key lesson: never hardcode byte counts — use fixed-width types when the width matters and sizeof() when you need to measure.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 74 -->
-</section>
-<section id="the-problem-platform-dependent-sizes" class="slide level2">
-<h2>The problem: platform-dependent sizes</h2>
-<ul>
-<li><code>int</code> is 4 bytes on most modern desktops, but 2 bytes on some embedded platforms.</li>
-<li><code>long</code> is 8 bytes on 64-bit Linux but 4 bytes on 64-bit Windows.</li>
-<li>Writing <code>int x</code> and assuming it is always 32 bits is a portability bug.</li>
-</ul>
-<aside class="notes">
-<p>Real-world scenario: a network protocol field is exactly 32 bits. Using int on a platform where int is 16 bits corrupts the data silently. The solution is to name the width explicitly using the fixed-width types from <cstdint>.</cstdint></p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 75 -->
-</section>
-<section id="fixed-width-types-from-cstdint" class="slide level2">
-<h2>Fixed-width types from <code>&lt;cstdint&gt;</code></h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Signed</th>
-<th>Unsigned</th>
-<th>Width</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>int8_t</code></td>
-<td><code>uint8_t</code></td>
-<td>8 bits</td>
-</tr>
-<tr class="even">
-<td><code>int16_t</code></td>
-<td><code>uint16_t</code></td>
-<td>16 bits</td>
-</tr>
-<tr class="odd">
-<td><code>int32_t</code></td>
-<td><code>uint32_t</code></td>
-<td>32 bits</td>
-</tr>
-<tr class="even">
-<td><code>int64_t</code></td>
-<td><code>uint64_t</code></td>
-<td>64 bits</td>
-</tr>
-</tbody>
-</table>
-<p>If the platform cannot provide that exact size, the type does not exist — you get a compile error rather than silent data corruption.</p>
-<!-- Slide 76 -->
-</section>
-<section id="using-fixed-width-types" class="slide level2">
-<h2>Using fixed-width types</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb40-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;cstdint&gt;</span></span>
-<span id="cb40-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb40-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb40-4"><a href=""></a></span>
-<span id="cb40-5"><a href=""></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb40-6"><a href=""></a><span class="op">{</span></span>
-<span id="cb40-7"><a href=""></a>    <span class="dt">int32_t</span>  count   <span class="op">=</span> <span class="dv">2000000000</span><span class="op">;</span>   <span class="co">// guaranteed 32-bit signed</span></span>
-<span id="cb40-8"><a href=""></a>    <span class="dt">uint8_t</span>  flags   <span class="op">=</span> <span class="bn">0b10101010</span><span class="op">;</span>   <span class="co">// guaranteed 8-bit unsigned</span></span>
-<span id="cb40-9"><a href=""></a>    <span class="dt">int64_t</span>  balance <span class="op">=</span> <span class="op">-</span><span class="dv">900000000000</span><span class="bu">LL</span><span class="op">;</span></span>
-<span id="cb40-10"><a href=""></a></span>
-<span id="cb40-11"><a href=""></a>    cout <span class="op">&lt;&lt;</span> count        <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb40-12"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="op">(</span><span class="dt">int</span><span class="op">)</span>flags   <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb40-13"><a href=""></a>    cout <span class="op">&lt;&lt;</span> balance      <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb40-14"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 77 -->
-</section>
-<section id="when-to-use-fixed-width-types" class="slide level2">
-<h2>When to use fixed-width types</h2>
-<ul>
-<li>Use fixed-width types when:
-<ul>
-<li>The exact bit width matters: network protocols, binary file formats, hardware registers.</li>
-<li>Code must be portable across platforms with different word sizes.</li>
-<li>You need bit manipulation with a known field width.</li>
-</ul></li>
-<li>For general arithmetic where exact size does not matter, plain <code>int</code> and <code>long</code> are fine.</li>
-</ul>
-<!-- Slide 78 -->
-</section>
-<section id="what-is-size_t" class="slide level2">
-<h2>What is <code>size_t</code>?</h2>
-<ul>
-<li><code>size_t</code> is the unsigned integer type returned by <code>sizeof()</code> and by <code>.size()</code> on any container.</li>
-<li>Guaranteed to be large enough to represent the size of any object in memory on the current platform.</li>
-<li>Typically 4 bytes on 32-bit systems and 8 bytes on 64-bit systems.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb41-1"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">int</span><span class="op">)</span>    <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>   <span class="co">// returns size_t</span></span>
-<span id="cb41-2"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">double</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb41-3"><a href=""></a></span>
-<span id="cb41-4"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> v <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">};</span></span>
-<span id="cb41-5"><a href=""></a>cout <span class="op">&lt;&lt;</span> v<span class="op">.</span>size<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>         <span class="co">// also returns size_t</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 79 -->
-</section>
-<section id="using-size_t-for-loop-indexes" class="slide level2">
-<h2>Using <code>size_t</code> for loop indexes</h2>
-<ul>
-<li>Comparing <code>int</code> to <code>size_t</code> triggers a sign-comparison warning.</li>
-<li>Using <code>size_t</code> for the loop counter eliminates the warning and is semantically correct — an index into a container cannot be negative.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb42-1"><a href=""></a>vector<span class="op">&lt;</span>string<span class="op">&gt;</span> names <span class="op">=</span> <span class="op">{</span><span class="st">"Alice"</span><span class="op">,</span> <span class="st">"Bob"</span><span class="op">,</span> <span class="st">"Carol"</span><span class="op">};</span></span>
-<span id="cb42-2"><a href=""></a></span>
-<span id="cb42-3"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">size_t</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> names<span class="op">.</span>size<span class="op">();</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb42-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> names<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb42-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 80 -->
-</section>
-<section id="fast-and-least-variants" class="slide level2">
-<h2>Fast and least variants</h2>
-<ul>
-<li><code>&lt;cstdint&gt;</code> also defines performance-oriented variants:
-<ul>
-<li><code>int_fast32_t</code> — at least 32 bits; the fastest available type of that width on the platform.</li>
-<li><code>int_least8_t</code> — the smallest type with at least 8 bits.</li>
-</ul></li>
-<li>These exist for performance-sensitive code.</li>
-<li>At the introductory level, use the exact-width types (<code>int32_t</code>) unless you have a specific reason to choose otherwise.</li>
-</ul>
-<!-- Slide 81 -->
-</section>
-<section id="summary-5" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>Fixed-width integer types guarantee an exact size on any platform.</li>
-<li>Use them when bit width matters — protocols, file formats, hardware.</li>
-<li>Use <code>size_t</code> for sizes, indexes, and anything that measures memory or container length.</li>
-<li>For everything else, <code>int</code> is fine.</li>
-</ul>
-<!-- Slide 82 -->
-<!-- Topic 7: Determining Variable Size -->
-<!-- Slides 83-90 -->
-</section></section>
-<section>
-<section id="determining-variable-size" class="title-slide slide level1 center">
-<h1>Determining Variable Size</h1>
-<!-- Slide 83 -->
-</section>
-<section id="how-can-you-measure-how-much-memory-a-variable-uses" class="slide level2 smaller">
-<h2>How can you measure how much memory a variable uses?</h2>
-<ul>
-<li>C++ provides the <code>sizeof</code> operator — the only portable way to measure memory.</li>
-<li>It evaluates at <strong>compile time</strong> and works on any type, variable, or array.</li>
-<li>The return type is <code>size_t</code>.</li>
-</ul>
-<aside class="notes">
-<p>Slides 83-89 Keep this focused and practical. sizeof with arrays and sizeof with structs are deferred — arrays to lecture 11.02, struct padding to lecture 15.02.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 84 -->
-</section>
-<section id="the-sizeof-operator" class="slide level2">
-<h2>The <code>sizeof</code> operator</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb43-1"><a href=""></a><span class="kw">sizeof</span><span class="op">(</span>type<span class="op">)</span>      <span class="co">// size of a type</span></span>
-<span id="cb43-2"><a href=""></a><span class="kw">sizeof</span> variable   <span class="co">// size of a declared variable (parentheses optional)</span></span>
-<span id="cb43-3"><a href=""></a><span class="kw">sizeof</span><span class="op">(</span>expr<span class="op">)</span>      <span class="co">// size of the type an expression would produce</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>Does not execute code or evaluate the operand’s value — it determines size from type information alone.</li>
-<li>Result is always in bytes.</li>
-</ul>
-<!-- Slide 85 -->
-</section>
-<section id="typical-platform-sizes" class="slide level2">
-<h2>Typical platform sizes</h2>
-<p>Sizes are not mandated by the standard and vary by platform and compiler. These are typical on a 64-bit system:</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Type</th>
-<th style="text-align: center;">Typical Size</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>char</code></td>
-<td style="text-align: center;">1 byte</td>
-</tr>
-<tr class="even">
-<td><code>short</code></td>
-<td style="text-align: center;">2 bytes</td>
-</tr>
-<tr class="odd">
-<td><code>int</code></td>
-<td style="text-align: center;">4 bytes</td>
-</tr>
-<tr class="even">
-<td><code>long</code></td>
-<td style="text-align: center;">8 bytes</td>
-</tr>
-<tr class="odd">
-<td><code>float</code></td>
-<td style="text-align: center;">4 bytes</td>
-</tr>
-<tr class="even">
-<td><code>double</code></td>
-<td style="text-align: center;">8 bytes</td>
-</tr>
-<tr class="odd">
-<td><code>bool</code></td>
-<td style="text-align: center;">1 byte</td>
-</tr>
-<tr class="even">
-<td>pointer</td>
-<td style="text-align: center;">8 bytes</td>
-</tr>
-</tbody>
-</table>
-<p>Always use <code>sizeof</code> rather than hardcoding these values.</p>
-<!-- Slide 86 -->
-</section>
-<section id="why-sizes-vary" class="slide level2">
-<h2>Why sizes vary</h2>
-<ul>
-<li><strong>Architecture</strong> — 32-bit systems use 4-byte pointers; 64-bit systems use 8-byte pointers.</li>
-<li><strong>Compiler choices</strong> — <code>long</code> is 4 bytes on Windows (MSVC) and 8 bytes on Linux (GCC/Clang).</li>
-<li><strong>Alignment</strong> — the compiler inserts padding between struct members to align data on word boundaries for performance.</li>
-</ul>
-<!-- Slide 87 -->
-</section>
-<section id="printing-all-type-sizes" class="slide level2">
-<h2>Printing all type sizes</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb44-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb44-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb44-3"><a href=""></a></span>
-<span id="cb44-4"><a href=""></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb44-5"><a href=""></a><span class="op">{</span></span>
-<span id="cb44-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"char:   "</span> <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">char</span><span class="op">)</span>   <span class="op">&lt;&lt;</span> <span class="st">" byte(s)</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb44-7"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"short:  "</span> <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">short</span><span class="op">)</span>  <span class="op">&lt;&lt;</span> <span class="st">" byte(s)</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb44-8"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"int:    "</span> <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">int</span><span class="op">)</span>    <span class="op">&lt;&lt;</span> <span class="st">" byte(s)</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb44-9"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"long:   "</span> <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">long</span><span class="op">)</span>   <span class="op">&lt;&lt;</span> <span class="st">" byte(s)</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb44-10"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"float:  "</span> <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">float</span><span class="op">)</span>  <span class="op">&lt;&lt;</span> <span class="st">" byte(s)</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb44-11"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"double: "</span> <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">double</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">" byte(s)</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb44-12"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"bool:   "</span> <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">bool</span><span class="op">)</span>   <span class="op">&lt;&lt;</span> <span class="st">" byte(s)</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb44-13"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb44-14"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<aside class="notes">
-<p>Students should run this on their own machine. The output is specific to their compiler and platform. Comparing results with classmates on different systems is an effective way to make platform dependence concrete.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 88 -->
-</section>
-<section id="printing-all-type-sizes-output" class="slide level2">
-<h2>Printing All Type Sizes: Output</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<div style="font-size: 50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode numberSource cpp smaller number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb45-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb45-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb45-3"><a href=""></a></span>
-<span id="cb45-4"><a href=""></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb45-5"><a href=""></a><span class="op">{</span></span>
-<span id="cb45-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"char:   "</span> <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">char</span><span class="op">)</span>   <span class="op">&lt;&lt;</span> <span class="st">" byte(s)</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb45-7"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"short:  "</span> <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">short</span><span class="op">)</span>  <span class="op">&lt;&lt;</span> <span class="st">" byte(s)</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb45-8"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"int:    "</span> <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">int</span><span class="op">)</span>    <span class="op">&lt;&lt;</span> <span class="st">" byte(s)</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb45-9"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"long:   "</span> <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">long</span><span class="op">)</span>   <span class="op">&lt;&lt;</span> <span class="st">" byte(s)</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb45-10"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"float:  "</span> <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">float</span><span class="op">)</span>  <span class="op">&lt;&lt;</span> <span class="st">" byte(s)</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb45-11"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"double: "</span> <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">double</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">" byte(s)</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb45-12"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"bool:   "</span> <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">bool</span><span class="op">)</span>   <span class="op">&lt;&lt;</span> <span class="st">" byte(s)</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb45-13"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb45-14"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div><div class="column" style="width:45%;">
-<p><img data-src="images/0201size_out.png"></p>
-</div></div>
-<!-- Slide 89 -->
-</section>
-<section id="summary-6" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li><code>sizeof</code> is the portable, compile-time way to determine memory size.</li>
-<li>Use it instead of hardcoding byte counts.</li>
-<li>Sizes vary by architecture and compiler — always measure, never assume.</li>
-</ul>
-<!-- Slide 90 -->
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="key-takeaways" class="title-slide slide level1 center">
-<h1>Key Takeaways</h1>
-<ul>
-<li>The compiler works in three stages: preprocessing → compilation → linking. Error messages tell you which stage failed.</li>
-<li>The symbol table tracks every identifier’s name, type, scope, and address — type mismatches and undeclared variables are symbol table violations.</li>
-<li>Implicit coercion promotes silently; narrowing loses data silently. Use <code>static_cast&lt;&gt;</code> to make conversions explicit.</li>
-<li>Signed integer overflow is undefined behavior. Unsigned overflow wraps — well-defined.</li>
-<li>Mixing signed and unsigned in comparisons silently converts signed to unsigned — enable <code>-Wall</code> to catch it.</li>
-<li>Use <code>int32_t</code> and friends when exact width matters; use <code>size_t</code> for sizes and indexes.</li>
-<li><code>sizeof</code> is the only portable way to measure type size; struct padding means size ≠ sum of members.</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="next-time" class="title-slide slide level1 center">
-<h1>Next Time</h1>
-<ul>
-<li>Terminal interactions: <code>cout</code> and <code>cin</code> in depth</li>
-<li>Formatting output with manipulators</li>
-<li>Reading input from the keyboard</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="appendix" class="title-slide slide level1 center">
-<h1>Appendix</h1>
 
 </section>
-<section id="how-the-compiler-works-good-practices" class="slide level2">
-<h2>How the Compiler Works: Good Practices</h2>
-<ul>
-<li>Always include <code>&lt;iostream&gt;</code> before using <code>cout</code> — forgetting it is a Stage 1/2 error, not a logic error.</li>
-<li>Compile with <code>-Wall -Wextra</code> to enable all common warnings at Stage 2.</li>
-<li>When you see “undefined reference,” look for a missing <code>.cpp</code> file in your build command, not a syntax mistake in your source.</li>
-</ul>
-</section>
-<section id="how-the-compiler-works-common-mistakes" class="slide level2">
-<h2>How the Compiler Works: Common Mistakes</h2>
-<ul>
-<li>Confusing a compile error (Stage 2) with a linker error (Stage 3) — they require different fixes.</li>
-<li>Forgetting that each <code>.cpp</code> file is compiled independently — you cannot rely on the compiler knowing about another file’s contents.</li>
-<li>Editing a header but forgetting to recompile all <code>.cpp</code> files that include it.</li>
-</ul>
-</section>
-<section id="how-the-compiler-works-more-examples" class="slide level2">
-<h2>How the Compiler Works: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb46-1"><a href=""></a><span class="co">// Typical linker error — compiles fine, fails at link</span></span>
-<span id="cb46-2"><a href=""></a><span class="co">// File: main.cpp</span></span>
-<span id="cb46-3"><a href=""></a><span class="pp">#include </span><span class="im">"math.h"</span></span>
-<span id="cb46-4"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span> <span class="cf">return</span> add<span class="op">(</span><span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">);</span> <span class="op">}</span>   <span class="co">// error: undefined reference to 'add'</span></span>
-<span id="cb46-5"><a href=""></a><span class="co">// Fix: add math.cpp to the compile command</span></span>
-<span id="cb46-6"><a href=""></a><span class="co">// g++ main.cpp math.cpp</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="how-the-compiler-works-practice-problems" class="slide level2">
-<h2>How the Compiler Works: Practice Problems</h2>
-<ol type="1">
-<li>What stage produces an “undeclared identifier” error? What does it mean?</li>
-<li>What stage produces an “undefined reference” error? What causes it?</li>
-<li>What does the preprocessor do with <code>#include &lt;iostream&gt;</code>?</li>
-</ol>
-</section>
-<section id="how-the-compiler-works-ai-search-terms" class="slide level2">
-<h2>How the Compiler Works: AI Search Terms</h2>
-<ul>
-<li>“C++ compilation stages preprocessing linking”</li>
-<li>“undefined reference to main C++”</li>
-<li>“C++ translation unit explained”</li>
-<li>“C++ static typing vs dynamic typing”</li>
-</ul>
-</section>
-<section id="how-the-compiler-works-questions-for-reflection" class="slide level2">
-<h2>How the Compiler Works: Questions for Reflection</h2>
-<ul>
-<li>Why does C++ compile each .cpp file independently rather than seeing all files at once?</li>
-<li>If the compiler catches type mismatches, why do some type-related bugs still reach runtime?</li>
-<li>What would change if C++ had no preprocessor — if #include and #define did not exist?</li>
-</ul>
-</section>
-<section id="the-symbol-table-good-practices" class="slide level2">
-<h2>The Symbol Table: Good Practices</h2>
-<ul>
-<li>Declare variables at their first point of use, not at the top of the function — reduces the scope visible in the table.</li>
-<li>Use distinct, meaningful names to avoid accidental shadowing.</li>
-<li>Enable <code>-Wshadow</code> to catch cases where a local variable shadows a global.</li>
-</ul>
-</section>
-<section id="the-symbol-table-common-mistakes" class="slide level2">
-<h2>The Symbol Table: Common Mistakes</h2>
-<ul>
-<li>Using a variable before declaring it — the compiler searches the table and finds nothing.</li>
-<li>Declaring the same variable twice in the same scope — the compiler finds a duplicate entry.</li>
-<li>Assuming that a variable in one function is visible in another — each function has its own scope region.</li>
-</ul>
-</section>
-<section id="the-symbol-table-more-examples" class="slide level2">
-<h2>The Symbol Table: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb47-1"><a href=""></a><span class="co">// Demonstrating scope regions</span></span>
-<span id="cb47-2"><a href=""></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">100</span><span class="op">;</span>           <span class="co">// global scope</span></span>
-<span id="cb47-3"><a href=""></a></span>
-<span id="cb47-4"><a href=""></a><span class="dt">void</span> show<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb47-5"><a href=""></a>    <span class="dt">int</span> x <span class="op">=</span> <span class="dv">200</span><span class="op">;</span>       <span class="co">// local scope — shadows global</span></span>
-<span id="cb47-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> x <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span> <span class="co">// prints 200</span></span>
-<span id="cb47-7"><a href=""></a><span class="op">}</span></span>
-<span id="cb47-8"><a href=""></a></span>
-<span id="cb47-9"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb47-10"><a href=""></a>    cout <span class="op">&lt;&lt;</span> x <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span> <span class="co">// prints 100 — global, no local x here</span></span>
-<span id="cb47-11"><a href=""></a>    show<span class="op">();</span></span>
-<span id="cb47-12"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb47-13"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="the-symbol-table-practice-problems" class="slide level2">
-<h2>The Symbol Table: Practice Problems</h2>
-<ol type="1">
-<li>Predict what each compiler error means: <code>'y' was not declared in this scope</code> / <code>redeclaration of 'int x'</code>.</li>
-<li>Write a program with a global variable and a local variable of the same name. Verify which one prints in each function.</li>
-<li>What happens if you call a function before declaring it? Try it and record the error.</li>
-</ol>
-</section>
-<section id="the-symbol-table-ai-search-terms" class="slide level2">
-<h2>The Symbol Table: AI Search Terms</h2>
-<ul>
-<li>“C++ symbol table compiler explained”</li>
-<li>“C++ variable scope resolution”</li>
-<li>“C++ name shadowing -Wshadow”</li>
-<li>“C++ function overloading name mangling”</li>
-</ul>
-</section>
-<section id="the-symbol-table-questions-for-reflection" class="slide level2">
-<h2>The Symbol Table: Questions for Reflection</h2>
-<ul>
-<li>Why does C++ allow local variables to shadow globals? What problem does this solve?</li>
-<li>If every identifier had to be globally unique, how would that change how you write programs?</li>
-</ul>
-</section>
-<section id="data-type-conversion-good-practices" class="slide level2">
-<h2>Data Type Conversion: Good Practices</h2>
-<ul>
-<li>Use <code>static_cast&lt;double&gt;(intVar)</code> to get decimal division from integer operands.</li>
-<li>Never use a cast to silence a warning without understanding why the warning appeared.</li>
-<li>Prefer explicit casts over relying on implicit coercion in any expression where precision matters.</li>
-</ul>
-</section>
-<section id="data-type-conversion-common-mistakes" class="slide level2">
-<h2>Data Type Conversion: Common Mistakes</h2>
-<ul>
-<li>Computing an average as <code>sum / count</code> when both are <code>int</code> and expecting a decimal result.</li>
-<li>Using C-style casts <code>(int)x</code> in new code — prefer <code>static_cast&lt;int&gt;(x)</code>.</li>
-<li>Forgetting that Rule 3 (result converts to the receiving variable’s type) applies after the expression is fully evaluated.</li>
-</ul>
-</section>
-<section id="data-type-conversion-more-examples" class="slide level2">
-<h2>Data Type Conversion: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb48-1"><a href=""></a><span class="co">// Correct decimal average from integer inputs</span></span>
-<span id="cb48-2"><a href=""></a><span class="dt">int</span> scores<span class="op">[</span><span class="dv">3</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">85</span><span class="op">,</span> <span class="dv">92</span><span class="op">,</span> <span class="dv">78</span><span class="op">};</span></span>
-<span id="cb48-3"><a href=""></a><span class="dt">int</span> sum <span class="op">=</span> scores<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">+</span> scores<span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="op">+</span> scores<span class="op">[</span><span class="dv">2</span><span class="op">];</span></span>
-<span id="cb48-4"><a href=""></a><span class="dt">double</span> avg <span class="op">=</span> <span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;(</span>sum<span class="op">)</span> <span class="op">/</span> <span class="dv">3</span><span class="op">;</span>  <span class="co">// 85.0</span></span>
-<span id="cb48-5"><a href=""></a>cout <span class="op">&lt;&lt;</span> avg <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="data-type-conversion-practice-problems" class="slide level2">
-<h2>Data Type Conversion: Practice Problems</h2>
-<ol type="1">
-<li>Predict the output: <code>int a = 7, b = 2; double r = a / b; cout &lt;&lt; r;</code></li>
-<li>Fix the expression so r prints 3.5.</li>
-<li>What is <code>static_cast&lt;int&gt;(3.9)</code>? What is <code>static_cast&lt;int&gt;(-3.9)</code>?</li>
-</ol>
-</section>
-<section id="data-type-conversion-ai-search-terms" class="slide level2">
-<h2>Data Type Conversion: AI Search Terms</h2>
-<ul>
-<li>“C++ implicit type conversion coercion rules”</li>
-<li>“C++ static_cast vs C-style cast”</li>
-<li>“C++ integer division decimal result”</li>
-<li>“C++ narrowing conversion warning”</li>
-</ul>
-</section>
-<section id="data-type-conversion-questions-for-reflection" class="slide level2">
-<h2>Data Type Conversion: Questions for Reflection</h2>
-<ul>
-<li>Why does C++ perform implicit conversions at all? What problem does it solve?</li>
-<li>If C++ required an explicit cast for every type conversion, what would change about how you write programs?</li>
-</ul>
-</section>
-<section id="overflow-and-underflow-good-practices" class="slide level2">
-<h2>Overflow and Underflow: Good Practices</h2>
-<ul>
-<li>Always validate user input before using it in arithmetic — never assume the user enters a value within range.</li>
-<li>Use <code>numeric_limits&lt;T&gt;::max()</code> rather than magic numbers like <code>INT_MAX</code> in production code.</li>
-<li>For any loop counter or accumulator that could grow large, estimate the maximum possible value and choose a type accordingly.</li>
-</ul>
-</section>
-<section id="overflow-and-underflow-common-mistakes" class="slide level2">
-<h2>Overflow and Underflow: Common Mistakes</h2>
-<ul>
-<li>Assuming signed overflow wraps to a negative number — it is undefined behavior.</li>
-<li>Decrementing an unsigned counter to zero and then decrementing again — it wraps to a large positive number.</li>
-<li>Using <code>int</code> for a loop that accumulates values beyond 2 billion.</li>
-</ul>
-</section>
-<section id="overflow-and-underflow-more-examples" class="slide level2">
-<h2>Overflow and Underflow: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb49-1"><a href=""></a><span class="co">// Unsigned counter underflow trap</span></span>
-<span id="cb49-2"><a href=""></a><span class="dt">unsigned</span> <span class="dt">int</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb49-3"><a href=""></a><span class="cf">while</span> <span class="op">(</span>count <span class="op">&gt;=</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span>   <span class="co">// always true — unsigned is never &lt; 0</span></span>
-<span id="cb49-4"><a href=""></a>    count<span class="op">--;</span>           <span class="co">// wraps from 0 to UINT_MAX</span></span>
-<span id="cb49-5"><a href=""></a><span class="op">}</span></span>
-<span id="cb49-6"><a href=""></a><span class="co">// Infinite loop — classic unsigned underflow bug</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="overflow-and-underflow-practice-problems" class="slide level2">
-<h2>Overflow and Underflow: Practice Problems</h2>
-<ol type="1">
-<li>What is the output of <code>unsigned int x = 0; x--; cout &lt;&lt; x;</code>? Explain why.</li>
-<li>Write a program that uses <code>numeric_limits&lt;int&gt;</code> to print the min and max for <code>int</code>.</li>
-<li>What type would you use to store the number of seconds since January 1, 1970? Why?</li>
-</ol>
-</section>
-<section id="overflow-and-underflow-ai-search-terms" class="slide level2">
-<h2>Overflow and Underflow: AI Search Terms</h2>
-<ul>
-<li>“C++ signed integer overflow undefined behavior”</li>
-<li>“C++ unsigned integer overflow wrapping”</li>
-<li>“C++ numeric_limits explained”</li>
-<li>“C++ integer overflow detection before addition”</li>
-</ul>
-</section>
-<section id="overflow-and-underflow-questions-for-reflection" class="slide level2">
-<h2>Overflow and Underflow: Questions for Reflection</h2>
-<ul>
-<li>Why did the C++ standard define signed overflow as undefined behavior rather than mandating wrap-around?</li>
-<li>If overflow were always well-defined, what optimizations would the compiler lose?</li>
-</ul>
-</section>
-<section id="signed-vs-unsigned-good-practices" class="slide level2">
-<h2>Signed vs Unsigned: Good Practices</h2>
-<ul>
-<li>Use <code>int</code> by default; switch to <code>unsigned</code> only when the value genuinely cannot be negative.</li>
-<li>Match the type of your loop counter to the type returned by <code>.size()</code> — use <code>size_t</code> or an explicit cast.</li>
-<li>Compile with <code>-Wall</code> and address every sign-comparison warning.</li>
-</ul>
-</section>
-<section id="signed-vs-unsigned-common-mistakes" class="slide level2">
-<h2>Signed vs Unsigned: Common Mistakes</h2>
-<ul>
-<li>Comparing a signed loop counter to an unsigned size — sign-comparison warning, potential logic error.</li>
-<li>Storing a negative return value (like -1 for “not found”) in an unsigned variable.</li>
-<li>Assuming that <code>unsigned int u = -1</code> causes a compile error — it compiles and stores UINT_MAX.</li>
-</ul>
-</section>
-<section id="signed-vs-unsigned-more-examples" class="slide level2">
-<h2>Signed vs Unsigned: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb50-1"><a href=""></a><span class="co">// Classic sign-comparison bug</span></span>
-<span id="cb50-2"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> v <span class="op">=</span> <span class="op">{</span><span class="dv">10</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">30</span><span class="op">};</span></span>
-<span id="cb50-3"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> v<span class="op">.</span>size<span class="op">()</span> <span class="op">-</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&gt;=</span> <span class="dv">0</span><span class="op">;</span> <span class="op">--</span>i<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb50-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> v<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb50-5"><a href=""></a><span class="op">}</span></span>
-<span id="cb50-6"><a href=""></a><span class="co">// Works here, but if size() returns 0:</span></span>
-<span id="cb50-7"><a href=""></a><span class="co">// (size_t)0 - 1 wraps to a huge number — loop runs forever</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="signed-vs-unsigned-practice-problems" class="slide level2">
-<h2>Signed vs Unsigned: Practice Problems</h2>
-<ol type="1">
-<li>What is the result of comparing <code>-1 &lt; (unsigned int)1</code>? Verify by compiling and running.</li>
-<li>Write a program that demonstrates unsigned underflow by decrementing from zero.</li>
-<li>What warning does <code>-Wsign-compare</code> produce? Trigger it intentionally.</li>
-</ol>
-</section>
-<section id="signed-vs-unsigned-ai-search-terms" class="slide level2">
-<h2>Signed vs Unsigned: AI Search Terms</h2>
-<ul>
-<li>“C++ signed unsigned comparison warning”</li>
-<li>“C++ two’s complement explained”</li>
-<li>“C++ size_t signed comparison loop”</li>
-<li>“C++ unsigned underflow wrapping”</li>
-</ul>
-</section>
-<section id="signed-vs-unsigned-questions-for-reflection" class="slide level2">
-<h2>Signed vs Unsigned: Questions for Reflection</h2>
-<ul>
-<li>If C++ had only signed integers, what would you lose? If it had only unsigned, what would you lose?</li>
-<li>Why does <code>.size()</code> return an unsigned type? What would change if it returned <code>int</code>?</li>
-</ul>
-</section>
-<section id="fixed-width-integers-good-practices" class="slide level2">
-<h2>Fixed-Width Integers: Good Practices</h2>
-<ul>
-<li>Use <code>int32_t</code> (not <code>int</code>) when writing data to a binary file or network socket.</li>
-<li>Use <code>size_t</code> for all container indexes and sizeof results.</li>
-<li>Include <code>&lt;cstdint&gt;</code> explicitly whenever you use fixed-width types.</li>
-</ul>
-</section>
-<section id="fixed-width-integers-common-mistakes" class="slide level2">
-<h2>Fixed-Width Integers: Common Mistakes</h2>
-<ul>
-<li>Using <code>int</code> in a binary file format and assuming it is always 4 bytes.</li>
-<li>Mixing <code>int</code> and <code>size_t</code> in comparisons without an explicit cast.</li>
-<li>Using <code>uint8_t</code> for character output — <code>cout</code> treats it as a binary value, not a character.</li>
-</ul>
-</section>
-<section id="fixed-width-integers-practice-problems" class="slide level2">
-<h2>Fixed-Width Integers: Practice Problems</h2>
-<ol type="1">
-<li>Write a program that prints the size of <code>int32_t</code>, <code>uint64_t</code>, and <code>size_t</code> using sizeof.</li>
-<li>What happens if you use <code>int8_t</code> to store the value 200? Explain.</li>
-<li>When would you use <code>int_fast32_t</code> instead of <code>int32_t</code>?</li>
-</ol>
-</section>
-<section id="fixed-width-integers-ai-search-terms" class="slide level2">
-<h2>Fixed-Width Integers: AI Search Terms</h2>
-<ul>
-<li>“C++ cstdint fixed width integer types”</li>
-<li>“C++ size_t definition portability”</li>
-<li>“C++ int32_t vs int portability”</li>
-<li>“C++ uint8_t cout printing”</li>
-</ul>
-</section>
-<section id="fixed-width-integers-questions-for-reflection" class="slide level2">
-<h2>Fixed-Width Integers: Questions for Reflection</h2>
-<ul>
-<li>Why doesn’t C++ just define int to always be 32 bits everywhere?</li>
-<li>If you were designing a new programming language, would you use fixed-width integers as the defaults?</li>
-</ul>
-</section>
-<section id="determining-variable-size-good-practices" class="slide level2">
-<h2>Determining Variable Size: Good Practices</h2>
-<ul>
-<li>Always use <code>sizeof</code> instead of hardcoded byte counts — even if you are “sure” of the size.</li>
-<li>Use <code>sizeof(arr) / sizeof(arr[0])</code> for static array element count, but prefer <code>std::array</code> or <code>std::vector</code> in new code.</li>
-<li>Reorder struct members from largest to smallest to minimize padding.</li>
-</ul>
-</section>
-<section id="determining-variable-size-common-mistakes" class="slide level2">
-<h2>Determining Variable Size: Common Mistakes</h2>
-<ul>
-<li>Passing an array to a function and using sizeof on the parameter — you get pointer size, not array size.</li>
-<li>Assuming sizeof(struct) equals the sum of its member sizes — padding makes this wrong.</li>
-<li>Using sizeof on a pointer and thinking you measured the pointed-to data.</li>
-</ul>
-</section>
-<section id="determining-variable-size-more-examples" class="slide level2">
-<h2>Determining Variable Size: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb51"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb51-1"><a href=""></a><span class="co">// sizeof on a function parameter — does NOT give array size</span></span>
-<span id="cb51-2"><a href=""></a><span class="dt">void</span> print_size<span class="op">(</span><span class="dt">int</span> arr<span class="op">[])</span> <span class="op">{</span></span>
-<span id="cb51-3"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span>arr<span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>  <span class="co">// prints 8 (pointer size), not array size</span></span>
-<span id="cb51-4"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="determining-variable-size-practice-problems" class="slide level2">
-<h2>Determining Variable Size: Practice Problems</h2>
-<ol type="1">
-<li>Run the “print all type sizes” program on your machine. Record the output.</li>
-<li>Define a struct with a <code>char</code> followed by an <code>int</code>. Print sizeof. Then reverse the order. Compare.</li>
-<li>What does <code>sizeof("hello")</code> return? Explain why.</li>
-</ol>
-</section>
-<section id="determining-variable-size-ai-search-terms" class="slide level2">
-<h2>Determining Variable Size: AI Search Terms</h2>
-<ul>
-<li>“C++ sizeof operator explained”</li>
-<li>“C++ struct padding alignment explained”</li>
-<li>“C++ sizeof array vs pointer”</li>
-<li>“C++ sizeof string literal”</li>
-</ul>
-</section>
-<section id="determining-variable-size-questions-for-reflection" class="slide level2">
-<h2>Determining Variable Size: Questions for Reflection</h2>
-<ul>
-<li>Why does the compiler add padding to structs? What would happen if it did not?</li>
-<li>If sizeof always returned the exact sum of member sizes, what problems would arise on modern hardware?</li>
-</ul>
-
-</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
