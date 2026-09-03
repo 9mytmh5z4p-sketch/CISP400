@@ -1,7 +1,6 @@
 # Slide Schedule
 
 | No | Topic | Title | Type | Desc |
-|---:|---|---|---|---|
 | 1 | Course Framing | CISP 400 | section | Introduce the course framing section. |
 | 2 | Course Framing | Big Idea | material | Preserve the authoritative content and visual layout from source slide 2. |
 | 3 | Course Framing | What’s this chapter | material | Preserve the authoritative content and visual layout from source slide 3. |
@@ -32,17 +31,17 @@
 | 28 | Pointers to Constants and Constant Pointers | Things get tricky when we start to mix const and | material | Preserve the authoritative content and visual layout from source slide 28. |
 | 29 | Pointers to Constants and Constant Pointers | • Pointer to a constant. | material | Preserve the authoritative content and visual layout from source slide 29. |
 | 30 | Pointers to Constants and Constant Pointers | Why use const? | material | Preserve the authoritative content and visual layout from source slide 30. |
-| 31 | Pointers to Constants and Constant Pointers | Source Slide 31 | material | Preserve the authoritative content and visual layout from source slide 31. |
-| 32 | Pointers to Constants and Constant Pointers | Pointer to a constant. | material | Preserve the authoritative content and visual layout from source slide 32. |
-| 33 | Pointers to Constants and Constant Pointers | const int* pAge | material | Preserve the authoritative content and visual layout from source slide 33. |
-| 34 | Pointers to Constants and Constant Pointers | Download this. | material | Preserve the authoritative content and visual layout from source slide 34. |
-| 35 | Pointers to Constants and Constant Pointers | const pointer | material | Preserve the authoritative content and visual layout from source slide 35. |
-| 36 | Pointers to Constants and Constant Pointers | int age = 22; | material | Preserve the authoritative content and visual layout from source slide 36. |
-| 37 | Pointers to Constants and Constant Pointers | int* const cPtr = &age; | material | Preserve the authoritative content and visual layout from source slide 37. |
-| 38 | Pointers to Constants and Constant Pointers | Constant pointers to constants | material | Preserve the authoritative content and visual layout from source slide 38. |
-| 39 | Pointers to Constants and Constant Pointers | int age = 22; | material | Preserve the authoritative content and visual layout from source slide 39. |
-| 40 | Pointers to Constants and Constant Pointers | const int* const cPtr = &age; | material | Preserve the authoritative content and visual layout from source slide 40. |
-| 41 | Pointers to Constants and Constant Pointers | 41 | material | Preserve the authoritative content and visual layout from source slide 41. |
+| 31 | Pointers to Constants and Constant Pointers | Pointer to a constant. | material | Preserve the authoritative content and visual layout from source slide 32. |
+| 32 | Pointers to Constants and Constant Pointers | const int* pAge | material | Preserve the authoritative content and visual layout from source slide 33. |
+| 33 | Pointers to Constants and Constant Pointers | Download this. | material | Preserve the authoritative content and visual layout from source slide 34. |
+| 34 | Pointers to Constants and Constant Pointers | const pointer | material | Preserve the authoritative content and visual layout from source slide 35. |
+| 35 | Pointers to Constants and Constant Pointers | int age = 22; | material | Preserve the authoritative content and visual layout from source slide 36. |
+| 36 | Pointers to Constants and Constant Pointers | int* const cPtr = &age; | material | Preserve the authoritative content and visual layout from source slide 37. |
+| 37 | Pointers to Constants and Constant Pointers | Constant pointers to constants | material | Preserve the authoritative content and visual layout from source slide 38. |
+| 38 | Pointers to Constants and Constant Pointers | int age = 22; | material | Preserve the authoritative content and visual layout from source slide 39. |
+| 39 | Pointers to Constants and Constant Pointers | const int* const cPtr = &age; | material | Preserve the authoritative content and visual layout from source slide 40. |
+| 40 | Pointers to Constants and Constant Pointers | 41 | material | Preserve the authoritative content and visual layout from source slide 41. |
+| 41 | Pointers to Constants and Constant Pointers | Const Pointer Assignment | exercise | Work through the const-pointer assignment from the source lecture. |
 | 42 | Pointers to Constants and Constant Pointers | • Pointer to a constant - can’t change data. | material | Preserve the authoritative content and visual layout from source slide 42. |
 | 43 | Pointers to Constants and Constant Pointers | Change Change | material | Preserve the authoritative content and visual layout from source slide 43. |
 | 44 | Pointers as Function Parameters | 10.7 Pointers as | section | Introduce the pointers as function parameters section. |
@@ -102,4 +101,3 @@
 | 98 | Desk Checks | Desk Check Exercise | activity | Preserve the authoritative content and visual layout from source slide 98. |
 | 99 | Desk Checks | Source Slide 99 | material | Preserve the authoritative content and visual layout from source slide 99. |
 | 100 | Desk Checks | Source Slide 100 | material | Preserve the authoritative content and visual layout from source slide 100. |
-
