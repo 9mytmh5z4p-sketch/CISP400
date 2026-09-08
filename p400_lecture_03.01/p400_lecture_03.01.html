@@ -28,72 +28,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="p400_lecture_03.01_files/libs/revealjs/dist/theme/quarto-99eeafcedac04850354b682963cedae3.css">
   <link rel="stylesheet" href="../styles/styles.css">
@@ -209,14 +143,37 @@ Dr.&nbsp;Caleb Fowler
 <section id="last-time" class="title-slide slide level1 center">
 <h1>Last Time</h1>
 <ul>
-<li class="fragment"><strong>cout</strong></li>
-<li class="fragment"><strong>cin</strong></li>
-<li class="fragment"><strong>Output Manipulators</strong></li>
-<li class="fragment"><strong>Terminal Color Codes</strong></li>
-<li class="fragment"><strong>Table Architectures</strong></li>
+<li class="fragment"><strong>Pointer Variables in Memory</strong></li>
+<li class="fragment"><strong>Comparing Pointers</strong></li>
+<li class="fragment"><strong>Pointers to Constants and Constant Pointers</strong></li>
+<li class="fragment"><strong>Pointers as Function Parameters</strong></li>
+<li class="fragment"><strong>Returning and Reassigning Pointers</strong></li>
+<li class="fragment"><strong>Function Pointers</strong></li>
 </ul>
-<aside class="notes">
-<p>Brief recall of lecture 02.02. Students should remember that terminal programs communicate through input and output streams, and that formatted output can make information easier to read. This lecture turns those mechanics into planning models for software design.</p>
+</section>
+
+<section id="todays-agenda" class="title-slide slide level1 center">
+<h1>Today’s Agenda</h1>
+<ul>
+<li>C++ Memory Model and Pointer Review</li>
+<li>Dynamic Memory Allocation</li>
+<li>Pseudo-Dynamic Arrays</li>
+<li>Real Dynamic Arrays</li>
+</ul>
+<!-- Topic: Course Framing -->
+<!-- Slides 1–3 -->
+</section>
+
+<section>
+<section id="course-framing" class="title-slide slide level1 center">
+<h1><span style="display:none">Course Framing</span></h1>
+
+</section>
+<section id="cisp-400" class="slide level2">
+<h2><span style="display:none">CISP 400</span></h2>
+
+<img data-src="images/source_pages/slide-01.png" style="width:100.0%" alt="CISP 400" class="r-stretch"><aside class="notes">
+<p>Slides 1–3</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -230,18 +187,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 1 -->
 </section>
+<section id="agenda" class="slide level2">
+<h2><span style="display:none">Agenda</span></h2>
 
-<section id="todays-agenda" class="title-slide slide level1 center">
-<h1>Today’s Agenda</h1>
-<ul>
-<li>Advanced cin</li>
-<li>Dates and Random Numbers</li>
-<li>IPO Models</li>
-<li>Execution Trace Models</li>
-<li>Terminal Charts and Graphs</li>
-</ul>
-<aside class="notes">
-
+<img data-src="images/source_pages/slide-02.png" style="width:100.0%" alt="Agenda" class="r-stretch"><aside class="notes">
+<p>Source PDF page 2.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -254,23 +204,37 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 2 -->
-<!-- Topic 1: Advanced cin -->
-<!-- Slides 3-15 -->
 </section>
+<section id="agenda-1" class="slide level2">
+<h2><span style="display:none">Agenda</span></h2>
 
-<section>
-<section id="advanced-cin" class="title-slide slide level1 center">
-<h1>Advanced cin</h1>
+<img data-src="images/source_pages/slide-03.png" style="width:100.0%" alt="Agenda" class="r-stretch"><aside class="notes">
+<p>Source PDF page 3.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 3 -->
+<!-- Topic: C++ Memory Model and Pointer Review -->
+<!-- Slides 4–14 -->
+</section></section>
+<section>
+<section id="c-memory-model-and-pointer-review" class="title-slide slide level1 center">
+<h1><span style="display:none">C++ Memory Model and Pointer Review</span></h1>
+
 </section>
-<section id="input-beyond-one-word" class="slide level2 smaller">
-<h2>Input Beyond One Word</h2>
-<ul>
-<li>What happens when user input is messier than the example?</li>
-<li><code>cin</code> is predictable, but we need to know what it consumes and what it leaves behind.</li>
-</ul>
-<aside class="notes">
-<p>Slides 3-15</p>
+<section id="big-idea" class="slide level2">
+<h2><span style="display:none">Big Idea</span></h2>
+
+<img data-src="images/source_pages/slide-04.png" style="width:100.0%" alt="Big Idea" class="r-stretch"><aside class="notes">
+<p>Slides 4–14</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -284,119 +248,234 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 4 -->
 </section>
-<section id="two-input-problems" class="slide level2">
-<h2>Two Input Problems</h2>
-<ul>
-<li><code>cin &gt;&gt;</code> stops when it reaches whitespace.</li>
-<li><code>cin</code> fails when the input does not match the receiving variable’s type.</li>
-</ul>
-<p>These are different problems with different fixes.</p>
+<section id="direct-memory-access" class="slide level2">
+<h2><span style="display:none">Direct Memory Access</span></h2>
+
+<img data-src="images/source_pages/slide-05.png" style="width:100.0%" alt="Direct Memory Access" class="r-stretch"><aside class="notes">
+<p>Source PDF page 5.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 5 -->
 </section>
-<section id="whitespace-stops-extraction" class="slide level2">
-<h2>Whitespace Stops Extraction</h2>
-<p><code>cin &gt;&gt;</code> reads one token at a time.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a>string fullName<span class="op">;</span></span>
-<span id="cb1-2"><a href=""></a></span>
-<span id="cb1-3"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="st">"Full name: "</span><span class="op">;</span></span>
-<span id="cb1-4"><a href=""></a>cin <span class="op">&gt;&gt;</span> fullName<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>If the user types <code>Maya Chen</code>, only <code>Maya</code> is stored.</p>
+<section id="consider" class="slide level2">
+<h2><span style="display:none">Consider</span></h2>
+
+<img data-src="images/source_pages/slide-06.png" style="width:100.0%" alt="Consider" class="r-stretch"><aside class="notes">
+<p>Source PDF page 6.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 6 -->
 </section>
-<section id="whitespace-output" class="slide level2">
-<h2>Whitespace Output</h2>
+<section id="advantages" class="slide level2">
+<h2><span style="display:none">Advantages</span></h2>
 
+<img data-src="images/source_pages/slide-07.png" style="width:100.0%" alt="Advantages" class="r-stretch"><aside class="notes">
+<p>Source PDF page 7.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 7 -->
-<img data-src="images/0301whitespace.png" class="r-stretch"></section>
-<section id="getline-reads-the-whole-line" class="slide level2">
-<h2>getline Reads the Whole Line</h2>
-<p><code>getline(cin, variable)</code> reads through the end of the line.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a>string fullName<span class="op">;</span></span>
-<span id="cb2-2"><a href=""></a></span>
-<span id="cb2-3"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="st">"Full name: "</span><span class="op">;</span></span>
-<span id="cb2-4"><a href=""></a>getline<span class="op">(</span>cin<span class="op">,</span> fullName<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Use <code>getline</code> when spaces are part of the input.</p>
+</section>
+<section id="advantages-1" class="slide level2">
+<h2><span style="display:none">Advantages</span></h2>
+
+<img data-src="images/source_pages/slide-08.png" style="width:100.0%" alt="Advantages" class="r-stretch"><aside class="notes">
+<p>Source PDF page 8.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 8 -->
 </section>
-<section id="cin-and-getline-conflict" class="slide level2">
-<h2>cin and getline Conflict</h2>
-<p><code>cin &gt;&gt;</code> often leaves the newline character behind.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a><span class="dt">int</span> age<span class="op">;</span></span>
-<span id="cb3-2"><a href=""></a>string name<span class="op">;</span></span>
-<span id="cb3-3"><a href=""></a></span>
-<span id="cb3-4"><a href=""></a>cin <span class="op">&gt;&gt;</span> age<span class="op">;</span></span>
-<span id="cb3-5"><a href=""></a>getline<span class="op">(</span>cin<span class="op">,</span> name<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The <code>getline</code> may read the leftover newline instead of waiting for a name.</p>
+<section id="objective-for-today" class="slide level2">
+<h2><span style="display:none">Objective for Today</span></h2>
+
+<img data-src="images/source_pages/slide-09.png" style="width:100.0%" alt="Objective for Today" class="r-stretch"><aside class="notes">
+<p>Source PDF page 9.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 9 -->
 </section>
-<section id="cin.ignore-clears-the-line" class="slide level2">
-<h2>cin.ignore Clears the Line</h2>
-<p>Use <code>cin.ignore()</code> after <code>cin &gt;&gt;</code> when the next read is <code>getline</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href=""></a><span class="dt">int</span> age<span class="op">;</span></span>
-<span id="cb4-2"><a href=""></a>string name<span class="op">;</span></span>
-<span id="cb4-3"><a href=""></a></span>
-<span id="cb4-4"><a href=""></a>cin <span class="op">&gt;&gt;</span> age<span class="op">;</span></span>
-<span id="cb4-5"><a href=""></a>cin<span class="op">.</span>ignore<span class="op">();</span></span>
-<span id="cb4-6"><a href=""></a>getline<span class="op">(</span>cin<span class="op">,</span> name<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The ignored newline is removed before the full-line read.</p>
+<section id="lightning-review" class="slide level2">
+<h2><span style="display:none">Lightning Review</span></h2>
+
+<img data-src="images/source_pages/slide-10.png" style="width:100.0%" alt="Lightning Review" class="r-stretch"><aside class="notes">
+<p>Source PDF page 10.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 10 -->
 </section>
-<section id="wrong-data-type" class="slide level2">
-<h2>Wrong Data Type</h2>
-<p>If the user types text when the program expects a number, extraction fails.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a><span class="dt">int</span> age<span class="op">;</span></span>
-<span id="cb5-2"><a href=""></a></span>
-<span id="cb5-3"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="st">"Age: "</span><span class="op">;</span></span>
-<span id="cb5-4"><a href=""></a>cin <span class="op">&gt;&gt;</span> age<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Typing <code>ten</code> does not produce an integer.</p>
+<section id="lightning-review-questions" class="slide level2">
+<h2><span style="display:none">Lightning Review Questions</span></h2>
+
+<img data-src="images/source_pages/slide-11.png" style="width:100.0%" alt="Lightning Review Questions" class="r-stretch"><aside class="notes">
+<p>Source PDF page 11.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 11 -->
 </section>
-<section id="mismatch-output" class="slide level2">
-<h2>Mismatch Output</h2>
+<section id="pointer-to-a-constant" class="slide level2">
+<h2><span style="display:none">Pointer to a Constant</span></h2>
 
+<img data-src="images/source_pages/slide-12.png" style="width:100.0%" alt="Pointer to a Constant" class="r-stretch"><aside class="notes">
+<p>Source PDF page 12.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 12 -->
-<img data-src="images/0301mismatch.png" class="r-stretch"></section>
-<section id="clearing-a-failed-read" class="slide level2">
-<h2>Clearing a Failed Read</h2>
-<p>After a failed read, clear the failure and remove the bad input.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href=""></a>cin<span class="op">.</span>clear<span class="op">();</span></span>
-<span id="cb6-2"><a href=""></a>cin<span class="op">.</span>ignore<span class="op">(</span><span class="dv">1000</span><span class="op">,</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>clear</code> resets the stream state; <code>ignore</code> discards the leftover characters.</p>
+</section>
+<section id="sending-a-pointer-variable" class="slide level2">
+<h2><span style="display:none">Sending a Pointer Variable</span></h2>
+
+<img data-src="images/source_pages/slide-13.png" style="width:100.0%" alt="Sending a Pointer Variable" class="r-stretch"><aside class="notes">
+<p>Source PDF page 13.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 13 -->
 </section>
-<section id="common-practices" class="slide level2">
-<h2>Common Practices</h2>
-<ul>
-<li>Use <code>cin &gt;&gt;</code> for one-word or one-number input.</li>
-<li>Use <code>getline</code> when spaces are meaningful.</li>
-<li>After failed numeric input, clear the stream before reading again.</li>
-</ul>
+<section id="returning-a-pointer-variable" class="slide level2">
+<h2><span style="display:none">Returning a Pointer Variable</span></h2>
+
+<img data-src="images/source_pages/slide-14.png" style="width:100.0%" alt="Returning a Pointer Variable" class="r-stretch"><aside class="notes">
+<p>Source PDF page 14.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 14 -->
-</section>
-<section id="summary" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>Whitespace is a separator for <code>cin &gt;&gt;</code>.</li>
-<li>Wrong data types put <code>cin</code> into a failed state.</li>
-<li>Good input handling means knowing what remains in the input stream.</li>
-</ul>
-<!-- Slide 15 -->
-<!-- Topic 2: Dates and Random Numbers -->
-<!-- Slides 16-30 -->
+<!-- Topic: Desk Check -->
+<!-- Slides 15–19 -->
 </section></section>
 <section>
-<section id="dates-and-random-numbers" class="title-slide slide level1 center">
-<h1>Dates and Random Numbers</h1>
+<section id="desk-check" class="title-slide slide level1 center">
+<h1><span style="display:none">Desk Check</span></h1>
+
+</section>
+<section id="desk-check-1" class="slide level2">
+<h2><span style="display:none">Desk Check</span></h2>
+
+<img data-src="images/source_pages/slide-15.png" style="width:100.0%" alt="Desk Check" class="r-stretch"><aside class="notes">
+<p>Slides 15–19</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 15 -->
+</section>
+<section id="exercise-goals" class="slide level2">
+<h2><span style="display:none">Exercise Goals</span></h2>
+
+<img data-src="images/source_pages/slide-16.png" style="width:100.0%" alt="Exercise Goals" class="r-stretch"><aside class="notes">
+<p>Source PDF page 16.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 16 -->
 </section>
-<section id="programs-need-changing-values" class="slide level2 smaller">
-<h2>Programs Need Changing Values</h2>
-<ul>
-<li>Some programs need values that change while the program runs.</li>
-<li>Date/time values and random numbers let programs respond to the current moment.</li>
-</ul>
-<aside class="notes">
-<p>Slides 16-30</p>
+<section id="desk-check-exercise" class="slide level2">
+<h2><span style="display:none">Desk Check Exercise</span></h2>
+
+<img data-src="images/source_pages/slide-17.png" style="width:100.0%" alt="Desk Check Exercise" class="r-stretch"><aside class="notes">
+<p>Source PDF page 17.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -410,53 +489,54 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 17 -->
 </section>
-<section id="date-and-time" class="slide level2">
-<h2>Date and Time</h2>
-<p>Date and time functions let a program ask the computer for the current moment.</p>
-<p>This is useful for timestamps, elapsed time, and seeding random numbers.</p>
+<section id="section" class="slide level2">
+<h2><span style="display:none"><desk check="" output=""></desk></span></h2>
+
+<img data-src="images/source_pages/slide-18.png" style="width:100.0%" alt="<Desk Check Output>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 18.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 18 -->
 </section>
-<section id="getting-the-current-time" class="slide level2">
-<h2>Getting the Current Time</h2>
-<p><code>time(0)</code> returns the current time as a numeric timestamp.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb7-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;ctime&gt;</span><span class="pp">        </span><span class="co">// library for time</span></span>
-<span id="cb7-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb7-4"><a href=""></a></span>
-<span id="cb7-5"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb7-6"><a href=""></a>    <span class="dt">time_t</span> now <span class="op">=</span> time<span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
-<span id="cb7-7"><a href=""></a>    cout <span class="op">&lt;&lt;</span> now <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb7-8"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb7-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Example output:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a href=""></a>1780612200</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="section-1" class="slide level2">
+<h2><span style="display:none"><desk check="" output=""></desk></span></h2>
+
+<img data-src="images/source_pages/slide-19.png" style="width:100.0%" alt="<Desk Check Output>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 19.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 19 -->
+<!-- Topic: Dynamic Memory Allocation -->
+<!-- Slides 20–31 -->
+</section></section>
+<section>
+<section id="dynamic-memory-allocation" class="title-slide slide level1 center">
+<h1><span style="display:none">Dynamic Memory Allocation</span></h1>
+
 </section>
-<section id="date-illustration" class="slide level2">
-<h2>Date Illustration</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb9-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;ctime&gt;</span></span>
-<span id="cb9-3"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iomanip&gt;</span></span>
-<span id="cb9-4"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb9-5"><a href=""></a></span>
-<span id="cb9-6"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb9-7"><a href=""></a>    <span class="dt">time_t</span> now <span class="op">=</span> time<span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
-<span id="cb9-8"><a href=""></a>    tm<span class="op">*</span> date <span class="op">=</span> localtime<span class="op">(&amp;</span>now<span class="op">);</span></span>
-<span id="cb9-9"><a href=""></a></span>
-<span id="cb9-10"><a href=""></a>    <span class="dt">int</span> month <span class="op">=</span> date<span class="op">-&gt;</span>tm_mon <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb9-11"><a href=""></a>    <span class="dt">int</span> day <span class="op">=</span> date<span class="op">-&gt;</span>tm_mday<span class="op">;</span></span>
-<span id="cb9-12"><a href=""></a>    <span class="dt">int</span> year <span class="op">=</span> <span class="op">(</span>date<span class="op">-&gt;</span>tm_year <span class="op">+</span> <span class="dv">1900</span><span class="op">)</span> <span class="op">%</span> <span class="dv">100</span><span class="op">;</span></span>
-<span id="cb9-13"><a href=""></a></span>
-<span id="cb9-14"><a href=""></a>    cout <span class="op">&lt;&lt;</span> setfill<span class="op">(</span><span class="ch">'0'</span><span class="op">);</span></span>
-<span id="cb9-15"><a href=""></a>    cout <span class="op">&lt;&lt;</span> setw<span class="op">(</span><span class="dv">2</span><span class="op">)</span> <span class="op">&lt;&lt;</span> month <span class="op">&lt;&lt;</span> <span class="st">"/"</span><span class="op">;</span></span>
-<span id="cb9-16"><a href=""></a>    cout <span class="op">&lt;&lt;</span> setw<span class="op">(</span><span class="dv">2</span><span class="op">)</span> <span class="op">&lt;&lt;</span> day <span class="op">&lt;&lt;</span> <span class="st">"/"</span><span class="op">;</span></span>
-<span id="cb9-17"><a href=""></a>    cout <span class="op">&lt;&lt;</span> setw<span class="op">(</span><span class="dv">2</span><span class="op">)</span> <span class="op">&lt;&lt;</span> year <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb9-18"><a href=""></a></span>
-<span id="cb9-19"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb9-20"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a href=""></a>06/11/26</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<aside class="notes">
-<p>[Graphic suggestion: a calendar label connected to a numeric timestamp, then to a program output line.]</p>
+<section id="dynamic-memory-allocation-1" class="slide level2">
+<h2><span style="display:none">10.9 Dynamic Memory Allocation</span></h2>
+
+<img data-src="images/source_pages/slide-20.png" style="width:100.0%" alt="10.9 Dynamic Memory Allocation" class="r-stretch"><aside class="notes">
+<p>Slides 20–31</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -470,176 +550,216 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 20 -->
 </section>
-<section id="time-variables" class="slide level2">
-<h2>Time Variables</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Member</th>
-<th>Type</th>
-<th>Meaning</th>
-<th>Range</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>tm_sec</code></td>
-<td><code>int</code></td>
-<td>seconds after the minute</td>
-<td>0-60*</td>
-</tr>
-<tr class="even">
-<td><code>tm_min</code></td>
-<td><code>int</code></td>
-<td>minutes after the hour</td>
-<td>0-59</td>
-</tr>
-<tr class="odd">
-<td><code>tm_hour</code></td>
-<td><code>int</code></td>
-<td>hours since midnight</td>
-<td>0-23</td>
-</tr>
-<tr class="even">
-<td><code>tm_mday</code></td>
-<td><code>int</code></td>
-<td>day of the month</td>
-<td>1-31</td>
-</tr>
-<tr class="odd">
-<td><code>tm_mon</code></td>
-<td><code>int</code></td>
-<td>months since January</td>
-<td>0-11</td>
-</tr>
-<tr class="even">
-<td><code>tm_year</code></td>
-<td><code>int</code></td>
-<td>years since 1900</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><code>tm_wday</code></td>
-<td><code>int</code></td>
-<td>days since Sunday</td>
-<td>0-6</td>
-</tr>
-<tr class="even">
-<td><code>tm_yday</code></td>
-<td><code>int</code></td>
-<td>days since January 1</td>
-<td>0-365</td>
-</tr>
-<tr class="odd">
-<td><code>tm_isdst</code></td>
-<td><code>int</code></td>
-<td>Daylight Saving Time flag</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<section id="problem-with-arrays" class="slide level2">
+<h2><span style="display:none">Problem with Arrays</span></h2>
+
+<img data-src="images/source_pages/slide-21.png" style="width:100.0%" alt="Problem with Arrays" class="r-stretch"><aside class="notes">
+<p>Source PDF page 21.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 21 -->
 </section>
-<section id="time-as-a-number" class="slide level2">
-<h2>Time as a Number</h2>
-<p>The timestamp is useful even before we format it as a human-readable date.</p>
-<ul>
-<li>It changes every second.</li>
-<li>It can be stored in a variable.</li>
-<li>It can make random-number sequences start differently.</li>
-</ul>
+<section id="stack-size-limitation" class="slide level2">
+<h2><span style="display:none">Stack Size Limitation</span></h2>
+
+<img data-src="images/source_pages/slide-22.png" style="width:100.0%" alt="Stack Size Limitation" class="r-stretch"><aside class="notes">
+<p>Source PDF page 22.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 22 -->
 </section>
-<section id="random-numbers" class="slide level2">
-<h2>Random Numbers</h2>
-<p>Random numbers let a program choose from several possible values.</p>
-<p>They are useful for games, simulations, sampling, and practice programs.</p>
+<section id="access-to-the-heap" class="slide level2">
+<h2><span style="display:none">Access to the Heap</span></h2>
+
+<img data-src="images/source_pages/slide-23.png" style="width:100.0%" alt="Access to the Heap" class="r-stretch"><aside class="notes">
+<p>Source PDF page 23.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 23 -->
 </section>
-<section id="why-random-needs-a-seed" class="slide level2">
-<h2>Why Random Needs a Seed</h2>
-<p><code>rand()</code> follows a repeatable sequence.</p>
-<p>The seed chooses where that sequence starts.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href=""></a>srand<span class="op">(</span><span class="dv">5</span><span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The same seed produces the same sequence.</p>
+<section id="delete-and-delete" class="slide level2">
+<h2><span style="display:none">delete and delete[]</span></h2>
+
+<img data-src="images/source_pages/slide-24.png" style="width:100.0%" alt="delete and delete[]" class="r-stretch"><aside class="notes">
+<p>Source PDF page 24.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 24 -->
 </section>
-<section id="seeding-with-time" class="slide level2">
-<h2>Seeding with Time</h2>
-<p>Use the current time as a changing seed.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;cstdlib&gt;</span></span>
-<span id="cb12-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;ctime&gt;</span></span>
-<span id="cb12-3"><a href=""></a></span>
-<span id="cb12-4"><a href=""></a>srand<span class="op">(</span>time<span class="op">(</span><span class="dv">0</span><span class="op">));</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Seed once near the beginning of the program.</p>
+<section id="section-2" class="slide level2">
+<h2><span style="display:none"><heap allocation="" example=""></heap></span></h2>
+
+<img data-src="images/source_pages/slide-25.png" style="width:100.0%" alt="<Heap Allocation Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 25.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 25 -->
 </section>
-<section id="generating-a-random-number" class="slide level2">
-<h2>Generating a Random Number</h2>
-<p><code>rand()</code> returns a large integer.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href=""></a><span class="dt">int</span> raw <span class="op">=</span> rand<span class="op">();</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The raw value is usually too large for the program’s actual need.</p>
+<section id="section-3" class="slide level2">
+<h2><span style="display:none"><heap allocation="" example=""></heap></span></h2>
+
+<img data-src="images/source_pages/slide-26.png" style="width:100.0%" alt="<Heap Allocation Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 26.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 26 -->
 </section>
-<section id="limiting-the-range" class="slide level2">
-<h2>Limiting the Range</h2>
-<p>Use modulus to reduce the raw value to a smaller range.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href=""></a><span class="dt">int</span> roll <span class="op">=</span> rand<span class="op">()</span> <span class="op">%</span> <span class="dv">6</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This produces values from 1 through 6.</p>
+<section id="section-4" class="slide level2">
+<h2><span style="display:none"><heap allocation="" example=""></heap></span></h2>
+
+<img data-src="images/source_pages/slide-27.png" style="width:100.0%" alt="<Heap Allocation Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 27.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 27 -->
 </section>
-<section id="die-roll-example" class="slide level2">
-<h2>Die Roll Example</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb15-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;cstdlib&gt;</span></span>
-<span id="cb15-3"><a href=""></a><span class="pp">#include </span><span class="im">&lt;ctime&gt;</span></span>
-<span id="cb15-4"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb15-5"><a href=""></a></span>
-<span id="cb15-6"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb15-7"><a href=""></a>    srand<span class="op">(</span>time<span class="op">(</span><span class="dv">0</span><span class="op">));</span></span>
-<span id="cb15-8"><a href=""></a></span>
-<span id="cb15-9"><a href=""></a>    <span class="dt">int</span> roll <span class="op">=</span> rand<span class="op">()</span> <span class="op">%</span> <span class="dv">6</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb15-10"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Roll: "</span> <span class="op">&lt;&lt;</span> roll <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb15-11"><a href=""></a></span>
-<span id="cb15-12"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb15-13"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Example output:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb16-1"><a href=""></a>Roll: 4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="section-5" class="slide level2">
+<h2><span style="display:none"><heap allocation="" example=""></heap></span></h2>
+
+<img data-src="images/source_pages/slide-28.png" style="width:100.0%" alt="<Heap Allocation Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 28.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 28 -->
 </section>
-<section id="common-practices-1" class="slide level2">
-<h2>Common Practices</h2>
-<ul>
-<li>Seed once, before calling <code>rand</code>.</li>
-<li>Use a range formula that matches the values you want.</li>
-<li>Use random numbers only when unpredictability helps the program.</li>
-</ul>
+<section id="stack-variables-and-pointer-access" class="slide level2">
+<h2><span style="display:none">Stack Variables and Pointer Access</span></h2>
+
+<img data-src="images/source_pages/slide-29.png" style="width:100.0%" alt="Stack Variables and Pointer Access" class="r-stretch"><aside class="notes">
+<p>Source PDF page 29.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 29 -->
 </section>
-<section id="summary-1" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>Time gives a changing value from the system.</li>
-<li>A seed controls where the random sequence begins.</li>
-<li>A range formula turns raw random numbers into useful program values.</li>
-</ul>
+<section id="heap-variables-and-pointer-access" class="slide level2">
+<h2><span style="display:none">Heap Variables and Pointer Access</span></h2>
+
+<img data-src="images/source_pages/slide-30.png" style="width:100.0%" alt="Heap Variables and Pointer Access" class="r-stretch"><aside class="notes">
+<p>Source PDF page 30.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 30 -->
-<!-- Topic 3: IPO Models -->
-<!-- Slides 31-44 -->
+</section>
+<section id="advantages-of-heap-variables" class="slide level2">
+<h2><span style="display:none">Advantages of Heap Variables</span></h2>
+
+<img data-src="images/source_pages/slide-31.png" style="width:100.0%" alt="Advantages of Heap Variables" class="r-stretch"><aside class="notes">
+<p>Source PDF page 31.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 31 -->
+<!-- Topic: Pseudo-Dynamic Arrays -->
+<!-- Slides 32–42 -->
 </section></section>
 <section>
-<section id="ipo-models" class="title-slide slide level1 center">
-<h1>IPO Models</h1>
-<!-- Slide 31 -->
+<section id="pseudo-dynamic-arrays" class="title-slide slide level1 center">
+<h1><span style="display:none">Pseudo-Dynamic Arrays</span></h1>
+
 </section>
-<section id="before-code-name-the-shape" class="slide level2 smaller">
-<h2>Before Code, Name the Shape</h2>
-<ul>
-<li>How can we plan a program before writing statements?</li>
-<li>IPO separates a problem into inputs, processing, and outputs.</li>
-</ul>
-<aside class="notes">
-<p>Slides 31-44</p>
+<section id="but-is-this-enough" class="slide level2">
+<h2><span style="display:none">But Is This Enough?</span></h2>
+
+<img data-src="images/source_pages/slide-32.png" style="width:100.0%" alt="But Is This Enough?" class="r-stretch"><aside class="notes">
+<p>Slides 32–42</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -653,159 +773,252 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 32 -->
 </section>
-<section id="what-is-an-ipo-model" class="slide level2">
-<h2>What Is an IPO Model?</h2>
-<p>An IPO model names the three major parts of a program.</p>
-<ul>
-<li><strong>Input:</strong> data the program receives.</li>
-<li><strong>Processing:</strong> work the program does.</li>
-<li><strong>Output:</strong> result the program produces.</li>
-</ul>
+<section id="pseudo-dynamic-arrays-1" class="slide level2">
+<h2><span style="display:none">Pseudo-Dynamic Arrays</span></h2>
+
+<img data-src="images/source_pages/slide-33.png" style="width:100.0%" alt="Pseudo-Dynamic Arrays" class="r-stretch"><aside class="notes">
+<p>Source PDF page 33.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 33 -->
 </section>
-<section id="input" class="slide level2">
-<h2>Input</h2>
-<p>Inputs are the values the program needs before it can do useful work.</p>
-<p>They may come from the user, a file, a constant, or a system function.</p>
+<section id="section-6" class="slide level2">
+<h2><span style="display:none"><pseudo-dynamic array="" example=""></pseudo-dynamic></span></h2>
+
+<img data-src="images/source_pages/slide-34.png" style="width:100.0%" alt="<Pseudo-Dynamic Array Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 34.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 34 -->
 </section>
-<section id="processing" class="slide level2">
-<h2>Processing</h2>
-<p>Processing is the calculation, decision, or transformation applied to the input.</p>
-<p>This is where the program changes data into a useful result.</p>
+<section id="a-step-closer" class="slide level2">
+<h2><span style="display:none">A Step Closer</span></h2>
+
+<img data-src="images/source_pages/slide-35.png" style="width:100.0%" alt="A Step Closer" class="r-stretch"><aside class="notes">
+<p>Source PDF page 35.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 35 -->
 </section>
-<section id="output" class="slide level2">
-<h2>Output</h2>
-<p>Outputs are the values, messages, or reports the program produces.</p>
-<p>Good outputs answer the problem the program was written to solve.</p>
+<section id="algorithm-to-create-pseudo-dynamic-arrays" class="slide level2">
+<h2><span style="display:none">Algorithm to Create Pseudo-Dynamic Arrays</span></h2>
+
+<img data-src="images/source_pages/slide-36.png" style="width:100.0%" alt="Algorithm to Create Pseudo-Dynamic Arrays" class="r-stretch"><aside class="notes">
+<p>Source PDF page 36.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 36 -->
 </section>
-<section id="a-small-ipo-table" class="slide level2">
-<h2>A Small IPO Table</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Input</th>
-<th>Processing</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>quantity, price</td>
-<td>total = quantity * price</td>
-<td>total price</td>
-</tr>
-</tbody>
-</table>
-<p>The table turns a word problem into a program plan.</p>
+<section id="build-a-real-dynamic-array" class="slide level2">
+<h2><span style="display:none">Build a Real Dynamic Array</span></h2>
+
+<img data-src="images/source_pages/slide-37.png" style="width:100.0%" alt="Build a Real Dynamic Array" class="r-stretch"><aside class="notes">
+<p>Source PDF page 37.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 37 -->
 </section>
-<section id="from-ipo-to-variables" class="slide level2">
-<h2>From IPO to Variables</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href=""></a><span class="dt">int</span> quantity<span class="op">;</span></span>
-<span id="cb17-2"><a href=""></a><span class="dt">double</span> price<span class="op">;</span></span>
-<span id="cb17-3"><a href=""></a><span class="dt">double</span> total<span class="op">;</span></span>
-<span id="cb17-4"><a href=""></a></span>
-<span id="cb17-5"><a href=""></a>total <span class="op">=</span> quantity <span class="op">*</span> price<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Inputs often become variables; processing becomes statements; output becomes <code>cout</code>.</p>
+<section id="desk-check-2" class="slide level2">
+<h2><span style="display:none">Desk Check</span></h2>
+
+<img data-src="images/source_pages/slide-38.png" style="width:100.0%" alt="Desk Check" class="r-stretch"><aside class="notes">
+<p>Source PDF page 38.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 38 -->
 </section>
-<section id="common-practices-2" class="slide level2">
-<h2>Common Practices</h2>
-<ul>
-<li>Identify the output first.</li>
-<li>Work backward to the required inputs.</li>
-<li>Name the processing step as a verb or formula.</li>
-</ul>
+<section id="exercise-goals-1" class="slide level2">
+<h2><span style="display:none">Exercise Goals</span></h2>
+
+<img data-src="images/source_pages/slide-39.png" style="width:100.0%" alt="Exercise Goals" class="r-stretch"><aside class="notes">
+<p>Source PDF page 39.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 39 -->
 </section>
-<section id="date-and-time-ipo" class="slide level2">
-<h2>Date and Time IPO</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Input</th>
-<th>Processing</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>current system time</td>
-<td>store timestamp</td>
-<td>printed timestamp</td>
-</tr>
-</tbody>
-</table>
-<p>The program does not ask the user for the time; it asks the system.</p>
+<section id="desk-check-exercise-1" class="slide level2">
+<h2><span style="display:none">Desk Check Exercise</span></h2>
+
+<img data-src="images/source_pages/slide-40.png" style="width:100.0%" alt="Desk Check Exercise" class="r-stretch"><aside class="notes">
+<p>Source PDF page 40.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 40 -->
 </section>
-<section id="date-and-time-variables" class="slide level2">
-<h2>Date and Time Variables</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href=""></a><span class="dt">time_t</span> now<span class="op">;</span>   <span class="co">// a time type variable</span></span>
-<span id="cb18-2"><a href=""></a></span>
-<span id="cb18-3"><a href=""></a>now <span class="op">=</span> time<span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
-<span id="cb18-4"><a href=""></a>cout <span class="op">&lt;&lt;</span> now <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The input comes from <code>time(0)</code>, the variable stores it, and <code>cout</code> displays it.</p>
+<section id="section-7" class="slide level2">
+<h2><span style="display:none"><desk check="" output=""></desk></span></h2>
+
+<img data-src="images/source_pages/slide-41.png" style="width:100.0%" alt="<Desk Check Output>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 41.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 41 -->
 </section>
-<section id="random-number-ipo" class="slide level2">
-<h2>Random Number IPO</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Input</th>
-<th>Processing</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>seed, raw random value</td>
-<td>raw % 6 + 1</td>
-<td>die roll</td>
-</tr>
-</tbody>
-</table>
-<p>The processing step turns a large raw value into the range the program needs.</p>
+<section id="section-8" class="slide level2">
+<h2><span style="display:none"><desk check="" output=""></desk></span></h2>
+
+<img data-src="images/source_pages/slide-42.png" style="width:100.0%" alt="<Desk Check Output>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 42.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 42 -->
-</section>
-<section id="random-number-variables" class="slide level2">
-<h2>Random Number Variables</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href=""></a><span class="dt">int</span> raw<span class="op">;</span></span>
-<span id="cb19-2"><a href=""></a><span class="dt">int</span> roll<span class="op">;</span></span>
-<span id="cb19-3"><a href=""></a></span>
-<span id="cb19-4"><a href=""></a>raw <span class="op">=</span> rand<span class="op">();</span></span>
-<span id="cb19-5"><a href=""></a>roll <span class="op">=</span> raw <span class="op">%</span> <span class="dv">6</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Separating <code>raw</code> and <code>roll</code> makes the design easier to trace.</p>
-<!-- Slide 43 -->
-</section>
-<section id="summary-2" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>IPO identifies what comes in, what happens, and what comes out.</li>
-<li>The model helps choose variables before coding.</li>
-<li>A clear IPO plan makes code easier to write and test.</li>
-</ul>
-<!-- Slide 44 -->
-<!-- Topic 4: Execution Trace Models -->
-<!-- Slides 45-56 -->
+<!-- Topic: Real Dynamic Arrays -->
+<!-- Slides 43–52 -->
 </section></section>
 <section>
-<section id="execution-trace-models" class="title-slide slide level1 center">
-<h1>Execution Trace Models</h1>
+<section id="real-dynamic-arrays" class="title-slide slide level1 center">
+<h1><span style="display:none">Real Dynamic Arrays</span></h1>
+
+</section>
+<section id="how-do-we-create-a-real-dynamic-array" class="slide level2">
+<h2><span style="display:none">How Do We Create a Real Dynamic Array?</span></h2>
+
+<img data-src="images/source_pages/slide-43.png" style="width:100.0%" alt="How Do We Create a Real Dynamic Array?" class="r-stretch"><aside class="notes">
+<p>Slides 43–52</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 43 -->
+</section>
+<section id="section-9" class="slide level2">
+<h2><span style="display:none"><dynamic array="" example=""></dynamic></span></h2>
+
+<img data-src="images/source_pages/slide-44.png" style="width:100.0%" alt="<Dynamic Array Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 44.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 44 -->
+</section>
+<section id="section-10" class="slide level2">
+<h2><span style="display:none"><dynamic array="" example=""></dynamic></span></h2>
+
+<img data-src="images/source_pages/slide-45.png" style="width:100.0%" alt="<Dynamic Array Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 45.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 45 -->
 </section>
-<section id="follow-the-program-one-line-at-a-time" class="slide level2 smaller">
-<h2>Follow the Program, One Line at a Time</h2>
-<ul>
-<li>How do we predict what code will do before running it?</li>
-<li>An execution trace records statements, variables, and output in order.</li>
-</ul>
-<aside class="notes">
-<p>Slides 45-56</p>
+<section id="the-big-idea" class="slide level2">
+<h2><span style="display:none">The Big Idea</span></h2>
+
+<img data-src="images/source_pages/slide-46.png" style="width:100.0%" alt="The Big Idea" class="r-stretch"><aside class="notes">
+<p>Source PDF page 46.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -819,209 +1032,223 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 46 -->
 </section>
-<section id="what-is-an-execution-trace" class="slide level2">
-<h2>What Is an Execution Trace?</h2>
-<p>An execution trace is a table or notes showing program state after each statement runs.</p>
-<p>It slows the program down enough for humans to inspect it.</p>
+<section id="algorithm-for-a-dynamic-array" class="slide level2">
+<h2><span style="display:none">Algorithm for a Dynamic Array</span></h2>
+
+<img data-src="images/source_pages/slide-47.png" style="width:100.0%" alt="Algorithm for a Dynamic Array" class="r-stretch"><aside class="notes">
+<p>Source PDF page 47.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 47 -->
 </section>
-<section id="trace-columns" class="slide level2">
-<h2>Trace Columns</h2>
-<p>Useful trace columns include:</p>
-<ul>
-<li>line number</li>
-<li>statement</li>
-<li>variable values</li>
-<li>output</li>
-</ul>
-<p>Only update the values that change on that line.</p>
+<section id="algorithm-for-increasing-a-dynamic-array" class="slide level2">
+<h2><span style="display:none">Algorithm for Increasing a Dynamic Array</span></h2>
+
+<img data-src="images/source_pages/slide-48.png" style="width:100.0%" alt="Algorithm for Increasing a Dynamic Array" class="r-stretch"><aside class="notes">
+<p>Source PDF page 48.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 48 -->
 </section>
-<section id="simple-assignment-trace" class="slide level2">
-<h2>Simple Assignment Trace</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href=""></a><span class="dt">int</span> a <span class="op">=</span> <span class="dv">4</span><span class="op">;</span></span>
-<span id="cb20-2"><a href=""></a><span class="dt">int</span> b <span class="op">=</span> <span class="dv">6</span><span class="op">;</span></span>
-<span id="cb20-3"><a href=""></a><span class="dt">int</span> total <span class="op">=</span> a <span class="op">+</span> b<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Line</th>
-<th style="text-align: right;">a</th>
-<th style="text-align: right;">b</th>
-<th style="text-align: right;">total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;"></td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">10</td>
-</tr>
-</tbody>
-</table>
+<section id="section-11" class="slide level2">
+<h2><span style="display:none"><increase example=""></increase></span></h2>
+
+<img data-src="images/source_pages/slide-49.png" style="width:100.0%" alt="<Increase Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 49.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 49 -->
 </section>
-<section id="output-in-a-trace" class="slide level2">
-<h2>Output in a Trace</h2>
-<p>When <code>cout</code> runs, record exactly what appears.</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Statement</th>
-<th style="text-align: right;">total</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>cout &lt;&lt; total;</code></td>
-<td style="text-align: right;">10</td>
-<td><code>10</code></td>
-</tr>
-</tbody>
-</table>
-<p>Output is part of the program’s observable behavior.</p>
+<section id="algorithm-for-decreasing-a-dynamic-array" class="slide level2">
+<h2><span style="display:none">Algorithm for Decreasing a Dynamic Array</span></h2>
+
+<img data-src="images/source_pages/slide-50.png" style="width:100.0%" alt="Algorithm for Decreasing a Dynamic Array" class="r-stretch"><aside class="notes">
+<p>Source PDF page 50.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 50 -->
 </section>
-<section id="input-in-a-trace" class="slide level2">
-<h2>Input in a Trace</h2>
-<p>When <code>cin</code> runs, choose an assumed user input and record the stored value.</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>User types</th>
-<th>Statement</th>
-<th style="text-align: right;">age</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>19</code></td>
-<td><code>cin &gt;&gt; age;</code></td>
-<td style="text-align: right;">19</td>
-</tr>
-</tbody>
-</table>
-<p>The trace depends on the input you assume.</p>
+<section id="section-12" class="slide level2">
+<h2><span style="display:none"><decrease example=""></decrease></span></h2>
+
+<img data-src="images/source_pages/slide-51.png" style="width:100.0%" alt="<Decrease Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 51.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 51 -->
 </section>
-<section id="trace-vs.-ipo" class="slide level2">
-<h2>Trace vs.&nbsp;IPO</h2>
-<ul>
-<li>IPO is a design model used before writing code.</li>
-<li>An execution trace is a reading model used after code exists.</li>
-<li>IPO asks “what should happen?”; tracing asks “what does happen?”</li>
-</ul>
+<section id="program-this" class="slide level2">
+<h2><span style="display:none">Program This</span></h2>
+
+<img data-src="images/source_pages/slide-52.png" style="width:100.0%" alt="Program This" class="r-stretch"><aside class="notes">
+<p>Source PDF page 52.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 52 -->
-</section>
-<section id="date-and-time-trace" class="slide level2">
-<h2>Date and Time Trace</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Statement</th>
-<th style="text-align: right;">now</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>now = time(0);</code></td>
-<td style="text-align: right;">1780594200</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><code>cout &lt;&lt; now;</code></td>
-<td style="text-align: right;">1780594200</td>
-<td><code>1780594200</code></td>
-</tr>
-</tbody>
-</table>
-<p>The exact timestamp changes, but the trace pattern stays the same.</p>
-<!-- Slide 53 -->
-</section>
-<section id="random-number-trace" class="slide level2">
-<h2>Random Number Trace</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Statement</th>
-<th style="text-align: right;">raw</th>
-<th style="text-align: right;">roll</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>raw = rand();</code></td>
-<td style="text-align: right;">41</td>
-<td style="text-align: right;"></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><code>roll = raw % 6 + 1;</code></td>
-<td style="text-align: right;">41</td>
-<td style="text-align: right;">6</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><code>cout &lt;&lt; roll;</code></td>
-<td style="text-align: right;">41</td>
-<td style="text-align: right;">6</td>
-<td><code>6</code></td>
-</tr>
-</tbody>
-</table>
-<p>Tracing separates the raw value from the final bounded value.</p>
-<!-- Slide 54 -->
-</section>
-<section id="common-practices-3" class="slide level2">
-<h2>Common Practices</h2>
-<ul>
-<li>Trace statements in execution order.</li>
-<li>Update only the values that change.</li>
-<li>Record output exactly.</li>
-<li>Do not skip lines that seem obvious.</li>
-</ul>
-<!-- Slide 55 -->
-</section>
-<section id="summary-3" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>Execution traces show how program state changes.</li>
-<li>They help catch mistaken assumptions before or after running code.</li>
-<li>A good trace makes invisible variable changes visible.</li>
-</ul>
-<!-- Slide 56 -->
-<!-- Topic 5: Terminal Charts and Graphs -->
-<!-- Slides 57-66 -->
+<!-- Topic: Programming Exercise -->
+<!-- Slides 53–54 -->
 </section></section>
 <section>
-<section id="terminal-charts-and-graphs" class="title-slide slide level1 center">
-<h1>Terminal Charts and Graphs</h1>
+<section id="programming-exercise" class="title-slide slide level1 center">
+<h1><span style="display:none">Programming Exercise</span></h1>
+
+</section>
+<section id="exercise-goals-2" class="slide level2">
+<h2><span style="display:none">Exercise Goals</span></h2>
+
+<img data-src="images/source_pages/slide-53.png" style="width:100.0%" alt="Exercise Goals" class="r-stretch"><aside class="notes">
+<p>Slides 53–54</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 53 -->
+</section>
+<section id="programming-exercise-1" class="slide level2">
+<h2><span style="display:none">Programming Exercise</span></h2>
+
+<img data-src="images/source_pages/slide-54.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"><aside class="notes">
+<p>Source PDF page 54.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 54 -->
+<!-- Topic: Lecture Wrap-Up -->
+<!-- Slides 55–65 -->
+</section></section>
+<section>
+<section id="lecture-wrap-up" class="title-slide slide level1 center">
+<h1><span style="display:none">Lecture Wrap-Up</span></h1>
+
+</section>
+<section id="whats-this-section-about" class="slide level2">
+<h2><span style="display:none">What’s This Section About?</span></h2>
+
+<img data-src="images/source_pages/slide-55.png" style="width:100.0%" alt="What's This Section About?" class="r-stretch"><aside class="notes">
+<p>Slides 55–65</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 55 -->
+</section>
+<section id="agenda-2" class="slide level2">
+<h2><span style="display:none">Agenda</span></h2>
+
+<img data-src="images/source_pages/slide-56.png" style="width:100.0%" alt="Agenda" class="r-stretch"><aside class="notes">
+<p>Source PDF page 56.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 56 -->
+</section>
+<section id="big-idea-1" class="slide level2">
+<h2><span style="display:none">Big Idea</span></h2>
+
+<img data-src="images/source_pages/slide-57.png" style="width:100.0%" alt="Big Idea" class="r-stretch"><aside class="notes">
+<p>Source PDF page 57.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 57 -->
 </section>
-<section id="when-output-becomes-a-display" class="slide level2 smaller">
-<h2>When Output Becomes a Display</h2>
-<ul>
-<li>How can plain terminal output become something easier to scan?</li>
-<li>Terminal charts use labels, spacing, and repeated characters to show simple data.</li>
-</ul>
-<aside class="notes">
-<p>Slides 57-66</p>
+<section id="direct-memory-access-1" class="slide level2">
+<h2><span style="display:none">Direct Memory Access</span></h2>
+
+<img data-src="images/source_pages/slide-58.png" style="width:100.0%" alt="Direct Memory Access" class="r-stretch"><aside class="notes">
+<p>Source PDF page 58.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1035,411 +1262,325 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 58 -->
 </section>
-<section id="chart-as-design-problem" class="slide level2">
-<h2>Chart as Design Problem</h2>
-<p>An output display still starts with IPO.</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Input</th>
-<th>Processing</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>labels, values</td>
-<td>choose scale and spacing</td>
-<td>chart or table</td>
-</tr>
-</tbody>
-</table>
-<p>The chart is planned before it is printed.</p>
+<section id="consider-1" class="slide level2">
+<h2><span style="display:none">Consider</span></h2>
+
+<img data-src="images/source_pages/slide-59.png" style="width:100.0%" alt="Consider" class="r-stretch"><aside class="notes">
+<p>Source PDF page 59.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 59 -->
 </section>
-<section id="bar-charts-with-characters" class="slide level2">
-<h2>Bar Charts With Characters</h2>
-<p>A terminal bar chart uses repeated characters to represent quantity.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb21-1"><a href=""></a>Apples  #####</span>
-<span id="cb21-2"><a href=""></a>Oranges ###</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The longer bar represents the larger value.</p>
+<section id="advantages-2" class="slide level2">
+<h2><span style="display:none">Advantages</span></h2>
+
+<img data-src="images/source_pages/slide-60.png" style="width:100.0%" alt="Advantages" class="r-stretch"><aside class="notes">
+<p>Source PDF page 60.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 60 -->
 </section>
-<section id="one-bar-by-hand" class="slide level2">
-<h2>One Bar by Hand</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb22-1"><a href=""></a>cout <span class="op">&lt;&lt;</span> left <span class="op">&lt;&lt;</span> setw<span class="op">(</span><span class="dv">10</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">"Apples"</span></span>
-<span id="cb22-2"><a href=""></a>     <span class="op">&lt;&lt;</span> <span class="st">"#####"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Start with one correct row before building a larger display.</p>
+<section id="advantages-3" class="slide level2">
+<h2><span style="display:none">Advantages</span></h2>
+
+<img data-src="images/source_pages/slide-61.png" style="width:100.0%" alt="Advantages" class="r-stretch"><aside class="notes">
+<p>Source PDF page 61.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 61 -->
 </section>
-<section id="several-bars-by-repetition" class="slide level2">
-<h2>Several Bars by Repetition</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb23-1"><a href=""></a>cout <span class="op">&lt;&lt;</span> left <span class="op">&lt;&lt;</span> setw<span class="op">(</span><span class="dv">10</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">"Apples"</span>  <span class="op">&lt;&lt;</span> <span class="st">"#####"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb23-2"><a href=""></a>cout <span class="op">&lt;&lt;</span> left <span class="op">&lt;&lt;</span> setw<span class="op">(</span><span class="dv">10</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">"Oranges"</span> <span class="op">&lt;&lt;</span> <span class="st">"###"</span>   <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb23-3"><a href=""></a>cout <span class="op">&lt;&lt;</span> left <span class="op">&lt;&lt;</span> setw<span class="op">(</span><span class="dv">10</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">"Pears"</span>   <span class="op">&lt;&lt;</span> <span class="st">"####"</span>  <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Each row follows the same output pattern.</p>
+<section id="objective-for-today-1" class="slide level2">
+<h2><span style="display:none">Objective for Today</span></h2>
+
+<img data-src="images/source_pages/slide-62.png" style="width:100.0%" alt="Objective for Today" class="r-stretch"><aside class="notes">
+<p>Source PDF page 62.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 62 -->
 </section>
-<section id="tables-as-charts" class="slide level2">
-<h2>Tables as Charts</h2>
-<p>Tables are charts when their layout helps the reader compare values.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb24-1"><a href=""></a>Item        Qty</span>
-<span id="cb24-2"><a href=""></a>Apples        5</span>
-<span id="cb24-3"><a href=""></a>Oranges       3</span>
-<span id="cb24-4"><a href=""></a>Pears         4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Alignment turns separate lines into one display.</p>
+<section id="section-13" class="slide level2">
+<h2><span style="display:none"><review slide=""></review></span></h2>
+
+<img data-src="images/source_pages/slide-63.png" style="width:100.0%" alt="<Review Slide>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 63.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 63 -->
 </section>
-<section id="a-small-sales-display" class="slide level2">
-<h2>A Small Sales Display</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb25-1"><a href=""></a>Sales Display</span>
-<span id="cb25-2"><a href=""></a>Item        Qty  Bar</span>
-<span id="cb25-3"><a href=""></a>Apples        5  #####</span>
-<span id="cb25-4"><a href=""></a>Oranges       3  ###</span>
-<span id="cb25-5"><a href=""></a>Pears         4  ####</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The table gives exact values; the bars make comparison fast.</p>
+<section id="agenda-3" class="slide level2">
+<h2><span style="display:none">Agenda</span></h2>
+
+<img data-src="images/source_pages/slide-64.png" style="width:100.0%" alt="Agenda" class="r-stretch"><aside class="notes">
+<p>Source PDF page 64.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 64 -->
 </section>
-<section id="common-practices-4" class="slide level2">
-<h2>Common Practices</h2>
-<ul>
-<li>Keep labels aligned.</li>
-<li>Choose a simple scale.</li>
-<li>Use the same row pattern throughout the display.</li>
-<li>Make the chart readable before making it clever.</li>
-</ul>
+<section id="homework-1-peer-review-due-sunday" class="slide level2">
+<h2><span style="display:none">Homework 1 Peer Review Due Sunday</span></h2>
+
+<img data-src="images/source_pages/slide-65.png" style="width:100.0%" alt="Homework 1 Peer Review Due Sunday" class="r-stretch"><aside class="notes">
+<p>Source PDF page 65.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 65 -->
+<!-- Topic: Desk Check -->
+<!-- Slides 66–71 -->
+</section></section>
+<section>
+<section id="desk-check-3" class="title-slide slide level1 center">
+<h1><span style="display:none">Desk Check</span></h1>
+
 </section>
-<section id="summary-4" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>Terminal charts are planned output.</li>
-<li>Labels, spacing, and repeated symbols carry the meaning.</li>
-<li>A good display makes the important comparison visible.</li>
-</ul>
+<section id="no-class-next-week" class="slide level2">
+<h2><span style="display:none">No Class Next Week</span></h2>
+
+<img data-src="images/source_pages/slide-66.png" style="width:100.0%" alt="No Class Next Week" class="r-stretch"><aside class="notes">
+<p>Slides 66–71</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 66 -->
 </section>
-<section class="slide level2">
+<section id="desk-check-4" class="slide level2">
+<h2><span style="display:none">Desk Check</span></h2>
 
-</section></section>
-<section>
-<section id="key-takeaways" class="title-slide slide level1 center">
-<h1>Key Takeaways</h1>
-<ul>
-<li><code>cin &gt;&gt;</code> stops at whitespace; <code>getline</code> reads a whole line.</li>
-<li>Failed numeric input must be cleared before the stream can be used again.</li>
-<li>Time can provide a changing value, and random numbers need a seed and range formula.</li>
-<li>IPO models plan a program before code; execution traces inspect code after it exists.</li>
-<li>Terminal charts are structured output designed for quick comparison.</li>
-</ul>
+<img data-src="images/source_pages/slide-67.png" style="width:100.0%" alt="Desk Check" class="r-stretch"><aside class="notes">
+<p>Source PDF page 67.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 67 -->
 </section>
-<section class="slide level2">
+<section id="exercise-goals-3" class="slide level2">
+<h2><span style="display:none">Exercise Goals</span></h2>
 
-</section></section>
-<section>
-<section id="next-time" class="title-slide slide level1 center">
-<h1>Next Time</h1>
-<ul>
-<li>Functions</li>
-<li>Function calls and parameters</li>
-<li>Local variables in functions</li>
-</ul>
+<img data-src="images/source_pages/slide-68.png" style="width:100.0%" alt="Exercise Goals" class="r-stretch"><aside class="notes">
+<p>Source PDF page 68.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 68 -->
 </section>
-<section class="slide level2">
+<section id="desk-check-exercise-2" class="slide level2">
+<h2><span style="display:none">Desk Check Exercise</span></h2>
 
-</section></section>
-<section>
-<section id="appendix" class="title-slide slide level1 center">
-<h1>Appendix</h1>
+<img data-src="images/source_pages/slide-69.png" style="width:100.0%" alt="Desk Check Exercise" class="r-stretch"><aside class="notes">
+<p>Source PDF page 69.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 69 -->
 </section>
-<section id="advanced-cin-good-practices" class="slide level2">
-<h2>Advanced cin: Good Practices</h2>
-<ul>
-<li>Use <code>cin &gt;&gt;</code> for simple single-token values.</li>
-<li>Use <code>getline</code> when spaces are part of the input.</li>
-<li>Clear failed input before reading again.</li>
-</ul>
+<section id="section-14" class="slide level2">
+<h2><span style="display:none"><desk check="" output=""></desk></span></h2>
+
+<img data-src="images/source_pages/slide-70.png" style="width:100.0%" alt="<Desk Check Output>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 70.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 70 -->
 </section>
-<section id="advanced-cin-common-mistakes" class="slide level2">
-<h2>Advanced cin: Common Mistakes</h2>
-<ul>
-<li>Expecting <code>cin &gt;&gt;</code> to read a full name.</li>
-<li>Mixing <code>cin &gt;&gt;</code> and <code>getline</code> without handling the leftover newline.</li>
-<li>Trying another read after a failed numeric extraction without clearing the stream.</li>
-</ul>
+<section id="section-15" class="slide level2">
+<h2><span style="display:none"><desk check="" output=""></desk></span></h2>
+
+<img data-src="images/source_pages/slide-71.png" style="width:100.0%" alt="<Desk Check Output>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 71.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 71 -->
+<!-- Topic: Homework Peer Review -->
+<!-- Slides 72–75 -->
+</section></section>
+<section>
+<section id="homework-peer-review" class="title-slide slide level1 center">
+<h1><span style="display:none">Homework Peer Review</span></h1>
+
 </section>
-<section id="advanced-cin-more-examples" class="slide level2">
-<h2>Advanced cin: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb26-1"><a href=""></a>string city<span class="op">;</span></span>
-<span id="cb26-2"><a href=""></a><span class="dt">int</span> population<span class="op">;</span></span>
-<span id="cb26-3"><a href=""></a></span>
-<span id="cb26-4"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="st">"Population: "</span><span class="op">;</span></span>
-<span id="cb26-5"><a href=""></a>cin <span class="op">&gt;&gt;</span> population<span class="op">;</span></span>
-<span id="cb26-6"><a href=""></a>cin<span class="op">.</span>ignore<span class="op">(</span><span class="dv">1000</span><span class="op">,</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">);</span></span>
-<span id="cb26-7"><a href=""></a></span>
-<span id="cb26-8"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="st">"City name: "</span><span class="op">;</span></span>
-<span id="cb26-9"><a href=""></a>getline<span class="op">(</span>cin<span class="op">,</span> city<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="homework-1-peer-review" class="slide level2">
+<h2><span style="display:none">Homework 1 Peer Review</span></h2>
+
+<img data-src="images/source_pages/slide-72.png" style="width:100.0%" alt="Homework 1 Peer Review" class="r-stretch"><aside class="notes">
+<p>Slides 72–75</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 72 -->
 </section>
-<section id="advanced-cin-practice-problems" class="slide level2">
-<h2>Advanced cin: Practice Problems</h2>
-<ol type="1">
-<li>Read a user’s full name with <code>getline</code>.</li>
-<li>Read an age with <code>cin &gt;&gt;</code>, then read a full address with <code>getline</code>.</li>
-<li>Show what remains in the stream when a user types two words into a <code>cin &gt;&gt;</code> read.</li>
-</ol>
+<section id="homework-debrief" class="slide level2">
+<h2><span style="display:none">Homework Debrief</span></h2>
+
+<img data-src="images/source_pages/slide-73.png" style="width:100.0%" alt="Homework Debrief" class="r-stretch"><aside class="notes">
+<p>Source PDF page 73.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 73 -->
 </section>
-<section id="advanced-cin-ai-search-terms" class="slide level2">
-<h2>Advanced cin: AI Search Terms</h2>
-<ul>
-<li>“C++ getline after cin ignore”</li>
-<li>“C++ cin fail state clear ignore”</li>
-<li>“C++ cin whitespace extraction”</li>
-</ul>
+<section id="process" class="slide level2">
+<h2><span style="display:none">Process</span></h2>
+
+<img data-src="images/source_pages/slide-74.png" style="width:100.0%" alt="Process" class="r-stretch"><aside class="notes">
+<p>Source PDF page 74.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 74 -->
 </section>
-<section id="advanced-cin-questions-for-reflection" class="slide level2">
-<h2>Advanced cin: Questions for Reflection</h2>
-<ul>
-<li>Why does <code>cin &gt;&gt;</code> stop at spaces?</li>
-<li>Why does a failed read affect the next read?</li>
-<li>When is a full-line read the better design choice?</li>
-</ul>
+<section id="debrief" class="slide level2">
+<h2><span style="display:none">Debrief</span></h2>
+
+<img data-src="images/source_pages/slide-75.png" style="width:100.0%" alt="Debrief" class="r-stretch"><aside class="notes">
+<p>Source PDF page 75.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 75 -->
-</section>
-<section id="dates-and-random-numbers-good-practices" class="slide level2">
-<h2>Dates and Random Numbers: Good Practices</h2>
-<ul>
-<li>Seed the random-number generator once near the start of the program.</li>
-<li>Use clear variable names such as <code>raw</code>, <code>roll</code>, and <code>now</code>.</li>
-<li>Keep range formulas visible until the pattern is familiar.</li>
-</ul>
-<!-- Slide 76 -->
-</section>
-<section id="dates-and-random-numbers-common-mistakes" class="slide level2">
-<h2>Dates and Random Numbers: Common Mistakes</h2>
-<ul>
-<li>Calling <code>srand(time(0))</code> repeatedly before every random number.</li>
-<li>Forgetting the <code>+ 1</code> when the desired range starts at 1.</li>
-<li>Treating a timestamp as a formatted calendar date.</li>
-</ul>
-<!-- Slide 77 -->
-</section>
-<section id="dates-and-random-numbers-more-examples" class="slide level2">
-<h2>Dates and Random Numbers: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb27-1"><a href=""></a><span class="dt">int</span> card <span class="op">=</span> rand<span class="op">()</span> <span class="op">%</span> <span class="dv">13</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb27-2"><a href=""></a><span class="dt">int</span> coin <span class="op">=</span> rand<span class="op">()</span> <span class="op">%</span> <span class="dv">2</span><span class="op">;</span></span>
-<span id="cb27-3"><a href=""></a><span class="dt">int</span> percent <span class="op">=</span> rand<span class="op">()</span> <span class="op">%</span> <span class="dv">101</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 78 -->
-</section>
-<section id="dates-and-random-numbers-practice-problems" class="slide level2">
-<h2>Dates and Random Numbers: Practice Problems</h2>
-<ol type="1">
-<li>Generate a random number from 1 through 10.</li>
-<li>Generate a random number from 0 through 4.</li>
-<li>Print the current timestamp, then use it as a random seed.</li>
-</ol>
-<!-- Slide 79 -->
-</section>
-<section id="dates-and-random-numbers-ai-search-terms" class="slide level2">
-<h2>Dates and Random Numbers: AI Search Terms</h2>
-<ul>
-<li>“C++ time 0 timestamp”</li>
-<li>“C++ srand time rand beginner”</li>
-<li>“C++ rand modulo range”</li>
-</ul>
-<!-- Slide 80 -->
-</section>
-<section id="dates-and-random-numbers-questions-for-reflection" class="slide level2">
-<h2>Dates and Random Numbers: Questions for Reflection</h2>
-<ul>
-<li>Why does the same seed create the same random sequence?</li>
-<li>Why is a raw random number usually not the final value a program needs?</li>
-</ul>
-<!-- Slide 81 -->
-</section>
-<section id="ipo-models-good-practices" class="slide level2">
-<h2>IPO Models: Good Practices</h2>
-<ul>
-<li>Start with the output the program must produce.</li>
-<li>Identify only the inputs needed for that output.</li>
-<li>Name processing as a clear calculation or transformation.</li>
-</ul>
-<!-- Slide 82 -->
-</section>
-<section id="ipo-models-common-mistakes" class="slide level2">
-<h2>IPO Models: Common Mistakes</h2>
-<ul>
-<li>Listing code statements before understanding the output.</li>
-<li>Treating every variable as an input.</li>
-<li>Skipping processing because the calculation feels obvious.</li>
-</ul>
-<!-- Slide 83 -->
-</section>
-<section id="ipo-models-more-examples" class="slide level2">
-<h2>IPO Models: More Examples</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Problem</th>
-<th>Input</th>
-<th>Processing</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>rectangle area</td>
-<td>length, width</td>
-<td>length * width</td>
-<td>area</td>
-</tr>
-<tr class="even">
-<td>greeting</td>
-<td>name</td>
-<td>combine text and name</td>
-<td>message</td>
-</tr>
-</tbody>
-</table>
-<!-- Slide 84 -->
-</section>
-<section id="ipo-models-practice-problems" class="slide level2">
-<h2>IPO Models: Practice Problems</h2>
-<ol type="1">
-<li>Create an IPO table for calculating sales tax.</li>
-<li>Create an IPO table for printing a greeting.</li>
-<li>Create an IPO table for rolling a die.</li>
-</ol>
-<!-- Slide 85 -->
-</section>
-<section id="ipo-models-ai-search-terms" class="slide level2">
-<h2>IPO Models: AI Search Terms</h2>
-<ul>
-<li>“IPO model programming input processing output”</li>
-<li>“software design IPO chart”</li>
-<li>“beginner programming problem decomposition”</li>
-</ul>
-<!-- Slide 86 -->
-</section>
-<section id="ipo-models-questions-for-reflection" class="slide level2">
-<h2>IPO Models: Questions for Reflection</h2>
-<ul>
-<li>Why might identifying output first make inputs easier to find?</li>
-<li>How does an IPO table reduce guessing while coding?</li>
-</ul>
-<!-- Slide 87 -->
-</section>
-<section id="execution-trace-models-good-practices" class="slide level2">
-<h2>Execution Trace Models: Good Practices</h2>
-<ul>
-<li>Trace statements in the order they execute.</li>
-<li>Record output exactly when it happens.</li>
-<li>Update only the variable values that change.</li>
-</ul>
-<!-- Slide 88 -->
-</section>
-<section id="execution-trace-models-common-mistakes" class="slide level2">
-<h2>Execution Trace Models: Common Mistakes</h2>
-<ul>
-<li>Writing what you expect instead of what the code says.</li>
-<li>Skipping assignments because they look simple.</li>
-<li>Recording final output before the <code>cout</code> statement runs.</li>
-</ul>
-<!-- Slide 89 -->
-</section>
-<section id="execution-trace-models-more-examples" class="slide level2">
-<h2>Execution Trace Models: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb28-1"><a href=""></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
-<span id="cb28-2"><a href=""></a><span class="dt">int</span> y <span class="op">=</span> x <span class="op">+</span> <span class="dv">5</span><span class="op">;</span></span>
-<span id="cb28-3"><a href=""></a>x <span class="op">=</span> y <span class="op">-</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb28-4"><a href=""></a>cout <span class="op">&lt;&lt;</span> x<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Trace <code>x</code>, <code>y</code>, and output after each statement.</p>
-<!-- Slide 90 -->
-</section>
-<section id="execution-trace-models-practice-problems" class="slide level2">
-<h2>Execution Trace Models: Practice Problems</h2>
-<ol type="1">
-<li>Trace three assignment statements.</li>
-<li>Trace a program that reads one input value.</li>
-<li>Trace the raw and bounded values in a random-number example.</li>
-</ol>
-<!-- Slide 91 -->
-</section>
-<section id="execution-trace-models-ai-search-terms" class="slide level2">
-<h2>Execution Trace Models: AI Search Terms</h2>
-<ul>
-<li>“program execution trace table”</li>
-<li>“desk checking code variables output”</li>
-<li>“trace table beginner programming”</li>
-</ul>
-<!-- Slide 92 -->
-</section>
-<section id="execution-trace-models-questions-for-reflection" class="slide level2">
-<h2>Execution Trace Models: Questions for Reflection</h2>
-<ul>
-<li>Why is tracing different from reading code casually?</li>
-<li>What kinds of bugs become easier to see in a trace?</li>
-</ul>
-<!-- Slide 93 -->
-</section>
-<section id="terminal-charts-and-graphs-good-practices" class="slide level2">
-<h2>Terminal Charts and Graphs: Good Practices</h2>
-<ul>
-<li>Choose labels before writing output statements.</li>
-<li>Keep columns aligned.</li>
-<li>Use a simple scale for bars.</li>
-</ul>
-<!-- Slide 94 -->
-</section>
-<section id="terminal-charts-and-graphs-common-mistakes" class="slide level2">
-<h2>Terminal Charts and Graphs: Common Mistakes</h2>
-<ul>
-<li>Using uneven spacing between rows.</li>
-<li>Choosing a scale that exaggerates or hides differences.</li>
-<li>Mixing exact values and visual bars without clear labels.</li>
-</ul>
-<!-- Slide 95 -->
-</section>
-<section id="terminal-charts-and-graphs-more-examples" class="slide level2">
-<h2>Terminal Charts and Graphs: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb29-1"><a href=""></a>Books      ####</span>
-<span id="cb29-2"><a href=""></a>Games      ##</span>
-<span id="cb29-3"><a href=""></a>Snacks     ######</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Each <code>#</code> can represent one item, five items, or another stated unit.</p>
-<!-- Slide 96 -->
-</section>
-<section id="terminal-charts-and-graphs-practice-problems" class="slide level2">
-<h2>Terminal Charts and Graphs: Practice Problems</h2>
-<ol type="1">
-<li>Print a three-row bar chart by hand.</li>
-<li>Add a numeric column beside each bar.</li>
-<li>Redesign a plain list as a small table.</li>
-</ol>
-<!-- Slide 97 -->
-</section>
-<section id="terminal-charts-and-graphs-ai-search-terms" class="slide level2">
-<h2>Terminal Charts and Graphs: AI Search Terms</h2>
-<ul>
-<li>“C++ terminal bar chart cout”</li>
-<li>“C++ formatted table output setw”</li>
-<li>“ASCII chart beginner programming”</li>
-</ul>
-<!-- Slide 98 -->
-</section>
-<section id="terminal-charts-and-graphs-questions-for-reflection" class="slide level2">
-<h2>Terminal Charts and Graphs: Questions for Reflection</h2>
-<ul>
-<li>When is a visual bar clearer than only a number?</li>
-<li>What makes a terminal display easy to scan?</li>
-</ul>
-<!-- Slide 99 -->
 
 </section></section>
     </div>

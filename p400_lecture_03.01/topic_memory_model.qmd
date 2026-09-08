@@ -1,93 +1,133 @@
 <!-- Topic: C++ Memory Model and Pointer Review -->
 <!-- Slides 4–14 -->
+# <span style="display:none">C++ Memory Model and Pointer Review</span>
 
-# C++ Memory Model and Pointer Review
+## <span style="display:none">Big Idea</span>
 
-![](images/source_pages/slide-04.png){width="100%" fig-alt="C++ Memory Model and Pointer Review"}
+![](images/source_pages/slide-04.png){width="100%" fig-alt="Big Idea"}
 
 ::: notes
 Slides 4–14
-Source slide 4 from the authoritative PDF.
 :::
 
 <!-- Slide 4 -->
 
 ---
 
-## <span style="display:none">Source Slide 5</span>
+## <span style="display:none">Direct Memory Access</span>
 
-![](images/source_pages/slide-05.png){width="100%" fig-alt="C++ allows us to remove the abstraction of the symbol"}
+![](images/source_pages/slide-05.png){width="100%" fig-alt="Direct Memory Access"}
+
+::: notes
+Source PDF page 5.
+:::
 
 <!-- Slide 5 -->
 
 ---
 
-## <span style="display:none">Source Slide 6</span>
+## <span style="display:none">Consider</span>
 
 ![](images/source_pages/slide-06.png){width="100%" fig-alt="Consider"}
+
+::: notes
+Source PDF page 6.
+:::
 
 <!-- Slide 6 -->
 
 ---
 
-## <span style="display:none">Source Slide 7</span>
+## <span style="display:none">Advantages</span>
 
 ![](images/source_pages/slide-07.png){width="100%" fig-alt="Advantages"}
+
+::: notes
+Source PDF page 7.
+:::
 
 <!-- Slide 7 -->
 
 ---
 
-## <span style="display:none">Source Slide 8</span>
+## <span style="display:none">Advantages</span>
 
 ![](images/source_pages/slide-08.png){width="100%" fig-alt="Advantages"}
+
+::: notes
+Source PDF page 8.
+:::
 
 <!-- Slide 8 -->
 
 ---
 
-## <span style="display:none">Source Slide 9</span>
+## <span style="display:none">Objective for Today</span>
 
 ![](images/source_pages/slide-09.png){width="100%" fig-alt="Objective for Today"}
+
+::: notes
+Source PDF page 9.
+:::
 
 <!-- Slide 9 -->
 
 ---
 
-## <span style="display:none">Source Slide 10</span>
+## <span style="display:none">Lightning Review</span>
 
 ![](images/source_pages/slide-10.png){width="100%" fig-alt="Lightning Review"}
+
+::: notes
+Source PDF page 10.
+:::
 
 <!-- Slide 10 -->
 
 ---
 
-## <span style="display:none">Source Slide 11</span>
+## <span style="display:none">Lightning Review Questions</span>
 
-![](images/source_pages/slide-11.png){width="100%" fig-alt="Lightning Review"}
+![](images/source_pages/slide-11.png){width="100%" fig-alt="Lightning Review Questions"}
+
+::: notes
+Source PDF page 11.
+:::
 
 <!-- Slide 11 -->
 
 ---
 
-## <span style="display:none">Source Slide 12</span>
+## <span style="display:none">Pointer to a Constant</span>
 
-![](images/source_pages/slide-12.png){width="100%" fig-alt="Pointer to a"}
+![](images/source_pages/slide-12.png){width="100%" fig-alt="Pointer to a Constant"}
+
+::: notes
+Source PDF page 12.
+:::
 
 <!-- Slide 12 -->
 
 ---
 
-## <span style="display:none">Source Slide 13</span>
+## <span style="display:none">Sending a Pointer Variable</span>
 
-![](images/source_pages/slide-13.png){width="100%" fig-alt="Sending a pointer variable"}
+![](images/source_pages/slide-13.png){width="100%" fig-alt="Sending a Pointer Variable"}
+
+::: notes
+Source PDF page 13.
+:::
 
 <!-- Slide 13 -->
 
 ---
 
-## <span style="display:none">Source Slide 14</span>
+## <span style="display:none">Returning a Pointer Variable</span>
 
-![](images/source_pages/slide-14.png){width="100%" fig-alt="Returning a pointer variable"}
+![](images/source_pages/slide-14.png){width="100%" fig-alt="Returning a Pointer Variable"}
+
+::: notes
+Source PDF page 14.
+:::
 
 <!-- Slide 14 -->

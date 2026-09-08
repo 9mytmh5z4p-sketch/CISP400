@@ -1,101 +1,145 @@
 <!-- Topic: Dynamic Memory Allocation -->
 <!-- Slides 20–31 -->
+# <span style="display:none">Dynamic Memory Allocation</span>
 
-# Dynamic Memory Allocation
+## <span style="display:none">10.9 Dynamic Memory Allocation</span>
 
-![](images/source_pages/slide-20.png){width="100%" fig-alt="Dynamic Memory Allocation"}
+![](images/source_pages/slide-20.png){width="100%" fig-alt="10.9 Dynamic Memory Allocation"}
 
 ::: notes
 Slides 20–31
-Source slide 20 from the authoritative PDF.
 :::
 
 <!-- Slide 20 -->
 
 ---
 
-## <span style="display:none">Source Slide 21</span>
+## <span style="display:none">Problem with Arrays</span>
 
 ![](images/source_pages/slide-21.png){width="100%" fig-alt="Problem with Arrays"}
+
+::: notes
+Source PDF page 21.
+:::
 
 <!-- Slide 21 -->
 
 ---
 
-## <span style="display:none">Source Slide 22</span>
+## <span style="display:none">Stack Size Limitation</span>
 
-![](images/source_pages/slide-22.png){width="100%" fig-alt="• The problem is our variables are stored on the"}
+![](images/source_pages/slide-22.png){width="100%" fig-alt="Stack Size Limitation"}
+
+::: notes
+Source PDF page 22.
+:::
 
 <!-- Slide 22 -->
 
 ---
 
-## <span style="display:none">Source Slide 23</span>
+## <span style="display:none">Access to the Heap</span>
 
 ![](images/source_pages/slide-23.png){width="100%" fig-alt="Access to the Heap"}
+
+::: notes
+Source PDF page 23.
+:::
 
 <!-- Slide 23 -->
 
 ---
 
-## <span style="display:none">Source Slide 24</span>
+## <span style="display:none">delete and delete[]</span>
 
-![](images/source_pages/slide-24.png){width="100%" fig-alt="delete and delete []"}
+![](images/source_pages/slide-24.png){width="100%" fig-alt="delete and delete[]"}
+
+::: notes
+Source PDF page 24.
+:::
 
 <!-- Slide 24 -->
 
 ---
 
-## <span style="display:none">Source Slide 25</span>
+## <span style="display:none"><Heap Allocation Example></span>
 
-![](images/source_pages/slide-25.png){width="100%" fig-alt="Source Slide 25"}
+![](images/source_pages/slide-25.png){width="100%" fig-alt="<Heap Allocation Example>"}
+
+::: notes
+Source PDF page 25.
+:::
 
 <!-- Slide 25 -->
 
 ---
 
-## <span style="display:none">Source Slide 26</span>
+## <span style="display:none"><Heap Allocation Example></span>
 
-![](images/source_pages/slide-26.png){width="100%" fig-alt="Source Slide 26"}
+![](images/source_pages/slide-26.png){width="100%" fig-alt="<Heap Allocation Example>"}
+
+::: notes
+Source PDF page 26.
+:::
 
 <!-- Slide 26 -->
 
 ---
 
-## <span style="display:none">Source Slide 27</span>
+## <span style="display:none"><Heap Allocation Example></span>
 
-![](images/source_pages/slide-27.png){width="100%" fig-alt="Source Slide 27"}
+![](images/source_pages/slide-27.png){width="100%" fig-alt="<Heap Allocation Example>"}
+
+::: notes
+Source PDF page 27.
+:::
 
 <!-- Slide 27 -->
 
 ---
 
-## <span style="display:none">Source Slide 28</span>
+## <span style="display:none"><Heap Allocation Example></span>
 
-![](images/source_pages/slide-28.png){width="100%" fig-alt="Source Slide 28"}
+![](images/source_pages/slide-28.png){width="100%" fig-alt="<Heap Allocation Example>"}
+
+::: notes
+Source PDF page 28.
+:::
 
 <!-- Slide 28 -->
 
 ---
 
-## <span style="display:none">Source Slide 29</span>
+## <span style="display:none">Stack Variables and Pointer Access</span>
 
-![](images/source_pages/slide-29.png){width="100%" fig-alt="• When we use a scalar variable and a pointer"}
+![](images/source_pages/slide-29.png){width="100%" fig-alt="Stack Variables and Pointer Access"}
+
+::: notes
+Source PDF page 29.
+:::
 
 <!-- Slide 29 -->
 
 ---
 
-## <span style="display:none">Source Slide 30</span>
+## <span style="display:none">Heap Variables and Pointer Access</span>
 
-![](images/source_pages/slide-30.png){width="100%" fig-alt="• Contrast that with heap variables (created with"}
+![](images/source_pages/slide-30.png){width="100%" fig-alt="Heap Variables and Pointer Access"}
+
+::: notes
+Source PDF page 30.
+:::
 
 <!-- Slide 30 -->
 
 ---
 
-## <span style="display:none">Source Slide 31</span>
+## <span style="display:none">Advantages of Heap Variables</span>
 
-![](images/source_pages/slide-31.png){width="100%" fig-alt="Advantages of Heap"}
+![](images/source_pages/slide-31.png){width="100%" fig-alt="Advantages of Heap Variables"}
+
+::: notes
+Source PDF page 31.
+:::
 
 <!-- Slide 31 -->

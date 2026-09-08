@@ -1,93 +1,133 @@
 <!-- Topic: Lecture Wrap-Up -->
 <!-- Slides 55–65 -->
+# <span style="display:none">Lecture Wrap-Up</span>
 
-# Lecture Wrap-Up
+## <span style="display:none">What's This Section About?</span>
 
-![](images/source_pages/slide-55.png){width="100%" fig-alt="Lecture Wrap-Up"}
+![](images/source_pages/slide-55.png){width="100%" fig-alt="What's This Section About?"}
 
 ::: notes
 Slides 55–65
-Source slide 55 from the authoritative PDF.
 :::
 
 <!-- Slide 55 -->
 
 ---
 
-## <span style="display:none">Source Slide 56</span>
+## <span style="display:none">Agenda</span>
 
 ![](images/source_pages/slide-56.png){width="100%" fig-alt="Agenda"}
+
+::: notes
+Source PDF page 56.
+:::
 
 <!-- Slide 56 -->
 
 ---
 
-## <span style="display:none">Source Slide 57</span>
+## <span style="display:none">Big Idea</span>
 
 ![](images/source_pages/slide-57.png){width="100%" fig-alt="Big Idea"}
+
+::: notes
+Source PDF page 57.
+:::
 
 <!-- Slide 57 -->
 
 ---
 
-## <span style="display:none">Source Slide 58</span>
+## <span style="display:none">Direct Memory Access</span>
 
-![](images/source_pages/slide-58.png){width="100%" fig-alt="C++ allows us to remove the abstraction of the symbol"}
+![](images/source_pages/slide-58.png){width="100%" fig-alt="Direct Memory Access"}
+
+::: notes
+Source PDF page 58.
+:::
 
 <!-- Slide 58 -->
 
 ---
 
-## <span style="display:none">Source Slide 59</span>
+## <span style="display:none">Consider</span>
 
 ![](images/source_pages/slide-59.png){width="100%" fig-alt="Consider"}
+
+::: notes
+Source PDF page 59.
+:::
 
 <!-- Slide 59 -->
 
 ---
 
-## <span style="display:none">Source Slide 60</span>
+## <span style="display:none">Advantages</span>
 
 ![](images/source_pages/slide-60.png){width="100%" fig-alt="Advantages"}
+
+::: notes
+Source PDF page 60.
+:::
 
 <!-- Slide 60 -->
 
 ---
 
-## <span style="display:none">Source Slide 61</span>
+## <span style="display:none">Advantages</span>
 
 ![](images/source_pages/slide-61.png){width="100%" fig-alt="Advantages"}
+
+::: notes
+Source PDF page 61.
+:::
 
 <!-- Slide 61 -->
 
 ---
 
-## <span style="display:none">Source Slide 62</span>
+## <span style="display:none">Objective for Today</span>
 
 ![](images/source_pages/slide-62.png){width="100%" fig-alt="Objective for Today"}
+
+::: notes
+Source PDF page 62.
+:::
 
 <!-- Slide 62 -->
 
 ---
 
-## <span style="display:none">Source Slide 63</span>
+## <span style="display:none"><Review Slide></span>
 
-![](images/source_pages/slide-63.png){width="100%" fig-alt="63"}
+![](images/source_pages/slide-63.png){width="100%" fig-alt="<Review Slide>"}
+
+::: notes
+Source PDF page 63.
+:::
 
 <!-- Slide 63 -->
 
 ---
 
-## <span style="display:none">Source Slide 64</span>
+## <span style="display:none">Agenda</span>
 
 ![](images/source_pages/slide-64.png){width="100%" fig-alt="Agenda"}
+
+::: notes
+Source PDF page 64.
+:::
 
 <!-- Slide 64 -->
 
 ---
 
-## <span style="display:none">Source Slide 65</span>
+## <span style="display:none">Homework 1 Peer Review Due Sunday</span>
 
-![](images/source_pages/slide-65.png){width="100%" fig-alt="Hw1 Peer Review due Sunday."}
+![](images/source_pages/slide-65.png){width="100%" fig-alt="Homework 1 Peer Review Due Sunday"}
+
+::: notes
+Source PDF page 65.
+:::
 
 <!-- Slide 65 -->

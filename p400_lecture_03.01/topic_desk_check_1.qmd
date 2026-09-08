@@ -1,45 +1,61 @@
 <!-- Topic: Desk Check -->
 <!-- Slides 15–19 -->
+# <span style="display:none">Desk Check</span>
 
-# Desk Check
+## <span style="display:none">Desk Check</span>
 
 ![](images/source_pages/slide-15.png){width="100%" fig-alt="Desk Check"}
 
 ::: notes
 Slides 15–19
-Source slide 15 from the authoritative PDF.
 :::
 
 <!-- Slide 15 -->
 
 ---
 
-## <span style="display:none">Source Slide 16</span>
+## <span style="display:none">Exercise Goals</span>
 
 ![](images/source_pages/slide-16.png){width="100%" fig-alt="Exercise Goals"}
+
+::: notes
+Source PDF page 16.
+:::
 
 <!-- Slide 16 -->
 
 ---
 
-## <span style="display:none">Source Slide 17</span>
+## <span style="display:none">Desk Check Exercise</span>
 
 ![](images/source_pages/slide-17.png){width="100%" fig-alt="Desk Check Exercise"}
+
+::: notes
+Source PDF page 17.
+:::
 
 <!-- Slide 17 -->
 
 ---
 
-## <span style="display:none">Source Slide 18</span>
+## <span style="display:none"><Desk Check Output></span>
 
-![](images/source_pages/slide-18.png){width="100%" fig-alt="Source Slide 18"}
+![](images/source_pages/slide-18.png){width="100%" fig-alt="<Desk Check Output>"}
+
+::: notes
+Source PDF page 18.
+:::
 
 <!-- Slide 18 -->
 
 ---
 
-## <span style="display:none">Source Slide 19</span>
+## <span style="display:none"><Desk Check Output></span>
 
-![](images/source_pages/slide-19.png){width="100%" fig-alt="Source Slide 19"}
+![](images/source_pages/slide-19.png){width="100%" fig-alt="<Desk Check Output>"}
+
+::: notes
+Source PDF page 19.
+:::
 
 <!-- Slide 19 -->

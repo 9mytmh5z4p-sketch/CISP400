@@ -1,3 +1,21 @@
+# Last Time
+
+::: {.incremental}
++ **Pointer Variables in Memory**
++ **Comparing Pointers**
++ **Pointers to Constants and Constant Pointers**
++ **Pointers as Function Parameters**
++ **Returning and Reassigning Pointers**
++ **Function Pointers**
+:::
+
+# Today's Agenda
+
+- C++ Memory Model and Pointer Review
+- Dynamic Memory Allocation
+- Pseudo-Dynamic Arrays
+- Real Dynamic Arrays
+
 {{< include topic_course_framing.qmd >}}
 {{< include topic_memory_model.qmd >}}
 {{< include topic_desk_check_1.qmd >}}
@@ -8,4 +26,3 @@
 {{< include topic_wrap_up.qmd >}}
 {{< include topic_desk_check_2.qmd >}}
 {{< include topic_homework_review.qmd >}}
-
