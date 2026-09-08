@@ -1,0 +1,277 @@
+<!-- Topic: Encapsulation and Abstraction -->
+<!-- Slides 55–77 -->
+# <span style="display:none">Encapsulation and Abstraction</span>
+
+## <span style="display:none">7.2 Object-Oriented Programming</span>
+
+![](images/source_pages/slide-055.png){width="100%" fig-alt="7.2 Object-Oriented Programming"}
+
+::: notes
+Slides 55–77
+:::
+
+<!-- Slide 55 -->
+
+---
+
+## <span style="display:none">OOP and the Real World</span>
+
+![](images/source_pages/slide-056.png){width="100%" fig-alt="OOP and the Real World"}
+
+::: notes
+Source PDF page 56.
+:::
+
+<!-- Slide 56 -->
+
+---
+
+## <span style="display:none">Encapsulation</span>
+
+![](images/source_pages/slide-057.png){width="100%" fig-alt="Encapsulation"}
+
+::: notes
+Source PDF page 57.
+:::
+
+<!-- Slide 57 -->
+
+---
+
+## <span style="display:none">Implementation and Abstraction</span>
+
+![](images/source_pages/slide-058.png){width="100%" fig-alt="Implementation and Abstraction"}
+
+::: notes
+Source PDF page 58.
+:::
+
+<!-- Slide 58 -->
+
+---
+
+## <span style="display:none">Abstraction</span>
+
+![](images/source_pages/slide-059.png){width="100%" fig-alt="Abstraction"}
+
+::: notes
+Source PDF page 59.
+:::
+
+<!-- Slide 59 -->
+
+---
+
+## <span style="display:none">Abstraction Definition</span>
+
+![](images/source_pages/slide-060.png){width="100%" fig-alt="Abstraction Definition"}
+
+::: notes
+Source PDF page 60.
+:::
+
+<!-- Slide 60 -->
+
+---
+
+## <span style="display:none">Why Abstraction?</span>
+
+![](images/source_pages/slide-061.png){width="100%" fig-alt="Why Abstraction?"}
+
+::: notes
+Source PDF page 61.
+:::
+
+<!-- Slide 61 -->
+
+---
+
+## <span style="display:none"><Abstraction Example></span>
+
+![](images/source_pages/slide-062.png){width="100%" fig-alt="<Abstraction Example>"}
+
+::: notes
+Source PDF page 62.
+:::
+
+<!-- Slide 62 -->
+
+---
+
+## <span style="display:none"><Abstraction Example></span>
+
+![](images/source_pages/slide-063.png){width="100%" fig-alt="<Abstraction Example>"}
+
+::: notes
+Source PDF page 63.
+:::
+
+<!-- Slide 63 -->
+
+---
+
+## <span style="display:none"><Abstraction Example></span>
+
+![](images/source_pages/slide-064.png){width="100%" fig-alt="<Abstraction Example>"}
+
+::: notes
+Source PDF page 64.
+:::
+
+<!-- Slide 64 -->
+
+---
+
+## <span style="display:none"><Abstraction Example></span>
+
+![](images/source_pages/slide-065.png){width="100%" fig-alt="<Abstraction Example>"}
+
+::: notes
+Source PDF page 65.
+:::
+
+<!-- Slide 65 -->
+
+---
+
+## <span style="display:none"><Abstraction Example></span>
+
+![](images/source_pages/slide-066.png){width="100%" fig-alt="<Abstraction Example>"}
+
+::: notes
+Source PDF page 66.
+:::
+
+<!-- Slide 66 -->
+
+---
+
+## <span style="display:none"><Abstraction Example></span>
+
+![](images/source_pages/slide-067.png){width="100%" fig-alt="<Abstraction Example>"}
+
+::: notes
+Source PDF page 67.
+:::
+
+<!-- Slide 67 -->
+
+---
+
+## <span style="display:none"><Abstraction Example></span>
+
+![](images/source_pages/slide-068.png){width="100%" fig-alt="<Abstraction Example>"}
+
+::: notes
+Source PDF page 68.
+:::
+
+<!-- Slide 68 -->
+
+---
+
+## <span style="display:none"><Abstraction Example></span>
+
+![](images/source_pages/slide-069.png){width="100%" fig-alt="<Abstraction Example>"}
+
+::: notes
+Source PDF page 69.
+:::
+
+<!-- Slide 69 -->
+
+---
+
+## <span style="display:none"><Abstraction Example></span>
+
+![](images/source_pages/slide-070.png){width="100%" fig-alt="<Abstraction Example>"}
+
+::: notes
+Source PDF page 70.
+:::
+
+<!-- Slide 70 -->
+
+---
+
+## <span style="display:none"><Abstraction Example></span>
+
+![](images/source_pages/slide-071.png){width="100%" fig-alt="<Abstraction Example>"}
+
+::: notes
+Source PDF page 71.
+:::
+
+<!-- Slide 71 -->
+
+---
+
+## <span style="display:none"><Abstraction Example></span>
+
+![](images/source_pages/slide-072.png){width="100%" fig-alt="<Abstraction Example>"}
+
+::: notes
+Source PDF page 72.
+:::
+
+<!-- Slide 72 -->
+
+---
+
+## <span style="display:none"><Abstraction Example></span>
+
+![](images/source_pages/slide-073.png){width="100%" fig-alt="<Abstraction Example>"}
+
+::: notes
+Source PDF page 73.
+:::
+
+<!-- Slide 73 -->
+
+---
+
+## <span style="display:none"><Abstraction Example></span>
+
+![](images/source_pages/slide-074.png){width="100%" fig-alt="<Abstraction Example>"}
+
+::: notes
+Source PDF page 74.
+:::
+
+<!-- Slide 74 -->
+
+---
+
+## <span style="display:none"><Abstraction Example></span>
+
+![](images/source_pages/slide-075.png){width="100%" fig-alt="<Abstraction Example>"}
+
+::: notes
+Source PDF page 75.
+:::
+
+<!-- Slide 75 -->
+
+---
+
+## <span style="display:none"><Abstraction Example></span>
+
+![](images/source_pages/slide-076.png){width="100%" fig-alt="<Abstraction Example>"}
+
+::: notes
+Source PDF page 76.
+:::
+
+<!-- Slide 76 -->
+
+---
+
+## <span style="display:none">Table of Variables</span>
+
+![](images/source_pages/slide-077.png){width="100%" fig-alt="Table of Variables"}
+
+::: notes
+Source PDF page 77.
+:::
+
+<!-- Slide 77 -->

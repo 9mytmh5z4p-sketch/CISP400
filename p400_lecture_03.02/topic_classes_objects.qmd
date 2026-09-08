@@ -1,0 +1,181 @@
+<!-- Topic: Classes and Objects -->
+<!-- Slides 32–46 -->
+# <span style="display:none">Classes and Objects</span>
+
+## <span style="display:none">7.x Crash Course in Building Objects</span>
+
+![](images/source_pages/slide-032.png){width="100%" fig-alt="7.x Crash Course in Building Objects"}
+
+::: notes
+Slides 32–46
+:::
+
+<!-- Slide 32 -->
+
+---
+
+## <span style="display:none">How to Construct an Object</span>
+
+![](images/source_pages/slide-033.png){width="100%" fig-alt="How to Construct an Object"}
+
+::: notes
+Source PDF page 33.
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## <span style="display:none"><Object Construction></span>
+
+![](images/source_pages/slide-034.png){width="100%" fig-alt="<Object Construction>"}
+
+::: notes
+Source PDF page 34.
+:::
+
+<!-- Slide 34 -->
+
+---
+
+## <span style="display:none"><Object Construction></span>
+
+![](images/source_pages/slide-035.png){width="100%" fig-alt="<Object Construction>"}
+
+::: notes
+Source PDF page 35.
+:::
+
+<!-- Slide 35 -->
+
+---
+
+## <span style="display:none">Encapsulation</span>
+
+![](images/source_pages/slide-036.png){width="100%" fig-alt="Encapsulation"}
+
+::: notes
+Source PDF page 36.
+:::
+
+<!-- Slide 36 -->
+
+---
+
+## <span style="display:none"><Encapsulation></span>
+
+![](images/source_pages/slide-037.png){width="100%" fig-alt="<Encapsulation>"}
+
+::: notes
+Source PDF page 37.
+:::
+
+<!-- Slide 37 -->
+
+---
+
+## <span style="display:none"><Encapsulation></span>
+
+![](images/source_pages/slide-038.png){width="100%" fig-alt="<Encapsulation>"}
+
+::: notes
+Source PDF page 38.
+:::
+
+<!-- Slide 38 -->
+
+---
+
+## <span style="display:none">Setters and Getters</span>
+
+![](images/source_pages/slide-039.png){width="100%" fig-alt="Setters and Getters"}
+
+::: notes
+Source PDF page 39.
+:::
+
+<!-- Slide 39 -->
+
+---
+
+## <span style="display:none"><Methods></span>
+
+![](images/source_pages/slide-040.png){width="100%" fig-alt="<Methods>"}
+
+::: notes
+Source PDF page 40.
+:::
+
+<!-- Slide 40 -->
+
+---
+
+## <span style="display:none"><Methods></span>
+
+![](images/source_pages/slide-041.png){width="100%" fig-alt="<Methods>"}
+
+::: notes
+Source PDF page 41.
+:::
+
+<!-- Slide 41 -->
+
+---
+
+## <span style="display:none"><Methods></span>
+
+![](images/source_pages/slide-042.png){width="100%" fig-alt="<Methods>"}
+
+::: notes
+Source PDF page 42.
+:::
+
+<!-- Slide 42 -->
+
+---
+
+## <span style="display:none">Program This</span>
+
+![](images/source_pages/slide-043.png){width="100%" fig-alt="Program This"}
+
+::: notes
+Source PDF page 43.
+:::
+
+<!-- Slide 43 -->
+
+---
+
+## <span style="display:none">Exercise Goals</span>
+
+![](images/source_pages/slide-044.png){width="100%" fig-alt="Exercise Goals"}
+
+::: notes
+Source PDF page 44.
+:::
+
+<!-- Slide 44 -->
+
+---
+
+## <span style="display:none">Programming Exercise</span>
+
+![](images/source_pages/slide-045.png){width="100%" fig-alt="Programming Exercise"}
+
+::: notes
+Source PDF page 45.
+:::
+
+<!-- Slide 45 -->
+
+---
+
+## <span style="display:none"><Exercise Workspace></span>
+
+![](images/source_pages/slide-046.png){width="100%" fig-alt="<Exercise Workspace>"}
+
+::: notes
+Source PDF page 46.
+:::
+
+<!-- Slide 46 -->

@@ -1,0 +1,37 @@
+<!-- Topic: Programming Exercise: Dynamic Array Operations -->
+<!-- Slides 102–104 -->
+# <span style="display:none">Programming Exercise: Dynamic Array Operations</span>
+
+## <span style="display:none">Program This - Debrief</span>
+
+![](images/source_pages/slide-102.png){width="100%" fig-alt="Program This - Debrief"}
+
+::: notes
+Slides 102–104
+:::
+
+<!-- Slide 102 -->
+
+---
+
+## <span style="display:none">Exercise Goals</span>
+
+![](images/source_pages/slide-103.png){width="100%" fig-alt="Exercise Goals"}
+
+::: notes
+Source PDF page 103.
+:::
+
+<!-- Slide 103 -->
+
+---
+
+## <span style="display:none">Programming Exercise</span>
+
+![](images/source_pages/slide-104.png){width="100%" fig-alt="Programming Exercise"}
+
+::: notes
+Source PDF page 104.
+:::
+
+<!-- Slide 104 -->

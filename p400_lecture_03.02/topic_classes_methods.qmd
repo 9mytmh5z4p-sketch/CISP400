@@ -1,0 +1,193 @@
+<!-- Topic: Classes and Methods -->
+<!-- Slides 78–93 -->
+# <span style="display:none">Classes and Methods</span>
+
+## <span style="display:none">7.3 Introduction to Classes</span>
+
+![](images/source_pages/slide-078.png){width="100%" fig-alt="7.3 Introduction to Classes"}
+
+::: notes
+Slides 78–93
+:::
+
+<!-- Slide 78 -->
+
+---
+
+## <span style="display:none"><Class Example></span>
+
+![](images/source_pages/slide-079.png){width="100%" fig-alt="<Class Example>"}
+
+::: notes
+Source PDF page 79.
+:::
+
+<!-- Slide 79 -->
+
+---
+
+## <span style="display:none"><Class Example></span>
+
+![](images/source_pages/slide-080.png){width="100%" fig-alt="<Class Example>"}
+
+::: notes
+Source PDF page 80.
+:::
+
+<!-- Slide 80 -->
+
+---
+
+## <span style="display:none"><Class Example></span>
+
+![](images/source_pages/slide-081.png){width="100%" fig-alt="<Class Example>"}
+
+::: notes
+Source PDF page 81.
+:::
+
+<!-- Slide 81 -->
+
+---
+
+## <span style="display:none">7.4 Creating and Using Objects</span>
+
+![](images/source_pages/slide-082.png){width="100%" fig-alt="7.4 Creating and Using Objects"}
+
+::: notes
+Source PDF page 82.
+:::
+
+<!-- Slide 82 -->
+
+---
+
+## <span style="display:none"><Object Example></span>
+
+![](images/source_pages/slide-083.png){width="100%" fig-alt="<Object Example>"}
+
+::: notes
+Source PDF page 83.
+:::
+
+<!-- Slide 83 -->
+
+---
+
+## <span style="display:none">7.5 Defining Member Functions</span>
+
+![](images/source_pages/slide-084.png){width="100%" fig-alt="7.5 Defining Member Functions"}
+
+::: notes
+Source PDF page 84.
+:::
+
+<!-- Slide 84 -->
+
+---
+
+## <span style="display:none">Classes Group Data and Behavior</span>
+
+![](images/source_pages/slide-085.png){width="100%" fig-alt="Classes Group Data and Behavior"}
+
+::: notes
+Source PDF page 85.
+:::
+
+<!-- Slide 85 -->
+
+---
+
+## <span style="display:none">Methods</span>
+
+![](images/source_pages/slide-086.png){width="100%" fig-alt="Methods"}
+
+::: notes
+Source PDF page 86.
+:::
+
+<!-- Slide 86 -->
+
+---
+
+## <span style="display:none">Methods</span>
+
+![](images/source_pages/slide-087.png){width="100%" fig-alt="Methods"}
+
+::: notes
+Source PDF page 87.
+:::
+
+<!-- Slide 87 -->
+
+---
+
+## <span style="display:none">Method Example</span>
+
+![](images/source_pages/slide-088.png){width="100%" fig-alt="Method Example"}
+
+::: notes
+Source PDF page 88.
+:::
+
+<!-- Slide 88 -->
+
+---
+
+## <span style="display:none">Another Example</span>
+
+![](images/source_pages/slide-089.png){width="100%" fig-alt="Another Example"}
+
+::: notes
+Source PDF page 89.
+:::
+
+<!-- Slide 89 -->
+
+---
+
+## <span style="display:none"><Method Example></span>
+
+![](images/source_pages/slide-090.png){width="100%" fig-alt="<Method Example>"}
+
+::: notes
+Source PDF page 90.
+:::
+
+<!-- Slide 90 -->
+
+---
+
+## <span style="display:none">Methods and Output</span>
+
+![](images/source_pages/slide-091.png){width="100%" fig-alt="Methods and Output"}
+
+::: notes
+Source PDF page 91.
+:::
+
+<!-- Slide 91 -->
+
+---
+
+## <span style="display:none"><Method Example></span>
+
+![](images/source_pages/slide-092.png){width="100%" fig-alt="<Method Example>"}
+
+::: notes
+Source PDF page 92.
+:::
+
+<!-- Slide 92 -->
+
+---
+
+## <span style="display:none"><Method Example></span>
+
+![](images/source_pages/slide-093.png){width="100%" fig-alt="<Method Example>"}
+
+::: notes
+Source PDF page 93.
+:::
+
+<!-- Slide 93 -->

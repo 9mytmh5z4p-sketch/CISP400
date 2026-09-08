@@ -1,0 +1,49 @@
+<!-- Topic: Programming Exercise: Returning a Struct -->
+<!-- Slides 105–108 -->
+# <span style="display:none">Programming Exercise: Returning a Struct</span>
+
+## <span style="display:none">Programming Exercise</span>
+
+![](images/source_pages/slide-105.png){width="100%" fig-alt="Programming Exercise"}
+
+::: notes
+Slides 105–108
+:::
+
+<!-- Slide 105 -->
+
+---
+
+## <span style="display:none">Exercise Goals</span>
+
+![](images/source_pages/slide-106.png){width="100%" fig-alt="Exercise Goals"}
+
+::: notes
+Source PDF page 106.
+:::
+
+<!-- Slide 106 -->
+
+---
+
+## <span style="display:none">Programming Exercise</span>
+
+![](images/source_pages/slide-107.png){width="100%" fig-alt="Programming Exercise"}
+
+::: notes
+Source PDF page 107.
+:::
+
+<!-- Slide 107 -->
+
+---
+
+## <span style="display:none"><Exercise Workspace></span>
+
+![](images/source_pages/slide-108.png){width="100%" fig-alt="<Exercise Workspace>"}
+
+::: notes
+Source PDF page 108.
+:::
+
+<!-- Slide 108 -->

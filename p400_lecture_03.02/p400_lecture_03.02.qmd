@@ -1,3 +1,40 @@
-{{< include topic_course_framing.qmd >}}
-{{< include topic_programming_exercise.qmd >}}
+# Last Time
 
+::: {.incremental}
++ **C++ Memory Model and Pointer Review**
++ **Dynamic Memory Allocation**
++ **Pseudo-Dynamic Arrays**
++ **Real Dynamic Arrays**
+:::
+
+# Today's Agenda
+
+- Structures
+- Classes and Objects
+- Abstract Data Types
+- Encapsulation and Abstraction
+- Classes and Methods
+
+{{< include topic_course_framing.qmd >}}
+{{< include topic_programming_exercise_dynamic_arrays.qmd >}}
+{{< include topic_structures.qmd >}}
+{{< include topic_classes_objects.qmd >}}
+{{< include topic_abstract_data_types.qmd >}}
+{{< include topic_encapsulation_abstraction.qmd >}}
+{{< include topic_classes_methods.qmd >}}
+{{< include topic_programming_exercise_colorize.qmd >}}
+{{< include topic_homework_peer_review.qmd >}}
+{{< include topic_programming_exercise_dynamic_array_operations.qmd >}}
+{{< include topic_programming_exercise_returning_struct.qmd >}}
+
+---
+# Key Takeaways
+
+- Classes package data and behavior behind a usable interface.
+- Abstraction and encapsulation make larger programs safer to change.
+
+---
+# Next Time
+
+---
+# Appendix

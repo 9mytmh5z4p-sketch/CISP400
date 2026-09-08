@@ -28,72 +28,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="p400_lecture_03.02_files/libs/revealjs/dist/theme/quarto-99eeafcedac04850354b682963cedae3.css">
   <link rel="stylesheet" href="../styles/styles.css">
@@ -209,14 +143,36 @@ Dr.&nbsp;Caleb Fowler
 <section id="last-time" class="title-slide slide level1 center">
 <h1>Last Time</h1>
 <ul>
-<li class="fragment"><strong>Advanced cin</strong></li>
-<li class="fragment"><strong>Dates and Random Numbers</strong></li>
-<li class="fragment"><strong>IPO Models</strong></li>
-<li class="fragment"><strong>Execution Trace Models</strong></li>
-<li class="fragment"><strong>Terminal Charts and Graphs</strong></li>
+<li class="fragment"><strong>C++ Memory Model and Pointer Review</strong></li>
+<li class="fragment"><strong>Dynamic Memory Allocation</strong></li>
+<li class="fragment"><strong>Pseudo-Dynamic Arrays</strong></li>
+<li class="fragment"><strong>Real Dynamic Arrays</strong></li>
 </ul>
-<aside class="notes">
-<p>Brief recall of lecture 03.01. Students should remember that IPO models plan a program before code, execution traces inspect code after it exists, and formatted terminal output can make data easier to read.</p>
+</section>
+
+<section id="todays-agenda" class="title-slide slide level1 center">
+<h1>Today’s Agenda</h1>
+<ul>
+<li>Structures</li>
+<li>Classes and Objects</li>
+<li>Abstract Data Types</li>
+<li>Encapsulation and Abstraction</li>
+<li>Classes and Methods</li>
+</ul>
+<!-- Topic: Course Framing -->
+<!-- Slides 1–11 -->
+</section>
+
+<section>
+<section id="course-framing" class="title-slide slide level1 center">
+<h1><span style="display:none">Course Framing</span></h1>
+
+</section>
+<section id="cisp-400" class="slide level2">
+<h2><span style="display:none">CISP 400</span></h2>
+
+<img data-src="images/source_pages/slide-001.png" style="width:100.0%" alt="CISP 400" class="r-stretch"><aside class="notes">
+<p>Slides 1–11</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -230,16 +186,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 1 -->
 </section>
+<section id="last-time-1" class="slide level2">
+<h2><span style="display:none">Last Time</span></h2>
 
-<section id="todays-agenda" class="title-slide slide level1 center">
-<h1>Today’s Agenda</h1>
-<ul>
-<li>Vectors</li>
-<li>Vector Operations</li>
-<li>Range-Based For Loops</li>
-</ul>
-<aside class="notes">
-
+<img data-src="images/source_pages/slide-002.png" style="width:100.0%" alt="Last Time" class="r-stretch"><aside class="notes">
+<p>Source PDF page 2.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -252,28 +203,30 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 2 -->
-<!-- Topic 1: Vectors -->
-<!-- Slides 3-11 -->
 </section>
+<section id="agenda" class="slide level2">
+<h2><span style="display:none">Agenda</span></h2>
 
-<section>
-<section id="vectors" class="title-slide slide level1 center">
-<h1>Vectors</h1>
+<img data-src="images/source_pages/slide-003.png" style="width:100.0%" alt="Agenda" class="r-stretch"><aside class="notes">
+<p>Source PDF page 3.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 3 -->
 </section>
-<section id="one-variable-many-values" class="slide level2 smaller">
-<h2>One Variable, Many Values</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a>string employee1 <span class="op">=</span> <span class="st">"Maya"</span><span class="op">;</span></span>
-<span id="cb1-2"><a href=""></a>string employee2 <span class="op">=</span> <span class="st">"Ari"</span><span class="op">;</span></span>
-<span id="cb1-3"><a href=""></a>string employee3 <span class="op">=</span> <span class="st">"Chen"</span><span class="op">;</span></span>
-<span id="cb1-4"><a href=""></a>string employee4 <span class="op">=</span> <span class="st">"Jordan"</span><span class="op">;</span></span>
-<span id="cb1-5"><a href=""></a>string employee5 <span class="op">=</span> <span class="st">"Sam"</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>What would we have to do to process all five employees?</li>
-<li>What would we have to change to add a new employee?</li>
-</ul>
-<aside class="notes">
-<p>Slides 3-11</p>
+<section id="whats-this-chapter-about" class="slide level2">
+<h2><span style="display:none">What’s This Chapter About?</span></h2>
+
+<img data-src="images/source_pages/slide-004.png" style="width:100.0%" alt="What's This Chapter About?" class="r-stretch"><aside class="notes">
+<p>Source PDF page 4.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -287,86 +240,101 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 4 -->
 </section>
-<section id="the-problem" class="slide level2">
-<h2>The Problem</h2>
-<ul>
-<li><p>We can access the content of the <code>employee</code> variables, but we can’t access those variables specifically through the program.</p></li>
-<li><p>What we need is a way to structure the data so we can access the variables as well as the associated values - a <code>data structure</code>.</p></li>
-</ul>
+<section id="big-idea" class="slide level2">
+<h2><span style="display:none">Big Idea</span></h2>
+
+<img data-src="images/source_pages/slide-005.png" style="width:100.0%" alt="Big Idea" class="r-stretch"><aside class="notes">
+<p>Source PDF page 5.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 5 -->
 </section>
-<section id="why-this-is-a-data-structure" class="slide level2">
-<h2>Why This Is a Data Structure</h2>
-<ul>
-<li><p>A data structure organizes data so a program can work with it.</p></li>
-<li><p>C++ has a frequently used data structure called a <code>vector</code>.</p></li>
-<li><p>A <code>vector</code> organizes values in order, so the program can add, access, and process them as a group.</p></li>
-</ul>
+<section id="related-to-previous-chapters" class="slide level2">
+<h2><span style="display:none">Related to Previous Chapters</span></h2>
+
+<img data-src="images/source_pages/slide-006.png" style="width:100.0%" alt="Related to Previous Chapters" class="r-stretch"><aside class="notes">
+<p>Source PDF page 6.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 6 -->
 </section>
-<section id="a-vector-ipo-model" class="slide level2">
-<h2>A Vector IPO Model</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Input</th>
-<th>Processing</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>three scores</td>
-<td>store scores in a vector</td>
-<td>printed score list</td>
-</tr>
-</tbody>
-</table>
-<p>The IPO model helps identify why the vector exists before we write the code.</p>
+<section id="chapter-7-object-oriented-programming" class="slide level2">
+<h2><span style="display:none">Chapter 7 Object-Oriented Programming</span></h2>
+
+<img data-src="images/source_pages/slide-007.png" style="width:100.0%" alt="Chapter 7 Object-Oriented Programming" class="r-stretch"><aside class="notes">
+<p>Source PDF page 7.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 7 -->
 </section>
-<section id="declaring-a-vector" class="slide level2">
-<h2>Declaring a Vector</h2>
-<p>Vectors require the <code>&lt;vector&gt;</code> header.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb2-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
-<span id="cb2-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb2-4"><a href=""></a></span>
-<span id="cb2-5"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The type inside <code>&lt; &gt;</code> tells the vector what kind of values it stores.</p>
+<section id="agenda-1" class="slide level2">
+<h2><span style="display:none">Agenda</span></h2>
+
+<img data-src="images/source_pages/slide-008.png" style="width:100.0%" alt="Agenda" class="r-stretch"><aside class="notes">
+<p>Source PDF page 8.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 8 -->
 </section>
-<section id="initializing-a-vector" class="slide level2">
-<h2>Initializing a Vector</h2>
-<p>A vector can start with values already inside it.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores <span class="op">=</span> <span class="op">{</span><span class="dv">88</span><span class="op">,</span> <span class="dv">92</span><span class="op">,</span> <span class="dv">75</span><span class="op">};</span></span>
-<span id="cb3-2"><a href=""></a>vector<span class="op">&lt;</span>string<span class="op">&gt;</span> names <span class="op">=</span> <span class="op">{</span><span class="st">"Maya"</span><span class="op">,</span> <span class="st">"Chen"</span><span class="op">,</span> <span class="st">"Ari"</span><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>All values in one vector must have the same type.</p>
+<section id="agenda-2" class="slide level2">
+<h2><span style="display:none">Agenda</span></h2>
+
+<img data-src="images/source_pages/slide-009.png" style="width:100.0%" alt="Agenda" class="r-stretch"><aside class="notes">
+<p>Source PDF page 9.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 9 -->
 </section>
-<section id="vector-order-picture" class="slide level2">
-<h2>Vector Order Picture</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Position</th>
-<th style="text-align: right;">first</th>
-<th style="text-align: right;">second</th>
-<th style="text-align: right;">third</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Value</td>
-<td style="text-align: right;">88</td>
-<td style="text-align: right;">92</td>
-<td style="text-align: right;">75</td>
-</tr>
-</tbody>
-</table>
-<p>The values stay in order, so the vector can process them as one group.</p>
-<aside class="notes">
-<p>[Graphic suggestion: show one vector box labeled scores with three ordered cells.]</p>
+<section id="wheres-this-fit-in-the-course" class="slide level2">
+<h2><span style="display:none">Where’s This Fit in the Course?</span></h2>
+
+<img data-src="images/source_pages/slide-010.png" style="width:100.0%" alt="Where's This Fit in the Course?" class="r-stretch"><aside class="notes">
+<p>Source PDF page 10.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -380,30 +348,54 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 10 -->
 </section>
-<section id="summary" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>A vector stores many related values using one variable name.</li>
-<li>Vectors are ordered, typed, and designed for grouped data.</li>
-<li>This is our first data structure.</li>
-</ul>
+<section id="course-progression" class="slide level2">
+<h2><span style="display:none">Course Progression</span></h2>
+
+<img data-src="images/source_pages/slide-011.png" style="width:100.0%" alt="Course Progression" class="r-stretch"><aside class="notes">
+<p>Source PDF page 11.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 11 -->
-<!-- Topic 2: Vector Operations -->
-<!-- Slides 12-27 -->
+<!-- Topic: Programming Exercise: Dynamic Arrays -->
+<!-- Slides 12–19 -->
 </section></section>
 <section>
-<section id="vector-operations" class="title-slide slide level1 center">
-<h1>Vector Operations</h1>
+<section id="programming-exercise-dynamic-arrays" class="title-slide slide level1 center">
+<h1><span style="display:none">Programming Exercise: Dynamic Arrays</span></h1>
+
+</section>
+<section id="program-this---debrief" class="slide level2">
+<h2><span style="display:none">Program This - Debrief</span></h2>
+
+<img data-src="images/source_pages/slide-012.png" style="width:100.0%" alt="Program This - Debrief" class="r-stretch"><aside class="notes">
+<p>Slides 12–19</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 12 -->
 </section>
-<section id="changing-a-vector" class="slide level2 smaller">
-<h2>Changing a Vector</h2>
-<ul>
-<li>How does a vector grow, shrink, and report what it contains?</li>
-<li>Vector operations change or inspect the container.</li>
-</ul>
-<aside class="notes">
-<p>Slides 12-27</p>
+<section id="exercise-goals" class="slide level2">
+<h2><span style="display:none">Exercise Goals</span></h2>
+
+<img data-src="images/source_pages/slide-013.png" style="width:100.0%" alt="Exercise Goals" class="r-stretch"><aside class="notes">
+<p>Source PDF page 13.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -417,323 +409,288 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 13 -->
 </section>
-<section id="push_back-adds-a-value" class="slide level2">
-<h2>push_back Adds a Value</h2>
-<p><code>push_back</code> adds one value to the end of the vector.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores<span class="op">;</span></span>
-<span id="cb4-2"><a href=""></a></span>
-<span id="cb4-3"><a href=""></a>scores<span class="op">.</span>push_back<span class="op">(</span><span class="dv">88</span><span class="op">);</span></span>
-<span id="cb4-4"><a href=""></a>scores<span class="op">.</span>push_back<span class="op">(</span><span class="dv">92</span><span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The vector now stores <code>88</code>, then <code>92</code>.</p>
+<section id="programming-exercise" class="slide level2">
+<h2><span style="display:none">Programming Exercise</span></h2>
+
+<img data-src="images/source_pages/slide-014.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"><aside class="notes">
+<p>Source PDF page 14.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 14 -->
 </section>
-<section id="execution-trace-push_back" class="slide level2">
-<h2>Execution Trace: push_back</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Statement</th>
-<th>scores</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>vector&lt;int&gt; scores;</code></td>
-<td><code>{ }</code></td>
-</tr>
-<tr class="even">
-<td><code>scores.push_back(88);</code></td>
-<td><code>{88}</code></td>
-</tr>
-<tr class="odd">
-<td><code>scores.push_back(92);</code></td>
-<td><code>{88, 92}</code></td>
-</tr>
-<tr class="even">
-<td><code>scores.push_back(75);</code></td>
-<td><code>{88, 92, 75}</code></td>
-</tr>
-</tbody>
-</table>
-<p>Each call adds one new value at the end.</p>
+<section id="section" class="slide level2">
+<h2><span style="display:none"><exercise workspace=""></exercise></span></h2>
+
+<img data-src="images/source_pages/slide-015.png" style="width:100.0%" alt="<Exercise Workspace>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 15.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 15 -->
 </section>
-<section id="pop_back-removes-the-last-value" class="slide level2">
-<h2>pop_back Removes the Last Value</h2>
-<p><code>pop_back</code> removes the final value from the vector.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores <span class="op">=</span> <span class="op">{</span><span class="dv">88</span><span class="op">,</span> <span class="dv">92</span><span class="op">,</span> <span class="dv">75</span><span class="op">};</span></span>
-<span id="cb5-2"><a href=""></a></span>
-<span id="cb5-3"><a href=""></a>scores<span class="op">.</span>pop_back<span class="op">();</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>After this statement, the vector stores <code>88</code>, then <code>92</code>.</p>
+<section id="section-1" class="slide level2">
+<h2><span style="display:none"><exercise workspace=""></exercise></span></h2>
+
+<img data-src="images/source_pages/slide-016.png" style="width:100.0%" alt="<Exercise Workspace>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 16.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 16 -->
 </section>
-<section id="interactive-vector-changes" class="slide level2">
-<h2>Interactive Vector Changes</h2>
-<div class="vector-demo">
-<div id="vectorCells0302" class="vector-cells" aria-live="polite">
+<section id="section-2" class="slide level2">
+<h2><span style="display:none"><exercise workspace=""></exercise></span></h2>
 
-</div>
-<div class="vector-buttons">
-<button type="button" onclick="pushVector0302()">
-push_back
-</button>
-<button type="button" onclick="popVector0302()">
-pop_back
-</button>
-<button type="button" onclick="resetVector0302()">
-reset
-</button>
-</div>
-<p id="vectorStatus0302">
-vector&lt;int&gt; scores = { };
-</p>
-</div>
-<style>
-.vector-demo { text-align: center; }
-.vector-cells { display: flex; justify-content: center; gap: 0.4rem; min-height: 4rem; margin: 1.2rem 0; }
-.vector-cell { border: 3px solid #334155; min-width: 4rem; padding: 0.7rem 0.9rem; font-size: 1.4rem; background: #f8fafc; }
-.vector-buttons { display: flex; justify-content: center; gap: 0.6rem; }
-.vector-buttons button { font-size: 1rem; padding: 0.45rem 0.8rem; border: 2px solid #334155; background: white; }
-</style>
-<script>
-let vectorValues0302 = [];
-let nextVectorValue0302 = 10;
-function drawVector0302() {
-  const cells = document.getElementById("vectorCells0302");
-  const status = document.getElementById("vectorStatus0302");
-  if (!cells || !status) return;
-  cells.innerHTML = vectorValues0302.map(value => `<div class="vector-cell">${value}</div>`).join("");
-  status.textContent = `vector<int> scores = { ${vectorValues0302.join(", ")} };`;
-}
-function pushVector0302() {
-  vectorValues0302.push(nextVectorValue0302);
-  nextVectorValue0302 += 10;
-  drawVector0302();
-}
-function popVector0302() {
-  vectorValues0302.pop();
-  drawVector0302();
-}
-function resetVector0302() {
-  vectorValues0302 = [];
-  nextVectorValue0302 = 10;
-  drawVector0302();
-}
-setTimeout(drawVector0302, 0);
-</script>
+<img data-src="images/source_pages/slide-017.png" style="width:100.0%" alt="<Exercise Workspace>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 17.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 17 -->
 </section>
-<section id="size-reports-the-count" class="slide level2">
-<h2>size Reports the Count</h2>
-<p><code>size</code> reports how many values are currently stored.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores <span class="op">=</span> <span class="op">{</span><span class="dv">88</span><span class="op">,</span> <span class="dv">92</span><span class="op">,</span> <span class="dv">75</span><span class="op">};</span></span>
-<span id="cb6-2"><a href=""></a></span>
-<span id="cb6-3"><a href=""></a>cout <span class="op">&lt;&lt;</span> scores<span class="op">.</span>size<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This prints <code>3</code>.</p>
+<section id="section-3" class="slide level2">
+<h2><span style="display:none"><exercise workspace=""></exercise></span></h2>
+
+<img data-src="images/source_pages/slide-018.png" style="width:100.0%" alt="<Exercise Workspace>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 18.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 18 -->
 </section>
-<section id="save-before-removing" class="slide level2">
-<h2>Save Before Removing</h2>
-<p>If the last value matters, save it before removing it.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores <span class="op">=</span> <span class="op">{</span><span class="dv">88</span><span class="op">,</span> <span class="dv">92</span><span class="op">,</span> <span class="dv">75</span><span class="op">};</span></span>
-<span id="cb7-2"><a href=""></a></span>
-<span id="cb7-3"><a href=""></a><span class="dt">int</span> droppedScore <span class="op">=</span> scores<span class="op">.</span>back<span class="op">();</span></span>
-<span id="cb7-4"><a href=""></a>scores<span class="op">.</span>pop_back<span class="op">();</span></span>
-<span id="cb7-5"><a href=""></a></span>
-<span id="cb7-6"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="st">"Removed: "</span> <span class="op">&lt;&lt;</span> droppedScore <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>After <code>pop_back</code>, the vector no longer stores <code>75</code>.</p>
+<section id="section-4" class="slide level2">
+<h2><span style="display:none"><exercise workspace=""></exercise></span></h2>
+
+<img data-src="images/source_pages/slide-019.png" style="width:100.0%" alt="<Exercise Workspace>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 19.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 19 -->
-</section>
-<section id="example-1-daily-temperatures-ipo" class="slide level2">
-<h2>Example 1: Daily Temperatures IPO</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Input</th>
-<th>Processing</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>three temperatures</td>
-<td>store each value with <code>push_back</code></td>
-<td>number of temperatures</td>
-</tr>
-</tbody>
-</table>
-<p>The vector is the storage choice in the processing step.</p>
-<!-- Slide 20 -->
-</section>
-<section id="example-1-daily-temperatures-code" class="slide level2">
-<h2>Example 1: Daily Temperatures Code</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb8-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
-<span id="cb8-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb8-4"><a href=""></a></span>
-<span id="cb8-5"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb8-6"><a href=""></a>    vector<span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;</span> temperatures<span class="op">;</span></span>
-<span id="cb8-7"><a href=""></a></span>
-<span id="cb8-8"><a href=""></a>    temperatures<span class="op">.</span>push_back<span class="op">(</span><span class="fl">68.5</span><span class="op">);</span></span>
-<span id="cb8-9"><a href=""></a>    temperatures<span class="op">.</span>push_back<span class="op">(</span><span class="fl">72.0</span><span class="op">);</span></span>
-<span id="cb8-10"><a href=""></a>    temperatures<span class="op">.</span>push_back<span class="op">(</span><span class="fl">70.5</span><span class="op">);</span></span>
-<span id="cb8-11"><a href=""></a></span>
-<span id="cb8-12"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Days recorded: "</span> <span class="op">&lt;&lt;</span> temperatures<span class="op">.</span>size<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb8-13"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb8-14"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 21 -->
-</section>
-<section id="example-1-execution-trace" class="slide level2">
-<h2>Example 1: Execution Trace</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Statement</th>
-<th>temperatures</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>vector&lt;double&gt; temperatures;</code></td>
-<td><code>{ }</code></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><code>temperatures.push_back(68.5);</code></td>
-<td><code>{68.5}</code></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><code>temperatures.push_back(72.0);</code></td>
-<td><code>{68.5, 72.0}</code></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><code>temperatures.push_back(70.5);</code></td>
-<td><code>{68.5, 72.0, 70.5}</code></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><code>cout &lt;&lt; temperatures.size();</code></td>
-<td><code>{68.5, 72.0, 70.5}</code></td>
-<td><code>3</code></td>
-</tr>
-</tbody>
-</table>
-<p>The trace makes each vector change visible.</p>
-<!-- Slide 22 -->
-</section>
-<section id="example-2-loading-scalar-variables" class="slide level2">
-<h2>Example 2: Loading Scalar Variables</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb9-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
-<span id="cb9-3"><a href=""></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
-<span id="cb9-4"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb9-5"><a href=""></a></span>
-<span id="cb9-6"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb9-7"><a href=""></a>    string firstItem <span class="op">=</span> <span class="st">"eggs"</span><span class="op">;</span></span>
-<span id="cb9-8"><a href=""></a>    string secondItem <span class="op">=</span> <span class="st">"rice"</span><span class="op">;</span></span>
-<span id="cb9-9"><a href=""></a>    string thirdItem <span class="op">=</span> <span class="st">"apples"</span><span class="op">;</span></span>
-<span id="cb9-10"><a href=""></a>    vector<span class="op">&lt;</span>string<span class="op">&gt;</span> items<span class="op">;</span></span>
-<span id="cb9-11"><a href=""></a></span>
-<span id="cb9-12"><a href=""></a>    items<span class="op">.</span>push_back<span class="op">(</span>firstItem<span class="op">);</span></span>
-<span id="cb9-13"><a href=""></a>    items<span class="op">.</span>push_back<span class="op">(</span>secondItem<span class="op">);</span></span>
-<span id="cb9-14"><a href=""></a>    items<span class="op">.</span>push_back<span class="op">(</span>thirdItem<span class="op">);</span></span>
-<span id="cb9-15"><a href=""></a></span>
-<span id="cb9-16"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Items loaded: "</span> <span class="op">&lt;&lt;</span> items<span class="op">.</span>size<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb9-17"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb9-18"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 23 -->
-</section>
-<section id="example-3-storing-formula-results" class="slide level2">
-<h2>Example 3: Storing Formula Results</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb10-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
-<span id="cb10-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb10-4"><a href=""></a></span>
-<span id="cb10-5"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb10-6"><a href=""></a>    <span class="dt">double</span> hourlyRate <span class="op">=</span> <span class="fl">18.50</span><span class="op">;</span></span>
-<span id="cb10-7"><a href=""></a>    <span class="dt">double</span> mondayHours <span class="op">=</span> <span class="fl">6.0</span><span class="op">;</span></span>
-<span id="cb10-8"><a href=""></a>    <span class="dt">double</span> tuesdayHours <span class="op">=</span> <span class="fl">7.5</span><span class="op">;</span></span>
-<span id="cb10-9"><a href=""></a>    vector<span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;</span> dailyPay<span class="op">;</span></span>
-<span id="cb10-10"><a href=""></a></span>
-<span id="cb10-11"><a href=""></a>    dailyPay<span class="op">.</span>push_back<span class="op">(</span>hourlyRate <span class="op">*</span> mondayHours<span class="op">);</span></span>
-<span id="cb10-12"><a href=""></a>    dailyPay<span class="op">.</span>push_back<span class="op">(</span>hourlyRate <span class="op">*</span> tuesdayHours<span class="op">);</span></span>
-<span id="cb10-13"><a href=""></a></span>
-<span id="cb10-14"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Paychecks stored: "</span> <span class="op">&lt;&lt;</span> dailyPay<span class="op">.</span>size<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb10-15"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb10-16"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 24 -->
-</section>
-<section id="operation-summary-table" class="slide level2">
-<h2>Operation Summary Table</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Operation</th>
-<th>What it does</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>push_back(value)</code></td>
-<td>adds a value to the end</td>
-</tr>
-<tr class="even">
-<td><code>pop_back()</code></td>
-<td>removes the last value</td>
-</tr>
-<tr class="odd">
-<td><code>size()</code></td>
-<td>reports the current count</td>
-</tr>
-<tr class="even">
-<td><code>back()</code></td>
-<td>reads the last value</td>
-</tr>
-</tbody>
-</table>
-<!-- Slide 25 -->
-</section>
-<section id="common-practices" class="slide level2">
-<h2>Common Practices</h2>
-<ul>
-<li>Use plural names for vectors, such as <code>scores</code> or <code>items</code>.</li>
-<li>Check that a vector has values before reading from it.</li>
-<li>Use <code>push_back</code> when the program discovers values one at a time.</li>
-</ul>
-<!-- Slide 26 -->
-</section>
-<section id="summary-1" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>Vector operations can add, remove, count, or read values.</li>
-<li><code>push_back</code> and <code>pop_back</code> change the vector.</li>
-<li><code>size</code> and <code>back</code> help inspect what the vector contains.</li>
-</ul>
-<!-- Slide 27 -->
-<!-- Topic 4: Range-Based For Loops -->
-<!-- Slides 28-39 -->
+<!-- Topic: Structures -->
+<!-- Slides 20–31 -->
 </section></section>
 <section>
-<section id="range-based-for-loops" class="title-slide slide level1 center">
-<h1>Range-Based For Loops</h1>
+<section id="structures" class="title-slide slide level1 center">
+<h1><span style="display:none">Structures</span></h1>
+
+</section>
+<section id="structures-1" class="slide level2">
+<h2><span style="display:none">7.12 Structures</span></h2>
+
+<img data-src="images/source_pages/slide-020.png" style="width:100.0%" alt="7.12 Structures" class="r-stretch"><aside class="notes">
+<p>Slides 20–31</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 20 -->
+</section>
+<section id="the-problem" class="slide level2">
+<h2><span style="display:none">The Problem</span></h2>
+
+<img data-src="images/source_pages/slide-021.png" style="width:100.0%" alt="The Problem" class="r-stretch"><aside class="notes">
+<p>Source PDF page 21.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 21 -->
+</section>
+<section id="section-5" class="slide level2">
+<h2><span style="display:none"><problem context=""></problem></span></h2>
+
+<img data-src="images/source_pages/slide-022.png" style="width:100.0%" alt="<Problem Context>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 22.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 22 -->
+</section>
+<section id="grouping-variables" class="slide level2">
+<h2><span style="display:none">Grouping Variables</span></h2>
+
+<img data-src="images/source_pages/slide-023.png" style="width:100.0%" alt="Grouping Variables" class="r-stretch"><aside class="notes">
+<p>Source PDF page 23.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 23 -->
+</section>
+<section id="solution---struct" class="slide level2">
+<h2><span style="display:none">Solution - Struct</span></h2>
+
+<img data-src="images/source_pages/slide-024.png" style="width:100.0%" alt="Solution - Struct" class="r-stretch"><aside class="notes">
+<p>Source PDF page 24.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 24 -->
+</section>
+<section id="section-6" class="slide level2">
+<h2><span style="display:none"><struct example=""></struct></span></h2>
+
+<img data-src="images/source_pages/slide-025.png" style="width:100.0%" alt="<Struct Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 25.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 25 -->
+</section>
+<section id="section-7" class="slide level2">
+<h2><span style="display:none"><struct example=""></struct></span></h2>
+
+<img data-src="images/source_pages/slide-026.png" style="width:100.0%" alt="<Struct Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 26.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 26 -->
+</section>
+<section id="accessing-a-struct" class="slide level2">
+<h2><span style="display:none">Accessing a Struct</span></h2>
+
+<img data-src="images/source_pages/slide-027.png" style="width:100.0%" alt="Accessing a Struct" class="r-stretch"><aside class="notes">
+<p>Source PDF page 27.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 27 -->
+</section>
+<section id="initializing-a-struct" class="slide level2">
+<h2><span style="display:none">Initializing a Struct</span></h2>
+
+<img data-src="images/source_pages/slide-028.png" style="width:100.0%" alt="Initializing a Struct" class="r-stretch"><aside class="notes">
+<p>Source PDF page 28.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 28 -->
 </section>
-<section id="when-every-value-matters" class="slide level2 smaller">
-<h2>When Every Value Matters</h2>
-<ul>
-<li>How can a program use every value in a vector?</li>
-<li>A range-based <code>for</code> loop visits each value without writing position numbers.</li>
-</ul>
-<aside class="notes">
-<p>Slides 28-39</p>
+<section id="initialization-list" class="slide level2">
+<h2><span style="display:none">Initialization List</span></h2>
+
+<img data-src="images/source_pages/slide-029.png" style="width:100.0%" alt="Initialization List" class="r-stretch"><aside class="notes">
+<p>Source PDF page 29.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -747,340 +704,1505 @@ setTimeout(drawVector0302, 0);
       }</style></aside>
 <!-- Slide 29 -->
 </section>
-<section id="the-range-based-for-loop" class="slide level2">
-<h2>The Range-Based For Loop</h2>
-<p>The range-based <code>for</code> loop has this shape:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb11-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> score <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb11-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The loop body runs once for each value in <code>scores</code>.</p>
+<section id="constructor" class="slide level2">
+<h2><span style="display:none">Constructor</span></h2>
+
+<img data-src="images/source_pages/slide-030.png" style="width:100.0%" alt="Constructor" class="r-stretch"><aside class="notes">
+<p>Source PDF page 30.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 30 -->
 </section>
-<section id="read-it-like-english" class="slide level2">
-<h2>Read It Like English</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">:</span> scores<span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Read this as:</p>
-<blockquote>
-<p>for each <code>score</code> in <code>scores</code></p>
-</blockquote>
-<p>The vector name is plural; the loop variable name is singular.</p>
+<section id="questions" class="slide level2">
+<h2><span style="display:none">Questions</span></h2>
+
+<img data-src="images/source_pages/slide-031.png" style="width:100.0%" alt="Questions" class="r-stretch"><aside class="notes">
+<p>Source PDF page 31.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 31 -->
+<!-- Topic: Classes and Objects -->
+<!-- Slides 32–46 -->
+</section></section>
+<section>
+<section id="classes-and-objects" class="title-slide slide level1 center">
+<h1><span style="display:none">Classes and Objects</span></h1>
+
 </section>
-<section id="display-every-value" class="slide level2">
-<h2>Display Every Value</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb13-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
-<span id="cb13-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb13-4"><a href=""></a></span>
-<span id="cb13-5"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb13-6"><a href=""></a>    vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores <span class="op">=</span> <span class="op">{</span><span class="dv">88</span><span class="op">,</span> <span class="dv">92</span><span class="op">,</span> <span class="dv">75</span><span class="op">};</span></span>
-<span id="cb13-7"><a href=""></a></span>
-<span id="cb13-8"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb13-9"><a href=""></a>        cout <span class="op">&lt;&lt;</span> score <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb13-10"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb13-11"><a href=""></a></span>
-<span id="cb13-12"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb13-13"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="x-crash-course-in-building-objects" class="slide level2">
+<h2><span style="display:none">7.x Crash Course in Building Objects</span></h2>
+
+<img data-src="images/source_pages/slide-032.png" style="width:100.0%" alt="7.x Crash Course in Building Objects" class="r-stretch"><aside class="notes">
+<p>Slides 32–46</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 32 -->
 </section>
-<section id="execution-trace-for-each" class="slide level2">
-<h2>Execution Trace: For Each</h2>
-<table class="caption-top">
+<section id="how-to-construct-an-object" class="slide level2">
+<h2><span style="display:none">How to Construct an Object</span></h2>
+
+<img data-src="images/source_pages/slide-033.png" style="width:100.0%" alt="How to Construct an Object" class="r-stretch"><aside class="notes">
+<p>Source PDF page 33.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 33 -->
+</section>
+<section id="section-8" class="slide level2">
+<h2><span style="display:none"><object construction="">
+<p><img data-src="images/source_pages/slide-034.png" style="width:100.0%" alt="<Object Construction>"></p>
+<aside class="notes">
+<p>Source PDF page 34.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 34 -->
+
+<section id="section-9" class="slide level2">
+<h2><span style="display:none"><object construction="">
+<p><img data-src="images/source_pages/slide-035.png" style="width:100.0%" alt="<Object Construction>"></p>
+<aside class="notes">
+<p>Source PDF page 35.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 35 -->
+
+<section id="encapsulation" class="slide level2">
+<h2><span style="display:none">Encapsulation</span></h2>
+
+<img data-src="images/source_pages/slide-036.png" style="width:100.0%" alt="Encapsulation" class="r-stretch"><aside class="notes">
+<p>Source PDF page 36.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 36 -->
+</section>
+<section id="section-10" class="slide level2">
+<h2><span style="display:none"><encapsulation></encapsulation></span></h2>
+
+<img data-src="images/source_pages/slide-037.png" style="width:100.0%" alt="<Encapsulation>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 37.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 37 -->
+</section>
+<section id="section-11" class="slide level2">
+<h2><span style="display:none"><encapsulation></encapsulation></span></h2>
+
+<img data-src="images/source_pages/slide-038.png" style="width:100.0%" alt="<Encapsulation>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 38.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 38 -->
+</section>
+<section id="setters-and-getters" class="slide level2">
+<h2><span style="display:none">Setters and Getters</span></h2>
+
+<img data-src="images/source_pages/slide-039.png" style="width:100.0%" alt="Setters and Getters" class="r-stretch"><aside class="notes">
+<p>Source PDF page 39.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 39 -->
+</section>
+<section id="section-12" class="slide level2">
+<h2><span style="display:none"><methods></methods></span></h2>
+
+<img data-src="images/source_pages/slide-040.png" style="width:100.0%" alt="<Methods>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 40.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 40 -->
+</section>
+<section id="section-13" class="slide level2">
+<h2><span style="display:none"><methods></methods></span></h2>
+
+<img data-src="images/source_pages/slide-041.png" style="width:100.0%" alt="<Methods>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 41.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 41 -->
+</section>
+<section id="section-14" class="slide level2">
+<h2><span style="display:none"><methods></methods></span></h2>
+
+<img data-src="images/source_pages/slide-042.png" style="width:100.0%" alt="<Methods>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 42.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 42 -->
+</section>
+<section id="program-this" class="slide level2">
+<h2><span style="display:none">Program This</span></h2>
+
+<img data-src="images/source_pages/slide-043.png" style="width:100.0%" alt="Program This" class="r-stretch"><aside class="notes">
+<p>Source PDF page 43.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 43 -->
+</section>
+<section id="exercise-goals-1" class="slide level2">
+<h2><span style="display:none">Exercise Goals</span></h2>
+
+<img data-src="images/source_pages/slide-044.png" style="width:100.0%" alt="Exercise Goals" class="r-stretch"><aside class="notes">
+<p>Source PDF page 44.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 44 -->
+</section>
+<section id="programming-exercise-1" class="slide level2">
+<h2><span style="display:none">Programming Exercise</span></h2>
+
+<img data-src="images/source_pages/slide-045.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"><aside class="notes">
+<p>Source PDF page 45.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 45 -->
+</section>
+<section id="section-15" class="slide level2">
+<h2><span style="display:none"><exercise workspace=""></exercise></span></h2>
+
+<img data-src="images/source_pages/slide-046.png" style="width:100.0%" alt="<Exercise Workspace>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 46.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 46 -->
+<!-- Topic: Abstract Data Types -->
+<!-- Slides 47–54 -->
+</section>
+<section>
+<section id="abstract-data-types" class="title-slide slide level1 center">
+<h1><span style="display:none">Abstract Data Types</span></h1>
+
+</section>
+<section id="abstract-data-type-adt" class="slide level2">
+<h2><span style="display:none">7.1 Abstract Data Type (ADT)</span></h2>
+
+<img data-src="images/source_pages/slide-047.png" style="width:100.0%" alt="7.1 Abstract Data Type (ADT)" class="r-stretch"><aside class="notes">
+<p>Slides 47–54</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 47 -->
+</section>
+<section id="the-problem-1" class="slide level2">
+<h2><span style="display:none">The Problem</span></h2>
+
+<img data-src="images/source_pages/slide-048.png" style="width:100.0%" alt="The Problem" class="r-stretch"><aside class="notes">
+<p>Source PDF page 48.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 48 -->
+</section>
+<section id="someone-will-break-it" class="slide level2">
+<h2><span style="display:none">Someone Will Break It</span></h2>
+
+<img data-src="images/source_pages/slide-049.png" style="width:100.0%" alt="Someone Will Break It" class="r-stretch"><aside class="notes">
+<p>Source PDF page 49.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 49 -->
+</section>
+<section id="abstract-data-type-definition" class="slide level2">
+<h2><span style="display:none">Abstract Data Type Definition</span></h2>
+
+<img data-src="images/source_pages/slide-050.png" style="width:100.0%" alt="Abstract Data Type Definition" class="r-stretch"><aside class="notes">
+<p>Source PDF page 50.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 50 -->
+</section>
+<section id="how" class="slide level2">
+<h2><span style="display:none">How?</span></h2>
+
+<img data-src="images/source_pages/slide-051.png" style="width:100.0%" alt="How?" class="r-stretch"><aside class="notes">
+<p>Source PDF page 51.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 51 -->
+</section>
+<section id="build-adt" class="slide level2">
+<h2><span style="display:none">Build ADT</span></h2>
+
+<img data-src="images/source_pages/slide-052.png" style="width:100.0%" alt="Build ADT" class="r-stretch"><aside class="notes">
+<p>Source PDF page 52.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 52 -->
+</section>
+<section id="this-is-the-api" class="slide level2">
+<h2><span style="display:none">This Is the API</span></h2>
+
+<img data-src="images/source_pages/slide-053.png" style="width:100.0%" alt="This Is the API" class="r-stretch"><aside class="notes">
+<p>Source PDF page 53.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 53 -->
+</section>
+<section id="api-design-goal" class="slide level2">
+<h2><span style="display:none">API Design Goal</span></h2>
+
+<img data-src="images/source_pages/slide-054.png" style="width:100.0%" alt="API Design Goal" class="r-stretch"><aside class="notes">
+<p>Source PDF page 54.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 54 -->
+<!-- Topic: Encapsulation and Abstraction -->
+<!-- Slides 55–77 -->
+</section></section>
+<section>
+<section id="encapsulation-and-abstraction" class="title-slide slide level1 center">
+<h1><span style="display:none">Encapsulation and Abstraction</span></h1>
+
+</section>
+<section id="object-oriented-programming" class="slide level2">
+<h2><span style="display:none">7.2 Object-Oriented Programming</span></h2>
+
+<img data-src="images/source_pages/slide-055.png" style="width:100.0%" alt="7.2 Object-Oriented Programming" class="r-stretch"><aside class="notes">
+<p>Slides 55–77</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 55 -->
+</section>
+<section id="oop-and-the-real-world" class="slide level2">
+<h2><span style="display:none">OOP and the Real World</span></h2>
+
+<img data-src="images/source_pages/slide-056.png" style="width:100.0%" alt="OOP and the Real World" class="r-stretch"><aside class="notes">
+<p>Source PDF page 56.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 56 -->
+</section>
+<section id="encapsulation-1" class="slide level2">
+<h2><span style="display:none">Encapsulation</span></h2>
+
+<img data-src="images/source_pages/slide-057.png" style="width:100.0%" alt="Encapsulation" class="r-stretch"><aside class="notes">
+<p>Source PDF page 57.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 57 -->
+</section>
+<section id="implementation-and-abstraction" class="slide level2">
+<h2><span style="display:none">Implementation and Abstraction</span></h2>
+
+<img data-src="images/source_pages/slide-058.png" style="width:100.0%" alt="Implementation and Abstraction" class="r-stretch"><aside class="notes">
+<p>Source PDF page 58.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 58 -->
+</section>
+<section id="abstraction" class="slide level2">
+<h2><span style="display:none">Abstraction</span></h2>
+
+<img data-src="images/source_pages/slide-059.png" style="width:100.0%" alt="Abstraction" class="r-stretch"><aside class="notes">
+<p>Source PDF page 59.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 59 -->
+</section>
+<section id="abstraction-definition" class="slide level2">
+<h2><span style="display:none">Abstraction Definition</span></h2>
+
+<img data-src="images/source_pages/slide-060.png" style="width:100.0%" alt="Abstraction Definition" class="r-stretch"><aside class="notes">
+<p>Source PDF page 60.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 60 -->
+</section>
+<section id="why-abstraction" class="slide level2">
+<h2><span style="display:none">Why Abstraction?</span></h2>
+
+<img data-src="images/source_pages/slide-061.png" style="width:100.0%" alt="Why Abstraction?" class="r-stretch"><aside class="notes">
+<p>Source PDF page 61.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 61 -->
+</section>
+<section id="section-16" class="slide level2">
+<h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
+
+<img data-src="images/source_pages/slide-062.png" style="width:100.0%" alt="<Abstraction Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 62.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 62 -->
+</section>
+<section id="section-17" class="slide level2">
+<h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
+
+<img data-src="images/source_pages/slide-063.png" style="width:100.0%" alt="<Abstraction Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 63.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 63 -->
+</section>
+<section id="section-18" class="slide level2">
+<h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
+
+<img data-src="images/source_pages/slide-064.png" style="width:100.0%" alt="<Abstraction Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 64.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 64 -->
+</section>
+<section id="section-19" class="slide level2">
+<h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
+
+<img data-src="images/source_pages/slide-065.png" style="width:100.0%" alt="<Abstraction Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 65.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 65 -->
+</section>
+<section id="section-20" class="slide level2">
+<h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
+
+<img data-src="images/source_pages/slide-066.png" style="width:100.0%" alt="<Abstraction Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 66.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 66 -->
+</section>
+<section id="section-21" class="slide level2">
+<h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
+
+<img data-src="images/source_pages/slide-067.png" style="width:100.0%" alt="<Abstraction Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 67.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 67 -->
+</section>
+<section id="section-22" class="slide level2">
+<h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
+
+<img data-src="images/source_pages/slide-068.png" style="width:100.0%" alt="<Abstraction Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 68.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 68 -->
+</section>
+<section id="section-23" class="slide level2">
+<h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
+
+<img data-src="images/source_pages/slide-069.png" style="width:100.0%" alt="<Abstraction Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 69.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 69 -->
+</section>
+<section id="section-24" class="slide level2">
+<h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
+
+<img data-src="images/source_pages/slide-070.png" style="width:100.0%" alt="<Abstraction Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 70.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 70 -->
+</section>
+<section id="section-25" class="slide level2">
+<h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
+
+<img data-src="images/source_pages/slide-071.png" style="width:100.0%" alt="<Abstraction Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 71.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 71 -->
+</section>
+<section id="section-26" class="slide level2">
+<h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
+
+<img data-src="images/source_pages/slide-072.png" style="width:100.0%" alt="<Abstraction Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 72.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 72 -->
+</section>
+<section id="section-27" class="slide level2">
+<h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
+
+<img data-src="images/source_pages/slide-073.png" style="width:100.0%" alt="<Abstraction Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 73.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 73 -->
+</section>
+<section id="section-28" class="slide level2">
+<h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
+
+<img data-src="images/source_pages/slide-074.png" style="width:100.0%" alt="<Abstraction Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 74.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 74 -->
+</section>
+<section id="section-29" class="slide level2">
+<h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
+
+<img data-src="images/source_pages/slide-075.png" style="width:100.0%" alt="<Abstraction Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 75.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 75 -->
+</section>
+<section id="section-30" class="slide level2">
+<h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
+
+<img data-src="images/source_pages/slide-076.png" style="width:100.0%" alt="<Abstraction Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 76.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 76 -->
+</section>
+<section id="table-of-variables" class="slide level2">
+<h2><span style="display:none">Table of Variables</span></h2>
+
+<img data-src="images/source_pages/slide-077.png" style="width:100.0%" alt="Table of Variables" class="r-stretch"><aside class="notes">
+<p>Source PDF page 77.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 77 -->
+<!-- Topic: Classes and Methods -->
+<!-- Slides 78–93 -->
+</section></section>
+<section>
+<section id="classes-and-methods" class="title-slide slide level1 center">
+<h1><span style="display:none">Classes and Methods</span></h1>
+
+</section>
+<section id="introduction-to-classes" class="slide level2">
+<h2><span style="display:none">7.3 Introduction to Classes</span></h2>
+
+<img data-src="images/source_pages/slide-078.png" style="width:100.0%" alt="7.3 Introduction to Classes" class="r-stretch"><aside class="notes">
+<p>Slides 78–93</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 78 -->
+</section>
+<section id="section-31" class="slide level2">
+<h2><span style="display:none"><class example=""></class></span></h2>
+
+<img data-src="images/source_pages/slide-079.png" style="width:100.0%" alt="<Class Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 79.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 79 -->
+</section>
+<section id="section-32" class="slide level2">
+<h2><span style="display:none"><class example=""></class></span></h2>
+
+<img data-src="images/source_pages/slide-080.png" style="width:100.0%" alt="<Class Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 80.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 80 -->
+</section>
+<section id="section-33" class="slide level2">
+<h2><span style="display:none"><class example=""></class></span></h2>
+
+<img data-src="images/source_pages/slide-081.png" style="width:100.0%" alt="<Class Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 81.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 81 -->
+</section>
+<section id="creating-and-using-objects" class="slide level2">
+<h2><span style="display:none">7.4 Creating and Using Objects</span></h2>
+
+<img data-src="images/source_pages/slide-082.png" style="width:100.0%" alt="7.4 Creating and Using Objects" class="r-stretch"><aside class="notes">
+<p>Source PDF page 82.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 82 -->
+</section>
+<section id="section-34" class="slide level2">
+<h2><span style="display:none"><object example="">
+<p><img data-src="images/source_pages/slide-083.png" style="width:100.0%" alt="<Object Example>"></p>
+<aside class="notes">
+<p>Source PDF page 83.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 83 -->
+
+<section id="defining-member-functions" class="slide level2">
+<h2><span style="display:none">7.5 Defining Member Functions</span></h2>
+
+<img data-src="images/source_pages/slide-084.png" style="width:100.0%" alt="7.5 Defining Member Functions" class="r-stretch"><aside class="notes">
+<p>Source PDF page 84.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 84 -->
+</section>
+<section id="classes-group-data-and-behavior" class="slide level2">
+<h2><span style="display:none">Classes Group Data and Behavior</span></h2>
+
+<img data-src="images/source_pages/slide-085.png" style="width:100.0%" alt="Classes Group Data and Behavior" class="r-stretch"><aside class="notes">
+<p>Source PDF page 85.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 85 -->
+</section>
+<section id="methods" class="slide level2">
+<h2><span style="display:none">Methods</span></h2>
+
+<img data-src="images/source_pages/slide-086.png" style="width:100.0%" alt="Methods" class="r-stretch"><aside class="notes">
+<p>Source PDF page 86.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 86 -->
+</section>
+<section id="methods-1" class="slide level2">
+<h2><span style="display:none">Methods</span></h2>
+
+<img data-src="images/source_pages/slide-087.png" style="width:100.0%" alt="Methods" class="r-stretch"><aside class="notes">
+<p>Source PDF page 87.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 87 -->
+</section>
+<section id="method-example" class="slide level2">
+<h2><span style="display:none">Method Example</span></h2>
+
+<img data-src="images/source_pages/slide-088.png" style="width:100.0%" alt="Method Example" class="r-stretch"><aside class="notes">
+<p>Source PDF page 88.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 88 -->
+</section>
+<section id="another-example" class="slide level2">
+<h2><span style="display:none">Another Example</span></h2>
+
+<img data-src="images/source_pages/slide-089.png" style="width:100.0%" alt="Another Example" class="r-stretch"><aside class="notes">
+<p>Source PDF page 89.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 89 -->
+</section>
+<section id="section-35" class="slide level2">
+<h2><span style="display:none"><method example=""></method></span></h2>
+
+<img data-src="images/source_pages/slide-090.png" style="width:100.0%" alt="<Method Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 90.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 90 -->
+</section>
+<section id="methods-and-output" class="slide level2">
+<h2><span style="display:none">Methods and Output</span></h2>
+
+<img data-src="images/source_pages/slide-091.png" style="width:100.0%" alt="Methods and Output" class="r-stretch"><aside class="notes">
+<p>Source PDF page 91.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 91 -->
+</section>
+<section id="section-36" class="slide level2">
+<h2><span style="display:none"><method example=""></method></span></h2>
+
+<img data-src="images/source_pages/slide-092.png" style="width:100.0%" alt="<Method Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 92.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 92 -->
+</section>
+<section id="section-37" class="slide level2">
+<h2><span style="display:none"><method example=""></method></span></h2>
+
+<img data-src="images/source_pages/slide-093.png" style="width:100.0%" alt="<Method Example>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 93.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 93 -->
+<!-- Topic: Programming Exercise: Colorize -->
+<!-- Slides 94–95 -->
+</section>
+<section>
+<section id="programming-exercise-colorize" class="title-slide slide level1 center">
+<h1><span style="display:none">Programming Exercise: Colorize</span></h1>
+
+</section>
+<section id="programming-exercise-2" class="slide level2">
+<h2><span style="display:none">Programming Exercise</span></h2>
+
+<img data-src="images/source_pages/slide-094.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"><aside class="notes">
+<p>Slides 94–95</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 94 -->
+</section>
+<section id="exercise-goals-2" class="slide level2">
+<h2><span style="display:none">Exercise Goals</span></h2>
+
+<img data-src="images/source_pages/slide-095.png" style="width:100.0%" alt="Exercise Goals" class="r-stretch"><aside class="notes">
+<p>Source PDF page 95.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 95 -->
+<!-- Topic: Homework Peer Review -->
+<!-- Slides 96–101 -->
+</section></section>
+<section>
+<section id="homework-peer-review" class="title-slide slide level1 center">
+<h1><span style="display:none">Homework Peer Review</span></h1>
+
+</section>
+<section id="programming-exercise-3" class="slide level2">
+<h2><span style="display:none">Programming Exercise</span></h2>
+
+<img data-src="images/source_pages/slide-096.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"><aside class="notes">
+<p>Slides 96–101</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 96 -->
+</section>
+<section id="homework-1-peer-review" class="slide level2">
+<h2><span style="display:none">Homework 1 Peer Review</span></h2>
+
+<img data-src="images/source_pages/slide-097.png" style="width:100.0%" alt="Homework 1 Peer Review" class="r-stretch"><aside class="notes">
+<p>Source PDF page 97.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 97 -->
+</section>
+<section id="homework-debrief" class="slide level2">
+<h2><span style="display:none">Homework Debrief</span></h2>
+
+<img data-src="images/source_pages/slide-098.png" style="width:100.0%" alt="Homework Debrief" class="r-stretch"><aside class="notes">
+<p>Source PDF page 98.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 98 -->
+</section>
+<section id="process" class="slide level2">
+<h2><span style="display:none">Process</span></h2>
+
+<img data-src="images/source_pages/slide-099.png" style="width:100.0%" alt="Process" class="r-stretch"><aside class="notes">
+<p>Source PDF page 99.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 99 -->
+</section>
+<section id="analysis" class="slide level2">
+<h2><span style="display:none">Analysis</span></h2>
+
+<img data-src="images/source_pages/slide-100.png" style="width:100.0%" alt="Analysis" class="r-stretch"><aside class="notes">
+<p>Source PDF page 100.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 100 -->
+</section>
+<section id="debrief" class="slide level2">
+<h2><span style="display:none">Debrief</span></h2>
+
+<img data-src="images/source_pages/slide-101.png" style="width:100.0%" alt="Debrief" class="r-stretch"><aside class="notes">
+<p>Source PDF page 101.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 101 -->
+<!-- Topic: Programming Exercise: Dynamic Array Operations -->
+<!-- Slides 102–104 -->
+</section></section>
+<section>
+<section id="programming-exercise-dynamic-array-operations" class="title-slide slide level1 center">
+<h1><span style="display:none">Programming Exercise: Dynamic Array Operations</span></h1>
+
+</section>
+<section id="program-this---debrief-1" class="slide level2">
+<h2><span style="display:none">Program This - Debrief</span></h2>
+
+<img data-src="images/source_pages/slide-102.png" style="width:100.0%" alt="Program This - Debrief" class="r-stretch"><aside class="notes">
+<p>Slides 102–104</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 102 -->
+</section>
+<section id="exercise-goals-3" class="slide level2">
+<h2><span style="display:none">Exercise Goals</span></h2>
+
+<img data-src="images/source_pages/slide-103.png" style="width:100.0%" alt="Exercise Goals" class="r-stretch"><aside class="notes">
+<p>Source PDF page 103.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 103 -->
+</section>
+<section id="programming-exercise-4" class="slide level2">
+<h2><span style="display:none">Programming Exercise</span></h2>
+
+<img data-src="images/source_pages/slide-104.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"><aside class="notes">
+<p>Source PDF page 104.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 104 -->
+<!-- Topic: Programming Exercise: Returning a Struct -->
+<!-- Slides 105–108 -->
+</section></section>
+<section>
+<section id="programming-exercise-returning-a-struct" class="title-slide slide level1 center">
+<h1><span style="display:none">Programming Exercise: Returning a Struct</span></h1>
+
+</section>
+<section id="programming-exercise-5" class="slide level2">
+<h2><span style="display:none">Programming Exercise</span></h2>
+
+<img data-src="images/source_pages/slide-105.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"><aside class="notes">
+<p>Slides 105–108</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 105 -->
+</section>
+<section id="exercise-goals-4" class="slide level2">
+<h2><span style="display:none">Exercise Goals</span></h2>
+
+<img data-src="images/source_pages/slide-106.png" style="width:100.0%" alt="Exercise Goals" class="r-stretch"><aside class="notes">
+<p>Source PDF page 106.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 106 -->
+</section>
+<section id="programming-exercise-6" class="slide level2">
+<h2><span style="display:none">Programming Exercise</span></h2>
+
+<img data-src="images/source_pages/slide-107.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"><aside class="notes">
+<p>Source PDF page 107.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 107 -->
+</section>
+<section id="section-38" class="slide level2">
+<h2><span style="display:none"><exercise workspace=""></exercise></span></h2>
+
+<img data-src="images/source_pages/slide-108.png" style="width:100.0%" alt="<Exercise Workspace>" class="r-stretch"><aside class="notes">
+<p>Source PDF page 108.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 108 -->
+<table class="caption-top" style="width:6%;">
+<colgroup>
+<col style="width: 5%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: right;">Trip</th>
-<th style="text-align: right;">score</th>
-<th>Output</th>
+<th># Key Takeaways</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">88</td>
-<td><code>88</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">92</td>
-<td><code>92</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">75</td>
-<td><code>75</code></td>
+<td># Next Time</td>
 </tr>
 </tbody>
 </table>
-<p>The loop variable receives one value at a time.</p>
-<!-- Slide 33 -->
-</section>
-<section id="the-loop-variable-is-a-copy" class="slide level2">
-<h2>The Loop Variable Is a Copy</h2>
-<p>In this form, the loop variable stores a copy of each vector value.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb14-2"><a href=""></a>    score <span class="op">=</span> <span class="dv">100</span><span class="op">;</span></span>
-<span id="cb14-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Changing <code>score</code> does not change the original vector.</p>
-<!-- Slide 34 -->
-</section>
-<section id="one-value-per-trip" class="slide level2">
-<h2>One Value Per Trip</h2>
-<p>The loop body runs once for each value.</p>
-<p>If the vector has three values, the body runs three times.</p>
-<p>If the vector has five values, the body runs five times.</p>
-<!-- Slide 35 -->
-</section>
-<section id="example-print-a-shopping-list" class="slide level2">
-<h2>Example: Print a Shopping List</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb15-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
-<span id="cb15-3"><a href=""></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
-<span id="cb15-4"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb15-5"><a href=""></a></span>
-<span id="cb15-6"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb15-7"><a href=""></a>    vector<span class="op">&lt;</span>string<span class="op">&gt;</span> items <span class="op">=</span> <span class="op">{</span><span class="st">"eggs"</span><span class="op">,</span> <span class="st">"rice"</span><span class="op">,</span> <span class="st">"apples"</span><span class="op">};</span></span>
-<span id="cb15-8"><a href=""></a></span>
-<span id="cb15-9"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span>string item <span class="op">:</span> items<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb15-10"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"- "</span> <span class="op">&lt;&lt;</span> item <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb15-11"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb15-12"><a href=""></a></span>
-<span id="cb15-13"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb15-14"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 36 -->
-</section>
-<section id="loop-body-scope" class="slide level2">
-<h2>Loop Body Scope</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href=""></a><span class="dt">int</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb16-2"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores <span class="op">=</span> <span class="op">{</span><span class="dv">88</span><span class="op">,</span> <span class="dv">92</span><span class="op">};</span></span>
-<span id="cb16-3"><a href=""></a></span>
-<span id="cb16-4"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb16-5"><a href=""></a>    count <span class="op">=</span> count <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb16-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> score <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb16-7"><a href=""></a><span class="op">}</span></span>
-<span id="cb16-8"><a href=""></a></span>
-<span id="cb16-9"><a href=""></a>cout <span class="op">&lt;&lt;</span> count <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb16-10"><a href=""></a><span class="co">// cout &lt;&lt; score &lt;&lt; endl;  // score is not available here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The loop body creates a new level of scope.</p>
-<!-- Slide 37 -->
-</section>
-<section id="common-practices-1" class="slide level2">
-<h2>Common Practices</h2>
-<ul>
-<li>Use a plural name for the vector and a singular name for the loop variable.</li>
-<li>Use range-based <code>for</code> when every value should be read.</li>
-<li>Keep the loop body focused on one repeated action.</li>
-</ul>
-<!-- Slide 38 -->
-</section>
-<section id="summary-2" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>A range-based <code>for</code> loop visits every value in a vector.</li>
-<li>The loop variable receives one value per trip.</li>
-<li>The loop body has its own scope.</li>
-</ul>
-<!-- Slide 39 -->
-</section>
-<section class="slide level2">
-
 </section></section>
-<section>
-<section id="key-takeaways" class="title-slide slide level1 center">
-<h1>Key Takeaways</h1>
-<ul>
-<li>A vector stores many related values of the same type under one name.</li>
-<li><code>push_back</code>, <code>pop_back</code>, and <code>size</code> change or inspect the vector.</li>
-<li>Range-based <code>for</code> is the beginner-friendly way to read every value.</li>
-<li>IPO models and execution traces help explain why the vector exists and how it changes.</li>
-</ul>
-<!-- Slide 40 -->
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="next-time" class="title-slide slide level1 center">
-<h1>Next Time</h1>
-<ul>
-<li>More practice with range-based loops</li>
-<li>Inputting vector data</li>
-<li>Processing vector contents</li>
-</ul>
-<!-- Slide 41 -->
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
 <section id="appendix" class="title-slide slide level1 center">
 <h1>Appendix</h1>
-<!-- Slide 42 -->
-</section>
-<section id="vectors-good-practices" class="slide level2">
-<h2>Vectors: Good Practices</h2>
-<ul>
-<li>Use plural names for vectors, such as <code>scores</code>, <code>names</code>, or <code>items</code>.</li>
-<li>Choose the vector element type before choosing the variable name.</li>
-<li>Use vectors when values belong together as one ordered group.</li>
-</ul>
-<!-- Slide 43 -->
-</section>
-<section id="vectors-common-mistakes" class="slide level2">
-<h2>Vectors: Common Mistakes</h2>
-<ul>
-<li>Forgetting <code>#include &lt;vector&gt;</code>.</li>
-<li>Mixing different value types in one vector.</li>
-<li>Treating the vector as a single value instead of a container.</li>
-</ul>
-<!-- Slide 44 -->
-</section>
-<section id="vectors-more-examples" class="slide level2">
-<h2>Vectors: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores <span class="op">=</span> <span class="op">{</span><span class="dv">90</span><span class="op">,</span> <span class="dv">85</span><span class="op">,</span> <span class="dv">100</span><span class="op">};</span></span>
-<span id="cb17-2"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;</span> prices <span class="op">=</span> <span class="op">{</span><span class="fl">1.25</span><span class="op">,</span> <span class="fl">2.50</span><span class="op">,</span> <span class="fl">4.99</span><span class="op">};</span></span>
-<span id="cb17-3"><a href=""></a>vector<span class="op">&lt;</span>string<span class="op">&gt;</span> names <span class="op">=</span> <span class="op">{</span><span class="st">"Maya"</span><span class="op">,</span> <span class="st">"Ari"</span><span class="op">,</span> <span class="st">"Chen"</span><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 45 -->
-</section>
-<section id="vectors-practice-problems" class="slide level2">
-<h2>Vectors: Practice Problems</h2>
-<ol type="1">
-<li>Declare a vector named <code>ages</code> that stores integers.</li>
-<li>Declare a vector named <code>prices</code> with three starting values.</li>
-<li>Describe an IPO model for a program that stores three names.</li>
-</ol>
-<!-- Slide 46 -->
-</section>
-<section id="vectors-ai-search-terms" class="slide level2">
-<h2>Vectors: AI Search Terms</h2>
-<ul>
-<li>“C++ vector beginner”</li>
-<li>“C++ include vector”</li>
-<li>“C++ vector initialization”</li>
-</ul>
-<!-- Slide 47 -->
-</section>
-<section id="vectors-questions-for-reflection" class="slide level2">
-<h2>Vectors: Questions for Reflection</h2>
-<ul>
-<li>Why is a vector more useful than three separate variables?</li>
-<li>Why must every value in one vector have the same type?</li>
-</ul>
-<!-- Slide 48 -->
-</section>
-<section id="vector-operations-good-practices" class="slide level2">
-<h2>Vector Operations: Good Practices</h2>
-<ul>
-<li>Use <code>push_back</code> when values are discovered one at a time.</li>
-<li>Check <code>size()</code> before reading from a vector.</li>
-<li>Remember that <code>pop_back()</code> removes the last value.</li>
-</ul>
-<!-- Slide 49 -->
-</section>
-<section id="vector-operations-common-mistakes" class="slide level2">
-<h2>Vector Operations: Common Mistakes</h2>
-<ul>
-<li>Expecting <code>pop_back()</code> to print or return the removed value.</li>
-<li>Calling <code>pop_back()</code> on an empty vector.</li>
-<li>Forgetting that <code>size()</code> changes after adding or removing values.</li>
-</ul>
-<!-- Slide 50 -->
-</section>
-<section id="vector-operations-more-examples" class="slide level2">
-<h2>Vector Operations: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href=""></a>vector<span class="op">&lt;</span>string<span class="op">&gt;</span> names<span class="op">;</span></span>
-<span id="cb18-2"><a href=""></a></span>
-<span id="cb18-3"><a href=""></a>names<span class="op">.</span>push_back<span class="op">(</span><span class="st">"Maya"</span><span class="op">);</span></span>
-<span id="cb18-4"><a href=""></a>names<span class="op">.</span>push_back<span class="op">(</span><span class="st">"Ari"</span><span class="op">);</span></span>
-<span id="cb18-5"><a href=""></a></span>
-<span id="cb18-6"><a href=""></a>cout <span class="op">&lt;&lt;</span> names<span class="op">.</span>size<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 51 -->
-</section>
-<section id="vector-operations-practice-problems" class="slide level2">
-<h2>Vector Operations: Practice Problems</h2>
-<ol type="1">
-<li>Trace a vector after three <code>push_back</code> statements.</li>
-<li>Trace a vector after one <code>pop_back</code> statement.</li>
-<li>Write an IPO model for storing three prices.</li>
-</ol>
-<!-- Slide 52 -->
-</section>
-<section id="vector-operations-ai-search-terms" class="slide level2">
-<h2>Vector Operations: AI Search Terms</h2>
-<ul>
-<li>“C++ vector push_back”</li>
-<li>“C++ vector pop_back”</li>
-<li>“C++ vector size”</li>
-</ul>
-<!-- Slide 53 -->
-</section>
-<section id="vector-operations-questions-for-reflection" class="slide level2">
-<h2>Vector Operations: Questions for Reflection</h2>
-<ul>
-<li>Why does <code>push_back</code> add to the end instead of the beginning?</li>
-<li>How does an execution trace help explain vector changes?</li>
-</ul>
-<!-- Slide 54 -->
-</section>
-<section id="range-based-for-loops-good-practices" class="slide level2">
-<h2>Range-Based For Loops: Good Practices</h2>
-<ul>
-<li>Use range-based <code>for</code> when reading every value.</li>
-<li>Give the vector a plural name and the loop variable a singular name.</li>
-<li>Keep the repeated action inside the loop body.</li>
-</ul>
-<!-- Slide 55 -->
-</section>
-<section id="range-based-for-loops-common-mistakes" class="slide level2">
-<h2>Range-Based For Loops: Common Mistakes</h2>
-<ul>
-<li>Forgetting the colon between the loop variable and the vector.</li>
-<li>Expecting the loop variable to exist after the loop ends.</li>
-<li>Expecting changes to the copied loop variable to change the vector.</li>
-</ul>
-<!-- Slide 56 -->
-</section>
-<section id="range-based-for-loops-more-examples" class="slide level2">
-<h2>Range-Based For Loops: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;</span> prices <span class="op">=</span> <span class="op">{</span><span class="fl">1.25</span><span class="op">,</span> <span class="fl">2.50</span><span class="op">,</span> <span class="fl">4.99</span><span class="op">};</span></span>
-<span id="cb19-2"><a href=""></a></span>
-<span id="cb19-3"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">double</span> price <span class="op">:</span> prices<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb19-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"$"</span> <span class="op">&lt;&lt;</span> price <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb19-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 57 -->
-</section>
-<section id="range-based-for-loops-practice-problems" class="slide level2">
-<h2>Range-Based For Loops: Practice Problems</h2>
-<ol type="1">
-<li>Read a range-based loop out loud in English.</li>
-<li>Write a loop that prints every name in <code>names</code>.</li>
-<li>Trace the loop variable for <code>{10, 20, 30}</code>.</li>
-</ol>
-<!-- Slide 58 -->
-</section>
-<section id="range-based-for-loops-ai-search-terms" class="slide level2">
-<h2>Range-Based For Loops: AI Search Terms</h2>
-<ul>
-<li>“C++ range based for loop”</li>
-<li>“C++ for each vector”</li>
-<li>“C++ loop variable scope”</li>
-</ul>
-<!-- Slide 59 -->
-</section>
-<section id="range-based-for-loops-questions-for-reflection" class="slide level2">
-<h2>Range-Based For Loops: Questions for Reflection</h2>
-<ul>
-<li>Why is range-based <code>for</code> easier for every value?</li>
-<li>Why is the loop variable unavailable after the loop body?</li>
-</ul>
-<!-- Slide 60 -->
 
-</section></section>
-    </div>
-  <div class="quarto-auto-generated-content" style="display: none;">
-<div class="footer footer-default">
-<p>CISP 400 · Fowler</p>
-</div>
-</div></div>
+</section>
+    
+  
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
   <script src="p400_lecture_03.02_files/libs/revealjs/dist/reveal.js"></script>
@@ -1460,4 +2582,8 @@ setTimeout(drawVector0302, 0);
       </script>
     
 
-</body></html>
+</object></span></h2></section></section></object></span></h2></section></object></span></h2></section></section></div><div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>CISP 400 · Fowler</p>
+</div>
+</div></div></body></html>

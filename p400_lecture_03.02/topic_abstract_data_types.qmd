@@ -1,0 +1,97 @@
+<!-- Topic: Abstract Data Types -->
+<!-- Slides 47–54 -->
+# <span style="display:none">Abstract Data Types</span>
+
+## <span style="display:none">7.1 Abstract Data Type (ADT)</span>
+
+![](images/source_pages/slide-047.png){width="100%" fig-alt="7.1 Abstract Data Type (ADT)"}
+
+::: notes
+Slides 47–54
+:::
+
+<!-- Slide 47 -->
+
+---
+
+## <span style="display:none">The Problem</span>
+
+![](images/source_pages/slide-048.png){width="100%" fig-alt="The Problem"}
+
+::: notes
+Source PDF page 48.
+:::
+
+<!-- Slide 48 -->
+
+---
+
+## <span style="display:none">Someone Will Break It</span>
+
+![](images/source_pages/slide-049.png){width="100%" fig-alt="Someone Will Break It"}
+
+::: notes
+Source PDF page 49.
+:::
+
+<!-- Slide 49 -->
+
+---
+
+## <span style="display:none">Abstract Data Type Definition</span>
+
+![](images/source_pages/slide-050.png){width="100%" fig-alt="Abstract Data Type Definition"}
+
+::: notes
+Source PDF page 50.
+:::
+
+<!-- Slide 50 -->
+
+---
+
+## <span style="display:none">How?</span>
+
+![](images/source_pages/slide-051.png){width="100%" fig-alt="How?"}
+
+::: notes
+Source PDF page 51.
+:::
+
+<!-- Slide 51 -->
+
+---
+
+## <span style="display:none">Build ADT</span>
+
+![](images/source_pages/slide-052.png){width="100%" fig-alt="Build ADT"}
+
+::: notes
+Source PDF page 52.
+:::
+
+<!-- Slide 52 -->
+
+---
+
+## <span style="display:none">This Is the API</span>
+
+![](images/source_pages/slide-053.png){width="100%" fig-alt="This Is the API"}
+
+::: notes
+Source PDF page 53.
+:::
+
+<!-- Slide 53 -->
+
+---
+
+## <span style="display:none">API Design Goal</span>
+
+![](images/source_pages/slide-054.png){width="100%" fig-alt="API Design Goal"}
+
+::: notes
+Source PDF page 54.
+:::
+
+<!-- Slide 54 -->

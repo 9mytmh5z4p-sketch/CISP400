@@ -1,8 +1,109 @@
-"Slide Number","Topic","Subject","Title","Category","Filename"
-"1","Course Framing","","CISP 400","Section Divider","source_pages/slide-01.png"
-"2","Course Framing","","Agenda","Agenda","source_pages/slide-02.png"
-"3","Course Framing","","Agenda","Agenda","source_pages/slide-03.png"
-"4","Programming Exercise III","","Programming Exercise","Demonstration","source_pages/slide-04.png"
-"5","Programming Exercise III","","Programming Exercise","Demonstration","source_pages/slide-05.png"
-"6","Programming Exercise III","","Programming Exercise","Demonstration","source_pages/slide-06.png"
-
+Slide Number,Topic,Subject,Title,Category,Filename
+1,Course Framing,,CISP 400,Agenda,source_pages/slide-001.png
+2,Course Framing,,Last Time,Agenda,source_pages/slide-002.png
+3,Course Framing,,Agenda,Agenda,source_pages/slide-003.png
+4,Course Framing,,What's This Chapter About?,Agenda,source_pages/slide-004.png
+5,Course Framing,,Big Idea,Agenda,source_pages/slide-005.png
+6,Course Framing,,Related to Previous Chapters,Agenda,source_pages/slide-006.png
+7,Course Framing,,Chapter 7 Object-Oriented Programming,Agenda,source_pages/slide-007.png
+8,Course Framing,,Agenda,Agenda,source_pages/slide-008.png
+9,Course Framing,,Agenda,Agenda,source_pages/slide-009.png
+10,Course Framing,,Where's This Fit in the Course?,Agenda,source_pages/slide-010.png
+11,Course Framing,,Course Progression,Agenda,source_pages/slide-011.png
+12,Programming Exercise: Dynamic Arrays,,Program This - Debrief,Appendix - Practice,source_pages/slide-012.png
+13,Programming Exercise: Dynamic Arrays,,Exercise Goals,Appendix - Practice,source_pages/slide-013.png
+14,Programming Exercise: Dynamic Arrays,,Programming Exercise,Appendix - Practice,source_pages/slide-014.png
+15,Programming Exercise: Dynamic Arrays,,<Exercise Workspace>,Appendix - Practice,source_pages/slide-015.png
+16,Programming Exercise: Dynamic Arrays,,<Exercise Workspace>,Appendix - Practice,source_pages/slide-016.png
+17,Programming Exercise: Dynamic Arrays,,<Exercise Workspace>,Appendix - Practice,source_pages/slide-017.png
+18,Programming Exercise: Dynamic Arrays,,<Exercise Workspace>,Appendix - Practice,source_pages/slide-018.png
+19,Programming Exercise: Dynamic Arrays,,<Exercise Workspace>,Appendix - Practice,source_pages/slide-019.png
+20,Structures,Structures,7.12 Structures,Define,source_pages/slide-020.png
+21,Structures,Structures,The Problem,Define,source_pages/slide-021.png
+22,Structures,Structures,<Problem Context>,Define,source_pages/slide-022.png
+23,Structures,Structures,Grouping Variables,Define,source_pages/slide-023.png
+24,Structures,Structures,Solution - Struct,Define,source_pages/slide-024.png
+25,Structures,Structures,<Struct Example>,Define,source_pages/slide-025.png
+26,Structures,Structures,<Struct Example>,Define,source_pages/slide-026.png
+27,Structures,Structures,Accessing a Struct,Define,source_pages/slide-027.png
+28,Structures,Structures,Initializing a Struct,Define,source_pages/slide-028.png
+29,Structures,Structures,Initialization List,Define,source_pages/slide-029.png
+30,Structures,Structures,Constructor,Define,source_pages/slide-030.png
+31,Structures,Structures,Questions,Define,source_pages/slide-031.png
+32,Classes and Objects,Classes and Objects,7.x Crash Course in Building Objects,Define,source_pages/slide-032.png
+33,Classes and Objects,Classes and Objects,How to Construct an Object,Define,source_pages/slide-033.png
+34,Classes and Objects,Classes and Objects,<Object Construction>,Define,source_pages/slide-034.png
+35,Classes and Objects,Classes and Objects,<Object Construction>,Define,source_pages/slide-035.png
+36,Classes and Objects,Classes and Objects,Encapsulation,Define,source_pages/slide-036.png
+37,Classes and Objects,Classes and Objects,<Encapsulation>,Define,source_pages/slide-037.png
+38,Classes and Objects,Classes and Objects,<Encapsulation>,Define,source_pages/slide-038.png
+39,Classes and Objects,Classes and Objects,Setters and Getters,Define,source_pages/slide-039.png
+40,Classes and Objects,Classes and Objects,<Methods>,Define,source_pages/slide-040.png
+41,Classes and Objects,Classes and Objects,<Methods>,Define,source_pages/slide-041.png
+42,Classes and Objects,Classes and Objects,<Methods>,Define,source_pages/slide-042.png
+43,Classes and Objects,Classes and Objects,Program This,Define,source_pages/slide-043.png
+44,Classes and Objects,Classes and Objects,Exercise Goals,Define,source_pages/slide-044.png
+45,Classes and Objects,Classes and Objects,Programming Exercise,Define,source_pages/slide-045.png
+46,Classes and Objects,Classes and Objects,<Exercise Workspace>,Define,source_pages/slide-046.png
+47,Abstract Data Types,Abstract Data Types,7.1 Abstract Data Type (ADT),Define,source_pages/slide-047.png
+48,Abstract Data Types,Abstract Data Types,The Problem,Define,source_pages/slide-048.png
+49,Abstract Data Types,Abstract Data Types,Someone Will Break It,Define,source_pages/slide-049.png
+50,Abstract Data Types,Abstract Data Types,Abstract Data Type Definition,Define,source_pages/slide-050.png
+51,Abstract Data Types,Abstract Data Types,How?,Define,source_pages/slide-051.png
+52,Abstract Data Types,Abstract Data Types,Build ADT,Define,source_pages/slide-052.png
+53,Abstract Data Types,Abstract Data Types,This Is the API,Define,source_pages/slide-053.png
+54,Abstract Data Types,Abstract Data Types,API Design Goal,Define,source_pages/slide-054.png
+55,Encapsulation and Abstraction,Encapsulation and Abstraction,7.2 Object-Oriented Programming,Define,source_pages/slide-055.png
+56,Encapsulation and Abstraction,Encapsulation and Abstraction,OOP and the Real World,Define,source_pages/slide-056.png
+57,Encapsulation and Abstraction,Encapsulation and Abstraction,Encapsulation,Define,source_pages/slide-057.png
+58,Encapsulation and Abstraction,Encapsulation and Abstraction,Implementation and Abstraction,Define,source_pages/slide-058.png
+59,Encapsulation and Abstraction,Encapsulation and Abstraction,Abstraction,Define,source_pages/slide-059.png
+60,Encapsulation and Abstraction,Encapsulation and Abstraction,Abstraction Definition,Define,source_pages/slide-060.png
+61,Encapsulation and Abstraction,Encapsulation and Abstraction,Why Abstraction?,Define,source_pages/slide-061.png
+62,Encapsulation and Abstraction,Encapsulation and Abstraction,<Abstraction Example>,Define,source_pages/slide-062.png
+63,Encapsulation and Abstraction,Encapsulation and Abstraction,<Abstraction Example>,Define,source_pages/slide-063.png
+64,Encapsulation and Abstraction,Encapsulation and Abstraction,<Abstraction Example>,Define,source_pages/slide-064.png
+65,Encapsulation and Abstraction,Encapsulation and Abstraction,<Abstraction Example>,Define,source_pages/slide-065.png
+66,Encapsulation and Abstraction,Encapsulation and Abstraction,<Abstraction Example>,Define,source_pages/slide-066.png
+67,Encapsulation and Abstraction,Encapsulation and Abstraction,<Abstraction Example>,Define,source_pages/slide-067.png
+68,Encapsulation and Abstraction,Encapsulation and Abstraction,<Abstraction Example>,Define,source_pages/slide-068.png
+69,Encapsulation and Abstraction,Encapsulation and Abstraction,<Abstraction Example>,Define,source_pages/slide-069.png
+70,Encapsulation and Abstraction,Encapsulation and Abstraction,<Abstraction Example>,Define,source_pages/slide-070.png
+71,Encapsulation and Abstraction,Encapsulation and Abstraction,<Abstraction Example>,Define,source_pages/slide-071.png
+72,Encapsulation and Abstraction,Encapsulation and Abstraction,<Abstraction Example>,Define,source_pages/slide-072.png
+73,Encapsulation and Abstraction,Encapsulation and Abstraction,<Abstraction Example>,Define,source_pages/slide-073.png
+74,Encapsulation and Abstraction,Encapsulation and Abstraction,<Abstraction Example>,Define,source_pages/slide-074.png
+75,Encapsulation and Abstraction,Encapsulation and Abstraction,<Abstraction Example>,Define,source_pages/slide-075.png
+76,Encapsulation and Abstraction,Encapsulation and Abstraction,<Abstraction Example>,Define,source_pages/slide-076.png
+77,Encapsulation and Abstraction,Encapsulation and Abstraction,Table of Variables,Define,source_pages/slide-077.png
+78,Classes and Methods,Classes and Methods,7.3 Introduction to Classes,Define,source_pages/slide-078.png
+79,Classes and Methods,Classes and Methods,<Class Example>,Define,source_pages/slide-079.png
+80,Classes and Methods,Classes and Methods,<Class Example>,Define,source_pages/slide-080.png
+81,Classes and Methods,Classes and Methods,<Class Example>,Define,source_pages/slide-081.png
+82,Classes and Methods,Classes and Methods,7.4 Creating and Using Objects,Define,source_pages/slide-082.png
+83,Classes and Methods,Classes and Methods,<Object Example>,Define,source_pages/slide-083.png
+84,Classes and Methods,Classes and Methods,7.5 Defining Member Functions,Define,source_pages/slide-084.png
+85,Classes and Methods,Classes and Methods,Classes Group Data and Behavior,Define,source_pages/slide-085.png
+86,Classes and Methods,Classes and Methods,Methods,Define,source_pages/slide-086.png
+87,Classes and Methods,Classes and Methods,Methods,Define,source_pages/slide-087.png
+88,Classes and Methods,Classes and Methods,Method Example,Define,source_pages/slide-088.png
+89,Classes and Methods,Classes and Methods,Another Example,Define,source_pages/slide-089.png
+90,Classes and Methods,Classes and Methods,<Method Example>,Define,source_pages/slide-090.png
+91,Classes and Methods,Classes and Methods,Methods and Output,Define,source_pages/slide-091.png
+92,Classes and Methods,Classes and Methods,<Method Example>,Define,source_pages/slide-092.png
+93,Classes and Methods,Classes and Methods,<Method Example>,Define,source_pages/slide-093.png
+94,Programming Exercise: Colorize,,Programming Exercise,Appendix - Practice,source_pages/slide-094.png
+95,Programming Exercise: Colorize,,Exercise Goals,Appendix - Practice,source_pages/slide-095.png
+96,Homework Peer Review,,Programming Exercise,Appendix - Practice,source_pages/slide-096.png
+97,Homework Peer Review,,Homework 1 Peer Review,Appendix - Practice,source_pages/slide-097.png
+98,Homework Peer Review,,Homework Debrief,Appendix - Practice,source_pages/slide-098.png
+99,Homework Peer Review,,Process,Appendix - Practice,source_pages/slide-099.png
+100,Homework Peer Review,,Analysis,Appendix - Practice,source_pages/slide-100.png
+101,Homework Peer Review,,Debrief,Appendix - Practice,source_pages/slide-101.png
+102,Programming Exercise: Dynamic Array Operations,,Program This - Debrief,Appendix - Practice,source_pages/slide-102.png
+103,Programming Exercise: Dynamic Array Operations,,Exercise Goals,Appendix - Practice,source_pages/slide-103.png
+104,Programming Exercise: Dynamic Array Operations,,Programming Exercise,Appendix - Practice,source_pages/slide-104.png
+105,Programming Exercise: Returning a Struct,,Programming Exercise,Appendix - Practice,source_pages/slide-105.png
+106,Programming Exercise: Returning a Struct,,Exercise Goals,Appendix - Practice,source_pages/slide-106.png
+107,Programming Exercise: Returning a Struct,,Programming Exercise,Appendix - Practice,source_pages/slide-107.png
+108,Programming Exercise: Returning a Struct,,<Exercise Workspace>,Appendix - Practice,source_pages/slide-108.png

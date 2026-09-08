@@ -1,0 +1,73 @@
+<!-- Topic: Homework Peer Review -->
+<!-- Slides 96–101 -->
+# <span style="display:none">Homework Peer Review</span>
+
+## <span style="display:none">Programming Exercise</span>
+
+![](images/source_pages/slide-096.png){width="100%" fig-alt="Programming Exercise"}
+
+::: notes
+Slides 96–101
+:::
+
+<!-- Slide 96 -->
+
+---
+
+## <span style="display:none">Homework 1 Peer Review</span>
+
+![](images/source_pages/slide-097.png){width="100%" fig-alt="Homework 1 Peer Review"}
+
+::: notes
+Source PDF page 97.
+:::
+
+<!-- Slide 97 -->
+
+---
+
+## <span style="display:none">Homework Debrief</span>
+
+![](images/source_pages/slide-098.png){width="100%" fig-alt="Homework Debrief"}
+
+::: notes
+Source PDF page 98.
+:::
+
+<!-- Slide 98 -->
+
+---
+
+## <span style="display:none">Process</span>
+
+![](images/source_pages/slide-099.png){width="100%" fig-alt="Process"}
+
+::: notes
+Source PDF page 99.
+:::
+
+<!-- Slide 99 -->
+
+---
+
+## <span style="display:none">Analysis</span>
+
+![](images/source_pages/slide-100.png){width="100%" fig-alt="Analysis"}
+
+::: notes
+Source PDF page 100.
+:::
+
+<!-- Slide 100 -->
+
+---
+
+## <span style="display:none">Debrief</span>
+
+![](images/source_pages/slide-101.png){width="100%" fig-alt="Debrief"}
+
+::: notes
+Source PDF page 101.
+:::
+
+<!-- Slide 101 -->

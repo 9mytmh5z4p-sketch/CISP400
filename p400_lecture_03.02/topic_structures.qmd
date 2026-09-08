@@ -1,0 +1,145 @@
+<!-- Topic: Structures -->
+<!-- Slides 20–31 -->
+# <span style="display:none">Structures</span>
+
+## <span style="display:none">7.12 Structures</span>
+
+![](images/source_pages/slide-020.png){width="100%" fig-alt="7.12 Structures"}
+
+::: notes
+Slides 20–31
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## <span style="display:none">The Problem</span>
+
+![](images/source_pages/slide-021.png){width="100%" fig-alt="The Problem"}
+
+::: notes
+Source PDF page 21.
+:::
+
+<!-- Slide 21 -->
+
+---
+
+## <span style="display:none"><Problem Context></span>
+
+![](images/source_pages/slide-022.png){width="100%" fig-alt="<Problem Context>"}
+
+::: notes
+Source PDF page 22.
+:::
+
+<!-- Slide 22 -->
+
+---
+
+## <span style="display:none">Grouping Variables</span>
+
+![](images/source_pages/slide-023.png){width="100%" fig-alt="Grouping Variables"}
+
+::: notes
+Source PDF page 23.
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## <span style="display:none">Solution - Struct</span>
+
+![](images/source_pages/slide-024.png){width="100%" fig-alt="Solution - Struct"}
+
+::: notes
+Source PDF page 24.
+:::
+
+<!-- Slide 24 -->
+
+---
+
+## <span style="display:none"><Struct Example></span>
+
+![](images/source_pages/slide-025.png){width="100%" fig-alt="<Struct Example>"}
+
+::: notes
+Source PDF page 25.
+:::
+
+<!-- Slide 25 -->
+
+---
+
+## <span style="display:none"><Struct Example></span>
+
+![](images/source_pages/slide-026.png){width="100%" fig-alt="<Struct Example>"}
+
+::: notes
+Source PDF page 26.
+:::
+
+<!-- Slide 26 -->
+
+---
+
+## <span style="display:none">Accessing a Struct</span>
+
+![](images/source_pages/slide-027.png){width="100%" fig-alt="Accessing a Struct"}
+
+::: notes
+Source PDF page 27.
+:::
+
+<!-- Slide 27 -->
+
+---
+
+## <span style="display:none">Initializing a Struct</span>
+
+![](images/source_pages/slide-028.png){width="100%" fig-alt="Initializing a Struct"}
+
+::: notes
+Source PDF page 28.
+:::
+
+<!-- Slide 28 -->
+
+---
+
+## <span style="display:none">Initialization List</span>
+
+![](images/source_pages/slide-029.png){width="100%" fig-alt="Initialization List"}
+
+::: notes
+Source PDF page 29.
+:::
+
+<!-- Slide 29 -->
+
+---
+
+## <span style="display:none">Constructor</span>
+
+![](images/source_pages/slide-030.png){width="100%" fig-alt="Constructor"}
+
+::: notes
+Source PDF page 30.
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## <span style="display:none">Questions</span>
+
+![](images/source_pages/slide-031.png){width="100%" fig-alt="Questions"}
+
+::: notes
+Source PDF page 31.
+:::
+
+<!-- Slide 31 -->

@@ -1,0 +1,25 @@
+<!-- Topic: Programming Exercise: Colorize -->
+<!-- Slides 94–95 -->
+# <span style="display:none">Programming Exercise: Colorize</span>
+
+## <span style="display:none">Programming Exercise</span>
+
+![](images/source_pages/slide-094.png){width="100%" fig-alt="Programming Exercise"}
+
+::: notes
+Slides 94–95
+:::
+
+<!-- Slide 94 -->
+
+---
+
+## <span style="display:none">Exercise Goals</span>
+
+![](images/source_pages/slide-095.png){width="100%" fig-alt="Exercise Goals"}
+
+::: notes
+Source PDF page 95.
+:::
+
+<!-- Slide 95 -->

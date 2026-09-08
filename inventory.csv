@@ -128,3 +128,8 @@ p400_lecture_01.02,1,functions,Functions,high,,no,function declarations; prototy
 p400_lecture_01.02,1,pointers,Pointers Preview,standard,,yes,chapter 10 roadmap; pointer variables; address operator; dynamic memory and smart pointers deferred
 p400_lecture_01.02,1,design,Coding for Reuse,standard,,no,preserve raw input; error-state design; component testing; named constants
 p400_lecture_01.02,1,debugging,Logging Function,high,,no,logging definition; history versus current debugger state; use cases; design limitations
+p400_lecture_03.02,2,data_structures,Structures,high,,no,grouping variables of different types; dot notation; initialization lists; constructors
+p400_lecture_03.02,2,oop,Classes and Objects,high,,no,object components; setters and getters; methods; constructing and using objects
+p400_lecture_03.02,2,design,Abstract Data Types,high,,no,interface versus implementation; public and private parts; API design
+p400_lecture_03.02,2,oop,Encapsulation and Abstraction,high,,no,bundle data and behavior; hide state; identify essential features; real-world fidelity
+p400_lecture_03.02,2,oop,Member Functions,standard,,no,methods as class behavior; function syntax and reuse inside classes
