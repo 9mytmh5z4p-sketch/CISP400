@@ -772,7 +772,7 @@
       <div class="term-state">
         <div class="term-copy">
           <strong>Full Term · Aug 22–Dec 17, 2026</strong>
-          <span>CISP400 meets Mondays + Wednesdays</span>
+          <span>CISP400 meets Tuesdays + Thursdays</span>
           <nav class="page-nav" aria-label="Course views">
             <a href="calendar.html">Calendar</a>
             <a href="map.html" aria-current="page">Course map</a>
@@ -787,7 +787,7 @@
     <section class="intro-row" aria-labelledby="map-title">
       <div>
         <h2 id="map-title">The semester, mapped.</h2>
-        <p>Seventeen Monday–Wednesday course weeks move from familiar programming ideas to the machinery beneath them. Choose any week to see both meeting dates, open its lecture pages, and review nearby academic milestones.</p>
+        <p>Seventeen Tuesday–Thursday course weeks follow the CISP 400 progression from pointers and dynamic memory through object-oriented design, inheritance, polymorphism, exceptions, and generic programming.</p>
       </div>
       <div class="countdown" id="term-summary" aria-live="polite">
         <strong id="term-summary-value">10</strong>
@@ -801,7 +801,7 @@
         <div class="map-legend" aria-label="Map key">
           <span class="legend-item"><span class="legend-dot" aria-hidden="true"></span>Academic milestone</span>
           <span class="legend-item"><span class="legend-line" aria-hidden="true"></span>Campus closure or recess</span>
-          <span>Each week shows Monday + Wednesday</span>
+          <span>Each week shows Tuesday + Thursday</span>
         </div>
       </div>
 
@@ -869,7 +869,7 @@
 
     <footer class="footer">
       <span><strong>CISP400</strong> · Fall 2026 Course Map</span>
-      <span>Regular meetings are Mondays and Wednesdays. Final exam date and time remain to be assigned within Dec 11–17.</span>
+      <span>Regular meetings are Tuesdays and Thursdays. Final exam date and time remain to be assigned within Dec 11–17.</span>
     </footer>
   </main>
 
@@ -1023,9 +1023,48 @@
         }
       ];
 
+      // CISP 400 meets Tuesdays and Thursdays. The displayed sequence begins
+      // with lecture 03.01 on September 8, 2026.
+      const p400LectureIds = Object.keys(lectureTitles);
+      const p400Start = new Date(2026, 7, 25, 12, 0, 0);
+      const p400Date = (index) => {
+        const date = new Date(p400Start);
+        date.setDate(date.getDate() + Math.floor(index / 2) * 7 + (index % 2) * 2);
+        return date;
+      };
+      const formatP400Date = (date) => date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+      weeks.splice(0, weeks.length, ...Array.from({ length: Math.ceil(p400LectureIds.length / 2) }, (_, index) => {
+        const firstDate = p400Date(index * 2);
+        const secondDate = p400Date(index * 2 + 1);
+        const firstId = p400LectureIds[index * 2];
+        const secondId = p400LectureIds[index * 2 + 1];
+        return {
+          number: index + 1,
+          unit: 1,
+          title: `CISP 400 Topics · Week ${index + 1}`,
+          range: `Tue ${formatP400Date(firstDate)} · Thu ${formatP400Date(secondDate)}`,
+          sessions: [
+            { day: "Tue", date: formatP400Date(firstDate), iso: firstDate.toISOString().slice(0, 10), type: "lecture", code: firstId, title: lectureTitles[firstId] || firstId },
+            { day: "Thu", date: formatP400Date(secondDate), iso: secondDate.toISOString().slice(0, 10), type: "lecture", code: secondId, title: lectureTitles[secondId] || secondId }
+          ],
+          milestones: []
+        };
+      }));
+      weeks.push({
+        number: 17,
+        unit: 1,
+        title: "Finals Period",
+        range: "Tue Dec 15 · Thu Dec 17",
+        sessions: [
+          { day: "Tue", date: "Dec 15", iso: "2026-12-15", type: "finals", label: "Finals", title: "Final-exam period", detail: "No exact CISP400 exam date or time assigned" },
+          { day: "Thu", date: "Dec 17", iso: "2026-12-17", type: "finals", label: "Finals", title: "Final-exam period", detail: "No exact CISP400 exam date or time assigned" }
+        ],
+        milestones: []
+      });
+
       const DAY_MS = 86400000;
       const TERM_START = "2026-08-22";
-      const FIRST_CLASS = "2026-08-24";
+      const FIRST_CLASS = "2026-08-25";
       const FINALS_START = "2026-12-11";
       const TERM_END = "2026-12-17";
 
@@ -1120,7 +1159,7 @@
             .filter((session) => session.type === "lecture" && session.iso <= TODAY)
             .length;
           const currentWeek = weekContaining(todayIndex) || initialWeek;
-          summaryValue = `${lectureDatesReached}/30`;
+          summaryValue = `${lectureDatesReached}/32`;
           summaryLabel = `lecture dates reached · Week ${currentWeek.number} of 16`;
         } else if (TODAY <= TERM_END) {
           summaryValue = "Finals";
