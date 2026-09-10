@@ -28,6 +28,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="p400_lecture_03.02_files/libs/revealjs/dist/theme/quarto-99eeafcedac04850354b682963cedae3.css">
   <link rel="stylesheet" href="../styles/styles.css">
@@ -140,6 +206,13 @@ Dr.&nbsp;Caleb Fowler
 </div>
 
 </section>
+<section id="cisp-400" class="title-slide slide level1 center">
+<h1>CISP 400</h1>
+<p>Object-Oriented Programming in C++</p>
+<p>Dr.&nbsp;Fowler</p>
+<!-- Slide 1 -->
+</section>
+
 <section id="last-time" class="title-slide slide level1 center">
 <h1>Last Time</h1>
 <ul>
@@ -148,6 +221,7 @@ Dr.&nbsp;Caleb Fowler
 <li class="fragment"><strong>Pseudo-Dynamic Arrays</strong></li>
 <li class="fragment"><strong>Real Dynamic Arrays</strong></li>
 </ul>
+<!-- Slide 2 -->
 </section>
 
 <section id="todays-agenda" class="title-slide slide level1 center">
@@ -159,8 +233,9 @@ Dr.&nbsp;Caleb Fowler
 <li>Encapsulation and Abstraction</li>
 <li>Classes and Methods</li>
 </ul>
+<!-- Slide 3 -->
 <!-- Topic: Course Framing -->
-<!-- Slides 1–11 -->
+<!-- Slides 4–11 -->
 </section>
 
 <section>
@@ -168,173 +243,215 @@ Dr.&nbsp;Caleb Fowler
 <h1><span style="display:none">Course Framing</span></h1>
 
 </section>
-<section id="cisp-400" class="slide level2">
-<h2><span style="display:none">CISP 400</span></h2>
-
-<img data-src="images/source_pages/slide-001.png" style="width:100.0%" alt="CISP 400" class="r-stretch"><aside class="notes">
-<p>Slides 1–11</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 1 -->
-</section>
-<section id="last-time-1" class="slide level2">
-<h2><span style="display:none">Last Time</span></h2>
-
-<img data-src="images/source_pages/slide-002.png" style="width:100.0%" alt="Last Time" class="r-stretch"><aside class="notes">
-<p>Source PDF page 2.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 2 -->
-</section>
-<section id="agenda" class="slide level2">
-<h2><span style="display:none">Agenda</span></h2>
-
-<img data-src="images/source_pages/slide-003.png" style="width:100.0%" alt="Agenda" class="r-stretch"><aside class="notes">
-<p>Source PDF page 3.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 3 -->
-</section>
-<section id="whats-this-chapter-about" class="slide level2">
-<h2><span style="display:none">What’s This Chapter About?</span></h2>
-
-<img data-src="images/source_pages/slide-004.png" style="width:100.0%" alt="What's This Chapter About?" class="r-stretch"><aside class="notes">
-<p>Source PDF page 4.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="class-exercise---debrief" class="slide level2">
+<h2>Class Exercise - Debrief</h2>
 <!-- Slide 4 -->
 </section>
-<section id="big-idea" class="slide level2">
-<h2><span style="display:none">Big Idea</span></h2>
+<section class="slide level2">
 
-<img data-src="images/source_pages/slide-005.png" style="width:100.0%" alt="Big Idea" class="r-stretch"><aside class="notes">
-<p>Source PDF page 5.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a><span class="co">// rdaa.cpp -- real dynamically allocated array</span></span>
+<span id="cb1-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb1-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb1-4"><a href=""></a></span>
+<span id="cb1-5"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span>                 <span class="co">// build the initial array</span></span>
+<span id="cb1-6"><a href=""></a>    <span class="dt">int</span><span class="op">*</span> pInt <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb1-7"><a href=""></a>    <span class="dt">int</span> size <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-8"><a href=""></a></span>
+<span id="cb1-9"><a href=""></a>    pInt <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>size<span class="op">];</span></span>
+<span id="cb1-10"><a href=""></a>    pInt<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb1-11"><a href=""></a></span>
+<span id="cb1-12"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb1-13"><a href=""></a>        cout <span class="op">&lt;&lt;</span> pInt<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
+<span id="cb1-14"><a href=""></a>    cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb1-15"><a href=""></a></span>
+<span id="cb1-16"><a href=""></a>    <span class="co">// increase by 1</span></span>
+<span id="cb1-17"><a href=""></a>    <span class="dt">int</span><span class="op">*</span> pTemp <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb1-18"><a href=""></a>    size<span class="op">++;</span></span>
+<span id="cb1-19"><a href=""></a>    pTemp <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>size<span class="op">];</span></span>
+<span id="cb1-20"><a href=""></a></span>
+<span id="cb1-21"><a href=""></a>    pTemp<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> pInt<span class="op">[</span><span class="dv">0</span><span class="op">];</span></span>
+<span id="cb1-22"><a href=""></a>    pTemp<span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></span>
+<span id="cb1-23"><a href=""></a></span>
+<span id="cb1-24"><a href=""></a>    <span class="kw">delete</span><span class="op">[]</span> pInt<span class="op">;</span></span>
+<span id="cb1-25"><a href=""></a>    pInt <span class="op">=</span> pTemp<span class="op">;</span></span>
+<span id="cb1-26"><a href=""></a>    pTemp <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb1-27"><a href=""></a></span>
+<span id="cb1-28"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb1-29"><a href=""></a>        cout <span class="op">&lt;&lt;</span> pInt<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
+<span id="cb1-30"><a href=""></a>    cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb1-31"><a href=""></a></span>
+<span id="cb1-32"><a href=""></a>    <span class="co">// decrease by 1 from the right</span></span>
+<span id="cb1-33"><a href=""></a>    <span class="co">// int* pTemp = nullptr;</span></span>
+<span id="cb1-34"><a href=""></a>    size<span class="op">--;</span></span>
+<span id="cb1-35"><a href=""></a>    pTemp <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>size<span class="op">];</span></span>
+<span id="cb1-36"><a href=""></a>    pTemp<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> pInt<span class="op">[</span><span class="dv">0</span><span class="op">];</span></span>
+<span id="cb1-37"><a href=""></a></span>
+<span id="cb1-38"><a href=""></a>    <span class="kw">delete</span><span class="op">[]</span> pInt<span class="op">;</span></span>
+<span id="cb1-39"><a href=""></a>    pInt <span class="op">=</span> pTemp<span class="op">;</span></span>
+<span id="cb1-40"><a href=""></a>    pTemp <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb1-41"><a href=""></a></span>
+<span id="cb1-42"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb1-43"><a href=""></a>        cout <span class="op">&lt;&lt;</span> pInt<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
+<span id="cb1-44"><a href=""></a>    cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb1-45"><a href=""></a></span>
+<span id="cb1-46"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-47"><a href=""></a><span class="op">}</span></span>
+<span id="cb1-48"><a href=""></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <!-- Slide 5 -->
 </section>
-<section id="related-to-previous-chapters" class="slide level2">
-<h2><span style="display:none">Related to Previous Chapters</span></h2>
+<section class="slide level2">
 
-<img data-src="images/source_pages/slide-006.png" style="width:100.0%" alt="Related to Previous Chapters" class="r-stretch"><aside class="notes">
-<p>Source PDF page 6.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a><span class="co">// Xrdaa.cpp -- real dynamically allocated array</span></span>
+<span id="cb2-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb2-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb2-4"><a href=""></a></span>
+<span id="cb2-5"><a href=""></a><span class="dt">void</span> increaseByOne<span class="op">(</span><span class="dt">int</span><span class="op">*&amp;</span> pInt<span class="op">,</span> <span class="dt">int</span><span class="op">&amp;</span> size<span class="op">);</span></span>
+<span id="cb2-6"><a href=""></a><span class="dt">int</span><span class="op">*</span> decreaseByOne<span class="op">(</span><span class="dt">int</span><span class="op">*</span> pInt<span class="op">,</span> <span class="dt">int</span><span class="op">&amp;</span> size<span class="op">);</span></span>
+<span id="cb2-7"><a href=""></a><span class="dt">void</span> displayArray<span class="op">(</span><span class="at">const</span> <span class="dt">int</span><span class="op">*</span> pInt<span class="op">,</span> <span class="dt">int</span> size<span class="op">);</span></span>
+<span id="cb2-8"><a href=""></a></span>
+<span id="cb2-9"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span>                 <span class="co">// build the initial array</span></span>
+<span id="cb2-10"><a href=""></a>    <span class="dt">int</span><span class="op">*</span> pInt <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb2-11"><a href=""></a>    <span class="dt">int</span> size <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb2-12"><a href=""></a></span>
+<span id="cb2-13"><a href=""></a>    pInt <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>size<span class="op">];</span></span>
+<span id="cb2-14"><a href=""></a>    pInt<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb2-15"><a href=""></a></span>
+<span id="cb2-16"><a href=""></a>    displayArray<span class="op">(</span>pInt<span class="op">,</span> size<span class="op">);</span></span>
+<span id="cb2-17"><a href=""></a></span>
+<span id="cb2-18"><a href=""></a>    increaseByOne<span class="op">(</span>pInt<span class="op">,</span> size<span class="op">);</span></span>
+<span id="cb2-19"><a href=""></a>    displayArray<span class="op">(</span>pInt<span class="op">,</span> size<span class="op">);</span></span>
+<span id="cb2-20"><a href=""></a></span>
+<span id="cb2-21"><a href=""></a>    pInt <span class="op">=</span> decreaseByOne<span class="op">(</span>pInt<span class="op">,</span> size<span class="op">);</span> <span class="co">// now need to catch the new address</span></span>
+<span id="cb2-22"><a href=""></a>    displayArray<span class="op">(</span>pInt<span class="op">,</span> size<span class="op">);</span></span>
+<span id="cb2-23"><a href=""></a></span>
+<span id="cb2-24"><a href=""></a>    <span class="kw">delete</span><span class="op">[]</span> pInt<span class="op">;</span></span>
+<span id="cb2-25"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-26"><a href=""></a><span class="op">}</span></span>
+<span id="cb2-27"><a href=""></a></span>
+<span id="cb2-28"><a href=""></a><span class="dt">void</span> increaseByOne<span class="op">(</span><span class="dt">int</span><span class="op">*&amp;</span> pInt<span class="op">,</span> <span class="dt">int</span><span class="op">&amp;</span> size<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-29"><a href=""></a>    <span class="dt">int</span><span class="op">*</span> pTemp <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb2-30"><a href=""></a>    size<span class="op">++;</span></span>
+<span id="cb2-31"><a href=""></a>    pTemp <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>size<span class="op">];</span></span>
+<span id="cb2-32"><a href=""></a></span>
+<span id="cb2-33"><a href=""></a>    pTemp<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> pInt<span class="op">[</span><span class="dv">0</span><span class="op">];</span></span>
+<span id="cb2-34"><a href=""></a>    pTemp<span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></span>
+<span id="cb2-35"><a href=""></a></span>
+<span id="cb2-36"><a href=""></a>    <span class="kw">delete</span><span class="op">[]</span> pInt<span class="op">;</span></span>
+<span id="cb2-37"><a href=""></a>    pInt <span class="op">=</span> pTemp<span class="op">;</span>   <span class="co">// Update address in main() here - reference</span></span>
+<span id="cb2-38"><a href=""></a>    pTemp <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb2-39"><a href=""></a><span class="op">}</span></span>
+<span id="cb2-40"><a href=""></a></span>
+<span id="cb2-41"><a href=""></a><span class="dt">int</span><span class="op">*</span> decreaseByOne<span class="op">(</span><span class="dt">int</span><span class="op">*</span> pInt<span class="op">,</span> <span class="dt">int</span><span class="op">&amp;</span> size<span class="op">)</span> <span class="op">{</span> <span class="co">// pInt now pass by value</span></span>
+<span id="cb2-42"><a href=""></a>    <span class="dt">int</span><span class="op">*</span> pTemp <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb2-43"><a href=""></a>    size<span class="op">--;</span></span>
+<span id="cb2-44"><a href=""></a>    pTemp <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>size<span class="op">];</span></span>
+<span id="cb2-45"><a href=""></a>    pTemp<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> pInt<span class="op">[</span><span class="dv">0</span><span class="op">];</span></span>
+<span id="cb2-46"><a href=""></a></span>
+<span id="cb2-47"><a href=""></a>    <span class="kw">delete</span><span class="op">[]</span> pInt<span class="op">;</span></span>
+<span id="cb2-48"><a href=""></a>    <span class="cf">return</span> pTemp<span class="op">;</span></span>
+<span id="cb2-49"><a href=""></a><span class="op">}</span></span>
+<span id="cb2-50"><a href=""></a></span>
+<span id="cb2-51"><a href=""></a><span class="dt">void</span> displayArray<span class="op">(</span><span class="at">const</span> <span class="dt">int</span><span class="op">*</span> pInt<span class="op">,</span> <span class="dt">int</span> size<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-52"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb2-53"><a href=""></a>        cout <span class="op">&lt;&lt;</span> pInt<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
+<span id="cb2-54"><a href=""></a>    cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb2-55"><a href=""></a><span class="op">}</span></span>
+<span id="cb2-56"><a href=""></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <!-- Slide 6 -->
 </section>
-<section id="chapter-7-object-oriented-programming" class="slide level2">
-<h2><span style="display:none">Chapter 7 Object-Oriented Programming</span></h2>
+<section class="slide level2">
 
-<img data-src="images/source_pages/slide-007.png" style="width:100.0%" alt="Chapter 7 Object-Oriented Programming" class="r-stretch"><aside class="notes">
-<p>Source PDF page 7.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+
 <!-- Slide 7 -->
-</section>
-<section id="agenda-1" class="slide level2">
-<h2><span style="display:none">Agenda</span></h2>
+<img data-src="images/XrdaaOut.png" style="width:100.0%" alt="Output from Xrdaa.cpp" class="r-stretch"></section>
+<section class="slide level2">
 
-<img data-src="images/source_pages/slide-008.png" style="width:100.0%" alt="Agenda" class="r-stretch"><aside class="notes">
-<p>Source PDF page 8.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a><span class="co">// Xrdaa2.cpp -- real dynamically allocated array with repeated resizing</span></span>
+<span id="cb3-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb3-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb3-4"><a href=""></a></span>
+<span id="cb3-5"><a href=""></a><span class="dt">void</span> increaseByOne<span class="op">(</span><span class="dt">int</span><span class="op">*&amp;</span> pInt<span class="op">,</span> <span class="dt">int</span><span class="op">&amp;</span> size<span class="op">,</span> <span class="dt">int</span> value<span class="op">);</span></span>
+<span id="cb3-6"><a href=""></a><span class="dt">int</span><span class="op">*</span> decreaseByOne<span class="op">(</span><span class="dt">int</span><span class="op">*</span> pInt<span class="op">,</span> <span class="dt">int</span><span class="op">&amp;</span> size<span class="op">);</span></span>
+<span id="cb3-7"><a href=""></a><span class="dt">void</span> displayArray<span class="op">(</span><span class="at">const</span> <span class="dt">int</span><span class="op">*</span> pInt<span class="op">,</span> <span class="dt">int</span> size<span class="op">);</span></span>
+<span id="cb3-8"><a href=""></a></span>
+<span id="cb3-9"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-10"><a href=""></a>    <span class="dt">int</span><span class="op">*</span> pInt <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span><span class="dv">1</span><span class="op">];</span></span>
+<span id="cb3-11"><a href=""></a>    <span class="dt">int</span> size <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb3-12"><a href=""></a>    pInt<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb3-13"><a href=""></a></span>
+<span id="cb3-14"><a href=""></a>    displayArray<span class="op">(</span>pInt<span class="op">,</span> size<span class="op">);</span></span>
+<span id="cb3-15"><a href=""></a></span>
+<span id="cb3-16"><a href=""></a>    <span class="at">const</span> <span class="dt">int</span> valuesToAdd<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">20</span><span class="op">,</span> <span class="dv">30</span><span class="op">,</span> <span class="dv">40</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">60</span><span class="op">};</span></span>
+<span id="cb3-17"><a href=""></a>    <span class="at">const</span> <span class="dt">int</span> numberOfValues <span class="op">=</span> <span class="kw">sizeof</span><span class="op">(</span>valuesToAdd<span class="op">)</span> <span class="op">/</span> <span class="kw">sizeof</span><span class="op">(</span>valuesToAdd<span class="op">[</span><span class="dv">0</span><span class="op">]);</span></span>
+<span id="cb3-18"><a href=""></a></span>
+<span id="cb3-19"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> numberOfValues<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb3-20"><a href=""></a>        increaseByOne<span class="op">(</span>pInt<span class="op">,</span> size<span class="op">,</span> valuesToAdd<span class="op">[</span>i<span class="op">]);</span></span>
+<span id="cb3-21"><a href=""></a>        displayArray<span class="op">(</span>pInt<span class="op">,</span> size<span class="op">);</span></span>
+<span id="cb3-22"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb3-23"><a href=""></a></span>
+<span id="cb3-24"><a href=""></a>    <span class="at">const</span> <span class="dt">int</span> numberOfValuesToRemove <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></span>
+<span id="cb3-25"><a href=""></a></span>
+<span id="cb3-26"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> numberOfValuesToRemove<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb3-27"><a href=""></a>        pInt <span class="op">=</span> decreaseByOne<span class="op">(</span>pInt<span class="op">,</span> size<span class="op">);</span></span>
+<span id="cb3-28"><a href=""></a>        displayArray<span class="op">(</span>pInt<span class="op">,</span> size<span class="op">);</span></span>
+<span id="cb3-29"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb3-30"><a href=""></a></span>
+<span id="cb3-31"><a href=""></a>    <span class="kw">delete</span><span class="op">[]</span> pInt<span class="op">;</span></span>
+<span id="cb3-32"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-33"><a href=""></a><span class="op">}</span></span>
+<span id="cb3-34"><a href=""></a></span>
+<span id="cb3-35"><a href=""></a><span class="dt">void</span> increaseByOne<span class="op">(</span><span class="dt">int</span><span class="op">*&amp;</span> pInt<span class="op">,</span> <span class="dt">int</span><span class="op">&amp;</span> size<span class="op">,</span> <span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-36"><a href=""></a>    <span class="dt">int</span><span class="op">*</span> pTemp <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>size <span class="op">+</span> <span class="dv">1</span><span class="op">];</span></span>
+<span id="cb3-37"><a href=""></a></span>
+<span id="cb3-38"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb3-39"><a href=""></a>        pTemp<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> pInt<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb3-40"><a href=""></a></span>
+<span id="cb3-41"><a href=""></a>    pTemp<span class="op">[</span>size<span class="op">]</span> <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb3-42"><a href=""></a>    size<span class="op">++;</span></span>
+<span id="cb3-43"><a href=""></a></span>
+<span id="cb3-44"><a href=""></a>    <span class="kw">delete</span><span class="op">[]</span> pInt<span class="op">;</span></span>
+<span id="cb3-45"><a href=""></a>    pInt <span class="op">=</span> pTemp<span class="op">;</span></span>
+<span id="cb3-46"><a href=""></a><span class="op">}</span></span>
+<span id="cb3-47"><a href=""></a></span>
+<span id="cb3-48"><a href=""></a><span class="dt">int</span><span class="op">*</span> decreaseByOne<span class="op">(</span><span class="dt">int</span><span class="op">*</span> pInt<span class="op">,</span> <span class="dt">int</span><span class="op">&amp;</span> size<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-49"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>size <span class="op">&lt;=</span> <span class="dv">1</span><span class="op">)</span></span>
+<span id="cb3-50"><a href=""></a>        <span class="cf">return</span> pInt<span class="op">;</span></span>
+<span id="cb3-51"><a href=""></a></span>
+<span id="cb3-52"><a href=""></a>    <span class="dt">int</span><span class="op">*</span> pTemp <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>size <span class="op">-</span> <span class="dv">1</span><span class="op">];</span></span>
+<span id="cb3-53"><a href=""></a></span>
+<span id="cb3-54"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size <span class="op">-</span> <span class="dv">1</span><span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb3-55"><a href=""></a>        pTemp<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> pInt<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb3-56"><a href=""></a></span>
+<span id="cb3-57"><a href=""></a>    size<span class="op">--;</span></span>
+<span id="cb3-58"><a href=""></a>    <span class="kw">delete</span><span class="op">[]</span> pInt<span class="op">;</span></span>
+<span id="cb3-59"><a href=""></a>    <span class="cf">return</span> pTemp<span class="op">;</span></span>
+<span id="cb3-60"><a href=""></a><span class="op">}</span></span>
+<span id="cb3-61"><a href=""></a></span>
+<span id="cb3-62"><a href=""></a><span class="dt">void</span> displayArray<span class="op">(</span><span class="at">const</span> <span class="dt">int</span><span class="op">*</span> pInt<span class="op">,</span> <span class="dt">int</span> size<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-63"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb3-64"><a href=""></a>        cout <span class="op">&lt;&lt;</span> pInt<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
+<span id="cb3-65"><a href=""></a>    cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb3-66"><a href=""></a><span class="op">}</span></span>
+<span id="cb3-67"><a href=""></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <!-- Slide 8 -->
 </section>
-<section id="agenda-2" class="slide level2">
-<h2><span style="display:none">Agenda</span></h2>
+<section class="slide level2">
 
-<img data-src="images/source_pages/slide-009.png" style="width:100.0%" alt="Agenda" class="r-stretch"><aside class="notes">
-<p>Source PDF page 9.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+
 <!-- Slide 9 -->
-</section>
-<section id="wheres-this-fit-in-the-course" class="slide level2">
-<h2><span style="display:none">Where’s This Fit in the Course?</span></h2>
+<!-- Topic: Programming Exercise: Dynamic Arrays -->
+<!-- Slides 4–17 -->
+<img data-src="images/Xrdaa2.png" style="width:100.0%" alt="Output from Xrdaa2.cpp" class="r-stretch"></section></section>
+<section>
+<section id="programming-exercise-dynamic-arrays" class="title-slide slide level1 center">
+<h1><span style="display:none">Programming Exercise: Dynamic Arrays</span></h1>
 
-<img data-src="images/source_pages/slide-010.png" style="width:100.0%" alt="Where's This Fit in the Course?" class="r-stretch"><aside class="notes">
-<p>Source PDF page 10.</p>
+</section>
+<section id="program-this---debrief" class="slide level2">
+<h2><span style="display:none">Program This - Debrief</span></h2>
+
+<img data-src="images/source_pages/slide-012.png" style="width:100.0%" alt="Program This - Debrief" class="r-stretch"><aside class="notes">
+<p>Slides 9–17</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -347,49 +464,6 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 10 -->
-</section>
-<section id="course-progression" class="slide level2">
-<h2><span style="display:none">Course Progression</span></h2>
-
-<img data-src="images/source_pages/slide-011.png" style="width:100.0%" alt="Course Progression" class="r-stretch"><aside class="notes">
-<p>Source PDF page 11.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 11 -->
-<!-- Topic: Programming Exercise: Dynamic Arrays -->
-<!-- Slides 12–19 -->
-</section></section>
-<section>
-<section id="programming-exercise-dynamic-arrays" class="title-slide slide level1 center">
-<h1><span style="display:none">Programming Exercise: Dynamic Arrays</span></h1>
-
-</section>
-<section id="program-this---debrief" class="slide level2">
-<h2><span style="display:none">Program This - Debrief</span></h2>
-
-<img data-src="images/source_pages/slide-012.png" style="width:100.0%" alt="Program This - Debrief" class="r-stretch"><aside class="notes">
-<p>Slides 12–19</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 12 -->
 </section>
 <section id="exercise-goals" class="slide level2">
 <h2><span style="display:none">Exercise Goals</span></h2>
@@ -407,7 +481,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 13 -->
+<!-- Slide 11 -->
 </section>
 <section id="programming-exercise" class="slide level2">
 <h2><span style="display:none">Programming Exercise</span></h2>
@@ -425,7 +499,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 14 -->
+<!-- Slide 12 -->
 </section>
 <section id="section" class="slide level2">
 <h2><span style="display:none"><exercise workspace=""></exercise></span></h2>
@@ -443,7 +517,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 15 -->
+<!-- Slide 13 -->
 </section>
 <section id="section-1" class="slide level2">
 <h2><span style="display:none"><exercise workspace=""></exercise></span></h2>
@@ -461,7 +535,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 16 -->
+<!-- Slide 14 -->
 </section>
 <section id="section-2" class="slide level2">
 <h2><span style="display:none"><exercise workspace=""></exercise></span></h2>
@@ -479,7 +553,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 17 -->
+<!-- Slide 15 -->
 </section>
 <section id="section-3" class="slide level2">
 <h2><span style="display:none"><exercise workspace=""></exercise></span></h2>
@@ -497,7 +571,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 18 -->
+<!-- Slide 16 -->
 </section>
 <section id="section-4" class="slide level2">
 <h2><span style="display:none"><exercise workspace=""></exercise></span></h2>
@@ -515,9 +589,9 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 19 -->
+<!-- Slide 17 -->
 <!-- Topic: Structures -->
-<!-- Slides 20–31 -->
+<!-- Slides 16–29 -->
 </section></section>
 <section>
 <section id="structures" class="title-slide slide level1 center">
@@ -528,7 +602,7 @@ Dr.&nbsp;Caleb Fowler
 <h2><span style="display:none">7.12 Structures</span></h2>
 
 <img data-src="images/source_pages/slide-020.png" style="width:100.0%" alt="7.12 Structures" class="r-stretch"><aside class="notes">
-<p>Slides 20–31</p>
+<p>Slides 18–29</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -540,7 +614,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 20 -->
+<!-- Slide 18 -->
 </section>
 <section id="the-problem" class="slide level2">
 <h2><span style="display:none">The Problem</span></h2>
@@ -558,7 +632,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 21 -->
+<!-- Slide 19 -->
 </section>
 <section id="section-5" class="slide level2">
 <h2><span style="display:none"><problem context=""></problem></span></h2>
@@ -576,7 +650,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 22 -->
+<!-- Slide 20 -->
 </section>
 <section id="grouping-variables" class="slide level2">
 <h2><span style="display:none">Grouping Variables</span></h2>
@@ -594,7 +668,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 23 -->
+<!-- Slide 21 -->
 </section>
 <section id="solution---struct" class="slide level2">
 <h2><span style="display:none">Solution - Struct</span></h2>
@@ -612,7 +686,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 24 -->
+<!-- Slide 22 -->
 </section>
 <section id="section-6" class="slide level2">
 <h2><span style="display:none"><struct example=""></struct></span></h2>
@@ -630,7 +704,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 25 -->
+<!-- Slide 23 -->
 </section>
 <section id="section-7" class="slide level2">
 <h2><span style="display:none"><struct example=""></struct></span></h2>
@@ -648,7 +722,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 26 -->
+<!-- Slide 24 -->
 </section>
 <section id="accessing-a-struct" class="slide level2">
 <h2><span style="display:none">Accessing a Struct</span></h2>
@@ -666,7 +740,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 27 -->
+<!-- Slide 25 -->
 </section>
 <section id="initializing-a-struct" class="slide level2">
 <h2><span style="display:none">Initializing a Struct</span></h2>
@@ -684,7 +758,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 28 -->
+<!-- Slide 26 -->
 </section>
 <section id="initialization-list" class="slide level2">
 <h2><span style="display:none">Initialization List</span></h2>
@@ -702,7 +776,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 29 -->
+<!-- Slide 27 -->
 </section>
 <section id="constructor" class="slide level2">
 <h2><span style="display:none">Constructor</span></h2>
@@ -720,7 +794,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 30 -->
+<!-- Slide 28 -->
 </section>
 <section id="questions" class="slide level2">
 <h2><span style="display:none">Questions</span></h2>
@@ -738,9 +812,9 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 31 -->
+<!-- Slide 29 -->
 <!-- Topic: Classes and Objects -->
-<!-- Slides 32–46 -->
+<!-- Slides 28–44 -->
 </section></section>
 <section>
 <section id="classes-and-objects" class="title-slide slide level1 center">
@@ -751,7 +825,7 @@ Dr.&nbsp;Caleb Fowler
 <h2><span style="display:none">7.x Crash Course in Building Objects</span></h2>
 
 <img data-src="images/source_pages/slide-032.png" style="width:100.0%" alt="7.x Crash Course in Building Objects" class="r-stretch"><aside class="notes">
-<p>Slides 32–46</p>
+<p>Slides 30–44</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -763,7 +837,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 32 -->
+<!-- Slide 30 -->
 </section>
 <section id="how-to-construct-an-object" class="slide level2">
 <h2><span style="display:none">How to Construct an Object</span></h2>
@@ -781,7 +855,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 33 -->
+<!-- Slide 31 -->
 </section>
 <section id="section-8" class="slide level2">
 <h2><span style="display:none"><object construction="">
@@ -799,7 +873,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 34 -->
+<!-- Slide 32 -->
 
 <section id="section-9" class="slide level2">
 <h2><span style="display:none"><object construction="">
@@ -817,7 +891,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 35 -->
+<!-- Slide 33 -->
 
 <section id="encapsulation" class="slide level2">
 <h2><span style="display:none">Encapsulation</span></h2>
@@ -835,7 +909,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 36 -->
+<!-- Slide 34 -->
 </section>
 <section id="section-10" class="slide level2">
 <h2><span style="display:none"><encapsulation></encapsulation></span></h2>
@@ -853,7 +927,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 37 -->
+<!-- Slide 35 -->
 </section>
 <section id="section-11" class="slide level2">
 <h2><span style="display:none"><encapsulation></encapsulation></span></h2>
@@ -871,7 +945,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 38 -->
+<!-- Slide 36 -->
 </section>
 <section id="setters-and-getters" class="slide level2">
 <h2><span style="display:none">Setters and Getters</span></h2>
@@ -889,7 +963,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 39 -->
+<!-- Slide 37 -->
 </section>
 <section id="section-12" class="slide level2">
 <h2><span style="display:none"><methods></methods></span></h2>
@@ -907,7 +981,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 40 -->
+<!-- Slide 38 -->
 </section>
 <section id="section-13" class="slide level2">
 <h2><span style="display:none"><methods></methods></span></h2>
@@ -925,7 +999,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 41 -->
+<!-- Slide 39 -->
 </section>
 <section id="section-14" class="slide level2">
 <h2><span style="display:none"><methods></methods></span></h2>
@@ -943,7 +1017,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 42 -->
+<!-- Slide 40 -->
 </section>
 <section id="program-this" class="slide level2">
 <h2><span style="display:none">Program This</span></h2>
@@ -961,7 +1035,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 43 -->
+<!-- Slide 41 -->
 </section>
 <section id="exercise-goals-1" class="slide level2">
 <h2><span style="display:none">Exercise Goals</span></h2>
@@ -979,7 +1053,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 44 -->
+<!-- Slide 42 -->
 </section>
 <section id="programming-exercise-1" class="slide level2">
 <h2><span style="display:none">Programming Exercise</span></h2>
@@ -997,7 +1071,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 45 -->
+<!-- Slide 43 -->
 </section>
 <section id="section-15" class="slide level2">
 <h2><span style="display:none"><exercise workspace=""></exercise></span></h2>
@@ -1015,9 +1089,9 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 46 -->
+<!-- Slide 44 -->
 <!-- Topic: Abstract Data Types -->
-<!-- Slides 47–54 -->
+<!-- Slides 43–52 -->
 </section>
 <section>
 <section id="abstract-data-types" class="title-slide slide level1 center">
@@ -1028,7 +1102,7 @@ Dr.&nbsp;Caleb Fowler
 <h2><span style="display:none">7.1 Abstract Data Type (ADT)</span></h2>
 
 <img data-src="images/source_pages/slide-047.png" style="width:100.0%" alt="7.1 Abstract Data Type (ADT)" class="r-stretch"><aside class="notes">
-<p>Slides 47–54</p>
+<p>Slides 45–52</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1040,7 +1114,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 47 -->
+<!-- Slide 45 -->
 </section>
 <section id="the-problem-1" class="slide level2">
 <h2><span style="display:none">The Problem</span></h2>
@@ -1058,7 +1132,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 48 -->
+<!-- Slide 46 -->
 </section>
 <section id="someone-will-break-it" class="slide level2">
 <h2><span style="display:none">Someone Will Break It</span></h2>
@@ -1076,7 +1150,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 49 -->
+<!-- Slide 47 -->
 </section>
 <section id="abstract-data-type-definition" class="slide level2">
 <h2><span style="display:none">Abstract Data Type Definition</span></h2>
@@ -1094,7 +1168,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 50 -->
+<!-- Slide 48 -->
 </section>
 <section id="how" class="slide level2">
 <h2><span style="display:none">How?</span></h2>
@@ -1112,7 +1186,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 51 -->
+<!-- Slide 49 -->
 </section>
 <section id="build-adt" class="slide level2">
 <h2><span style="display:none">Build ADT</span></h2>
@@ -1130,7 +1204,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 52 -->
+<!-- Slide 50 -->
 </section>
 <section id="this-is-the-api" class="slide level2">
 <h2><span style="display:none">This Is the API</span></h2>
@@ -1148,7 +1222,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 53 -->
+<!-- Slide 51 -->
 </section>
 <section id="api-design-goal" class="slide level2">
 <h2><span style="display:none">API Design Goal</span></h2>
@@ -1166,9 +1240,9 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 54 -->
+<!-- Slide 52 -->
 <!-- Topic: Encapsulation and Abstraction -->
-<!-- Slides 55–77 -->
+<!-- Slides 51–75 -->
 </section></section>
 <section>
 <section id="encapsulation-and-abstraction" class="title-slide slide level1 center">
@@ -1179,7 +1253,7 @@ Dr.&nbsp;Caleb Fowler
 <h2><span style="display:none">7.2 Object-Oriented Programming</span></h2>
 
 <img data-src="images/source_pages/slide-055.png" style="width:100.0%" alt="7.2 Object-Oriented Programming" class="r-stretch"><aside class="notes">
-<p>Slides 55–77</p>
+<p>Slides 53–75</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1191,7 +1265,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 55 -->
+<!-- Slide 53 -->
 </section>
 <section id="oop-and-the-real-world" class="slide level2">
 <h2><span style="display:none">OOP and the Real World</span></h2>
@@ -1209,7 +1283,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 56 -->
+<!-- Slide 54 -->
 </section>
 <section id="encapsulation-1" class="slide level2">
 <h2><span style="display:none">Encapsulation</span></h2>
@@ -1227,7 +1301,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 57 -->
+<!-- Slide 55 -->
 </section>
 <section id="implementation-and-abstraction" class="slide level2">
 <h2><span style="display:none">Implementation and Abstraction</span></h2>
@@ -1245,7 +1319,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 58 -->
+<!-- Slide 56 -->
 </section>
 <section id="abstraction" class="slide level2">
 <h2><span style="display:none">Abstraction</span></h2>
@@ -1263,7 +1337,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 59 -->
+<!-- Slide 57 -->
 </section>
 <section id="abstraction-definition" class="slide level2">
 <h2><span style="display:none">Abstraction Definition</span></h2>
@@ -1281,7 +1355,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 60 -->
+<!-- Slide 58 -->
 </section>
 <section id="why-abstraction" class="slide level2">
 <h2><span style="display:none">Why Abstraction?</span></h2>
@@ -1299,7 +1373,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 61 -->
+<!-- Slide 59 -->
 </section>
 <section id="section-16" class="slide level2">
 <h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
@@ -1317,7 +1391,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 62 -->
+<!-- Slide 60 -->
 </section>
 <section id="section-17" class="slide level2">
 <h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
@@ -1335,7 +1409,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 63 -->
+<!-- Slide 61 -->
 </section>
 <section id="section-18" class="slide level2">
 <h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
@@ -1353,7 +1427,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 64 -->
+<!-- Slide 62 -->
 </section>
 <section id="section-19" class="slide level2">
 <h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
@@ -1371,7 +1445,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 65 -->
+<!-- Slide 63 -->
 </section>
 <section id="section-20" class="slide level2">
 <h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
@@ -1389,7 +1463,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 66 -->
+<!-- Slide 64 -->
 </section>
 <section id="section-21" class="slide level2">
 <h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
@@ -1407,7 +1481,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 67 -->
+<!-- Slide 65 -->
 </section>
 <section id="section-22" class="slide level2">
 <h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
@@ -1425,7 +1499,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 68 -->
+<!-- Slide 66 -->
 </section>
 <section id="section-23" class="slide level2">
 <h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
@@ -1443,7 +1517,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 69 -->
+<!-- Slide 67 -->
 </section>
 <section id="section-24" class="slide level2">
 <h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
@@ -1461,7 +1535,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 70 -->
+<!-- Slide 68 -->
 </section>
 <section id="section-25" class="slide level2">
 <h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
@@ -1479,7 +1553,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 71 -->
+<!-- Slide 69 -->
 </section>
 <section id="section-26" class="slide level2">
 <h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
@@ -1497,7 +1571,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 72 -->
+<!-- Slide 70 -->
 </section>
 <section id="section-27" class="slide level2">
 <h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
@@ -1515,7 +1589,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 73 -->
+<!-- Slide 71 -->
 </section>
 <section id="section-28" class="slide level2">
 <h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
@@ -1533,7 +1607,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 74 -->
+<!-- Slide 72 -->
 </section>
 <section id="section-29" class="slide level2">
 <h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
@@ -1551,7 +1625,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 75 -->
+<!-- Slide 73 -->
 </section>
 <section id="section-30" class="slide level2">
 <h2><span style="display:none"><abstraction example=""></abstraction></span></h2>
@@ -1569,7 +1643,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 76 -->
+<!-- Slide 74 -->
 </section>
 <section id="table-of-variables" class="slide level2">
 <h2><span style="display:none">Table of Variables</span></h2>
@@ -1587,9 +1661,9 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 77 -->
+<!-- Slide 75 -->
 <!-- Topic: Classes and Methods -->
-<!-- Slides 78–93 -->
+<!-- Slides 74–91 -->
 </section></section>
 <section>
 <section id="classes-and-methods" class="title-slide slide level1 center">
@@ -1600,7 +1674,7 @@ Dr.&nbsp;Caleb Fowler
 <h2><span style="display:none">7.3 Introduction to Classes</span></h2>
 
 <img data-src="images/source_pages/slide-078.png" style="width:100.0%" alt="7.3 Introduction to Classes" class="r-stretch"><aside class="notes">
-<p>Slides 78–93</p>
+<p>Slides 76–91</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1612,7 +1686,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 78 -->
+<!-- Slide 76 -->
 </section>
 <section id="section-31" class="slide level2">
 <h2><span style="display:none"><class example=""></class></span></h2>
@@ -1630,7 +1704,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 79 -->
+<!-- Slide 77 -->
 </section>
 <section id="section-32" class="slide level2">
 <h2><span style="display:none"><class example=""></class></span></h2>
@@ -1648,7 +1722,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 80 -->
+<!-- Slide 78 -->
 </section>
 <section id="section-33" class="slide level2">
 <h2><span style="display:none"><class example=""></class></span></h2>
@@ -1666,7 +1740,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 81 -->
+<!-- Slide 79 -->
 </section>
 <section id="creating-and-using-objects" class="slide level2">
 <h2><span style="display:none">7.4 Creating and Using Objects</span></h2>
@@ -1684,7 +1758,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 82 -->
+<!-- Slide 80 -->
 </section>
 <section id="section-34" class="slide level2">
 <h2><span style="display:none"><object example="">
@@ -1702,7 +1776,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 83 -->
+<!-- Slide 81 -->
 
 <section id="defining-member-functions" class="slide level2">
 <h2><span style="display:none">7.5 Defining Member Functions</span></h2>
@@ -1720,7 +1794,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 84 -->
+<!-- Slide 82 -->
 </section>
 <section id="classes-group-data-and-behavior" class="slide level2">
 <h2><span style="display:none">Classes Group Data and Behavior</span></h2>
@@ -1738,7 +1812,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 85 -->
+<!-- Slide 83 -->
 </section>
 <section id="methods" class="slide level2">
 <h2><span style="display:none">Methods</span></h2>
@@ -1756,7 +1830,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 86 -->
+<!-- Slide 84 -->
 </section>
 <section id="methods-1" class="slide level2">
 <h2><span style="display:none">Methods</span></h2>
@@ -1774,7 +1848,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 87 -->
+<!-- Slide 85 -->
 </section>
 <section id="method-example" class="slide level2">
 <h2><span style="display:none">Method Example</span></h2>
@@ -1792,7 +1866,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 88 -->
+<!-- Slide 86 -->
 </section>
 <section id="another-example" class="slide level2">
 <h2><span style="display:none">Another Example</span></h2>
@@ -1810,7 +1884,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 89 -->
+<!-- Slide 87 -->
 </section>
 <section id="section-35" class="slide level2">
 <h2><span style="display:none"><method example=""></method></span></h2>
@@ -1828,7 +1902,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 90 -->
+<!-- Slide 88 -->
 </section>
 <section id="methods-and-output" class="slide level2">
 <h2><span style="display:none">Methods and Output</span></h2>
@@ -1846,7 +1920,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 91 -->
+<!-- Slide 89 -->
 </section>
 <section id="section-36" class="slide level2">
 <h2><span style="display:none"><method example=""></method></span></h2>
@@ -1864,7 +1938,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 92 -->
+<!-- Slide 90 -->
 </section>
 <section id="section-37" class="slide level2">
 <h2><span style="display:none"><method example=""></method></span></h2>
@@ -1882,9 +1956,9 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 93 -->
+<!-- Slide 91 -->
 <!-- Topic: Programming Exercise: Colorize -->
-<!-- Slides 94–95 -->
+<!-- Slides 90–93 -->
 </section>
 <section>
 <section id="programming-exercise-colorize" class="title-slide slide level1 center">
@@ -1895,7 +1969,7 @@ Dr.&nbsp;Caleb Fowler
 <h2><span style="display:none">Programming Exercise</span></h2>
 
 <img data-src="images/source_pages/slide-094.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"><aside class="notes">
-<p>Slides 94–95</p>
+<p>Slides 92–93</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1907,7 +1981,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 94 -->
+<!-- Slide 92 -->
 </section>
 <section id="exercise-goals-2" class="slide level2">
 <h2><span style="display:none">Exercise Goals</span></h2>
@@ -1925,9 +1999,9 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 95 -->
+<!-- Slide 93 -->
 <!-- Topic: Homework Peer Review -->
-<!-- Slides 96–101 -->
+<!-- Slides 92–99 -->
 </section></section>
 <section>
 <section id="homework-peer-review" class="title-slide slide level1 center">
@@ -1938,7 +2012,7 @@ Dr.&nbsp;Caleb Fowler
 <h2><span style="display:none">Programming Exercise</span></h2>
 
 <img data-src="images/source_pages/slide-096.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"><aside class="notes">
-<p>Slides 96–101</p>
+<p>Slides 94–99</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1950,7 +2024,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 96 -->
+<!-- Slide 94 -->
 </section>
 <section id="homework-1-peer-review" class="slide level2">
 <h2><span style="display:none">Homework 1 Peer Review</span></h2>
@@ -1968,7 +2042,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 97 -->
+<!-- Slide 95 -->
 </section>
 <section id="homework-debrief" class="slide level2">
 <h2><span style="display:none">Homework Debrief</span></h2>
@@ -1986,7 +2060,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 98 -->
+<!-- Slide 96 -->
 </section>
 <section id="process" class="slide level2">
 <h2><span style="display:none">Process</span></h2>
@@ -2004,7 +2078,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 99 -->
+<!-- Slide 97 -->
 </section>
 <section id="analysis" class="slide level2">
 <h2><span style="display:none">Analysis</span></h2>
@@ -2022,7 +2096,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 100 -->
+<!-- Slide 98 -->
 </section>
 <section id="debrief" class="slide level2">
 <h2><span style="display:none">Debrief</span></h2>
@@ -2040,9 +2114,9 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 101 -->
+<!-- Slide 99 -->
 <!-- Topic: Programming Exercise: Dynamic Array Operations -->
-<!-- Slides 102–104 -->
+<!-- Slides 98–102 -->
 </section></section>
 <section>
 <section id="programming-exercise-dynamic-array-operations" class="title-slide slide level1 center">
@@ -2053,7 +2127,7 @@ Dr.&nbsp;Caleb Fowler
 <h2><span style="display:none">Program This - Debrief</span></h2>
 
 <img data-src="images/source_pages/slide-102.png" style="width:100.0%" alt="Program This - Debrief" class="r-stretch"><aside class="notes">
-<p>Slides 102–104</p>
+<p>Slides 100–102</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -2065,7 +2139,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 102 -->
+<!-- Slide 100 -->
 </section>
 <section id="exercise-goals-3" class="slide level2">
 <h2><span style="display:none">Exercise Goals</span></h2>
@@ -2083,7 +2157,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 103 -->
+<!-- Slide 101 -->
 </section>
 <section id="programming-exercise-4" class="slide level2">
 <h2><span style="display:none">Programming Exercise</span></h2>
@@ -2101,9 +2175,9 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 104 -->
+<!-- Slide 102 -->
 <!-- Topic: Programming Exercise: Returning a Struct -->
-<!-- Slides 105–108 -->
+<!-- Slides 101–106 -->
 </section></section>
 <section>
 <section id="programming-exercise-returning-a-struct" class="title-slide slide level1 center">
@@ -2114,7 +2188,7 @@ Dr.&nbsp;Caleb Fowler
 <h2><span style="display:none">Programming Exercise</span></h2>
 
 <img data-src="images/source_pages/slide-105.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"><aside class="notes">
-<p>Slides 105–108</p>
+<p>Slides 103–106</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -2126,7 +2200,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 105 -->
+<!-- Slide 103 -->
 </section>
 <section id="exercise-goals-4" class="slide level2">
 <h2><span style="display:none">Exercise Goals</span></h2>
@@ -2144,7 +2218,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 106 -->
+<!-- Slide 104 -->
 </section>
 <section id="programming-exercise-6" class="slide level2">
 <h2><span style="display:none">Programming Exercise</span></h2>
@@ -2162,7 +2236,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 107 -->
+<!-- Slide 105 -->
 </section>
 <section id="section-38" class="slide level2">
 <h2><span style="display:none"><exercise workspace=""></exercise></span></h2>
@@ -2180,7 +2254,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 108 -->
+<!-- Slide 106 -->
 <table class="caption-top" style="width:6%;">
 <colgroup>
 <col style="width: 5%">

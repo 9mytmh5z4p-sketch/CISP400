@@ -1,5 +1,5 @@
 <!-- Topic: Programming Exercise: Dynamic Arrays -->
-<!-- Slides 12–19 -->
+<!-- Slides 4–17 -->
 # <span style="display:none">Programming Exercise: Dynamic Arrays</span>
 
 ## <span style="display:none">Program This - Debrief</span>
@@ -7,10 +7,10 @@
 ![](images/source_pages/slide-012.png){width="100%" fig-alt="Program This - Debrief"}
 
 ::: notes
-Slides 12–19
+Slides 9–17
 :::
 
-<!-- Slide 12 -->
+<!-- Slide 10 -->
 
 ---
 
@@ -22,7 +22,7 @@ Slides 12–19
 Source PDF page 13.
 :::
 
-<!-- Slide 13 -->
+<!-- Slide 11 -->
 
 ---
 
@@ -34,7 +34,7 @@ Source PDF page 13.
 Source PDF page 14.
 :::
 
-<!-- Slide 14 -->
+<!-- Slide 12 -->
 
 ---
 
@@ -46,7 +46,7 @@ Source PDF page 14.
 Source PDF page 15.
 :::
 
-<!-- Slide 15 -->
+<!-- Slide 13 -->
 
 ---
 
@@ -58,7 +58,7 @@ Source PDF page 15.
 Source PDF page 16.
 :::
 
-<!-- Slide 16 -->
+<!-- Slide 14 -->
 
 ---
 
@@ -70,7 +70,7 @@ Source PDF page 16.
 Source PDF page 17.
 :::
 
-<!-- Slide 17 -->
+<!-- Slide 15 -->
 
 ---
 
@@ -82,7 +82,7 @@ Source PDF page 17.
 Source PDF page 18.
 :::
 
-<!-- Slide 18 -->
+<!-- Slide 16 -->
 
 ---
 
@@ -94,4 +94,4 @@ Source PDF page 18.
 Source PDF page 19.
 :::
 
-<!-- Slide 19 -->
+<!-- Slide 17 -->

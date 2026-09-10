@@ -1,5 +1,5 @@
 <!-- Topic: Encapsulation and Abstraction -->
-<!-- Slides 55–77 -->
+<!-- Slides 51–75 -->
 # <span style="display:none">Encapsulation and Abstraction</span>
 
 ## <span style="display:none">7.2 Object-Oriented Programming</span>
@@ -7,10 +7,10 @@
 ![](images/source_pages/slide-055.png){width="100%" fig-alt="7.2 Object-Oriented Programming"}
 
 ::: notes
-Slides 55–77
+Slides 53–75
 :::
 
-<!-- Slide 55 -->
+<!-- Slide 53 -->
 
 ---
 
@@ -22,7 +22,7 @@ Slides 55–77
 Source PDF page 56.
 :::
 
-<!-- Slide 56 -->
+<!-- Slide 54 -->
 
 ---
 
@@ -34,7 +34,7 @@ Source PDF page 56.
 Source PDF page 57.
 :::
 
-<!-- Slide 57 -->
+<!-- Slide 55 -->
 
 ---
 
@@ -46,7 +46,7 @@ Source PDF page 57.
 Source PDF page 58.
 :::
 
-<!-- Slide 58 -->
+<!-- Slide 56 -->
 
 ---
 
@@ -58,7 +58,7 @@ Source PDF page 58.
 Source PDF page 59.
 :::
 
-<!-- Slide 59 -->
+<!-- Slide 57 -->
 
 ---
 
@@ -70,7 +70,7 @@ Source PDF page 59.
 Source PDF page 60.
 :::
 
-<!-- Slide 60 -->
+<!-- Slide 58 -->
 
 ---
 
@@ -82,7 +82,7 @@ Source PDF page 60.
 Source PDF page 61.
 :::
 
-<!-- Slide 61 -->
+<!-- Slide 59 -->
 
 ---
 
@@ -94,7 +94,7 @@ Source PDF page 61.
 Source PDF page 62.
 :::
 
-<!-- Slide 62 -->
+<!-- Slide 60 -->
 
 ---
 
@@ -106,7 +106,7 @@ Source PDF page 62.
 Source PDF page 63.
 :::
 
-<!-- Slide 63 -->
+<!-- Slide 61 -->
 
 ---
 
@@ -118,7 +118,7 @@ Source PDF page 63.
 Source PDF page 64.
 :::
 
-<!-- Slide 64 -->
+<!-- Slide 62 -->
 
 ---
 
@@ -130,7 +130,7 @@ Source PDF page 64.
 Source PDF page 65.
 :::
 
-<!-- Slide 65 -->
+<!-- Slide 63 -->
 
 ---
 
@@ -142,7 +142,7 @@ Source PDF page 65.
 Source PDF page 66.
 :::
 
-<!-- Slide 66 -->
+<!-- Slide 64 -->
 
 ---
 
@@ -154,7 +154,7 @@ Source PDF page 66.
 Source PDF page 67.
 :::
 
-<!-- Slide 67 -->
+<!-- Slide 65 -->
 
 ---
 
@@ -166,7 +166,7 @@ Source PDF page 67.
 Source PDF page 68.
 :::
 
-<!-- Slide 68 -->
+<!-- Slide 66 -->
 
 ---
 
@@ -178,7 +178,7 @@ Source PDF page 68.
 Source PDF page 69.
 :::
 
-<!-- Slide 69 -->
+<!-- Slide 67 -->
 
 ---
 
@@ -190,7 +190,7 @@ Source PDF page 69.
 Source PDF page 70.
 :::
 
-<!-- Slide 70 -->
+<!-- Slide 68 -->
 
 ---
 
@@ -202,7 +202,7 @@ Source PDF page 70.
 Source PDF page 71.
 :::
 
-<!-- Slide 71 -->
+<!-- Slide 69 -->
 
 ---
 
@@ -214,7 +214,7 @@ Source PDF page 71.
 Source PDF page 72.
 :::
 
-<!-- Slide 72 -->
+<!-- Slide 70 -->
 
 ---
 
@@ -226,7 +226,7 @@ Source PDF page 72.
 Source PDF page 73.
 :::
 
-<!-- Slide 73 -->
+<!-- Slide 71 -->
 
 ---
 
@@ -238,7 +238,7 @@ Source PDF page 73.
 Source PDF page 74.
 :::
 
-<!-- Slide 74 -->
+<!-- Slide 72 -->
 
 ---
 
@@ -250,7 +250,7 @@ Source PDF page 74.
 Source PDF page 75.
 :::
 
-<!-- Slide 75 -->
+<!-- Slide 73 -->
 
 ---
 
@@ -262,7 +262,7 @@ Source PDF page 75.
 Source PDF page 76.
 :::
 
-<!-- Slide 76 -->
+<!-- Slide 74 -->
 
 ---
 
@@ -274,4 +274,4 @@ Source PDF page 76.
 Source PDF page 77.
 :::
 
-<!-- Slide 77 -->
+<!-- Slide 75 -->

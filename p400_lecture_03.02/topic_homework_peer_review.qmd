@@ -1,5 +1,5 @@
 <!-- Topic: Homework Peer Review -->
-<!-- Slides 96–101 -->
+<!-- Slides 92–99 -->
 # <span style="display:none">Homework Peer Review</span>
 
 ## <span style="display:none">Programming Exercise</span>
@@ -7,10 +7,10 @@
 ![](images/source_pages/slide-096.png){width="100%" fig-alt="Programming Exercise"}
 
 ::: notes
-Slides 96–101
+Slides 94–99
 :::
 
-<!-- Slide 96 -->
+<!-- Slide 94 -->
 
 ---
 
@@ -22,7 +22,7 @@ Slides 96–101
 Source PDF page 97.
 :::
 
-<!-- Slide 97 -->
+<!-- Slide 95 -->
 
 ---
 
@@ -34,7 +34,7 @@ Source PDF page 97.
 Source PDF page 98.
 :::
 
-<!-- Slide 98 -->
+<!-- Slide 96 -->
 
 ---
 
@@ -46,7 +46,7 @@ Source PDF page 98.
 Source PDF page 99.
 :::
 
-<!-- Slide 99 -->
+<!-- Slide 97 -->
 
 ---
 
@@ -58,7 +58,7 @@ Source PDF page 99.
 Source PDF page 100.
 :::
 
-<!-- Slide 100 -->
+<!-- Slide 98 -->
 
 ---
 
@@ -70,4 +70,4 @@ Source PDF page 100.
 Source PDF page 101.
 :::
 
-<!-- Slide 101 -->
+<!-- Slide 99 -->

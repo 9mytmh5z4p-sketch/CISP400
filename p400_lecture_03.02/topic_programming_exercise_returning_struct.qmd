@@ -1,5 +1,5 @@
 <!-- Topic: Programming Exercise: Returning a Struct -->
-<!-- Slides 105–108 -->
+<!-- Slides 101–106 -->
 # <span style="display:none">Programming Exercise: Returning a Struct</span>
 
 ## <span style="display:none">Programming Exercise</span>
@@ -7,10 +7,10 @@
 ![](images/source_pages/slide-105.png){width="100%" fig-alt="Programming Exercise"}
 
 ::: notes
-Slides 105–108
+Slides 103–106
 :::
 
-<!-- Slide 105 -->
+<!-- Slide 103 -->
 
 ---
 
@@ -22,7 +22,7 @@ Slides 105–108
 Source PDF page 106.
 :::
 
-<!-- Slide 106 -->
+<!-- Slide 104 -->
 
 ---
 
@@ -34,7 +34,7 @@ Source PDF page 106.
 Source PDF page 107.
 :::
 
-<!-- Slide 107 -->
+<!-- Slide 105 -->
 
 ---
 
@@ -46,4 +46,4 @@ Source PDF page 107.
 Source PDF page 108.
 :::
 
-<!-- Slide 108 -->
+<!-- Slide 106 -->

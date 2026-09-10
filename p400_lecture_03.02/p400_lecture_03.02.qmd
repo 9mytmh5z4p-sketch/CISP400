@@ -1,3 +1,11 @@
+# CISP 400
+
+Object-Oriented Programming in C++
+
+Dr. Fowler
+
+<!-- Slide 1 -->
+
 # Last Time
 
 ::: {.incremental}
@@ -7,6 +15,8 @@
 + **Real Dynamic Arrays**
 :::
 
+<!-- Slide 2 -->
+
 # Today's Agenda
 
 - Structures
@@ -14,6 +24,8 @@
 - Abstract Data Types
 - Encapsulation and Abstraction
 - Classes and Methods
+
+<!-- Slide 3 -->
 
 {{< include topic_course_framing.qmd >}}
 {{< include topic_programming_exercise_dynamic_arrays.qmd >}}

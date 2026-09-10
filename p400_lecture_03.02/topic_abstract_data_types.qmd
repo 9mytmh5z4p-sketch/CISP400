@@ -1,5 +1,5 @@
 <!-- Topic: Abstract Data Types -->
-<!-- Slides 47–54 -->
+<!-- Slides 43–52 -->
 # <span style="display:none">Abstract Data Types</span>
 
 ## <span style="display:none">7.1 Abstract Data Type (ADT)</span>
@@ -7,10 +7,10 @@
 ![](images/source_pages/slide-047.png){width="100%" fig-alt="7.1 Abstract Data Type (ADT)"}
 
 ::: notes
-Slides 47–54
+Slides 45–52
 :::
 
-<!-- Slide 47 -->
+<!-- Slide 45 -->
 
 ---
 
@@ -22,7 +22,7 @@ Slides 47–54
 Source PDF page 48.
 :::
 
-<!-- Slide 48 -->
+<!-- Slide 46 -->
 
 ---
 
@@ -34,7 +34,7 @@ Source PDF page 48.
 Source PDF page 49.
 :::
 
-<!-- Slide 49 -->
+<!-- Slide 47 -->
 
 ---
 
@@ -46,7 +46,7 @@ Source PDF page 49.
 Source PDF page 50.
 :::
 
-<!-- Slide 50 -->
+<!-- Slide 48 -->
 
 ---
 
@@ -58,7 +58,7 @@ Source PDF page 50.
 Source PDF page 51.
 :::
 
-<!-- Slide 51 -->
+<!-- Slide 49 -->
 
 ---
 
@@ -70,7 +70,7 @@ Source PDF page 51.
 Source PDF page 52.
 :::
 
-<!-- Slide 52 -->
+<!-- Slide 50 -->
 
 ---
 
@@ -82,7 +82,7 @@ Source PDF page 52.
 Source PDF page 53.
 :::
 
-<!-- Slide 53 -->
+<!-- Slide 51 -->
 
 ---
 
@@ -94,4 +94,4 @@ Source PDF page 53.
 Source PDF page 54.
 :::
 
-<!-- Slide 54 -->
+<!-- Slide 52 -->

@@ -1,5 +1,5 @@
 <!-- Topic: Classes and Objects -->
-<!-- Slides 32–46 -->
+<!-- Slides 28–44 -->
 # <span style="display:none">Classes and Objects</span>
 
 ## <span style="display:none">7.x Crash Course in Building Objects</span>
@@ -7,10 +7,10 @@
 ![](images/source_pages/slide-032.png){width="100%" fig-alt="7.x Crash Course in Building Objects"}
 
 ::: notes
-Slides 32–46
+Slides 30–44
 :::
 
-<!-- Slide 32 -->
+<!-- Slide 30 -->
 
 ---
 
@@ -22,7 +22,7 @@ Slides 32–46
 Source PDF page 33.
 :::
 
-<!-- Slide 33 -->
+<!-- Slide 31 -->
 
 ---
 
@@ -34,7 +34,7 @@ Source PDF page 33.
 Source PDF page 34.
 :::
 
-<!-- Slide 34 -->
+<!-- Slide 32 -->
 
 ---
 
@@ -46,7 +46,7 @@ Source PDF page 34.
 Source PDF page 35.
 :::
 
-<!-- Slide 35 -->
+<!-- Slide 33 -->
 
 ---
 
@@ -58,7 +58,7 @@ Source PDF page 35.
 Source PDF page 36.
 :::
 
-<!-- Slide 36 -->
+<!-- Slide 34 -->
 
 ---
 
@@ -70,7 +70,7 @@ Source PDF page 36.
 Source PDF page 37.
 :::
 
-<!-- Slide 37 -->
+<!-- Slide 35 -->
 
 ---
 
@@ -82,7 +82,7 @@ Source PDF page 37.
 Source PDF page 38.
 :::
 
-<!-- Slide 38 -->
+<!-- Slide 36 -->
 
 ---
 
@@ -94,7 +94,7 @@ Source PDF page 38.
 Source PDF page 39.
 :::
 
-<!-- Slide 39 -->
+<!-- Slide 37 -->
 
 ---
 
@@ -106,7 +106,7 @@ Source PDF page 39.
 Source PDF page 40.
 :::
 
-<!-- Slide 40 -->
+<!-- Slide 38 -->
 
 ---
 
@@ -118,7 +118,7 @@ Source PDF page 40.
 Source PDF page 41.
 :::
 
-<!-- Slide 41 -->
+<!-- Slide 39 -->
 
 ---
 
@@ -130,7 +130,7 @@ Source PDF page 41.
 Source PDF page 42.
 :::
 
-<!-- Slide 42 -->
+<!-- Slide 40 -->
 
 ---
 
@@ -142,7 +142,7 @@ Source PDF page 42.
 Source PDF page 43.
 :::
 
-<!-- Slide 43 -->
+<!-- Slide 41 -->
 
 ---
 
@@ -154,7 +154,7 @@ Source PDF page 43.
 Source PDF page 44.
 :::
 
-<!-- Slide 44 -->
+<!-- Slide 42 -->
 
 ---
 
@@ -166,7 +166,7 @@ Source PDF page 44.
 Source PDF page 45.
 :::
 
-<!-- Slide 45 -->
+<!-- Slide 43 -->
 
 ---
 
@@ -178,4 +178,4 @@ Source PDF page 45.
 Source PDF page 46.
 :::
 
-<!-- Slide 46 -->
+<!-- Slide 44 -->

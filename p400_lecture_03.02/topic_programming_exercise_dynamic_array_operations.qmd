@@ -1,5 +1,5 @@
 <!-- Topic: Programming Exercise: Dynamic Array Operations -->
-<!-- Slides 102–104 -->
+<!-- Slides 98–102 -->
 # <span style="display:none">Programming Exercise: Dynamic Array Operations</span>
 
 ## <span style="display:none">Program This - Debrief</span>
@@ -7,10 +7,10 @@
 ![](images/source_pages/slide-102.png){width="100%" fig-alt="Program This - Debrief"}
 
 ::: notes
-Slides 102–104
+Slides 100–102
 :::
 
-<!-- Slide 102 -->
+<!-- Slide 100 -->
 
 ---
 
@@ -22,7 +22,7 @@ Slides 102–104
 Source PDF page 103.
 :::
 
-<!-- Slide 103 -->
+<!-- Slide 101 -->
 
 ---
 
@@ -34,4 +34,4 @@ Source PDF page 103.
 Source PDF page 104.
 :::
 
-<!-- Slide 104 -->
+<!-- Slide 102 -->

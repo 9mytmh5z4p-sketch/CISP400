@@ -1,5 +1,5 @@
 <!-- Topic: Programming Exercise: Colorize -->
-<!-- Slides 94–95 -->
+<!-- Slides 90–93 -->
 # <span style="display:none">Programming Exercise: Colorize</span>
 
 ## <span style="display:none">Programming Exercise</span>
@@ -7,10 +7,10 @@
 ![](images/source_pages/slide-094.png){width="100%" fig-alt="Programming Exercise"}
 
 ::: notes
-Slides 94–95
+Slides 92–93
 :::
 
-<!-- Slide 94 -->
+<!-- Slide 92 -->
 
 ---
 
@@ -22,4 +22,4 @@ Slides 94–95
 Source PDF page 95.
 :::
 
-<!-- Slide 95 -->
+<!-- Slide 93 -->

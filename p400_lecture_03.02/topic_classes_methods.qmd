@@ -1,5 +1,5 @@
 <!-- Topic: Classes and Methods -->
-<!-- Slides 78–93 -->
+<!-- Slides 74–91 -->
 # <span style="display:none">Classes and Methods</span>
 
 ## <span style="display:none">7.3 Introduction to Classes</span>
@@ -7,10 +7,10 @@
 ![](images/source_pages/slide-078.png){width="100%" fig-alt="7.3 Introduction to Classes"}
 
 ::: notes
-Slides 78–93
+Slides 76–91
 :::
 
-<!-- Slide 78 -->
+<!-- Slide 76 -->
 
 ---
 
@@ -22,7 +22,7 @@ Slides 78–93
 Source PDF page 79.
 :::
 
-<!-- Slide 79 -->
+<!-- Slide 77 -->
 
 ---
 
@@ -34,7 +34,7 @@ Source PDF page 79.
 Source PDF page 80.
 :::
 
-<!-- Slide 80 -->
+<!-- Slide 78 -->
 
 ---
 
@@ -46,7 +46,7 @@ Source PDF page 80.
 Source PDF page 81.
 :::
 
-<!-- Slide 81 -->
+<!-- Slide 79 -->
 
 ---
 
@@ -58,7 +58,7 @@ Source PDF page 81.
 Source PDF page 82.
 :::
 
-<!-- Slide 82 -->
+<!-- Slide 80 -->
 
 ---
 
@@ -70,7 +70,7 @@ Source PDF page 82.
 Source PDF page 83.
 :::
 
-<!-- Slide 83 -->
+<!-- Slide 81 -->
 
 ---
 
@@ -82,7 +82,7 @@ Source PDF page 83.
 Source PDF page 84.
 :::
 
-<!-- Slide 84 -->
+<!-- Slide 82 -->
 
 ---
 
@@ -94,7 +94,7 @@ Source PDF page 84.
 Source PDF page 85.
 :::
 
-<!-- Slide 85 -->
+<!-- Slide 83 -->
 
 ---
 
@@ -106,7 +106,7 @@ Source PDF page 85.
 Source PDF page 86.
 :::
 
-<!-- Slide 86 -->
+<!-- Slide 84 -->
 
 ---
 
@@ -118,7 +118,7 @@ Source PDF page 86.
 Source PDF page 87.
 :::
 
-<!-- Slide 87 -->
+<!-- Slide 85 -->
 
 ---
 
@@ -130,7 +130,7 @@ Source PDF page 87.
 Source PDF page 88.
 :::
 
-<!-- Slide 88 -->
+<!-- Slide 86 -->
 
 ---
 
@@ -142,7 +142,7 @@ Source PDF page 88.
 Source PDF page 89.
 :::
 
-<!-- Slide 89 -->
+<!-- Slide 87 -->
 
 ---
 
@@ -154,7 +154,7 @@ Source PDF page 89.
 Source PDF page 90.
 :::
 
-<!-- Slide 90 -->
+<!-- Slide 88 -->
 
 ---
 
@@ -166,7 +166,7 @@ Source PDF page 90.
 Source PDF page 91.
 :::
 
-<!-- Slide 91 -->
+<!-- Slide 89 -->
 
 ---
 
@@ -178,7 +178,7 @@ Source PDF page 91.
 Source PDF page 92.
 :::
 
-<!-- Slide 92 -->
+<!-- Slide 90 -->
 
 ---
 
@@ -190,4 +190,4 @@ Source PDF page 92.
 Source PDF page 93.
 :::
 
-<!-- Slide 93 -->
+<!-- Slide 91 -->
