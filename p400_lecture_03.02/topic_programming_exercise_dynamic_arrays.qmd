@@ -38,7 +38,7 @@ Source PDF page 14.
 
 ---
 
-## <span style="display:none"><Exercise Workspace></span>
+## <span style="display:none">&lt;Exercise Workspace&gt;</span>
 
 ![](images/source_pages/slide-015.png){width="100%" fig-alt="<Exercise Workspace>"}
 
@@ -50,7 +50,7 @@ Source PDF page 15.
 
 ---
 
-## <span style="display:none"><Exercise Workspace></span>
+## <span style="display:none">&lt;Exercise Workspace&gt;</span>
 
 ![](images/source_pages/slide-016.png){width="100%" fig-alt="<Exercise Workspace>"}
 
@@ -62,7 +62,7 @@ Source PDF page 16.
 
 ---
 
-## <span style="display:none"><Exercise Workspace></span>
+## <span style="display:none">&lt;Exercise Workspace&gt;</span>
 
 ![](images/source_pages/slide-017.png){width="100%" fig-alt="<Exercise Workspace>"}
 
@@ -74,7 +74,7 @@ Source PDF page 17.
 
 ---
 
-## <span style="display:none"><Exercise Workspace></span>
+## <span style="display:none">&lt;Exercise Workspace&gt;</span>
 
 ![](images/source_pages/slide-018.png){width="100%" fig-alt="<Exercise Workspace>"}
 
@@ -86,7 +86,7 @@ Source PDF page 18.
 
 ---
 
-## <span style="display:none"><Exercise Workspace></span>
+## <span style="display:none">&lt;Exercise Workspace&gt;</span>
 
 ![](images/source_pages/slide-019.png){width="100%" fig-alt="<Exercise Workspace>"}
 

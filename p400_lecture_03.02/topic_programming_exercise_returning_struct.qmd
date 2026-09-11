@@ -38,7 +38,7 @@ Source PDF page 107.
 
 ---
 
-## <span style="display:none"><Exercise Workspace></span>
+## <span style="display:none">&lt;Exercise Workspace&gt;</span>
 
 ![](images/source_pages/slide-108.png){width="100%" fig-alt="<Exercise Workspace>"}
 

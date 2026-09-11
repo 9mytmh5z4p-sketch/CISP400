@@ -14,7 +14,7 @@ Slides 76–91
 
 ---
 
-## <span style="display:none"><Class Example></span>
+## <span style="display:none">&lt;Class Example&gt;</span>
 
 ![](images/source_pages/slide-079.png){width="100%" fig-alt="<Class Example>"}
 
@@ -26,7 +26,7 @@ Source PDF page 79.
 
 ---
 
-## <span style="display:none"><Class Example></span>
+## <span style="display:none">&lt;Class Example&gt;</span>
 
 ![](images/source_pages/slide-080.png){width="100%" fig-alt="<Class Example>"}
 
@@ -38,7 +38,7 @@ Source PDF page 80.
 
 ---
 
-## <span style="display:none"><Class Example></span>
+## <span style="display:none">&lt;Class Example&gt;</span>
 
 ![](images/source_pages/slide-081.png){width="100%" fig-alt="<Class Example>"}
 
@@ -62,7 +62,7 @@ Source PDF page 82.
 
 ---
 
-## <span style="display:none"><Object Example></span>
+## <span style="display:none">&lt;Object Example&gt;</span>
 
 ![](images/source_pages/slide-083.png){width="100%" fig-alt="<Object Example>"}
 
@@ -146,7 +146,7 @@ Source PDF page 89.
 
 ---
 
-## <span style="display:none"><Method Example></span>
+## <span style="display:none">&lt;Method Example&gt;</span>
 
 ![](images/source_pages/slide-090.png){width="100%" fig-alt="<Method Example>"}
 
@@ -170,7 +170,7 @@ Source PDF page 91.
 
 ---
 
-## <span style="display:none"><Method Example></span>
+## <span style="display:none">&lt;Method Example&gt;</span>
 
 ![](images/source_pages/slide-092.png){width="100%" fig-alt="<Method Example>"}
 
@@ -182,7 +182,7 @@ Source PDF page 92.
 
 ---
 
-## <span style="display:none"><Method Example></span>
+## <span style="display:none">&lt;Method Example&gt;</span>
 
 ![](images/source_pages/slide-093.png){width="100%" fig-alt="<Method Example>"}
 

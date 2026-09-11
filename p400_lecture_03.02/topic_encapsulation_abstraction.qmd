@@ -86,7 +86,7 @@ Source PDF page 61.
 
 ---
 
-## <span style="display:none"><Abstraction Example></span>
+## <span style="display:none">&lt;Abstraction Example&gt;</span>
 
 ![](images/source_pages/slide-062.png){width="100%" fig-alt="<Abstraction Example>"}
 
@@ -98,7 +98,7 @@ Source PDF page 62.
 
 ---
 
-## <span style="display:none"><Abstraction Example></span>
+## <span style="display:none">&lt;Abstraction Example&gt;</span>
 
 ![](images/source_pages/slide-063.png){width="100%" fig-alt="<Abstraction Example>"}
 
@@ -110,7 +110,7 @@ Source PDF page 63.
 
 ---
 
-## <span style="display:none"><Abstraction Example></span>
+## <span style="display:none">&lt;Abstraction Example&gt;</span>
 
 ![](images/source_pages/slide-064.png){width="100%" fig-alt="<Abstraction Example>"}
 
@@ -122,7 +122,7 @@ Source PDF page 64.
 
 ---
 
-## <span style="display:none"><Abstraction Example></span>
+## <span style="display:none">&lt;Abstraction Example&gt;</span>
 
 ![](images/source_pages/slide-065.png){width="100%" fig-alt="<Abstraction Example>"}
 
@@ -134,7 +134,7 @@ Source PDF page 65.
 
 ---
 
-## <span style="display:none"><Abstraction Example></span>
+## <span style="display:none">&lt;Abstraction Example&gt;</span>
 
 ![](images/source_pages/slide-066.png){width="100%" fig-alt="<Abstraction Example>"}
 
@@ -146,7 +146,7 @@ Source PDF page 66.
 
 ---
 
-## <span style="display:none"><Abstraction Example></span>
+## <span style="display:none">&lt;Abstraction Example&gt;</span>
 
 ![](images/source_pages/slide-067.png){width="100%" fig-alt="<Abstraction Example>"}
 
@@ -158,7 +158,7 @@ Source PDF page 67.
 
 ---
 
-## <span style="display:none"><Abstraction Example></span>
+## <span style="display:none">&lt;Abstraction Example&gt;</span>
 
 ![](images/source_pages/slide-068.png){width="100%" fig-alt="<Abstraction Example>"}
 
@@ -170,7 +170,7 @@ Source PDF page 68.
 
 ---
 
-## <span style="display:none"><Abstraction Example></span>
+## <span style="display:none">&lt;Abstraction Example&gt;</span>
 
 ![](images/source_pages/slide-069.png){width="100%" fig-alt="<Abstraction Example>"}
 
@@ -182,7 +182,7 @@ Source PDF page 69.
 
 ---
 
-## <span style="display:none"><Abstraction Example></span>
+## <span style="display:none">&lt;Abstraction Example&gt;</span>
 
 ![](images/source_pages/slide-070.png){width="100%" fig-alt="<Abstraction Example>"}
 
@@ -194,7 +194,7 @@ Source PDF page 70.
 
 ---
 
-## <span style="display:none"><Abstraction Example></span>
+## <span style="display:none">&lt;Abstraction Example&gt;</span>
 
 ![](images/source_pages/slide-071.png){width="100%" fig-alt="<Abstraction Example>"}
 
@@ -206,7 +206,7 @@ Source PDF page 71.
 
 ---
 
-## <span style="display:none"><Abstraction Example></span>
+## <span style="display:none">&lt;Abstraction Example&gt;</span>
 
 ![](images/source_pages/slide-072.png){width="100%" fig-alt="<Abstraction Example>"}
 
@@ -218,7 +218,7 @@ Source PDF page 72.
 
 ---
 
-## <span style="display:none"><Abstraction Example></span>
+## <span style="display:none">&lt;Abstraction Example&gt;</span>
 
 ![](images/source_pages/slide-073.png){width="100%" fig-alt="<Abstraction Example>"}
 
@@ -230,7 +230,7 @@ Source PDF page 73.
 
 ---
 
-## <span style="display:none"><Abstraction Example></span>
+## <span style="display:none">&lt;Abstraction Example&gt;</span>
 
 ![](images/source_pages/slide-074.png){width="100%" fig-alt="<Abstraction Example>"}
 
@@ -242,7 +242,7 @@ Source PDF page 74.
 
 ---
 
-## <span style="display:none"><Abstraction Example></span>
+## <span style="display:none">&lt;Abstraction Example&gt;</span>
 
 ![](images/source_pages/slide-075.png){width="100%" fig-alt="<Abstraction Example>"}
 
@@ -254,7 +254,7 @@ Source PDF page 75.
 
 ---
 
-## <span style="display:none"><Abstraction Example></span>
+## <span style="display:none">&lt;Abstraction Example&gt;</span>
 
 ![](images/source_pages/slide-076.png){width="100%" fig-alt="<Abstraction Example>"}
 

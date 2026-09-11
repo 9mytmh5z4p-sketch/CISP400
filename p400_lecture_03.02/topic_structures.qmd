@@ -26,7 +26,7 @@ Source PDF page 21.
 
 ---
 
-## <span style="display:none"><Problem Context></span>
+## <span style="display:none">&lt;Problem Context&gt;</span>
 
 ![](images/source_pages/slide-022.png){width="100%" fig-alt="<Problem Context>"}
 
@@ -62,7 +62,7 @@ Source PDF page 24.
 
 ---
 
-## <span style="display:none"><Struct Example></span>
+## <span style="display:none">&lt;Struct Example&gt;</span>
 
 ![](images/source_pages/slide-025.png){width="100%" fig-alt="<Struct Example>"}
 
@@ -74,7 +74,7 @@ Source PDF page 25.
 
 ---
 
-## <span style="display:none"><Struct Example></span>
+## <span style="display:none">&lt;Struct Example&gt;</span>
 
 ![](images/source_pages/slide-026.png){width="100%" fig-alt="<Struct Example>"}
 

@@ -26,7 +26,7 @@ Source PDF page 33.
 
 ---
 
-## <span style="display:none"><Object Construction></span>
+## <span style="display:none">&lt;Object Construction&gt;</span>
 
 ![](images/source_pages/slide-034.png){width="100%" fig-alt="<Object Construction>"}
 
@@ -38,7 +38,7 @@ Source PDF page 34.
 
 ---
 
-## <span style="display:none"><Object Construction></span>
+## <span style="display:none">&lt;Object Construction&gt;</span>
 
 ![](images/source_pages/slide-035.png){width="100%" fig-alt="<Object Construction>"}
 
@@ -62,7 +62,7 @@ Source PDF page 36.
 
 ---
 
-## <span style="display:none"><Encapsulation></span>
+## <span style="display:none">&lt;Encapsulation&gt;</span>
 
 ![](images/source_pages/slide-037.png){width="100%" fig-alt="<Encapsulation>"}
 
@@ -74,7 +74,7 @@ Source PDF page 37.
 
 ---
 
-## <span style="display:none"><Encapsulation></span>
+## <span style="display:none">&lt;Encapsulation&gt;</span>
 
 ![](images/source_pages/slide-038.png){width="100%" fig-alt="<Encapsulation>"}
 
@@ -98,7 +98,7 @@ Source PDF page 39.
 
 ---
 
-## <span style="display:none"><Methods></span>
+## <span style="display:none">&lt;Methods&gt;</span>
 
 ![](images/source_pages/slide-040.png){width="100%" fig-alt="<Methods>"}
 
@@ -110,7 +110,7 @@ Source PDF page 40.
 
 ---
 
-## <span style="display:none"><Methods></span>
+## <span style="display:none">&lt;Methods&gt;</span>
 
 ![](images/source_pages/slide-041.png){width="100%" fig-alt="<Methods>"}
 
@@ -122,7 +122,7 @@ Source PDF page 41.
 
 ---
 
-## <span style="display:none"><Methods></span>
+## <span style="display:none">&lt;Methods&gt;</span>
 
 ![](images/source_pages/slide-042.png){width="100%" fig-alt="<Methods>"}
 
@@ -170,7 +170,7 @@ Source PDF page 45.
 
 ---
 
-## <span style="display:none"><Exercise Workspace></span>
+## <span style="display:none">&lt;Exercise Workspace&gt;</span>
 
 ![](images/source_pages/slide-046.png){width="100%" fig-alt="<Exercise Workspace>"}
 
