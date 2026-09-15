@@ -1,0 +1,89 @@
+<!-- Topic: Constructors and Constructor Overloading -->
+<!-- Slides 26–37 -->
+# <span style="display:none">Constructors and Constructor Overloading</span>
+
+## <span style="display:none">7.6 Constructors</span>
+![](images/source_pages/slide-26.png){width="100%" fig-alt="7.6 Constructors"}
+
+::: notes
+Slides 26–37
+:::
+
+<!-- Slide 26 -->
+
+---
+
+## <span style="display:none">Constructors</span>
+![](images/source_pages/slide-27.png){width="100%" fig-alt="Constructors"}
+
+<!-- Slide 27 -->
+
+---
+
+## <span style="display:none">Do Classes Have Constructors?</span>
+![](images/source_pages/slide-28.png){width="100%" fig-alt="Do Classes Have Constructors?"}
+
+<!-- Slide 28 -->
+
+---
+
+## <span style="display:none">Constructor Use Case</span>
+![](images/source_pages/slide-29.png){width="100%" fig-alt="Constructor Use Case"}
+
+<!-- Slide 29 -->
+
+---
+
+## <span style="display:none">Constructors as an Interface</span>
+![](images/source_pages/slide-30.png){width="100%" fig-alt="Constructors as an Interface"}
+
+<!-- Slide 30 -->
+
+---
+
+## <span style="display:none">Overloading Constructors</span>
+![](images/source_pages/slide-31.png){width="100%" fig-alt="Overloading Constructors"}
+
+<!-- Slide 31 -->
+
+---
+
+## <span style="display:none">Default and Overloaded Constructors</span>
+![](images/source_pages/slide-32.png){width="100%" fig-alt="Default and Overloaded Constructors"}
+
+<!-- Slide 32 -->
+
+---
+
+## <span style="display:none">Bottom Line</span>
+![](images/source_pages/slide-33.png){width="100%" fig-alt="Bottom Line"}
+
+<!-- Slide 33 -->
+
+---
+
+## <span style="display:none">&lt;Transition&gt;</span>
+![](images/source_pages/slide-34.png){width="100%" fig-alt="<Transition>"}
+
+<!-- Slide 34 -->
+
+---
+
+## <span style="display:none">Constructors Functions and Methods</span>
+![](images/source_pages/slide-35.png){width="100%" fig-alt="Constructors Functions and Methods"}
+
+<!-- Slide 35 -->
+
+---
+
+## <span style="display:none">Distinguishing Constructors and Methods</span>
+![](images/source_pages/slide-36.png){width="100%" fig-alt="Distinguishing Constructors and Methods"}
+
+<!-- Slide 36 -->
+
+---
+
+## <span style="display:none">Constructor Syntax</span>
+![](images/source_pages/slide-37.png){width="100%" fig-alt="Constructor Syntax"}
+
+<!-- Slide 37 -->

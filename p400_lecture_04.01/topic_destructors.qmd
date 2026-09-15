@@ -1,0 +1,33 @@
+<!-- Topic: Destructors -->
+<!-- Slides 38–41 -->
+# <span style="display:none">Destructors</span>
+
+## <span style="display:none">7.7 Destructors</span>
+![](images/source_pages/slide-38.png){width="100%" fig-alt="7.7 Destructors"}
+
+::: notes
+Slides 38–41
+:::
+
+<!-- Slide 38 -->
+
+---
+
+## <span style="display:none">&lt;Transition&gt;</span>
+![](images/source_pages/slide-39.png){width="100%" fig-alt="<Transition>"}
+
+<!-- Slide 39 -->
+
+---
+
+## <span style="display:none">Constructors and Destructors</span>
+![](images/source_pages/slide-40.png){width="100%" fig-alt="Constructors and Destructors"}
+
+<!-- Slide 40 -->
+
+---
+
+## <span style="display:none">Coding Exercise</span>
+![](images/source_pages/slide-41.png){width="100%" fig-alt="Coding Exercise"}
+
+<!-- Slide 41 -->

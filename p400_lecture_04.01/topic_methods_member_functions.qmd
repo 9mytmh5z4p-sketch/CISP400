@@ -1,0 +1,54 @@
+<!-- Topic: Methods and Member Functions -->
+<!-- Slides 19–25 -->
+# <span style="display:none">Methods and Member Functions</span>
+
+## <span style="display:none">7.5 Defining Member Functions</span>
+![](images/source_pages/slide-19.png){width="100%" fig-alt="7.5 Defining Member Functions"}
+
+::: notes
+Slides 19–25
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## <span style="display:none">Classes Group Data and Behaviors</span>
+![](images/source_pages/slide-20.png){width="100%" fig-alt="Classes Group Data and Behaviors"}
+
+<!-- Slide 20 -->
+
+---
+
+## <span style="display:none">We Use Methods</span>
+![](images/source_pages/slide-21.png){width="100%" fig-alt="We Use Methods"}
+
+<!-- Slide 21 -->
+
+---
+
+## <span style="display:none">Methods</span>
+![](images/source_pages/slide-22.png){width="100%" fig-alt="Methods"}
+
+<!-- Slide 22 -->
+
+---
+
+## <span style="display:none">Method</span>
+![](images/source_pages/slide-23.png){width="100%" fig-alt="Method"}
+
+<!-- Slide 23 -->
+
+---
+
+## <span style="display:none">Another Example</span>
+![](images/source_pages/slide-24.png){width="100%" fig-alt="Another Example"}
+
+<!-- Slide 24 -->
+
+---
+
+## <span style="display:none">&lt;Transition&gt;</span>
+![](images/source_pages/slide-25.png){width="100%" fig-alt="<Transition>"}
+
+<!-- Slide 25 -->

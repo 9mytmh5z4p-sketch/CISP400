@@ -1,0 +1,83 @@
+<!-- Topic: Setters Increase Reliability -->
+<!-- Slides 48–55 -->
+
+# <span style="display:none">Setters Increase Reliability</span>
+
+## Why Should a Setter Reject Data?
+
+If every caller can store any value, an object may enter an invalid state. A setter creates one place to protect that state.
+
+::: notes
+Slides 46–53
+:::
+
+<!-- Slide 48 -->
+
+---
+
+## Valid State and Invariants
+
+An invariant is a condition that should remain true for a valid object. For example, a grade may need to remain between 0 and 100.
+
+<!-- Slide 49 -->
+
+---
+
+## Validation Inside a Setter
+
+```cpp
+void Student::setGrade(int value) {
+    if (value >= 0 && value <= 100)
+        grade = value;
+}
+```
+
+The setter separates accepted input from rejected input.
+
+<!-- Slide 50 -->
+
+---
+
+## A Setter That Protects an Object
+
+```cpp
+Student student;
+student.setGrade(85);   // accepted
+student.setGrade(140);  // rejected
+```
+
+The object remains within its valid range even when a caller supplies bad data.
+
+<!-- Slide 51 -->
+
+---
+
+## Before and After Validation
+
+Before the call, the object has a valid grade. After an invalid call, the setter retains the previous valid value rather than corrupting the object.
+
+<!-- Slide 52 -->
+
+---
+
+## Boundary Values and Invalid Input
+
+For a grade from 0 through 100, test 0, 100, -1, and 101. Boundary tests reveal whether the condition includes the correct limits.
+
+<!-- Slide 53 -->
+
+---
+
+## Choosing a Rejection Policy
+
+A setter may retain the old value, assign a safe default, or report an error. The policy should be explicit and consistent with the class contract.
+
+<!-- Slide 54 -->
+
+---
+
+## Setters Increase Reliability: Key Ideas
+
+Setters centralize validation and help keep objects in a valid state.
+
+<!-- Slide 55 -->

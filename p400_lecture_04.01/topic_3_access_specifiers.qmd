@@ -1,0 +1,94 @@
+<!-- Topic: Access Specifiers -->
+<!-- Slides 19–26 -->
+
+# <span style="display:none">Access Specifiers</span>
+
+## Why Control Access to Class Members?
+
+Access control determines which code may use or change a class member. It protects state and keeps the public interface intentional.
+
+::: notes
+Slides 17–24
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## The Three Access Specifiers
+
+- `public` members are available to client code.
+- `private` members are available only inside the class.
+- `protected` members are available to the class and derived classes.
+
+<!-- Slide 20 -->
+
+---
+
+## Access Specifier Anatomy
+
+```cpp
+class Student {
+public:
+    void print();
+private:
+    int grade;
+};
+```
+
+An access label controls the members that follow it until another label appears.
+
+<!-- Slide 21 -->
+
+---
+
+## Public Members
+
+Public methods form the part of the class interface that client code may call.
+
+```cpp
+student.print();
+```
+
+<!-- Slide 22 -->
+
+---
+
+## Private Members
+
+Private data and helper methods protect implementation details from direct external access.
+
+```cpp
+// student.grade = 95;  // not allowed outside the class
+```
+
+<!-- Slide 23 -->
+
+---
+
+## Default Access in class and struct
+
+```cpp
+class ClassType { int value; };   // private by default
+struct StructType { int value; }; // public by default
+```
+
+The default access rule is one practical difference between `class` and `struct`.
+
+<!-- Slide 24 -->
+
+---
+
+## Choosing an Access Specifier
+
+Keep implementation details private, expose intentional operations publicly, and use protected only when inheritance genuinely needs access.
+
+<!-- Slide 25 -->
+
+---
+
+## Access Specifiers: Key Ideas
+
+Access specifiers define the boundary between a class interface and its implementation.
+
+<!-- Slide 26 -->

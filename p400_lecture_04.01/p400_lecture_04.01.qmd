@@ -1,8 +1,40 @@
-{{< include topic_course_framing.qmd >}}
-{{< include topic_oop_motivation.qmd >}}
-{{< include topic_structures.qmd >}}
-{{< include topic_classes_objects.qmd >}}
-{{< include topic_abstract_data_types.qmd >}}
-{{< include topic_methods_interfaces.qmd >}}
-{{< include topic_activities_wrapup.qmd >}}
+# Last Time
 
+::: {.incremental}
++ **Structures**
++ **Classes and Objects**
++ **Abstract Data Types**
++ **Encapsulation and Abstraction**
++ **Classes and Methods**
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Methods and Member Functions
+- Difference Between Method and Function
+- Access Specifiers
+- Private Member Functions
+- Methods as an Interface
+- Setters and Getters
+- Setters Increase Reliability
+- Getters
+
+<!-- Slide 2 -->
+
+{{< include topic_1_methods_member_functions.qmd >}}
+
+{{< include topic_2_difference_method_function.qmd >}}
+
+{{< include topic_3_access_specifiers.qmd >}}
+
+{{< include topic_4_private_member_functions.qmd >}}
+
+{{< include topic_5_methods_as_interface.qmd >}}
+
+{{< include topic_6_setters_getters.qmd >}}
+
+{{< include topic_7_setters_increase_reliability.qmd >}}
+
+{{< include topic_8_getters.qmd >}}

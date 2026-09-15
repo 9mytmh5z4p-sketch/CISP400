@@ -1,0 +1,74 @@
+<!-- Topic: Getters -->
+<!-- Slides 56–62 -->
+
+# <span style="display:none">Getters</span>
+
+## How Can Clients Observe Object State?
+
+Clients often need to read an object's state without changing it. A getter provides that controlled observation.
+
+::: notes
+Slides 54–60
+:::
+
+<!-- Slide 56 -->
+
+---
+
+## The Role of a Getter
+
+A getter is a method that reports a value from an object without changing the object's state.
+
+<!-- Slide 57 -->
+
+---
+
+## Getter Anatomy
+
+```cpp
+int Student::getGrade() {
+    return grade;
+}
+```
+
+The return type describes the reported value, and the returned member remains private.
+
+<!-- Slide 58 -->
+
+---
+
+## A Getter in a Complete Class
+
+```cpp
+Student student;
+student.setGrade(92);
+cout << student.getGrade() << endl;
+```
+
+Client code receives the value through the interface.
+
+<!-- Slide 59 -->
+
+---
+
+## Getter Calls Do Not Change State
+
+Calling a getter repeatedly should report the same state unless another operation changes the object.
+
+<!-- Slide 60 -->
+
+---
+
+## Returning a Value Through the Interface
+
+Returning a value gives the caller a result without granting direct access to the data member. The class retains control of its representation.
+
+<!-- Slide 61 -->
+
+---
+
+## Getters: Key Ideas
+
+Getters provide controlled observation while preserving encapsulation.
+
+<!-- Slide 62 -->

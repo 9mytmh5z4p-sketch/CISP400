@@ -1,0 +1,81 @@
+<!-- Topic: Private Member Functions -->
+<!-- Slides 27–32 -->
+
+# <span style="display:none">Private Member Functions</span>
+
+## Why Hide Helper Methods?
+
+Some operations support the implementation but are not meaningful for clients to call directly. Private member functions keep those helpers out of the public interface.
+
+::: notes
+Slides 25–30
+:::
+
+<!-- Slide 27 -->
+
+---
+
+## Public Interface and Private Implementation
+
+```cpp
+class Report {
+public:
+    void print();
+private:
+    void printHeader();
+};
+```
+
+Clients call `print`; the class may use `printHeader` internally.
+
+<!-- Slide 28 -->
+
+---
+
+## Private Member Function Anatomy
+
+```cpp
+class Report {
+private:
+    void printHeader();
+};
+
+void Report::printHeader() {
+    cout << "Report" << endl;
+}
+```
+
+The declaration and definition use ordinary method syntax; only the access level changes who may call it.
+
+<!-- Slide 29 -->
+
+---
+
+## A Public Method Calling a Private Helper
+
+```cpp
+void Report::print() {
+    printHeader();
+    cout << "body" << endl;
+}
+```
+
+The public operation coordinates private steps without exposing them to clients.
+
+<!-- Slide 30 -->
+
+---
+
+## Choosing a Private Helper
+
+Make a method private when clients do not need to call it directly and when exposing it would expand the interface unnecessarily.
+
+<!-- Slide 31 -->
+
+---
+
+## Private Member Functions: Key Ideas
+
+Private methods support implementation while keeping the public interface small and purposeful.
+
+<!-- Slide 32 -->

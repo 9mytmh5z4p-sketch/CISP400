@@ -1,0 +1,84 @@
+<!-- Topic: Difference Between Method and Function -->
+<!-- Slides 12–18 -->
+
+# <span style="display:none">Difference Between Method and Function</span>
+
+## Why Distinguish Methods and Functions?
+
+Both are callable blocks of code, but a method belongs to a class and a free function does not. That difference affects state access and design.
+
+::: notes
+Slides 10–16
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Ownership of Behavior
+
+```cpp
+double tax(double amount);       // free function
+class Invoice {
+public:
+    double totalWithTax();      // method
+};
+```
+
+A method is owned by the class whose object provides the context for the operation.
+
+<!-- Slide 13 -->
+
+---
+
+## State Access
+
+A method can use the object's private members directly. A free function must receive the data it needs through parameters or another explicit interface.
+
+<!-- Slide 14 -->
+
+---
+
+## Call Syntax Comparison
+
+```cpp
+total = addTax(amount);          // free function
+total = invoice.totalWithTax();  // method
+```
+
+The call syntax reveals whether an object supplies the operation's state.
+
+<!-- Slide 15 -->
+
+---
+
+## Choosing a Method or Function
+
+Use a method when behavior belongs to an object's state or identity. Use a free function when the operation is independent of a particular object.
+
+<!-- Slide 16 -->
+
+---
+
+## Same Behavior, Two Designs
+
+```cpp
+double area(const Rectangle& r);
+
+class Rectangle {
+public:
+    double area();
+};
+```
+
+Both designs can compute area; the method design places the behavior with the data it uses.
+
+<!-- Slide 17 -->
+
+---
+
+## Difference Between Method and Function: Key Ideas
+
+The essential distinctions are ownership, access to object state, and call syntax.
+
+<!-- Slide 18 -->

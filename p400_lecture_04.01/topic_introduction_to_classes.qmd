@@ -1,0 +1,47 @@
+<!-- Topic: Introduction to Classes -->
+<!-- Slides 13–18 -->
+# <span style="display:none">Introduction to Classes</span>
+
+## <span style="display:none">7.3 Introduction to Classes</span>
+![](images/source_pages/slide-13.png){width="100%" fig-alt="7.3 Introduction to Classes"}
+
+::: notes
+Slides 13–18
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## <span style="display:none">&lt;Class Example&gt;</span>
+![](images/source_pages/slide-14.png){width="100%" fig-alt="<Class Example>"}
+
+<!-- Slide 14 -->
+
+---
+
+## <span style="display:none">&lt;Class Example&gt;</span>
+![](images/source_pages/slide-15.png){width="100%" fig-alt="<Class Example>"}
+
+<!-- Slide 15 -->
+
+---
+
+## <span style="display:none">&lt;Object Instantiation&gt;</span>
+![](images/source_pages/slide-16.png){width="100%" fig-alt="<Object Instantiation>"}
+
+<!-- Slide 16 -->
+
+---
+
+## <span style="display:none">7.4 Creating and Using Objects</span>
+![](images/source_pages/slide-17.png){width="100%" fig-alt="7.4 Creating and Using Objects"}
+
+<!-- Slide 17 -->
+
+---
+
+## <span style="display:none">&lt;Transition&gt;</span>
+![](images/source_pages/slide-18.png){width="100%" fig-alt="<Transition>"}
+
+<!-- Slide 18 -->

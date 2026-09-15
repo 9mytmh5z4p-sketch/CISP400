@@ -1,0 +1,91 @@
+<!-- Topic: Setters and Getters -->
+<!-- Slides 40–47 -->
+
+# <span style="display:none">Setters and Getters</span>
+
+## Why Use Setters and Getters?
+
+Setters and getters provide controlled access to private data instead of exposing data members directly.
+
+::: notes
+Slides 38–45
+:::
+
+<!-- Slide 40 -->
+
+---
+
+## Setter and Getter Roles
+
+- A setter updates an object's state through a named operation.
+- A getter reports an object's state through a named operation.
+
+<!-- Slide 41 -->
+
+---
+
+## Setter Anatomy
+
+```cpp
+void setScore(int newScore) {
+    score = newScore;
+}
+```
+
+The parameter supplies a candidate value; the method can validate it before assignment.
+
+<!-- Slide 42 -->
+
+---
+
+## Getter Anatomy
+
+```cpp
+int getScore() {
+    return score;
+}
+```
+
+The getter returns state without exposing the data member itself.
+
+<!-- Slide 43 -->
+
+---
+
+## A Complete Setter and Getter Example
+
+```cpp
+class Student {
+private:
+    int grade;
+public:
+    void setGrade(int value) { grade = value; }
+    int getGrade() { return grade; }
+};
+```
+
+<!-- Slide 44 -->
+
+---
+
+## Direct Access Compared with Methods
+
+Public data allows unrestricted changes. Private data with setters and getters creates a controlled interface that can evolve.
+
+<!-- Slide 45 -->
+
+---
+
+## Setter and Getter Contracts
+
+A setter should leave the object in a valid state. A getter should report state without changing it.
+
+<!-- Slide 46 -->
+
+---
+
+## Setters and Getters: Key Ideas
+
+Setters control updates and getters control reads through the class interface.
+
+<!-- Slide 47 -->

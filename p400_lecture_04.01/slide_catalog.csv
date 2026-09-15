@@ -1,110 +1,63 @@
-"Slide Number","Topic","Subject","Title","Category","Filename"
-"1","Course Framing","","CISP 400","Section Divider","source_pages/slide-01.png"
-"2","Course Framing","","Last Time","Progression Map","source_pages/slide-02.png"
-"3","Course Framing","","Agenda","Agenda","source_pages/slide-03.png"
-"4","OOP Motivation and Progression","OOP Motivation and Progression","What’s this chapter","Opening Question","source_pages/slide-04.png"
-"5","OOP Motivation and Progression","OOP Motivation and Progression","Big Idea","Opening Question","source_pages/slide-05.png"
-"6","OOP Motivation and Progression","OOP Motivation and Progression","Related to Previous","Opening Question","source_pages/slide-06.png"
-"7","OOP Motivation and Progression","OOP Motivation and Progression","Chapter 7","Image","source_pages/slide-07.png"
-"8","OOP Motivation and Progression","OOP Motivation and Progression","Agenda","Agenda","source_pages/slide-08.png"
-"9","OOP Motivation and Progression","OOP Motivation and Progression","Agenda","Agenda","source_pages/slide-09.png"
-"10","OOP Motivation and Progression","OOP Motivation and Progression","Where’s","Image","source_pages/slide-10.png"
-"11","OOP Motivation and Progression","OOP Motivation and Progression","• As we learn more tools to program with …","Image","source_pages/slide-11.png"
-"12","OOP Motivation and Progression","OOP Motivation and Progression","Program This - Debrief","Demonstration","source_pages/slide-12.png"
-"13","OOP Motivation and Progression","OOP Motivation and Progression","Exercise Goals","Demonstration","source_pages/slide-13.png"
-"14","OOP Motivation and Progression","OOP Motivation and Progression","Programming Exercise","Demonstration","source_pages/slide-14.png"
-"15","OOP Motivation and Progression","OOP Motivation and Progression","Source Slide 15","Image","source_pages/slide-15.png"
-"16","OOP Motivation and Progression","OOP Motivation and Progression","Source Slide 16","Image","source_pages/slide-16.png"
-"17","OOP Motivation and Progression","OOP Motivation and Progression","Source Slide 17","Image","source_pages/slide-17.png"
-"18","OOP Motivation and Progression","OOP Motivation and Progression","Source Slide 18","Image","source_pages/slide-18.png"
-"19","OOP Motivation and Progression","OOP Motivation and Progression","Source Slide 19","Image","source_pages/slide-19.png"
-"20","Structures","Structures","7.12 Structures","Section Divider","source_pages/slide-20.png"
-"21","Structures","Structures","The Problem","Opening Question","source_pages/slide-21.png"
-"22","Structures","Structures","Source Slide 22","Image","source_pages/slide-22.png"
-"23","Structures","Structures","• What we need is a way to logically group variables","Image","source_pages/slide-23.png"
-"24","Structures","Structures","Solution - Struct","Image","source_pages/slide-24.png"
-"25","Structures","Structures","Photo Credit: C++ Primer Plus (6th Edition)","Image","source_pages/slide-25.png"
-"26","Structures","Structures","Photo Credit: C++ Primer Plus (6th Edition)","Image","source_pages/slide-26.png"
-"27","Structures","Structures","Accessing a struct","Image","source_pages/slide-27.png"
-"28","Structures","Structures","Initializing a Struct","Image","source_pages/slide-28.png"
-"29","Structures","Structures","Initialization List","Image","source_pages/slide-29.png"
-"30","Structures","Structures","Constructor","Image","source_pages/slide-30.png"
-"31","Structures","Structures","Questions","Image","source_pages/slide-31.png"
-"32","Classes, Objects, and Encapsulation","Classes, Objects, and Encapsulation","7. X Crash Course in","Section Divider","source_pages/slide-32.png"
-"33","Classes, Objects, and Encapsulation","Classes, Objects, and Encapsulation","How to construct an object","Process Pattern","source_pages/slide-33.png"
-"34","Classes, Objects, and Encapsulation","Classes, Objects, and Encapsulation","Source Slide 34","Image","source_pages/slide-34.png"
-"35","Classes, Objects, and Encapsulation","Classes, Objects, and Encapsulation","Source Slide 35","Image","source_pages/slide-35.png"
-"36","Classes, Objects, and Encapsulation","Classes, Objects, and Encapsulation","• BUT!","Image","source_pages/slide-36.png"
-"37","Classes, Objects, and Encapsulation","Classes, Objects, and Encapsulation","Source Slide 37","Image","source_pages/slide-37.png"
-"38","Classes, Objects, and Encapsulation","Classes, Objects, and Encapsulation","Source Slide 38","Image","source_pages/slide-38.png"
-"39","Classes, Objects, and Encapsulation","Classes, Objects, and Encapsulation","• We need public ways to access the data.","Image","source_pages/slide-39.png"
-"40","Classes, Objects, and Encapsulation","Classes, Objects, and Encapsulation","Source Slide 40","Image","source_pages/slide-40.png"
-"41","Classes, Objects, and Encapsulation","Classes, Objects, and Encapsulation","Source Slide 41","Image","source_pages/slide-41.png"
-"42","Classes, Objects, and Encapsulation","Classes, Objects, and Encapsulation","Program This","Image","source_pages/slide-42.png"
-"43","Classes, Objects, and Encapsulation","Classes, Objects, and Encapsulation","Exercise Goals","Demonstration","source_pages/slide-43.png"
-"44","Classes, Objects, and Encapsulation","Classes, Objects, and Encapsulation","Programming Exercise","Demonstration","source_pages/slide-44.png"
-"45","Classes, Objects, and Encapsulation","Classes, Objects, and Encapsulation","Source Slide 45","Image","source_pages/slide-45.png"
-"46","Classes, Objects, and Encapsulation","Classes, Objects, and Encapsulation","7.1 Abstract Data Type","Image","source_pages/slide-46.png"
-"47","Abstract Data Types","Abstract Data Types","Say you create a dynamic array.","Section Divider","source_pages/slide-47.png"
-"48","Abstract Data Types","Abstract Data Types","Someone will break it!","Image","source_pages/slide-48.png"
-"49","Abstract Data Types","Abstract Data Types","“An Abstract Data Type (ADT) describes any","Image","source_pages/slide-49.png"
-"50","Abstract Data Types","Abstract Data Types","How?","Process Pattern","source_pages/slide-50.png"
-"51","Abstract Data Types","Abstract Data Types","Build ADT","Image","source_pages/slide-51.png"
-"52","Abstract Data Types","Abstract Data Types","This is the API","Image","source_pages/slide-52.png"
-"53","Abstract Data Types","Abstract Data Types","Source Slide 53","Image","source_pages/slide-53.png"
-"54","Abstract Data Types","Abstract Data Types","• The work we do in this class will focus on making","Image","source_pages/slide-54.png"
-"55","Abstract Data Types","Abstract Data Types","7.2 Object Oriented","Image","source_pages/slide-55.png"
-"56","Abstract Data Types","Abstract Data Types","• OOP is so powerful because we create software","Image","source_pages/slide-56.png"
-"57","Abstract Data Types","Abstract Data Types","• We manipulate those objects because of","Image","source_pages/slide-57.png"
-"58","Abstract Data Types","Abstract Data Types","“We gather the implementation details together","Image","source_pages/slide-58.png"
-"59","Abstract Data Types","Abstract Data Types","Where do we begin?","Image","source_pages/slide-59.png"
-"60","Abstract Data Types","Abstract Data Types","“… representing information in terms of it's","Image","source_pages/slide-60.png"
-"61","Abstract Data Types","Abstract Data Types","Why?","Opening Question","source_pages/slide-61.png"
-"62","Abstract Data Types","Abstract Data Types","Source Slide 62","Image","source_pages/slide-62.png"
-"63","Abstract Data Types","Abstract Data Types","Source Slide 63","Image","source_pages/slide-63.png"
-"64","Abstract Data Types","Abstract Data Types","Source Slide 64","Image","source_pages/slide-64.png"
-"65","Abstract Data Types","Abstract Data Types","Source Slide 65","Image","source_pages/slide-65.png"
-"66","Abstract Data Types","Abstract Data Types","Source Slide 66","Image","source_pages/slide-66.png"
-"67","Abstract Data Types","Abstract Data Types","Source Slide 67","Image","source_pages/slide-67.png"
-"68","Abstract Data Types","Abstract Data Types","Source Slide 68","Image","source_pages/slide-68.png"
-"69","Abstract Data Types","Abstract Data Types","Source Slide 69","Image","source_pages/slide-69.png"
-"70","Abstract Data Types","Abstract Data Types","Source Slide 70","Image","source_pages/slide-70.png"
-"71","Abstract Data Types","Abstract Data Types","Why do we want to do this?","Opening Question","source_pages/slide-71.png"
-"72","Abstract Data Types","Abstract Data Types","Source Slide 72","Image","source_pages/slide-72.png"
-"73","Abstract Data Types","Abstract Data Types","Source Slide 73","Image","source_pages/slide-73.png"
-"74","Abstract Data Types","Abstract Data Types","Source Slide 74","Image","source_pages/slide-74.png"
-"75","Abstract Data Types","Abstract Data Types","Source Slide 75","Image","source_pages/slide-75.png"
-"76","Abstract Data Types","Abstract Data Types","Source Slide 76","Image","source_pages/slide-76.png"
-"77","Abstract Data Types","Abstract Data Types","Table of Variables","Enumerate","source_pages/slide-77.png"
-"78","Methods and Public Interfaces","Methods and Public Interfaces","7.3 Introduction to","Section Divider","source_pages/slide-78.png"
-"79","Methods and Public Interfaces","Methods and Public Interfaces","Photo Credit: https://qph.ec.quoracdn.net/main-qimg-021242ab769010da96e2a2ecb7fb266a","Image","source_pages/slide-79.png"
-"80","Methods and Public Interfaces","Methods and Public Interfaces","Photo Credit: https://3.bp.blogspot.com/-y8do_JdFx6c/V3_dywgZzPI/AAAAAAAAGZY/catSBAx1g-ciuT6LxvvnjYAfvEWH2jAmQCLcB/s1600","Image","source_pages/slide-80.png"
-"81","Methods and Public Interfaces","Methods and Public Interfaces","Photo Credit: https://iandunn.name/content/presentations/wp-oop-mvc/images/object-instantiation.png","Image","source_pages/slide-81.png"
-"82","Methods and Public Interfaces","Methods and Public Interfaces","7.4 Creating and","Image","source_pages/slide-82.png"
-"83","Methods and Public Interfaces","Methods and Public Interfaces","Source Slide 83","Image","source_pages/slide-83.png"
-"84","Methods and Public Interfaces","Methods and Public Interfaces","7.5 De ning Member","Image","source_pages/slide-84.png"
-"85","Methods and Public Interfaces","Methods and Public Interfaces","• Classes group data and associated behaviors.","Image","source_pages/slide-85.png"
-"86","Methods and Public Interfaces","Methods and Public Interfaces","• We use methods!","Image","source_pages/slide-86.png"
-"87","Methods and Public Interfaces","Methods and Public Interfaces","Methods","Image","source_pages/slide-87.png"
-"88","Methods and Public Interfaces","Methods and Public Interfaces","Method","Image","source_pages/slide-88.png"
-"89","Methods and Public Interfaces","Methods and Public Interfaces","Another example","Image","source_pages/slide-89.png"
-"90","Methods and Public Interfaces","Methods and Public Interfaces","Source Slide 90","Image","source_pages/slide-90.png"
-"91","Methods and Public Interfaces","Methods and Public Interfaces","Yet another example","Image","source_pages/slide-91.png"
-"92","Methods and Public Interfaces","Methods and Public Interfaces","Source Slide 92","Image","source_pages/slide-92.png"
-"93","Methods and Public Interfaces","Methods and Public Interfaces","Exercise","Demonstration","source_pages/slide-93.png"
-"94","Activities and Wrap-Up","","Exercise Goals","Demonstration","source_pages/slide-94.png"
-"95","Activities and Wrap-Up","","Programming Exercise","Demonstration","source_pages/slide-95.png"
-"96","Activities and Wrap-Up","","Source Slide 96","Image","source_pages/slide-96.png"
-"97","Activities and Wrap-Up","","Homework 1 Peer","Demonstration","source_pages/slide-97.png"
-"98","Activities and Wrap-Up","","Hw Debrief","Demonstration","source_pages/slide-98.png"
-"99","Activities and Wrap-Up","","Process","Process Pattern","source_pages/slide-99.png"
-"100","Activities and Wrap-Up","","Analysis","Image","source_pages/slide-100.png"
-"101","Activities and Wrap-Up","","Debrief","Demonstration","source_pages/slide-101.png"
-"102","Activities and Wrap-Up","","Program This - Debrief","Demonstration","source_pages/slide-102.png"
-"103","Activities and Wrap-Up","","Exercise Goals","Demonstration","source_pages/slide-103.png"
-"104","Activities and Wrap-Up","","Programming Exercise","Demonstration","source_pages/slide-104.png"
-"105","Activities and Wrap-Up","","Exercise","Demonstration","source_pages/slide-105.png"
-"106","Activities and Wrap-Up","","Exercise Goals","Demonstration","source_pages/slide-106.png"
-"107","Activities and Wrap-Up","","Programming Exercise","Demonstration","source_pages/slide-107.png"
-"108","Activities and Wrap-Up","","Source Slide 108","Image","source_pages/slide-108.png"
-
+Slide Number,Topic,Subject,Title,Category,Filename,Notes
+1,Course Framing,,Last Time,Agenda,,Recall the structures classes and objects abstract data types encapsulation and abstraction and classes and methods from the previous lecture.
+2,Course Framing,,Today's Agenda,Agenda,,Outline the instructional topics for lecture 04.01.
+3,Methods and Member Functions,Methods and Member Functions,How Do Objects Acquire Behavior?,Opening Question,,Motivate methods as the mechanism that gives objects behavior.
+4,Methods and Member Functions,Methods and Member Functions,Member Functions and Methods,Define,,Define method and member function and connect them to ordinary functions.
+5,Methods and Member Functions,Methods and Member Functions,Class Data and Behavior,Model,,Show how a class combines state with operations that work on that state.
+6,Methods and Member Functions,Methods and Member Functions,Method Anatomy,Anatomy,,Label the class name return type method name parameters and method body.
+7,Methods and Member Functions,Methods and Member Functions,Declaring a Method,Setup,,Show a method prototype inside a class declaration.
+8,Methods and Member Functions,Methods and Member Functions,Defining a Method Outside the Class,Demonstration,,Show ClassName::methodName() and connect the declaration to its definition.
+9,Methods and Member Functions,Methods and Member Functions,Calling a Method,Trace,,Show object.method(arguments) and identify the object supplying the method state.
+10,Methods and Member Functions,Methods and Member Functions,Methods as Forced Abstraction,Decision Point,,Explain how methods provide a controlled interface for object behavior.
+11,Methods and Member Functions,Methods and Member Functions,Methods and Member Functions: Key Ideas,Summary,,Reinforce that methods belong to classes and operate on object state.
+12,Difference Between Method and Function,Difference Between Method and Function,Why Distinguish Methods and Functions?,Opening Question,,Establish why the distinction matters when designing class behavior.
+13,Difference Between Method and Function,Difference Between Method and Function,Ownership of Behavior,Contrast,,Compare a free function with a method that belongs to a class.
+14,Difference Between Method and Function,Difference Between Method and Function,State Access,Model,,Show how a method operates on object state while a free function receives data through parameters.
+15,Difference Between Method and Function,Difference Between Method and Function,Call Syntax Comparison,Anatomy,,Compare function(arguments) with object.method(arguments).
+16,Difference Between Method and Function,Difference Between Method and Function,Choosing a Method or Function,Decision Point,,Identify when behavior belongs with an object and when a free function is more appropriate.
+17,Difference Between Method and Function,Difference Between Method and Function,"Same Behavior, Two Designs",Demonstration,,Compare a free function and a method that both operate on a Date object.
+18,Difference Between Method and Function,Difference Between Method and Function,Difference Between Method and Function: Key Ideas,Summary,,Reinforce ownership state access and call syntax as the essential distinctions.
+19,Access Specifiers,Access Specifiers,Why Control Access to Class Members?,Opening Question,,Motivate access control as a way to protect object state and limit unintended use.
+20,Access Specifiers,Access Specifiers,The Three Access Specifiers,Enumerate,,Introduce public private and protected as the three access-control options.
+21,Access Specifiers,Access Specifiers,Access Specifier Anatomy,Anatomy,,Label how access-specifier sections organize members inside a class declaration.
+22,Access Specifiers,Access Specifiers,Public Members,Demonstration,,Show members intended for client code with a short class example.
+23,Access Specifiers,Access Specifiers,Private Members,Demonstration,,Show how private data prevents direct external access and protects class invariants.
+24,Access Specifiers,Access Specifiers,Default Access in class and struct,Contrast,,Explain that class members default to private while struct members default to public.
+25,Access Specifiers,Access Specifiers,Choosing an Access Specifier,Decision Point,,Compare when a member should be public private or protected.
+26,Access Specifiers,Access Specifiers,Access Specifiers: Key Ideas,Summary,,Reinforce that access specifiers define the boundary between a class interface and its implementation.
+27,Private Member Functions,Private member functions,Why Hide Helper Methods?,Opening Question,,Motivate private member functions as a way to reduce unnecessary public complexity.
+28,Private Member Functions,Private member functions,Public Interface and Private Implementation,Contrast,,Distinguish methods clients call from helper methods used only inside the class.
+29,Private Member Functions,Private member functions,Private Member Function Anatomy,Anatomy,,Show where a private method is declared and how its definition follows normal method syntax.
+30,Private Member Functions,Private member functions,A Public Method Calling a Private Helper,Demonstration,,Use a complete class example in which a public method delegates part of its work to a private method.
+31,Private Member Functions,Private member functions,Choosing a Private Helper,Decision Point,,Identify behavior that should remain internal because clients do not need to call it directly.
+32,Private Member Functions,Private member functions,Private Member Functions: Key Ideas,Summary,,Reinforce that private methods support implementation without expanding the public interface.
+33,Methods as an Interface,Methods as an interface,Why Does a Class Need an Interface?,Opening Question,,Motivate a class interface as the controlled way clients use an object.
+34,Methods as an Interface,Methods as an interface,Public Methods as the Interface,Define,,Show that public methods describe what an object can do without exposing its internal representation.
+35,Methods as an Interface,Methods as an interface,Interface and Implementation,Contrast,,Compare public method declarations with private data and helper logic clients do not see.
+36,Methods as an Interface,Methods as an interface,A Method Signature as a Contract,Anatomy,,Identify the method name parameters return type and access level as parts of the interface contract.
+37,Methods as an Interface,Methods as an interface,Using an Object Through Its Interface,Demonstration,,Use a complete code example showing client code interacting with an object only through public methods.
+38,Methods as an Interface,Methods as an interface,Changing Implementation Without Changing Clients,Before/After,,Show how internal implementation can change while client code continues to use the same public methods.
+39,Methods as an Interface,Methods as an interface,Methods as an Interface: Key Ideas,Summary,,Reinforce that an interface defines permitted operations while implementation details remain hidden.
+40,Setters and Getters,Setters and getters,Why Use Setters and Getters?,Opening Question,,Motivate why private data should be accessed through methods instead of directly.
+41,Setters and Getters,Setters and getters,Setter and Getter Roles,Define,,Define setters as controlled update methods and getters as controlled read methods.
+42,Setters and Getters,Setters and getters,Setter Anatomy,Anatomy,,Identify the parameter validation opportunity assignment and return type in a setter.
+43,Setters and Getters,Setters and getters,Getter Anatomy,Anatomy,,Identify how a getter returns object state without exposing the data member directly.
+44,Setters and Getters,Setters and getters,A Complete Setter and Getter Example,Demonstration,,Use a class with private data and public setter and getter methods to show the complete interaction.
+45,Setters and Getters,Setters and getters,Direct Access Compared with Methods,Contrast,,Compare public data members with private data accessed through setters and getters.
+46,Setters and Getters,Setters and getters,Setter and Getter Contracts,Invariant,,Explain that a setter must leave the object in a valid state while a getter reports state without changing it.
+47,Setters and Getters,Setters and getters,Setters and Getters: Key Ideas,Summary,,Reinforce that setters control updates and getters control reads through the class interface.
+48,Setters Increase Reliability,Setters Increase reliability,Why Should a Setter Reject Data?,Opening Question,,Motivate setters as safeguards against invalid object state.
+49,Setters Increase Reliability,Setters Increase reliability,Valid State and Invariants,Define,,Define an invariant and show how invalid values can violate it.
+50,Setters Increase Reliability,Setters Increase reliability,Validation Inside a Setter,Anatomy,,Identify the condition accepted-value path and rejected-value path in a validating setter.
+51,Setters Increase Reliability,Setters Increase reliability,A Setter That Protects an Object,Demonstration,,Use a complete class example where a setter accepts valid input and rejects invalid input.
+52,Setters Increase Reliability,Setters Increase reliability,Before and After Validation,Before/After,,Trace object state before and after valid and invalid setter calls.
+53,Setters Increase Reliability,Setters Increase reliability,Boundary Values and Invalid Input,Boundary,,Predict what happens at minimum maximum and just-outside-the-range values.
+54,Setters Increase Reliability,Setters Increase reliability,Choosing a Rejection Policy,Decision Point,,Compare retaining the old value assigning a default or reporting an error when input is invalid.
+55,Setters Increase Reliability,Setters Increase reliability,Setters Increase Reliability: Key Ideas,Summary,,Reinforce that setters centralize validation and keep objects in a valid state.
+56,Getters,Getters,How Can Clients Observe Object State?,Opening Question,,Motivate getters as the controlled read interface for private data.
+57,Getters,Getters,The Role of a Getter,Define,,Define a getter as a method that reports a value without changing the object.
+58,Getters,Getters,Getter Anatomy,Anatomy,,Identify the return type method name parameter list and returned data member.
+59,Getters,Getters,A Getter in a Complete Class,Demonstration,,Use a class example showing private data a getter and client code receiving the value.
+60,Getters,Getters,Getter Calls Do Not Change State,Invariant,,Trace repeated getter calls and show that observation leaves the object unchanged.
+61,Getters,Getters,Returning a Value Through the Interface,Contrast,,Compare returning a copy of the value with exposing the data member directly.
+62,Getters,Getters,Getters: Key Ideas,Summary,,Reinforce that getters provide controlled observation while preserving encapsulation.

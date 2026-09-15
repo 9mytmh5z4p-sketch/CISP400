@@ -1,0 +1,80 @@
+<!-- Topic: Methods as an Interface -->
+<!-- Slides 33–39 -->
+
+# <span style="display:none">Methods as an Interface</span>
+
+## Why Does a Class Need an Interface?
+
+Clients need a predictable way to use an object without depending on its internal representation. Public methods provide that boundary.
+
+::: notes
+Slides 31–37
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## Public Methods as the Interface
+
+The public section describes what an object can do. Clients use those operations without needing to know how the object stores its data.
+
+<!-- Slide 34 -->
+
+---
+
+## Interface and Implementation
+
+```cpp
+class BankAccount {
+public:
+    void deposit(double amount);
+private:
+    double balance;
+};
+```
+
+The public declaration is the interface; the private data and method body are implementation details.
+
+<!-- Slide 35 -->
+
+---
+
+## A Method Signature as a Contract
+
+```cpp
+void deposit(double amount);
+```
+
+The return type, name, parameters, and access level communicate the operation a client may request.
+
+<!-- Slide 36 -->
+
+---
+
+## Using an Object Through Its Interface
+
+```cpp
+BankAccount account;
+account.deposit(100.00);
+```
+
+Client code uses the public method and does not manipulate `balance` directly.
+
+<!-- Slide 37 -->
+
+---
+
+## Changing Implementation Without Changing Clients
+
+The class can change how it stores or computes its state while client calls remain the same. A stable interface reduces the cost of internal changes.
+
+<!-- Slide 38 -->
+
+---
+
+## Methods as an Interface: Key Ideas
+
+An interface defines permitted operations while implementation details remain hidden.
+
+<!-- Slide 39 -->

@@ -1,0 +1,125 @@
+<!-- Topic: Methods and Member Functions -->
+<!-- Slides 3–11 -->
+
+# <span style="display:none">Methods and Member Functions</span>
+
+## How Do Objects Acquire Behavior?
+
+An object combines data with operations that work on that data. In C++, those operations are member functions, also called methods.
+
+::: notes
+Slides 1–9
+:::
+
+<!-- Slide 3 -->
+
+---
+
+## Member Functions and Methods
+
+- A **method** is a function declared as a member of a class.
+- It belongs to the class and is called through an object.
+- Its implementation can work with the object's private state.
+
+<!-- Slide 4 -->
+
+---
+
+## Class Data and Behavior
+
+```cpp
+class Counter {
+private:
+    int value;
+public:
+    void increment();
+};
+```
+
+The data member stores state; the method defines behavior that operates on that state.
+
+<!-- Slide 5 -->
+
+---
+
+## Method Anatomy
+
+```cpp
+return_type ClassName::methodName(parameters) {
+    // method body
+}
+```
+
+The class name connects an out-of-class definition to its declaration.
+
+<!-- Slide 6 -->
+
+---
+
+## Declaring a Method
+
+```cpp
+class Counter {
+public:
+    void increment();
+    int getValue();
+};
+```
+
+The declaration tells clients and the compiler which operations the class provides.
+
+<!-- Slide 7 -->
+
+---
+
+## Defining a Method Outside the Class
+
+```cpp
+void Counter::increment() {
+    value++;
+}
+
+int Counter::getValue() {
+    return value;
+}
+```
+
+The scope-resolution operator identifies the class that owns each method.
+
+<!-- Slide 8 -->
+
+---
+
+## Calling a Method
+
+```cpp
+Counter count;
+count.increment();
+cout << count.getValue();
+```
+
+The object before the dot supplies the state used by the method.
+
+<!-- Slide 9 -->
+
+---
+
+## Methods as Forced Abstraction
+
+Methods give clients named operations instead of requiring them to know how the class stores or manipulates its data.
+
+```cpp
+account.deposit(50.00);
+```
+
+The call expresses intent while the implementation remains inside the class.
+
+<!-- Slide 10 -->
+
+---
+
+## Methods and Member Functions: Key Ideas
+
+Methods belong to classes, operate on object state, and provide named operations through an interface.
+
+<!-- Slide 11 -->

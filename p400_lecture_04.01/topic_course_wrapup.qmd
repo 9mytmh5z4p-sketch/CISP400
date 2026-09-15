@@ -1,0 +1,61 @@
+<!-- Topic: Course Wrap-Up -->
+<!-- Slides 42–49 -->
+# <span style="display:none">Course Wrap-Up</span>
+
+## <span style="display:none">What’s This Section About?</span>
+![](images/source_pages/slide-42.png){width="100%" fig-alt="What’s This Section About?"}
+
+::: notes
+Slides 42–49
+:::
+
+<!-- Slide 42 -->
+
+---
+
+## <span style="display:none">Agenda</span>
+![](images/source_pages/slide-43.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 43 -->
+
+---
+
+## <span style="display:none">What’s Next?</span>
+![](images/source_pages/slide-44.png){width="100%" fig-alt="What’s Next?"}
+
+<!-- Slide 44 -->
+
+---
+
+## <span style="display:none">Agenda</span>
+![](images/source_pages/slide-45.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 45 -->
+
+---
+
+## <span style="display:none">Agenda</span>
+![](images/source_pages/slide-46.png){width="100%" fig-alt="Agenda"}
+
+<!-- Slide 46 -->
+
+---
+
+## <span style="display:none">Homework 2 Due Sunday</span>
+![](images/source_pages/slide-47.png){width="100%" fig-alt="Homework 2 Due Sunday"}
+
+<!-- Slide 47 -->
+
+---
+
+## <span style="display:none">Modify This</span>
+![](images/source_pages/slide-48.png){width="100%" fig-alt="Modify This"}
+
+<!-- Slide 48 -->
+
+---
+
+## <span style="display:none">&lt;Closing Transition&gt;</span>
+![](images/source_pages/slide-49.png){width="100%" fig-alt="<Closing Transition>"}
+
+<!-- Slide 49 -->
