@@ -1,0 +1,85 @@
+lecture,week,section,Subject,emphasis,time_budget,optional,notes
+p400_lecture_01.01,1,course_framing,Course Overview,standard,,no,Class Goal; What Will the Class Cover?; Where’s This Fit in the Course?
+p400_lecture_01.01,1,core_concepts,Parts of a C++ Program,high,,no,"Two parts, every time; Part 1: Top Matter; Part 2: The main() Function; A complete C++ program"
+p400_lecture_01.01,1,core_concepts,Toolset,high,,no,Operating System; Running Ubuntu; Windows Visual Studio Will NOT Compile on Ubuntu.; Programmer’s Editors
+p400_lecture_01.01,1,core_concepts,Common Elements,high,,no,"The vocabulary of C++; Three categories, every program; Identifiers; Reserved words"
+p400_lecture_01.01,1,course_framing,Syllabus Reconnaissance,standard,,no,Syllabus Reconnaissance; Exercise Goals; Procedure
+p400_lecture_01.01,1,course_framing,Class Expectations,standard,,no,Textbook; Not Me
+p400_lecture_01.01,1,core_concepts,Top Matter,high,,no,The setup section; Three components of top matter; The Source File Header; The SFH template
+p400_lecture_01.01,1,course_framing,Instructor Role,standard,,no,Why Should We Listen to You?; Why Don’t You Get Back to Me Right Away?
+p400_lecture_01.01,1,core_concepts,The main() Function,high,,no,Where execution begins; The `main()` declaration; Why `main` returns `int`; Curly braces define a block
+p400_lecture_01.01,1,course_framing,Course Placement at FLC,standard,,no,CIS AS Degree; CIS AS Degree; Common Questions; You Are Responsible for Your Code
+p400_lecture_01.01,1,application,Coding Exercise 1-1,standard,,no,Your first C++ program; The task; 1-1.cpp; Expected output
+p400_lecture_01.01,1,course_framing,Reciprocal Interview,standard,,no,Exercise Goals; Procedure
+p400_lecture_01.01,1,course_framing,Success Team Bingo,standard,,no,Exercise Goals; Debrief
+p400_lecture_01.01,1,course_framing,Advice Cards,standard,,no,Exercise Goals; Advice Cards; Debrief
+p400_lecture_01.02,1,course_framing,Course Framing,standard,,no,CISP 400
+p400_lecture_01.02,1,course_framing,CISP 360 Review: Variables and Conditionals,standard,,no,Old Friends; Variables; 4.2 The if Statement; if Statement
+p400_lecture_01.02,1,core_concepts,Iteration,high,,no,Iteration
+p400_lecture_01.02,1,core_concepts,Functions,high,,no,Functions; Function Prototypes
+p400_lecture_01.02,1,application,Programming Exercise,standard,,no,Programming Exercise; Exercise Goals; Programming Exercise; Programming Exercise Debriefing
+p400_lecture_01.02,1,course_framing,Pointers Preview,standard,,no,What's This Section About?; Pointers Agenda
+p400_lecture_01.02,1,course_framing,Desk Check,standard,,no,Desk Check Exercise; Exercise Goals; Desk Check Exercise
+p400_lecture_01.02,1,core_concepts,Coding for Reuse,high,,no,Coding for Reuse; Ideas for Writing Reusable Software; Ideas for Writing Reusable Software
+p400_lecture_01.02,1,course_framing,Success Team Bingo,standard,,no,Success Team Bingo; Exercise Goals; Debrief
+p400_lecture_01.02,1,pointers_and_references,References,high,,no,References
+p400_lecture_01.02,1,core_concepts,Logging Function,high,,no,A Logging Function; What?; Why?; When? / Use Case
+p400_lecture_02.01,2,pointers_and_references,Pointers and the Address Operator,high,,no,Slides 17–19
+p400_lecture_02.01,2,pointers_and_references,Arrays and Pointers,high,,no,Slides 20–21
+p400_lecture_02.01,2,course_framing,Course Framing,standard,,no,Slides 1–3
+p400_lecture_02.01,2,application,Debugging Exercise,standard,,no,Slides 60–65
+p400_lecture_02.01,2,course_framing,Desk Check,standard,,no,Slides 66–70
+p400_lecture_02.01,2,course_framing,Homework Preflight,standard,,no,Slides 43–47
+p400_lecture_02.01,2,pointers_and_references,Initializing Pointers,high,,no,Slides 25–42
+p400_lecture_02.01,2,pointers_and_references,Pointer Arithmetic,high,,no,Slides 22–24
+p400_lecture_02.01,2,pointers_and_references,Pointer Motivation and Memory Addresses,high,,no,Slides 9–16
+p400_lecture_02.01,2,application,Programming Exercise,standard,,no,Slides 4–8
+p400_lecture_02.01,2,pointers_and_references,Reference Variables,high,,no,Slides 53–59
+p400_lecture_02.01,2,pointers_and_references,References,high,,no,Slides 71–71
+p400_lecture_02.01,2,course_framing,Review Wrap-Up,standard,,no,Slides 48–52
+p400_lecture_02.02,2,pointers_and_references,Comparing Pointers,high,,no,Slides 23–26
+p400_lecture_02.02,2,pointers_and_references,Pointers to Constants and Constant Pointers,high,,no,Const Pointer Assignment
+p400_lecture_02.02,2,course_framing,Course Framing,standard,,no,Slides 1–7
+p400_lecture_02.02,2,application,Debugging Exercises,standard,,no,Slides 81–90
+p400_lecture_02.02,2,course_framing,Desk Check,standard,,no,Slides 18–22
+p400_lecture_02.02,2,course_framing,Desk Check,standard,,no,Slides 63–67
+p400_lecture_02.02,2,course_framing,Desk Checks,standard,,no,Slides 91–100
+p400_lecture_02.02,2,pointers_and_references,Pointers as Function Parameters,high,,no,Slides 44–49
+p400_lecture_02.02,2,pointers_and_references,Function Pointers,high,,no,Slides 68–71
+p400_lecture_02.02,2,pointers_and_references,Pointer Variables in Memory,high,,no,Slides 8–17
+p400_lecture_02.02,2,application,Programming Exercise,standard,,no,Slides 72–74
+p400_lecture_02.02,2,pointers_and_references,Returning and Reassigning Pointers,high,,no,Slides 50–62
+p400_lecture_02.02,2,course_framing,Lecture Wrap-Up,standard,,no,Slides 75–80
+p400_lecture_03.01,3,course_framing,Course Framing,standard,,no,CISP 400
+p400_lecture_03.01,3,course_framing,Desk Check,standard,,no,Desk Check; Exercise Goals; Desk Check Exercise
+p400_lecture_03.01,3,course_framing,Desk Check,standard,,no,No Class Next Week; Desk Check; Exercise Goals; Desk Check Exercise
+p400_lecture_03.01,3,dynamic_memory,Dynamic Memory Allocation,high,,no,10.9 Dynamic Memory Allocation; Problem with Arrays; Stack Size Limitation; Access to the Heap
+p400_lecture_03.01,3,course_framing,Homework Peer Review,standard,,no,Homework 1 Peer Review; Homework Debrief; Process; Debrief
+p400_lecture_03.01,3,course_framing,C++ Memory Model and Pointer Review,standard,,no,Big Idea; Direct Memory Access; Consider; Advantages
+p400_lecture_03.01,3,application,Programming Exercise,standard,,no,Exercise Goals; Programming Exercise
+p400_lecture_03.01,3,pointers_and_references,Pseudo-Dynamic Arrays,high,,no,But Is This Enough?; Pseudo-Dynamic Arrays; A Step Closer; Algorithm to Create Pseudo-Dynamic Arrays
+p400_lecture_03.01,3,pointers_and_references,Real Dynamic Arrays,high,,no,How Do We Create a Real Dynamic Array?; The Big Idea; Algorithm for a Dynamic Array; Algorithm for Increasing a Dynamic Array
+p400_lecture_03.01,3,course_framing,Lecture Wrap-Up,standard,,no,What's This Section About?; Big Idea; Direct Memory Access; Consider
+p400_lecture_03.02,3,object_oriented_programming,Abstract Data Types,high,,no,7.1 Abstract Data Type (ADT); The Problem; Someone Will Break It; Abstract Data Type Definition
+p400_lecture_03.02,3,object_oriented_programming,Classes and Methods,high,,no,7.3 Introduction to Classes; 7.4 Creating and Using Objects; 7.5 Defining Member Functions; Classes Group Data and Behavior
+p400_lecture_03.02,3,object_oriented_programming,Classes and Objects,high,,no,7.x Crash Course in Building Objects; How to Construct an Object; Encapsulation; Setters and Getters
+p400_lecture_03.02,3,course_framing,Course Framing,standard,,no,Class Exercise - Debrief
+p400_lecture_03.02,3,object_oriented_programming,Encapsulation and Abstraction,high,,no,7.2 Object-Oriented Programming; OOP and the Real World; Encapsulation; Implementation and Abstraction
+p400_lecture_03.02,3,course_framing,Homework Peer Review,standard,,no,Programming Exercise; Homework 1 Peer Review; Homework Debrief; Process
+p400_lecture_03.02,3,application,Programming Exercise: Colorize,standard,,no,Programming Exercise; Exercise Goals
+p400_lecture_03.02,3,application,Programming Exercise: Dynamic Array Operations,standard,,no,Program This - Debrief; Exercise Goals; Programming Exercise
+p400_lecture_03.02,3,application,Programming Exercise: Dynamic Arrays,standard,,no,Program This - Debrief; Exercise Goals; Programming Exercise
+p400_lecture_03.02,3,application,Programming Exercise: Returning a Struct,standard,,no,Programming Exercise; Exercise Goals; Programming Exercise
+p400_lecture_03.02,3,object_oriented_programming,Structures,high,,no,7.12 Structures; The Problem; Grouping Variables; Solution - Struct
+p400_lecture_04.01,4,object_oriented_programming,Methods and Member Functions,high,,no,How Do Objects Acquire Behavior?; Member Functions and Methods; Class Data and Behavior; Method Anatomy
+p400_lecture_04.01,4,object_oriented_programming,Difference Between Method and Function,high,,no,Why Distinguish Methods and Functions?; Ownership of Behavior; State Access; Call Syntax Comparison
+p400_lecture_04.01,4,object_oriented_programming,Access Specifiers,high,,no,Why Control Access to Class Members?; The Three Access Specifiers; Access Specifier Anatomy; Public Members
+p400_lecture_04.01,4,object_oriented_programming,Private Member Functions,high,,no,Why Hide Helper Methods?; Public Interface and Private Implementation; Private Member Function Anatomy; A Public Method Calling a Private Helper
+p400_lecture_04.01,4,object_oriented_programming,Methods as an Interface,high,,no,Why Does a Class Need an Interface?; Public Methods as the Interface; Interface and Implementation; A Method Signature as a Contract
+p400_lecture_04.01,4,object_oriented_programming,Setters and Getters,high,,no,Why Use Setters and Getters?; Setter and Getter Roles; Setter Anatomy; Getter Anatomy
+p400_lecture_04.01,4,object_oriented_programming,Setters Increase Reliability,high,,no,Why Should a Setter Reject Data?; Valid State and Invariants; Validation Inside a Setter; A Setter That Protects an Object
+p400_lecture_04.01,4,object_oriented_programming,Getters,high,,no,How Can Clients Observe Object State?; The Role of a Getter; Getter Anatomy; A Getter in a Complete Class
+p400_lecture_04.02,4,object_oriented_programming,Constructors and Constructor Overloading,high,,no,7.6 Constructors; Constructors; Do Classes Have Constructors?; Constructor Use Case
+p400_lecture_04.02,4,course_framing,Course Framing,standard,,no,CISP 400; Last Time; Theme for Today; Method
+p400_lecture_04.02,4,course_framing,Course Wrap-Up,standard,,no,What’s This Section About?; What’s Next?; Homework 2 Due Sunday; Modify This
+p400_lecture_04.02,4,object_oriented_programming,Destructors,high,,no,7.7 Destructors; Constructors and Destructors; Coding Exercise

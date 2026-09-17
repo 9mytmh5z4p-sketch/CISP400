@@ -1,0 +1,40 @@
+Slide Number,Topic,Subject,Title,Category,Notes
+1,Course Framing,,CISP 400,Section Divider,source_pages/slide-01.png
+2,Course Framing,,Last Time,Progression Map,source_pages/slide-02.png
+3,Course Framing,,Agenda,Agenda,source_pages/slide-03.png
+,Review,,Problem,Section Divider,Coding the Date class problem
+,Review,,Problem Statement,text,The actual assignment
+,,,<no title>,code block,source_pages/slide-41.png converted into html (not an image)
+,,,<no title>,code block w/output,
+,Constructors and Constructor Overloading,,Too Much Work,Motivating Question,Is there a simpler way to handle this?
+4,Constructors and Constructor Overloading,Constructors and Constructor Overloading,Constructors and Constructor Overloading,Section Divider,source_pages/slide-26.png
+5,Constructors and Constructor Overloading,Constructors and Constructor Overloading,Constructors,Define,source_pages/slide-27.png
+,Constructors and Constructor Overloading,,Over and Over,text,Notice a common pattern. We initialize an object and then we use a setter to put data into it.
+,Constructors and Constructor Overloading,,Constructor Defined,Define,
+,,,<no title>,code block,Illustration of a constructor
+,,,<no title>,code block w/output,
+7,Constructors and Constructor Overloading,Constructors and Constructor Overloading,Constructor Use Case,Value Added,source_pages/slide-29.png
+6,Constructors and Constructor Overloading,Constructors and Constructor Overloading,Do All Classes Have Constructors?,Motivating Question,source_pages/slide-28.png
+8,Constructors and Constructor Overloading,Constructors and Constructor Overloading,Constructors as an Interface,Text,source_pages/slide-30.png
+9,Constructors and Constructor Overloading,Constructors and Constructor Overloading,Overloading Constructors,Enumerate,source_pages/slide-31.png
+,,,What if we have more than 1 way to initialize an object?,Motivating Question,
+,,,<no title>,visualization,visualization illustrating constructor overloading
+12,Constructors and Constructor Overloading,Overloaded Constructor Example,<no title>,code block,source_pages/slide-34.png
+,,Overloaded Constructor Example,<no title>,code block w/output,
+10,Constructors and Constructor Overloading,Constructors and Constructor Overloading,Default Constructor Rule,text,source_pages/slide-32.png
+13,Constructors and Constructor Overloading,Constructors and Constructor Overloading,"Constructors, Functions, and Methods",Contrast,source_pages/slide-35.png
+14,Constructors and Constructor Overloading,Constructors and Constructor Overloading,Distinguishing Constructors and Methods,Contrast,source_pages/slide-36.png
+15,Constructors and Constructor Overloading,Constructors and Constructor Overloading,Class ABC Instantiation Syntax,Complete Example,source_pages/slide-37.png
+11,Constructors and Constructor Overloading,Constructors and Constructor Overloading,Bottom Line,Summary,source_pages/slide-33.png
+16,Destructors,Destructors,Destructors,Section Divider,source_pages/slide-38.png
+17,Destructors,Destructors,Why Do Destructors Matter?,Value Added,
+18,Destructors,Destructors,When Does a Destructor Run?,Define,
+19,Destructors,Destructors,<no title>,code block,source_pages/slide-39.png
+,Destructors,Destructors,<no title>,code block w/output,
+,Destructors,Destructors,No Overloaded Destructors,text,
+20,Destructors,Destructors,Constructors and Destructors,Enumerate,source_pages/slide-40.png
+21,Course Wrap-Up,,What We Covered,Summary,
+,Review,,Problem,Section Divider,Coding the Date class problem
+,Review,,Problem Statement,text,"Code date with 1) constructors, 2) overloaded constructors."
+,,,<no title>,code block,
+,,,<no title>,code block w/output,
