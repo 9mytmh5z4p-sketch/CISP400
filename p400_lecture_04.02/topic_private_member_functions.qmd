@@ -1,0 +1,25 @@
+<!-- Topic: Private member functions -->
+<!-- Slides 14–16 -->
+# <span style="display:none">Private member functions</span>
+
+## <span style="display:none">Photo Credit: https://iandunn.name/content/presentations/wp-oop-mvc/images/object-instantiation.png</span>
+
+![](images/source_pages/slide-16.png){width="100%" fig-alt="Photo Credit: https://iandunn.name/content/presentations/wp-oop-mvc/images/object-instantiation.png"}
+
+<!-- Slide 14 -->
+
+---
+
+## <span style="display:none">7.4 Creating and</span>
+
+![](images/source_pages/slide-17.png){width="100%" fig-alt="7.4 Creating and"}
+
+<!-- Slide 15 -->
+
+---
+
+## <span style="display:none">Source Slide 18</span>
+
+![](images/source_pages/slide-18.png){width="100%" fig-alt="Source Slide 18"}
+
+<!-- Slide 16 -->

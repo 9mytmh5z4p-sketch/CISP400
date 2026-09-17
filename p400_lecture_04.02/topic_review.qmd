@@ -1,0 +1,70 @@
+<!-- Topic: Review -->
+<!-- Slides 3–6 -->
+
+# <span style="display:none">Review</span>
+
+## Review
+
+<!-- Slide 3 -->
+
+---
+
+## Problem Statement
+
+Create a Date class with private member ints day, month, and year. Add a setDate() method to set the date. Add a print() public member function to display the date.
+
+Write a test rig to exercise this class.
+
+<!-- Slide 4 -->
+
+---
+
+## Date1.cpp
+
+```{.cpp}
+// Date1.cpp -- Simple date class
+#include <iostream>
+using namespace std;
+
+class Date {
+private:
+    int mo;
+    int day;
+    int year;
+public:
+    void SetDate(int = 1, int = 1, int = 2000);
+    void PrintDate();
+};
+
+void Date::SetDate(int m, int d, int y) {
+    mo = m;
+    day = d;
+    year = y;
+}
+
+void Date::PrintDate() {
+    cout << mo << "/" << day << "/" << year << endl;
+}
+
+int main() {
+    Date date1, date2;
+    date2.SetDate(10, 15, 2009);
+    cout << "Using default arguments: ";
+    date1.PrintDate();
+    cout << "Using passed arguments: ";
+    date2.PrintDate();
+}
+```
+
+<!-- Slide 5 -->
+
+---
+
+## Expected Output
+
+```text
+Using default arguments: 1/1/2000
+Using passed arguments: 10/15/2009
+```
+
+<!-- Slide 6 -->

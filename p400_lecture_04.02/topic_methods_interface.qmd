@@ -1,0 +1,17 @@
+<!-- Topic: Methods as an interface -->
+<!-- Slides 20–21 -->
+# <span style="display:none">Methods as an interface</span>
+
+## <span style="display:none">Methods</span>
+
+![](images/source_pages/slide-22.png){width="100%" fig-alt="Methods"}
+
+<!-- Slide 20 -->
+
+---
+
+## <span style="display:none">Method</span>
+
+![](images/source_pages/slide-23.png){width="100%" fig-alt="Method"}
+
+<!-- Slide 21 -->

@@ -1,0 +1,79 @@
+<!-- Topic: Course Wrap-Up -->
+<!-- Slides 34–38 -->
+
+# <span style="display:none">Course Wrap-Up</span>
+
+## What We Covered
+
+- **Course Framing:** Established the course context and agenda.
+- **Review:** Compared setter-based Date initialization with constructor-based initialization.
+- **Constructors:** Defined constructors, default and overloaded behavior, and their interface role.
+- **Destructors:** Explained why destructors matter and when they run.
+
+<!-- Slide 34 -->
+
+---
+
+## Review
+
+<!-- Slide 35 -->
+
+---
+
+## Problem Statement
+
+Modify the `Date` class so it uses constructors, including an overloaded constructor path for initializing a date with supplied values.
+
+<!-- Slide 36 -->
+
+---
+
+## Date2.cpp
+
+```{.cpp}
+#include <iostream>
+using namespace std;
+
+class Date {
+private:
+    int mo;
+    int day;
+    int year;
+public:
+    Date(int = 1, int = 1, int = 1);
+    void PrintDate();
+};
+
+Date::Date(int m, int d, int y) {
+    mo = m;
+    day = d;
+    year = y;
+    if (mo > 12) mo = 99;
+}
+
+void Date::PrintDate() {
+    cout << mo << "/" << day << "/" << year << endl;
+}
+
+int main() {
+    Date date1, date2(10,15,2009);
+    Date date3(21,25,2017);
+    date1.PrintDate();
+    date2.PrintDate();
+    date3.PrintDate();
+}
+```
+
+<!-- Slide 37 -->
+
+---
+
+## Expected Output
+
+```text
+Using default arguments: 1/1/1
+Using passed arguments: 10/15/2009
+Error checking: 99/25/2017
+```
+
+<!-- Slide 38 -->

@@ -1,6 +1,26 @@
-{{< include topic_course_framing.qmd >}}
-{{< include topic_methods.qmd >}}
-{{< include topic_constructors.qmd >}}
-{{< include topic_destructors.qmd >}}
-{{< include topic_wrap_up.qmd >}}
+# Last Time
 
+::: {.incremental}
++ **Methods and Member Functions**
++ **Difference Between Method and Function**
++ **Access Specifiers**
++ **Private Member Functions**
++ **Methods as an Interface**
++ **Setters and Getters**
++ **Setters Increase Reliability**
++ **Getters**
+:::
+
+<!-- Slide 1 -->
+
+# Today's Agenda
+
+- Constructors and Constructor Overloading
+- Destructors
+
+<!-- Slide 2 -->
+
+{{< include topic_review.qmd >}}
+{{< include topic_constructors_rebuilt.qmd >}}
+{{< include topic_destructors_rebuilt.qmd >}}
+{{< include topic_wrap_up_rebuilt.qmd >}}

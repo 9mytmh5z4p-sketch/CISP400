@@ -1,0 +1,17 @@
+<!-- Topic: Setters Increase reliability -->
+<!-- Slides 22–23 -->
+# <span style="display:none">Setters Increase reliability</span>
+
+## <span style="display:none">Another example</span>
+
+![](images/source_pages/slide-24.png){width="100%" fig-alt="Another example"}
+
+<!-- Slide 22 -->
+
+---
+
+## <span style="display:none">Source Slide 25</span>
+
+![](images/source_pages/slide-25.png){width="100%" fig-alt="Source Slide 25"}
+
+<!-- Slide 23 -->

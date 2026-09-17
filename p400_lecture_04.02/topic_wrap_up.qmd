@@ -1,64 +1,60 @@
 <!-- Topic: Lecture Wrap-Up -->
-<!-- Slides 42–49 -->
+<!-- Slides 24–31 -->
+# <span style="display:none">Lecture Wrap-Up</span>
 
-# Lecture Wrap-Up
+## <span style="display:none">What’s this section</span>
 
-![](images/source_pages/slide-42.png){width="100%" fig-alt="Lecture Wrap-Up"}
+![](images/source_pages/slide-42.png){width="100%" fig-alt="What’s this section"}
 
-::: notes
-Slides 42–49
-Source slide 42 from the authoritative PDF.
-:::
-
-<!-- Slide 42 -->
+<!-- Slide 24 -->
 
 ---
 
-## <span style="display:none">Source Slide 43</span>
+## <span style="display:none">Agenda</span>
 
 ![](images/source_pages/slide-43.png){width="100%" fig-alt="Agenda"}
 
-<!-- Slide 43 -->
+<!-- Slide 25 -->
 
 ---
 
-## <span style="display:none">Source Slide 44</span>
+## <span style="display:none">What’s Next?</span>
 
 ![](images/source_pages/slide-44.png){width="100%" fig-alt="What’s Next?"}
 
-<!-- Slide 44 -->
+<!-- Slide 26 -->
 
 ---
 
-## <span style="display:none">Source Slide 45</span>
+## <span style="display:none">Agenda</span>
 
 ![](images/source_pages/slide-45.png){width="100%" fig-alt="Agenda"}
 
-<!-- Slide 45 -->
+<!-- Slide 27 -->
 
 ---
 
-## <span style="display:none">Source Slide 46</span>
+## <span style="display:none">Agenda</span>
 
 ![](images/source_pages/slide-46.png){width="100%" fig-alt="Agenda"}
 
-<!-- Slide 46 -->
+<!-- Slide 28 -->
 
 ---
 
-## <span style="display:none">Source Slide 47</span>
+## <span style="display:none">Homework 2 due Sunday.</span>
 
 ![](images/source_pages/slide-47.png){width="100%" fig-alt="Homework 2 due Sunday."}
 
-<!-- Slide 47 -->
+<!-- Slide 29 -->
 
 ---
 
-## <span style="display:none">Source Slide 48</span>
+## <span style="display:none">Modify This</span>
 
 ![](images/source_pages/slide-48.png){width="100%" fig-alt="Modify This"}
 
-<!-- Slide 48 -->
+<!-- Slide 30 -->
 
 ---
 
@@ -66,4 +62,4 @@ Source slide 42 from the authoritative PDF.
 
 ![](images/source_pages/slide-49.png){width="100%" fig-alt="Source Slide 49"}
 
-<!-- Slide 49 -->
+<!-- Slide 31 -->

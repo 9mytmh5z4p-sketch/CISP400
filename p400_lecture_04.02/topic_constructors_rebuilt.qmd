@@ -1,0 +1,186 @@
+<!-- Topic: Constructors and Constructor Overloading -->
+<!-- Slides 7–26 -->
+
+# <span style="display:none">Constructors and Constructor Overloading</span>
+
+## Constructors and Constructor Overloading
+
+<!-- Slide 7 -->
+
+---
+
+## Why Use a Constructor?
+
+If every object must be initialized with a separate setter call, are we making the client do too much work?
+
+<!-- Slide 8 -->
+
+---
+
+## Constructors
+
+![](images/source_pages/slide-27.png){width="100%" fig-alt="Constructors"}
+
+<!-- Slide 9 -->
+
+---
+
+## Over and Over
+
+The repeated pattern is object creation followed by a setter call. A constructor moves that initialization into the object-creation step.
+
+<!-- Slide 10 -->
+
+---
+
+## Constructor Defined
+
+A constructor is a special member function with the same name as its class and no return type. It runs automatically when an object is instantiated.
+
+<!-- Slide 11 -->
+
+---
+
+## Constructor Example
+
+```{.cpp}
+class Date {
+public:
+    Date(int month, int day, int year);
+};
+
+Date date(10, 15, 2009);
+```
+
+<!-- Slide 12 -->
+
+---
+
+## Constructor Output
+
+```text
+Date date(10, 15, 2009);
+The constructor receives the arguments and initializes the object.
+```
+
+<!-- Slide 13 -->
+
+---
+
+## Constructor Use Case
+
+![](images/source_pages/slide-29.png){width="100%" fig-alt="Constructor Use Case"}
+
+<!-- Slide 14 -->
+
+---
+
+## Do All Classes Have Constructors?
+
+![](images/source_pages/slide-28.png){width="100%" fig-alt="Do all classes have constructors?"}
+
+<!-- Slide 15 -->
+
+---
+
+## Constructors as an Interface
+
+![](images/source_pages/slide-30.png){width="100%" fig-alt="Constructors as an interface"}
+
+<!-- Slide 16 -->
+
+---
+
+## Overloading Constructors
+
+![](images/source_pages/slide-31.png){width="100%" fig-alt="Overloading constructors"}
+
+<!-- Slide 17 -->
+
+---
+
+## What If There Is More Than One Initialization Path?
+
+What if a class needs more than one way to initialize an object?
+
+<!-- Slide 18 -->
+
+---
+
+## Constructor Overloading Visualization
+
+::: {.columns}
+::: {.column width="45%"}
+**One class**
+
+`Sale()`
+
+`Sale(0.06)`
+
+`Sale(0.06, 24.95)`
+:::
+::: {.column width="55%"}
+Each constructor signature is an entry path to the same class. The compiler selects the matching constructor from the arguments supplied at instantiation.
+:::
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## Overloaded Constructor Example
+
+![](images/source_pages/slide-34.png){width="100%" fig-alt="Overloaded constructor example"}
+
+<!-- Slide 20 -->
+
+---
+
+## Expected Output
+
+```text
+With a 0.06 sale tax rate, the total of the $24.95 sale is $26.45
+On a tax-exempt sale, the total of the $24.95 sale is $24.95
+```
+
+<!-- Slide 21 -->
+
+---
+
+## Default Constructor Rule
+
+![](images/source_pages/slide-32.png){width="100%" fig-alt="Default constructor rule"}
+
+<!-- Slide 22 -->
+
+---
+
+## Constructors, Functions, and Methods
+
+![](images/source_pages/slide-35.png){width="100%" fig-alt="Constructors, functions, and methods"}
+
+<!-- Slide 23 -->
+
+---
+
+## Distinguishing Constructors and Methods
+
+![](images/source_pages/slide-36.png){width="100%" fig-alt="Distinguishing constructors and methods"}
+
+<!-- Slide 24 -->
+
+---
+
+## Class ABC Instantiation Syntax
+
+![](images/source_pages/slide-37.png){width="100%" fig-alt="Class ABC instantiation syntax"}
+
+<!-- Slide 25 -->
+
+---
+
+## Bottom Line
+
+![](images/source_pages/slide-33.png){width="100%" fig-alt="Bottom line"}
+
+<!-- Slide 26 -->

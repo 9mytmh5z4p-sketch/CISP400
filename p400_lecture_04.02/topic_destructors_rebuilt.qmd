@@ -1,0 +1,62 @@
+<!-- Topic: Destructors -->
+<!-- Slides 27–33 -->
+
+# <span style="display:none">Destructors</span>
+
+## Destructors
+
+<!-- Slide 27 -->
+
+---
+
+## Why Do Destructors Matter?
+
+Destructors matter because an object may need to release resources or perform cleanup when its lifetime ends.
+
+<!-- Slide 28 -->
+
+---
+
+## When Does a Destructor Run?
+
+A destructor runs automatically when an object leaves scope or is explicitly destroyed, just before the object’s storage is reclaimed.
+
+<!-- Slide 29 -->
+
+---
+
+## Constructor and Destructor Implementation
+
+![](images/source_pages/slide-39.png){width="100%" fig-alt="Constructor and destructor implementation"}
+
+<!-- Slide 30 -->
+
+---
+
+## Expected Output
+
+```text
+Powering on ...
+Green
+Yellow
+Red
+Powering Off ...
+```
+
+<!-- Slide 31 -->
+
+---
+
+## No Overloaded Destructors
+
+A class can have multiple overloaded constructors, but it has only one destructor because destruction does not take arguments and cannot be selected from a parameter list.
+
+<!-- Slide 32 -->
+
+---
+
+## Constructors and Destructors
+
+![](images/source_pages/slide-40.png){width="100%" fig-alt="Constructors and destructors"}
+
+<!-- Slide 33 -->

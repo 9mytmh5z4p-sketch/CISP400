@@ -1,0 +1,25 @@
+<!-- Topic: Method versus function -->
+<!-- Slides 17–19 -->
+# <span style="display:none">Method versus function</span>
+
+## <span style="display:none">7.5 De ning Member</span>
+
+![](images/source_pages/slide-19.png){width="100%" fig-alt="7.5 De ning Member"}
+
+<!-- Slide 17 -->
+
+---
+
+## <span style="display:none">• Classes group data and associated behaviors.</span>
+
+![](images/source_pages/slide-20.png){width="100%" fig-alt="• Classes group data and associated behaviors."}
+
+<!-- Slide 18 -->
+
+---
+
+## <span style="display:none">• We use methods!</span>
+
+![](images/source_pages/slide-21.png){width="100%" fig-alt="• We use methods!"}
+
+<!-- Slide 19 -->
