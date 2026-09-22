@@ -1,78 +1,85 @@
-"Slide Number","Topic","Subject","Title","Category","Filename"
-"1","Course Framing","","CISP 400","Section Divider","source_pages/slide-01.png"
-"2","Course Framing","","Last Time","Progression Map","source_pages/slide-02.png"
-"3","Course Framing","","Agenda","Agenda","source_pages/slide-03.png"
-"4","Course Framing","","Agenda","Agenda","source_pages/slide-04.png"
-"5","Class Initialization and Relationships","Class Initialization and Relationships","Theme for Today","Section Divider","source_pages/slide-05.png"
-"6","Class Initialization and Relationships","Class Initialization and Relationships","“Initializing Classes”","Image","source_pages/slide-06.png"
-"7","Class Initialization and Relationships","Class Initialization and Relationships","Lightning Review","Image","source_pages/slide-07.png"
-"8","Class Initialization and Relationships","Class Initialization and Relationships","Lightning Review","Image","source_pages/slide-08.png"
-"9","Class Initialization and Relationships","Class Initialization and Relationships","Programming Exercise","Demonstration","source_pages/slide-09.png"
-"10","Class Initialization and Relationships","Class Initialization and Relationships","Source Slide 10","Image","source_pages/slide-10.png"
-"11","Class Initialization and Relationships","Class Initialization and Relationships","Source Slide 11","Image","source_pages/slide-11.png"
-"12","Class Initialization and Relationships","Class Initialization and Relationships","Source Slide 12","Image","source_pages/slide-12.png"
-"13","Class Initialization and Relationships","Class Initialization and Relationships","Source Slide 13","Image","source_pages/slide-13.png"
-"14","Dependency Relationships","Dependency Relationships","Relationships","Section Divider","source_pages/slide-14.png"
-"15","Dependency Relationships","Dependency Relationships","• As you know  objects don’t work in isolation. They","Image","source_pages/slide-15.png"
-"16","Dependency Relationships","Dependency Relationships","We will cover some of these individually.","Image","source_pages/slide-16.png"
-"17","Dependency Relationships","Dependency Relationships","Source Slide 17","Image","source_pages/slide-17.png"
-"18","Dependency Relationships","Dependency Relationships","Dependency Relationship","Image","source_pages/slide-18.png"
-"19","Dependency Relationships","Dependency Relationships","Coding Characteristics","Image","source_pages/slide-19.png"
-"20","Dependency Relationships","Dependency Relationships","Example 1","Image","source_pages/slide-20.png"
-"21","Dependency Relationships","Dependency Relationships","Source Slide 21","Image","source_pages/slide-21.png"
-"22","Dependency Relationships","Dependency Relationships","Example 2","Image","source_pages/slide-22.png"
-"23","Dependency Relationships","Dependency Relationships","Source Slide 23","Image","source_pages/slide-23.png"
-"24","Dependency Relationships","Dependency Relationships","Source Slide 24","Image","source_pages/slide-24.png"
-"25","Dependency Relationships","Dependency Relationships","Source Slide 25","Image","source_pages/slide-25.png"
-"26","Dependency Relationships","Dependency Relationships","Source Slide 26","Image","source_pages/slide-26.png"
-"27","Dependency Relationships","Dependency Relationships","Source Slide 27","Image","source_pages/slide-27.png"
-"28","Dependency Relationships","Dependency Relationships","• Do we always need to use reference variables?","Enumerate","source_pages/slide-28.png"
-"29","Dependency Relationships","Dependency Relationships","No","Image","source_pages/slide-29.png"
-"30","Dependency Relationships","Dependency Relationships","Example 3","Image","source_pages/slide-30.png"
-"31","Dependency Relationships","Dependency Relationships","Source Slide 31","Image","source_pages/slide-31.png"
-"32","Dependency Relationships","Dependency Relationships","Exercise","Demonstration","source_pages/slide-32.png"
-"33","Desk Check","","Exercise Goals","Demonstration","source_pages/slide-33.png"
-"34","Desk Check","","Desk Check Exercise","Demonstration","source_pages/slide-34.png"
-"35","Desk Check","","Source Slide 35","Image","source_pages/slide-35.png"
-"36","Desk Check","","Source Slide 36","Image","source_pages/slide-36.png"
-"37","Arrays of Objects","Arrays of Objects","8.13 Arrays of Objects","Section Divider","source_pages/slide-37.png"
-"38","Arrays of Objects","Arrays of Objects","• Can we create arrays of objects or structs?","Image","source_pages/slide-38.png"
-"39","Arrays of Objects","Arrays of Objects","• Let’s go ahead and build one on the stack …","Image","source_pages/slide-39.png"
-"40","Arrays of Objects","Arrays of Objects","Source Slide 40","Image","source_pages/slide-40.png"
-"41","Arrays of Objects","Arrays of Objects","Source Slide 41","Image","source_pages/slide-41.png"
-"42","Arrays of Objects","Arrays of Objects","• What’s happening here?","Image","source_pages/slide-42.png"
-"43","Arrays of Objects","Arrays of Objects","• What’s happening here?","Image","source_pages/slide-43.png"
-"44","Arrays of Objects","Arrays of Objects","Ok ","Image","source_pages/slide-44.png"
-"45","Arrays of Objects","Arrays of Objects","Ok ","Image","source_pages/slide-45.png"
-"46","Arrays of Objects","Arrays of Objects","Source Slide 46","Image","source_pages/slide-46.png"
-"47","Arrays of Objects","Arrays of Objects","Source Slide 47","Image","source_pages/slide-47.png"
-"48","Arrays of Objects","Arrays of Objects","• We constructed an array of objects on the heap.","Image","source_pages/slide-48.png"
-"49","Arrays of Objects","Arrays of Objects","• In the meantime  let’s make this array dynamic …","Image","source_pages/slide-49.png"
-"50","Arrays of Objects","Arrays of Objects","Source Slide 50","Image","source_pages/slide-50.png"
-"51","Arrays of Objects","Arrays of Objects","Source Slide 51","Image","source_pages/slide-51.png"
-"52","Arrays of Objects","Arrays of Objects","C++ Ninja Solution","Image","source_pages/slide-52.png"
-"53","Arrays of Objects","Arrays of Objects","Source Slide 53","Image","source_pages/slide-53.png"
-"54","Arrays of Objects","Arrays of Objects","Source Slide 54","Image","source_pages/slide-54.png"
-"55","Arrays of Objects","Arrays of Objects","Source Slide 55","Image","source_pages/slide-55.png"
-"56","Arrays of Objects","Arrays of Objects","Source Slide 56","Image","source_pages/slide-56.png"
-"57","Arrays of Objects","Arrays of Objects","Source Slide 57","Image","source_pages/slide-57.png"
-"58","Arrays of Objects","Arrays of Objects","Source Slide 58","Image","source_pages/slide-58.png"
-"59","Assertions","Assertions","Assertions","Section Divider","source_pages/slide-59.png"
-"60","Assertions","Assertions","• We have the debugging process down.","Process Pattern","source_pages/slide-60.png"
-"61","Assertions","Assertions","• IF statements","Image","source_pages/slide-61.png"
-"62","Assertions","Assertions","Assertions","Image","source_pages/slide-62.png"
-"63","Desk Check","","Source Slide 63","Section Divider","source_pages/slide-63.png"
-"64","Desk Check","","Exercise","Demonstration","source_pages/slide-64.png"
-"65","Desk Check","","Exercise Goals","Demonstration","source_pages/slide-65.png"
-"66","Desk Check","","Desk Check Exercise","Demonstration","source_pages/slide-66.png"
-"67","Programming Exercise","","Source Slide 67","Section Divider","source_pages/slide-67.png"
-"68","Programming Exercise","","Source Slide 68","Image","source_pages/slide-68.png"
-"69","Programming Exercise","","Programming Exercise","Demonstration","source_pages/slide-69.png"
-"70","Programming Exercise","","• Create a class Message with:","Image","source_pages/slide-70.png"
-"71","Programming Exercise","","Source Slide 71","Image","source_pages/slide-71.png"
-"72","Lecture Wrap-Up","","What’s this section","Section Divider","source_pages/slide-72.png"
-"73","Lecture Wrap-Up","","Agenda","Agenda","source_pages/slide-73.png"
-"74","Lecture Wrap-Up","","What’s Next?","Progression Map","source_pages/slide-74.png"
-"75","Lecture Wrap-Up","","Agenda","Agenda","source_pages/slide-75.png"
-"76","Lecture Wrap-Up","","Agenda","Agenda","source_pages/slide-76.png"
-
+Slide Number,Topic,Subject,Title,Category,Filename
+1,Course Framing,,CISP 400,Section Divider,
+2,Course Framing,,Agenda,Agenda,
+3,Course Framing,,Agenda,Agenda,
+4,Desk Check,,Exercise: Desk Check,Section Divider,
+5,Desk Check,,Exercise Goals,Value Added,
+6,Desk Check,,Desk Check Exercise,Demonstration,
+7,Desk Check,,<Predict the Output>,Predict,
+8,Desk Check,,<Program Output>,Code Block w/output,
+9,Desk Check,,<Tracing Dynamic Memory>,Trace,
+10,Enumerated Data Types,Enumerated Data Types,4.13 Enumerated Data Types,Review,
+11,Enumerated Data Types,Enumerated Data Types,What Is an Enumerated Data Type?,Define,
+12,Enumerated Data Types,Enumerated Data Types,Have You Ever Wanted to Create Your Own Type?,Motivating Question,
+13,Enumerated Data Types,Enumerated Data Types,What You Need,Enumerate,
+14,Enumerated Data Types,Enumerated Data Types,Syntax,Anatomy,
+15,Enumerated Data Types,Enumerated Data Types,Declaration Examples,Code Block,
+16,Enumerated Data Types,Enumerated Data Types,Assignment Examples,Code Block,
+17,Enumerated Data Types,Enumerated Data Types,Allowable Operations,Enumerate,
+18,Enumerated Data Types,Enumerated Data Types,Enumerators and Increment/Decrement Operations,Demonstration,
+19,Enumerated Data Types,Enumerated Data Types,Looping Enumerations,Code Block,
+20,Enumerated Data Types,Enumerated Data Types,Printing Enumerations,Demonstration,
+21,Enumerated Data Types,Enumerated Data Types,Printing Enumerations,Complete Example,
+22,Enumerated Data Types,Enumerated Data Types,Printing Enumerations,Demonstration,
+23,Enumerated Data Types,Enumerated Data Types,Passing Enumerations,Code Block,
+24,Enumerated Data Types,Enumerated Data Types,Strongly Typed Enumerations,Define,
+25,Enumerated Data Types,Enumerated Data Types,Strongly Typed Enumerations: Namespaces,Contrast,
+26,Enumerated Data Types,Enumerated Data Types,Using Strongly Typed Enumerations,Anatomy,
+27,Enumerated Data Types,Enumerated Data Types,Comparing Strongly Typed Enumerators,Code Block,
+28,Enumerated Data Types,Enumerated Data Types,Displaying Underlying Integer Values,Code Block,
+29,Enumerated Data Types,Enumerated Data Types,Strongly Typed Enumeration Example,Complete Example,
+30,Pointers to Objects,Pointers to Objects,10.11 Pointers to Objects as Function Parameters,Section Divider,
+31,Pointers to Objects,Pointers to Objects,Can We Use Pointers with Objects?,Motivating Question,
+32,Pointers to Objects,Pointers to Objects,Nothing We Haven't Seen Before,Connect,
+33,Pointers to Objects,Pointers to Objects,Accessing an Object Through a Pointer,Demonstration,
+34,Pointers to Objects,Pointers to Objects,The Dot Operator and Dereferencing,Error Example,
+35,Pointers to Objects,Pointers to Objects,Why Does This Expression Fail?,Contrast,
+36,Pointers to Objects,Pointers to Objects,How Do We Fix That?,Motivating Question,
+37,Pointers to Objects,Pointers to Objects,Parentheses and Dereferencing,Anatomy,
+38,Pointers to Objects,Pointers to Objects,Dereference the Pointer Variable,Invariant,
+39,Pointers to Objects,Pointers to Objects,Would You Like Some Syntactic Sugar?,Motivating Question,
+40,Pointers to Objects,Pointers to Objects,The Structure Pointer Operator,Anatomy,
+41,Pointers to Objects,Pointers to Objects,Using the Structure Pointer Operator,Demonstration,
+42,Pointers to Objects,Pointers to Objects,Does This Work with the Heap?,Predict,
+43,Pointers to Objects,Pointers to Objects,Dynamically Allocated Objects,Complete Example,
+44,Selecting Members of Objects,Selecting Members of Objects,10.12 Selecting Members of Objects,Section Divider,
+45,Selecting Members of Objects,Selecting Members of Objects,Accessing Pointers Inside Objects,Motivating Question,
+46,Selecting Members of Objects,Selecting Members of Objects,Pointer Members Inside a Structure,Complete Example,
+47,Arrays of Objects,Arrays of Objects,8.13 Simple Arrays of Objects,Section Divider,
+48,Arrays of Objects,Arrays of Objects,An Array of Book Objects,Complete Example,
+49,Arrays of Objects,Arrays of Objects,An Array of Strongly Typed Enumerations,Complete Example,
+50,Arrays of Objects,Arrays of Objects,Program This: Exercise,Section Divider,
+51,Arrays of Objects,Arrays of Objects,Exercise Goals,Value Added,
+52,Arrays of Objects,Arrays of Objects,Programming Task: Movie Festival Schedule,Demonstration,
+53,Dynamic Arrays,,Program This: Exercise,Section Divider,
+54,Dynamic Arrays,,Exercise Goals,Value Added,
+55,Dynamic Arrays,Dynamic Arrays,Resizing a Dynamic Array,Demonstration,
+56,Dynamic Arrays,Dynamic Arrays,Dynamic Array Program,Complete Example,
+57,Dynamic Arrays,Dynamic Arrays,Initializing the Dynamic Array,Setup,
+58,Dynamic Arrays,Dynamic Arrays,Adding and Removing Elements,Before/After,
+59,Dynamic Arrays,Dynamic Arrays,Cleaning Up the Dynamic Array,Ownership Model,
+60,Dynamic Arrays,Dynamic Arrays,Dynamic Array Output,Code Block w/output,
+61,Dynamic Arrays,,Program This: Exercise,Section Divider,
+62,Dynamic Arrays,,Exercise Goals,Value Added,
+63,Dynamic Arrays,Dynamic Arrays,Interactive Dynamic Array Exercise,Demonstration,
+64,Course Wrap-Up,,What's This Section About?,Section Divider,
+65,Course Wrap-Up,,Agenda: Pointers,Agenda,
+66,Course Wrap-Up,Dynamic Memory,Big Idea,Value Added,
+67,Course Wrap-Up,Dynamic Memory,Direct Access to Memory,Define,
+68,Course Wrap-Up,Dynamic Memory,Consider: An Address Instead of a Copy,Model,
+69,Course Wrap-Up,Dynamic Memory,Advantages of Pointers,Enumerate,
+70,Course Wrap-Up,Dynamic Memory,Advantages of Pointers,Enumerate,
+71,Course Wrap-Up,Dynamic Memory,Objective for Today,Progression Map,
+72,Course Wrap-Up,,Next Time,Progression Map,
+73,Course Wrap-Up,,Agenda: Object-Oriented Programming,Agenda,
+74,Course Wrap-Up,,Homework 1 Peer Review Due Sunday,Text,
+75,Course Wrap-Up,,Next Time: Group 3 and 11,Progression Map,
+76,Course Wrap-Up,,Chapter 3 Quiz Sunday,Text,
+77,Course Wrap-Up,,<Study Reminder>,Image,
+78,Course Wrap-Up,,No Class Next Week,Text,
+79,Homework and Peer Review,,Peer Review,Section Divider,
+80,Homework and Peer Review,,Homework 1 Peer Review Exercise,Demonstration,
+81,Homework and Peer Review,,Homework Debrief,Summary,
+82,Homework and Peer Review,,Peer Review Process,Process Pattern,
+83,Homework and Peer Review,,Debrief,Reflection,
+84,Dynamic Arrays,Dynamic Arrays,Programming Exercise: Insert and Remove Elements,Demonstration,

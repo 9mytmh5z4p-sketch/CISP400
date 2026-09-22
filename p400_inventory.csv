@@ -81,5 +81,13 @@ p400_lecture_04.01,4,object_oriented_programming,Setters Increase Reliability,hi
 p400_lecture_04.01,4,object_oriented_programming,Getters,high,,no,How Can Clients Observe Object State?; The Role of a Getter; Getter Anatomy; A Getter in a Complete Class
 p400_lecture_04.02,4,object_oriented_programming,Constructors and Constructor Overloading,high,,no,7.6 Constructors; Constructors; Do Classes Have Constructors?; Constructor Use Case
 p400_lecture_04.02,4,course_framing,Course Framing,standard,,no,CISP 400; Last Time; Theme for Today; Method
-p400_lecture_04.02,4,course_framing,Course Wrap-Up,standard,,no,What’s This Section About?; What’s Next?; Homework 2 Due Sunday; Modify This
-p400_lecture_04.02,4,object_oriented_programming,Destructors,high,,no,7.7 Destructors; Constructors and Destructors; Coding Exercise
+p400_lecture_04.02,4,course_framing,Course Wrap-Up,standard,,no,"What’s This Section About?; What’s Next?; Homework 2 Due Sunday; Modify This"
+p400_lecture_04.02,4,object_oriented_programming,Destructors,high,,no,"7.7 Destructors; Constructors and Destructors; Coding Exercise"
+p400_lecture_05.01,5,course_framing,Desk Check,standard,,no,Exercise: Desk Check; Exercise Goals; Desk Check Exercise; Predict the Output; Program Output; Tracing Dynamic Memory
+p400_lecture_05.01,5,object_oriented_programming,Enumerated Data Types,high,,no,4.13 Enumerated Data Types; What Is an Enumerated Data Type?; Syntax; Declaration Examples; Assignment Examples; Allowable Operations; Looping Enumerations; Printing Enumerations; Passing Enumerations; Strongly Typed Enumerations
+p400_lecture_05.01,5,pointers_and_references,Pointers to Objects,high,,no,10.11 Pointers to Objects as Function Parameters; Can We Use Pointers with Objects?; Accessing an Object Through a Pointer; The Dot Operator and Dereferencing; Parentheses and Dereferencing; The Structure Pointer Operator; Dynamically Allocated Objects
+p400_lecture_05.01,5,object_oriented_programming,Selecting Members of Objects,high,,no,10.12 Selecting Members of Objects; Accessing Pointers Inside Objects; Pointer Members Inside a Structure
+p400_lecture_05.01,5,object_oriented_programming,Arrays of Objects,high,,no,8.13 Simple Arrays of Objects; An Array of Book Objects; An Array of Strongly Typed Enumerations; Programming Task: Movie Festival Schedule
+p400_lecture_05.01,5,dynamic_memory,Dynamic Arrays,high,,no,Resizing a Dynamic Array; Dynamic Array Program; Initializing the Dynamic Array; Adding and Removing Elements; Cleaning Up the Dynamic Array; Dynamic Array Output; Interactive Dynamic Array Exercise; Programming Exercise: Insert and Remove Elements
+p400_lecture_05.01,5,course_framing,Course Wrap-Up,standard,,no,What's This Section About?; Agenda: Pointers; Big Idea; Direct Access to Memory; Consider: An Address Instead of a Copy; Advantages of Pointers; Objective for Today; Next Time; Homework 1 Peer Review Due Sunday; Chapter 3 Quiz Sunday; No Class Next Week
+p400_lecture_05.01,5,course_framing,Homework and Peer Review,standard,,no,Peer Review; Homework 1 Peer Review Exercise; Homework Debrief; Peer Review Process; Debrief

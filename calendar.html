@@ -1200,12 +1200,15 @@
       };
 
       const sessionDates = {};
+      const lectureHrefOverrides = {
+        "05.01": "p400_lecture_05.01/p400-10.05%20-%20Pointers%28DyMem%20review%29.pdf"
+      };
 
       const lecture = (id, title) => ({
         id,
         title: window.P400_LECTURE_TITLES[id] || title,
         date: sessionDates[id],
-        href: `${BASE}p400_lecture_${id}/p400_lecture_${id}.html`,
+        href: lectureHrefOverrides[id] || `${BASE}p400_lecture_${id}/p400_lecture_${id}.html`,
         topics: window.P400_INVENTORY[id] || []
       });
 

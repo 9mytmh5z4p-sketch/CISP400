@@ -1198,6 +1198,9 @@
 
       const makeLectureHref = (code) => {
         const slug = `p400_lecture_${code}`;
+        if (code === "05.01") {
+          return `${lectureBase}${slug}/p400-10.05%20-%20Pointers%28DyMem%20review%29.pdf`;
+        }
         return `${lectureBase}${slug}/${slug}.html`;
       };
 
