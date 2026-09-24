@@ -13,7 +13,7 @@ Complete Example,A slide that shows a complete program that models syntax use. T
 Connect,A slide that links new material to knowledge students already have
 Contrast,A slide that distinguishes two related ideas or approaches or states or failure modes
 Code Block,C++ Code 
-Code Block w/output,C++ code in the left column with output on the right column.
+Code Block w/output,A 2 column format slide with C++ code in the left column (~60%) with output on the right column (~40%).
 Decision Point,"A slide that helps students decide when to use one tool or design or programming approach instead of another. Example: Choose among a fixed array, raw dynamic array, unique_ptr<Type[]>, and vector."
 Define,A slide that introduces essential vocabulary or meaning or conceptual identity
 Demonstration,A slide that shows a concept operating in a focused code example or short scenario

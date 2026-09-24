@@ -1,5 +1,5 @@
 <!-- Topic: Anonymous Classes and Objects -->
-<!-- Slides 7–14 -->
+<!-- Slides 8–15 -->
 
 # Anonymous Classes and Objects
 
@@ -10,7 +10,7 @@ Slides 7–14
 Source slide 7 from the authoritative PDF.
 :::
 
-<!-- Slide 7 -->
+<!-- Slide 8 -->
 
 ---
 
@@ -18,7 +18,7 @@ Source slide 7 from the authoritative PDF.
 
 ![](images/source_pages/slide-08.png){width="100%" fig-alt="Anonymous classes"}
 
-<!-- Slide 8 -->
+<!-- Slide 9 -->
 
 ---
 
@@ -26,7 +26,7 @@ Source slide 7 from the authoritative PDF.
 
 ![](images/source_pages/slide-09.png){width="100%" fig-alt="Anonymous Classes"}
 
-<!-- Slide 9 -->
+<!-- Slide 10 -->
 
 ---
 
@@ -34,7 +34,7 @@ Source slide 7 from the authoritative PDF.
 
 ![](images/source_pages/slide-10.png){width="100%" fig-alt="Source Slide 10"}
 
-<!-- Slide 10 -->
+<!-- Slide 11 -->
 
 ---
 
@@ -42,7 +42,7 @@ Source slide 7 from the authoritative PDF.
 
 ![](images/source_pages/slide-11.png){width="100%" fig-alt="Anonymous objects"}
 
-<!-- Slide 11 -->
+<!-- Slide 12 -->
 
 ---
 
@@ -50,7 +50,7 @@ Source slide 7 from the authoritative PDF.
 
 ![](images/source_pages/slide-12.png){width="100%" fig-alt="Source Slide 12"}
 
-<!-- Slide 12 -->
+<!-- Slide 13 -->
 
 ---
 
@@ -58,7 +58,7 @@ Source slide 7 from the authoritative PDF.
 
 ![](images/source_pages/slide-13.png){width="100%" fig-alt="Source Slide 13"}
 
-<!-- Slide 13 -->
+<!-- Slide 14 -->
 
 ---
 
@@ -66,4 +66,4 @@ Source slide 7 from the authoritative PDF.
 
 ![](images/source_pages/slide-14.png){width="100%" fig-alt="Anonymous Object"}
 
-<!-- Slide 14 -->
+<!-- Slide 15 -->

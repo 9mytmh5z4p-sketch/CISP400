@@ -1,0 +1,66 @@
+<!-- Topic: Desk Check -->
+<!-- Slides 22–26 -->
+
+# Exercise
+<!-- Slide 22 -->
+
+## Exercise Goals
+
+- Review of code syntax
+- Check understanding of syntax
+
+<!-- Slide 23 -->
+
+---
+
+## Desk Check Exercise
+
+- Pair up.
+- Manually determine the output of the following code.
+- **DO NOT TYPE THIS IN AND EXECUTE IT.**
+- We’ll spend about 10 minutes on this, then go over it.
+
+<!-- Slide 24 -->
+
+---
+
+## <span style="display:none">Desk Check Code</span>
+
+```{cpp}
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Speaker {
+public:
+    void sayHello(const string& name) {
+        cout << "Hello, " << name << "!" << endl;
+    }
+};
+
+class Greeter {
+public:
+    void greetUser(const string& userName) {
+        Speaker s;  // Local variable: dependency
+        s.sayHello(userName);
+    }
+};
+
+int main() {
+    Greeter g;
+    g.greetUser("Taylor");
+    return 0;
+}
+```
+
+<!-- Slide 25 -->
+
+---
+
+## <span style="display:none">Desk Check Output</span>
+
+```text
+Hello, Taylor!
+```
+
+<!-- Slide 26 -->

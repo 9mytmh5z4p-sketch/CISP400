@@ -1,5 +1,5 @@
 <!-- Topic: Class Starters -->
-<!-- Slides 40–43 -->
+<!-- Slides 41–44 -->
 
 # Class Starters
 
@@ -10,7 +10,7 @@ Slides 40–43
 Source slide 40 from the authoritative PDF.
 :::
 
-<!-- Slide 40 -->
+<!-- Slide 41 -->
 
 ---
 
@@ -18,7 +18,7 @@ Source slide 40 from the authoritative PDF.
 
 ![](images/source_pages/slide-41.png){width="100%" fig-alt="What’s the difference …"}
 
-<!-- Slide 41 -->
+<!-- Slide 42 -->
 
 ---
 
@@ -26,7 +26,7 @@ Source slide 40 from the authoritative PDF.
 
 ![](images/source_pages/slide-42.png){width="100%" fig-alt="42"}
 
-<!-- Slide 42 -->
+<!-- Slide 43 -->
 
 ---
 
@@ -34,4 +34,4 @@ Source slide 40 from the authoritative PDF.
 
 ![](images/source_pages/slide-43.png){width="100%" fig-alt="Sentence Starters"}
 
-<!-- Slide 43 -->
+<!-- Slide 44 -->

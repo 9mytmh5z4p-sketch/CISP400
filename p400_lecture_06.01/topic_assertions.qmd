@@ -1,0 +1,5 @@
+<!-- Topic: Assertions -->
+<!-- Slides 7–7 -->
+
+# Assertions
+<!-- Slide 7 -->

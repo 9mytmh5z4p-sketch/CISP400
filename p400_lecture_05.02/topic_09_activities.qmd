@@ -1,0 +1,29 @@
+<!-- Topic: Activities and Wrap-Up -->
+<!-- Slides 56–58 -->
+
+# Activities and Wrap-Up
+<!-- Slide 56 -->
+
+What’s this section about?
+
+## Theme for Today
+
+**“Passing Objects.”**
+
+<!-- Slide 57 -->
+
+---
+
+## Agenda
+
+### Ch 12 — Strings
+
+- **12.1 C-Strings**
+- **12.2 Library Functions for Working with C-Strings**
+- **12.3 Conversions between Numbers and Strings**
+- **12.4 Writing Your Own C-String Handling Functions**
+- 12.5 More about the C++ String Class
+
+<!-- Slide 58 -->
+
+---

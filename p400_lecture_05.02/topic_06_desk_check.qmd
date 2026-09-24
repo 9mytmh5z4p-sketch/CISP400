@@ -1,0 +1,82 @@
+<!-- Topic: Desk Check -->
+<!-- Slides 35–39 -->
+
+# Exercise
+<!-- Slide 35 -->
+
+---
+
+## Exercise Goals
+
+- Review of code syntax.
+- Check understanding of syntax.
+
+<!-- Slide 36 -->
+
+---
+
+## Desk Check Exercise
+
+- Pair up.
+- Manually determine the output of the following code.
+- **DO NOT TYPE THIS IN AND EXECUTE IT.**
+- We’ll spend about 10 minutes on this, then go over it.
+
+<!-- Slide 37 -->
+
+---
+
+## <span style="display:none">Desk Check Code</span>
+
+```{cpp}
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Message {
+private:
+    string text;
+
+public:
+    Message(const string& t) : text(t) {}
+
+    string getText() const {
+        return text;
+    }
+};
+
+class Messenger {
+public:
+    void deliverMessage(const Message& msg) {
+        cout << "Delivering: " << msg.getText() << endl;
+    }
+};
+
+class Communicator {
+public:
+    void start() {
+        Message m("Mission Start");    // Local dependency
+        Messenger courier;              // Another local dependency
+        courier.deliverMessage(m);
+    }
+};
+
+int main() {
+    Communicator c;
+    c.start();
+    return 0;
+}
+```
+
+<!-- Slide 38 -->
+
+---
+
+## <span style="display:none">Desk Check Output</span>
+
+```text
+Delivering: Mission Start
+```
+
+<!-- Slide 39 -->

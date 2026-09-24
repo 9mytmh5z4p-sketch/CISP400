@@ -1,5 +1,5 @@
 <!-- Topic: Lecture Wrap-Up -->
-<!-- Slides 29–33 -->
+<!-- Slides 30–34 -->
 
 # Lecture Wrap-Up
 
@@ -10,7 +10,7 @@ Slides 29–33
 Source slide 29 from the authoritative PDF.
 :::
 
-<!-- Slide 29 -->
+<!-- Slide 30 -->
 
 ---
 
@@ -18,7 +18,7 @@ Source slide 29 from the authoritative PDF.
 
 ![](images/source_pages/slide-30.png){width="100%" fig-alt="• Learning OOP is about objects working together."}
 
-<!-- Slide 30 -->
+<!-- Slide 31 -->
 
 ---
 
@@ -26,7 +26,7 @@ Source slide 29 from the authoritative PDF.
 
 ![](images/source_pages/slide-31.png){width="100%" fig-alt="31"}
 
-<!-- Slide 31 -->
+<!-- Slide 32 -->
 
 ---
 
@@ -34,7 +34,7 @@ Source slide 29 from the authoritative PDF.
 
 ![](images/source_pages/slide-32.png){width="100%" fig-alt="Ch 11 - More OOP"}
 
-<!-- Slide 32 -->
+<!-- Slide 33 -->
 
 ---
 
@@ -42,4 +42,4 @@ Source slide 29 from the authoritative PDF.
 
 ![](images/source_pages/slide-33.png){width="100%" fig-alt="Homework 2 Peer Review due Sunday."}
 
-<!-- Slide 33 -->
+<!-- Slide 34 -->

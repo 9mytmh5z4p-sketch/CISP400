@@ -1,5 +1,5 @@
 <!-- Topic: Adapter Pattern -->
-<!-- Slides 15–28 -->
+<!-- Slides 16–29 -->
 
 # Adapter Pattern
 
@@ -10,7 +10,7 @@ Slides 15–28
 Source slide 15 from the authoritative PDF.
 :::
 
-<!-- Slide 15 -->
+<!-- Slide 16 -->
 
 ---
 
@@ -18,7 +18,7 @@ Source slide 15 from the authoritative PDF.
 
 ![](images/source_pages/slide-16.png){width="100%" fig-alt="• Assume we create a whizbang class which"}
 
-<!-- Slide 16 -->
+<!-- Slide 17 -->
 
 ---
 
@@ -26,7 +26,7 @@ Source slide 15 from the authoritative PDF.
 
 ![](images/source_pages/slide-17.png){width="100%" fig-alt="Source Slide 17"}
 
-<!-- Slide 17 -->
+<!-- Slide 18 -->
 
 ---
 
@@ -34,7 +34,7 @@ Source slide 15 from the authoritative PDF.
 
 ![](images/source_pages/slide-18.png){width="100%" fig-alt="Adapters"}
 
-<!-- Slide 18 -->
+<!-- Slide 19 -->
 
 ---
 
@@ -42,7 +42,7 @@ Source slide 15 from the authoritative PDF.
 
 ![](images/source_pages/slide-19.png){width="100%" fig-alt="Adapter"}
 
-<!-- Slide 19 -->
+<!-- Slide 20 -->
 
 ---
 
@@ -50,7 +50,7 @@ Source slide 15 from the authoritative PDF.
 
 ![](images/source_pages/slide-20.png){width="100%" fig-alt="Source Slide 20"}
 
-<!-- Slide 20 -->
+<!-- Slide 21 -->
 
 ---
 
@@ -58,7 +58,7 @@ Source slide 15 from the authoritative PDF.
 
 ![](images/source_pages/slide-21.png){width="100%" fig-alt="Source Slide 21"}
 
-<!-- Slide 21 -->
+<!-- Slide 22 -->
 
 ---
 
@@ -66,7 +66,7 @@ Source slide 15 from the authoritative PDF.
 
 ![](images/source_pages/slide-22.png){width="100%" fig-alt="Source Slide 22"}
 
-<!-- Slide 22 -->
+<!-- Slide 23 -->
 
 ---
 
@@ -74,7 +74,7 @@ Source slide 15 from the authoritative PDF.
 
 ![](images/source_pages/slide-23.png){width="100%" fig-alt="Source Slide 23"}
 
-<!-- Slide 23 -->
+<!-- Slide 24 -->
 
 ---
 
@@ -82,7 +82,7 @@ Source slide 15 from the authoritative PDF.
 
 ![](images/source_pages/slide-24.png){width="100%" fig-alt="https://refactoring.guru/design-patterns/adapter"}
 
-<!-- Slide 24 -->
+<!-- Slide 25 -->
 
 ---
 
@@ -90,7 +90,7 @@ Source slide 15 from the authoritative PDF.
 
 ![](images/source_pages/slide-25.png){width="100%" fig-alt="Back to Whizbang"}
 
-<!-- Slide 25 -->
+<!-- Slide 26 -->
 
 ---
 
@@ -98,7 +98,7 @@ Source slide 15 from the authoritative PDF.
 
 ![](images/source_pages/slide-26.png){width="100%" fig-alt="Source Slide 26"}
 
-<!-- Slide 26 -->
+<!-- Slide 27 -->
 
 ---
 
@@ -106,7 +106,7 @@ Source slide 15 from the authoritative PDF.
 
 ![](images/source_pages/slide-27.png){width="100%" fig-alt="Source Slide 27"}
 
-<!-- Slide 27 -->
+<!-- Slide 28 -->
 
 ---
 
@@ -114,4 +114,4 @@ Source slide 15 from the authoritative PDF.
 
 ![](images/source_pages/slide-28.png){width="100%" fig-alt="Source Slide 28"}
 
-<!-- Slide 28 -->
+<!-- Slide 29 -->

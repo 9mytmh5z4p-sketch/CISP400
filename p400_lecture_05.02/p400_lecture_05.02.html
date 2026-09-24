@@ -206,42 +206,24 @@ Dr.&nbsp;Caleb Fowler
 </div>
 
 </section>
-<section id="last-time" class="title-slide slide level1 center">
-<h1>Last Time</h1>
-<ul>
-<li class="fragment"><strong>Reference Variables</strong></li>
-<li class="fragment"><strong>Pass by Value and Pass by Reference</strong></li>
-<li class="fragment"><strong>Reference Variables as Parameters</strong></li>
-<li class="fragment"><strong>Static Local Variables</strong></li>
-<li class="fragment"><strong>Default Parameters</strong></li>
-<li class="fragment"><strong>Exit</strong></li>
-<li class="fragment"><strong>Menus and Functions</strong></li>
-</ul>
-<aside class="notes">
-<p>Brief recall of lecture 05.01. Students should remember that parameter style controls how data crosses a function boundary, and reference parameters can make caller-owned data change.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 1 -->
+<section class="slide level2">
+
+<!-- Topic: Course Framing -->
+<!-- Slides 1–3 -->
 </section>
-
-<section id="todays-agenda" class="title-slide slide level1 center">
-<h1>Today’s Agenda</h1>
-<ul>
-<li>Function Overloading</li>
-<li>Choosing a Parameter Style</li>
-<li>Function Side Effects</li>
-</ul>
+<section>
+<section id="course-framing" class="title-slide slide level1 center">
+<h1>Course Framing</h1>
+<!-- Slide 1 -->
+<p><strong>CISP 400</strong></p>
+<p>Object Oriented Programming in C++</p>
+<p>Dr.&nbsp;Fowler</p>
+<p>Folsom Lake College / El Dorado Center | Rancho Cordova Center</p>
+</section>
+<section id="last-time" class="slide level2">
+<h2>Last Time</h2>
 <aside class="notes">
-
+<p>Slides 1–8</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -254,522 +236,654 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 2 -->
-<!-- Topic 1: Function Overloading -->
-<!-- Slides 3-17 -->
 </section>
-
-<section>
-<section id="function-overloading" class="title-slide slide level1 center">
-<h1>Function Overloading</h1>
+<section id="agenda" class="slide level2">
+<h2>Agenda</h2>
+<h3 id="ch-7-object-oriented-programming">Ch 7 — Object-Oriented Programming</h3>
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td>7.1 Abstract Data Types</td>
+<td>7.8 Private Member Functions</td>
+</tr>
+<tr class="even">
+<td>7.2 Object-Oriented Programming</td>
+<td>7.9 Passing Objects to Functions</td>
+</tr>
+<tr class="odd">
+<td>7.3 Introduction to Classes</td>
+<td>7.10 Object Composition</td>
+</tr>
+<tr class="even">
+<td>7.4 Creating and Using Objects</td>
+<td>7.11 Skip</td>
+</tr>
+<tr class="odd">
+<td>7.5 Defining Member Functions</td>
+<td>7.12 Structures</td>
+</tr>
+<tr class="even">
+<td>7.6 Constructors</td>
+<td>7.13 More on Enumerated Data Types</td>
+</tr>
+<tr class="odd">
+<td>7.7 Destructors</td>
+<td>8.13 Arrays of Objects</td>
+</tr>
+</tbody>
+</table>
 <!-- Slide 3 -->
-</section>
-<section id="same-name-different-inputs" class="slide level2 smaller">
-<h2>Same Name, Different Inputs?</h2>
-<ul>
-<li>When should related functions share one name?</li>
-<li>Function overloading lets the parameter list explain which version is needed.</li>
-</ul>
-<aside class="notes">
-<p>Slides 3-17</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<!-- Topic: Relationships -->
+<!-- Slides 4–21 -->
+</section></section>
+<section>
+<section id="relationships" class="title-slide slide level1 center">
+<h1>Relationships</h1>
 <!-- Slide 4 -->
 </section>
-<section id="what-is-function-overloading" class="slide level2">
-<h2>What Is Function Overloading?</h2>
+<section id="why-relationships-matter" class="slide level2">
+<h2>Why Relationships Matter</h2>
 <ul>
-<li>Function overloading means defining multiple functions with the same name.</li>
-<li>Each version must have a different parameter list.</li>
-<li>The compiler chooses the version that matches the call.</li>
+<li>Objects do not work in isolation. They have relationships with each other.</li>
+<li>We can exploit these relationships to make our code more modular, reliable, and simpler.</li>
+<li>There are a number of relationships.</li>
 </ul>
 <!-- Slide 5 -->
 </section>
-<section id="function-signatures" class="slide level2">
-<h2>Function Signatures</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a><span class="dt">void</span> display<span class="op">(</span><span class="dt">int</span> value<span class="op">);</span></span>
-<span id="cb1-2"><a href=""></a><span class="dt">void</span> display<span class="op">(</span><span class="dt">double</span> value<span class="op">);</span></span>
-<span id="cb1-3"><a href=""></a><span class="dt">void</span> display<span class="op">(</span>string value<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>A signature uses the function name and parameter list.</li>
-<li>Parameter type and count matter.</li>
-<li>Return type and parameter names do not distinguish overloads.</li>
-</ul>
+<section id="relationship-types" class="slide level2">
+<h2>Relationship Types</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Relationship Type</th>
+<th>Relationship Example</th>
+<th>Key Characteristic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Association</td>
+<td>Student ↔︎ Course</td>
+<td>General uses relationship</td>
+</tr>
+<tr class="even">
+<td>Aggregation</td>
+<td>Library → Book</td>
+<td>Weak ownership (has-a)</td>
+</tr>
+<tr class="odd">
+<td>Composition</td>
+<td>Car → Engine</td>
+<td>Strong ownership (part-of)</td>
+</tr>
+<tr class="even">
+<td>Inheritance</td>
+<td>Dog → Animal</td>
+<td>Hierarchical (is-a)</td>
+</tr>
+<tr class="odd">
+<td>Dependency</td>
+<td>Printer → Document</td>
+<td>Temporary use</td>
+</tr>
+<tr class="even">
+<td>Realization</td>
+<td>Bird → Flyable</td>
+<td>Implements behavior</td>
+</tr>
+<tr class="odd">
+<td>Friendship</td>
+<td>Matrix ↔︎ Calculator</td>
+<td>Explicit access granting</td>
+</tr>
+</tbody>
+</table>
+<p>We will cover some of these individually.</p>
 <!-- Slide 6 -->
 </section>
-<section id="example-program-displaying-values" class="slide level2 smaller">
-<h2>Example Program: Displaying Values</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb2-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
-<span id="cb2-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb2-4"><a href=""></a></span>
-<span id="cb2-5"><a href=""></a><span class="dt">void</span> display<span class="op">(</span><span class="dt">int</span> value<span class="op">);</span></span>
-<span id="cb2-6"><a href=""></a><span class="dt">void</span> display<span class="op">(</span><span class="dt">double</span> value<span class="op">);</span></span>
-<span id="cb2-7"><a href=""></a><span class="dt">void</span> display<span class="op">(</span>string value<span class="op">);</span></span>
-<span id="cb2-8"><a href=""></a></span>
-<span id="cb2-9"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb2-10"><a href=""></a>    display<span class="op">(</span><span class="dv">42</span><span class="op">);</span></span>
-<span id="cb2-11"><a href=""></a>    display<span class="op">(</span><span class="fl">3.75</span><span class="op">);</span></span>
-<span id="cb2-12"><a href=""></a>    display<span class="op">(</span><span class="st">"Overloaded display"</span><span class="op">);</span></span>
-<span id="cb2-13"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb2-14"><a href=""></a><span class="op">}</span></span>
-<span id="cb2-15"><a href=""></a></span>
-<span id="cb2-16"><a href=""></a><span class="dt">void</span> display<span class="op">(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb2-17"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"int: "</span> <span class="op">&lt;&lt;</span> value <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb2-18"><a href=""></a><span class="op">}</span></span>
-<span id="cb2-19"><a href=""></a></span>
-<span id="cb2-20"><a href=""></a><span class="dt">void</span> display<span class="op">(</span><span class="dt">double</span> value<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb2-21"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"double: "</span> <span class="op">&lt;&lt;</span> value <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb2-22"><a href=""></a><span class="op">}</span></span>
-<span id="cb2-23"><a href=""></a></span>
-<span id="cb2-24"><a href=""></a><span class="dt">void</span> display<span class="op">(</span>string value<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb2-25"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"string: "</span> <span class="op">&lt;&lt;</span> value <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb2-26"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="relationship-types-dependency" class="slide level2">
+<h2>Relationship Types: Dependency</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Relationship Type</th>
+<th>Relationship Example</th>
+<th>Key Characteristic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Association</td>
+<td>Student ↔︎ Course</td>
+<td>General uses relationship</td>
+</tr>
+<tr class="even">
+<td>Aggregation</td>
+<td>Library → Book</td>
+<td>Weak ownership (has-a)</td>
+</tr>
+<tr class="odd">
+<td>Composition</td>
+<td>Car → Engine</td>
+<td>Strong ownership (part-of)</td>
+</tr>
+<tr class="even">
+<td>Inheritance</td>
+<td>Dog → Animal</td>
+<td>Hierarchical (is-a)</td>
+</tr>
+<tr class="odd">
+<td><strong>Dependency</strong></td>
+<td><strong>Printer → Document</strong></td>
+<td><strong>Temporary use</strong></td>
+</tr>
+<tr class="even">
+<td>Realization</td>
+<td>Bird → Flyable</td>
+<td>Implements behavior</td>
+</tr>
+<tr class="odd">
+<td>Friendship</td>
+<td>Matrix ↔︎ Calculator</td>
+<td>Explicit access granting</td>
+</tr>
+</tbody>
+</table>
 <!-- Slide 7 -->
 </section>
-<section id="different-parameter-types" class="slide level2">
-<h2>Different Parameter Types</h2>
+<section id="dependency-relationship" class="slide level2">
+<h2>Dependency Relationship</h2>
 <ul>
-<li><code>display(42)</code> calls the <code>int</code> version.</li>
-<li><code>display(3.75)</code> calls the <code>double</code> version.</li>
-<li><code>display("Overloaded display")</code> calls the <code>string</code> version.</li>
+<li>The “loosest” form of class relationship.</li>
+<li>Class A uses Class B temporarily.</li>
+<li>Also called a “uses-a” relationship.</li>
 </ul>
-<p>The function name stays the same because the operation is the same: display one value.</p>
 <!-- Slide 8 -->
 </section>
-<section id="example-program-calculating-area" class="slide level2 smaller">
-<h2>Example Program: Calculating Area</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb3-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb3-3"><a href=""></a></span>
-<span id="cb3-4"><a href=""></a><span class="dt">double</span> area<span class="op">(</span><span class="dt">double</span> side<span class="op">);</span></span>
-<span id="cb3-5"><a href=""></a><span class="dt">double</span> area<span class="op">(</span><span class="dt">double</span> length<span class="op">,</span> <span class="dt">double</span> width<span class="op">);</span></span>
-<span id="cb3-6"><a href=""></a><span class="dt">double</span> area<span class="op">(</span><span class="dt">double</span> base<span class="op">,</span> <span class="dt">double</span> height<span class="op">,</span> <span class="dt">char</span> shapeCode<span class="op">);</span></span>
-<span id="cb3-7"><a href=""></a></span>
-<span id="cb3-8"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb3-9"><a href=""></a>    cout <span class="op">&lt;&lt;</span> area<span class="op">(</span><span class="fl">4.0</span><span class="op">)</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb3-10"><a href=""></a>    cout <span class="op">&lt;&lt;</span> area<span class="op">(</span><span class="fl">5.0</span><span class="op">,</span> <span class="fl">3.0</span><span class="op">)</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb3-11"><a href=""></a>    cout <span class="op">&lt;&lt;</span> area<span class="op">(</span><span class="fl">6.0</span><span class="op">,</span> <span class="fl">2.5</span><span class="op">,</span> <span class="ch">'t'</span><span class="op">)</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb3-12"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb3-13"><a href=""></a><span class="op">}</span></span>
-<span id="cb3-14"><a href=""></a></span>
-<span id="cb3-15"><a href=""></a><span class="dt">double</span> area<span class="op">(</span><span class="dt">double</span> side<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-16"><a href=""></a>    <span class="cf">return</span> side <span class="op">*</span> side<span class="op">;</span></span>
-<span id="cb3-17"><a href=""></a><span class="op">}</span></span>
-<span id="cb3-18"><a href=""></a></span>
-<span id="cb3-19"><a href=""></a><span class="dt">double</span> area<span class="op">(</span><span class="dt">double</span> length<span class="op">,</span> <span class="dt">double</span> width<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-20"><a href=""></a>    <span class="cf">return</span> length <span class="op">*</span> width<span class="op">;</span></span>
-<span id="cb3-21"><a href=""></a><span class="op">}</span></span>
-<span id="cb3-22"><a href=""></a></span>
-<span id="cb3-23"><a href=""></a><span class="dt">double</span> area<span class="op">(</span><span class="dt">double</span> base<span class="op">,</span> <span class="dt">double</span> height<span class="op">,</span> <span class="dt">char</span> shapeCode<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-24"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>shapeCode <span class="op">==</span> <span class="ch">'t'</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-25"><a href=""></a>        <span class="cf">return</span> base <span class="op">*</span> height <span class="op">/</span> <span class="fl">2.0</span><span class="op">;</span></span>
-<span id="cb3-26"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb3-27"><a href=""></a>    <span class="cf">return</span> base <span class="op">*</span> height <span class="op">/</span> <span class="fl">2.0</span><span class="op">;</span></span>
-<span id="cb3-28"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="coding-characteristics" class="slide level2">
+<h2>Coding Characteristics</h2>
+<ul>
+<li>Short-lived interaction.</li>
+<li>Class A depends on class B, but B is not stored in class A.</li>
+</ul>
 <!-- Slide 9 -->
 </section>
-<section id="different-number-of-parameters" class="slide level2">
-<h2>Different Number of Parameters</h2>
-<ul>
-<li><code>area(4.0)</code> computes a square area.</li>
-<li><code>area(5.0, 3.0)</code> computes a rectangle area.</li>
-<li><code>area(6.0, 2.5, 't')</code> computes a triangle area.</li>
-</ul>
-<p>The number of arguments helps the compiler choose the intended version.</p>
+<section id="example-1" class="slide level2">
+<h2>Example 1</h2>
 <!-- Slide 10 -->
 </section>
-<section id="return-type-is-not-enough" class="slide level2">
-<h2>Return Type Is Not Enough</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href=""></a><span class="dt">int</span> getValue<span class="op">();</span></span>
-<span id="cb4-2"><a href=""></a><span class="dt">double</span> getValue<span class="op">();</span>  <span class="co">// error</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>These functions have the same name and no parameters.</li>
-<li>The compiler cannot choose between them from the call <code>getValue()</code>.</li>
-<li>Overloads need different parameter lists.</li>
-</ul>
+<section id="example-1-passing-a-document-by-reference" class="slide level2">
+<h2>Example 1: Passing a Document by Reference</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href=""></a>#include &lt;iostream&gt;</span>
+<span id="cb1-2"><a href=""></a>using namespace std;</span>
+<span id="cb1-3"><a href=""></a></span>
+<span id="cb1-4"><a href=""></a>class Document {</span>
+<span id="cb1-5"><a href=""></a>public:</span>
+<span id="cb1-6"><a href=""></a>    string getContent() const {</span>
+<span id="cb1-7"><a href=""></a>        return "This is the document content.";</span>
+<span id="cb1-8"><a href=""></a>    }</span>
+<span id="cb1-9"><a href=""></a>};</span>
+<span id="cb1-10"><a href=""></a></span>
+<span id="cb1-11"><a href=""></a>class Printer {</span>
+<span id="cb1-12"><a href=""></a>public:</span>
+<span id="cb1-13"><a href=""></a>    void printDocument(const Document&amp; doc) {  // Dependency</span>
+<span id="cb1-14"><a href=""></a>        cout &lt;&lt; "Printing: " &lt;&lt; doc.getContent() &lt;&lt; endl;</span>
+<span id="cb1-15"><a href=""></a>    }</span>
+<span id="cb1-16"><a href=""></a>};</span>
+<span id="cb1-17"><a href=""></a></span>
+<span id="cb1-18"><a href=""></a>int main() {</span>
+<span id="cb1-19"><a href=""></a>    Document myDoc;</span>
+<span id="cb1-20"><a href=""></a>    Printer myPrinter;</span>
+<span id="cb1-21"><a href=""></a></span>
+<span id="cb1-22"><a href=""></a>    myPrinter.printDocument(myDoc);  // Uses Document temporarily</span>
+<span id="cb1-23"><a href=""></a>}</span>
+<span id="cb1-24"><a href=""></a></span>
+<span id="cb1-25"><a href=""></a>/*</span>
+<span id="cb1-26"><a href=""></a>Printer needs to know something about the documents coming in.</span>
+<span id="cb1-27"><a href=""></a>That's why we use a reference.</span>
+<span id="cb1-28"><a href=""></a>*/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <!-- Slide 11 -->
 </section>
-<section id="how-the-compiler-chooses" class="slide level2">
-<h2>How the Compiler Chooses</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a><span class="dt">void</span> show<span class="op">(</span><span class="dt">int</span> value<span class="op">);</span></span>
-<span id="cb5-2"><a href=""></a><span class="dt">void</span> show<span class="op">(</span><span class="dt">double</span> value<span class="op">);</span></span>
-<span id="cb5-3"><a href=""></a></span>
-<span id="cb5-4"><a href=""></a>show<span class="op">(</span><span class="dv">10</span><span class="op">);</span></span>
-<span id="cb5-5"><a href=""></a>show<span class="op">(</span><span class="fl">10.5</span><span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>The compiler first looks for an exact match.</li>
-<li><code>10</code> is an <code>int</code> literal, so it matches <code>show(int)</code>.</li>
-<li><code>10.5</code> is a <code>double</code> literal, so it matches <code>show(double)</code>.</li>
-</ul>
+<section id="example-2" class="slide level2">
+<h2>Example 2</h2>
 <!-- Slide 12 -->
 </section>
-<section id="example-program-formatting-reports" class="slide level2 smaller">
-<h2>Example Program: Formatting Reports</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb6-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iomanip&gt;</span></span>
-<span id="cb6-3"><a href=""></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
-<span id="cb6-4"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb6-5"><a href=""></a></span>
-<span id="cb6-6"><a href=""></a><span class="dt">void</span> printReport<span class="op">(</span>string label<span class="op">,</span> <span class="dt">int</span> value<span class="op">);</span></span>
-<span id="cb6-7"><a href=""></a><span class="dt">void</span> printReport<span class="op">(</span>string label<span class="op">,</span> <span class="dt">double</span> value<span class="op">);</span></span>
-<span id="cb6-8"><a href=""></a><span class="dt">void</span> printReport<span class="op">(</span>string label<span class="op">,</span> <span class="dt">int</span> low<span class="op">,</span> <span class="dt">int</span> high<span class="op">);</span></span>
-<span id="cb6-9"><a href=""></a></span>
-<span id="cb6-10"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb6-11"><a href=""></a>    printReport<span class="op">(</span><span class="st">"Count"</span><span class="op">,</span> <span class="dv">42</span><span class="op">);</span></span>
-<span id="cb6-12"><a href=""></a>    printReport<span class="op">(</span><span class="st">"Average"</span><span class="op">,</span> <span class="fl">87.5</span><span class="op">);</span></span>
-<span id="cb6-13"><a href=""></a>    printReport<span class="op">(</span><span class="st">"Range"</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">100</span><span class="op">);</span></span>
-<span id="cb6-14"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb6-15"><a href=""></a><span class="op">}</span></span>
-<span id="cb6-16"><a href=""></a></span>
-<span id="cb6-17"><a href=""></a><span class="dt">void</span> printReport<span class="op">(</span>string label<span class="op">,</span> <span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-18"><a href=""></a>    cout <span class="op">&lt;&lt;</span> label <span class="op">&lt;&lt;</span> <span class="st">": "</span> <span class="op">&lt;&lt;</span> value <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb6-19"><a href=""></a><span class="op">}</span></span>
-<span id="cb6-20"><a href=""></a></span>
-<span id="cb6-21"><a href=""></a><span class="dt">void</span> printReport<span class="op">(</span>string label<span class="op">,</span> <span class="dt">double</span> value<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-22"><a href=""></a>    cout <span class="op">&lt;&lt;</span> fixed <span class="op">&lt;&lt;</span> setprecision<span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
-<span id="cb6-23"><a href=""></a>    cout <span class="op">&lt;&lt;</span> label <span class="op">&lt;&lt;</span> <span class="st">": "</span> <span class="op">&lt;&lt;</span> value <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb6-24"><a href=""></a><span class="op">}</span></span>
-<span id="cb6-25"><a href=""></a></span>
-<span id="cb6-26"><a href=""></a><span class="dt">void</span> printReport<span class="op">(</span>string label<span class="op">,</span> <span class="dt">int</span> low<span class="op">,</span> <span class="dt">int</span> high<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-27"><a href=""></a>    cout <span class="op">&lt;&lt;</span> label <span class="op">&lt;&lt;</span> <span class="st">": "</span> <span class="op">&lt;&lt;</span> low <span class="op">&lt;&lt;</span> <span class="st">" to "</span> <span class="op">&lt;&lt;</span> high <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb6-28"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="example-2-complete-program" class="slide level2">
+<h2>Example 2: Complete Program</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href=""></a>#include &lt;iostream&gt;</span>
+<span id="cb2-2"><a href=""></a>#include &lt;string&gt;</span>
+<span id="cb2-3"><a href=""></a>using namespace std;</span>
+<span id="cb2-4"><a href=""></a></span>
+<span id="cb2-5"><a href=""></a>class Customer {</span>
+<span id="cb2-6"><a href=""></a>private:</span>
+<span id="cb2-7"><a href=""></a>    string name;</span>
+<span id="cb2-8"><a href=""></a>public:</span>
+<span id="cb2-9"><a href=""></a>    Customer(const string&amp; name) : name(name) {}</span>
+<span id="cb2-10"><a href=""></a>    string getName() const { return name; }</span>
+<span id="cb2-11"><a href=""></a>};</span>
+<span id="cb2-12"><a href=""></a></span>
+<span id="cb2-13"><a href=""></a>class Order {</span>
+<span id="cb2-14"><a href=""></a>public:</span>
+<span id="cb2-15"><a href=""></a>    void printCustomerInfo(const Customer&amp; cust) {</span>
+<span id="cb2-16"><a href=""></a>        cout &lt;&lt; "Processing order for customer: " &lt;&lt; cust.getName() &lt;&lt; endl;</span>
+<span id="cb2-17"><a href=""></a>    }</span>
+<span id="cb2-18"><a href=""></a>    void sendThankYou(const Customer&amp; cust) {</span>
+<span id="cb2-19"><a href=""></a>        cout &lt;&lt; "Thank you, " &lt;&lt; cust.getName() &lt;&lt; ", for your order!" &lt;&lt; endl;</span>
+<span id="cb2-20"><a href=""></a>    }</span>
+<span id="cb2-21"><a href=""></a>};</span>
+<span id="cb2-22"><a href=""></a></span>
+<span id="cb2-23"><a href=""></a>int main() {</span>
+<span id="cb2-24"><a href=""></a>    Customer c1("Alice");</span>
+<span id="cb2-25"><a href=""></a>    Customer c2("Bob");</span>
+<span id="cb2-26"><a href=""></a>    Order order;</span>
+<span id="cb2-27"><a href=""></a>    order.printCustomerInfo(c1);</span>
+<span id="cb2-28"><a href=""></a>    order.sendThankYou(c2);</span>
+<span id="cb2-29"><a href=""></a>    order.printCustomerInfo(Customer("Charlie"));</span>
+<span id="cb2-30"><a href=""></a>    return 0;</span>
+<span id="cb2-31"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <!-- Slide 13 -->
 </section>
-<section id="ambiguous-calls" class="slide level2">
-<h2>Ambiguous Calls</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a><span class="dt">void</span> convert<span class="op">(</span><span class="dt">long</span> value<span class="op">);</span></span>
-<span id="cb7-2"><a href=""></a><span class="dt">void</span> convert<span class="op">(</span><span class="dt">double</span> value<span class="op">);</span></span>
-<span id="cb7-3"><a href=""></a></span>
-<span id="cb7-4"><a href=""></a>convert<span class="op">(</span><span class="dv">10</span><span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>The call may require a conversion either way.</li>
-<li>If no single overload is clearly best, the compiler reports an error.</li>
-<li>C++ does not guess when overload resolution is ambiguous.</li>
-</ul>
+<section id="example-2-customer-class" class="slide level2">
+<h2>Example 2: Customer Class</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href=""></a>class Customer {</span>
+<span id="cb3-2"><a href=""></a>private:</span>
+<span id="cb3-3"><a href=""></a>    string name;</span>
+<span id="cb3-4"><a href=""></a></span>
+<span id="cb3-5"><a href=""></a>public:</span>
+<span id="cb3-6"><a href=""></a>    Customer(const string&amp; name) : name(name) {}</span>
+<span id="cb3-7"><a href=""></a></span>
+<span id="cb3-8"><a href=""></a>    string getName() const {</span>
+<span id="cb3-9"><a href=""></a>        return name;</span>
+<span id="cb3-10"><a href=""></a>    }</span>
+<span id="cb3-11"><a href=""></a>};</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <!-- Slide 14 -->
 </section>
-<section id="overloading-vs.-different-names" class="slide level2">
-<h2>Overloading vs.&nbsp;Different Names</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Use overloading when…</th>
-<th>Use different names when…</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>the job is conceptually the same</td>
-<td>the jobs are meaningfully different</td>
-</tr>
-<tr class="even">
-<td>parameter lists communicate the case</td>
-<td>the shared name would hide intent</td>
-</tr>
-<tr class="odd">
-<td>callers expect one operation family</td>
-<td>callers need separate actions</td>
-</tr>
-</tbody>
-</table>
+<section id="example-2-order-class" class="slide level2">
+<h2>Example 2: Order Class</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href=""></a>class Order {</span>
+<span id="cb4-2"><a href=""></a>public:</span>
+<span id="cb4-3"><a href=""></a>    void printCustomerInfo(const Customer&amp; cust) {</span>
+<span id="cb4-4"><a href=""></a>        cout &lt;&lt; "Processing order for customer: " &lt;&lt; cust.getName() &lt;&lt; endl;</span>
+<span id="cb4-5"><a href=""></a>    }</span>
+<span id="cb4-6"><a href=""></a></span>
+<span id="cb4-7"><a href=""></a>    void sendThankYou(const Customer&amp; cust) {</span>
+<span id="cb4-8"><a href=""></a>        cout &lt;&lt; "Thank you, " &lt;&lt; cust.getName() &lt;&lt; ", for your order!" &lt;&lt; endl;</span>
+<span id="cb4-9"><a href=""></a>    }</span>
+<span id="cb4-10"><a href=""></a>};</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <!-- Slide 15 -->
 </section>
-<section id="common-practices" class="slide level2">
-<h2>Common Practices</h2>
-<ul>
-<li>Use overloading to make related calls read naturally.</li>
-<li>Keep overloads focused on one shared operation.</li>
-<li>Avoid overloads that surprise the caller or depend on subtle conversions.</li>
-</ul>
+<section id="example-2-main-function" class="slide level2">
+<h2>Example 2: Main Function</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href=""></a>int main() {</span>
+<span id="cb5-2"><a href=""></a>    Customer c1("Alice");</span>
+<span id="cb5-3"><a href=""></a>    Customer c2("Bob");</span>
+<span id="cb5-4"><a href=""></a></span>
+<span id="cb5-5"><a href=""></a>    Order order;</span>
+<span id="cb5-6"><a href=""></a></span>
+<span id="cb5-7"><a href=""></a>    order.printCustomerInfo(c1);        // Order "uses" Customer (dependency)</span>
+<span id="cb5-8"><a href=""></a>    order.sendThankYou(c2);             // Another dependency use</span>
+<span id="cb5-9"><a href=""></a>    order.printCustomerInfo(Customer("Charlie"));  // Also works, temp object</span>
+<span id="cb5-10"><a href=""></a></span>
+<span id="cb5-11"><a href=""></a>    return 0;</span>
+<span id="cb5-12"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <!-- Slide 16 -->
 </section>
-<section id="summary" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>Overloaded functions share one name.</li>
-<li>The parameter list distinguishes each version.</li>
-<li>Good overloads make a function family easier to call and easier to read.</li>
-</ul>
+<section id="example-2-output" class="slide level2">
+<h2>Example 2: Output</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a href=""></a>Processing order for customer: Alice</span>
+<span id="cb6-2"><a href=""></a>Thank you, Bob, for your order!</span>
+<span id="cb6-3"><a href=""></a>Processing order for customer: Charlie</span>
+<span id="cb6-4"><a href=""></a>=== Code Execution Successful ===</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <!-- Slide 17 -->
-<!-- Topic 2: Choosing a Parameter Style -->
-<!-- Slides 18-32 -->
-</section></section>
-<section>
-<section id="choosing-a-parameter-style" class="title-slide slide level1 center">
-<h1>Choosing a Parameter Style</h1>
+</section>
+<section id="references-and-dependencies" class="slide level2">
+<h2>References and Dependencies</h2>
+<ul>
+<li>Do we always need to use reference variables?</li>
+</ul>
 <!-- Slide 18 -->
 </section>
-<section id="what-should-cross-the-boundary" class="slide level2 smaller">
-<h2>What Should Cross the Boundary?</h2>
+<section id="passing-by-value" class="slide level2">
+<h2>Passing by Value</h2>
+<p>No.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href=""></a>class Logger {</span>
+<span id="cb7-2"><a href=""></a>public:</span>
+<span id="cb7-3"><a href=""></a>    void logMessage(string message) {  // Passed by value</span>
+<span id="cb7-4"><a href=""></a>        cout &lt;&lt; "[LOG]: " &lt;&lt; message &lt;&lt; endl;</span>
+<span id="cb7-5"><a href=""></a>    }</span>
+<span id="cb7-6"><a href=""></a>};</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li>Should the function receive a copy?</li>
-<li>Should it work with caller-owned storage?</li>
-<li>Should it return a new result?</li>
+<li>Technically this is a dependency relationship.</li>
+<li>But because strings are a standard type, nobody thinks of it that way.</li>
+<li>Nor do we need a reference because strings are built in.</li>
 </ul>
-<aside class="notes">
-<p>Slides 18-32</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 <!-- Slide 19 -->
 </section>
-<section id="the-four-main-styles" class="slide level2">
-<h2>The Four Main Styles</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Style</th>
-<th>What it communicates</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>pass by value</td>
-<td>the function receives a copy</td>
-</tr>
-<tr class="even">
-<td>return value</td>
-<td>the function sends back one result</td>
-</tr>
-<tr class="odd">
-<td>pass by reference</td>
-<td>the function may update caller data</td>
-</tr>
-<tr class="even">
-<td>pass by const reference</td>
-<td>the function reads larger data without copying</td>
-</tr>
-</tbody>
-</table>
+<section id="example-3" class="slide level2">
+<h2>Example 3</h2>
 <!-- Slide 20 -->
 </section>
-<section id="style-1-pass-by-value" class="slide level2">
-<h2>Style 1: Pass by Value</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a><span class="dt">void</span> showAdjusted<span class="op">(</span><span class="dt">int</span> score<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>Use pass by value when the function needs data but should not change the caller’s variable.</li>
-<li>The parameter is local to the function.</li>
-<li>Changes inside the function stay inside the function.</li>
-</ul>
+<section id="example-3-dependency-through-a-return-type" class="slide level2">
+<h2>Example 3: Dependency Through a Return Type</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a href=""></a>#include &lt;iostream&gt;</span>
+<span id="cb8-2"><a href=""></a>#include &lt;string&gt;</span>
+<span id="cb8-3"><a href=""></a>using namespace std;</span>
+<span id="cb8-4"><a href=""></a></span>
+<span id="cb8-5"><a href=""></a>class User {</span>
+<span id="cb8-6"><a href=""></a>private:</span>
+<span id="cb8-7"><a href=""></a>    string username;</span>
+<span id="cb8-8"><a href=""></a>public:</span>
+<span id="cb8-9"><a href=""></a>    User(string name) : username(name) {}</span>
+<span id="cb8-10"><a href=""></a>    string getUsername() const { return username; }</span>
+<span id="cb8-11"><a href=""></a>};</span>
+<span id="cb8-12"><a href=""></a></span>
+<span id="cb8-13"><a href=""></a>class UserDatabase {</span>
+<span id="cb8-14"><a href=""></a>public:</span>
+<span id="cb8-15"><a href=""></a>    User getUserById(int id) {</span>
+<span id="cb8-16"><a href=""></a>        return User("user_" + to_string(id));</span>
+<span id="cb8-17"><a href=""></a>    }</span>
+<span id="cb8-18"><a href=""></a>};</span>
+<span id="cb8-19"><a href=""></a></span>
+<span id="cb8-20"><a href=""></a>int main() {</span>
+<span id="cb8-21"><a href=""></a>    UserDatabase db;</span>
+<span id="cb8-22"><a href=""></a>    User u = db.getUserById(42);  // Dependency via return type</span>
+<span id="cb8-23"><a href=""></a>    cout &lt;&lt; "Fetched user: " &lt;&lt; u.getUsername() &lt;&lt; endl;</span>
+<span id="cb8-24"><a href=""></a>    return 0;</span>
+<span id="cb8-25"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a href=""></a>Fetched user: user_42</span>
+<span id="cb9-2"><a href=""></a>=== Code Execution Successful ===</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <!-- Slide 21 -->
-</section>
-<section id="example-program-value-parameters" class="slide level2 smaller">
-<h2>Example Program: Value Parameters</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb9-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb9-3"><a href=""></a></span>
-<span id="cb9-4"><a href=""></a><span class="dt">void</span> showAdjusted<span class="op">(</span><span class="dt">int</span> score<span class="op">);</span></span>
-<span id="cb9-5"><a href=""></a></span>
-<span id="cb9-6"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb9-7"><a href=""></a>    <span class="dt">int</span> quizScore <span class="op">=</span> <span class="dv">72</span><span class="op">;</span></span>
-<span id="cb9-8"><a href=""></a>    showAdjusted<span class="op">(</span>quizScore<span class="op">);</span></span>
-<span id="cb9-9"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Original: "</span> <span class="op">&lt;&lt;</span> quizScore <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb9-10"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb9-11"><a href=""></a><span class="op">}</span></span>
-<span id="cb9-12"><a href=""></a></span>
-<span id="cb9-13"><a href=""></a><span class="dt">void</span> showAdjusted<span class="op">(</span><span class="dt">int</span> score<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb9-14"><a href=""></a>    score <span class="op">=</span> score <span class="op">+</span> <span class="dv">5</span><span class="op">;</span></span>
-<span id="cb9-15"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Adjusted copy: "</span> <span class="op">&lt;&lt;</span> score <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb9-16"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Topic: Desk Check -->
+<!-- Slides 22–26 -->
+</section></section>
+<section>
+<section id="exercise" class="title-slide slide level1 center">
+<h1>Exercise</h1>
 <!-- Slide 22 -->
 </section>
-<section id="style-2-return-a-new-value" class="slide level2">
-<h2>Style 2: Return a New Value</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href=""></a><span class="dt">double</span> addTax<span class="op">(</span><span class="dt">double</span> price<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="exercise-goals" class="slide level2">
+<h2>Exercise Goals</h2>
 <ul>
-<li>Use a return value when the function computes one clear answer.</li>
-<li>The caller decides whether to store, display, or ignore that answer.</li>
-<li>The original argument does not need to change.</li>
+<li>Review of code syntax</li>
+<li>Check understanding of syntax</li>
 </ul>
 <!-- Slide 23 -->
 </section>
-<section id="example-program-returning-a-result" class="slide level2 smaller">
-<h2>Example Program: Returning a Result</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb11-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iomanip&gt;</span></span>
-<span id="cb11-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb11-4"><a href=""></a></span>
-<span id="cb11-5"><a href=""></a><span class="dt">double</span> addTax<span class="op">(</span><span class="dt">double</span> price<span class="op">);</span></span>
-<span id="cb11-6"><a href=""></a></span>
-<span id="cb11-7"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb11-8"><a href=""></a>    <span class="dt">double</span> price <span class="op">=</span> <span class="fl">20.00</span><span class="op">;</span></span>
-<span id="cb11-9"><a href=""></a>    <span class="dt">double</span> total <span class="op">=</span> addTax<span class="op">(</span>price<span class="op">);</span></span>
-<span id="cb11-10"><a href=""></a>    cout <span class="op">&lt;&lt;</span> fixed <span class="op">&lt;&lt;</span> setprecision<span class="op">(</span><span class="dv">2</span><span class="op">);</span></span>
-<span id="cb11-11"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Price: "</span> <span class="op">&lt;&lt;</span> price <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb11-12"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Total: "</span> <span class="op">&lt;&lt;</span> total <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb11-13"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb11-14"><a href=""></a><span class="op">}</span></span>
-<span id="cb11-15"><a href=""></a></span>
-<span id="cb11-16"><a href=""></a><span class="dt">double</span> addTax<span class="op">(</span><span class="dt">double</span> price<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb11-17"><a href=""></a>    <span class="cf">return</span> price <span class="op">*</span> <span class="fl">1.0825</span><span class="op">;</span></span>
-<span id="cb11-18"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="desk-check-exercise" class="slide level2">
+<h2>Desk Check Exercise</h2>
+<ul>
+<li>Pair up.</li>
+<li>Manually determine the output of the following code.</li>
+<li><strong>DO NOT TYPE THIS IN AND EXECUTE IT.</strong></li>
+<li>We’ll spend about 10 minutes on this, then go over it.</li>
+</ul>
 <!-- Slide 24 -->
 </section>
-<section id="style-3-pass-by-reference" class="slide level2">
-<h2>Style 3: Pass by Reference</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href=""></a><span class="dt">void</span> applyDiscount<span class="op">(</span><span class="dt">double</span><span class="op">&amp;</span> price<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>Use non-const reference when the function is supposed to update caller-owned data.</li>
-<li>The <code>&amp;</code> makes the parameter an alias for the caller’s variable.</li>
-<li>The prototype warns that the argument may change.</li>
-</ul>
+<section id="desk-check-code" class="slide level2">
+<h2><span style="display:none">Desk Check Code</span></h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a href=""></a>#include &lt;iostream&gt;</span>
+<span id="cb10-2"><a href=""></a>#include &lt;string&gt;</span>
+<span id="cb10-3"><a href=""></a>using namespace std;</span>
+<span id="cb10-4"><a href=""></a></span>
+<span id="cb10-5"><a href=""></a>class Speaker {</span>
+<span id="cb10-6"><a href=""></a>public:</span>
+<span id="cb10-7"><a href=""></a>    void sayHello(const string&amp; name) {</span>
+<span id="cb10-8"><a href=""></a>        cout &lt;&lt; "Hello, " &lt;&lt; name &lt;&lt; "!" &lt;&lt; endl;</span>
+<span id="cb10-9"><a href=""></a>    }</span>
+<span id="cb10-10"><a href=""></a>};</span>
+<span id="cb10-11"><a href=""></a></span>
+<span id="cb10-12"><a href=""></a>class Greeter {</span>
+<span id="cb10-13"><a href=""></a>public:</span>
+<span id="cb10-14"><a href=""></a>    void greetUser(const string&amp; userName) {</span>
+<span id="cb10-15"><a href=""></a>        Speaker s;  // Local variable: dependency</span>
+<span id="cb10-16"><a href=""></a>        s.sayHello(userName);</span>
+<span id="cb10-17"><a href=""></a>    }</span>
+<span id="cb10-18"><a href=""></a>};</span>
+<span id="cb10-19"><a href=""></a></span>
+<span id="cb10-20"><a href=""></a>int main() {</span>
+<span id="cb10-21"><a href=""></a>    Greeter g;</span>
+<span id="cb10-22"><a href=""></a>    g.greetUser("Taylor");</span>
+<span id="cb10-23"><a href=""></a>    return 0;</span>
+<span id="cb10-24"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <!-- Slide 25 -->
 </section>
-<section id="example-program-updating-caller-data" class="slide level2 smaller">
-<h2>Example Program: Updating Caller Data</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb13-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iomanip&gt;</span></span>
-<span id="cb13-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb13-4"><a href=""></a></span>
-<span id="cb13-5"><a href=""></a><span class="dt">void</span> applyDiscount<span class="op">(</span><span class="dt">double</span><span class="op">&amp;</span> price<span class="op">);</span></span>
-<span id="cb13-6"><a href=""></a></span>
-<span id="cb13-7"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb13-8"><a href=""></a>    <span class="dt">double</span> price <span class="op">=</span> <span class="fl">40.00</span><span class="op">;</span></span>
-<span id="cb13-9"><a href=""></a>    applyDiscount<span class="op">(</span>price<span class="op">);</span></span>
-<span id="cb13-10"><a href=""></a>    cout <span class="op">&lt;&lt;</span> fixed <span class="op">&lt;&lt;</span> setprecision<span class="op">(</span><span class="dv">2</span><span class="op">);</span></span>
-<span id="cb13-11"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Discounted price: "</span> <span class="op">&lt;&lt;</span> price <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb13-12"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb13-13"><a href=""></a><span class="op">}</span></span>
-<span id="cb13-14"><a href=""></a></span>
-<span id="cb13-15"><a href=""></a><span class="dt">void</span> applyDiscount<span class="op">(</span><span class="dt">double</span><span class="op">&amp;</span> price<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb13-16"><a href=""></a>    price <span class="op">=</span> price <span class="op">*</span> <span class="fl">0.90</span><span class="op">;</span></span>
-<span id="cb13-17"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="desk-check-output" class="slide level2">
+<h2><span style="display:none">Desk Check Output</span></h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a href=""></a>Hello, Taylor!</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <!-- Slide 26 -->
-</section>
-<section id="style-4-pass-by-const-reference" class="slide level2">
-<h2>Style 4: Pass by Const Reference</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href=""></a><span class="dt">double</span> average<span class="op">(</span><span class="at">const</span> vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&amp;</span> scores<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>Use <code>const</code> reference for read-only larger data.</li>
-<li>The function avoids copying the whole object.</li>
-<li><code>const</code> prevents accidental changes inside the function.</li>
-</ul>
-<!-- Slide 27 -->
-</section>
-<section id="example-program-reading-a-vector" class="slide level2 smaller">
-<h2>Example Program: Reading a Vector</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb15-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
-<span id="cb15-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb15-4"><a href=""></a></span>
-<span id="cb15-5"><a href=""></a><span class="dt">double</span> average<span class="op">(</span><span class="at">const</span> vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&amp;</span> scores<span class="op">);</span></span>
-<span id="cb15-6"><a href=""></a></span>
-<span id="cb15-7"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb15-8"><a href=""></a>    vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores <span class="op">=</span> <span class="op">{</span><span class="dv">90</span><span class="op">,</span> <span class="dv">84</span><span class="op">,</span> <span class="dv">96</span><span class="op">};</span></span>
-<span id="cb15-9"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Average: "</span> <span class="op">&lt;&lt;</span> average<span class="op">(</span>scores<span class="op">)</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb15-10"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb15-11"><a href=""></a><span class="op">}</span></span>
-<span id="cb15-12"><a href=""></a></span>
-<span id="cb15-13"><a href=""></a><span class="dt">double</span> average<span class="op">(</span><span class="at">const</span> vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&amp;</span> scores<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb15-14"><a href=""></a>    <span class="dt">int</span> total <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb15-15"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb15-16"><a href=""></a>        total <span class="op">=</span> total <span class="op">+</span> score<span class="op">;</span></span>
-<span id="cb15-17"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb15-18"><a href=""></a>    <span class="cf">return</span> <span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;(</span>total<span class="op">)</span> <span class="op">/</span> scores<span class="op">.</span>size<span class="op">();</span></span>
-<span id="cb15-19"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 28 -->
-</section>
-<section id="decision-table" class="slide level2">
-<h2>Decision Table</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Need</th>
-<th>Style</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>read a small value</td>
-<td>pass by value</td>
-</tr>
-<tr class="even">
-<td>compute one answer</td>
-<td>return value</td>
-</tr>
-<tr class="odd">
-<td>update caller data</td>
-<td>pass by reference</td>
-</tr>
-<tr class="even">
-<td>read large data safely</td>
-<td>pass by const reference</td>
-</tr>
-</tbody>
-</table>
-<!-- Slide 29 -->
-</section>
-<section id="reading-the-prototype" class="slide level2">
-<h2>Reading the Prototype</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href=""></a><span class="dt">double</span> totalCost<span class="op">(</span><span class="dt">double</span> price<span class="op">,</span> <span class="dt">double</span> taxRate<span class="op">);</span></span>
-<span id="cb16-2"><a href=""></a><span class="dt">void</span> resetBalance<span class="op">(</span><span class="dt">double</span><span class="op">&amp;</span> balance<span class="op">);</span></span>
-<span id="cb16-3"><a href=""></a><span class="dt">void</span> displayScores<span class="op">(</span><span class="at">const</span> vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&amp;</span> scores<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>The return type shows whether an answer comes back.</li>
-<li>The <code>&amp;</code> shows whether caller storage may be involved.</li>
-<li>The <code>const</code> marker shows read-only intent.</li>
-</ul>
-<!-- Slide 30 -->
-</section>
-<section id="common-practices-1" class="slide level2">
-<h2>Common Practices</h2>
-<ul>
-<li>Prefer return values for one computed answer.</li>
-<li>Use non-const references only when mutation is part of the contract.</li>
-<li>Use <code>const</code> reference for read-only large objects such as vectors and strings.</li>
-</ul>
-<!-- Slide 31 -->
-</section>
-<section id="summary-1" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>Parameter style is part of the function’s promise.</li>
-<li>Choose the style that makes data movement obvious.</li>
-<li>A clear prototype helps the caller trace what can change.</li>
-</ul>
-<!-- Slide 32 -->
-<!-- Topic 3: Function Side Effects -->
-<!-- Slides 33-46 -->
+<!-- Topic: Arrays of Objects on the Stack and Heap -->
+<!-- Slides 27–34 -->
 </section></section>
 <section>
-<section id="function-side-effects" class="title-slide slide level1 center">
-<h1>Function Side Effects</h1>
+<section id="arrays-of-objects-on-the-stack-and-heap" class="title-slide slide level1 center">
+<h1>Arrays of Objects on the Stack and Heap</h1>
+<!-- Slide 27 -->
+<p><strong>8.13 Arrays of Objects</strong></p>
+</section>
+<section id="memory-for-an-array-of-objects" class="slide level2">
+<h2>Memory for an Array of Objects</h2>
+
+<!-- Slide 28 -->
+<img data-src="images/source_pages/slide-27.png" style="width:70.0%" alt="Hand-drawn stack and heap memory diagram" class="r-stretch"></section>
+<section id="array-of-objects" class="slide level2">
+<h2>Array of Objects</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a href=""></a> // dsla0.cpp — demo of array of StopLight objects</span>
+<span id="cb12-2"><a href=""></a>#include &lt;iostream&gt;</span>
+<span id="cb12-3"><a href=""></a>using namespace std;</span>
+<span id="cb12-4"><a href=""></a></span>
+<span id="cb12-5"><a href=""></a>class StopLight {</span>
+<span id="cb12-6"><a href=""></a>public:</span>
+<span id="cb12-7"><a href=""></a>    enum Light { RED, YELLOW, GREEN };</span>
+<span id="cb12-8"><a href=""></a>    Light steadyLight;</span>
+<span id="cb12-9"><a href=""></a></span>
+<span id="cb12-10"><a href=""></a>    StopLight() { steadyLight = YELLOW; }</span>
+<span id="cb12-11"><a href=""></a>    StopLight(Light lightColor) { steadyLight = lightColor; }</span>
+<span id="cb12-12"><a href=""></a>    void cycle();</span>
+<span id="cb12-13"><a href=""></a>};</span>
+<span id="cb12-14"><a href=""></a></span>
+<span id="cb12-15"><a href=""></a>void StopLight::cycle() {</span>
+<span id="cb12-16"><a href=""></a>    switch (steadyLight) {</span>
+<span id="cb12-17"><a href=""></a>    case RED: cout &lt;&lt; "Red\\n"; break;</span>
+<span id="cb12-18"><a href=""></a>    case YELLOW: cout &lt;&lt; "Yellow\\n"; break;</span>
+<span id="cb12-19"><a href=""></a>    case GREEN: cout &lt;&lt; "Green\\n"; break;</span>
+<span id="cb12-20"><a href=""></a>    }</span>
+<span id="cb12-21"><a href=""></a>}</span>
+<span id="cb12-22"><a href=""></a></span>
+<span id="cb12-23"><a href=""></a>int main() {</span>
+<span id="cb12-24"><a href=""></a>    StopLight slArray[2];</span>
+<span id="cb12-25"><a href=""></a>    slArray[0].cycle();</span>
+<span id="cb12-26"><a href=""></a>    slArray[1].cycle();</span>
+<span id="cb12-27"><a href=""></a></span>
+<span id="cb12-28"><a href=""></a>    cout &lt;&lt; "\\nCreate objects.\\n\\n";</span>
+<span id="cb12-29"><a href=""></a></span>
+<span id="cb12-30"><a href=""></a>    slArray[0] = StopLight(StopLight::RED);</span>
+<span id="cb12-31"><a href=""></a>    slArray[1] = StopLight(StopLight::YELLOW);</span>
+<span id="cb12-32"><a href=""></a></span>
+<span id="cb12-33"><a href=""></a>    slArray[0].cycle();</span>
+<span id="cb12-34"><a href=""></a>    slArray[1].cycle();</span>
+<span id="cb12-35"><a href=""></a></span>
+<span id="cb12-36"><a href=""></a>    return 0;</span>
+<span id="cb12-37"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 29 -->
+</section>
+<section id="objects-and-pointers" class="slide level2">
+<h2>Objects and Pointers</h2>
+
+<!-- Slide 30 -->
+<img data-src="images/source_pages/slide-29.png" style="width:70.0%" alt="Hand-drawn object and pointer memory diagram" class="r-stretch"></section>
+<section id="array-of-object-pointers" class="slide level2">
+<h2>Array of Object Pointers</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a href=""></a>// dsla1.cpp — demo of array of StopLight class pointers</span>
+<span id="cb13-2"><a href=""></a>#include &lt;iostream&gt;</span>
+<span id="cb13-3"><a href=""></a>using namespace std;</span>
+<span id="cb13-4"><a href=""></a></span>
+<span id="cb13-5"><a href=""></a>class StopLight {</span>
+<span id="cb13-6"><a href=""></a>public:</span>
+<span id="cb13-7"><a href=""></a>    enum Light { RED, YELLOW, GREEN };</span>
+<span id="cb13-8"><a href=""></a>    Light steadyLight;</span>
+<span id="cb13-9"><a href=""></a></span>
+<span id="cb13-10"><a href=""></a>    StopLight() { steadyLight = YELLOW; }</span>
+<span id="cb13-11"><a href=""></a>    StopLight(Light lightColor) { steadyLight = lightColor; }</span>
+<span id="cb13-12"><a href=""></a>    void cycle();</span>
+<span id="cb13-13"><a href=""></a>};</span>
+<span id="cb13-14"><a href=""></a></span>
+<span id="cb13-15"><a href=""></a>void StopLight::cycle() {</span>
+<span id="cb13-16"><a href=""></a>    switch (steadyLight) {</span>
+<span id="cb13-17"><a href=""></a>    case RED: cout &lt;&lt; "Red\\n"; break;</span>
+<span id="cb13-18"><a href=""></a>    case YELLOW: cout &lt;&lt; "Yellow\\n"; break;</span>
+<span id="cb13-19"><a href=""></a>    case GREEN: cout &lt;&lt; "Green\\n"; break;</span>
+<span id="cb13-20"><a href=""></a>    }</span>
+<span id="cb13-21"><a href=""></a>}</span>
+<span id="cb13-22"><a href=""></a></span>
+<span id="cb13-23"><a href=""></a>int main() {</span>
+<span id="cb13-24"><a href=""></a>    StopLight* slArray[2];</span>
+<span id="cb13-25"><a href=""></a></span>
+<span id="cb13-26"><a href=""></a>    slArray[0] = new StopLight(StopLight::RED);</span>
+<span id="cb13-27"><a href=""></a>    slArray[1] = new StopLight(StopLight::YELLOW);</span>
+<span id="cb13-28"><a href=""></a></span>
+<span id="cb13-29"><a href=""></a>    slArray[0]-&gt;cycle();</span>
+<span id="cb13-30"><a href=""></a>    slArray[1]-&gt;cycle();</span>
+<span id="cb13-31"><a href=""></a></span>
+<span id="cb13-32"><a href=""></a>    return 0;</span>
+<span id="cb13-33"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 31 -->
+</section>
+<section id="pointer-array-storage" class="slide level2">
+<h2>Pointer Array Storage</h2>
+
+<!-- Slide 32 -->
+<img data-src="images/source_pages/slide-31.png" style="width:70.0%" alt="Hand-drawn dynamic object pointer diagram" class="r-stretch"></section>
+<section id="dynamic-array-of-object-pointers" class="slide level2">
+<h2>Dynamic Array of Object Pointers</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a href=""></a>// dsla2.cpp — dynamic array of StopLight class pointers</span>
+<span id="cb14-2"><a href=""></a>#include &lt;iostream&gt;</span>
+<span id="cb14-3"><a href=""></a>using namespace std;</span>
+<span id="cb14-4"><a href=""></a></span>
+<span id="cb14-5"><a href=""></a>class StopLight {</span>
+<span id="cb14-6"><a href=""></a>public:</span>
+<span id="cb14-7"><a href=""></a>    enum Light { RED, YELLOW, GREEN };</span>
+<span id="cb14-8"><a href=""></a>    Light steadyLight;</span>
+<span id="cb14-9"><a href=""></a></span>
+<span id="cb14-10"><a href=""></a>    StopLight() { steadyLight = YELLOW; }</span>
+<span id="cb14-11"><a href=""></a>    StopLight(Light lightColor) { steadyLight = lightColor; }</span>
+<span id="cb14-12"><a href=""></a>    void cycle();</span>
+<span id="cb14-13"><a href=""></a>};</span>
+<span id="cb14-14"><a href=""></a></span>
+<span id="cb14-15"><a href=""></a>void StopLight::cycle() {</span>
+<span id="cb14-16"><a href=""></a>    switch (steadyLight) {</span>
+<span id="cb14-17"><a href=""></a>    case RED: cout &lt;&lt; "Red\\n"; break;</span>
+<span id="cb14-18"><a href=""></a>    case YELLOW: cout &lt;&lt; "Yellow\\n"; break;</span>
+<span id="cb14-19"><a href=""></a>    case GREEN: cout &lt;&lt; "Green\\n"; break;</span>
+<span id="cb14-20"><a href=""></a>    }</span>
+<span id="cb14-21"><a href=""></a>}</span>
+<span id="cb14-22"><a href=""></a></span>
+<span id="cb14-23"><a href=""></a>int main() {</span>
+<span id="cb14-24"><a href=""></a>    StopLight** slArray = new StopLight*[2];</span>
+<span id="cb14-25"><a href=""></a></span>
+<span id="cb14-26"><a href=""></a>    slArray[0] = new StopLight(StopLight::RED);</span>
+<span id="cb14-27"><a href=""></a>    slArray[1] = new StopLight(StopLight::YELLOW);</span>
+<span id="cb14-28"><a href=""></a></span>
+<span id="cb14-29"><a href=""></a>    slArray[0]-&gt;cycle();</span>
+<span id="cb14-30"><a href=""></a>    slArray[1]-&gt;cycle();</span>
+<span id="cb14-31"><a href=""></a></span>
+<span id="cb14-32"><a href=""></a>    return 0;</span>
+<span id="cb14-33"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <!-- Slide 33 -->
 </section>
-<section id="what-else-changed" class="slide level2 smaller">
-<h2>What Else Changed?</h2>
+<section id="key-takeaway" class="slide level2">
+<h2>Key Takeaway</h2>
 <ul>
-<li>After a function call, what parts of the program might be different?</li>
-<li>A return value is only one kind of result.</li>
-<li>Some functions also perform actions or change existing data.</li>
+<li>Classes are custom <strong>types</strong>, and we can pass them to methods just like any other type.</li>
+<li>We need to decide where to instantiate objects: on the stack or the heap.</li>
+<li>A useful array-of-objects design keeps both the array and its objects on the heap, with the array pointer on the stack.</li>
 </ul>
+<!-- Slide 34 -->
+<!-- Topic: Desk Check -->
+<!-- Slides 35–39 -->
+</section></section>
+<section>
+<section id="exercise-1" class="title-slide slide level1 center">
+<h1>Exercise</h1>
+<!-- Slide 35 -->
+</section>
+<section id="exercise-goals-1" class="slide level2">
+<h2>Exercise Goals</h2>
+<ul>
+<li>Review of code syntax.</li>
+<li>Check understanding of syntax.</li>
+</ul>
+<!-- Slide 36 -->
+</section>
+<section id="desk-check-exercise-1" class="slide level2">
+<h2>Desk Check Exercise</h2>
+<ul>
+<li>Pair up.</li>
+<li>Manually determine the output of the following code.</li>
+<li><strong>DO NOT TYPE THIS IN AND EXECUTE IT.</strong></li>
+<li>We’ll spend about 10 minutes on this, then go over it.</li>
+</ul>
+<!-- Slide 37 -->
+</section>
+<section id="desk-check-code-1" class="slide level2">
+<h2><span style="display:none">Desk Check Code</span></h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb15-1"><a href=""></a>#include &lt;iostream&gt;</span>
+<span id="cb15-2"><a href=""></a>#include &lt;string&gt;</span>
+<span id="cb15-3"><a href=""></a></span>
+<span id="cb15-4"><a href=""></a>using namespace std;</span>
+<span id="cb15-5"><a href=""></a></span>
+<span id="cb15-6"><a href=""></a>class Message {</span>
+<span id="cb15-7"><a href=""></a>private:</span>
+<span id="cb15-8"><a href=""></a>    string text;</span>
+<span id="cb15-9"><a href=""></a></span>
+<span id="cb15-10"><a href=""></a>public:</span>
+<span id="cb15-11"><a href=""></a>    Message(const string&amp; t) : text(t) {}</span>
+<span id="cb15-12"><a href=""></a></span>
+<span id="cb15-13"><a href=""></a>    string getText() const {</span>
+<span id="cb15-14"><a href=""></a>        return text;</span>
+<span id="cb15-15"><a href=""></a>    }</span>
+<span id="cb15-16"><a href=""></a>};</span>
+<span id="cb15-17"><a href=""></a></span>
+<span id="cb15-18"><a href=""></a>class Messenger {</span>
+<span id="cb15-19"><a href=""></a>public:</span>
+<span id="cb15-20"><a href=""></a>    void deliverMessage(const Message&amp; msg) {</span>
+<span id="cb15-21"><a href=""></a>        cout &lt;&lt; "Delivering: " &lt;&lt; msg.getText() &lt;&lt; endl;</span>
+<span id="cb15-22"><a href=""></a>    }</span>
+<span id="cb15-23"><a href=""></a>};</span>
+<span id="cb15-24"><a href=""></a></span>
+<span id="cb15-25"><a href=""></a>class Communicator {</span>
+<span id="cb15-26"><a href=""></a>public:</span>
+<span id="cb15-27"><a href=""></a>    void start() {</span>
+<span id="cb15-28"><a href=""></a>        Message m("Mission Start");    // Local dependency</span>
+<span id="cb15-29"><a href=""></a>        Messenger courier;              // Another local dependency</span>
+<span id="cb15-30"><a href=""></a>        courier.deliverMessage(m);</span>
+<span id="cb15-31"><a href=""></a>    }</span>
+<span id="cb15-32"><a href=""></a>};</span>
+<span id="cb15-33"><a href=""></a></span>
+<span id="cb15-34"><a href=""></a>int main() {</span>
+<span id="cb15-35"><a href=""></a>    Communicator c;</span>
+<span id="cb15-36"><a href=""></a>    c.start();</span>
+<span id="cb15-37"><a href=""></a>    return 0;</span>
+<span id="cb15-38"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 38 -->
+</section>
+<section id="desk-check-output-1" class="slide level2">
+<h2><span style="display:none">Desk Check Output</span></h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb16-1"><a href=""></a>Delivering: Mission Start</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 39 -->
+<!-- Topic: Resource Acquisition Is Initialization -->
+<!-- Slides 40–52 -->
+</section></section>
+<section>
+<section id="resource-acquisition-is-initialization" class="title-slide slide level1 center">
+<h1>Resource Acquisition Is Initialization</h1>
+<!-- Slide 40 -->
+</section>
+<section id="why-does-resource-management-matter" class="slide level2">
+<h2>Why Does Resource Management Matter?</h2>
+<p>Resource Acquisition Is Initialization ties the lifetime of a resource to the lifetime of an object.</p>
+<p>When the object is created, it acquires or takes ownership of a resource. When it is destroyed, it releases that resource automatically.</p>
 <aside class="notes">
-<p>Slides 33-46</p>
+<p>Slides 40–52</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -781,350 +895,209 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 34 -->
-</section>
-<section id="what-is-a-side-effect" class="slide level2">
-<h2>What Is a Side Effect?</h2>
-<ul>
-<li>A side effect is a change or action beyond returning a value.</li>
-<li>Printing, reading input, and changing caller data are side effects.</li>
-<li>Side effects are not automatically bad, but they must be intentional.</li>
-</ul>
-<!-- Slide 35 -->
-</section>
-<section id="common-side-effects" class="slide level2">
-<h2>Common Side Effects</h2>
-<ul>
-<li>Displaying output with <code>cout</code>.</li>
-<li>Reading input with <code>cin</code>.</li>
-<li>Modifying reference parameters.</li>
-<li>Changing global or static data.</li>
-<li>Writing to files or stopping the program.</li>
-</ul>
-<!-- Slide 36 -->
-</section>
-<section id="return-value-vs.-side-effect" class="slide level2">
-<h2>Return Value vs.&nbsp;Side Effect</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href=""></a><span class="dt">double</span> addTax<span class="op">(</span><span class="dt">double</span> price<span class="op">);</span></span>
-<span id="cb17-2"><a href=""></a><span class="dt">void</span> addTax<span class="op">(</span><span class="dt">double</span><span class="op">&amp;</span> price<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>The first function returns a new value.</li>
-<li>The second function changes caller-owned data.</li>
-<li>The names are similar, but the contracts are different.</li>
-</ul>
-<!-- Slide 37 -->
-</section>
-<section id="example-program-returning-a-value" class="slide level2 smaller">
-<h2>Example Program: Returning a Value</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb18-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iomanip&gt;</span></span>
-<span id="cb18-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb18-4"><a href=""></a></span>
-<span id="cb18-5"><a href=""></a><span class="dt">double</span> addTax<span class="op">(</span><span class="dt">double</span> price<span class="op">);</span></span>
-<span id="cb18-6"><a href=""></a></span>
-<span id="cb18-7"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb18-8"><a href=""></a>    <span class="dt">double</span> price <span class="op">=</span> <span class="fl">25.00</span><span class="op">;</span></span>
-<span id="cb18-9"><a href=""></a>    <span class="dt">double</span> total <span class="op">=</span> addTax<span class="op">(</span>price<span class="op">);</span></span>
-<span id="cb18-10"><a href=""></a>    cout <span class="op">&lt;&lt;</span> fixed <span class="op">&lt;&lt;</span> setprecision<span class="op">(</span><span class="dv">2</span><span class="op">);</span></span>
-<span id="cb18-11"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Original: "</span> <span class="op">&lt;&lt;</span> price <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb18-12"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Total: "</span> <span class="op">&lt;&lt;</span> total <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb18-13"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb18-14"><a href=""></a><span class="op">}</span></span>
-<span id="cb18-15"><a href=""></a></span>
-<span id="cb18-16"><a href=""></a><span class="dt">double</span> addTax<span class="op">(</span><span class="dt">double</span> price<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb18-17"><a href=""></a>    <span class="cf">return</span> price <span class="op">*</span> <span class="fl">1.0825</span><span class="op">;</span></span>
-<span id="cb18-18"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 38 -->
-</section>
-<section id="example-program-modifying-by-reference" class="slide level2 smaller">
-<h2>Example Program: Modifying by Reference</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb19-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iomanip&gt;</span></span>
-<span id="cb19-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb19-4"><a href=""></a></span>
-<span id="cb19-5"><a href=""></a><span class="dt">void</span> addTax<span class="op">(</span><span class="dt">double</span><span class="op">&amp;</span> price<span class="op">);</span></span>
-<span id="cb19-6"><a href=""></a></span>
-<span id="cb19-7"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb19-8"><a href=""></a>    <span class="dt">double</span> price <span class="op">=</span> <span class="fl">25.00</span><span class="op">;</span></span>
-<span id="cb19-9"><a href=""></a>    addTax<span class="op">(</span>price<span class="op">);</span></span>
-<span id="cb19-10"><a href=""></a>    cout <span class="op">&lt;&lt;</span> fixed <span class="op">&lt;&lt;</span> setprecision<span class="op">(</span><span class="dv">2</span><span class="op">);</span></span>
-<span id="cb19-11"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Updated: "</span> <span class="op">&lt;&lt;</span> price <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb19-12"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb19-13"><a href=""></a><span class="op">}</span></span>
-<span id="cb19-14"><a href=""></a></span>
-<span id="cb19-15"><a href=""></a><span class="dt">void</span> addTax<span class="op">(</span><span class="dt">double</span><span class="op">&amp;</span> price<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb19-16"><a href=""></a>    price <span class="op">=</span> price <span class="op">*</span> <span class="fl">1.0825</span><span class="op">;</span></span>
-<span id="cb19-17"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 39 -->
-</section>
-<section id="visible-side-effects-in-prototypes" class="slide level2">
-<h2>Visible Side Effects in Prototypes</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href=""></a><span class="dt">void</span> updateScore<span class="op">(</span><span class="dt">int</span><span class="op">&amp;</span> score<span class="op">);</span></span>
-<span id="cb20-2"><a href=""></a><span class="dt">int</span> adjustedScore<span class="op">(</span><span class="dt">int</span> score<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>A non-const reference parameter signals possible mutation.</li>
-<li>A return type signals that a value comes back.</li>
-<li>Read the prototype before assuming what a function changes.</li>
-</ul>
-<!-- Slide 40 -->
-</section>
-<section id="hidden-side-effects" class="slide level2">
-<h2>Hidden Side Effects</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb21-1"><a href=""></a><span class="dt">int</span> totalCalls <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb21-2"><a href=""></a></span>
-<span id="cb21-3"><a href=""></a><span class="dt">void</span> recordCall<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb21-4"><a href=""></a>    totalCalls<span class="op">++;</span></span>
-<span id="cb21-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>The function changes data that is not in the parameter list.</li>
-<li>The call site does not show what data may change.</li>
-<li>Hidden side effects are harder to trace.</li>
-</ul>
 <!-- Slide 41 -->
 </section>
-<section id="example-program-hidden-state" class="slide level2 smaller">
-<h2>Example Program: Hidden State</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb22-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb22-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb22-3"><a href=""></a></span>
-<span id="cb22-4"><a href=""></a><span class="dt">int</span> nextCallNumber<span class="op">();</span></span>
-<span id="cb22-5"><a href=""></a></span>
-<span id="cb22-6"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb22-7"><a href=""></a>    cout <span class="op">&lt;&lt;</span> nextCallNumber<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb22-8"><a href=""></a>    cout <span class="op">&lt;&lt;</span> nextCallNumber<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb22-9"><a href=""></a>    cout <span class="op">&lt;&lt;</span> nextCallNumber<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb22-10"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb22-11"><a href=""></a><span class="op">}</span></span>
-<span id="cb22-12"><a href=""></a></span>
-<span id="cb22-13"><a href=""></a><span class="dt">int</span> nextCallNumber<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb22-14"><a href=""></a>    <span class="at">static</span> <span class="dt">int</span> callNumber <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb22-15"><a href=""></a>    callNumber<span class="op">++;</span></span>
-<span id="cb22-16"><a href=""></a>    <span class="cf">return</span> callNumber<span class="op">;</span></span>
-<span id="cb22-17"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="what-is-a-resource" class="slide level2">
+<h2>What Is a Resource?</h2>
+<p>A resource is anything that must be acquired and later released.</p>
+<ul>
+<li>Dynamically allocated memory</li>
+<li>Files</li>
+<li>Mutex locks</li>
+<li>Threads</li>
+<li>Database connections</li>
+<li>Sockets and operating-system handles</li>
+</ul>
 <!-- Slide 42 -->
 </section>
-<section id="when-side-effects-are-useful" class="slide level2">
-<h2>When Side Effects Are Useful</h2>
-<ul>
-<li>Output functions should display something.</li>
-<li>Input functions should read something.</li>
-<li>Menu actions often update caller-owned program state.</li>
-<li>Reference parameters are useful when mutation is the point.</li>
-</ul>
+<section id="manual-cleanup" class="slide level2">
+<h2>Manual Cleanup</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb17-1"><a href=""></a>#include &lt;cstdio&gt;</span>
+<span id="cb17-2"><a href=""></a></span>
+<span id="cb17-3"><a href=""></a>FILE* file = fopen("data.txt", "r");</span>
+<span id="cb17-4"><a href=""></a>// use file</span>
+<span id="cb17-5"><a href=""></a>fclose(file);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This looks simple, but cleanup becomes difficult when a function has multiple return paths or exceptions.</p>
 <!-- Slide 43 -->
 </section>
-<section id="when-side-effects-cause-trouble" class="slide level2">
-<h2>When Side Effects Cause Trouble</h2>
-<ul>
-<li>A function changes data the caller did not expect.</li>
-<li>The same call gives different results because hidden state changed.</li>
-<li>One function calculates, prints, and mutates data at the same time.</li>
-</ul>
+<section id="the-leak-risk" class="slide level2">
+<h2>The Leak Risk</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a href=""></a>void process(FILE* file) {</span>
+<span id="cb18-2"><a href=""></a>    if (!read_header(file)) {</span>
+<span id="cb18-3"><a href=""></a>        return;  // Did we remember to close the file?</span>
+<span id="cb18-4"><a href=""></a>    }</span>
+<span id="cb18-5"><a href=""></a></span>
+<span id="cb18-6"><a href=""></a>    process_data(file);</span>
+<span id="cb18-7"><a href=""></a></span>
+<span id="cb18-8"><a href=""></a>    if (something_failed()) {</span>
+<span id="cb18-9"><a href=""></a>        return;  // Another possible leak</span>
+<span id="cb18-10"><a href=""></a>    }</span>
+<span id="cb18-11"><a href=""></a></span>
+<span id="cb18-12"><a href=""></a>    fclose(file);</span>
+<span id="cb18-13"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If an exception occurs, fclose may never run.</p>
 <!-- Slide 44 -->
 </section>
-<section id="common-practices-2" class="slide level2">
-<h2>Common Practices</h2>
-<ul>
-<li>Keep calculation functions return-based when possible.</li>
-<li>Make mutation visible with reference parameters.</li>
-<li>Avoid hidden state unless the function clearly owns that state.</li>
-</ul>
+<section id="the-raii-solution" class="slide level2">
+<h2>The RAII Solution</h2>
+<p>Put the resource inside an object whose destructor performs the cleanup.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb19-1"><a href=""></a>{</span>
+<span id="cb19-2"><a href=""></a>    lock_guard&lt;mutex&gt; lock(mutex);</span>
+<span id="cb19-3"><a href=""></a></span>
+<span id="cb19-4"><a href=""></a>    update_shared_data();</span>
+<span id="cb19-5"><a href=""></a></span>
+<span id="cb19-6"><a href=""></a>} // lock is automatically released here</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The resource is managed by the object instead of by every control-flow path.</p>
 <!-- Slide 45 -->
 </section>
-<section id="summary-2" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>A side effect is a change outside the return value.</li>
-<li>Useful side effects make program actions possible.</li>
-<li>Good function design makes side effects intentional and traceable.</li>
-</ul>
+<section id="early-returns-and-exceptions" class="slide level2">
+<h2>Early Returns and Exceptions</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb20-1"><a href=""></a>void update(mutex&amp; mutex) {</span>
+<span id="cb20-2"><a href=""></a>    lock_guard&lt;mutex&gt; lock(mutex);</span>
+<span id="cb20-3"><a href=""></a></span>
+<span id="cb20-4"><a href=""></a>    if (some_error()) {</span>
+<span id="cb20-5"><a href=""></a>        return;  // Destructor still unlocks the mutex</span>
+<span id="cb20-6"><a href=""></a>    }</span>
+<span id="cb20-7"><a href=""></a></span>
+<span id="cb20-8"><a href=""></a>    do_more_work();</span>
+<span id="cb20-9"><a href=""></a>} // Destructor unlocks the mutex</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>C++ destroys local objects as the stack unwinds, so the destructor still releases the resource.</p>
 <!-- Slide 46 -->
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="key-takeaways" class="title-slide slide level1 center">
-<h1>Key Takeaways</h1>
+<section id="standard-library-raii-classes" class="slide level2">
+<h2>Standard-Library RAII Classes</h2>
+<p>C++ already provides many RAII classes.</p>
 <ul>
-<li>Function overloading lets related functions share one name when their parameter lists are different.</li>
-<li>A function signature is the function name plus the parameter types and count.</li>
-<li>Parameter style is part of the function contract.</li>
-<li>Side effects are changes outside a returned value; good function design makes them intentional and traceable.</li>
+<li>lock_guard and unique_lock manage mutexes.</li>
+<li>scoped_lock safely locks multiple mutexes.</li>
+<li>unique_ptr manages dynamically allocated objects.</li>
+<li>ofstream closes files automatically.</li>
+<li>jthread handles a thread when it leaves scope.</li>
 </ul>
 <!-- Slide 47 -->
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="next-time" class="title-slide slide level1 center">
-<h1>Next Time</h1>
+<section id="ownership-is-the-key-question" class="slide level2">
+<h2>Ownership Is the Key Question</h2>
+<p>When designing an RAII class, ask:</p>
+<blockquote>
+<p>Who owns this resource?</p>
+</blockquote>
+<ul>
+<li>unique_ptr represents one owner.</li>
+<li>shared_ptr represents shared ownership.</li>
+<li>A reference or raw pointer usually represents borrowed access.</li>
+<li>A custom RAII object can own a specialized resource.</li>
+</ul>
+<p>Ownership determines whether the object should be copyable or movable.</p>
 <!-- Slide 48 -->
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="appendix" class="title-slide slide level1 center">
-<h1>Appendix</h1>
+<section id="unique-ownership" class="slide level2">
+<h2>Unique Ownership</h2>
+<p>A unique owner normally cannot be copied, but it can be moved.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb21-1"><a href=""></a>#include &lt;memory&gt;</span>
+<span id="cb21-2"><a href=""></a>using namespace std;</span>
+<span id="cb21-3"><a href=""></a></span>
+<span id="cb21-4"><a href=""></a>unique_ptr&lt;int&gt; a = make_unique&lt;int&gt;(42);</span>
+<span id="cb21-5"><a href=""></a>// unique_ptr&lt;int&gt; b = a;  // Error</span>
+<span id="cb21-6"><a href=""></a></span>
+<span id="cb21-7"><a href=""></a>unique_ptr&lt;int&gt; b = move(a);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>After the move, b owns the resource and a no longer does.</p>
 <!-- Slide 49 -->
 </section>
-<section id="function-overloading-good-practices" class="slide level2">
-<h2>Function Overloading: Good Practices</h2>
-<ul>
-<li>Overload functions when the operation is conceptually the same.</li>
-<li>Keep the overload set small enough that each version is easy to predict.</li>
-<li>Prefer clear parameter lists over clever combinations.</li>
-</ul>
+<section id="custom-resources" class="slide level2">
+<h2>Custom Resources</h2>
+<p>RAII is not limited to standard-library resources.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource {cpp} number-lines code-with-copy"><code class="sourceCode"><span id="cb22-1"><a href=""></a>#include &lt;cstdio&gt;</span>
+<span id="cb22-2"><a href=""></a>#include &lt;memory&gt;</span>
+<span id="cb22-3"><a href=""></a>using namespace std;</span>
+<span id="cb22-4"><a href=""></a></span>
+<span id="cb22-5"><a href=""></a>struct FileCloser {</span>
+<span id="cb22-6"><a href=""></a>    void operator()(FILE* file) const {</span>
+<span id="cb22-7"><a href=""></a>        if (file) {</span>
+<span id="cb22-8"><a href=""></a>            fclose(file);</span>
+<span id="cb22-9"><a href=""></a>        }</span>
+<span id="cb22-10"><a href=""></a>    }</span>
+<span id="cb22-11"><a href=""></a>};</span>
+<span id="cb22-12"><a href=""></a></span>
+<span id="cb22-13"><a href=""></a>using FileHandle = unique_ptr&lt;FILE, FileCloser&gt;;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A custom deleter connects a C library resource to a C++ object’s lifetime.</p>
 <!-- Slide 50 -->
 </section>
-<section id="function-overloading-common-mistakes" class="slide level2">
-<h2>Function Overloading: Common Mistakes</h2>
+<section id="what-raii-does-not-solve" class="slide level2">
+<h2>What RAII Does Not Solve</h2>
+<p>RAII is powerful, but it is not magic.</p>
 <ul>
-<li>Trying to overload by return type alone.</li>
-<li>Creating overloads whose calls are ambiguous.</li>
-<li>Reusing the same name for functions that do different jobs.</li>
+<li>It does not prevent deadlocks caused by poor locking design.</li>
+<li>It does not prevent cycles created by shared_ptr.</li>
+<li>It does not fix invalid external state or incorrect ownership decisions.</li>
+<li>A destructor may not be the right place to report an important failure.</li>
 </ul>
+<p>Use an explicit operation such as close or commit when cleanup can fail meaningfully.</p>
 <!-- Slide 51 -->
 </section>
-<section id="function-overloading-more-examples" class="slide level2">
-<h2>Function Overloading: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb23-1"><a href=""></a><span class="dt">void</span> print<span class="op">(</span><span class="dt">int</span> value<span class="op">);</span></span>
-<span id="cb23-2"><a href=""></a><span class="dt">void</span> print<span class="op">(</span><span class="dt">double</span> value<span class="op">);</span></span>
-<span id="cb23-3"><a href=""></a><span class="dt">void</span> print<span class="op">(</span>string value<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>All three functions share the same name, but the parameter type changes.</p>
+<section id="practical-rules" class="slide level2">
+<h2>Practical Rules</h2>
+<ul>
+<li>Prefer RAII over manual cleanup.</li>
+<li>Acquire resources close to their first use.</li>
+<li>Keep the owning scope as small as practical.</li>
+<li>Make ownership explicit.</li>
+<li>Use standard RAII classes whenever possible.</li>
+<li>Use smart pointers instead of raw new and delete.</li>
+<li>Decide deliberately whether a resource-owning class can be copied or moved.</li>
+</ul>
+<p>A resource should have a clear owner, and its owner should automatically release it when its lifetime ends.</p>
 <!-- Slide 52 -->
-</section>
-<section id="function-overloading-practice-problems" class="slide level2">
-<h2>Function Overloading: Practice Problems</h2>
-<ol type="1">
-<li>Write two <code>total</code> prototypes with different parameter counts.</li>
-<li>Decide whether <code>double value()</code> and <code>int value()</code> are valid overloads.</li>
-<li>Predict which overload is called by <code>show(4.0)</code>.</li>
-</ol>
+<!-- Topic: Programming Exercise -->
+<!-- Slides 53–55 -->
+</section></section>
+<section>
+<section id="programming-exercise" class="title-slide slide level1 center">
+<h1>Programming Exercise</h1>
+<p><strong>Activity</strong></p>
 <!-- Slide 53 -->
 </section>
-<section id="function-overloading-ai-search-terms" class="slide level2">
-<h2>Function Overloading: AI Search Terms</h2>
+<section id="programming-exercise-requirements" class="slide level2">
+<h2>Programming Exercise Requirements</h2>
 <ul>
-<li>“C++ function overloading beginner examples”</li>
-<li>“C++ function signature overload resolution”</li>
-<li>“C++ overload return type not enough”</li>
+<li>Create a class <code>Message</code> with a string content field, a constructor that sets the content, and a <code>string getContent() const</code> method.</li>
+<li>Create a class <code>Notifier</code> with a <code>void sendNotification(const Message&amp; msg)</code> method that prints <code>Notification: &lt;message content&gt;</code>.</li>
+<li>In <code>main()</code>, create two <code>Message</code> objects, create a <code>Notifier</code>, and use it to send both messages.</li>
 </ul>
 <!-- Slide 54 -->
 </section>
-<section id="function-overloading-questions-for-reflection" class="slide level2">
-<h2>Function Overloading: Questions for Reflection</h2>
-<ul>
-<li>When does one shared function name make code easier to read?</li>
-<li>Why does the compiler need the parameter list to choose an overload?</li>
-</ul>
+<section id="programming-exercise-starter" class="slide level2">
+<h2>Programming Exercise Starter</h2>
+
 <!-- Slide 55 -->
-</section>
-<section id="choosing-a-parameter-style-good-practices" class="slide level2">
-<h2>Choosing a Parameter Style: Good Practices</h2>
-<ul>
-<li>Use return values for one computed answer.</li>
-<li>Use non-const references only when changing caller data is part of the contract.</li>
-<li>Use <code>const</code> reference for read-only large data.</li>
-</ul>
+<!-- Topic: Activities and Wrap-Up -->
+<!-- Slides 56–58 -->
+<img data-src="images/programming_exercise_notifier.png" style="width:80.0%" alt="Programming exercise starter code and expected notification output" class="r-stretch"></section></section>
+<section>
+<section id="activities-and-wrap-up" class="title-slide slide level1 center">
+<h1>Activities and Wrap-Up</h1>
 <!-- Slide 56 -->
+<p>What’s this section about?</p>
 </section>
-<section id="choosing-a-parameter-style-common-mistakes" class="slide level2">
-<h2>Choosing a Parameter Style: Common Mistakes</h2>
-<ul>
-<li>Passing by reference when the function only needs to read.</li>
-<li>Returning one value while also changing unrelated caller variables.</li>
-<li>Hiding important data movement inside the function body.</li>
-</ul>
+<section id="theme-for-today" class="slide level2">
+<h2>Theme for Today</h2>
+<p><strong>“Passing Objects.”</strong></p>
 <!-- Slide 57 -->
 </section>
-<section id="choosing-a-parameter-style-more-examples" class="slide level2">
-<h2>Choosing a Parameter Style: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb24-1"><a href=""></a><span class="dt">double</span> average<span class="op">(</span><span class="at">const</span> vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&amp;</span> scores<span class="op">);</span></span>
-<span id="cb24-2"><a href=""></a><span class="dt">void</span> resetScore<span class="op">(</span><span class="dt">int</span><span class="op">&amp;</span> score<span class="op">);</span></span>
-<span id="cb24-3"><a href=""></a><span class="dt">double</span> adjustedScore<span class="op">(</span><span class="dt">double</span> score<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The prototype tells whether data is read, changed, or returned.</p>
+<section id="agenda-1" class="slide level2">
+<h2>Agenda</h2>
+<h3 id="ch-12-strings">Ch 12 — Strings</h3>
+<ul>
+<li><strong>12.1 C-Strings</strong></li>
+<li><strong>12.2 Library Functions for Working with C-Strings</strong></li>
+<li><strong>12.3 Conversions between Numbers and Strings</strong></li>
+<li><strong>12.4 Writing Your Own C-String Handling Functions</strong></li>
+<li>12.5 More about the C++ String Class</li>
+</ul>
 <!-- Slide 58 -->
 </section>
-<section id="choosing-a-parameter-style-practice-problems" class="slide level2">
-<h2>Choosing a Parameter Style: Practice Problems</h2>
-<ol type="1">
-<li>Choose a parameter style for a function that displays a vector.</li>
-<li>Choose a style for a function that resets a balance to zero.</li>
-<li>Choose a style for a function that computes a sales tax total.</li>
-</ol>
-<!-- Slide 59 -->
-</section>
-<section id="choosing-a-parameter-style-ai-search-terms" class="slide level2">
-<h2>Choosing a Parameter Style: AI Search Terms</h2>
-<ul>
-<li>“C++ pass by value vs reference”</li>
-<li>“C++ const reference parameter”</li>
-<li>“C++ function parameter design”</li>
-</ul>
-<!-- Slide 60 -->
-</section>
-<section id="choosing-a-parameter-style-questions-for-reflection" class="slide level2">
-<h2>Choosing a Parameter Style: Questions for Reflection</h2>
-<ul>
-<li>How can a prototype warn you that caller data may change?</li>
-<li>Why is returning a new value often easier to trace than modifying by reference?</li>
-</ul>
-<!-- Slide 61 -->
-</section>
-<section id="function-side-effects-good-practices" class="slide level2">
-<h2>Function Side Effects: Good Practices</h2>
-<ul>
-<li>Keep calculation functions return-based when practical.</li>
-<li>Make intended mutation visible through the parameter list.</li>
-<li>Avoid hidden state unless the function clearly owns that state.</li>
-</ul>
-<!-- Slide 62 -->
-</section>
-<section id="function-side-effects-common-mistakes" class="slide level2">
-<h2>Function Side Effects: Common Mistakes</h2>
-<ul>
-<li>Changing caller data unexpectedly.</li>
-<li>Depending on global data when parameters would be clearer.</li>
-<li>Writing functions that calculate, display, and mutate at the same time.</li>
-</ul>
-<!-- Slide 63 -->
-</section>
-<section id="function-side-effects-more-examples" class="slide level2">
-<h2>Function Side Effects: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb25-1"><a href=""></a><span class="dt">double</span> addTax<span class="op">(</span><span class="dt">double</span> price<span class="op">);</span></span>
-<span id="cb25-2"><a href=""></a><span class="dt">void</span> addTax<span class="op">(</span><span class="dt">double</span><span class="op">&amp;</span> price<span class="op">);</span></span>
-<span id="cb25-3"><a href=""></a><span class="dt">void</span> displayTotal<span class="op">(</span><span class="dt">double</span> total<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>These functions have different effects even when their names look related.</p>
-<!-- Slide 64 -->
-</section>
-<section id="function-side-effects-practice-problems" class="slide level2">
-<h2>Function Side Effects: Practice Problems</h2>
-<ol type="1">
-<li>Identify the side effect in a function that prints to <code>cout</code>.</li>
-<li>Identify the side effect in a function with an <code>int&amp;</code> parameter.</li>
-<li>Rewrite a mutation function so it returns a new value instead.</li>
-</ol>
-<!-- Slide 65 -->
-</section>
-<section id="function-side-effects-ai-search-terms" class="slide level2">
-<h2>Function Side Effects: AI Search Terms</h2>
-<ul>
-<li>“C++ function side effects”</li>
-<li>“pure function vs side effect C++”</li>
-<li>“C++ reference parameter mutation”</li>
-</ul>
-<!-- Slide 66 -->
-</section>
-<section id="function-side-effects-questions-for-reflection" class="slide level2">
-<h2>Function Side Effects: Questions for Reflection</h2>
-<ul>
-<li>Which side effects are useful in a menu program?</li>
-<li>Which side effects make a function harder to test?</li>
-</ul>
-<!-- Slide 67 -->
+<section class="slide level2">
+
 
 </section></section>
     </div>

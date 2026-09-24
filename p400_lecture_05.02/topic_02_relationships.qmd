@@ -1,0 +1,304 @@
+<!-- Topic: Relationships -->
+<!-- Slides 4–21 -->
+
+# Relationships
+<!-- Slide 4 -->
+
+---
+
+## Why Relationships Matter
+
+- Objects do not work in isolation. They have relationships with each other.
+- We can exploit these relationships to make our code more modular, reliable, and simpler.
+- There are a number of relationships.
+
+<!-- Slide 5 -->
+
+---
+
+## Relationship Types
+
+| Relationship Type | Relationship Example | Key Characteristic |
+|---|---|---|
+| Association | Student ↔ Course | General uses relationship |
+| Aggregation | Library → Book | Weak ownership (has-a) |
+| Composition | Car → Engine | Strong ownership (part-of) |
+| Inheritance | Dog → Animal | Hierarchical (is-a) |
+| Dependency | Printer → Document | Temporary use |
+| Realization | Bird → Flyable | Implements behavior |
+| Friendship | Matrix ↔ Calculator | Explicit access granting |
+
+We will cover some of these individually.
+
+<!-- Slide 6 -->
+
+---
+
+## Relationship Types: Dependency
+
+| Relationship Type | Relationship Example | Key Characteristic |
+|---|---|---|
+| Association | Student ↔ Course | General uses relationship |
+| Aggregation | Library → Book | Weak ownership (has-a) |
+| Composition | Car → Engine | Strong ownership (part-of) |
+| Inheritance | Dog → Animal | Hierarchical (is-a) |
+| **Dependency** | **Printer → Document** | **Temporary use** |
+| Realization | Bird → Flyable | Implements behavior |
+| Friendship | Matrix ↔ Calculator | Explicit access granting |
+
+<!-- Slide 7 -->
+
+---
+
+## Dependency Relationship
+
+- The “loosest” form of class relationship.
+- Class A uses Class B temporarily.
+- Also called a “uses-a” relationship.
+
+<!-- Slide 8 -->
+
+---
+
+## Coding Characteristics
+
+- Short-lived interaction.
+- Class A depends on class B, but B is not stored in class A.
+
+<!-- Slide 9 -->
+
+---
+
+## Example 1
+
+<!-- Slide 10 -->
+
+---
+
+## Example 1: Passing a Document by Reference
+
+```{cpp}
+#include <iostream>
+using namespace std;
+
+class Document {
+public:
+    string getContent() const {
+        return "This is the document content.";
+    }
+};
+
+class Printer {
+public:
+    void printDocument(const Document& doc) {  // Dependency
+        cout << "Printing: " << doc.getContent() << endl;
+    }
+};
+
+int main() {
+    Document myDoc;
+    Printer myPrinter;
+
+    myPrinter.printDocument(myDoc);  // Uses Document temporarily
+}
+
+/*
+Printer needs to know something about the documents coming in.
+That's why we use a reference.
+*/
+```
+
+<!-- Slide 11 -->
+
+---
+
+## Example 2
+
+<!-- Slide 12 -->
+
+---
+
+## Example 2: Complete Program
+
+```{cpp}
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Customer {
+private:
+    string name;
+public:
+    Customer(const string& name) : name(name) {}
+    string getName() const { return name; }
+};
+
+class Order {
+public:
+    void printCustomerInfo(const Customer& cust) {
+        cout << "Processing order for customer: " << cust.getName() << endl;
+    }
+    void sendThankYou(const Customer& cust) {
+        cout << "Thank you, " << cust.getName() << ", for your order!" << endl;
+    }
+};
+
+int main() {
+    Customer c1("Alice");
+    Customer c2("Bob");
+    Order order;
+    order.printCustomerInfo(c1);
+    order.sendThankYou(c2);
+    order.printCustomerInfo(Customer("Charlie"));
+    return 0;
+}
+```
+
+<!-- Slide 13 -->
+
+---
+
+## Example 2: Customer Class
+
+```{cpp}
+class Customer {
+private:
+    string name;
+
+public:
+    Customer(const string& name) : name(name) {}
+
+    string getName() const {
+        return name;
+    }
+};
+```
+
+<!-- Slide 14 -->
+
+---
+
+## Example 2: Order Class
+
+```{cpp}
+class Order {
+public:
+    void printCustomerInfo(const Customer& cust) {
+        cout << "Processing order for customer: " << cust.getName() << endl;
+    }
+
+    void sendThankYou(const Customer& cust) {
+        cout << "Thank you, " << cust.getName() << ", for your order!" << endl;
+    }
+};
+```
+
+<!-- Slide 15 -->
+
+---
+
+## Example 2: Main Function
+
+```{cpp}
+int main() {
+    Customer c1("Alice");
+    Customer c2("Bob");
+
+    Order order;
+
+    order.printCustomerInfo(c1);        // Order "uses" Customer (dependency)
+    order.sendThankYou(c2);             // Another dependency use
+    order.printCustomerInfo(Customer("Charlie"));  // Also works, temp object
+
+    return 0;
+}
+```
+
+<!-- Slide 16 -->
+
+---
+
+## Example 2: Output
+
+```text
+Processing order for customer: Alice
+Thank you, Bob, for your order!
+Processing order for customer: Charlie
+=== Code Execution Successful ===
+```
+
+<!-- Slide 17 -->
+
+---
+
+## References and Dependencies
+
+- Do we always need to use reference variables?
+
+<!-- Slide 18 -->
+
+---
+
+## Passing by Value
+
+No.
+
+```{cpp}
+class Logger {
+public:
+    void logMessage(string message) {  // Passed by value
+        cout << "[LOG]: " << message << endl;
+    }
+};
+```
+
+- Technically this is a dependency relationship.
+- But because strings are a standard type, nobody thinks of it that way.
+- Nor do we need a reference because strings are built in.
+
+<!-- Slide 19 -->
+
+---
+
+## Example 3
+
+<!-- Slide 20 -->
+
+---
+
+## Example 3: Dependency Through a Return Type
+
+```{cpp}
+#include <iostream>
+#include <string>
+using namespace std;
+
+class User {
+private:
+    string username;
+public:
+    User(string name) : username(name) {}
+    string getUsername() const { return username; }
+};
+
+class UserDatabase {
+public:
+    User getUserById(int id) {
+        return User("user_" + to_string(id));
+    }
+};
+
+int main() {
+    UserDatabase db;
+    User u = db.getUserById(42);  // Dependency via return type
+    cout << "Fetched user: " << u.getUsername() << endl;
+    return 0;
+}
+```
+
+```text
+Fetched user: user_42
+=== Code Execution Successful ===
+```
+
+<!-- Slide 21 -->

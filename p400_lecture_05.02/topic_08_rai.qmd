@@ -1,0 +1,221 @@
+<!-- Topic: Resource Acquisition Is Initialization -->
+<!-- Slides 40–52 -->
+
+# Resource Acquisition Is Initialization
+<!-- Slide 40 -->
+
+---
+
+## Why Does Resource Management Matter?
+
+Resource Acquisition Is Initialization ties the lifetime of a resource to the lifetime of an object.
+
+When the object is created, it acquires or takes ownership of a resource. When it is destroyed, it releases that resource automatically.
+
+::: notes
+Slides 40–52
+:::
+
+<!-- Slide 41 -->
+
+---
+
+## What Is a Resource?
+
+A resource is anything that must be acquired and later released.
+
+- Dynamically allocated memory
+- Files
+- Mutex locks
+- Threads
+- Database connections
+- Sockets and operating-system handles
+
+<!-- Slide 42 -->
+
+---
+
+## Manual Cleanup
+
+```{cpp}
+#include <cstdio>
+
+FILE* file = fopen("data.txt", "r");
+// use file
+fclose(file);
+```
+
+This looks simple, but cleanup becomes difficult when a function has multiple return paths or exceptions.
+
+<!-- Slide 43 -->
+
+---
+
+## The Leak Risk
+
+```{cpp}
+void process(FILE* file) {
+    if (!read_header(file)) {
+        return;  // Did we remember to close the file?
+    }
+
+    process_data(file);
+
+    if (something_failed()) {
+        return;  // Another possible leak
+    }
+
+    fclose(file);
+}
+```
+
+If an exception occurs, fclose may never run.
+
+<!-- Slide 44 -->
+
+---
+
+## The RAII Solution
+
+Put the resource inside an object whose destructor performs the cleanup.
+
+```{cpp}
+{
+    lock_guard<mutex> lock(mutex);
+
+    update_shared_data();
+
+} // lock is automatically released here
+```
+
+The resource is managed by the object instead of by every control-flow path.
+
+<!-- Slide 45 -->
+
+---
+
+## Early Returns and Exceptions
+
+```{cpp}
+void update(mutex& mutex) {
+    lock_guard<mutex> lock(mutex);
+
+    if (some_error()) {
+        return;  // Destructor still unlocks the mutex
+    }
+
+    do_more_work();
+} // Destructor unlocks the mutex
+```
+
+C++ destroys local objects as the stack unwinds, so the destructor still releases the resource.
+
+<!-- Slide 46 -->
+
+---
+
+## Standard-Library RAII Classes
+
+C++ already provides many RAII classes.
+
+- lock_guard and unique_lock manage mutexes.
+- scoped_lock safely locks multiple mutexes.
+- unique_ptr manages dynamically allocated objects.
+- ofstream closes files automatically.
+- jthread handles a thread when it leaves scope.
+
+<!-- Slide 47 -->
+
+---
+
+## Ownership Is the Key Question
+
+When designing an RAII class, ask:
+
+> Who owns this resource?
+
+- unique_ptr represents one owner.
+- shared_ptr represents shared ownership.
+- A reference or raw pointer usually represents borrowed access.
+- A custom RAII object can own a specialized resource.
+
+Ownership determines whether the object should be copyable or movable.
+
+<!-- Slide 48 -->
+
+---
+
+## Unique Ownership
+
+A unique owner normally cannot be copied, but it can be moved.
+
+```{cpp}
+#include <memory>
+using namespace std;
+
+unique_ptr<int> a = make_unique<int>(42);
+// unique_ptr<int> b = a;  // Error
+
+unique_ptr<int> b = move(a);
+```
+
+After the move, b owns the resource and a no longer does.
+
+<!-- Slide 49 -->
+
+---
+
+## Custom Resources
+
+RAII is not limited to standard-library resources.
+
+```{cpp}
+#include <cstdio>
+#include <memory>
+using namespace std;
+
+struct FileCloser {
+    void operator()(FILE* file) const {
+        if (file) {
+            fclose(file);
+        }
+    }
+};
+
+using FileHandle = unique_ptr<FILE, FileCloser>;
+```
+
+A custom deleter connects a C library resource to a C++ object's lifetime.
+
+<!-- Slide 50 -->
+
+---
+
+## What RAII Does Not Solve
+
+RAII is powerful, but it is not magic.
+
+- It does not prevent deadlocks caused by poor locking design.
+- It does not prevent cycles created by shared_ptr.
+- It does not fix invalid external state or incorrect ownership decisions.
+- A destructor may not be the right place to report an important failure.
+
+Use an explicit operation such as close or commit when cleanup can fail meaningfully.
+
+<!-- Slide 51 -->
+
+---
+
+## Practical Rules
+
+- Prefer RAII over manual cleanup.
+- Acquire resources close to their first use.
+- Keep the owning scope as small as practical.
+- Make ownership explicit.
+- Use standard RAII classes whenever possible.
+- Use smart pointers instead of raw new and delete.
+- Decide deliberately whether a resource-owning class can be copied or moved.
+
+A resource should have a clear owner, and its owner should automatically release it when its lifetime ends.
+
+<!-- Slide 52 -->

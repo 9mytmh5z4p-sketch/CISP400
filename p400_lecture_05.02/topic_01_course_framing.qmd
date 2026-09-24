@@ -1,0 +1,39 @@
+<!-- Topic: Course Framing -->
+<!-- Slides 1–3 -->
+
+# Course Framing
+<!-- Slide 1 -->
+
+**CISP 400**
+
+Object Oriented Programming in C++
+
+Dr. Fowler
+
+Folsom Lake College / El Dorado Center | Rancho Cordova Center
+
+## Last Time
+
+::: notes
+Slides 1–8
+:::
+
+<!-- Slide 2 -->
+
+---
+
+## Agenda
+
+### Ch 7 — Object-Oriented Programming
+
+| | |
+|---|---|
+| 7.1 Abstract Data Types | 7.8 Private Member Functions |
+| 7.2 Object-Oriented Programming | 7.9 Passing Objects to Functions |
+| 7.3 Introduction to Classes | 7.10 Object Composition |
+| 7.4 Creating and Using Objects | 7.11 Skip |
+| 7.5 Defining Member Functions | 7.12 Structures |
+| 7.6 Constructors | 7.13 More on Enumerated Data Types |
+| 7.7 Destructors | 8.13 Arrays of Objects |
+
+<!-- Slide 3 -->
