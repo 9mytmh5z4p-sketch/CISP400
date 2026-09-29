@@ -1,14 +1,14 @@
-<!-- Topic 3: Singleton Pattern -->
-<!-- Slides 21-31 -->
+<!-- Topic 4: Singleton Pattern -->
+<!-- Slides 27–37 -->
 
 # Singleton Pattern
-<!-- Slide 21 -->
+<!-- Slide 27 -->
 
 ## Pattern Category
 
 ![](images/Design_Patterns_1.png){fig-align="center" width="70%"}
 
-<!-- Slide 22 -->
+<!-- Slide 28 -->
 
 ---
 
@@ -18,10 +18,10 @@
 + A file name, counter, settings value, or shared output path may need one controlled access point.
 
 ::: notes
-Slides 21-31
+Slides 27–37
 :::
 
-<!-- Slide 23 -->
+<!-- Slide 29 -->
 
 ---
 
@@ -31,7 +31,7 @@ Slides 21-31
 + The program reaches that resource through one function.
 + Other code asks for the shared resource instead of creating separate copies.
 
-<!-- Slide 24 -->
+<!-- Slide 30 -->
 
 ---
 
@@ -43,7 +43,7 @@ Slides 21-31
 | controlled access | other code reaches the resource through one function |
 | shared state | callers see the same stored data |
 
-<!-- Slide 25 -->
+<!-- Slide 31 -->
 
 ---
 
@@ -55,7 +55,7 @@ Slides 21-31
 The highlighted `static` local value is the controlled shared resource. The function is the access point.
 :::
 
-<!-- Slide 26 -->
+<!-- Slide 32 -->
 
 ---
 
@@ -67,7 +67,7 @@ The highlighted `static` local value is the controlled shared resource. The func
 Use this slide to contrast the global-variable version with the static-local version. Both preserve shared state, but the global version exposes the state more broadly.
 :::
 
-<!-- Slide 27 -->
+<!-- Slide 33 -->
 
 ---
 
@@ -84,7 +84,7 @@ int& nextReportNumber() {
 + Each later call reaches the same stored value.
 + The value is kept inside the access function's control.
 
-<!-- Slide 28 -->
+<!-- Slide 34 -->
 
 ---
 
@@ -94,7 +94,7 @@ int& nextReportNumber() {
 + The program may need multiple versions later.
 + The shared value changes in ways callers cannot easily see.
 
-<!-- Slide 29 -->
+<!-- Slide 35 -->
 
 ---
 
@@ -104,7 +104,7 @@ int& nextReportNumber() {
 + Keep the shared resource small and focused.
 + Do not use Singleton as a disguised global variable.
 
-<!-- Slide 30 -->
+<!-- Slide 36 -->
 
 ---
 
@@ -114,4 +114,4 @@ int& nextReportNumber() {
 + It is useful when the single-resource rule is intentional.
 + It should be chosen for a design reason, not convenience alone.
 
-<!-- Slide 31 -->
+<!-- Slide 37 -->

@@ -3,13 +3,6 @@
 
 # Class Starters
 
-![](images/source_pages/slide-40.png){width="100%" fig-alt="Class Starters"}
-
-::: notes
-Slides 40–43
-Source slide 40 from the authoritative PDF.
-:::
-
 <!-- Slide 41 -->
 
 ---

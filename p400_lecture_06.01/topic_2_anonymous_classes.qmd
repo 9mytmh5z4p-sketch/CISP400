@@ -1,0 +1,125 @@
+<!-- Topic 2: Anonymous Classes and Objects -->
+<!-- Slides 5–13 -->
+
+# Anonymous Classes and Objects
+
+<!-- Slide 5 -->
+
+---
+
+## Anonymous Entities
+
+Object-oriented programs are built from classes whose objects interact. A program may use several source files to represent those objects and their relationships.
+
+- `Date1.cpp`
+- `Date2.cpp`
+- `Date3.cpp`
+
+Sometimes we do not want to incur the overhead of constructing an object and having it survive for a significant amount of time.
+
+<!-- Slide 6 -->
+
+---
+
+## Anonymous Classes & Objects
+
+- **Anonymous classes** have no class name; their objects may still have variable names and scope.
+- **Anonymous objects** have no variable name; they are created, used, and destroyed immediately.
+
+<!-- Slide 7 -->
+
+---
+
+## Anonymous Classes
+
+- An anonymous class does not have a class name.
+- An anonymous class cannot be used in functions or methods.
+- Its objects do have variable names, so they can be called and have scope.
+
+<!-- Slide 8 -->
+
+---
+
+## Anonymous Class Example
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class {
+public:
+    int x, y;
+} point1, point2;
+
+int main() {
+    point1.x = 10;
+    point2.y = 23;
+
+    return 0;
+}
+```
+
+The class has no name, but it creates the named objects `point1` and `point2`.
+
+<!-- Slide 9 -->
+
+---
+
+## Anonymous Objects
+
+Sometimes we do not want to incur the overhead of constructing an object and having it survive for any length of time.
+
+<!-- Slide 10 -->
+
+---
+
+## Anonymous Object Example
+
+An anonymous object has no variable name. It is created, used, and destroyed immediately.
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Printer {
+public:
+    Printer(string msg = "NA") {
+        cout << msg << endl;
+    }
+};
+
+int main() {
+    // Temporary anonymous object: no variable name.
+    // Create, use, and destroy immediately.
+    Printer("Hello!");
+
+    return 0;
+}
+```
+
+<!-- Slide 11 -->
+
+---
+
+## Anonymous Object Output
+
+```text
+Hello!
+=== Code Execution Successful ===
+```
+
+The `Printer` object exists only for the constructor call. After the statement completes, the temporary object is destroyed.
+
+<!-- Slide 12 -->
+
+---
+
+## Anonymous Object
+
+- An anonymous object does not have a variable name.
+- We cannot make multiple instances of that specific object.
+- It can be used in functions or methods.
+- We use it where we need it, for a short-lived operation.
+
+<!-- Slide 13 -->

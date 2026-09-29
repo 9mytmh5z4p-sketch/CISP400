@@ -1,8 +1,8 @@
-<!-- Topic 2: Design Patterns -->
-<!-- Slides 8-20 -->
+<!-- Topic 3: Design Patterns -->
+<!-- Slides 14–26 -->
 
 # Design Patterns
-<!-- Slide 8 -->
+<!-- Slide 14 -->
 
 ## Why Name Solutions? {.smaller}
 
@@ -10,10 +10,10 @@
 + A shared name lets a team discuss the shape of a solution without redrawing it from scratch.
 
 ::: notes
-Slides 8-20
+Slides 14–26
 :::
 
-<!-- Slide 9 -->
+<!-- Slide 15 -->
 
 ---
 
@@ -31,7 +31,7 @@ Slides 8-20
 :::
 :::
 
-<!-- Slide 10 -->
+<!-- Slide 16 -->
 
 ---
 
@@ -49,7 +49,7 @@ Slides 8-20
 :::
 :::
 
-<!-- Slide 11 -->
+<!-- Slide 17 -->
 
 ---
 
@@ -59,7 +59,7 @@ Slides 8-20
 + The exact code changes from program to program.
 + The design shape can still be recognized, discussed, and reused.
 
-<!-- Slide 12 -->
+<!-- Slide 18 -->
 
 ---
 
@@ -77,7 +77,7 @@ Slides 8-20
 :::
 :::
 
-<!-- Slide 13 -->
+<!-- Slide 19 -->
 
 ---
 
@@ -87,7 +87,7 @@ Slides 8-20
 + It names the problem, the structure, and the tradeoff.
 + The pattern is about intent, not memorized code.
 
-<!-- Slide 14 -->
+<!-- Slide 20 -->
 
 ---
 
@@ -98,7 +98,7 @@ Slides 8-20
 + Patterns are not guaranteed best practices.
 + Patterns are design vocabulary with consequences.
 
-<!-- Slide 15 -->
+<!-- Slide 21 -->
 
 ---
 
@@ -108,7 +108,7 @@ Slides 8-20
 + A pattern gives a shape that must be adapted to the program.
 + The same pattern may look different in small, medium, and large programs.
 
-<!-- Slide 16 -->
+<!-- Slide 22 -->
 
 ---
 
@@ -118,7 +118,7 @@ Slides 8-20
 + What structure does it use?
 + What tradeoff does it introduce?
 
-<!-- Slide 17 -->
+<!-- Slide 23 -->
 
 ---
 
@@ -128,7 +128,7 @@ Slides 8-20
 + Use the smallest structure that makes the design clearer.
 + Avoid adding pattern machinery when ordinary code is enough.
 
-<!-- Slide 18 -->
+<!-- Slide 24 -->
 
 ---
 
@@ -136,7 +136,7 @@ Slides 8-20
 
 ![](images/Design_Patterns.png){fig-align="center" width="86%"}
 
-<!-- Slide 19 -->
+<!-- Slide 25 -->
 
 ---
 
@@ -146,4 +146,4 @@ Slides 8-20
 + They help programmers recognize, explain, and maintain structure.
 + Every pattern also has a cost.
 
-<!-- Slide 20 -->
+<!-- Slide 26 -->

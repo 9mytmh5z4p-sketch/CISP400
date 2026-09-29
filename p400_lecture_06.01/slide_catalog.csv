@@ -1,45 +1,57 @@
-"Slide Number","Topic","Subject","Title","Category","Filename"
-"1","Course Framing","","CISP 400","Section Divider","source_pages/slide-01.png"
-"2","Course Framing","","Source Slide 2","Image","source_pages/slide-02.png"
-"3","Course Framing","","Last Time","Progression Map","source_pages/slide-03.png"
-"4","Course Framing","","Agenda","Agenda","source_pages/slide-04.png"
-"5","Course Framing","","Theme for Today","Image","source_pages/slide-05.png"
-"6","Course Framing","","“Take a breather”","Image","source_pages/slide-06.png"
-"7","Assertions","Assertions","Assertions","Section Divider",""
-"8","Anonymous Classes and Objects","Anonymous Classes and Objects","OOP is about classes","Section Divider","source_pages/slide-07.png"
-"9","Anonymous Classes and Objects","Anonymous Classes and Objects","Anonymous classes","Image","source_pages/slide-08.png"
-"10","Anonymous Classes and Objects","Anonymous Classes and Objects","Anonymous Classes","Image","source_pages/slide-09.png"
-"11","Anonymous Classes and Objects","Anonymous Classes and Objects","Source Slide 10","Image","source_pages/slide-10.png"
-"12","Anonymous Classes and Objects","Anonymous Classes and Objects","Anonymous objects","Image","source_pages/slide-11.png"
-"13","Anonymous Classes and Objects","Anonymous Classes and Objects","Source Slide 12","Image","source_pages/slide-12.png"
-"14","Anonymous Classes and Objects","Anonymous Classes and Objects","Source Slide 13","Image","source_pages/slide-13.png"
-"15","Anonymous Classes and Objects","Anonymous Classes and Objects","Anonymous Object","Image","source_pages/slide-14.png"
-"16","Adapter Pattern","Adapter Pattern","Use Case","Section Divider","source_pages/slide-15.png"
-"17","Adapter Pattern","Adapter Pattern","• Assume we create a whizbang class which","Image","source_pages/slide-16.png"
-"18","Adapter Pattern","Adapter Pattern","Source Slide 17","Image","source_pages/slide-17.png"
-"19","Adapter Pattern","Adapter Pattern","Adapters","Image","source_pages/slide-18.png"
-"20","Adapter Pattern","Adapter Pattern","Adapter","Image","source_pages/slide-19.png"
-"21","Adapter Pattern","Adapter Pattern","Source Slide 20","Image","source_pages/slide-20.png"
-"22","Adapter Pattern","Adapter Pattern","Source Slide 21","Image","source_pages/slide-21.png"
-"23","Adapter Pattern","Adapter Pattern","Source Slide 22","Image","source_pages/slide-22.png"
-"24","Adapter Pattern","Adapter Pattern","Source Slide 23","Image","source_pages/slide-23.png"
-"25","Adapter Pattern","Adapter Pattern","https://refactoring.guru/design-patterns/adapter","Image","source_pages/slide-24.png"
-"26","Adapter Pattern","Adapter Pattern","Back to Whizbang","Image","source_pages/slide-25.png"
-"27","Adapter Pattern","Adapter Pattern","Source Slide 26","Image","source_pages/slide-26.png"
-"28","Adapter Pattern","Adapter Pattern","Source Slide 27","Image","source_pages/slide-27.png"
-"29","Adapter Pattern","Adapter Pattern","Source Slide 28","Image","source_pages/slide-28.png"
-"30","Lecture Wrap-Up","","What’s this section","Section Divider","source_pages/slide-29.png"
-"31","Lecture Wrap-Up","","• Learning OOP is about objects working together.","Image","source_pages/slide-30.png"
-"32","Lecture Wrap-Up","","31","Image","source_pages/slide-31.png"
-"33","Lecture Wrap-Up","","Ch 11 - More OOP","Image","source_pages/slide-32.png"
-"34","Lecture Wrap-Up","","Homework 2 Peer Review due Sunday.","Demonstration","source_pages/slide-33.png"
-"35","Homework Preflight","","Source Slide 34","Section Divider","source_pages/slide-34.png"
-"36","Homework Preflight","","Homework Pre ight","Demonstration","source_pages/slide-35.png"
-"37","Homework Preflight","","Exercise Goals","Demonstration","source_pages/slide-36.png"
-"38","Homework Preflight","","Task","Demonstration","source_pages/slide-37.png"
-"39","Homework Preflight","","Task - II","Demonstration","source_pages/slide-38.png"
-"40","Homework Preflight","","Task - III","Demonstration","source_pages/slide-39.png"
-"41","Class Starters","","Class Starters","Demonstration","source_pages/slide-40.png"
-"42","Class Starters","","What’s the difference …","Image","source_pages/slide-41.png"
-"43","Class Starters","","42","Image","source_pages/slide-42.png"
-"44","Class Starters","","Sentence Starters","Demonstration","source_pages/slide-43.png"
+Slide Number,Topic,Subject,Title,Category,Filename
+1,topic_course_framing,,Course Framing,Section Divider,
+2,topic_course_framing,,Source Slide 2,Image,source_pages/slide-02.png
+3,topic_course_framing,,Last Time,Progression Map,
+4,topic_course_framing,,Agenda,Agenda,
+5,topic_2_anonymous_classes,Anonymous Classes and Objects,Anonymous Classes and Objects,Section Divider,
+6,topic_2_anonymous_classes,Anonymous Classes and Objects,Anonymous Entities,Define,
+7,topic_2_anonymous_classes,Anonymous Classes and Objects,Anonymous Classes & Objects,Enumerate,- Anonymous Classes - Anonymous Objects
+8,topic_2_anonymous_classes,Anonymous Classes and Objects,Anonymous Classes,Enumerate,
+9,topic_2_anonymous_classes,Anonymous Classes and Objects,Anonymous Class Example,Demonstration,
+10,topic_2_anonymous_classes,Anonymous Classes and Objects,Anonymous Objects,Define,
+11,topic_2_anonymous_classes,Anonymous Classes and Objects,Anonymous Object Example,Demonstration,
+12,topic_2_anonymous_classes,Anonymous Classes and Objects,Anonymous Object Output,Demonstration,
+13,topic_2_anonymous_classes,Anonymous Classes and Objects,Anonymous Object,Summary,
+14,topic_3_design_patterns,Design Patterns,Design Patterns,Section Divider,
+15,topic_3_design_patterns,Design Patterns,Why Name Solutions?,Motivating Question,
+16,topic_3_design_patterns,Design Patterns,Christopher Alexander,Connect,images/ChristopherAlexander.jpg
+17,topic_3_design_patterns,Design Patterns,A Pattern Language,Model,images/A_Pattern_Language.png
+18,topic_3_design_patterns,Design Patterns,From Buildings to Software,Transfer,
+19,topic_3_design_patterns,Design Patterns,The Gang of Four Book,Connect,images/gang_of_four.jpg
+20,topic_3_design_patterns,Design Patterns,What Is a Design Pattern?,Define,
+21,topic_3_design_patterns,Design Patterns,What Patterns Are Not,Contrast,
+22,topic_3_design_patterns,Design Patterns,Pattern Not Recipe,Contrast,
+23,topic_3_design_patterns,Design Patterns,The Three Questions,Checklist,
+24,topic_3_design_patterns,Design Patterns,Common Practices,Common Practice,
+25,topic_3_design_patterns,Design Patterns,Pattern Categories,Enumerate,images/Design_Patterns.png
+26,topic_3_design_patterns,Design Patterns,Summary,Summary,
+27,topic_4_singleton_pattern,Singleton Pattern,Singleton Pattern,Section Divider,
+28,topic_4_singleton_pattern,Singleton Pattern,Pattern Category,Model,images/Design_Patterns_1.png
+29,topic_4_singleton_pattern,Singleton Pattern,What If There Should Only Be One?,Motivating Question,
+30,topic_4_singleton_pattern,Singleton Pattern,Singleton Pattern,Define,
+31,topic_4_singleton_pattern,Singleton Pattern,One Resource One Access Point,Model,
+32,topic_4_singleton_pattern,Singleton Pattern,Example,Demonstration,images/singleton_code.png
+33,topic_4_singleton_pattern,Singleton Pattern,Example 2,Demonstration,images/Singleton_Code_2.png
+34,topic_4_singleton_pattern,Singleton Pattern,Why Static Shows Up Here,Code Block,
+35,topic_4_singleton_pattern,Singleton Pattern,When Singleton Is a Bad Fit,Decision Point,
+36,topic_4_singleton_pattern,Singleton Pattern,Common Practices,Common Practice,
+37,topic_4_singleton_pattern,Singleton Pattern,Summary,Summary,
+38,topic_5_topic_adapter_pattern,Adapter Pattern,Adapter Pattern,Section Divider,
+39,topic_5_topic_adapter_pattern,Adapter Pattern,Use Case,Value Added,
+40,topic_5_topic_adapter_pattern,Adapter Pattern,Whizbang Example,Code Block,
+41,topic_5_topic_adapter_pattern,Adapter Pattern,Adapters,Define,
+42,topic_5_topic_adapter_pattern,Adapter Pattern,Adapter,Enumerate,
+43,topic_5_topic_adapter_pattern,Adapter Pattern,Pattern Language,Connect,
+44,topic_5_topic_adapter_pattern,Adapter Pattern,Design Patterns,Connect,
+45,topic_5_topic_adapter_pattern,Adapter Pattern,Pattern Categories,Enumerate,
+46,topic_5_topic_adapter_pattern,Adapter Pattern,Adapter in the Structural Category,Model,images/source_pages/slide-23.png
+47,topic_5_topic_adapter_pattern,Adapter Pattern,Adapting the Interface,Model,images/source_pages/slide-24.png
+48,topic_5_topic_adapter_pattern,Adapter Pattern,Back to Whizbang,Transfer,
+49,topic_5_topic_adapter_pattern,Adapter Pattern,Named Adapter Class,Demonstration,
+50,topic_5_topic_adapter_pattern,Adapter Pattern,Anonymous Adapter Class,Demonstration,
+51,topic_5_topic_adapter_pattern,Adapter Pattern,Named Adapter Object,Demonstration,
+52,topic_wrap_up,,Lecture Wrap-Up,Section Divider,
+53,topic_wrap_up,,Source Slide 30,Image,source_pages/slide-30.png
+54,topic_wrap_up,,Source Slide 31,Image,source_pages/slide-31.png
+55,topic_wrap_up,,Source Slide 32,Image,source_pages/slide-32.png
+56,topic_wrap_up,,Source Slide 33,Image,source_pages/slide-33.png

@@ -208,126 +208,143 @@ Dr.&nbsp;Caleb Fowler
 </section>
 <section class="slide level2">
 
-
+<!-- Topic: Course Framing -->
+<!-- Slides 1–4 -->
+</section>
+<section>
+<section id="course-framing" class="title-slide slide level1 center">
+<h1>Course Framing</h1>
 <!-- Slide 1 -->
-<img data-src="images/comic.png" class="quarto-figure quarto-figure-center r-stretch" style="width:38.0%"></section>
-<section class="slide level2">
-
 </section>
-<section>
-<section id="last-time" class="title-slide slide level1 center">
-<h1>Last Time</h1>
-<ul>
-<li class="fragment"><strong>Choosing a Parameter Style</strong></li>
-<li class="fragment"><strong>Function Side Effects</strong></li>
-<li class="fragment"><strong>Static Local Variables</strong></li>
-</ul>
-<aside class="notes">
-<p>Brief recall from function design. Students should remember that scope, lifetime, and side effects affect how predictable a function is.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="source-slide-2" class="slide level2">
+<h2><span style="display:none">Source Slide 2</span></h2>
+
 <!-- Slide 2 -->
-</section>
-<section class="slide level2">
-
-</section></section>
-<section id="todays-agenda" class="title-slide slide level1 center">
-<h1>Today’s Agenda</h1>
+<img data-src="images/source_pages/slide-02.png" style="width:100.0%" alt="Source Slide 2" class="r-stretch"></section>
+<section id="last-time" class="slide level2">
+<h2>Last Time</h2>
 <ul>
-<li>Very Brief Review of Static</li>
-<li>Design Patterns</li>
-<li>Singleton Pattern</li>
+<li class="fragment"><strong>Relationships</strong></li>
+<li class="fragment"><strong>Arrays of Objects on the Stack and Heap</strong></li>
+<li class="fragment"><strong>Resource Acquisition Is Initialization</strong></li>
 </ul>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 <!-- Slide 3 -->
-<!-- Topic 1: Very Brief Review of Static -->
-<!-- Slides 4-7 -->
 </section>
-
-<section>
-<section id="very-brief-review-of-static" class="title-slide slide level1 center">
-<h1>Very Brief Review of Static</h1>
-<!-- Slide 4 -->
-</section>
-<section id="what-does-static-remember" class="slide level2 smaller">
-<h2>What Does Static Remember?</h2>
+<section id="agenda" class="slide level2">
+<h2>Agenda</h2>
 <ul>
-<li>A <code>static</code> local variable is created once.</li>
-<li>It keeps its value between function calls.</li>
-<li>The name is still visible only inside that function.</li>
+<li>Topic 2 — Anonymous Classes and Objects</li>
+<li>Topic 3 — Design Patterns</li>
+<li>Topic 4 — Singleton Pattern</li>
+<li>Topic 5 — Adapter Pattern</li>
 </ul>
-<aside class="notes">
-<p>Slides 4-7</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<!-- Slide 4 -->
+<!-- Topic 2: Anonymous Classes and Objects -->
+<!-- Slides 5–13 -->
+</section></section>
+<section>
+<section id="anonymous-classes-and-objects" class="title-slide slide level1 center">
+<h1>Anonymous Classes and Objects</h1>
 <!-- Slide 5 -->
 </section>
-<section id="static-local-example" class="slide level2 smaller">
-<h2>Static Local Example</h2>
+<section id="anonymous-entities" class="slide level2">
+<h2>Anonymous Entities</h2>
+<p>Object-oriented programs are built from classes whose objects interact. A program may use several source files to represent those objects and their relationships.</p>
+<ul>
+<li><code>Date1.cpp</code></li>
+<li><code>Date2.cpp</code></li>
+<li><code>Date3.cpp</code></li>
+</ul>
+<p>Sometimes we do not want to incur the overhead of constructing an object and having it survive for a significant amount of time.</p>
+<!-- Slide 6 -->
+</section>
+<section id="anonymous-classes-objects" class="slide level2">
+<h2>Anonymous Classes &amp; Objects</h2>
+<ul>
+<li><strong>Anonymous classes</strong> have no class name; their objects may still have variable names and scope.</li>
+<li><strong>Anonymous objects</strong> have no variable name; they are created, used, and destroyed immediately.</li>
+</ul>
+<!-- Slide 7 -->
+</section>
+<section id="anonymous-classes" class="slide level2">
+<h2>Anonymous Classes</h2>
+<ul>
+<li>An anonymous class does not have a class name.</li>
+<li>An anonymous class cannot be used in functions or methods.</li>
+<li>Its objects do have variable names, so they can be called and have scope.</li>
+</ul>
+<!-- Slide 8 -->
+</section>
+<section id="anonymous-class-example" class="slide level2">
+<h2>Anonymous Class Example</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
 <span id="cb1-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
 <span id="cb1-3"><a href=""></a></span>
-<span id="cb1-4"><a href=""></a><span class="dt">void</span> showCount<span class="op">();</span></span>
-<span id="cb1-5"><a href=""></a></span>
-<span id="cb1-6"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb1-7"><a href=""></a>    showCount<span class="op">();</span></span>
-<span id="cb1-8"><a href=""></a>    showCount<span class="op">();</span></span>
-<span id="cb1-9"><a href=""></a>    showCount<span class="op">();</span></span>
-<span id="cb1-10"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb1-11"><a href=""></a><span class="op">}</span></span>
+<span id="cb1-4"><a href=""></a><span class="kw">class</span> <span class="op">{</span></span>
+<span id="cb1-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb1-6"><a href=""></a>    <span class="dt">int</span> x<span class="op">,</span> y<span class="op">;</span></span>
+<span id="cb1-7"><a href=""></a><span class="op">}</span> point1<span class="op">,</span> point2<span class="op">;</span></span>
+<span id="cb1-8"><a href=""></a></span>
+<span id="cb1-9"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-10"><a href=""></a>    point1<span class="op">.</span>x <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb1-11"><a href=""></a>    point2<span class="op">.</span>y <span class="op">=</span> <span class="dv">23</span><span class="op">;</span></span>
 <span id="cb1-12"><a href=""></a></span>
-<span id="cb1-13"><a href=""></a><span class="dt">void</span> showCount<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb1-14"><a href=""></a>    <span class="at">static</span> <span class="dt">int</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb1-15"><a href=""></a>    count<span class="op">++;</span></span>
-<span id="cb1-16"><a href=""></a>    cout <span class="op">&lt;&lt;</span> count <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb1-17"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 6 -->
+<span id="cb1-13"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-14"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The class has no name, but it creates the named objects <code>point1</code> and <code>point2</code>.</p>
+<!-- Slide 9 -->
 </section>
-<section id="bridge-to-patterns" class="slide level2">
-<h2>Bridge to Patterns</h2>
+<section id="anonymous-objects" class="slide level2">
+<h2>Anonymous Objects</h2>
+<p>Sometimes we do not want to incur the overhead of constructing an object and having it survive for any length of time.</p>
+<!-- Slide 10 -->
+</section>
+<section id="anonymous-object-example" class="slide level2">
+<h2>Anonymous Object Example</h2>
+<p>An anonymous object has no variable name. It is created, used, and destroyed immediately.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb2-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
+<span id="cb2-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb2-4"><a href=""></a></span>
+<span id="cb2-5"><a href=""></a><span class="kw">class</span> Printer <span class="op">{</span></span>
+<span id="cb2-6"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb2-7"><a href=""></a>    Printer<span class="op">(</span>string msg <span class="op">=</span> <span class="st">"NA"</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-8"><a href=""></a>        cout <span class="op">&lt;&lt;</span> msg <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb2-9"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb2-10"><a href=""></a><span class="op">};</span></span>
+<span id="cb2-11"><a href=""></a></span>
+<span id="cb2-12"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-13"><a href=""></a>    <span class="co">// Temporary anonymous object: no variable name.</span></span>
+<span id="cb2-14"><a href=""></a>    <span class="co">// Create, use, and destroy immediately.</span></span>
+<span id="cb2-15"><a href=""></a>    Printer<span class="op">(</span><span class="st">"Hello!"</span><span class="op">);</span></span>
+<span id="cb2-16"><a href=""></a></span>
+<span id="cb2-17"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-18"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 11 -->
+</section>
+<section id="anonymous-object-output" class="slide level2">
+<h2>Anonymous Object Output</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href=""></a>Hello!</span>
+<span id="cb3-2"><a href=""></a>=== Code Execution Successful ===</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>Printer</code> object exists only for the constructor call. After the statement completes, the temporary object is destroyed.</p>
+<!-- Slide 12 -->
+</section>
+<section id="anonymous-object" class="slide level2">
+<h2>Anonymous Object</h2>
 <ul>
-<li><code>static</code> is a mechanism, not the main design idea.</li>
-<li>It can make one stored value available through one controlled function.</li>
-<li>Singleton uses that idea to describe a larger design choice.</li>
+<li>An anonymous object does not have a variable name.</li>
+<li>We cannot make multiple instances of that specific object.</li>
+<li>It can be used in functions or methods.</li>
+<li>We use it where we need it, for a short-lived operation.</li>
 </ul>
-<!-- Slide 7 -->
-<!-- Topic 2: Design Patterns -->
-<!-- Slides 8-20 -->
+<!-- Slide 13 -->
+<!-- Topic 3: Design Patterns -->
+<!-- Slides 14–26 -->
 </section></section>
 <section>
 <section id="design-patterns" class="title-slide slide level1 center">
 <h1>Design Patterns</h1>
-<!-- Slide 8 -->
+<!-- Slide 14 -->
 </section>
 <section id="why-name-solutions" class="slide level2 smaller">
 <h2>Why Name Solutions?</h2>
@@ -336,7 +353,7 @@ Dr.&nbsp;Caleb Fowler
 <li>A shared name lets a team discuss the shape of a solution without redrawing it from scratch.</li>
 </ul>
 <aside class="notes">
-<p>Slides 8-20</p>
+<p>Slides 14–26</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -348,7 +365,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 9 -->
+<!-- Slide 15 -->
 </section>
 <section id="christopher-alexander" class="slide level2">
 <h2>Christopher Alexander</h2>
@@ -366,7 +383,7 @@ Dr.&nbsp;Caleb Fowler
 </figure>
 </div>
 </div></div>
-<!-- Slide 10 -->
+<!-- Slide 16 -->
 </section>
 <section id="a-pattern-language" class="slide level2">
 <h2>A Pattern Language</h2>
@@ -384,7 +401,7 @@ Dr.&nbsp;Caleb Fowler
 </figure>
 </div>
 </div></div>
-<!-- Slide 11 -->
+<!-- Slide 17 -->
 </section>
 <section id="from-buildings-to-software" class="slide level2">
 <h2>From Buildings to Software</h2>
@@ -393,7 +410,7 @@ Dr.&nbsp;Caleb Fowler
 <li>The exact code changes from program to program.</li>
 <li>The design shape can still be recognized, discussed, and reused.</li>
 </ul>
-<!-- Slide 12 -->
+<!-- Slide 18 -->
 </section>
 <section id="the-gang-of-four-book" class="slide level2">
 <h2>The Gang of Four Book</h2>
@@ -411,7 +428,7 @@ Dr.&nbsp;Caleb Fowler
 </figure>
 </div>
 </div></div>
-<!-- Slide 13 -->
+<!-- Slide 19 -->
 </section>
 <section id="what-is-a-design-pattern" class="slide level2">
 <h2>What Is a Design Pattern?</h2>
@@ -420,7 +437,7 @@ Dr.&nbsp;Caleb Fowler
 <li>It names the problem, the structure, and the tradeoff.</li>
 <li>The pattern is about intent, not memorized code.</li>
 </ul>
-<!-- Slide 14 -->
+<!-- Slide 20 -->
 </section>
 <section id="what-patterns-are-not" class="slide level2">
 <h2>What Patterns Are Not</h2>
@@ -430,7 +447,7 @@ Dr.&nbsp;Caleb Fowler
 <li>Patterns are not guaranteed best practices.</li>
 <li>Patterns are design vocabulary with consequences.</li>
 </ul>
-<!-- Slide 15 -->
+<!-- Slide 21 -->
 </section>
 <section id="pattern-not-recipe" class="slide level2">
 <h2>Pattern, Not Recipe</h2>
@@ -439,7 +456,7 @@ Dr.&nbsp;Caleb Fowler
 <li>A pattern gives a shape that must be adapted to the program.</li>
 <li>The same pattern may look different in small, medium, and large programs.</li>
 </ul>
-<!-- Slide 16 -->
+<!-- Slide 22 -->
 </section>
 <section id="the-three-questions" class="slide level2">
 <h2>The Three Questions</h2>
@@ -448,7 +465,7 @@ Dr.&nbsp;Caleb Fowler
 <li>What structure does it use?</li>
 <li>What tradeoff does it introduce?</li>
 </ul>
-<!-- Slide 17 -->
+<!-- Slide 23 -->
 </section>
 <section id="common-practices" class="slide level2">
 <h2>Common Practices</h2>
@@ -457,12 +474,12 @@ Dr.&nbsp;Caleb Fowler
 <li>Use the smallest structure that makes the design clearer.</li>
 <li>Avoid adding pattern machinery when ordinary code is enough.</li>
 </ul>
-<!-- Slide 18 -->
+<!-- Slide 24 -->
 </section>
 <section id="pattern-categories" class="slide level2">
 <h2>Pattern Categories</h2>
 
-<!-- Slide 19 -->
+<!-- Slide 25 -->
 <img data-src="images/Design_Patterns.png" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"></section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
@@ -471,19 +488,19 @@ Dr.&nbsp;Caleb Fowler
 <li>They help programmers recognize, explain, and maintain structure.</li>
 <li>Every pattern also has a cost.</li>
 </ul>
-<!-- Slide 20 -->
-<!-- Topic 3: Singleton Pattern -->
-<!-- Slides 21-31 -->
+<!-- Slide 26 -->
+<!-- Topic 4: Singleton Pattern -->
+<!-- Slides 27–37 -->
 </section></section>
 <section>
 <section id="singleton-pattern" class="title-slide slide level1 center">
 <h1>Singleton Pattern</h1>
-<!-- Slide 21 -->
+<!-- Slide 27 -->
 </section>
 <section id="pattern-category" class="slide level2">
 <h2>Pattern Category</h2>
 
-<!-- Slide 22 -->
+<!-- Slide 28 -->
 <img data-src="images/Design_Patterns_1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section>
 <section id="what-if-there-should-only-be-one" class="slide level2 smaller">
 <h2>What If There Should Only Be One?</h2>
@@ -492,7 +509,7 @@ Dr.&nbsp;Caleb Fowler
 <li>A file name, counter, settings value, or shared output path may need one controlled access point.</li>
 </ul>
 <aside class="notes">
-<p>Slides 21-31</p>
+<p>Slides 27–37</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -504,7 +521,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 23 -->
+<!-- Slide 29 -->
 </section>
 <section id="singleton-pattern-1" class="slide level2">
 <h2>Singleton Pattern</h2>
@@ -513,7 +530,7 @@ Dr.&nbsp;Caleb Fowler
 <li>The program reaches that resource through one function.</li>
 <li>Other code asks for the shared resource instead of creating separate copies.</li>
 </ul>
-<!-- Slide 24 -->
+<!-- Slide 30 -->
 </section>
 <section id="one-resource-one-access-point" class="slide level2">
 <h2>One Resource, One Access Point</h2>
@@ -543,7 +560,7 @@ Dr.&nbsp;Caleb Fowler
 </tr>
 </tbody>
 </table>
-<!-- Slide 25 -->
+<!-- Slide 31 -->
 </section>
 <section id="example" class="slide level2">
 <h2>Example</h2>
@@ -561,7 +578,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 26 -->
+<!-- Slide 32 -->
 </section>
 <section id="example-2" class="slide level2">
 <h2>Example 2</h2>
@@ -579,20 +596,20 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 27 -->
+<!-- Slide 33 -->
 </section>
 <section id="why-static-shows-up-here" class="slide level2">
 <h2>Why Static Shows Up Here</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a><span class="dt">int</span><span class="op">&amp;</span> nextReportNumber<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb2-2"><a href=""></a>    <span class="at">static</span> <span class="dt">int</span> reportNumber <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
-<span id="cb2-3"><a href=""></a>    <span class="cf">return</span> reportNumber<span class="op">;</span></span>
-<span id="cb2-4"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href=""></a><span class="dt">int</span><span class="op">&amp;</span> nextReportNumber<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-2"><a href=""></a>    <span class="at">static</span> <span class="dt">int</span> reportNumber <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
+<span id="cb4-3"><a href=""></a>    <span class="cf">return</span> reportNumber<span class="op">;</span></span>
+<span id="cb4-4"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>The local <code>static</code> value is created once.</li>
 <li>Each later call reaches the same stored value.</li>
 <li>The value is kept inside the access function’s control.</li>
 </ul>
-<!-- Slide 28 -->
+<!-- Slide 34 -->
 </section>
 <section id="when-singleton-is-a-bad-fit" class="slide level2">
 <h2>When Singleton Is a Bad Fit</h2>
@@ -601,7 +618,7 @@ Dr.&nbsp;Caleb Fowler
 <li>The program may need multiple versions later.</li>
 <li>The shared value changes in ways callers cannot easily see.</li>
 </ul>
-<!-- Slide 29 -->
+<!-- Slide 35 -->
 </section>
 <section id="common-practices-1" class="slide level2">
 <h2>Common Practices</h2>
@@ -610,7 +627,7 @@ Dr.&nbsp;Caleb Fowler
 <li>Keep the shared resource small and focused.</li>
 <li>Do not use Singleton as a disguised global variable.</li>
 </ul>
-<!-- Slide 30 -->
+<!-- Slide 36 -->
 </section>
 <section id="summary-1" class="slide level2">
 <h2>Summary</h2>
@@ -619,215 +636,300 @@ Dr.&nbsp;Caleb Fowler
 <li>It is useful when the single-resource rule is intentional.</li>
 <li>It should be chosen for a design reason, not convenience alone.</li>
 </ul>
-<!-- Slide 31 -->
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="key-takeaways" class="title-slide slide level1 center">
-<h1>Key Takeaways</h1>
-<ul>
-<li>Design patterns name recurring design choices.</li>
-<li>Static local storage can support a larger design rule, but it is not the design itself.</li>
-<li>Singleton controls access to one shared resource.</li>
-</ul>
-<!-- Slide 32 -->
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="next-time" class="title-slide slide level1 center">
-<h1>Next Time</h1>
-<!-- Slide 33 -->
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="appendix" class="title-slide slide level1 center">
-<h1>Appendix</h1>
-<!-- Slide 34 -->
-</section>
-<section id="very-brief-review-of-static-good-practices" class="slide level2">
-<h2>Very Brief Review of Static: Good Practices</h2>
-<ul>
-<li>Use <code>static</code> local variables when a function intentionally needs memory between calls.</li>
-<li>Keep the remembered state small and easy to explain.</li>
-<li>Prefer visible parameters and return values when state does not need to persist.</li>
-</ul>
-<!-- Slide 35 -->
-</section>
-<section id="very-brief-review-of-static-common-mistakes" class="slide level2">
-<h2>Very Brief Review of Static: Common Mistakes</h2>
-<ul>
-<li>Treating <code>static</code> as a shortcut for avoiding parameters.</li>
-<li>Forgetting that previous calls affect the next call.</li>
-<li>Assuming local scope means short lifetime.</li>
-</ul>
-<!-- Slide 36 -->
-</section>
-<section id="very-brief-review-of-static-more-examples" class="slide level2">
-<h2>Very Brief Review of Static: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a><span class="dt">int</span> nextId<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb3-2"><a href=""></a>    <span class="at">static</span> <span class="dt">int</span> id <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
-<span id="cb3-3"><a href=""></a>    id<span class="op">++;</span></span>
-<span id="cb3-4"><a href=""></a>    <span class="cf">return</span> id<span class="op">;</span></span>
-<span id="cb3-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Each call returns a new value because <code>id</code> keeps its previous value.</p>
 <!-- Slide 37 -->
-</section>
-<section id="very-brief-review-of-static-practice-problems" class="slide level2">
-<h2>Very Brief Review of Static: Practice Problems</h2>
-<ol type="1">
-<li>Predict the output of a function that increments a <code>static int count</code>.</li>
-<li>Rewrite a static counter so the caller owns the counter instead.</li>
-<li>Explain the difference between scope and lifetime in one sentence.</li>
-</ol>
+<!-- Topic: Adapter Pattern -->
+<!-- Slides 38–51 -->
+</section></section>
+<section>
+<section id="adapter-pattern" class="title-slide slide level1 center">
+<h1>Adapter Pattern</h1>
 <!-- Slide 38 -->
 </section>
-<section id="very-brief-review-of-static-ai-search-terms" class="slide level2">
-<h2>Very Brief Review of Static: AI Search Terms</h2>
+<section id="use-case" class="slide level2">
+<h2>Use Case</h2>
+<p>Suppose we create a <code>Whizbang</code> class that performs impressive processing on multimedia files.</p>
 <ul>
-<li>“C++ static local variable lifetime”</li>
-<li>“C++ scope vs lifetime static local”</li>
-<li>“C++ function remembers value between calls”</li>
+<li>To use it, we send a multimedia file to a <code>Whizbang</code> object.</li>
+<li>But multimedia files come in many formats.</li>
+<li>How many different file-specific interfaces would <code>Whizbang</code> need to support?</li>
 </ul>
+<aside class="notes">
+<p>Slides 38–51</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 39 -->
 </section>
-<section id="very-brief-review-of-static-questions-for-reflection" class="slide level2">
-<h2>Very Brief Review of Static: Questions for Reflection</h2>
-<ul>
-<li>When does hidden function memory make a program clearer?</li>
-<li>When does hidden function memory make a program harder to debug?</li>
-</ul>
+<section id="whizbang-example" class="slide level2">
+<h2>Whizbang Example</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb5-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb5-3"><a href=""></a></span>
+<span id="cb5-4"><a href=""></a><span class="kw">class</span> Whizbang <span class="op">{</span></span>
+<span id="cb5-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb5-6"><a href=""></a>    Whizbang<span class="op">(</span>PDF<span class="op">&amp;</span> in<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-7"><a href=""></a>        <span class="co">// Process a multimedia file.</span></span>
+<span id="cb5-8"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb5-9"><a href=""></a></span>
+<span id="cb5-10"><a href=""></a>    Whizbang<span class="op">(</span>MP3<span class="op">&amp;</span> in<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-11"><a href=""></a>        <span class="co">// Process a multimedia file.</span></span>
+<span id="cb5-12"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb5-13"><a href=""></a><span class="op">};</span></span>
+<span id="cb5-14"><a href=""></a></span>
+<span id="cb5-15"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb5-16"><a href=""></a>    PDF myPDF<span class="op">;</span>                    <span class="co">// Supplier object.</span></span>
+<span id="cb5-17"><a href=""></a>    MP3 myMP3<span class="op">;</span></span>
+<span id="cb5-18"><a href=""></a>    Whizbang processPDF<span class="op">(</span>myPDF<span class="op">);</span>   <span class="co">// Client object.</span></span>
+<span id="cb5-19"><a href=""></a>    Whizbang processMP3<span class="op">(</span>myMP3<span class="op">);</span></span>
+<span id="cb5-20"><a href=""></a></span>
+<span id="cb5-21"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-22"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The client and supplier types become coupled to every constructor overload that <code>Whizbang</code> must support.</p>
 <!-- Slide 40 -->
 </section>
-<section id="design-patterns-good-practices" class="slide level2">
-<h2>Design Patterns: Good Practices</h2>
-<ul>
-<li>Start by naming the design problem.</li>
-<li>Use a pattern when it clarifies the structure of the solution.</li>
-<li>Explain the tradeoff every time you explain the pattern.</li>
-</ul>
+<section id="adapters" class="slide level2">
+<h2>Adapters</h2>
+<p>An adapter lets an existing client work with an object whose interface does not match what the client expects.</p>
 <!-- Slide 41 -->
 </section>
-<section id="design-patterns-common-mistakes" class="slide level2">
-<h2>Design Patterns: Common Mistakes</h2>
+<section id="adapter" class="slide level2">
+<h2>Adapter</h2>
 <ul>
-<li>Choosing a pattern before understanding the problem.</li>
-<li>Treating patterns as recipes with fixed code.</li>
-<li>Adding structure that does not make the program easier to reason about.</li>
+<li>Bridges the gap between one object format and another.</li>
+<li>Is usually temporary and often used for one specific interaction.</li>
+<li>Converts an existing interface without requiring the client or supplier to be rewritten.</li>
 </ul>
 <!-- Slide 42 -->
 </section>
-<section id="design-patterns-more-examples" class="slide level2">
-<h2>Design Patterns: More Examples</h2>
+<section id="pattern-language" class="slide level2">
+<h2>Pattern Language</h2>
+<p>Christopher Alexander described recurring design problems in buildings and towns as patterns.</p>
+<ul>
+<li>A pattern identifies a recurring problem.</li>
+<li>It describes the forces that shape the problem.</li>
+<li>It gives a reusable solution shape rather than a fixed construction recipe.</li>
+</ul>
+<!-- Slide 43 -->
+</section>
+<section id="design-patterns-1" class="slide level2">
+<h2>Design Patterns</h2>
+<p>The Gang of Four book popularized design patterns for object-oriented software.</p>
+<ul>
+<li>Erich Gamma</li>
+<li>Richard Helm</li>
+<li>Ralph Johnson</li>
+<li>John Vlissides</li>
+</ul>
+<p>The authors are commonly called the Gang of Four.</p>
+<!-- Slide 44 -->
+</section>
+<section id="pattern-categories-1" class="slide level2">
+<h2>Pattern Categories</h2>
+<p>The Gang of Four organizes patterns into three broad categories.</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th>Pattern idea</th>
-<th>Recurring problem</th>
+<th>Creational</th>
+<th>Structural</th>
+<th>Behavioral</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Singleton</td>
-<td>exactly one shared resource</td>
+<td>Abstract Factory</td>
+<td>Adapter</td>
+<td>Chain of Responsibility</td>
 </tr>
 <tr class="even">
-<td>Adapter</td>
-<td>make one interface fit another</td>
+<td>Builder</td>
+<td>Bridge</td>
+<td>Command</td>
 </tr>
 <tr class="odd">
+<td>Factory Method</td>
+<td>Composite</td>
+<td>Interpreter</td>
+</tr>
+<tr class="even">
+<td>Prototype</td>
+<td>Decorator</td>
+<td>Iterator</td>
+</tr>
+<tr class="odd">
+<td>Singleton</td>
+<td>Facade</td>
+<td>Mediator</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Flyweight</td>
+<td>Memento</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Proxy</td>
+<td>Observer</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>State</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>Strategy</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
 <td>Template Method</td>
-<td>keep a stable process with replaceable steps</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>Visitor</td>
 </tr>
 </tbody>
 </table>
-<!-- Slide 43 -->
-</section>
-<section id="design-patterns-practice-problems" class="slide level2">
-<h2>Design Patterns: Practice Problems</h2>
-<ol type="1">
-<li>Name a repeated design problem in a program you have written.</li>
-<li>Decide whether that problem needs a named pattern or ordinary functions.</li>
-<li>For one pattern, identify the problem, structure, and tradeoff.</li>
-</ol>
-<!-- Slide 44 -->
-</section>
-<section id="design-patterns-ai-search-terms" class="slide level2">
-<h2>Design Patterns: AI Search Terms</h2>
-<ul>
-<li>“Christopher Alexander pattern language software design”</li>
-<li>“Gang of Four design patterns beginner”</li>
-<li>“design pattern problem structure tradeoff”</li>
-</ul>
 <!-- Slide 45 -->
 </section>
-<section id="design-patterns-questions-for-reflection" class="slide level2">
-<h2>Design Patterns: Questions for Reflection</h2>
-<ul>
-<li>Why is a shared vocabulary useful for design?</li>
-<li>What can go wrong when a pattern name becomes more important than the problem?</li>
-</ul>
+<section id="adapter-in-the-structural-category" class="slide level2">
+<h2>Adapter in the Structural Category</h2>
+<p>Adapter is a structural pattern because it changes how existing objects connect without changing their internal implementations.</p>
+
 <!-- Slide 46 -->
-</section>
-<section id="singleton-pattern-good-practices" class="slide level2">
-<h2>Singleton Pattern: Good Practices</h2>
-<ul>
-<li>Use Singleton only when the single-resource rule is part of the problem.</li>
-<li>Keep the shared resource focused on one responsibility.</li>
-<li>Make shared state easy to find and explain.</li>
-</ul>
+<img data-src="images/source_pages/slide-23.png" style="width:70.0%" class="r-stretch quarto-figure-center"><p class="caption">Adapter appears among the structural patterns.</p></section>
+<section id="adapting-the-interface" class="slide level2">
+<h2>Adapting the Interface</h2>
+<p>The adapter acts like a connector between incompatible interfaces: the client uses the interface it already knows, while the adapter translates the request for the supplier.</p>
+
 <!-- Slide 47 -->
-</section>
-<section id="singleton-pattern-common-mistakes" class="slide level2">
-<h2>Singleton Pattern: Common Mistakes</h2>
+<img data-src="images/source_pages/slide-24.png" style="width:70.0%" class="r-stretch quarto-figure-center"><p class="caption">A car-to-rail adapter illustrates one interface being converted to another.</p></section>
+<section id="back-to-whizbang" class="slide level2">
+<h2>Back to Whizbang</h2>
 <ul>
-<li>Using Singleton as a disguised global variable.</li>
-<li>Storing unrelated program data in one shared resource.</li>
-<li>Ignoring the testing cost of hidden shared state.</li>
+<li>We no longer need a large set of multimedia-specific types built into <code>Whizbang</code>.</li>
+<li>Instead, we accept one relatively broad type.</li>
+<li>Each adapter converts a supplier object to that type.</li>
 </ul>
 <!-- Slide 48 -->
 </section>
-<section id="singleton-pattern-more-examples" class="slide level2">
-<h2>Singleton Pattern: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href=""></a>string<span class="op">&amp;</span> logFileName<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb4-2"><a href=""></a>    <span class="at">static</span> string fileName <span class="op">=</span> <span class="st">"program.log"</span><span class="op">;</span></span>
-<span id="cb4-3"><a href=""></a>    <span class="cf">return</span> fileName<span class="op">;</span></span>
-<span id="cb4-4"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>A log file name is a small example because the program may want one coordinated output path.</p>
+<section id="named-adapter-class" class="slide level2">
+<h2>Named Adapter Class</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb6-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb6-3"><a href=""></a></span>
+<span id="cb6-4"><a href=""></a><span class="kw">class</span> Whizbang <span class="op">{</span></span>
+<span id="cb6-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb6-6"><a href=""></a>    Whizbang<span class="op">(</span>string<span class="op">&amp;</span> in<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-7"><a href=""></a>        <span class="co">// Process a multimedia file.</span></span>
+<span id="cb6-8"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb6-9"><a href=""></a><span class="op">};</span></span>
+<span id="cb6-10"><a href=""></a></span>
+<span id="cb6-11"><a href=""></a><span class="kw">class</span> PDF2String <span class="op">{</span></span>
+<span id="cb6-12"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb6-13"><a href=""></a>    PDF2String<span class="op">(</span>PDF<span class="op">&amp;</span> in<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-14"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Convert PDF to string"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb6-15"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb6-16"><a href=""></a><span class="op">};</span></span>
+<span id="cb6-17"><a href=""></a></span>
+<span id="cb6-18"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb6-19"><a href=""></a>    PDF myPDF<span class="op">;</span>                    <span class="co">// Supplier object.</span></span>
+<span id="cb6-20"><a href=""></a>    Whizbang processPDF<span class="op">(</span>PDF2String<span class="op">(</span>myPDF<span class="op">));</span></span>
+<span id="cb6-21"><a href=""></a></span>
+<span id="cb6-22"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-23"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The named adapter converts a <code>PDF</code> into the representation expected by <code>Whizbang</code>.</p>
 <!-- Slide 49 -->
 </section>
-<section id="singleton-pattern-practice-problems" class="slide level2">
-<h2>Singleton Pattern: Practice Problems</h2>
-<ol type="1">
-<li>Decide whether a report counter should use one shared value.</li>
-<li>List one reason a settings file name might need exactly one shared access point.</li>
-<li>List one reason a settings value might not belong in a Singleton.</li>
-</ol>
+<section id="anonymous-adapter-class" class="slide level2">
+<h2>Anonymous Adapter Class</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a><span class="kw">class</span> Whizbang <span class="op">{</span></span>
+<span id="cb7-2"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb7-3"><a href=""></a>    Whizbang<span class="op">(</span>string<span class="op">&amp;</span> in<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-4"><a href=""></a>        <span class="co">// Process a multimedia file.</span></span>
+<span id="cb7-5"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb7-6"><a href=""></a><span class="op">};</span></span>
+<span id="cb7-7"><a href=""></a></span>
+<span id="cb7-8"><a href=""></a><span class="kw">class</span> <span class="op">{</span></span>
+<span id="cb7-9"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb7-10"><a href=""></a>    PDF2String<span class="op">(</span>PDF<span class="op">&amp;</span> in<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-11"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Convert PDF to string"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb7-12"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb7-13"><a href=""></a><span class="op">}</span> PDF2S<span class="op">(</span>myPDF<span class="op">);</span></span>
+<span id="cb7-14"><a href=""></a></span>
+<span id="cb7-15"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb7-16"><a href=""></a>    PDF myPDF<span class="op">;</span>                    <span class="co">// Supplier object.</span></span>
+<span id="cb7-17"><a href=""></a>    Whizbang processPDF<span class="op">(</span>PDF2S<span class="op">);</span></span>
+<span id="cb7-18"><a href=""></a></span>
+<span id="cb7-19"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-20"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>An anonymous adapter object can be created when the conversion is needed without giving the adapter class a reusable name.</p>
 <!-- Slide 50 -->
 </section>
-<section id="singleton-pattern-ai-search-terms" class="slide level2">
-<h2>Singleton Pattern: AI Search Terms</h2>
-<ul>
-<li>“C++ Singleton static local value”</li>
-<li>“Singleton pattern tradeoffs shared state”</li>
-<li>“Singleton disguised global variable”</li>
-</ul>
+<section id="named-adapter-object" class="slide level2">
+<h2>Named Adapter Object</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a><span class="kw">class</span> Whizbang <span class="op">{</span></span>
+<span id="cb8-2"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb8-3"><a href=""></a>    Whizbang<span class="op">(</span>string<span class="op">&amp;</span> in<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-4"><a href=""></a>        <span class="co">// Process a multimedia file.</span></span>
+<span id="cb8-5"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb8-6"><a href=""></a><span class="op">};</span></span>
+<span id="cb8-7"><a href=""></a></span>
+<span id="cb8-8"><a href=""></a><span class="kw">class</span> PDF2String <span class="op">{</span></span>
+<span id="cb8-9"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb8-10"><a href=""></a>    PDF2String<span class="op">(</span>PDF<span class="op">&amp;</span> in<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-11"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Convert PDF to string"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb8-12"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb8-13"><a href=""></a><span class="op">};</span></span>
+<span id="cb8-14"><a href=""></a></span>
+<span id="cb8-15"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb8-16"><a href=""></a>    PDF myPDF<span class="op">;</span>                    <span class="co">// Supplier object.</span></span>
+<span id="cb8-17"><a href=""></a>    PDF2String PDF2S<span class="op">(</span>myPDF<span class="op">);</span></span>
+<span id="cb8-18"><a href=""></a>    Whizbang processPDF<span class="op">(</span>PDF2S<span class="op">);</span></span>
+<span id="cb8-19"><a href=""></a></span>
+<span id="cb8-20"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb8-21"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The named object makes the conversion step explicit and can be reused for additional calls.</p>
 <!-- Slide 51 -->
-</section>
-<section id="singleton-pattern-questions-for-reflection" class="slide level2">
-<h2>Singleton Pattern: Questions for Reflection</h2>
-<ul>
-<li>What does Singleton make easier?</li>
-<li>What does Singleton hide from the caller?</li>
-</ul>
-<!-- Slide 52 -->
-
+<!-- Topic: Lecture Wrap-Up -->
+<!-- Slides 52–56 -->
 </section></section>
+<section>
+<section id="lecture-wrap-up" class="title-slide slide level1 center">
+<h1>Lecture Wrap-Up</h1>
+<!-- Slide 52 -->
+</section>
+<section id="source-slide-30" class="slide level2">
+<h2><span style="display:none">Source Slide 30</span></h2>
+
+<!-- Slide 53 -->
+<img data-src="images/source_pages/slide-30.png" style="width:100.0%" alt="• Learning OOP is about objects working together." class="r-stretch"></section>
+<section id="source-slide-31" class="slide level2">
+<h2><span style="display:none">Source Slide 31</span></h2>
+
+<!-- Slide 54 -->
+<img data-src="images/source_pages/slide-31.png" style="width:100.0%" alt="31" class="r-stretch"></section>
+<section id="source-slide-32" class="slide level2">
+<h2><span style="display:none">Source Slide 32</span></h2>
+
+<!-- Slide 55 -->
+<img data-src="images/source_pages/slide-32.png" style="width:100.0%" alt="Ch 11 - More OOP" class="r-stretch"></section>
+<section id="source-slide-33" class="slide level2">
+<h2><span style="display:none">Source Slide 33</span></h2>
+
+<!-- Slide 56 -->
+
+<img data-src="images/source_pages/slide-33.png" style="width:100.0%" alt="Homework 2 Peer Review due Sunday." class="r-stretch"></section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

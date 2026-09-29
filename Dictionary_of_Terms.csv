@@ -1,5 +1,5 @@
 Term,Definition
-Agenda,A slide that enumerates the instructional topics for the entire lecture
+Agenda,"A slide that enumerates the instructional topics for the entire lecture. The topics come from the topic_x.qmd file topics, excluding activities and exercises. Do not list the topic_x however."
 Anatomy,A slide that labels the parts of a syntax form or process or expression or concept
 Appendix - AI Search Terms,An appendix slide that gives students useful search phrases for independent review or AI assisted study
 Appendix - Common Mistakes,An appendix slide that lists frequent errors students should learn to recognize and avoid
@@ -27,11 +27,11 @@ Predict,A slide that asks students to anticipate an output or state change or ow
 Process Pattern,A slide that presents a repeatable sequence of steps for applying a concept correctly
 Progression Map,A slide that enumerates the topics from the previous lecture. It serves as a review of material.
 Review,A slide that recalls prior topics needed for the current lecture
-Section Divider,A slide that marks the beginning of a major lecture section or appendix section
+Section Divider,A slide that marks the beginning of a major lecture section or appendix section. These slides should not have any text in the body.
 Setup,A slide that introduces required headers or tools or syntax setup or environmental requirements before examples can run
 Summary,"A slide that condenses into 1 sentence, the most important ideas from a topic or lecture - enumerating them."
 Trace,A slide that follows program state or memory state or ownership or execution through a sequence
-Text,Textual content
+Text,Textual content appearinig in the body of  the slide.
 Transfer,A slide that applies an idea in a new context or repeated use situation. Example: Adapt a dynamically allocated score array into a dynamically allocated temperature array.
 Value Added,A slide that explains why a topic matters and what new programming capability it gives students
 Visualization,An interactive demonstration of some specific phenomona or topic.
