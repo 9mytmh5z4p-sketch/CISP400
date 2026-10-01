@@ -28,72 +28,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="p400_lecture_06.02_files/libs/revealjs/dist/theme/quarto-99eeafcedac04850354b682963cedae3.css">
   <link rel="stylesheet" href="../styles/styles.css">
@@ -206,16 +140,17 @@ Dr.&nbsp;Caleb Fowler
 </div>
 
 </section>
-<section id="last-time" class="title-slide slide level1 center">
-<h1>Last Time</h1>
-<ul>
-<li class="fragment"><strong>Very Brief Review of Static</strong></li>
-<li class="fragment"><strong>Design Patterns</strong></li>
-<li class="fragment"><strong>Singleton Pattern</strong></li>
-<li class="fragment"><strong>Strategy Pattern</strong></li>
-</ul>
-<aside class="notes">
-<p>Recall that the previous lecture used static local state to motivate reusable design patterns. Today shifts from design choices at the program level to choices made while the program is running.</p>
+<section class="slide level2">
+
+<!-- Topic: Course Framing -->
+<!-- Slides 1–11 -->
+</section>
+<section>
+<section id="course-framing" class="title-slide slide level1 center">
+<h1>Course Framing</h1>
+
+<img data-src="images/source_pages/slide-01.png" style="width:100.0%" alt="Course Framing" class="r-stretch"><aside class="notes">
+<p>Slides 1–11 Source slide 1 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -229,354 +164,150 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 1 -->
 </section>
+<section id="source-slide-2" class="slide level2">
+<h2><span style="display:none">Source Slide 2</span></h2>
 
-<section id="todays-agenda" class="title-slide slide level1 center">
-<h1>Today’s Agenda</h1>
-<ul>
-<li>Relational Operators</li>
-<li>The if Statement</li>
-<li>The cin Fail Problem</li>
-<li>The if/else Statement</li>
-<li>The if/else if Statement</li>
-</ul>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 <!-- Slide 2 -->
-<!-- Topic 1: Relational Operators -->
-<!-- Slides 3-12 -->
-</section>
+<img data-src="images/source_pages/slide-02.png" style="width:100.0%" alt="Source Slide 2" class="r-stretch"></section>
+<section id="source-slide-3" class="slide level2">
+<h2><span style="display:none">Source Slide 3</span></h2>
 
-<section>
-<section id="relational-operators" class="title-slide slide level1 center">
-<h1>Relational Operators</h1>
 <!-- Slide 3 -->
-</section>
-<section id="comparing-values" class="slide level2 smaller">
-<h2>Comparing Values</h2>
-<ul>
-<li>How can a program ask whether two values have a specific relationship?</li>
-<li>Relational operators let code ask questions with yes-or-no answers.</li>
-</ul>
-<aside class="notes">
-<p>Slides 3-12</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-03.png" style="width:100.0%" alt="Last Time" class="r-stretch"></section>
+<section id="source-slide-4" class="slide level2">
+<h2><span style="display:none">Source Slide 4</span></h2>
+
 <!-- Slide 4 -->
-</section>
-<section id="the-relational-operators" class="slide level2">
-<h2>The Relational Operators</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Operator</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>==</code></td>
-<td>equal to</td>
-</tr>
-<tr class="even">
-<td><code>!=</code></td>
-<td>not equal to</td>
-</tr>
-<tr class="odd">
-<td><code>&lt;</code></td>
-<td>less than</td>
-</tr>
-<tr class="even">
-<td><code>&gt;</code></td>
-<td>greater than</td>
-</tr>
-<tr class="odd">
-<td><code>&lt;=</code></td>
-<td>less than or equal to</td>
-</tr>
-<tr class="even">
-<td><code>&gt;=</code></td>
-<td>greater than or equal to</td>
-</tr>
-</tbody>
-</table>
+<img data-src="images/source_pages/slide-04.png" style="width:100.0%" alt="Agenda" class="r-stretch"></section>
+<section id="source-slide-5" class="slide level2">
+<h2><span style="display:none">Source Slide 5</span></h2>
+
 <!-- Slide 5 -->
-</section>
-<section id="a-comparison-produces-a-value" class="slide level2">
-<h2>A Comparison Produces a Value</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a><span class="dt">int</span> score <span class="op">=</span> <span class="dv">87</span><span class="op">;</span></span>
-<span id="cb1-2"><a href=""></a></span>
-<span id="cb1-3"><a href=""></a>score <span class="op">&gt;=</span> <span class="dv">70</span></span>
-<span id="cb1-4"><a href=""></a>score <span class="op">==</span> <span class="dv">100</span></span>
-<span id="cb1-5"><a href=""></a>score <span class="op">&lt;</span> <span class="dv">60</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Each expression evaluates to either <code>true</code> or <code>false</code>.</p>
+<img data-src="images/source_pages/slide-05.png" style="width:100.0%" alt="Theme for Today" class="r-stretch"></section>
+<section id="source-slide-6" class="slide level2">
+<h2><span style="display:none">Source Slide 6</span></h2>
+
 <!-- Slide 6 -->
-</section>
-<section id="equality-is-not-assignment" class="slide level2">
-<h2>Equality Is Not Assignment</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a>score <span class="op">=</span> <span class="dv">70</span><span class="op">;</span>   <span class="co">// Stores 70 in score</span></span>
-<span id="cb2-2"><a href=""></a>score <span class="op">==</span> <span class="dv">70</span><span class="op">;</span>  <span class="co">// Asks whether score is equal to 70</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The single equals sign changes a variable. The double equals sign compares two values.</p>
+<img data-src="images/source_pages/slide-06.png" style="width:100.0%" alt="“Character Arrays”" class="r-stretch"></section>
+<section id="source-slide-7" class="slide level2">
+<h2><span style="display:none">Source Slide 7</span></h2>
+
 <!-- Slide 7 -->
-</section>
-<section id="common-comparison-shapes" class="slide level2">
-<h2>Common Comparison Shapes</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Shape</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Threshold</td>
-<td><code>age &gt;= 21</code></td>
-</tr>
-<tr class="even">
-<td>Exact choice</td>
-<td><code>choice == 1</code></td>
-</tr>
-<tr class="odd">
-<td>Boundary</td>
-<td><code>temperature &lt; 32</code></td>
-</tr>
-<tr class="even">
-<td>Different value</td>
-<td><code>menuChoice != 0</code></td>
-</tr>
-</tbody>
-</table>
+<img data-src="images/source_pages/slide-07.png" style="width:100.0%" alt="Chapter 12" class="r-stretch"></section>
+<section id="source-slide-8" class="slide level2">
+<h2><span style="display:none">Source Slide 8</span></h2>
+
 <!-- Slide 8 -->
-</section>
-<section id="comparing-floating-point-values" class="slide level2">
-<h2>Comparing Floating-Point Values</h2>
-<p>Integers can usually be compared directly. Floating-point values may not store the exact value you expect.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a><span class="dt">double</span> result <span class="op">=</span> <span class="fl">.666667</span> <span class="op">*</span> <span class="fl">6.0</span><span class="op">;</span></span>
-<span id="cb3-2"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="st">"Printed result: "</span> <span class="op">&lt;&lt;</span> result <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<img data-src="images/source_pages/slide-08.png" style="width:100.0%" alt="Agenda" class="r-stretch"></section>
+<section id="source-slide-9" class="slide level2">
+<h2><span style="display:none">Source Slide 9</span></h2>
+
 <!-- Slide 9 -->
-</section>
-<section id="the-comparison-problem" class="slide level2">
-<h2>The Comparison Problem</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href=""></a><span class="dt">double</span> result <span class="op">=</span> <span class="fl">.666667</span> <span class="op">*</span> <span class="fl">6.0</span><span class="op">;</span></span>
-<span id="cb4-2"><a href=""></a></span>
-<span id="cb4-3"><a href=""></a><span class="cf">if</span> <span class="op">(</span>result <span class="op">==</span> <span class="fl">4.0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Internal result = 4.0</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb4-5"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb4-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Internal result != 4.0</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb4-7"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The printed value may look like 4, but the stored value may be slightly different.</p>
+<img data-src="images/source_pages/slide-09.png" style="width:100.0%" alt="Agenda" class="r-stretch"></section>
+<section id="source-slide-10" class="slide level2">
+<h2><span style="display:none">Source Slide 10</span></h2>
+
 <!-- Slide 10 -->
-</section>
-<section id="comparing-with-a-tolerance" class="slide level2">
-<h2>Comparing with a Tolerance</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb5-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;cmath&gt;</span></span>
-<span id="cb5-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb5-4"><a href=""></a></span>
-<span id="cb5-5"><a href=""></a><span class="dt">double</span> result <span class="op">=</span> <span class="fl">.666667</span> <span class="op">*</span> <span class="fl">6.0</span><span class="op">;</span></span>
-<span id="cb5-6"><a href=""></a><span class="dt">double</span> margin <span class="op">=</span> <span class="fl">0.0001</span><span class="op">;</span></span>
-<span id="cb5-7"><a href=""></a></span>
-<span id="cb5-8"><a href=""></a><span class="cf">if</span> <span class="op">(</span>abs<span class="op">(</span>result <span class="op">-</span> <span class="fl">4.0</span><span class="op">)</span> <span class="op">&lt;</span> margin<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-9"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Close enough to 4.0</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb5-10"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Decide how close is close enough before calling floating-point values equal.</p>
+<img data-src="images/source_pages/slide-10.png" style="width:100.0%" alt="Big Idea" class="r-stretch"></section>
+<section id="source-slide-11" class="slide level2">
+<h2><span style="display:none">Source Slide 11</span></h2>
+
 <!-- Slide 11 -->
-</section>
-<section id="summary" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>Relational operators compare values.</li>
-<li>A comparison evaluates to <code>true</code> or <code>false</code>.</li>
-<li>Decision statements use those true-or-false results to choose what code runs.</li>
-</ul>
+<!-- Topic: C-Strings and Character Arrays -->
+<!-- Slides 12–25 -->
+<img data-src="images/source_pages/slide-11.png" style="width:100.0%" alt="Related to Previous" class="r-stretch"></section></section>
+<section>
+<section id="c-strings-and-character-arrays" class="title-slide slide level1 center">
+<h1>C-Strings and Character Arrays</h1>
+
+<img data-src="images/source_pages/slide-12.png" style="width:100.0%" alt="C-Strings and Character Arrays" class="r-stretch"><aside class="notes">
+<p>Slides 12–25 Source slide 12 from the authoritative PDF.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 12 -->
-<!-- Topic 2: The if Statement -->
-<!-- Slides 13-21 -->
-</section></section>
-<section>
-<section id="the-if-statement" class="title-slide slide level1 center">
-<h1>The if Statement</h1>
+</section>
+<section id="source-slide-13" class="slide level2">
+<h2><span style="display:none">Source Slide 13</span></h2>
+
 <!-- Slide 13 -->
-</section>
-<section id="doing-something-only-sometimes" class="slide level2 smaller">
-<h2>Doing Something Only Sometimes</h2>
-<ul>
-<li>What should a program do when an action depends on a condition?</li>
-<li>An <code>if</code> statement gives the program one conditional action.</li>
-</ul>
-<aside class="notes">
-<p>Slides 13-21</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-13.png" style="width:100.0%" alt="C++ Strings" class="r-stretch"></section>
+<section id="source-slide-14" class="slide level2">
+<h2><span style="display:none">Source Slide 14</span></h2>
+
 <!-- Slide 14 -->
-</section>
-<section id="the-shape-of-an-if-statement" class="slide level2">
-<h2>The Shape of an if Statement</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb6-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb6-3"><a href=""></a></span>
-<span id="cb6-4"><a href=""></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb6-5"><a href=""></a><span class="op">{</span></span>
-<span id="cb6-6"><a href=""></a>    <span class="dt">int</span> number<span class="op">;</span></span>
-<span id="cb6-7"><a href=""></a></span>
-<span id="cb6-8"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter an integer.</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb6-9"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"I'll tell you if it's zero."</span><span class="op">;</span></span>
-<span id="cb6-10"><a href=""></a>    cin <span class="op">&gt;&gt;</span> number<span class="op">;</span></span>
-<span id="cb6-11"><a href=""></a></span>
-<span id="cb6-12"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>number <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-13"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"You entered a zero."</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb6-14"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb6-15"><a href=""></a></span>
-<span id="cb6-16"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb6-17"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<aside class="notes">
-<p>Notice the <code>==</code> in the condition. This example asks a question before it prints the message.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-14.png" style="width:100.0%" alt="C strings" class="r-stretch"></section>
+<section id="source-slide-15" class="slide level2">
+<h2><span style="display:none">Source Slide 15</span></h2>
+
 <!-- Slide 15 -->
-</section>
-<section id="condition-first-action-second" class="slide level2">
-<h2>Condition First, Action Second</h2>
-<p><img data-src="images/if.png" style="max-height: 500px;" alt="Flowchart showing an if statement: when the condition is true, code runs; when false, execution skips the code."></p>
-<aside class="notes">
-<p>Evaluate the condition first. If it is true, run the block. If it is false, skip the block.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-15.png" style="width:100.0%" alt="Variable type of a C-String is a pointer to char." class="r-stretch"></section>
+<section id="source-slide-16" class="slide level2">
+<h2><span style="display:none">Source Slide 16</span></h2>
+
 <!-- Slide 16 -->
-</section>
-<section id="one-statement-or-a-block" class="slide level2">
-<h2>One Statement or a Block</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>temperature <span class="op">&lt;</span> <span class="dv">32</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb7-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Freezing"</span><span class="op">;</span></span>
-<span id="cb7-3"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Watch for ice"</span><span class="op">;</span></span>
-<span id="cb7-4"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Braces make the controlled region visible. Use them even when the block starts with one statement.</p>
+<img data-src="images/source_pages/slide-16.png" style="width:100.0%" alt="✎" class="r-stretch"></section>
+<section id="source-slide-17" class="slide level2">
+<h2><span style="display:none">Source Slide 17</span></h2>
+
 <!-- Slide 17 -->
-</section>
-<section id="protecting-code-from-bad-inputs" class="slide level2">
-<h2>Protecting Code from Bad Inputs</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb8-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb8-3"><a href=""></a></span>
-<span id="cb8-4"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb8-5"><a href=""></a>    <span class="dt">double</span> num1<span class="op">,</span> num2<span class="op">,</span> quotient<span class="op">;</span></span>
-<span id="cb8-6"><a href=""></a></span>
-<span id="cb8-7"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter two numbers: "</span><span class="op">;</span></span>
-<span id="cb8-8"><a href=""></a>    cin <span class="op">&gt;&gt;</span> num1 <span class="op">&gt;&gt;</span> num2<span class="op">;</span></span>
-<span id="cb8-9"><a href=""></a></span>
-<span id="cb8-10"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>num2 <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb8-11"><a href=""></a>        quotient <span class="op">=</span> num1 <span class="op">/</span> num2<span class="op">;</span></span>
-<span id="cb8-12"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"The quotient is "</span> <span class="op">&lt;&lt;</span> quotient <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb8-13"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb8-14"><a href=""></a></span>
-<span id="cb8-15"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb8-16"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<aside class="notes">
-<p>The condition protects the division. The calculation runs only when the denominator is safe to use.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-17.png" style="width:100.0%" alt="We need to be mindful of buffer over ow/overrun with" class="r-stretch"></section>
+<section id="source-slide-18" class="slide level2">
+<h2><span style="display:none">Source Slide 18</span></h2>
+
 <!-- Slide 18 -->
-</section>
-<section id="comparing-two-values" class="slide level2">
-<h2>Comparing Two Values</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>first <span class="op">&gt;</span> second<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb9-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"First is larger"</span><span class="op">;</span></span>
-<span id="cb9-3"><a href=""></a><span class="op">}</span></span>
-<span id="cb9-4"><a href=""></a></span>
-<span id="cb9-5"><a href=""></a><span class="cf">if</span> <span class="op">(</span>first <span class="op">==</span> second<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb9-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"The values match"</span><span class="op">;</span></span>
-<span id="cb9-7"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Separate <code>if</code> statements ask separate questions.</p>
+<img data-src="images/source_pages/slide-18.png" style="width:100.0%" alt="Stop buffer overrun" class="r-stretch"></section>
+<section id="source-slide-19" class="slide level2">
+<h2><span style="display:none">Source Slide 19</span></h2>
+
 <!-- Slide 19 -->
-</section>
-<section id="reading-if-statements-out-loud" class="slide level2">
-<h2>Reading if Statements Out Loud</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>temperature <span class="op">&lt;</span> <span class="dv">32</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb10-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Freezing"</span><span class="op">;</span></span>
-<span id="cb10-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Read this as: if <code>temperature</code> is less than 32, print <code>"Freezing"</code>.</p>
+<img data-src="images/source_pages/slide-19.png" style="width:100.0%" alt="We also can read in an entire line of text to the C" class="r-stretch"></section>
+<section id="source-slide-20" class="slide level2">
+<h2><span style="display:none">Source Slide 20</span></h2>
+
 <!-- Slide 20 -->
-</section>
-<section id="summary-1" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>An <code>if</code> statement runs a block only when its condition is true.</li>
-<li>The condition must evaluate to <code>true</code> or <code>false</code>.</li>
-<li>Code outside the block is not controlled by the <code>if</code> statement.</li>
-</ul>
+<img data-src="images/source_pages/slide-20.png" style="width:100.0%" alt="This is NOT the same as getline();" class="r-stretch"></section>
+<section id="source-slide-21" class="slide level2">
+<h2><span style="display:none">Source Slide 21</span></h2>
+
 <!-- Slide 21 -->
-<!-- Topic 3: The cin Fail Problem -->
-<!-- Slides 22-30 -->
-</section></section>
-<section>
-<section id="the-cin-fail-problem" class="title-slide slide level1 center">
-<h1>The cin Fail Problem</h1>
+<img data-src="images/source_pages/slide-21.png" style="width:100.0%" alt="Ways to access C-Strings" class="r-stretch"></section>
+<section id="source-slide-22" class="slide level2">
+<h2><span style="display:none">Source Slide 22</span></h2>
+
 <!-- Slide 22 -->
-</section>
-<section id="when-input-breaks-the-program" class="slide level2 smaller">
-<h2>When Input Breaks the Program</h2>
-<ul>
-<li>What happens when the user enters the wrong type of data?</li>
-<li>The input operation can fail, and the program needs a way to notice.</li>
-</ul>
-<aside class="notes">
-<p>Slides 22-30</p>
+<img data-src="images/source_pages/slide-22.png" style="width:100.0%" alt="22" class="r-stretch"></section>
+<section id="source-slide-23" class="slide level2">
+<h2><span style="display:none">Source Slide 23</span></h2>
+
+<!-- Slide 23 -->
+<img data-src="images/source_pages/slide-23.png" style="width:100.0%" alt="23" class="r-stretch"></section>
+<section id="source-slide-24" class="slide level2">
+<h2><span style="display:none">Source Slide 24</span></h2>
+
+<!-- Slide 24 -->
+<img data-src="images/source_pages/slide-24.png" style="width:100.0%" alt="C-String General Rules" class="r-stretch"></section>
+<section id="source-slide-25" class="slide level2">
+<h2><span style="display:none">Source Slide 25</span></h2>
+
+<!-- Slide 25 -->
+<!-- Topic: C-String Library Functions -->
+<!-- Slides 26–33 -->
+<img data-src="images/source_pages/slide-25.png" style="width:100.0%" alt="C-string and C++ string" class="r-stretch"></section></section>
+<section>
+<section id="c-string-library-functions" class="title-slide slide level1 center">
+<h1>C-String Library Functions</h1>
+
+<img data-src="images/source_pages/slide-26.png" style="width:100.0%" alt="C-String Library Functions" class="r-stretch"><aside class="notes">
+<p>Slides 26–33 Source slide 26 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -588,78 +319,51 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 23 -->
-</section>
-<section id="what-cin-was-expecting" class="slide level2">
-<h2>What cin Was Expecting</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href=""></a><span class="dt">int</span> age<span class="op">;</span></span>
-<span id="cb11-2"><a href=""></a>cin <span class="op">&gt;&gt;</span> age<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This statement expects input that can become an <code>int</code>. Text such as <code>hello</code> cannot be stored in <code>age</code>.</p>
-<!-- Slide 24 -->
-</section>
-<section id="testing-cin.fail" class="slide level2">
-<h2>Testing cin.fail()</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href=""></a><span class="dt">int</span> age<span class="op">;</span></span>
-<span id="cb12-2"><a href=""></a>cin <span class="op">&gt;&gt;</span> age<span class="op">;</span></span>
-<span id="cb12-3"><a href=""></a></span>
-<span id="cb12-4"><a href=""></a><span class="cf">if</span> <span class="op">(</span>cin<span class="op">.</span>fail<span class="op">())</span> <span class="op">{</span></span>
-<span id="cb12-5"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Age must be a whole number."</span><span class="op">;</span></span>
-<span id="cb12-6"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>cin.fail()</code> is a condition. It is true when the previous input operation failed.</p>
-<!-- Slide 25 -->
-</section>
-<section id="detecting-is-not-fixing" class="slide level2">
-<h2>Detecting Is Not Fixing</h2>
-<p><code>cin.fail()</code> tells the program that input failed.</p>
-<p>It does not repair the stream, remove the bad input, or ask the user again. Those actions must be written separately.</p>
 <!-- Slide 26 -->
 </section>
-<section id="the-stream-stays-failed" class="slide level2">
-<h2>The Stream Stays Failed</h2>
-<p>After a failed extraction, later input attempts may not work.</p>
-<p>The stream is still carrying the failed state. The bad input may also still be waiting to be read.</p>
+<section id="source-slide-27" class="slide level2">
+<h2><span style="display:none">Source Slide 27</span></h2>
+
 <!-- Slide 27 -->
-</section>
-<section id="a-first-recovery-pattern" class="slide level2">
-<h2>A First Recovery Pattern</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>cin<span class="op">.</span>fail<span class="op">())</span> <span class="op">{</span></span>
-<span id="cb13-2"><a href=""></a>    cin<span class="op">.</span>clear<span class="op">();</span></span>
-<span id="cb13-3"><a href=""></a>    cin<span class="op">.</span>ignore<span class="op">(</span><span class="dv">1000</span><span class="op">,</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">);</span></span>
-<span id="cb13-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Please enter a whole number."</span><span class="op">;</span></span>
-<span id="cb13-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The condition detects the problem. The recovery code clears the error state and removes the bad input.</p>
+<img data-src="images/source_pages/slide-27.png" style="width:100.0%" alt="#include <cstring>" class="r-stretch"></section>
+<section id="source-slide-28" class="slide level2">
+<h2><span style="display:none">Source Slide 28</span></h2>
+
 <!-- Slide 28 -->
-</section>
-<section id="why-this-is-still-an-if-statement" class="slide level2">
-<h2>Why This Is Still an if Statement</h2>
-<p>The recovery block should run only when input failed.</p>
-<p>That makes <code>cin.fail()</code> a practical example of one-way selection: if the problem happened, respond to it.</p>
+<img data-src="images/source_pages/slide-28.png" style="width:100.0%" alt="28" class="r-stretch"></section>
+<section id="source-slide-29" class="slide level2">
+<h2><span style="display:none">Source Slide 29</span></h2>
+
 <!-- Slide 29 -->
-</section>
-<section id="summary-2" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>Input can fail when the user enters a value that does not match the expected type.</li>
-<li><code>cin.fail()</code> detects that failed state.</li>
-<li>Detection and recovery are separate parts of the program.</li>
-</ul>
+<img data-src="images/source_pages/slide-29.png" style="width:100.0%" alt="What’s My Output?" class="r-stretch"></section>
+<section id="source-slide-30" class="slide level2">
+<h2><span style="display:none">Source Slide 30</span></h2>
+
 <!-- Slide 30 -->
-<!-- Topic 4: The if/else Statement -->
-<!-- Slides 31-39 -->
-</section></section>
-<section>
-<section id="the-ifelse-statement" class="title-slide slide level1 center">
-<h1>The if/else Statement</h1>
+<img data-src="images/source_pages/slide-30.png" style="width:100.0%" alt="Exercise Goals" class="r-stretch"></section>
+<section id="source-slide-31" class="slide level2">
+<h2><span style="display:none">Source Slide 31</span></h2>
+
 <!-- Slide 31 -->
-</section>
-<section id="two-possible-paths" class="slide level2 smaller">
-<h2>Two Possible Paths</h2>
-<ul>
-<li>What should a program do when one action happens if a condition is true, and a different action happens if it is false?</li>
-<li>An <code>if/else</code> statement gives the program two mutually exclusive paths.</li>
-</ul>
-<aside class="notes">
-<p>Slides 31-39</p>
+<img data-src="images/source_pages/slide-31.png" style="width:100.0%" alt="Desk Check Exercise" class="r-stretch"></section>
+<section id="source-slide-32" class="slide level2">
+<h2><span style="display:none">Source Slide 32</span></h2>
+
+<!-- Slide 32 -->
+<img data-src="images/source_pages/slide-32.png" style="width:100.0%" alt="Source Slide 32" class="r-stretch"></section>
+<section id="source-slide-33" class="slide level2">
+<h2><span style="display:none">Source Slide 33</span></h2>
+
+<!-- Slide 33 -->
+<!-- Topic: String and Numeric Conversions -->
+<!-- Slides 34–53 -->
+<img data-src="images/source_pages/slide-33.png" style="width:100.0%" alt="Source Slide 33" class="r-stretch"></section></section>
+<section>
+<section id="string-and-numeric-conversions" class="title-slide slide level1 center">
+<h1>String and Numeric Conversions</h1>
+
+<img data-src="images/source_pages/slide-34.png" style="width:100.0%" alt="String and Numeric Conversions" class="r-stretch"><aside class="notes">
+<p>Slides 34–53 Source slide 34 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -671,178 +375,111 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 32 -->
-</section>
-<section id="one-decision-two-outcomes" class="slide level2">
-<h2>One Decision, Two Outcomes</h2>
-<p><img data-src="images/if_else.png" style="max-height: 460px;" alt="Flowchart showing an if/else statement with a true branch and a false branch that rejoin after the decision."></p>
-<p>Exactly one branch runs, then the paths rejoin.</p>
-<!-- Slide 33 -->
-</section>
-<section id="the-shape-of-ifelse" class="slide level2">
-<h2>The Shape of if/else</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&gt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb14-2"><a href=""></a>    y <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="cb14-3"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb14-4"><a href=""></a>    y <span class="op">=</span> <span class="op">-</span><span class="dv">10</span><span class="op">;</span></span>
-<span id="cb14-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The <code>else</code> branch belongs to the condition above it. If the question is false, the alternate action runs.</p>
 <!-- Slide 34 -->
 </section>
-<section id="exactly-one-branch-runs" class="slide level2">
-<h2>Exactly One Branch Runs</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>num2 <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb15-2"><a href=""></a>    quotient <span class="op">=</span> num1 <span class="op">/</span> num2<span class="op">;</span></span>
-<span id="cb15-3"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"The quotient is "</span> <span class="op">&lt;&lt;</span> quotient <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb15-4"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb15-5"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Division by zero is not possible.</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb15-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Please rerun program."</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb15-7"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<aside class="notes">
-<p>This is the same zero-divisor example extended into an if/else. The program either divides or prints the error message.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="source-slide-35" class="slide level2">
+<h2><span style="display:none">Source Slide 35</span></h2>
+
 <!-- Slide 35 -->
-</section>
-<section id="night-club-example" class="slide level2">
-<h2>Night Club Example</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>age <span class="op">&gt;=</span> <span class="dv">21</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb16-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Admit"</span><span class="op">;</span></span>
-<span id="cb16-3"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb16-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Do not admit"</span><span class="op">;</span></span>
-<span id="cb16-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The condition asks whether the person meets the age requirement. The <code>else</code> handles everyone who does not.</p>
+<img data-src="images/source_pages/slide-35.png" style="width:100.0%" alt="“The C++ libraries provide functions and" class="r-stretch"></section>
+<section id="source-slide-36" class="slide level2">
+<h2><span style="display:none">Source Slide 36</span></h2>
+
 <!-- Slide 36 -->
-</section>
-<section id="if-vs.-ifelse" class="slide level2">
-<h2>if vs.&nbsp;if/else</h2>
-<p>Use separate <code>if</code> statements when both conditions could be true.</p>
-<p>Use <code>if/else</code> when one path must be true and the other must be false.</p>
+<img data-src="images/source_pages/slide-36.png" style="width:100.0%" alt="Can’t process strings like other numeric types." class="r-stretch"></section>
+<section id="source-slide-37" class="slide level2">
+<h2><span style="display:none">Source Slide 37</span></h2>
+
 <!-- Slide 37 -->
-</section>
-<section id="avoid-opposite-conditions" class="slide level2">
-<h2>Avoid Opposite Conditions</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>age <span class="op">&gt;=</span> <span class="dv">21</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb17-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Admit"</span><span class="op">;</span></span>
-<span id="cb17-3"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb17-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Do not admit"</span><span class="op">;</span></span>
-<span id="cb17-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The <code>else</code> already means the condition was false. A second opposite test is not needed.</p>
+<img data-src="images/source_pages/slide-37.png" style="width:100.0%" alt="• There are 2 ways to convert …." class="r-stretch"></section>
+<section id="source-slide-38" class="slide level2">
+<h2><span style="display:none">Source Slide 38</span></h2>
+
 <!-- Slide 38 -->
-</section>
-<section id="summary-3" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li><code>if/else</code> creates a two-way decision.</li>
-<li>The <code>if</code> branch runs when the condition is true.</li>
-<li>The <code>else</code> branch runs when the condition is false.</li>
-</ul>
+<img data-src="images/source_pages/slide-38.png" style="width:100.0%" alt="stringstream conversion" class="r-stretch"></section>
+<section id="source-slide-39" class="slide level2">
+<h2><span style="display:none">Source Slide 39</span></h2>
+
 <!-- Slide 39 -->
-<!-- Topic 5: The if/else if Statement -->
-<!-- Slides 40-50 -->
-</section></section>
-<section>
-<section id="the-ifelse-if-statement" class="title-slide slide level1 center">
-<h1>The if/else if Statement</h1>
+<img data-src="images/source_pages/slide-39.png" style="width:100.0%" alt="Examples" class="r-stretch"></section>
+<section id="source-slide-40" class="slide level2">
+<h2><span style="display:none">Source Slide 40</span></h2>
+
 <!-- Slide 40 -->
-</section>
-<section id="more-than-two-outcomes" class="slide level2 smaller">
-<h2>More Than Two Outcomes</h2>
-<ul>
-<li>What should a program do when a decision has several possible categories?</li>
-<li>An <code>if/else if</code> chain checks multiple conditions in order.</li>
-</ul>
-<aside class="notes">
-<p>Slides 40-50</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-40.png" style="width:100.0%" alt="Source Slide 40" class="r-stretch"></section>
+<section id="source-slide-41" class="slide level2">
+<h2><span style="display:none">Source Slide 41</span></h2>
+
 <!-- Slide 41 -->
-</section>
-<section id="the-shape-of-ifelse-if" class="slide level2">
-<h2>The Shape of if/else if</h2>
-<p><img data-src="images/if-else_if.png" style="max-height: 520px;" alt="Flowchart showing an if/else if chain with multiple conditions checked in order."></p>
-<aside class="notes">
-<p>The chain begins with <code>if</code>, then checks each <code>else if</code> only if the earlier condition was false.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-41.png" style="width:100.0%" alt="Source Slide 41" class="r-stretch"></section>
+<section id="source-slide-42" class="slide level2">
+<h2><span style="display:none">Source Slide 42</span></h2>
+
 <!-- Slide 42 -->
-</section>
-<section id="checked-from-top-to-bottom" class="slide level2">
-<h2>Checked From Top to Bottom</h2>
-<p>The program checks the first condition.</p>
-<p>If that condition is false, the program moves to the next condition. The first true branch runs, and the rest are skipped.</p>
+<img data-src="images/source_pages/slide-42.png" style="width:100.0%" alt="Source Slide 42" class="r-stretch"></section>
+<section id="source-slide-43" class="slide level2">
+<h2><span style="display:none">Source Slide 43</span></h2>
+
 <!-- Slide 43 -->
-</section>
-<section id="starter-if" class="slide level2">
-<h2>Starter if</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>score <span class="op">&gt;=</span> <span class="dv">90</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb18-2"><a href=""></a>    grade <span class="op">=</span> <span class="ch">'A'</span><span class="op">;</span></span>
-<span id="cb18-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The first <code>if</code> starts the chain. It should represent the first category the program needs to test.</p>
+<img data-src="images/source_pages/slide-43.png" style="width:100.0%" alt="Source Slide 43" class="r-stretch"></section>
+<section id="source-slide-44" class="slide level2">
+<h2><span style="display:none">Source Slide 44</span></h2>
+
 <!-- Slide 44 -->
-</section>
-<section id="else-if-conditions" class="slide level2">
-<h2>else if Conditions</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href=""></a><span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>score <span class="op">&gt;=</span> <span class="dv">80</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb19-2"><a href=""></a>    grade <span class="op">=</span> <span class="ch">'B'</span><span class="op">;</span></span>
-<span id="cb19-3"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>score <span class="op">&gt;=</span> <span class="dv">70</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb19-4"><a href=""></a>    grade <span class="op">=</span> <span class="ch">'C'</span><span class="op">;</span></span>
-<span id="cb19-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Each <code>else if</code> adds another possible category.</p>
+<img data-src="images/source_pages/slide-44.png" style="width:100.0%" alt="• But can't we perform concatenation on a string by" class="r-stretch"></section>
+<section id="source-slide-45" class="slide level2">
+<h2><span style="display:none">Source Slide 45</span></h2>
+
 <!-- Slide 45 -->
-</section>
-<section id="default-else" class="slide level2">
-<h2>Default else</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href=""></a><span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb20-2"><a href=""></a>    grade <span class="op">=</span> <span class="ch">'F'</span><span class="op">;</span></span>
-<span id="cb20-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The final <code>else</code> handles none of the above. It gives the chain a default outcome.</p>
+<img data-src="images/source_pages/slide-45.png" style="width:100.0%" alt="• But can't we perform concatenation on a string by" class="r-stretch"></section>
+<section id="source-slide-46" class="slide level2">
+<h2><span style="display:none">Source Slide 46</span></h2>
+
 <!-- Slide 46 -->
-</section>
-<section id="grade-category-example" class="slide level2">
-<h2>Grade Category Example</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb21-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>testScore <span class="op">&gt;=</span> MIN_A<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb21-2"><a href=""></a>    grade <span class="op">=</span> <span class="ch">'A'</span><span class="op">;</span></span>
-<span id="cb21-3"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>testScore <span class="op">&gt;=</span> MIN_B<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb21-4"><a href=""></a>    grade <span class="op">=</span> <span class="ch">'B'</span><span class="op">;</span></span>
-<span id="cb21-5"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>testScore <span class="op">&gt;=</span> MIN_C<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb21-6"><a href=""></a>    grade <span class="op">=</span> <span class="ch">'C'</span><span class="op">;</span></span>
-<span id="cb21-7"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>testScore <span class="op">&gt;=</span> MIN_D<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb21-8"><a href=""></a>    grade <span class="op">=</span> <span class="ch">'D'</span><span class="op">;</span></span>
-<span id="cb21-9"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>testScore <span class="op">&gt;=</span> MIN_POSSIBLE<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb21-10"><a href=""></a>    grade <span class="op">=</span> <span class="ch">'F'</span><span class="op">;</span></span>
-<span id="cb21-11"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb21-12"><a href=""></a>    goodScore <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
-<span id="cb21-13"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<aside class="notes">
-<p>Each score belongs to one category. A negative score is handled by the final else.</p>
+<img data-src="images/source_pages/slide-46.png" style="width:100.0%" alt="Source Slide 46" class="r-stretch"></section>
+<section id="source-slide-47" class="slide level2">
+<h2><span style="display:none">Source Slide 47</span></h2>
+
+<!-- Slide 47 -->
+<img data-src="images/source_pages/slide-47.png" style="width:100.0%" alt="Source Slide 47" class="r-stretch"></section>
+<section id="source-slide-48" class="slide level2">
+<h2><span style="display:none">Source Slide 48</span></h2>
+
+<!-- Slide 48 -->
+<img data-src="images/source_pages/slide-48.png" style="width:100.0%" alt="Another way to convert (C11 conversion" class="r-stretch"></section>
+<section id="source-slide-49" class="slide level2">
+<h2><span style="display:none">Source Slide 49</span></h2>
+
+<!-- Slide 49 -->
+<img data-src="images/source_pages/slide-49.png" style="width:100.0%" alt="Source Slide 49" class="r-stretch"></section>
+<section id="source-slide-50" class="slide level2">
+<h2><span style="display:none">Source Slide 50</span></h2>
+
+<!-- Slide 50 -->
+<img data-src="images/source_pages/slide-50.png" style="width:100.0%" alt="Source Slide 50" class="r-stretch"></section>
+<section id="source-slide-51" class="slide level2">
+<h2><span style="display:none">Source Slide 51</span></h2>
+
+<!-- Slide 51 -->
+<img data-src="images/source_pages/slide-51.png" style="width:100.0%" alt="Where are these string" class="r-stretch"></section>
+<section id="source-slide-52" class="slide level2">
+<h2><span style="display:none">Source Slide 52</span></h2>
+
+<!-- Slide 52 -->
+<img data-src="images/source_pages/slide-52.png" style="width:100.0%" alt="Where are these string" class="r-stretch"></section>
+<section id="source-slide-53" class="slide level2">
+<h2><span style="display:none">Source Slide 53</span></h2>
+
+<!-- Slide 53 -->
+<!-- Topic: Writing C-String Handling Functions -->
+<!-- Slides 54–61 -->
+<img data-src="images/source_pages/slide-53.png" style="width:100.0%" alt="Which one to use?" class="r-stretch"></section></section>
+<section>
+<section id="writing-c-string-handling-functions" class="title-slide slide level1 center">
+<h1>Writing C-String Handling Functions</h1>
+
+<img data-src="images/source_pages/slide-54.png" style="width:100.0%" alt="Writing C-String Handling Functions" class="r-stretch"><aside class="notes">
+<p>Slides 54–61 Source slide 54 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -854,369 +491,238 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 47 -->
-</section>
-<section id="order-matters" class="slide level2">
-<h2>Order Matters</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb22-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>score <span class="op">&gt;=</span> <span class="dv">70</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb22-2"><a href=""></a>    grade <span class="op">=</span> <span class="ch">'C'</span><span class="op">;</span></span>
-<span id="cb22-3"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>score <span class="op">&gt;=</span> <span class="dv">90</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb22-4"><a href=""></a>    grade <span class="op">=</span> <span class="ch">'A'</span><span class="op">;</span></span>
-<span id="cb22-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>A score of 95 never reaches the second branch because the first condition is already true.</p>
-<!-- Slide 48 -->
-</section>
-<section id="choosing-the-right-conditional-shape" class="slide level2">
-<h2>Choosing the Right Conditional Shape</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Need</th>
-<th>Use</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Do something only when true</td>
-<td><code>if</code></td>
-</tr>
-<tr class="even">
-<td>Choose between two paths</td>
-<td><code>if/else</code></td>
-</tr>
-<tr class="odd">
-<td>Choose among several categories</td>
-<td><code>if/else if</code></td>
-</tr>
-</tbody>
-</table>
-<!-- Slide 49 -->
-</section>
-<section id="summary-4" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>An <code>if/else if</code> chain handles several mutually exclusive categories.</li>
-<li>Conditions are checked from top to bottom.</li>
-<li>The first true branch runs, and the rest are skipped.</li>
-</ul>
-<!-- Slide 50 -->
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="key-takeaways" class="title-slide slide level1 center">
-<h1>Key Takeaways</h1>
-<ul>
-<li>Relational expressions ask yes/no questions that evaluate to boolean values.</li>
-<li><code>if</code> statements run code only when a condition is true.</li>
-<li><code>if/else</code> and <code>if/else if</code> structures choose among mutually exclusive paths.</li>
-<li>Input failure can be detected with <code>cin.fail()</code>, but detection and recovery are separate steps.</li>
-</ul>
-<!-- Slide 51 -->
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="next-time" class="title-slide slide level1 center">
-<h1>Next Time</h1>
-<!-- Slide 52 -->
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="appendix" class="title-slide slide level1 center">
-<h1>Appendix</h1>
-<!-- Slide 53 -->
-</section>
-<section id="relational-operators-good-practices" class="slide level2">
-<h2>Relational Operators: Good Practices</h2>
-<ul>
-<li>Use relational expressions that read like clear questions.</li>
-<li>Prefer explicit comparisons such as <code>score &gt;= 70</code> over clever expressions that hide the condition.</li>
-<li>When comparing floating-point values, decide what difference is small enough to count as equal.</li>
-</ul>
 <!-- Slide 54 -->
 </section>
-<section id="relational-operators-common-mistakes" class="slide level2">
-<h2>Relational Operators: Common Mistakes</h2>
-<ul>
-<li>Using <code>=</code> when the intent is comparison.</li>
-<li>Writing chained comparisons such as <code>0 &lt; score &lt; 100</code> as if C++ handled them like algebra.</li>
-<li>Comparing floating-point values for exact equality when the calculation may produce rounding differences.</li>
-</ul>
+<section id="source-slide-55" class="slide level2">
+<h2><span style="display:none">Source Slide 55</span></h2>
+
 <!-- Slide 55 -->
-</section>
-<section id="relational-operators-more-examples" class="slide level2">
-<h2>Relational Operators: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb23-1"><a href=""></a>age <span class="op">&gt;=</span> <span class="dv">21</span></span>
-<span id="cb23-2"><a href=""></a>choice <span class="op">==</span> <span class="dv">1</span></span>
-<span id="cb23-3"><a href=""></a>temperature <span class="op">&lt;</span> <span class="dv">32</span></span>
-<span id="cb23-4"><a href=""></a>balance <span class="op">!=</span> <span class="dv">0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Each expression asks one yes/no question.</p>
+<img data-src="images/source_pages/slide-55.png" style="width:100.0%" alt="• Not uncommon given all the problems with the" class="r-stretch"></section>
+<section id="source-slide-56" class="slide level2">
+<h2><span style="display:none">Source Slide 56</span></h2>
+
 <!-- Slide 56 -->
-</section>
-<section id="relational-operators-practice-problems" class="slide level2">
-<h2>Relational Operators: Practice Problems</h2>
-<ul>
-<li>Write a condition that is true when <code>score</code> is at least 90.</li>
-<li>Write a condition that is true when <code>choice</code> is not 0.</li>
-<li>Write a condition that is true when <code>temperature</code> is below freezing.</li>
-</ul>
+<img data-src="images/source_pages/slide-56.png" style="width:100.0%" alt="Source Slide 56" class="r-stretch"></section>
+<section id="source-slide-57" class="slide level2">
+<h2><span style="display:none">Source Slide 57</span></h2>
+
 <!-- Slide 57 -->
-</section>
-<section id="relational-operators-ai-search-terms" class="slide level2">
-<h2>Relational Operators: AI Search Terms</h2>
-<ul>
-<li>C++ relational operators</li>
-<li>C++ equality vs assignment</li>
-<li>C++ floating point comparison tolerance</li>
-<li>C++ boolean expressions</li>
-</ul>
+<img data-src="images/source_pages/slide-57.png" style="width:100.0%" alt="Source Slide 57" class="r-stretch"></section>
+<section id="source-slide-58" class="slide level2">
+<h2><span style="display:none">Source Slide 58</span></h2>
+
 <!-- Slide 58 -->
-</section>
-<section id="relational-operators-questions-for-reflection" class="slide level2">
-<h2>Relational Operators: Questions for Reflection</h2>
-<ul>
-<li>What question is the expression asking?</li>
-<li>What values make the expression true?</li>
-<li>Would this comparison still work if the value came from a floating-point calculation?</li>
-</ul>
+<img data-src="images/source_pages/slide-58.png" style="width:100.0%" alt="Source Slide 58" class="r-stretch"></section>
+<section id="source-slide-59" class="slide level2">
+<h2><span style="display:none">Source Slide 59</span></h2>
+
 <!-- Slide 59 -->
-</section>
-<section id="the-if-statement-good-practices" class="slide level2">
-<h2>The if Statement: Good Practices</h2>
-<ul>
-<li>Put the condition in parentheses and the controlled code in braces.</li>
-<li>Keep the condition focused on one question when possible.</li>
-<li>Use an <code>if</code> statement when the action is optional.</li>
-</ul>
+<img data-src="images/source_pages/slide-59.png" style="width:100.0%" alt="Source Slide 59" class="r-stretch"></section>
+<section id="source-slide-60" class="slide level2">
+<h2><span style="display:none">Source Slide 60</span></h2>
+
 <!-- Slide 60 -->
-</section>
-<section id="the-if-statement-common-mistakes" class="slide level2">
-<h2>The if Statement: Common Mistakes</h2>
-<ul>
-<li>Writing a condition that does not match the intended question.</li>
-<li>Forgetting that code outside the braces always runs.</li>
-<li>Making the block do too many unrelated things.</li>
-</ul>
+<img data-src="images/source_pages/slide-60.png" style="width:100.0%" alt="Source Slide 60" class="r-stretch"></section>
+<section id="source-slide-61" class="slide level2">
+<h2><span style="display:none">Source Slide 61</span></h2>
+
 <!-- Slide 61 -->
-</section>
-<section id="the-if-statement-more-examples" class="slide level2">
-<h2>The if Statement: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb24-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>hours <span class="op">&gt;</span> <span class="dv">40</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb24-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Overtime may apply"</span><span class="op">;</span></span>
-<span id="cb24-3"><a href=""></a><span class="op">}</span></span>
-<span id="cb24-4"><a href=""></a></span>
-<span id="cb24-5"><a href=""></a><span class="cf">if</span> <span class="op">(</span>denominator <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb24-6"><a href=""></a>    quotient <span class="op">=</span> numerator <span class="op">/</span> denominator<span class="op">;</span></span>
-<span id="cb24-7"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Topic: Peer Review and Programming Exercise -->
+<!-- Slides 62–65 -->
+<img data-src="images/source_pages/slide-61.png" style="width:100.0%" alt="Source Slide 61" class="r-stretch"></section></section>
+<section>
+<section id="peer-review-and-programming-exercise" class="title-slide slide level1 center">
+<h1>Peer Review and Programming Exercise</h1>
+
+<img data-src="images/source_pages/slide-62.png" style="width:100.0%" alt="Peer Review and Programming Exercise" class="r-stretch"><aside class="notes">
+<p>Slides 62–65 Source slide 62 from the authoritative PDF.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 62 -->
 </section>
-<section id="the-if-statement-practice-problems" class="slide level2">
-<h2>The if Statement: Practice Problems</h2>
-<ul>
-<li>Write an <code>if</code> statement that prints a warning when <code>speed</code> is greater than 65.</li>
-<li>Write an <code>if</code> statement that prints a message when <code>balance</code> is less than 0.</li>
-<li>Write an <code>if</code> statement that protects division by checking the denominator first.</li>
-</ul>
+<section id="source-slide-63" class="slide level2">
+<h2><span style="display:none">Source Slide 63</span></h2>
+
 <!-- Slide 63 -->
-</section>
-<section id="the-if-statement-ai-search-terms" class="slide level2">
-<h2>The if Statement: AI Search Terms</h2>
-<ul>
-<li>C++ if statement syntax</li>
-<li>C++ if statement braces</li>
-<li>C++ conditional execution</li>
-<li>C++ guard condition</li>
-</ul>
+<img data-src="images/source_pages/slide-63.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"></section>
+<section id="source-slide-64" class="slide level2">
+<h2><span style="display:none">Source Slide 64</span></h2>
+
 <!-- Slide 64 -->
-</section>
-<section id="the-if-statement-questions-for-reflection" class="slide level2">
-<h2>The if Statement: Questions for Reflection</h2>
-<ul>
-<li>What condition controls the block?</li>
-<li>What happens when the condition is false?</li>
-<li>Which statements are inside the decision, and which statements always run?</li>
-</ul>
+<img data-src="images/source_pages/slide-64.png" style="width:100.0%" alt="Exercise Goals" class="r-stretch"></section>
+<section id="source-slide-65" class="slide level2">
+<h2><span style="display:none">Source Slide 65</span></h2>
+
 <!-- Slide 65 -->
-</section>
-<section id="the-cin-fail-problem-good-practices" class="slide level2">
-<h2>The cin Fail Problem: Good Practices</h2>
-<ul>
-<li>Check input before using the value in later calculations.</li>
-<li>Treat failure detection and failure recovery as separate steps.</li>
-<li>Give the user a specific message about what kind of input was expected.</li>
-</ul>
+<!-- Topic: Lecture Wrap-Up -->
+<!-- Slides 66–70 -->
+<img data-src="images/source_pages/slide-65.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"></section></section>
+<section>
+<section id="lecture-wrap-up" class="title-slide slide level1 center">
+<h1>Lecture Wrap-Up</h1>
+
+<img data-src="images/source_pages/slide-66.png" style="width:100.0%" alt="Lecture Wrap-Up" class="r-stretch"><aside class="notes">
+<p>Slides 66–70 Source slide 66 from the authoritative PDF.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 66 -->
 </section>
-<section id="the-cin-fail-problem-common-mistakes" class="slide level2">
-<h2>The cin Fail Problem: Common Mistakes</h2>
-<ul>
-<li>Assuming <code>cin.fail()</code> fixes the stream.</li>
-<li>Trying to keep reading after the stream has entered a failed state.</li>
-<li>Repeating a prompt without clearing the bad input first.</li>
-</ul>
+<section id="source-slide-67" class="slide level2">
+<h2><span style="display:none">Source Slide 67</span></h2>
+
 <!-- Slide 67 -->
-</section>
-<section id="the-cin-fail-problem-more-examples" class="slide level2">
-<h2>The cin Fail Problem: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb25-1"><a href=""></a><span class="dt">int</span> quantity<span class="op">;</span></span>
-<span id="cb25-2"><a href=""></a>cin <span class="op">&gt;&gt;</span> quantity<span class="op">;</span></span>
-<span id="cb25-3"><a href=""></a></span>
-<span id="cb25-4"><a href=""></a><span class="cf">if</span> <span class="op">(</span>cin<span class="op">.</span>fail<span class="op">())</span> <span class="op">{</span></span>
-<span id="cb25-5"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Quantity must be a whole number."</span><span class="op">;</span></span>
-<span id="cb25-6"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This detects the problem. A complete recovery also clears the stream and removes the bad input.</p>
+<img data-src="images/source_pages/slide-67.png" style="width:100.0%" alt="Agenda" class="r-stretch"></section>
+<section id="source-slide-68" class="slide level2">
+<h2><span style="display:none">Source Slide 68</span></h2>
+
 <!-- Slide 68 -->
-</section>
-<section id="the-cin-fail-problem-practice-problems" class="slide level2">
-<h2>The cin Fail Problem: Practice Problems</h2>
-<ul>
-<li>Identify what kind of input would make <code>cin &gt;&gt; age</code> fail.</li>
-<li>Write the condition that checks whether the last input operation failed.</li>
-<li>Describe the difference between detecting failure and recovering from failure.</li>
-</ul>
+<img data-src="images/source_pages/slide-68.png" style="width:100.0%" alt="68" class="r-stretch"></section>
+<section id="source-slide-69" class="slide level2">
+<h2><span style="display:none">Source Slide 69</span></h2>
+
 <!-- Slide 69 -->
-</section>
-<section id="the-cin-fail-problem-ai-search-terms" class="slide level2">
-<h2>The cin Fail Problem: AI Search Terms</h2>
-<ul>
-<li>C++ cin.fail</li>
-<li>C++ input stream failed state</li>
-<li>C++ clear cin ignore bad input</li>
-<li>C++ input validation basics</li>
-</ul>
+<img data-src="images/source_pages/slide-69.png" style="width:100.0%" alt="Ch 11 - More OOP" class="r-stretch"></section>
+<section id="source-slide-70" class="slide level2">
+<h2><span style="display:none">Source Slide 70</span></h2>
+
 <!-- Slide 70 -->
-</section>
-<section id="the-cin-fail-problem-questions-for-reflection" class="slide level2">
-<h2>The cin Fail Problem: Questions for Reflection</h2>
-<ul>
-<li>What type was <code>cin</code> trying to read?</li>
-<li>What input would fail that extraction?</li>
-<li>What should the program do before asking for input again?</li>
-</ul>
+<!-- Topic: Homework Preflight -->
+<!-- Slides 71–76 -->
+<img data-src="images/source_pages/slide-70.png" style="width:100.0%" alt="Homework 2 Peer Review due Sunday." class="r-stretch"></section></section>
+<section>
+<section id="homework-preflight" class="title-slide slide level1 center">
+<h1>Homework Preflight</h1>
+
+<img data-src="images/source_pages/slide-71.png" style="width:100.0%" alt="Homework Preflight" class="r-stretch"><aside class="notes">
+<p>Slides 71–76 Source slide 71 from the authoritative PDF.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 71 -->
 </section>
-<section id="the-ifelse-statement-good-practices" class="slide level2">
-<h2>The if/else Statement: Good Practices</h2>
-<ul>
-<li>Use <code>if/else</code> when the two outcomes exclude each other.</li>
-<li>Let <code>else</code> mean “everything that did not satisfy the <code>if</code> condition.”</li>
-<li>Keep both branches parallel when they represent matching outcomes.</li>
-</ul>
+<section id="source-slide-72" class="slide level2">
+<h2><span style="display:none">Source Slide 72</span></h2>
+
 <!-- Slide 72 -->
-</section>
-<section id="the-ifelse-statement-common-mistakes" class="slide level2">
-<h2>The if/else Statement: Common Mistakes</h2>
-<ul>
-<li>Writing a second opposite condition when <code>else</code> already covers it.</li>
-<li>Using two separate <code>if</code> statements for a choice that must select only one path.</li>
-<li>Putting shared code in both branches instead of after the decision.</li>
-</ul>
+<img data-src="images/source_pages/slide-72.png" style="width:100.0%" alt="Homework Pre ight" class="r-stretch"></section>
+<section id="source-slide-73" class="slide level2">
+<h2><span style="display:none">Source Slide 73</span></h2>
+
 <!-- Slide 73 -->
-</section>
-<section id="the-ifelse-statement-more-examples" class="slide level2">
-<h2>The if/else Statement: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb26-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>age <span class="op">&gt;=</span> <span class="dv">21</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb26-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Admit"</span><span class="op">;</span></span>
-<span id="cb26-3"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb26-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Do not admit"</span><span class="op">;</span></span>
-<span id="cb26-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Only one of these messages can print.</p>
+<img data-src="images/source_pages/slide-73.png" style="width:100.0%" alt="Exercise Goals" class="r-stretch"></section>
+<section id="source-slide-74" class="slide level2">
+<h2><span style="display:none">Source Slide 74</span></h2>
+
 <!-- Slide 74 -->
-</section>
-<section id="the-ifelse-statement-practice-problems" class="slide level2">
-<h2>The if/else Statement: Practice Problems</h2>
-<ul>
-<li>Write an <code>if/else</code> that prints pass when <code>score &gt;= 70</code> and retry otherwise.</li>
-<li>Explain why two separate <code>if</code> statements are not the best fit for a yes/no choice.</li>
-<li>Identify which branch runs when the condition is false.</li>
-</ul>
+<img data-src="images/source_pages/slide-74.png" style="width:100.0%" alt="Task" class="r-stretch"></section>
+<section id="source-slide-75" class="slide level2">
+<h2><span style="display:none">Source Slide 75</span></h2>
+
 <!-- Slide 75 -->
-</section>
-<section id="the-ifelse-statement-ai-search-terms" class="slide level2">
-<h2>The if/else Statement: AI Search Terms</h2>
-<ul>
-<li>C++ if else statement</li>
-<li>C++ mutually exclusive branches</li>
-<li>C++ else block</li>
-<li>C++ two way selection</li>
-</ul>
+<img data-src="images/source_pages/slide-75.png" style="width:100.0%" alt="Task - II" class="r-stretch"></section>
+<section id="source-slide-76" class="slide level2">
+<h2><span style="display:none">Source Slide 76</span></h2>
+
 <!-- Slide 76 -->
-</section>
-<section id="the-ifelse-statement-questions-for-reflection" class="slide level2">
-<h2>The if/else Statement: Questions for Reflection</h2>
-<ul>
-<li>Are these outcomes mutually exclusive?</li>
-<li>What does the <code>else</code> represent?</li>
-<li>Is there any code that should happen after both branches?</li>
-</ul>
+<!-- Topic: Lightning Review and Class Starters -->
+<!-- Slides 77–87 -->
+<img data-src="images/source_pages/slide-76.png" style="width:100.0%" alt="Task - III" class="r-stretch"></section></section>
+<section>
+<section id="lightning-review-and-class-starters" class="title-slide slide level1 center">
+<h1>Lightning Review and Class Starters</h1>
+
+<img data-src="images/source_pages/slide-77.png" style="width:100.0%" alt="Lightning Review and Class Starters" class="r-stretch"><aside class="notes">
+<p>Slides 77–87 Source slide 77 from the authoritative PDF.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 77 -->
 </section>
-<section id="the-ifelse-if-statement-good-practices" class="slide level2">
-<h2>The if/else if Statement: Good Practices</h2>
-<ul>
-<li>Put the most specific conditions before broader conditions when order matters.</li>
-<li>Use a final <code>else</code> when the program needs a default path.</li>
-<li>Keep each branch focused on one category.</li>
-</ul>
-<!-- Slide 78 -->
-</section>
-<section id="the-ifelse-if-statement-common-mistakes" class="slide level2">
-<h2>The if/else if Statement: Common Mistakes</h2>
-<ul>
-<li>Placing a broad condition first and blocking later branches.</li>
-<li>Repeating conditions that are already excluded by earlier branches.</li>
-<li>Using an <code>if/else if</code> chain when independent checks would be clearer.</li>
-</ul>
-<!-- Slide 79 -->
-</section>
-<section id="the-ifelse-if-statement-more-examples" class="slide level2">
-<h2>The if/else if Statement: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb27-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>score <span class="op">&gt;=</span> <span class="dv">90</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb27-2"><a href=""></a>    letter <span class="op">=</span> <span class="ch">'A'</span><span class="op">;</span></span>
-<span id="cb27-3"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>score <span class="op">&gt;=</span> <span class="dv">80</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb27-4"><a href=""></a>    letter <span class="op">=</span> <span class="ch">'B'</span><span class="op">;</span></span>
-<span id="cb27-5"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>score <span class="op">&gt;=</span> <span class="dv">70</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb27-6"><a href=""></a>    letter <span class="op">=</span> <span class="ch">'C'</span><span class="op">;</span></span>
-<span id="cb27-7"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb27-8"><a href=""></a>    letter <span class="op">=</span> <span class="ch">'F'</span><span class="op">;</span></span>
-<span id="cb27-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The first true branch wins.</p>
-<!-- Slide 80 -->
-</section>
-<section id="the-ifelse-if-statement-practice-problems" class="slide level2">
-<h2>The if/else if Statement: Practice Problems</h2>
-<ul>
-<li>Write a chain that classifies a temperature as hot, warm, cool, or cold.</li>
-<li>Explain why the order of grade checks matters.</li>
-<li>Decide whether a scenario needs <code>if</code>, <code>if/else</code>, or <code>if/else if</code>.</li>
-</ul>
-<!-- Slide 81 -->
-</section>
-<section id="the-ifelse-if-statement-ai-search-terms" class="slide level2">
-<h2>The if/else if Statement: AI Search Terms</h2>
-<ul>
-<li>C++ else if chain</li>
-<li>C++ multi way selection</li>
-<li>C++ condition order matters</li>
-<li>C++ if else if vs switch</li>
-</ul>
-<!-- Slide 82 -->
-</section>
-<section id="the-ifelse-if-statement-questions-for-reflection" class="slide level2">
-<h2>The if/else if Statement: Questions for Reflection</h2>
-<ul>
-<li>What categories are possible?</li>
-<li>Are the categories mutually exclusive?</li>
-<li>Which condition should be checked first?</li>
-</ul>
-<!-- Slide 83 -->
+<section id="source-slide-78" class="slide level2">
+<h2><span style="display:none">Source Slide 78</span></h2>
 
-</section></section>
+<!-- Slide 78 -->
+<img data-src="images/source_pages/slide-78.png" style="width:100.0%" alt="78" class="r-stretch"></section>
+<section id="source-slide-79" class="slide level2">
+<h2><span style="display:none">Source Slide 79</span></h2>
+
+<!-- Slide 79 -->
+<img data-src="images/source_pages/slide-79.png" style="width:100.0%" alt="79" class="r-stretch"></section>
+<section id="source-slide-80" class="slide level2">
+<h2><span style="display:none">Source Slide 80</span></h2>
+
+<!-- Slide 80 -->
+<img data-src="images/source_pages/slide-80.png" style="width:100.0%" alt="80" class="r-stretch"></section>
+<section id="source-slide-81" class="slide level2">
+<h2><span style="display:none">Source Slide 81</span></h2>
+
+<!-- Slide 81 -->
+<img data-src="images/source_pages/slide-81.png" style="width:100.0%" alt="81" class="r-stretch"></section>
+<section id="source-slide-82" class="slide level2">
+<h2><span style="display:none">Source Slide 82</span></h2>
+
+<!-- Slide 82 -->
+<img data-src="images/source_pages/slide-82.png" style="width:100.0%" alt="82" class="r-stretch"></section>
+<section id="source-slide-83" class="slide level2">
+<h2><span style="display:none">Source Slide 83</span></h2>
+
+<!-- Slide 83 -->
+<img data-src="images/source_pages/slide-83.png" style="width:100.0%" alt="83" class="r-stretch"></section>
+<section id="source-slide-84" class="slide level2">
+<h2><span style="display:none">Source Slide 84</span></h2>
+
+<!-- Slide 84 -->
+<img data-src="images/source_pages/slide-84.png" style="width:100.0%" alt="Class Starters" class="r-stretch"></section>
+<section id="source-slide-85" class="slide level2">
+<h2><span style="display:none">Source Slide 85</span></h2>
+
+<!-- Slide 85 -->
+<img data-src="images/source_pages/slide-85.png" style="width:100.0%" alt="What’s the difference …" class="r-stretch"></section>
+<section id="source-slide-86" class="slide level2">
+<h2><span style="display:none">Source Slide 86</span></h2>
+
+<!-- Slide 86 -->
+<img data-src="images/source_pages/slide-86.png" style="width:100.0%" alt="86" class="r-stretch"></section>
+<section id="source-slide-87" class="slide level2">
+<h2><span style="display:none">Source Slide 87</span></h2>
+
+<!-- Slide 87 -->
+
+<img data-src="images/source_pages/slide-87.png" style="width:100.0%" alt="Sentence Starters" class="r-stretch"></section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
