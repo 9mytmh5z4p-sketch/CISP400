@@ -1,0 +1,338 @@
+<!-- Topic 1: The this Pointer and Constant Member Functions -->
+<!-- Slides 5-20 -->
+
+# The this Pointer and Constant Member Functions
+
+::: notes
+Slides 5-20
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## The Problem
+
+You have an object named <code>myWidget</code>. You need to make a copy of it named <code>yourWidget</code>. How can one object refer to its own state while a member function is running?
+
+<!-- Slide 6 -->
+
+---
+
+## Problem
+
+A class has a data member and a member-function parameter with the same name. The function must distinguish the object's member from the local parameter.
+
+<!-- Slide 7 -->
+
+---
+
+## <span style="display:none">No title</span>
+
+<div style="font-size:50%">
+
+~~~cpp
+// 11-1x.cpp -- this demo problem
+#include <iostream>
+using namespace std;
+
+class Example {
+private:
+    int x;
+
+public:
+    Example(int a) { x = a; }
+    void setValue(int);
+    void printAddressAndValue();
+};
+
+void Example::setValue(int a) {
+    x = a;
+}
+
+void Example::printAddressAndValue() {
+    int x = 50;
+    cout << "Object at address: " << " ??? "
+         << " has x value: " << x << endl;
+}
+
+int main() {
+    Example obj1(10);
+    Example obj2(20);
+
+    obj1.printAddressAndValue();
+    obj2.printAddressAndValue();
+
+    return 0;
+}
+
+// How do we print out the class variable x?
+~~~
+
+</div>
+
+::: notes
+Source file: cpp/11-1x.cpp
+The problem asks how to print the class variable x instead of the local variable.
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Object References
+
+A member function operates on the object that receives the call. Inside that function, the current object can be referred to through the implicit <code>this</code> pointer.
+
+<!-- Slide 9 -->
+
+---
+
+## this Pointer
+
+- <code>this</code> points to the object whose member function is running.
+- It is available inside non-static member functions.
+- <code>this->member</code> selects a data member belonging to the current object.
+
+<!-- Slide 10 -->
+
+---
+
+## Object State and this
+
+::: {.columns}
+::: {.column width="60%"}
+<div style="font-size:50%">
+
+~~~cpp
+#include <iostream>
+using namespace std;
+
+class Example {
+private:
+    int x;
+
+public:
+    Example(int value) { x = value; }
+    void printAddressAndValue();
+};
+
+void Example::printAddressAndValue() {
+    int x = 50;
+    cout << "Object address: " << this
+         << " has x value: " << this->x << endl;
+}
+
+int main() {
+    Example obj1(10);
+    Example obj2(20);
+
+    obj1.printAddressAndValue();
+    obj2.printAddressAndValue();
+
+    return 0;
+}
+~~~
+
+</div>
+:::
+::: {.column width="40%"}
+**Answer**
+
+<code>this</code> points to the object whose member function is running.
+
+<code>this-&gt;x</code> selects the object's data member, so the two calls report values <code>10</code> and <code>20</code>. The local <code>x</code> remains <code>50</code>.
+:::
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## Code Example: this and Object State
+
+::: {.columns}
+::: {.column width="60%"}
+<div style="font-size:50%">
+
+~~~cpp
+#include <iostream>
+using namespace std;
+
+class Example {
+private:
+    int x;
+
+public:
+    void setValue(int x) {
+        this->x = x;
+    }
+
+    int getValue() const {
+        return this->x;
+    }
+};
+
+int main() {
+    Example item;
+    item.setValue(42);
+    cout << item.getValue() << endl;
+
+    return 0;
+}
+~~~
+
+</div>
+:::
+::: {.column width="40%"}
+**Output**
+
+~~~text
+42
+~~~
+
+The parameter <code>x</code> and the data member <code>x</code> have the same name. <code>this->x</code> identifies the member that belongs to the current object.
+:::
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Constructors Destructors and this Pointer
+
+- Constructors establish an object's initial state.
+- Destructors release resources when an object leaves its lifetime.
+- The <code>this</code> pointer identifies the current object inside its member functions.
+
+<!-- Slide 13 -->
+
+---
+
+## What’s Going On?
+
+A member function receives an implicit pointer to the object that called it. The expression <code>this->member</code> makes that relationship visible.
+
+<!-- Slide 14 -->
+
+---
+
+## Use Case
+
+We want to create a <code>Rec</code> class and add two rectangle-like objects together. First, we will use an ordinary function. Then we will move the operation into the class.
+
+<!-- Slide 15 -->
+
+---
+
+## First Example
+
+Let’s build an <code>Add()</code> function that receives two <code>Rec</code> objects and returns a third object containing their combined values.
+
+<!-- Slide 16 -->
+
+---
+
+## Add Function
+
+~~~cpp
+#include <iostream>
+using namespace std;
+
+class Rec {
+    int x;
+    int y;
+
+public:
+    Rec(int xx = 1, int yy = 1) {
+        x = xx;
+        y = yy;
+    }
+
+    void print() const {
+        cout << x << " by " << y << endl;
+    }
+
+    int getX() const { return x; }
+    int getY() const { return y; }
+};
+
+Rec Add(const Rec& lhs, const Rec& rhs) {
+    return Rec(lhs.getX() + rhs.getX(),
+               lhs.getY() + rhs.getY());
+}
+
+int main() {
+    Rec a(5, 5);
+    Rec b(5, 5);
+    Rec c = Add(a, b);
+
+    c.print();
+    return 0;
+}
+~~~
+
+The free function needs public accessors because it is not a member of <code>Rec</code>.
+
+<!-- Slide 17 -->
+
+---
+
+## Second Example
+
+Let’s make <code>Add()</code> a method instead. The left-hand object becomes the current object, represented by <code>this</code>.
+
+<!-- Slide 18 -->
+
+---
+
+## Add Method
+
+~~~cpp
+#include <iostream>
+using namespace std;
+
+class Rec {
+    int x;
+    int y;
+
+public:
+    Rec(int xx = 1, int yy = 1) {
+        x = xx;
+        y = yy;
+    }
+
+    void print() const {
+        cout << x << " by " << y << endl;
+    }
+
+    Rec add(const Rec& rhs) const {
+        Rec result(this->x + rhs.x,
+                   this->y + rhs.y);
+        return result;
+    }
+};
+
+int main() {
+    Rec a(5, 5);
+    Rec b(5, 5);
+    Rec c = a.add(b);
+
+    c.print();
+    return 0;
+}
+~~~
+
+As a member function, <code>add</code> can access private data directly.
+
+<!-- Slide 19 -->
+
+---
+
+## What this Means
+
+- Adding primitive operations to objects makes the objects more useful.
+- A member function can manipulate private data without a separate getter for every field.
+- Constructors can create the result object inside a member operation.
+
+<!-- Slide 20 -->

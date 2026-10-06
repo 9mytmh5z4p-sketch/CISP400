@@ -1,0 +1,419 @@
+<!-- Topic 3: Operator Overloading -->
+<!-- Slides 30-51 -->
+
+# Operator Overloading
+
+::: notes
+Slides 30-51
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## Why Is the Asterisk Overloaded?
+
+Have you ever wondered how the <code>*</code> symbol can do so many different things in a program?
+
+It is overloaded: its meaning depends on the operands and context.
+
+<!-- Slide 31 -->
+
+---
+
+## Changing Operator Meaning
+
+- Have you wanted to change the behavior of the <code>+</code>, <code>-</code>, <code>/</code>, or <code>*</code> symbols for your own objects?
+- Operator overloading lets a class participate in familiar C++ expressions.
+
+<!-- Slide 32 -->
+
+---
+
+## Operators Are Function Calls
+
+Many operators are another way to write a function call. C++ lets a class provide a function whose name is an operator.
+
+For example, <code>a + b</code> can call an overloaded <code>operator+</code>.
+
+<!-- Slide 33 -->
+
+---
+
+## Operator Overloading
+
+Changing the way a standard operator works for a user-defined type is called operator overloading.
+
+The operator keeps its spelling in an expression, but the class supplies the behavior.
+
+<!-- Slide 34 -->
+
+---
+
+## Operator Overloading Restrictions
+
+**Operators that can be overloaded**
+
+- Arithmetic operators such as <code>+</code>, <code>-</code>, <code>*</code>, and <code>/</code>
+- Relational operators such as <code>==</code>, <code>&lt;</code>, and <code>&gt;</code>
+- Stream operators such as <code>&lt;&lt;</code> and <code>&gt;&gt;</code>
+- Increment, decrement, subscript, call, and allocation operators
+
+**Operators that cannot be overloaded**
+
+- Member access: <code>.</code>
+- Pointer-to-member access: <code>.*</code>
+- Scope resolution: <code>::</code>
+- Conditional operator: <code>?:</code>
+- Size operator: <code>sizeof</code>
+
+<!-- Slide 35 -->
+
+---
+
+## What Overloading Can Change
+
+- You can change the meaning of an operator for your class.
+- You cannot change the number of operands.
+- Overloading should make an expression clearer, not merely more surprising.
+
+<!-- Slide 36 -->
+
+---
+
+## Why Would We Want to Do This?
+
+Operator overloading lets objects use familiar C++ syntax.
+
+~~~cpp
+BigClass myObj;
+BigClass yourObj;
+
+myObj = myObj + yourObj + 18;
+~~~
+
+The expression can read like the operation it represents.
+
+<!-- Slide 37 -->
+
+---
+
+## Operator Syntax
+
+For a member overload:
+
+~~~cpp
+result = left.operator+(right);
+~~~
+
+The expression:
+
+~~~cpp
+result = left + right;
+~~~
+
+uses the left operand as the object that receives the member-function call.
+
+<!-- Slide 38 -->
+
+---
+
+## Operator Plus
+
+~~~cpp
+#include <iostream>
+using namespace std;
+
+class Rec {
+private:
+    int x;
+    int y;
+
+public:
+    Rec(int xx = 1, int yy = 1) {
+        x = xx;
+        y = yy;
+    }
+
+    void print() const {
+        cout << x << " by " << y << endl;
+    }
+
+    Rec operator+(const Rec& rhs) const {
+        return Rec(x + rhs.x, y + rhs.y);
+    }
+};
+
+int main() {
+    Rec a(5, 5);
+    Rec b(5, 5);
+    Rec c = a + b;
+
+    c.print();
+    return 0;
+}
+~~~
+
+The overloaded operator returns a new <code>Rec</code> whose dimensions are the sums of the operands.
+
+<!-- Slide 39 -->
+
+---
+
+## Ways to Overload
+
+1. Define the overloaded operator as a member function.
+2. Define the overloaded operator as a stand-alone function.
+
+The choice depends on which operand must be the object and which data the function needs to access.
+
+<!-- Slide 40 -->
+
+---
+
+## Arithmetic and Relational Operators
+
+Arithmetic and relational operators can be implemented as either member functions or stand-alone functions.
+
+A stand-alone function is often preferred when the left operand should not be a class object or when the operation should treat both operands symmetrically.
+
+<!-- Slide 41 -->
+
+---
+
+## Operator Chaining
+
+~~~cpp
+#include <iostream>
+using namespace std;
+
+class Sales {
+private:
+    int receiptNumber;
+    double amount;
+
+public:
+    Sales(int number = 0, double value = 0.0) {
+        receiptNumber = number;
+        amount = value;
+    }
+
+    Sales operator+(const Sales& transaction) const {
+        return Sales(999, amount + transaction.amount);
+    }
+
+    void showSale() const {
+        cout << "Sale " << receiptNumber
+             << " for $" << amount << endl;
+    }
+};
+
+int main() {
+    Sales a(1567, 39.95);
+    Sales b(1568, 33.55);
+    Sales c(1123, 49.95);
+
+    Sales total = a + b + c;
+    total.showSale();
+
+    return 0;
+}
+~~~
+
+Each <code>+</code> produces a <code>Sales</code> object that can become the left operand of the next <code>+</code>.
+
+<!-- Slide 42 -->
+
+---
+
+## Pre and Post Increment Operators
+
+A class can overload both forms:
+
+~~~cpp
+class Foo {
+public:
+    Foo& operator++();
+    Foo operator++(int);
+};
+~~~
+
+- Prefix <code>++object</code> changes the object and returns the updated object.
+- Postfix <code>object++</code> returns the old value and then changes the object.
+- The unused <code>int</code> parameter distinguishes postfix syntax.
+
+<!-- Slide 43 -->
+
+---
+
+## Operator Chaining
+
+How do we allow multiple operations on the same line?
+
+~~~cpp
+Sales a;
+Sales b;
+Sales c;
+
+a + b;
+a = b + c + d;
+~~~
+
+Each overloaded operation must return a type that can participate in the next operation.
+
+<!-- Slide 44 -->
+
+---
+
+## Comparison Operators
+
+A comparison overload lets an object participate in a condition.
+
+~~~cpp
+class Foo {
+public:
+    bool operator==(const Foo& rhs) const;
+};
+
+Foo a;
+Foo b;
+
+if (a == b) {
+    cout << "Equal" << endl;
+}
+~~~
+
+The result should be a Boolean answer.
+
+<!-- Slide 45 -->
+
+---
+
+## Pre and Post Increment Example
+
+~~~cpp
+#include <iostream>
+using namespace std;
+
+class Length {
+private:
+    int inches;
+
+public:
+    Length(int value = 0) { inches = value; }
+    int getLength() const { return inches; }
+
+    Length& operator++() {
+        ++inches;
+        return *this;
+    }
+
+    Length operator++(int) {
+        Length old = *this;
+        ++inches;
+        return old;
+    }
+};
+
+int main() {
+    Length test(3);
+    Length temporary;
+
+    temporary = ++test;
+    cout << temporary.getLength() << " "
+         << test.getLength() << endl;
+
+    temporary = test++;
+    cout << temporary.getLength() << " "
+         << test.getLength() << endl;
+
+    return 0;
+}
+~~~
+
+Prefix returns the updated object. Postfix preserves and returns the old value before incrementing.
+
+<!-- Slide 46 -->
+
+---
+
+## Comparison Operator Example
+
+~~~cpp
+#include <iostream>
+using namespace std;
+
+class Example {
+private:
+    int id;
+
+public:
+    Example(int value) { id = value; }
+
+    bool operator==(const Example& rhs) const {
+        return id == rhs.id;
+    }
+};
+
+int main() {
+    Example first(1234);
+    Example second(5678);
+
+    if (first == second) {
+        cout << "They are equal" << endl;
+    } else {
+        cout << "They are not equal" << endl;
+    }
+
+    return 0;
+}
+~~~
+
+The overloaded comparison reads like a built-in comparison while still using the class's private state.
+
+<!-- Slide 47 -->
+
+---
+
+## Comparison Output
+
+For two objects with different identifiers, the comparison expression evaluates to false.
+
+~~~text
+They are not equal
+~~~
+
+<!-- Slide 48 -->
+
+---
+
+## Comparison Operator Example
+
+Use comparison overloads when the class has a meaningful notion of equality or ordering.
+
+The operator should compare the state that defines the class's identity.
+
+<!-- Slide 49 -->
+
+---
+
+## Operator Overloading Algorithm
+
+- If the operation must change the left operand and needs access to private data, use a member function.
+- If the operation should not change the left operand or the left operand is not the class type, use a stand-alone function.
+- If the stand-alone function needs private data, make it a friend of the class.
+
+<!-- Slide 50 -->
+
+---
+
+## Choosing an Overload Form
+
+Ask two questions:
+
+1. Does the operation need to change the left operand?
+2. Does the operation need access to private class data?
+
+Use a member overload when the left operand is the natural object. Use a friend stand-alone function when an external left operand or symmetric access is required.
+
+<!-- Slide 51 -->

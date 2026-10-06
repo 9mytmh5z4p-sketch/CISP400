@@ -1,0 +1,458 @@
+<!-- Topic 4: Friends of Classes -->
+<!-- Slides 52-74 -->
+
+# Friends of Classes
+
+::: notes
+Slides 52-74
+:::
+
+<!-- Slide 52 -->
+
+---
+
+## Printing Class Contents
+
+We want to print the contents of one of our classes. The design must coordinate the class and the output stream.
+
+<!-- Slide 53 -->
+
+---
+
+## Print Function or Stream Insertion Operator
+
+A class can expose either:
+
+- A member such as <code>Print()</code>
+- An overloaded stream insertion operator so clients can write <code>cout &lt;&lt; object</code>
+
+<!-- Slide 54 -->
+
+---
+
+## Print Function
+
+~~~cpp
+#include <iostream>
+using namespace std;
+
+class RecType {
+private:
+    double length;
+    double width;
+
+public:
+    RecType(double l = 0.0, double w = 0.0) {
+        length = l;
+        width = w;
+    }
+
+    void print() const {
+        cout << "Length = " << length
+             << "\nWidth = " << width << endl;
+    }
+};
+
+int main() {
+    RecType gold(10, 33);
+    gold.print();
+
+    return 0;
+}
+~~~
+
+A member function is direct and simple, but clients must know the class-specific function name.
+
+<!-- Slide 55 -->
+
+---
+
+## How We’d Like to Do It
+
+The desired interface is the same syntax used for built-in values:
+
+~~~cpp
+RecType gold(10, 33);
+cout << gold;
+~~~
+
+The class should describe its own output while the stream remains the left operand.
+
+<!-- Slide 56 -->
+
+---
+
+## Overloading Operators
+
+C++ supports more than one constructor for a class. That is method overloading.
+
+C++ also lets a class define behavior for symbols such as <code>+</code>, <code>-</code>, and <code>&lt;&lt;</code>. That is operator overloading.
+
+<!-- Slide 57 -->
+
+---
+
+## Two Ways to Overload Operators
+
+1. Define the overloaded operator as a member function of the class.
+2. Define it as a separate stand-alone function.
+
+The left operand and the required access to private data determine which form fits.
+
+<!-- Slide 58 -->
+
+---
+
+## Operator as a Member Function
+
+Use a member function when:
+
+- The operation must change the left-hand operand.
+- The operation requires direct access to non-public class data.
+
+The left operand becomes the object that receives the member-function call.
+
+<!-- Slide 59 -->
+
+---
+
+## Stream Operators
+
+Consider an expression such as:
+
+~~~cpp
+cout << something;
+~~~
+
+The left-hand operand is <code>cout</code>, an object of the standard-library stream class. The class being printed is on the right.
+
+<!-- Slide 60 -->
+
+---
+
+## Why a Free Function Is Needed
+
+We cannot add a member function to the standard stream class because we do not own that class.
+
+The stream insertion and extraction operators therefore need to be implemented as free functions.
+
+<!-- Slide 61 -->
+
+---
+
+## Why the Free Function Must Be a Friend
+
+The free function needs access to the class's private data unless the class exposes getters for every field.
+
+A friend declaration gives the chosen free function access without making all data public.
+
+<!-- Slide 62 -->
+
+---
+
+## Friends
+
+A friend is a function or class that is not a member of the class but is granted access to its private members.
+
+<!-- Slide 63 -->
+
+---
+
+## Friend Function Definition
+
+~~~cpp
+class Distance {
+private:
+    int meter;
+
+public:
+    Distance() {
+        meter = 0;
+    }
+
+    friend int addFive(Distance value);
+};
+
+int addFive(Distance value) {
+    value.meter += 5;
+    return value.meter;
+}
+~~~
+
+The friend declaration appears inside the class. The definition remains a stand-alone function.
+
+<!-- Slide 64 -->
+
+---
+
+## Why Use a Friend Function?
+
+A friend function is useful when an external operation needs private state.
+
+The stream insertion operator is a common example because the stream object must remain the left operand.
+
+<!-- Slide 65 -->
+
+---
+
+## Operator Insertion Call Syntax
+
+The expression:
+
+~~~cpp
+cout << point;
+~~~
+
+is conceptually a call to a stand-alone operator function:
+
+~~~cpp
+operator<<(cout, point);
+~~~
+
+The function can access <code>point</code>'s private fields when the class declares it as a friend.
+
+<!-- Slide 66 -->
+
+---
+
+## Friend Access Is Controlled by the Class
+
+The class decides which functions or classes become friends.
+
+Friendship is explicit and selective. It is not automatically inherited by every function that happens to use the class.
+
+<!-- Slide 67 -->
+
+---
+
+## Friend Function Example
+
+~~~cpp
+#include <iostream>
+using namespace std;
+
+class RecType {
+private:
+    double length;
+    double width;
+
+public:
+    RecType(double l = 0.0, double w = 0.0) {
+        length = l;
+        width = w;
+    }
+
+    friend ostream& operator<<(ostream& output,
+                               const RecType& rec);
+};
+
+ostream& operator<<(ostream& output, const RecType& rec) {
+    output << "Length = " << rec.length
+           << "\nWidth = " << rec.width;
+    return output;
+}
+
+int main() {
+    RecType gold(10, 33);
+    cout << gold << endl;
+
+    return 0;
+}
+~~~
+
+The stand-alone operator function accesses private fields because it is a friend.
+
+<!-- Slide 68 -->
+
+---
+
+## Friend Class Example
+
+~~~cpp
+#include <iostream>
+using namespace std;
+
+class Square;
+
+class Rectangle {
+private:
+    int width;
+    int height;
+
+public:
+    int area() const {
+        return width * height;
+    }
+
+    void convert(const Square& square);
+};
+
+class Square {
+private:
+    int side;
+
+public:
+    Square(int value) {
+        side = value;
+    }
+
+    friend class Rectangle;
+};
+
+void Rectangle::convert(const Square& square) {
+    width = square.side;
+    height = square.side;
+}
+
+int main() {
+    Rectangle rect;
+    Square square(4);
+
+    rect.convert(square);
+    cout << rect.area() << endl;
+
+    return 0;
+}
+~~~
+
+A friend class can access the private members of the class that grants friendship.
+
+<!-- Slide 69 -->
+
+---
+
+## Friend Function with Two Classes
+
+~~~cpp
+class B;
+
+class A {
+private:
+    int numA;
+
+public:
+    A() { numA = 12; }
+    friend int add(const A& left, const B& right);
+};
+
+class B {
+private:
+    int numB;
+
+public:
+    B() { numB = 1; }
+    friend int add(const A& left, const B& right);
+};
+
+int add(const A& left, const B& right) {
+    return left.numA + right.numB;
+}
+~~~
+
+Both classes grant the same stand-alone function access to their private data.
+
+<!-- Slide 70 -->
+
+---
+
+## Friend as Part of the Public Interface
+
+> Don’t think of a friend as something outside of the class. Instead, think of it as part of the class's public interface.
+>
+> — C++ FAQ
+
+A friend is still a deliberate part of the class design.
+
+<!-- Slide 71 -->
+
+---
+
+## Why We Are Talking About This
+
+Friend functions let a class participate naturally in operations whose left operand belongs to another class.
+
+They are especially useful for stream insertion and extraction.
+
+<!-- Slide 72 -->
+
+---
+
+## Stream Insertion
+
+~~~cpp
+#include <iostream>
+using namespace std;
+
+class RecType {
+private:
+    double length;
+    double width;
+
+public:
+    RecType(double l = 0.0, double w = 0.0) {
+        length = l;
+        width = w;
+    }
+
+    friend ostream& operator<<(ostream& output,
+                               const RecType& rec);
+};
+
+ostream& operator<<(ostream& output, const RecType& rec) {
+    output << "Length = " << rec.length
+           << "\nWidth = " << rec.width;
+    return output;
+}
+~~~
+
+The overload returns the stream by reference so insertion can continue with another value.
+
+<!-- Slide 73 -->
+
+---
+
+## Stream Insertion and Extraction
+
+~~~cpp
+#include <iostream>
+using namespace std;
+
+class Complex {
+private:
+    int real;
+    int imag;
+
+public:
+    Complex(int r = 0, int i = 0) {
+        real = r;
+        imag = i;
+    }
+
+    friend ostream& operator<<(ostream& output,
+                               const Complex& value);
+    friend istream& operator>>(istream& input,
+                               Complex& value);
+};
+
+ostream& operator<<(ostream& output, const Complex& value) {
+    output << value.real << "+" << value.imag << "i";
+    return output;
+}
+
+istream& operator>>(istream& input, Complex& value) {
+    input >> value.real >> value.imag;
+    return input;
+}
+
+int main() {
+    Complex value;
+    cin >> value;
+    cout << "The complex object is " << value << endl;
+
+    return 0;
+}
+~~~
+
+The input and output operators both remain stand-alone functions and both are friends of <code>Complex</code>.
+
+<!-- Slide 74 -->

@@ -1,6 +1,117 @@
-{{< include topic_course_framing.qmd >}}
-{{< include topic_constructors.qmd >}}
-{{< include topic_this_pointer.qmd >}}
-{{< include topic_static_members.qmd >}}
-{{< include topic_operator_preview.qmd >}}
+# Last Time
+
+::: notes
+Non-activity topics from p400_lecture_06.02.
+:::
+
+<!-- Slide 1 -->
+
+# Chapter 11 More OOP
+
+<!-- Slide 2 -->
+
+---
+
+## Chapter 11 Topics
+
+<div class="columns">
+<div>
+
+- 11.1 The <code>this</code> pointer and constant member functions
+- 11.2 Static members
+- 11.3 Friends of classes
+- 11.4 Memberwise assignment
+- 11.5 Copy constructors
+- 11.6 Operator overloading
+- 11.7 Rvalue references and move operations
+- 11.8 Function objects and lambda expressions
+
+</div>
+<div>
+
+- 11.9 Type conversion operators
+- 11.10 Converting constructors
+- 11.11 Aggregation and composition
+- 11.12 Inheritance
+- 11.13 Protected members and class access
+- 11.14 Constructors destructors and inheritance
+- 11.15 Overriding base class functions
+
+</div>
+</div>
+
+<!-- Slide 3 -->
+
+---
+
+## Chapter 11 Topics
+
+<div class="columns">
+<div>
+
+- **11.1 The <code>this</code> pointer and constant member functions**
+- **11.2 Static members**
+- **11.3 Friends of classes**
+- 11.4 Memberwise assignment
+- 11.5 Copy constructors
+- **11.6 Operator overloading**
+- 11.7 Rvalue references and move operations
+- 11.8 Function objects and lambda expressions
+
+</div>
+<div>
+
+- 11.9 Type conversion operators
+- 11.10 Converting constructors
+- 11.11 Aggregation and composition
+- 11.12 Inheritance
+- 11.13 Protected members and class access
+- 11.14 Constructors destructors and inheritance
+- 11.15 Overriding base class functions
+
+</div>
+</div>
+
+<!-- Slide 4 -->
+
+{{< include topic_1_this_pointer.qmd >}}
+{{< include topic_2_static_members.qmd >}}
+{{< include topic_3_operator_overloading.qmd >}}
+{{< include topic_4_friends_of_classes.qmd >}}
+
+# Programming Exercise
+
+Activity
+
+<!-- Slide 75 -->
+
+---
+
+## Exercise Goals
+
+- Increase topic mastery.
+- Construct knowledge.
+- Give you data to evaluate how well you are learning.
+
+<!-- Slide 76 -->
+
+---
+
+## Programming Exercise
+
+Create a <code>Point2D</code> class that represents a point in a two-dimensional plane with <code>x</code> and <code>y</code> coordinates.
+
+- Overload <code>&lt;&lt;</code> to display the point as <code>(x, y)</code>.
+- Overload <code>&gt;&gt;</code> to read the point's coordinates.
+- Implement both overloaded operators as friend functions.
+
+<!-- Slide 77 -->
+
+# What’s This Section About?
+
+::: notes
+Transition from the lecture content to the programming activity.
+:::
+
+<!-- Slide 78 -->
 

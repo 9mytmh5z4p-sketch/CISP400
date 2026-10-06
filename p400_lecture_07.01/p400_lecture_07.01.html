@@ -208,15 +208,8 @@ Dr.&nbsp;Caleb Fowler
 </section>
 <section id="last-time" class="title-slide slide level1 center">
 <h1>Last Time</h1>
-<ul>
-<li class="fragment"><strong>Relational Operators</strong></li>
-<li class="fragment"><strong>The if Statement</strong></li>
-<li class="fragment"><strong>The cin Fail Problem</strong></li>
-<li class="fragment"><strong>The if/else Statement</strong></li>
-<li class="fragment"><strong>The if/else if Statement</strong></li>
-</ul>
 <aside class="notes">
-<p>Recall that the previous lecture introduced decisions as blocks controlled by yes/no questions. Today extends that model into compact choices, fixed cases, dependent decisions, and range checks.</p>
+<p>Non-activity topics from p400_lecture_06.02.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -231,46 +224,74 @@ Dr.&nbsp;Caleb Fowler
 <!-- Slide 1 -->
 </section>
 
-<section id="todays-agenda" class="title-slide slide level1 center">
-<h1>Today’s Agenda</h1>
-<ul>
-<li>The Conditional Operator</li>
-<li>The switch Statement</li>
-<li>Nested if Statements</li>
-<li>Compound Conditions</li>
-<li>Range Checking</li>
-</ul>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 2 -->
-<!-- Topic 1: The Conditional Operator -->
-<!-- Slides 3-10 -->
-</section>
-
 <section>
-<section id="the-conditional-operator" class="title-slide slide level1 center">
-<h1>The Conditional Operator</h1>
+<section id="chapter-11-more-oop" class="title-slide slide level1 center">
+<h1>Chapter 11 More OOP</h1>
+<!-- Slide 2 -->
+</section>
+<section id="chapter-11-topics" class="slide level2">
+<h2>Chapter 11 Topics</h2>
+<div class="columns">
+<div>
+<ul>
+<li>11.1 The <code>this</code> pointer and constant member functions</li>
+<li>11.2 Static members</li>
+<li>11.3 Friends of classes</li>
+<li>11.4 Memberwise assignment</li>
+<li>11.5 Copy constructors</li>
+<li>11.6 Operator overloading</li>
+<li>11.7 Rvalue references and move operations</li>
+<li>11.8 Function objects and lambda expressions</li>
+</ul>
+</div><div>
+<ul>
+<li>11.9 Type conversion operators</li>
+<li>11.10 Converting constructors</li>
+<li>11.11 Aggregation and composition</li>
+<li>11.12 Inheritance</li>
+<li>11.13 Protected members and class access</li>
+<li>11.14 Constructors destructors and inheritance</li>
+<li>11.15 Overriding base class functions</li>
+</ul>
+</div>
+</div>
 <!-- Slide 3 -->
 </section>
-<section id="a-shorter-two-way-choice" class="slide level2 smaller">
-<h2>A Shorter Two-Way Choice</h2>
+<section id="chapter-11-topics-1" class="slide level2">
+<h2>Chapter 11 Topics</h2>
+<div class="columns">
+<div>
 <ul>
-<li>The conditional operator is a compact way to choose between two values.</li>
-<li>It is useful when a full <code>if/else</code> statement would be longer than the idea itself.</li>
+<li><strong>11.1 The <code>this</code> pointer and constant member functions</strong></li>
+<li><strong>11.2 Static members</strong></li>
+<li><strong>11.3 Friends of classes</strong></li>
+<li>11.4 Memberwise assignment</li>
+<li>11.5 Copy constructors</li>
+<li><strong>11.6 Operator overloading</strong></li>
+<li>11.7 Rvalue references and move operations</li>
+<li>11.8 Function objects and lambda expressions</li>
 </ul>
+</div><div>
+<ul>
+<li>11.9 Type conversion operators</li>
+<li>11.10 Converting constructors</li>
+<li>11.11 Aggregation and composition</li>
+<li>11.12 Inheritance</li>
+<li>11.13 Protected members and class access</li>
+<li>11.14 Constructors destructors and inheritance</li>
+<li>11.15 Overriding base class functions</li>
+</ul>
+</div>
+</div>
+<!-- Slide 4 -->
+<!-- Topic 1: The this Pointer and Constant Member Functions -->
+<!-- Slides 5-20 -->
+</section></section>
+<section>
+<section id="the-this-pointer-and-constant-member-functions" class="title-slide slide level1 center">
+<h1>The this Pointer and Constant Member Functions</h1>
 <aside class="notes">
-<p>Slides 3-10</p>
+<p>Slides 5-20</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -282,71 +303,59 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 4 -->
-</section>
-<section id="the-shape-of" class="slide level2">
-<h2>The Shape of <code>?:</code></h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a>condition <span class="op">?</span> value_if_true <span class="op">:</span> value_if_false</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>The condition is tested first.</li>
-<li>One of the two values is produced.</li>
-</ul>
 <!-- Slide 5 -->
 </section>
-<section id="an-expression-not-a-statement" class="slide level2">
-<h2>An Expression, Not a Statement</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a>string status <span class="op">=</span> score <span class="op">&gt;=</span> <span class="dv">70</span> <span class="op">?</span> <span class="st">"passing"</span> <span class="op">:</span> <span class="st">"not passing"</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The conditional operator produces a value, so it can be used in an assignment, an output statement, or another expression.</p>
+<section id="the-problem" class="slide level2">
+<h2>The Problem</h2>
+<p>You have an object named <code>myWidget</code>. You need to make a copy of it named <code>yourWidget</code>. How can one object refer to its own state while a member function is running?</p>
 <!-- Slide 6 -->
 </section>
-<section id="from-ifelse-to" class="slide level2">
-<h2>From if/else to <code>?:</code></h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>age <span class="op">&gt;=</span> <span class="dv">18</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-2"><a href=""></a>    label <span class="op">=</span> <span class="st">"adult"</span><span class="op">;</span></span>
-<span id="cb3-3"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb3-4"><a href=""></a>    label <span class="op">=</span> <span class="st">"minor"</span><span class="op">;</span></span>
-<span id="cb3-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href=""></a>label <span class="op">=</span> age <span class="op">&gt;=</span> <span class="dv">18</span> <span class="op">?</span> <span class="st">"adult"</span> <span class="op">:</span> <span class="st">"minor"</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="problem" class="slide level2">
+<h2>Problem</h2>
+<p>A class has a data member and a member-function parameter with the same name. The function must distinguish the object’s member from the local parameter.</p>
 <!-- Slide 7 -->
 </section>
-<section id="when-it-helps" class="slide level2">
-<h2>When It Helps</h2>
-<ul>
-<li>Choose one of two short labels.</li>
-<li>Choose one of two numeric values.</li>
-<li>Keep a simple output statement readable.</li>
-</ul>
-<!-- Slide 8 -->
-</section>
-<section id="when-it-hurts" class="slide level2">
-<h2>When It Hurts</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a>grade <span class="op">=</span> score <span class="op">&gt;=</span> <span class="dv">90</span> <span class="op">?</span> <span class="st">"A"</span> <span class="op">:</span> score <span class="op">&gt;=</span> <span class="dv">80</span> <span class="op">?</span> <span class="st">"B"</span> <span class="op">:</span> score <span class="op">&gt;=</span> <span class="dv">70</span> <span class="op">?</span> <span class="st">"C"</span> <span class="op">:</span> <span class="st">"D"</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Nested conditional operators are legal, but they are often harder to read than an <code>if/else if</code> chain.</p>
-<!-- Slide 9 -->
-</section>
-<section id="summary" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>Use <code>?:</code> when the choice is simple, local, and easier to read as one expression.</li>
-<li>Use a normal conditional statement when the decision needs more room.</li>
-</ul>
-<!-- Slide 10 -->
-<!-- Topic 2: The switch Statement -->
-<!-- Slides 11-19 -->
-</section></section>
-<section>
-<section id="the-switch-statement" class="title-slide slide level1 center">
-<h1>The switch Statement</h1>
-<!-- Slide 11 -->
-</section>
-<section id="choosing-from-fixed-cases" class="slide level2 smaller">
-<h2>Choosing From Fixed Cases</h2>
-<ul>
-<li>A <code>switch</code> statement chooses among fixed exact values.</li>
-<li>It is useful when one expression is compared against several known cases.</li>
-</ul>
+<section id="no-title" class="slide level2">
+<h2><span style="display:none">No title</span></h2>
+<div style="font-size:50%">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a><span class="co">// 11-1x.cpp -- this demo problem</span></span>
+<span id="cb1-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb1-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb1-4"><a href=""></a></span>
+<span id="cb1-5"><a href=""></a><span class="kw">class</span> Example <span class="op">{</span></span>
+<span id="cb1-6"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb1-7"><a href=""></a>    <span class="dt">int</span> x<span class="op">;</span></span>
+<span id="cb1-8"><a href=""></a></span>
+<span id="cb1-9"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb1-10"><a href=""></a>    Example<span class="op">(</span><span class="dt">int</span> a<span class="op">)</span> <span class="op">{</span> x <span class="op">=</span> a<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb1-11"><a href=""></a>    <span class="dt">void</span> setValue<span class="op">(</span><span class="dt">int</span><span class="op">);</span></span>
+<span id="cb1-12"><a href=""></a>    <span class="dt">void</span> printAddressAndValue<span class="op">();</span></span>
+<span id="cb1-13"><a href=""></a><span class="op">};</span></span>
+<span id="cb1-14"><a href=""></a></span>
+<span id="cb1-15"><a href=""></a><span class="dt">void</span> Example<span class="op">::</span>setValue<span class="op">(</span><span class="dt">int</span> a<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-16"><a href=""></a>    x <span class="op">=</span> a<span class="op">;</span></span>
+<span id="cb1-17"><a href=""></a><span class="op">}</span></span>
+<span id="cb1-18"><a href=""></a></span>
+<span id="cb1-19"><a href=""></a><span class="dt">void</span> Example<span class="op">::</span>printAddressAndValue<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-20"><a href=""></a>    <span class="dt">int</span> x <span class="op">=</span> <span class="dv">50</span><span class="op">;</span></span>
+<span id="cb1-21"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Object at address: "</span> <span class="op">&lt;&lt;</span> <span class="st">" ??? "</span></span>
+<span id="cb1-22"><a href=""></a>         <span class="op">&lt;&lt;</span> <span class="st">" has x value: "</span> <span class="op">&lt;&lt;</span> x <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb1-23"><a href=""></a><span class="op">}</span></span>
+<span id="cb1-24"><a href=""></a></span>
+<span id="cb1-25"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-26"><a href=""></a>    Example obj1<span class="op">(</span><span class="dv">10</span><span class="op">);</span></span>
+<span id="cb1-27"><a href=""></a>    Example obj2<span class="op">(</span><span class="dv">20</span><span class="op">);</span></span>
+<span id="cb1-28"><a href=""></a></span>
+<span id="cb1-29"><a href=""></a>    obj1<span class="op">.</span>printAddressAndValue<span class="op">();</span></span>
+<span id="cb1-30"><a href=""></a>    obj2<span class="op">.</span>printAddressAndValue<span class="op">();</span></span>
+<span id="cb1-31"><a href=""></a></span>
+<span id="cb1-32"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-33"><a href=""></a><span class="op">}</span></span>
+<span id="cb1-34"><a href=""></a></span>
+<span id="cb1-35"><a href=""></a><span class="co">// How do we print out the class variable x?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <aside class="notes">
-<p>Slides 11-19</p>
+<p>Source file: cpp/11-1x.cpp The problem asks how to print the class variable x instead of the local variable.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -358,114 +367,220 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+<!-- Slide 8 -->
+</section>
+<section id="object-references" class="slide level2">
+<h2>Object References</h2>
+<p>A member function operates on the object that receives the call. Inside that function, the current object can be referred to through the implicit <code>this</code> pointer.</p>
+<!-- Slide 9 -->
+</section>
+<section id="this-pointer" class="slide level2">
+<h2>this Pointer</h2>
+<ul>
+<li><code>this</code> points to the object whose member function is running.</li>
+<li>It is available inside non-static member functions.</li>
+<li><code>this-&gt;member</code> selects a data member belonging to the current object.</li>
+</ul>
+<!-- Slide 10 -->
+</section>
+<section id="object-state-and-this" class="slide level2">
+<h2>Object State and this</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size:50%">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb2-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb2-3"><a href=""></a></span>
+<span id="cb2-4"><a href=""></a><span class="kw">class</span> Example <span class="op">{</span></span>
+<span id="cb2-5"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb2-6"><a href=""></a>    <span class="dt">int</span> x<span class="op">;</span></span>
+<span id="cb2-7"><a href=""></a></span>
+<span id="cb2-8"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb2-9"><a href=""></a>    Example<span class="op">(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span> x <span class="op">=</span> value<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb2-10"><a href=""></a>    <span class="dt">void</span> printAddressAndValue<span class="op">();</span></span>
+<span id="cb2-11"><a href=""></a><span class="op">};</span></span>
+<span id="cb2-12"><a href=""></a></span>
+<span id="cb2-13"><a href=""></a><span class="dt">void</span> Example<span class="op">::</span>printAddressAndValue<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-14"><a href=""></a>    <span class="dt">int</span> x <span class="op">=</span> <span class="dv">50</span><span class="op">;</span></span>
+<span id="cb2-15"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Object address: "</span> <span class="op">&lt;&lt;</span> <span class="kw">this</span></span>
+<span id="cb2-16"><a href=""></a>         <span class="op">&lt;&lt;</span> <span class="st">" has x value: "</span> <span class="op">&lt;&lt;</span> <span class="kw">this</span><span class="op">-&gt;</span>x <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb2-17"><a href=""></a><span class="op">}</span></span>
+<span id="cb2-18"><a href=""></a></span>
+<span id="cb2-19"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-20"><a href=""></a>    Example obj1<span class="op">(</span><span class="dv">10</span><span class="op">);</span></span>
+<span id="cb2-21"><a href=""></a>    Example obj2<span class="op">(</span><span class="dv">20</span><span class="op">);</span></span>
+<span id="cb2-22"><a href=""></a></span>
+<span id="cb2-23"><a href=""></a>    obj1<span class="op">.</span>printAddressAndValue<span class="op">();</span></span>
+<span id="cb2-24"><a href=""></a>    obj2<span class="op">.</span>printAddressAndValue<span class="op">();</span></span>
+<span id="cb2-25"><a href=""></a></span>
+<span id="cb2-26"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-27"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><strong>Answer</strong></p>
+<p><code>this</code> points to the object whose member function is running.</p>
+<p><code>this-&gt;x</code> selects the object’s data member, so the two calls report values <code>10</code> and <code>20</code>. The local <code>x</code> remains <code>50</code>.</p>
+</div></div>
+<!-- Slide 11 -->
+</section>
+<section id="code-example-this-and-object-state" class="slide level2">
+<h2>Code Example: this and Object State</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size:50%">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb3-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb3-3"><a href=""></a></span>
+<span id="cb3-4"><a href=""></a><span class="kw">class</span> Example <span class="op">{</span></span>
+<span id="cb3-5"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb3-6"><a href=""></a>    <span class="dt">int</span> x<span class="op">;</span></span>
+<span id="cb3-7"><a href=""></a></span>
+<span id="cb3-8"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb3-9"><a href=""></a>    <span class="dt">void</span> setValue<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-10"><a href=""></a>        <span class="kw">this</span><span class="op">-&gt;</span>x <span class="op">=</span> x<span class="op">;</span></span>
+<span id="cb3-11"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb3-12"><a href=""></a></span>
+<span id="cb3-13"><a href=""></a>    <span class="dt">int</span> getValue<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb3-14"><a href=""></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">-&gt;</span>x<span class="op">;</span></span>
+<span id="cb3-15"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb3-16"><a href=""></a><span class="op">};</span></span>
+<span id="cb3-17"><a href=""></a></span>
+<span id="cb3-18"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-19"><a href=""></a>    Example item<span class="op">;</span></span>
+<span id="cb3-20"><a href=""></a>    item<span class="op">.</span>setValue<span class="op">(</span><span class="dv">42</span><span class="op">);</span></span>
+<span id="cb3-21"><a href=""></a>    cout <span class="op">&lt;&lt;</span> item<span class="op">.</span>getValue<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb3-22"><a href=""></a></span>
+<span id="cb3-23"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-24"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><strong>Output</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href=""></a>42</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The parameter <code>x</code> and the data member <code>x</code> have the same name. <code>this-&gt;x</code> identifies the member that belongs to the current object.</p>
+</div></div>
 <!-- Slide 12 -->
 </section>
-<section id="the-shape-of-a-switch-statement" class="slide level2">
-<h2>The Shape of a switch Statement</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href=""></a><span class="cf">switch</span> <span class="op">(</span>category<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-2"><a href=""></a><span class="cf">case</span> <span class="ch">'A'</span><span class="op">:</span></span>
-<span id="cb6-3"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Excellent"</span><span class="op">;</span></span>
-<span id="cb6-4"><a href=""></a>    <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb6-5"><a href=""></a><span class="cf">default</span><span class="op">:</span></span>
-<span id="cb6-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Unrecognized category"</span><span class="op">;</span></span>
-<span id="cb6-7"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="constructors-destructors-and-this-pointer" class="slide level2">
+<h2>Constructors Destructors and this Pointer</h2>
+<ul>
+<li>Constructors establish an object’s initial state.</li>
+<li>Destructors release resources when an object leaves its lifetime.</li>
+<li>The <code>this</code> pointer identifies the current object inside its member functions.</li>
+</ul>
 <!-- Slide 13 -->
 </section>
-<section id="switch-vs.-ifelse-if" class="slide level2">
-<h2>switch vs.&nbsp;if/else if</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Use <code>switch</code> when…</th>
-<th>Use <code>if/else if</code> when…</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>One expression is checked</td>
-<td>Different expressions are checked</td>
-</tr>
-<tr class="even">
-<td>Cases are exact values</td>
-<td>Conditions use ranges</td>
-</tr>
-<tr class="odd">
-<td>The choices are discrete</td>
-<td>The choices need relational tests</td>
-</tr>
-</tbody>
-</table>
+<section id="whats-going-on" class="slide level2">
+<h2>What’s Going On?</h2>
+<p>A member function receives an implicit pointer to the object that called it. The expression <code>this-&gt;member</code> makes that relationship visible.</p>
 <!-- Slide 14 -->
 </section>
-<section id="case-labels-match-exact-values" class="slide level2">
-<h2>case Labels Match Exact Values</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a><span class="cf">case</span> <span class="dv">1</span><span class="op">:</span></span>
-<span id="cb7-2"><a href=""></a><span class="cf">case</span> <span class="ch">'A'</span><span class="op">:</span></span>
-<span id="cb7-3"><a href=""></a><span class="cf">case</span> <span class="kw">true</span><span class="op">:</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>case</code> labels are exact matches. They do not test ranges like <code>score &gt;= 90</code>.</p>
+<section id="use-case" class="slide level2">
+<h2>Use Case</h2>
+<p>We want to create a <code>Rec</code> class and add two rectangle-like objects together. First, we will use an ordinary function. Then we will move the operation into the class.</p>
 <!-- Slide 15 -->
 </section>
-<section id="break-controls-fall-through" class="slide level2">
-<h2>break Controls Fall-Through</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a><span class="cf">case</span> <span class="ch">'A'</span><span class="op">:</span></span>
-<span id="cb8-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Excellent"</span><span class="op">;</span></span>
-<span id="cb8-3"><a href=""></a>    <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb8-4"><a href=""></a><span class="cf">case</span> <span class="ch">'B'</span><span class="op">:</span></span>
-<span id="cb8-5"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Good"</span><span class="op">;</span></span>
-<span id="cb8-6"><a href=""></a>    <span class="cf">break</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Without <code>break</code>, execution continues into the next case.</p>
+<section id="first-example" class="slide level2">
+<h2>First Example</h2>
+<p>Let’s build an <code>Add()</code> function that receives two <code>Rec</code> objects and returns a third object containing their combined values.</p>
 <!-- Slide 16 -->
 </section>
-<section id="default-handles-everything-else" class="slide level2">
-<h2>default Handles Everything Else</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href=""></a><span class="cf">default</span><span class="op">:</span></span>
-<span id="cb9-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Unknown category"</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The <code>default</code> branch handles values that do not match any listed case.</p>
+<section id="add-function" class="slide level2">
+<h2>Add Function</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb5-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb5-3"><a href=""></a></span>
+<span id="cb5-4"><a href=""></a><span class="kw">class</span> Rec <span class="op">{</span></span>
+<span id="cb5-5"><a href=""></a>    <span class="dt">int</span> x<span class="op">;</span></span>
+<span id="cb5-6"><a href=""></a>    <span class="dt">int</span> y<span class="op">;</span></span>
+<span id="cb5-7"><a href=""></a></span>
+<span id="cb5-8"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb5-9"><a href=""></a>    Rec<span class="op">(</span><span class="dt">int</span> xx <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">int</span> yy <span class="op">=</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-10"><a href=""></a>        x <span class="op">=</span> xx<span class="op">;</span></span>
+<span id="cb5-11"><a href=""></a>        y <span class="op">=</span> yy<span class="op">;</span></span>
+<span id="cb5-12"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb5-13"><a href=""></a></span>
+<span id="cb5-14"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb5-15"><a href=""></a>        cout <span class="op">&lt;&lt;</span> x <span class="op">&lt;&lt;</span> <span class="st">" by "</span> <span class="op">&lt;&lt;</span> y <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb5-16"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb5-17"><a href=""></a></span>
+<span id="cb5-18"><a href=""></a>    <span class="dt">int</span> getX<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> x<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb5-19"><a href=""></a>    <span class="dt">int</span> getY<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> y<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb5-20"><a href=""></a><span class="op">};</span></span>
+<span id="cb5-21"><a href=""></a></span>
+<span id="cb5-22"><a href=""></a>Rec Add<span class="op">(</span><span class="at">const</span> Rec<span class="op">&amp;</span> lhs<span class="op">,</span> <span class="at">const</span> Rec<span class="op">&amp;</span> rhs<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-23"><a href=""></a>    <span class="cf">return</span> Rec<span class="op">(</span>lhs<span class="op">.</span>getX<span class="op">()</span> <span class="op">+</span> rhs<span class="op">.</span>getX<span class="op">(),</span></span>
+<span id="cb5-24"><a href=""></a>               lhs<span class="op">.</span>getY<span class="op">()</span> <span class="op">+</span> rhs<span class="op">.</span>getY<span class="op">());</span></span>
+<span id="cb5-25"><a href=""></a><span class="op">}</span></span>
+<span id="cb5-26"><a href=""></a></span>
+<span id="cb5-27"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb5-28"><a href=""></a>    Rec a<span class="op">(</span><span class="dv">5</span><span class="op">,</span> <span class="dv">5</span><span class="op">);</span></span>
+<span id="cb5-29"><a href=""></a>    Rec b<span class="op">(</span><span class="dv">5</span><span class="op">,</span> <span class="dv">5</span><span class="op">);</span></span>
+<span id="cb5-30"><a href=""></a>    Rec c <span class="op">=</span> Add<span class="op">(</span>a<span class="op">,</span> b<span class="op">);</span></span>
+<span id="cb5-31"><a href=""></a></span>
+<span id="cb5-32"><a href=""></a>    c<span class="op">.</span>print<span class="op">();</span></span>
+<span id="cb5-33"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-34"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The free function needs public accessors because it is not a member of <code>Rec</code>.</p>
 <!-- Slide 17 -->
 </section>
-<section id="category-code-example" class="slide level2">
-<h2>Category Code Example</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href=""></a><span class="dt">char</span> shippingCode<span class="op">;</span></span>
-<span id="cb10-2"><a href=""></a>cin <span class="op">&gt;&gt;</span> shippingCode<span class="op">;</span></span>
-<span id="cb10-3"><a href=""></a></span>
-<span id="cb10-4"><a href=""></a><span class="cf">switch</span> <span class="op">(</span>shippingCode<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb10-5"><a href=""></a><span class="cf">case</span> <span class="ch">'S'</span><span class="op">:</span></span>
-<span id="cb10-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Standard shipping"</span><span class="op">;</span></span>
-<span id="cb10-7"><a href=""></a>    <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb10-8"><a href=""></a><span class="cf">case</span> <span class="ch">'E'</span><span class="op">:</span></span>
-<span id="cb10-9"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Express shipping"</span><span class="op">;</span></span>
-<span id="cb10-10"><a href=""></a>    <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb10-11"><a href=""></a><span class="cf">case</span> <span class="ch">'P'</span><span class="op">:</span></span>
-<span id="cb10-12"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Pickup"</span><span class="op">;</span></span>
-<span id="cb10-13"><a href=""></a>    <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb10-14"><a href=""></a><span class="cf">default</span><span class="op">:</span></span>
-<span id="cb10-15"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Unknown shipping code"</span><span class="op">;</span></span>
-<span id="cb10-16"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="second-example" class="slide level2">
+<h2>Second Example</h2>
+<p>Let’s make <code>Add()</code> a method instead. The left-hand object becomes the current object, represented by <code>this</code>.</p>
 <!-- Slide 18 -->
 </section>
-<section id="summary-1" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li><code>switch</code> is best when one expression is compared against a fixed set of exact values.</li>
-<li>Use <code>if/else if</code> when the decision depends on ranges or different questions.</li>
-</ul>
+<section id="add-method" class="slide level2">
+<h2>Add Method</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb6-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb6-3"><a href=""></a></span>
+<span id="cb6-4"><a href=""></a><span class="kw">class</span> Rec <span class="op">{</span></span>
+<span id="cb6-5"><a href=""></a>    <span class="dt">int</span> x<span class="op">;</span></span>
+<span id="cb6-6"><a href=""></a>    <span class="dt">int</span> y<span class="op">;</span></span>
+<span id="cb6-7"><a href=""></a></span>
+<span id="cb6-8"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb6-9"><a href=""></a>    Rec<span class="op">(</span><span class="dt">int</span> xx <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">int</span> yy <span class="op">=</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-10"><a href=""></a>        x <span class="op">=</span> xx<span class="op">;</span></span>
+<span id="cb6-11"><a href=""></a>        y <span class="op">=</span> yy<span class="op">;</span></span>
+<span id="cb6-12"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb6-13"><a href=""></a></span>
+<span id="cb6-14"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb6-15"><a href=""></a>        cout <span class="op">&lt;&lt;</span> x <span class="op">&lt;&lt;</span> <span class="st">" by "</span> <span class="op">&lt;&lt;</span> y <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb6-16"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb6-17"><a href=""></a></span>
+<span id="cb6-18"><a href=""></a>    Rec add<span class="op">(</span><span class="at">const</span> Rec<span class="op">&amp;</span> rhs<span class="op">)</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb6-19"><a href=""></a>        Rec result<span class="op">(</span><span class="kw">this</span><span class="op">-&gt;</span>x <span class="op">+</span> rhs<span class="op">.</span>x<span class="op">,</span></span>
+<span id="cb6-20"><a href=""></a>                   <span class="kw">this</span><span class="op">-&gt;</span>y <span class="op">+</span> rhs<span class="op">.</span>y<span class="op">);</span></span>
+<span id="cb6-21"><a href=""></a>        <span class="cf">return</span> result<span class="op">;</span></span>
+<span id="cb6-22"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb6-23"><a href=""></a><span class="op">};</span></span>
+<span id="cb6-24"><a href=""></a></span>
+<span id="cb6-25"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb6-26"><a href=""></a>    Rec a<span class="op">(</span><span class="dv">5</span><span class="op">,</span> <span class="dv">5</span><span class="op">);</span></span>
+<span id="cb6-27"><a href=""></a>    Rec b<span class="op">(</span><span class="dv">5</span><span class="op">,</span> <span class="dv">5</span><span class="op">);</span></span>
+<span id="cb6-28"><a href=""></a>    Rec c <span class="op">=</span> a<span class="op">.</span>add<span class="op">(</span>b<span class="op">);</span></span>
+<span id="cb6-29"><a href=""></a></span>
+<span id="cb6-30"><a href=""></a>    c<span class="op">.</span>print<span class="op">();</span></span>
+<span id="cb6-31"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-32"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>As a member function, <code>add</code> can access private data directly.</p>
 <!-- Slide 19 -->
-<!-- Topic 3: Nested if Statements -->
-<!-- Slides 20-29 -->
+</section>
+<section id="what-this-means" class="slide level2">
+<h2>What this Means</h2>
+<ul>
+<li>Adding primitive operations to objects makes the objects more useful.</li>
+<li>A member function can manipulate private data without a separate getter for every field.</li>
+<li>Constructors can create the result object inside a member operation.</li>
+</ul>
+<!-- Slide 20 -->
+<!-- Topic 2: Static Members -->
+<!-- Slides 21-29 -->
 </section></section>
 <section>
-<section id="nested-if-statements" class="title-slide slide level1 center">
-<h1>Nested if Statements</h1>
-<!-- Slide 20 -->
-</section>
-<section id="a-decision-inside-a-decision" class="slide level2 smaller">
-<h2>A Decision Inside a Decision</h2>
-<ul>
-<li>A nested <code>if</code> statement places one conditional inside another conditional block.</li>
-<li>The inner decision only matters after the outer decision has selected a path.</li>
-</ul>
+<section id="static-members" class="title-slide slide level1 center">
+<h1>Static Members</h1>
 <aside class="notes">
-<p>Slides 20-29</p>
+<p>Slides 21-29</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -479,659 +594,956 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 21 -->
 </section>
-<section id="when-the-second-test-depends-on-the-first" class="slide level2">
-<h2>When the Second Test Depends on the First</h2>
-<ul>
-<li>Test another condition only if the first condition is true.</li>
-<li>Test another condition only if the first condition is false.</li>
-<li>That dependency is the reason to nest.</li>
-</ul>
+<section id="problem-1" class="slide level2">
+<h2>Problem</h2>
+<p>How can we create one variable that is shared across every instance of a class?</p>
 <!-- Slide 22 -->
 </section>
-<section id="nested-if-vs.-ifelse-if" class="slide level2">
-<h2>Nested if vs.&nbsp;if/else if</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Structure</th>
-<th>Question Shape</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>if/else if</code></td>
-<td>Which one category applies?</td>
-</tr>
-<tr class="even">
-<td>Nested <code>if</code></td>
-<td>After this branch, what else must be checked?</td>
-</tr>
-</tbody>
-</table>
-<p>Nested decisions are dependent. <code>if/else if</code> chains are usually categories at the same level.</p>
+<section id="counting-instances" class="slide level2">
+<h2>Counting Instances</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size:50%">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a><span class="kw">class</span> Example <span class="op">{</span></span>
+<span id="cb7-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb7-3"><a href=""></a>    <span class="dt">int</span> x<span class="op">;</span></span>
+<span id="cb7-4"><a href=""></a>    <span class="at">static</span> <span class="dt">int</span> count<span class="op">;</span></span>
+<span id="cb7-5"><a href=""></a></span>
+<span id="cb7-6"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb7-7"><a href=""></a>    Example<span class="op">(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-8"><a href=""></a>        x <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb7-9"><a href=""></a>        <span class="op">++</span>count<span class="op">;</span></span>
+<span id="cb7-10"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb7-11"><a href=""></a></span>
+<span id="cb7-12"><a href=""></a>    <span class="at">static</span> <span class="dt">int</span> getCount<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb7-13"><a href=""></a>        <span class="cf">return</span> count<span class="op">;</span></span>
+<span id="cb7-14"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb7-15"><a href=""></a><span class="op">};</span></span>
+<span id="cb7-16"><a href=""></a></span>
+<span id="cb7-17"><a href=""></a><span class="dt">int</span> Example<span class="op">::</span>count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-18"><a href=""></a></span>
+<span id="cb7-19"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb7-20"><a href=""></a>    Example obj1<span class="op">(</span><span class="dv">10</span><span class="op">);</span></span>
+<span id="cb7-21"><a href=""></a>    Example obj2<span class="op">(</span><span class="dv">20</span><span class="op">);</span></span>
+<span id="cb7-22"><a href=""></a></span>
+<span id="cb7-23"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Number of instances: "</span></span>
+<span id="cb7-24"><a href=""></a>         <span class="op">&lt;&lt;</span> obj1<span class="op">.</span>getCount<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb7-25"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-26"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><strong>Answer</strong></p>
+<p><code>count</code> belongs to the class, so every constructor call updates the same variable.</p>
+<p>With two objects, <code>getCount()</code> reports <code>2</code>.</p>
+</div></div>
 <!-- Slide 23 -->
 </section>
-<section id="reading-the-indentation" class="slide level2">
-<h2>Reading the Indentation</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>isMember<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb11-2"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>orderTotal <span class="op">&gt;=</span> <span class="dv">50</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb11-3"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Free shipping"</span><span class="op">;</span></span>
-<span id="cb11-4"><a href=""></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb11-5"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Member shipping rate"</span><span class="op">;</span></span>
-<span id="cb11-6"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb11-7"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Indentation shows that the order-total decision belongs inside the member decision.</p>
+<section id="accessing-a-static-member" class="slide level2">
+<h2>Accessing a Static Member</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size:50%">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a><span class="kw">class</span> Example <span class="op">{</span></span>
+<span id="cb8-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb8-3"><a href=""></a>    <span class="at">static</span> <span class="dt">int</span> count<span class="op">;</span></span>
+<span id="cb8-4"><a href=""></a></span>
+<span id="cb8-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb8-6"><a href=""></a>    Example<span class="op">()</span> <span class="op">{</span> <span class="op">++</span>count<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb8-7"><a href=""></a></span>
+<span id="cb8-8"><a href=""></a>    <span class="at">static</span> <span class="dt">int</span> getCount<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb8-9"><a href=""></a>        <span class="cf">return</span> count<span class="op">;</span></span>
+<span id="cb8-10"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb8-11"><a href=""></a><span class="op">};</span></span>
+<span id="cb8-12"><a href=""></a></span>
+<span id="cb8-13"><a href=""></a><span class="dt">int</span> Example<span class="op">::</span>count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb8-14"><a href=""></a></span>
+<span id="cb8-15"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb8-16"><a href=""></a>    cout <span class="op">&lt;&lt;</span> Example<span class="op">::</span>getCount<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb8-17"><a href=""></a></span>
+<span id="cb8-18"><a href=""></a>    Example obj1<span class="op">;</span></span>
+<span id="cb8-19"><a href=""></a>    Example obj2<span class="op">;</span></span>
+<span id="cb8-20"><a href=""></a></span>
+<span id="cb8-21"><a href=""></a>    cout <span class="op">&lt;&lt;</span> Example<span class="op">::</span>getCount<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb8-22"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb8-23"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><strong>Answer</strong></p>
+<p>A static member function can be called through the class name.</p>
+<p>The first call reports <code>0</code>. After constructing two objects, the second call reports <code>2</code>.</p>
+</div></div>
 <!-- Slide 24 -->
 </section>
-<section id="shipping-fee-example" class="slide level2">
-<h2>Shipping Fee Example</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>isMember<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb12-2"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>orderTotal <span class="op">&gt;=</span> <span class="dv">50</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb12-3"><a href=""></a>        shipping <span class="op">=</span> <span class="fl">0.00</span><span class="op">;</span></span>
-<span id="cb12-4"><a href=""></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb12-5"><a href=""></a>        shipping <span class="op">=</span> <span class="fl">4.99</span><span class="op">;</span></span>
-<span id="cb12-6"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb12-7"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb12-8"><a href=""></a>    shipping <span class="op">=</span> <span class="fl">7.99</span><span class="op">;</span></span>
-<span id="cb12-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The order total matters only after the program knows the customer is a member.</p>
+<section id="static-members-1" class="slide level2">
+<h2>Static Members</h2>
+<ul>
+<li>A static member can be called even when no object instance exists.</li>
+<li>A static member function can directly access static data members, other static members, and functions outside the class.</li>
+<li>A static member function does not have a current object, so it cannot directly use ordinary non-static data members.</li>
+</ul>
 <!-- Slide 25 -->
 </section>
-<section id="discount-eligibility-example" class="slide level2">
-<h2>Discount Eligibility Example</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>accountActive<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb13-2"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>purchaseAmount <span class="op">&gt;=</span> <span class="dv">100</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb13-3"><a href=""></a>        discountRate <span class="op">=</span> <span class="fl">0.10</span><span class="op">;</span></span>
-<span id="cb13-4"><a href=""></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb13-5"><a href=""></a>        discountRate <span class="op">=</span> <span class="fl">0.00</span><span class="op">;</span></span>
-<span id="cb13-6"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb13-7"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb13-8"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Account inactive"</span><span class="op">;</span></span>
-<span id="cb13-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The purchase amount matters only if the account is active.</p>
+<section id="gang-of-four-design-patterns" class="slide level2">
+<h2>Gang of Four Design Patterns</h2>
+
+<img data-src="images/source_pages/slide-30.png" style="width:100.0%" alt="Gang of Four design patterns" class="r-stretch"><aside class="notes">
+<p>The slide catalog permits the source graphic for this slide.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 26 -->
 </section>
-<section id="access-level-example" class="slide level2">
-<h2>Access Level Example</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>loggedIn<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb14-2"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>role <span class="op">==</span> <span class="st">"admin"</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb14-3"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Full access"</span><span class="op">;</span></span>
-<span id="cb14-4"><a href=""></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb14-5"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Standard access"</span><span class="op">;</span></span>
-<span id="cb14-6"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb14-7"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb14-8"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Please log in"</span><span class="op">;</span></span>
-<span id="cb14-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The role check only makes sense after the program knows the user is logged in.</p>
+<section id="static-initialization" class="slide level2">
+<h2>Static Initialization</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size:50%">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href=""></a><span class="kw">class</span> D6 <span class="op">{</span></span>
+<span id="cb9-2"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb9-3"><a href=""></a>    <span class="dt">int</span> x<span class="op">;</span></span>
+<span id="cb9-4"><a href=""></a>    <span class="at">static</span> <span class="dt">bool</span> isInitialized<span class="op">;</span></span>
+<span id="cb9-5"><a href=""></a></span>
+<span id="cb9-6"><a href=""></a>    D6<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb9-7"><a href=""></a>        <span class="cf">if</span> <span class="op">(!</span>isInitialized<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-8"><a href=""></a>            srand<span class="op">(</span><span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">unsigned</span><span class="op">&gt;(</span>time<span class="op">(</span><span class="kw">nullptr</span><span class="op">)));</span></span>
+<span id="cb9-9"><a href=""></a>            isInitialized <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb9-10"><a href=""></a>            cout <span class="op">&lt;&lt;</span> <span class="st">"Init code run"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb9-11"><a href=""></a>        <span class="op">}</span></span>
+<span id="cb9-12"><a href=""></a></span>
+<span id="cb9-13"><a href=""></a>        x <span class="op">=</span> rand<span class="op">()</span> <span class="op">%</span> <span class="dv">6</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb9-14"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb9-15"><a href=""></a><span class="op">};</span></span>
+<span id="cb9-16"><a href=""></a></span>
+<span id="cb9-17"><a href=""></a><span class="dt">bool</span> D6<span class="op">::</span>isInitialized <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb9-18"><a href=""></a></span>
+<span id="cb9-19"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb9-20"><a href=""></a>    D6 a<span class="op">;</span></span>
+<span id="cb9-21"><a href=""></a>    D6 b<span class="op">;</span></span>
+<span id="cb9-22"><a href=""></a>    cout <span class="op">&lt;&lt;</span> a<span class="op">.</span>x <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb9-23"><a href=""></a>    cout <span class="op">&lt;&lt;</span> b<span class="op">.</span>x <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb9-24"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb9-25"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><strong>Answer</strong></p>
+<p>The first constructor call performs the shared initialization and sets the static flag.</p>
+<p>Later objects skip that block. The initialization message appears once, followed by one random value for each object.</p>
+</div></div>
 <!-- Slide 27 -->
 </section>
-<section id="keep-nesting-shallow" class="slide level2">
-<h2>Keep Nesting Shallow</h2>
-<ul>
-<li>One level of nesting is usually easy to read.</li>
-<li>Multiple levels can hide the main path through the program.</li>
-<li>If the code becomes hard to follow, reconsider the design.</li>
-</ul>
+<section id="shared-initialization" class="slide level2">
+<h2>Shared Initialization</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size:50%">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href=""></a><span class="kw">class</span> D6 <span class="op">{</span></span>
+<span id="cb10-2"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb10-3"><a href=""></a>    <span class="dt">int</span> x<span class="op">;</span></span>
+<span id="cb10-4"><a href=""></a></span>
+<span id="cb10-5"><a href=""></a>    D6<span class="op">(</span><span class="dt">bool</span><span class="op">&amp;</span> initialized<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-6"><a href=""></a>        <span class="cf">if</span> <span class="op">(!</span>initialized<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-7"><a href=""></a>            srand<span class="op">(</span><span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">unsigned</span><span class="op">&gt;(</span>time<span class="op">(</span><span class="kw">nullptr</span><span class="op">)));</span></span>
+<span id="cb10-8"><a href=""></a>            initialized <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb10-9"><a href=""></a>            cout <span class="op">&lt;&lt;</span> <span class="st">"Init code run"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb10-10"><a href=""></a>        <span class="op">}</span></span>
+<span id="cb10-11"><a href=""></a></span>
+<span id="cb10-12"><a href=""></a>        x <span class="op">=</span> rand<span class="op">()</span> <span class="op">%</span> <span class="dv">6</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb10-13"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb10-14"><a href=""></a><span class="op">};</span></span>
+<span id="cb10-15"><a href=""></a></span>
+<span id="cb10-16"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb10-17"><a href=""></a>    <span class="dt">bool</span> initialized <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb10-18"><a href=""></a>    D6 a<span class="op">(</span>initialized<span class="op">);</span></span>
+<span id="cb10-19"><a href=""></a>    D6 b<span class="op">(</span>initialized<span class="op">);</span></span>
+<span id="cb10-20"><a href=""></a></span>
+<span id="cb10-21"><a href=""></a>    cout <span class="op">&lt;&lt;</span> a<span class="op">.</span>x <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb10-22"><a href=""></a>    cout <span class="op">&lt;&lt;</span> b<span class="op">.</span>x <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb10-23"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb10-24"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><strong>Answer</strong></p>
+<p>The two objects receive the same initialization state by reference.</p>
+<p>The first object changes the shared flag. The second object sees that the flag is already true and does not repeat the initialization.</p>
+</div></div>
 <!-- Slide 28 -->
 </section>
-<section id="summary-2" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>A nested <code>if</code> is useful when the next question depends on the answer to the first question.</li>
-<li>Use indentation and small blocks to make the dependency visible.</li>
-</ul>
+<section id="static-members-example" class="slide level2">
+<h2>Static Members Example</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb11-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb11-3"><a href=""></a></span>
+<span id="cb11-4"><a href=""></a><span class="kw">class</span> Counter <span class="op">{</span></span>
+<span id="cb11-5"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb11-6"><a href=""></a>    <span class="at">static</span> <span class="dt">int</span> total<span class="op">;</span></span>
+<span id="cb11-7"><a href=""></a></span>
+<span id="cb11-8"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb11-9"><a href=""></a>    Counter<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb11-10"><a href=""></a>        <span class="op">++</span>total<span class="op">;</span></span>
+<span id="cb11-11"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb11-12"><a href=""></a></span>
+<span id="cb11-13"><a href=""></a>    <span class="at">static</span> <span class="dt">void</span> printTotal<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb11-14"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Total objects: "</span> <span class="op">&lt;&lt;</span> total <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb11-15"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb11-16"><a href=""></a><span class="op">};</span></span>
+<span id="cb11-17"><a href=""></a></span>
+<span id="cb11-18"><a href=""></a><span class="dt">int</span> Counter<span class="op">::</span>total <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-19"><a href=""></a></span>
+<span id="cb11-20"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb11-21"><a href=""></a>    Counter<span class="op">::</span>printTotal<span class="op">();</span></span>
+<span id="cb11-22"><a href=""></a>    Counter first<span class="op">;</span></span>
+<span id="cb11-23"><a href=""></a>    Counter second<span class="op">;</span></span>
+<span id="cb11-24"><a href=""></a>    Counter<span class="op">::</span>printTotal<span class="op">();</span></span>
+<span id="cb11-25"><a href=""></a></span>
+<span id="cb11-26"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-27"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Static data is shared. Ordinary data members remain separate for each object.</p>
 <!-- Slide 29 -->
-<!-- Topic 4: Compound Conditions -->
-<!-- Slides 30-39 -->
+<!-- Topic 3: Operator Overloading -->
+<!-- Slides 30-51 -->
 </section></section>
 <section>
-<section id="compound-conditions" class="title-slide slide level1 center">
-<h1>Compound Conditions</h1>
+<section id="operator-overloading" class="title-slide slide level1 center">
+<h1>Operator Overloading</h1>
+<aside class="notes">
+<p>Slides 30-51</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 30 -->
 </section>
-<section id="combining-questions" class="slide level2 smaller">
-<h2>Combining Questions</h2>
-<ul>
-<li>A compound condition joins two or more smaller conditions.</li>
-<li>Logical operators let one decision ask a larger question.</li>
-</ul>
-<aside class="notes">
-<p>Slides 30-39</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="why-is-the-asterisk-overloaded" class="slide level2">
+<h2>Why Is the Asterisk Overloaded?</h2>
+<p>Have you ever wondered how the <code>*</code> symbol can do so many different things in a program?</p>
+<p>It is overloaded: its meaning depends on the operands and context.</p>
 <!-- Slide 31 -->
 </section>
-<section id="the-and-operator" class="slide level2">
-<h2>The AND Operator <code>&amp;&amp;</code></h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>age <span class="op">&gt;=</span> <span class="dv">18</span> <span class="op">&amp;&amp;</span> hasTicket<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb15-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter"</span><span class="op">;</span></span>
-<span id="cb15-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The whole condition is true only when both smaller conditions are true.</p>
+<section id="changing-operator-meaning" class="slide level2">
+<h2>Changing Operator Meaning</h2>
+<ul>
+<li>Have you wanted to change the behavior of the <code>+</code>, <code>-</code>, <code>/</code>, or <code>*</code> symbols for your own objects?</li>
+<li>Operator overloading lets a class participate in familiar C++ expressions.</li>
+</ul>
 <!-- Slide 32 -->
 </section>
-<section id="the-or-operator" class="slide level2">
-<h2>The OR Operator <code>||</code></h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>payment <span class="op">==</span> <span class="st">"cash"</span> <span class="op">||</span> payment <span class="op">==</span> <span class="st">"card"</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb16-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Payment accepted"</span><span class="op">;</span></span>
-<span id="cb16-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The whole condition is true when at least one smaller condition is true.</p>
+<section id="operators-are-function-calls" class="slide level2">
+<h2>Operators Are Function Calls</h2>
+<p>Many operators are another way to write a function call. C++ lets a class provide a function whose name is an operator.</p>
+<p>For example, <code>a + b</code> can call an overloaded <code>operator+</code>.</p>
 <!-- Slide 33 -->
 </section>
-<section id="short-circuit-evaluation" class="slide level2">
-<h2>Short-Circuit Evaluation</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>denominator <span class="op">!=</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> numerator <span class="op">/</span> denominator <span class="op">&gt;</span> <span class="dv">2</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb17-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Safe comparison"</span><span class="op">;</span></span>
-<span id="cb17-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>C++ can stop checking once the final answer is already known. Here, the division only happens if the denominator is not zero.</p>
+<section id="operator-overloading-1" class="slide level2">
+<h2>Operator Overloading</h2>
+<p>Changing the way a standard operator works for a user-defined type is called operator overloading.</p>
+<p>The operator keeps its spelling in an expression, but the class supplies the behavior.</p>
 <!-- Slide 34 -->
 </section>
-<section id="the-not-operator" class="slide level2">
-<h2>The NOT Operator <code>!</code></h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href=""></a><span class="cf">if</span> <span class="op">(!</span>isOpen<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb18-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Closed"</span><span class="op">;</span></span>
-<span id="cb18-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The NOT operator reverses the truth value of a condition.</p>
+<section id="operator-overloading-restrictions" class="slide level2">
+<h2>Operator Overloading Restrictions</h2>
+<p><strong>Operators that can be overloaded</strong></p>
+<ul>
+<li>Arithmetic operators such as <code>+</code>, <code>-</code>, <code>*</code>, and <code>/</code></li>
+<li>Relational operators such as <code>==</code>, <code>&lt;</code>, and <code>&gt;</code></li>
+<li>Stream operators such as <code>&lt;&lt;</code> and <code>&gt;&gt;</code></li>
+<li>Increment, decrement, subscript, call, and allocation operators</li>
+</ul>
+<p><strong>Operators that cannot be overloaded</strong></p>
+<ul>
+<li>Member access: <code>.</code></li>
+<li>Pointer-to-member access: <code>.*</code></li>
+<li>Scope resolution: <code>::</code></li>
+<li>Conditional operator: <code>?:</code></li>
+<li>Size operator: <code>sizeof</code></li>
+</ul>
 <!-- Slide 35 -->
 </section>
-<section id="truth-tables" class="slide level2">
-<h2>Truth Tables</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>A</th>
-<th>B</th>
-<th><code>A &amp;&amp; B</code></th>
-<th><code>A || B</code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>true</td>
-<td>true</td>
-<td>true</td>
-<td>true</td>
-</tr>
-<tr class="even">
-<td>true</td>
-<td>false</td>
-<td>false</td>
-<td>true</td>
-</tr>
-<tr class="odd">
-<td>false</td>
-<td>true</td>
-<td>false</td>
-<td>true</td>
-</tr>
-<tr class="even">
-<td>false</td>
-<td>false</td>
-<td>false</td>
-<td>false</td>
-</tr>
-</tbody>
-</table>
+<section id="what-overloading-can-change" class="slide level2">
+<h2>What Overloading Can Change</h2>
+<ul>
+<li>You can change the meaning of an operator for your class.</li>
+<li>You cannot change the number of operands.</li>
+<li>Overloading should make an expression clearer, not merely more surprising.</li>
+</ul>
 <!-- Slide 36 -->
 </section>
-<section id="reading-compound-conditions-out-loud" class="slide level2">
-<h2>Reading Compound Conditions Out Loud</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>score <span class="op">&gt;=</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> score <span class="op">&lt;=</span> <span class="dv">100</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb19-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Valid score"</span><span class="op">;</span></span>
-<span id="cb19-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Read it as: “if score is at least 0 and score is at most 100.”</p>
+<section id="why-would-we-want-to-do-this" class="slide level2">
+<h2>Why Would We Want to Do This?</h2>
+<p>Operator overloading lets objects use familiar C++ syntax.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href=""></a>BigClass myObj<span class="op">;</span></span>
+<span id="cb12-2"><a href=""></a>BigClass yourObj<span class="op">;</span></span>
+<span id="cb12-3"><a href=""></a></span>
+<span id="cb12-4"><a href=""></a>myObj <span class="op">=</span> myObj <span class="op">+</span> yourObj <span class="op">+</span> <span class="dv">18</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The expression can read like the operation it represents.</p>
 <!-- Slide 37 -->
 </section>
-<section id="reducing-extra-branches" class="slide level2">
-<h2>Reducing Extra Branches</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>isWeekend <span class="op">||</span> isHoliday<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb20-2"><a href=""></a>    rate <span class="op">=</span> <span class="fl">1.5</span><span class="op">;</span></span>
-<span id="cb20-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Logical operators can combine related questions instead of forcing separate branches for every combination.</p>
+<section id="operator-syntax" class="slide level2">
+<h2>Operator Syntax</h2>
+<p>For a member overload:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href=""></a>result <span class="op">=</span> left<span class="op">.</span><span class="kw">operator</span><span class="op">+(</span>right<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The expression:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href=""></a>result <span class="op">=</span> left <span class="op">+</span> right<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>uses the left operand as the object that receives the member-function call.</p>
 <!-- Slide 38 -->
 </section>
-<section id="summary-3" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li><code>&amp;&amp;</code> requires both conditions to be true.</li>
-<li><code>||</code> requires at least one condition to be true.</li>
-<li><code>!</code> reverses a condition.</li>
-</ul>
+<section id="operator-plus" class="slide level2">
+<h2>Operator Plus</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb15-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb15-3"><a href=""></a></span>
+<span id="cb15-4"><a href=""></a><span class="kw">class</span> Rec <span class="op">{</span></span>
+<span id="cb15-5"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb15-6"><a href=""></a>    <span class="dt">int</span> x<span class="op">;</span></span>
+<span id="cb15-7"><a href=""></a>    <span class="dt">int</span> y<span class="op">;</span></span>
+<span id="cb15-8"><a href=""></a></span>
+<span id="cb15-9"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb15-10"><a href=""></a>    Rec<span class="op">(</span><span class="dt">int</span> xx <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">int</span> yy <span class="op">=</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb15-11"><a href=""></a>        x <span class="op">=</span> xx<span class="op">;</span></span>
+<span id="cb15-12"><a href=""></a>        y <span class="op">=</span> yy<span class="op">;</span></span>
+<span id="cb15-13"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb15-14"><a href=""></a></span>
+<span id="cb15-15"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb15-16"><a href=""></a>        cout <span class="op">&lt;&lt;</span> x <span class="op">&lt;&lt;</span> <span class="st">" by "</span> <span class="op">&lt;&lt;</span> y <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb15-17"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb15-18"><a href=""></a></span>
+<span id="cb15-19"><a href=""></a>    Rec <span class="kw">operator</span><span class="op">+(</span><span class="at">const</span> Rec<span class="op">&amp;</span> rhs<span class="op">)</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb15-20"><a href=""></a>        <span class="cf">return</span> Rec<span class="op">(</span>x <span class="op">+</span> rhs<span class="op">.</span>x<span class="op">,</span> y <span class="op">+</span> rhs<span class="op">.</span>y<span class="op">);</span></span>
+<span id="cb15-21"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb15-22"><a href=""></a><span class="op">};</span></span>
+<span id="cb15-23"><a href=""></a></span>
+<span id="cb15-24"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb15-25"><a href=""></a>    Rec a<span class="op">(</span><span class="dv">5</span><span class="op">,</span> <span class="dv">5</span><span class="op">);</span></span>
+<span id="cb15-26"><a href=""></a>    Rec b<span class="op">(</span><span class="dv">5</span><span class="op">,</span> <span class="dv">5</span><span class="op">);</span></span>
+<span id="cb15-27"><a href=""></a>    Rec c <span class="op">=</span> a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb15-28"><a href=""></a></span>
+<span id="cb15-29"><a href=""></a>    c<span class="op">.</span>print<span class="op">();</span></span>
+<span id="cb15-30"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb15-31"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The overloaded operator returns a new <code>Rec</code> whose dimensions are the sums of the operands.</p>
 <!-- Slide 39 -->
-<!-- Topic 5: Range Checking -->
-<!-- Slides 40-48 -->
-</section></section>
-<section>
-<section id="range-checking" class="title-slide slide level1 center">
-<h1>Range Checking</h1>
+</section>
+<section id="ways-to-overload" class="slide level2">
+<h2>Ways to Overload</h2>
+<ol type="1">
+<li>Define the overloaded operator as a member function.</li>
+<li>Define the overloaded operator as a stand-alone function.</li>
+</ol>
+<p>The choice depends on which operand must be the object and which data the function needs to access.</p>
 <!-- Slide 40 -->
 </section>
-<section id="inside-or-outside-the-range" class="slide level2 smaller">
-<h2>Inside or Outside the Range</h2>
-<ul>
-<li>Range checking asks whether a value belongs between two boundaries.</li>
-<li>The boundaries may be included or excluded depending on the problem.</li>
-</ul>
-<aside class="notes">
-<p>Slides 40-48</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="arithmetic-and-relational-operators" class="slide level2">
+<h2>Arithmetic and Relational Operators</h2>
+<p>Arithmetic and relational operators can be implemented as either member functions or stand-alone functions.</p>
+<p>A stand-alone function is often preferred when the left operand should not be a class object or when the operation should treat both operands symmetrically.</p>
 <!-- Slide 41 -->
 </section>
-<section id="checking-inside-a-range" class="slide level2">
-<h2>Checking Inside a Range</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb21-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>score <span class="op">&gt;=</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> score <span class="op">&lt;=</span> <span class="dv">100</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb21-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Valid score"</span><span class="op">;</span></span>
-<span id="cb21-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Inside-range checks usually need both boundary comparisons to be true.</p>
+<section id="operator-chaining" class="slide level2">
+<h2>Operator Chaining</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb16-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb16-3"><a href=""></a></span>
+<span id="cb16-4"><a href=""></a><span class="kw">class</span> Sales <span class="op">{</span></span>
+<span id="cb16-5"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb16-6"><a href=""></a>    <span class="dt">int</span> receiptNumber<span class="op">;</span></span>
+<span id="cb16-7"><a href=""></a>    <span class="dt">double</span> amount<span class="op">;</span></span>
+<span id="cb16-8"><a href=""></a></span>
+<span id="cb16-9"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb16-10"><a href=""></a>    Sales<span class="op">(</span><span class="dt">int</span> number <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">double</span> value <span class="op">=</span> <span class="fl">0.0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-11"><a href=""></a>        receiptNumber <span class="op">=</span> number<span class="op">;</span></span>
+<span id="cb16-12"><a href=""></a>        amount <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb16-13"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb16-14"><a href=""></a></span>
+<span id="cb16-15"><a href=""></a>    Sales <span class="kw">operator</span><span class="op">+(</span><span class="at">const</span> Sales<span class="op">&amp;</span> transaction<span class="op">)</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb16-16"><a href=""></a>        <span class="cf">return</span> Sales<span class="op">(</span><span class="dv">999</span><span class="op">,</span> amount <span class="op">+</span> transaction<span class="op">.</span>amount<span class="op">);</span></span>
+<span id="cb16-17"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb16-18"><a href=""></a></span>
+<span id="cb16-19"><a href=""></a>    <span class="dt">void</span> showSale<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb16-20"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Sale "</span> <span class="op">&lt;&lt;</span> receiptNumber</span>
+<span id="cb16-21"><a href=""></a>             <span class="op">&lt;&lt;</span> <span class="st">" for $"</span> <span class="op">&lt;&lt;</span> amount <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb16-22"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb16-23"><a href=""></a><span class="op">};</span></span>
+<span id="cb16-24"><a href=""></a></span>
+<span id="cb16-25"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb16-26"><a href=""></a>    Sales a<span class="op">(</span><span class="dv">1567</span><span class="op">,</span> <span class="fl">39.95</span><span class="op">);</span></span>
+<span id="cb16-27"><a href=""></a>    Sales b<span class="op">(</span><span class="dv">1568</span><span class="op">,</span> <span class="fl">33.55</span><span class="op">);</span></span>
+<span id="cb16-28"><a href=""></a>    Sales c<span class="op">(</span><span class="dv">1123</span><span class="op">,</span> <span class="fl">49.95</span><span class="op">);</span></span>
+<span id="cb16-29"><a href=""></a></span>
+<span id="cb16-30"><a href=""></a>    Sales total <span class="op">=</span> a <span class="op">+</span> b <span class="op">+</span> c<span class="op">;</span></span>
+<span id="cb16-31"><a href=""></a>    total<span class="op">.</span>showSale<span class="op">();</span></span>
+<span id="cb16-32"><a href=""></a></span>
+<span id="cb16-33"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb16-34"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Each <code>+</code> produces a <code>Sales</code> object that can become the left operand of the next <code>+</code>.</p>
 <!-- Slide 42 -->
 </section>
-<section id="why-inside-uses-and" class="slide level2">
-<h2>Why Inside Uses AND</h2>
-<p>For a score to be valid:</p>
+<section id="pre-and-post-increment-operators" class="slide level2">
+<h2>Pre and Post Increment Operators</h2>
+<p>A class can overload both forms:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href=""></a><span class="kw">class</span> Foo <span class="op">{</span></span>
+<span id="cb17-2"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb17-3"><a href=""></a>    Foo<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">++();</span></span>
+<span id="cb17-4"><a href=""></a>    Foo <span class="kw">operator</span><span class="op">++(</span><span class="dt">int</span><span class="op">);</span></span>
+<span id="cb17-5"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li>It must be at least <code>0</code>.</li>
-<li>It must be at most <code>100</code>.</li>
-<li>Both facts must be true at the same time.</li>
+<li>Prefix <code>++object</code> changes the object and returns the updated object.</li>
+<li>Postfix <code>object++</code> returns the old value and then changes the object.</li>
+<li>The unused <code>int</code> parameter distinguishes postfix syntax.</li>
 </ul>
 <!-- Slide 43 -->
 </section>
-<section id="checking-outside-a-range" class="slide level2">
-<h2>Checking Outside a Range</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb22-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>score <span class="op">&lt;</span> <span class="dv">0</span> <span class="op">||</span> score <span class="op">&gt;</span> <span class="dv">100</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb22-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Invalid score"</span><span class="op">;</span></span>
-<span id="cb22-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Outside-range checks usually need only one boundary problem to be true.</p>
+<section id="operator-chaining-1" class="slide level2">
+<h2>Operator Chaining</h2>
+<p>How do we allow multiple operations on the same line?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href=""></a>Sales a<span class="op">;</span></span>
+<span id="cb18-2"><a href=""></a>Sales b<span class="op">;</span></span>
+<span id="cb18-3"><a href=""></a>Sales c<span class="op">;</span></span>
+<span id="cb18-4"><a href=""></a></span>
+<span id="cb18-5"><a href=""></a>a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb18-6"><a href=""></a>a <span class="op">=</span> b <span class="op">+</span> c <span class="op">+</span> d<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Each overloaded operation must return a type that can participate in the next operation.</p>
 <!-- Slide 44 -->
 </section>
-<section id="why-outside-uses-or" class="slide level2">
-<h2>Why Outside Uses OR</h2>
-<p>For a score to be invalid:</p>
-<ul>
-<li>It can be below <code>0</code>.</li>
-<li>It can be above <code>100</code>.</li>
-<li>Either problem is enough to reject the score.</li>
-</ul>
+<section id="comparison-operators" class="slide level2">
+<h2>Comparison Operators</h2>
+<p>A comparison overload lets an object participate in a condition.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href=""></a><span class="kw">class</span> Foo <span class="op">{</span></span>
+<span id="cb19-2"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb19-3"><a href=""></a>    <span class="dt">bool</span> <span class="kw">operator</span><span class="op">==(</span><span class="at">const</span> Foo<span class="op">&amp;</span> rhs<span class="op">)</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb19-4"><a href=""></a><span class="op">};</span></span>
+<span id="cb19-5"><a href=""></a></span>
+<span id="cb19-6"><a href=""></a>Foo a<span class="op">;</span></span>
+<span id="cb19-7"><a href=""></a>Foo b<span class="op">;</span></span>
+<span id="cb19-8"><a href=""></a></span>
+<span id="cb19-9"><a href=""></a><span class="cf">if</span> <span class="op">(</span>a <span class="op">==</span> b<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb19-10"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Equal"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb19-11"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The result should be a Boolean answer.</p>
 <!-- Slide 45 -->
 </section>
-<section id="boundary-values-matter" class="slide level2">
-<h2>Boundary Values Matter</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Condition</th>
-<th>Are <code>0</code> and <code>100</code> valid?</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>score &gt;= 0 &amp;&amp; score &lt;= 100</code></td>
-<td>yes</td>
-</tr>
-<tr class="even">
-<td><code>score &gt; 0 &amp;&amp; score &lt; 100</code></td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
-<p>Inclusive operators include the endpoints. Exclusive operators leave them out.</p>
+<section id="pre-and-post-increment-example" class="slide level2">
+<h2>Pre and Post Increment Example</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb20-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb20-3"><a href=""></a></span>
+<span id="cb20-4"><a href=""></a><span class="kw">class</span> Length <span class="op">{</span></span>
+<span id="cb20-5"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb20-6"><a href=""></a>    <span class="dt">int</span> inches<span class="op">;</span></span>
+<span id="cb20-7"><a href=""></a></span>
+<span id="cb20-8"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb20-9"><a href=""></a>    Length<span class="op">(</span><span class="dt">int</span> value <span class="op">=</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span> inches <span class="op">=</span> value<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb20-10"><a href=""></a>    <span class="dt">int</span> getLength<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> inches<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb20-11"><a href=""></a></span>
+<span id="cb20-12"><a href=""></a>    Length<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">++()</span> <span class="op">{</span></span>
+<span id="cb20-13"><a href=""></a>        <span class="op">++</span>inches<span class="op">;</span></span>
+<span id="cb20-14"><a href=""></a>        <span class="cf">return</span> <span class="op">*</span><span class="kw">this</span><span class="op">;</span></span>
+<span id="cb20-15"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb20-16"><a href=""></a></span>
+<span id="cb20-17"><a href=""></a>    Length <span class="kw">operator</span><span class="op">++(</span><span class="dt">int</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb20-18"><a href=""></a>        Length old <span class="op">=</span> <span class="op">*</span><span class="kw">this</span><span class="op">;</span></span>
+<span id="cb20-19"><a href=""></a>        <span class="op">++</span>inches<span class="op">;</span></span>
+<span id="cb20-20"><a href=""></a>        <span class="cf">return</span> old<span class="op">;</span></span>
+<span id="cb20-21"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb20-22"><a href=""></a><span class="op">};</span></span>
+<span id="cb20-23"><a href=""></a></span>
+<span id="cb20-24"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb20-25"><a href=""></a>    Length test<span class="op">(</span><span class="dv">3</span><span class="op">);</span></span>
+<span id="cb20-26"><a href=""></a>    Length temporary<span class="op">;</span></span>
+<span id="cb20-27"><a href=""></a></span>
+<span id="cb20-28"><a href=""></a>    temporary <span class="op">=</span> <span class="op">++</span>test<span class="op">;</span></span>
+<span id="cb20-29"><a href=""></a>    cout <span class="op">&lt;&lt;</span> temporary<span class="op">.</span>getLength<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span></span>
+<span id="cb20-30"><a href=""></a>         <span class="op">&lt;&lt;</span> test<span class="op">.</span>getLength<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb20-31"><a href=""></a></span>
+<span id="cb20-32"><a href=""></a>    temporary <span class="op">=</span> test<span class="op">++;</span></span>
+<span id="cb20-33"><a href=""></a>    cout <span class="op">&lt;&lt;</span> temporary<span class="op">.</span>getLength<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span></span>
+<span id="cb20-34"><a href=""></a>         <span class="op">&lt;&lt;</span> test<span class="op">.</span>getLength<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb20-35"><a href=""></a></span>
+<span id="cb20-36"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb20-37"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Prefix returns the updated object. Postfix preserves and returns the old value before incrementing.</p>
 <!-- Slide 46 -->
 </section>
-<section id="score-evaluation-example" class="slide level2">
-<h2>Score Evaluation Example</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb23-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>score <span class="op">&lt;</span> <span class="dv">0</span> <span class="op">||</span> score <span class="op">&gt;</span> <span class="dv">100</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb23-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Invalid score"</span><span class="op">;</span></span>
-<span id="cb23-3"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>score <span class="op">&gt;=</span> <span class="dv">90</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb23-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"A"</span><span class="op">;</span></span>
-<span id="cb23-5"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>score <span class="op">&gt;=</span> <span class="dv">80</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb23-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"B"</span><span class="op">;</span></span>
-<span id="cb23-7"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb23-8"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Keep working"</span><span class="op">;</span></span>
-<span id="cb23-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The range check protects the category logic that follows.</p>
+<section id="comparison-operator-example" class="slide level2">
+<h2>Comparison Operator Example</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb21-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb21-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb21-3"><a href=""></a></span>
+<span id="cb21-4"><a href=""></a><span class="kw">class</span> Example <span class="op">{</span></span>
+<span id="cb21-5"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb21-6"><a href=""></a>    <span class="dt">int</span> id<span class="op">;</span></span>
+<span id="cb21-7"><a href=""></a></span>
+<span id="cb21-8"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb21-9"><a href=""></a>    Example<span class="op">(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span> id <span class="op">=</span> value<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb21-10"><a href=""></a></span>
+<span id="cb21-11"><a href=""></a>    <span class="dt">bool</span> <span class="kw">operator</span><span class="op">==(</span><span class="at">const</span> Example<span class="op">&amp;</span> rhs<span class="op">)</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb21-12"><a href=""></a>        <span class="cf">return</span> id <span class="op">==</span> rhs<span class="op">.</span>id<span class="op">;</span></span>
+<span id="cb21-13"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb21-14"><a href=""></a><span class="op">};</span></span>
+<span id="cb21-15"><a href=""></a></span>
+<span id="cb21-16"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb21-17"><a href=""></a>    Example first<span class="op">(</span><span class="dv">1234</span><span class="op">);</span></span>
+<span id="cb21-18"><a href=""></a>    Example second<span class="op">(</span><span class="dv">5678</span><span class="op">);</span></span>
+<span id="cb21-19"><a href=""></a></span>
+<span id="cb21-20"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>first <span class="op">==</span> second<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb21-21"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"They are equal"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb21-22"><a href=""></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb21-23"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"They are not equal"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb21-24"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb21-25"><a href=""></a></span>
+<span id="cb21-26"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb21-27"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The overloaded comparison reads like a built-in comparison while still using the class’s private state.</p>
 <!-- Slide 47 -->
 </section>
-<section id="summary-4" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>Inside-range checks use <code>&amp;&amp;</code>.</li>
-<li>Outside-range checks use <code>||</code>.</li>
-<li>Decide whether boundary values should count before writing the operators.</li>
-</ul>
+<section id="comparison-output" class="slide level2">
+<h2>Comparison Output</h2>
+<p>For two objects with different identifiers, the comparison expression evaluates to false.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb22-1"><a href=""></a>They are not equal</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <!-- Slide 48 -->
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="key-takeaways" class="title-slide slide level1 center">
-<h1>Key Takeaways</h1>
-<ul>
-<li>The conditional operator is useful for simple value choices.</li>
-<li><code>switch</code> works best for exact fixed cases.</li>
-<li>Nested <code>if</code> statements are for dependent decisions.</li>
-<li>Compound conditions and range checks let one decision ask a larger question.</li>
-</ul>
+<section id="comparison-operator-example-1" class="slide level2">
+<h2>Comparison Operator Example</h2>
+<p>Use comparison overloads when the class has a meaningful notion of equality or ordering.</p>
+<p>The operator should compare the state that defines the class’s identity.</p>
 <!-- Slide 49 -->
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="next-time" class="title-slide slide level1 center">
-<h1>Next Time</h1>
+<section id="operator-overloading-algorithm" class="slide level2">
+<h2>Operator Overloading Algorithm</h2>
+<ul>
+<li>If the operation must change the left operand and needs access to private data, use a member function.</li>
+<li>If the operation should not change the left operand or the left operand is not the class type, use a stand-alone function.</li>
+<li>If the stand-alone function needs private data, make it a friend of the class.</li>
+</ul>
 <!-- Slide 50 -->
 </section>
-<section class="slide level2">
-
+<section id="choosing-an-overload-form" class="slide level2">
+<h2>Choosing an Overload Form</h2>
+<p>Ask two questions:</p>
+<ol type="1">
+<li>Does the operation need to change the left operand?</li>
+<li>Does the operation need access to private class data?</li>
+</ol>
+<p>Use a member overload when the left operand is the natural object. Use a friend stand-alone function when an external left operand or symmetric access is required.</p>
+<!-- Slide 51 -->
+<!-- Topic 4: Friends of Classes -->
+<!-- Slides 52-74 -->
 </section></section>
 <section>
-<section id="appendix" class="title-slide slide level1 center">
-<h1>Appendix</h1>
-<!-- Slide 51 -->
-</section>
-<section id="the-conditional-operator-good-practices" class="slide level2">
-<h2>The Conditional Operator: Good Practices</h2>
-<ul>
-<li>Use it for short value choices.</li>
-<li>Keep both possible values easy to see.</li>
-<li>Prefer a normal <code>if/else</code> when the logic needs multiple statements.</li>
-</ul>
+<section id="friends-of-classes" class="title-slide slide level1 center">
+<h1>Friends of Classes</h1>
+<aside class="notes">
+<p>Slides 52-74</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 52 -->
 </section>
-<section id="the-conditional-operator-common-mistakes" class="slide level2">
-<h2>The Conditional Operator: Common Mistakes</h2>
-<ul>
-<li>Nesting several conditional operators in one line.</li>
-<li>Using it when the goal is to run several statements.</li>
-<li>Hiding a complex condition inside a compact expression.</li>
-</ul>
+<section id="printing-class-contents" class="slide level2">
+<h2>Printing Class Contents</h2>
+<p>We want to print the contents of one of our classes. The design must coordinate the class and the output stream.</p>
 <!-- Slide 53 -->
 </section>
-<section id="the-conditional-operator-more-examples" class="slide level2">
-<h2>The Conditional Operator: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb24-1"><a href=""></a>string access <span class="op">=</span> loggedIn <span class="op">?</span> <span class="st">"continue"</span> <span class="op">:</span> <span class="st">"sign in"</span><span class="op">;</span></span>
-<span id="cb24-2"><a href=""></a><span class="dt">double</span> fee <span class="op">=</span> isMember <span class="op">?</span> <span class="fl">4.99</span> <span class="op">:</span> <span class="fl">7.99</span><span class="op">;</span></span>
-<span id="cb24-3"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="op">(</span>passed <span class="op">?</span> <span class="st">"Pass"</span> <span class="op">:</span> <span class="st">"Try again"</span><span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="print-function-or-stream-insertion-operator" class="slide level2">
+<h2>Print Function or Stream Insertion Operator</h2>
+<p>A class can expose either:</p>
+<ul>
+<li>A member such as <code>Print()</code></li>
+<li>An overloaded stream insertion operator so clients can write <code>cout &lt;&lt; object</code></li>
+</ul>
 <!-- Slide 54 -->
 </section>
-<section id="the-conditional-operator-practice-problems" class="slide level2">
-<h2>The Conditional Operator: Practice Problems</h2>
-<ul>
-<li>Choose between <code>"valid"</code> and <code>"invalid"</code> using <code>?:</code>.</li>
-<li>Assign a shipping fee based on whether a customer is a member.</li>
-<li>Rewrite a one-line <code>?:</code> expression as a full <code>if/else</code>.</li>
-</ul>
+<section id="print-function" class="slide level2">
+<h2>Print Function</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb23-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb23-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb23-3"><a href=""></a></span>
+<span id="cb23-4"><a href=""></a><span class="kw">class</span> RecType <span class="op">{</span></span>
+<span id="cb23-5"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb23-6"><a href=""></a>    <span class="dt">double</span> length<span class="op">;</span></span>
+<span id="cb23-7"><a href=""></a>    <span class="dt">double</span> width<span class="op">;</span></span>
+<span id="cb23-8"><a href=""></a></span>
+<span id="cb23-9"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb23-10"><a href=""></a>    RecType<span class="op">(</span><span class="dt">double</span> l <span class="op">=</span> <span class="fl">0.0</span><span class="op">,</span> <span class="dt">double</span> w <span class="op">=</span> <span class="fl">0.0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb23-11"><a href=""></a>        length <span class="op">=</span> l<span class="op">;</span></span>
+<span id="cb23-12"><a href=""></a>        width <span class="op">=</span> w<span class="op">;</span></span>
+<span id="cb23-13"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb23-14"><a href=""></a></span>
+<span id="cb23-15"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb23-16"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Length = "</span> <span class="op">&lt;&lt;</span> length</span>
+<span id="cb23-17"><a href=""></a>             <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">Width = "</span> <span class="op">&lt;&lt;</span> width <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb23-18"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb23-19"><a href=""></a><span class="op">};</span></span>
+<span id="cb23-20"><a href=""></a></span>
+<span id="cb23-21"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb23-22"><a href=""></a>    RecType gold<span class="op">(</span><span class="dv">10</span><span class="op">,</span> <span class="dv">33</span><span class="op">);</span></span>
+<span id="cb23-23"><a href=""></a>    gold<span class="op">.</span>print<span class="op">();</span></span>
+<span id="cb23-24"><a href=""></a></span>
+<span id="cb23-25"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb23-26"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A member function is direct and simple, but clients must know the class-specific function name.</p>
 <!-- Slide 55 -->
 </section>
-<section id="the-conditional-operator-ai-search-terms" class="slide level2">
-<h2>The Conditional Operator: AI Search Terms</h2>
-<ul>
-<li>C++ conditional operator</li>
-<li>C++ ternary operator</li>
-<li>C++ question mark colon operator</li>
-<li>C++ conditional expression readability</li>
-</ul>
+<section id="how-wed-like-to-do-it" class="slide level2">
+<h2>How We’d Like to Do It</h2>
+<p>The desired interface is the same syntax used for built-in values:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb24-1"><a href=""></a>RecType gold<span class="op">(</span><span class="dv">10</span><span class="op">,</span> <span class="dv">33</span><span class="op">);</span></span>
+<span id="cb24-2"><a href=""></a>cout <span class="op">&lt;&lt;</span> gold<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The class should describe its own output while the stream remains the left operand.</p>
 <!-- Slide 56 -->
 </section>
-<section id="the-conditional-operator-questions-for-reflection" class="slide level2">
-<h2>The Conditional Operator: Questions for Reflection</h2>
-<ul>
-<li>Is the choice producing one value?</li>
-<li>Would a reader understand the expression quickly?</li>
-<li>Would this be clearer as a normal <code>if/else</code>?</li>
-</ul>
+<section id="overloading-operators" class="slide level2">
+<h2>Overloading Operators</h2>
+<p>C++ supports more than one constructor for a class. That is method overloading.</p>
+<p>C++ also lets a class define behavior for symbols such as <code>+</code>, <code>-</code>, and <code>&lt;&lt;</code>. That is operator overloading.</p>
 <!-- Slide 57 -->
 </section>
-<section id="the-switch-statement-good-practices" class="slide level2">
-<h2>The switch Statement: Good Practices</h2>
-<ul>
-<li>Use <code>switch</code> when one expression is compared to exact cases.</li>
-<li>Include <code>break</code> unless intentional fall-through is clearly wanted.</li>
-<li>Include <code>default</code> for unexpected values.</li>
-</ul>
+<section id="two-ways-to-overload-operators" class="slide level2">
+<h2>Two Ways to Overload Operators</h2>
+<ol type="1">
+<li>Define the overloaded operator as a member function of the class.</li>
+<li>Define it as a separate stand-alone function.</li>
+</ol>
+<p>The left operand and the required access to private data determine which form fits.</p>
 <!-- Slide 58 -->
 </section>
-<section id="the-switch-statement-common-mistakes" class="slide level2">
-<h2>The switch Statement: Common Mistakes</h2>
+<section id="operator-as-a-member-function" class="slide level2">
+<h2>Operator as a Member Function</h2>
+<p>Use a member function when:</p>
 <ul>
-<li>Trying to use ranges in <code>case</code> labels.</li>
-<li>Forgetting <code>break</code> and accidentally falling through.</li>
-<li>Using <code>switch</code> when each branch needs a different condition.</li>
+<li>The operation must change the left-hand operand.</li>
+<li>The operation requires direct access to non-public class data.</li>
 </ul>
+<p>The left operand becomes the object that receives the member-function call.</p>
 <!-- Slide 59 -->
 </section>
-<section id="the-switch-statement-more-examples" class="slide level2">
-<h2>The switch Statement: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb25-1"><a href=""></a><span class="cf">switch</span> <span class="op">(</span>dayCode<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb25-2"><a href=""></a><span class="cf">case</span> <span class="dv">1</span><span class="op">:</span></span>
-<span id="cb25-3"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Monday"</span><span class="op">;</span></span>
-<span id="cb25-4"><a href=""></a>    <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb25-5"><a href=""></a><span class="cf">case</span> <span class="dv">2</span><span class="op">:</span></span>
-<span id="cb25-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Tuesday"</span><span class="op">;</span></span>
-<span id="cb25-7"><a href=""></a>    <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb25-8"><a href=""></a><span class="cf">default</span><span class="op">:</span></span>
-<span id="cb25-9"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Unknown day"</span><span class="op">;</span></span>
-<span id="cb25-10"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="stream-operators" class="slide level2">
+<h2>Stream Operators</h2>
+<p>Consider an expression such as:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb25-1"><a href=""></a>cout <span class="op">&lt;&lt;</span> something<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The left-hand operand is <code>cout</code>, an object of the standard-library stream class. The class being printed is on the right.</p>
 <!-- Slide 60 -->
 </section>
-<section id="the-switch-statement-practice-problems" class="slide level2">
-<h2>The switch Statement: Practice Problems</h2>
-<ul>
-<li>Write cases for three shipping codes.</li>
-<li>Add a <code>default</code> branch for an unknown code.</li>
-<li>Explain what happens if a <code>break</code> is missing.</li>
-</ul>
+<section id="why-a-free-function-is-needed" class="slide level2">
+<h2>Why a Free Function Is Needed</h2>
+<p>We cannot add a member function to the standard stream class because we do not own that class.</p>
+<p>The stream insertion and extraction operators therefore need to be implemented as free functions.</p>
 <!-- Slide 61 -->
 </section>
-<section id="the-switch-statement-ai-search-terms" class="slide level2">
-<h2>The switch Statement: AI Search Terms</h2>
-<ul>
-<li>C++ switch statement</li>
-<li>C++ case label</li>
-<li>C++ switch break fall through</li>
-<li>C++ switch default branch</li>
-</ul>
+<section id="why-the-free-function-must-be-a-friend" class="slide level2">
+<h2>Why the Free Function Must Be a Friend</h2>
+<p>The free function needs access to the class’s private data unless the class exposes getters for every field.</p>
+<p>A friend declaration gives the chosen free function access without making all data public.</p>
 <!-- Slide 62 -->
 </section>
-<section id="the-switch-statement-questions-for-reflection" class="slide level2">
-<h2>The switch Statement: Questions for Reflection</h2>
-<ul>
-<li>Is one expression being checked?</li>
-<li>Are the choices exact values?</li>
-<li>What should happen when no case matches?</li>
-</ul>
+<section id="friends" class="slide level2">
+<h2>Friends</h2>
+<p>A friend is a function or class that is not a member of the class but is granted access to its private members.</p>
 <!-- Slide 63 -->
 </section>
-<section id="nested-if-statements-good-practices" class="slide level2">
-<h2>Nested if Statements: Good Practices</h2>
-<ul>
-<li>Nest only when the second decision depends on the first.</li>
-<li>Keep nested blocks short.</li>
-<li>Use indentation that matches the braces.</li>
-</ul>
+<section id="friend-function-definition" class="slide level2">
+<h2>Friend Function Definition</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb26-1"><a href=""></a><span class="kw">class</span> Distance <span class="op">{</span></span>
+<span id="cb26-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb26-3"><a href=""></a>    <span class="dt">int</span> meter<span class="op">;</span></span>
+<span id="cb26-4"><a href=""></a></span>
+<span id="cb26-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb26-6"><a href=""></a>    Distance<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb26-7"><a href=""></a>        meter <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb26-8"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb26-9"><a href=""></a></span>
+<span id="cb26-10"><a href=""></a>    <span class="kw">friend</span> <span class="dt">int</span> addFive<span class="op">(</span>Distance value<span class="op">);</span></span>
+<span id="cb26-11"><a href=""></a><span class="op">};</span></span>
+<span id="cb26-12"><a href=""></a></span>
+<span id="cb26-13"><a href=""></a><span class="dt">int</span> addFive<span class="op">(</span>Distance value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb26-14"><a href=""></a>    value<span class="op">.</span>meter <span class="op">+=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb26-15"><a href=""></a>    <span class="cf">return</span> value<span class="op">.</span>meter<span class="op">;</span></span>
+<span id="cb26-16"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The friend declaration appears inside the class. The definition remains a stand-alone function.</p>
 <!-- Slide 64 -->
 </section>
-<section id="nested-if-statements-common-mistakes" class="slide level2">
-<h2>Nested if Statements: Common Mistakes</h2>
-<ul>
-<li>Nesting when an <code>if/else if</code> chain would be clearer.</li>
-<li>Letting several levels of nesting hide the main path.</li>
-<li>Putting the inner decision in the wrong branch.</li>
-</ul>
+<section id="why-use-a-friend-function" class="slide level2">
+<h2>Why Use a Friend Function?</h2>
+<p>A friend function is useful when an external operation needs private state.</p>
+<p>The stream insertion operator is a common example because the stream object must remain the left operand.</p>
 <!-- Slide 65 -->
 </section>
-<section id="nested-if-statements-more-examples" class="slide level2">
-<h2>Nested if Statements: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb26-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>hasAccount<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb26-2"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>passwordCorrect<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb26-3"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Welcome"</span><span class="op">;</span></span>
-<span id="cb26-4"><a href=""></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb26-5"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Try again"</span><span class="op">;</span></span>
-<span id="cb26-6"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb26-7"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="operator-insertion-call-syntax" class="slide level2">
+<h2>Operator Insertion Call Syntax</h2>
+<p>The expression:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb27-1"><a href=""></a>cout <span class="op">&lt;&lt;</span> point<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>is conceptually a call to a stand-alone operator function:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb28-1"><a href=""></a><span class="kw">operator</span><span class="op">&lt;&lt;(</span>cout<span class="op">,</span> point<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The function can access <code>point</code>’s private fields when the class declares it as a friend.</p>
 <!-- Slide 66 -->
 </section>
-<section id="nested-if-statements-practice-problems" class="slide level2">
-<h2>Nested if Statements: Practice Problems</h2>
-<ul>
-<li>Identify the outer decision and the inner decision.</li>
-<li>Decide whether the second question depends on the first.</li>
-<li>Rewrite a nested decision as plain English.</li>
-</ul>
+<section id="friend-access-is-controlled-by-the-class" class="slide level2">
+<h2>Friend Access Is Controlled by the Class</h2>
+<p>The class decides which functions or classes become friends.</p>
+<p>Friendship is explicit and selective. It is not automatically inherited by every function that happens to use the class.</p>
 <!-- Slide 67 -->
 </section>
-<section id="nested-if-statements-ai-search-terms" class="slide level2">
-<h2>Nested if Statements: AI Search Terms</h2>
-<ul>
-<li>C++ nested if statement</li>
-<li>C++ dependent conditional</li>
-<li>C++ nested if indentation</li>
-<li>C++ nested if vs else if</li>
-</ul>
+<section id="friend-function-example" class="slide level2">
+<h2>Friend Function Example</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb29-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb29-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb29-3"><a href=""></a></span>
+<span id="cb29-4"><a href=""></a><span class="kw">class</span> RecType <span class="op">{</span></span>
+<span id="cb29-5"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb29-6"><a href=""></a>    <span class="dt">double</span> length<span class="op">;</span></span>
+<span id="cb29-7"><a href=""></a>    <span class="dt">double</span> width<span class="op">;</span></span>
+<span id="cb29-8"><a href=""></a></span>
+<span id="cb29-9"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb29-10"><a href=""></a>    RecType<span class="op">(</span><span class="dt">double</span> l <span class="op">=</span> <span class="fl">0.0</span><span class="op">,</span> <span class="dt">double</span> w <span class="op">=</span> <span class="fl">0.0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb29-11"><a href=""></a>        length <span class="op">=</span> l<span class="op">;</span></span>
+<span id="cb29-12"><a href=""></a>        width <span class="op">=</span> w<span class="op">;</span></span>
+<span id="cb29-13"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb29-14"><a href=""></a></span>
+<span id="cb29-15"><a href=""></a>    <span class="kw">friend</span> ostream<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">&lt;&lt;(</span>ostream<span class="op">&amp;</span> output<span class="op">,</span></span>
+<span id="cb29-16"><a href=""></a>                               <span class="at">const</span> RecType<span class="op">&amp;</span> rec<span class="op">);</span></span>
+<span id="cb29-17"><a href=""></a><span class="op">};</span></span>
+<span id="cb29-18"><a href=""></a></span>
+<span id="cb29-19"><a href=""></a>ostream<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">&lt;&lt;(</span>ostream<span class="op">&amp;</span> output<span class="op">,</span> <span class="at">const</span> RecType<span class="op">&amp;</span> rec<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb29-20"><a href=""></a>    output <span class="op">&lt;&lt;</span> <span class="st">"Length = "</span> <span class="op">&lt;&lt;</span> rec<span class="op">.</span>length</span>
+<span id="cb29-21"><a href=""></a>           <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">Width = "</span> <span class="op">&lt;&lt;</span> rec<span class="op">.</span>width<span class="op">;</span></span>
+<span id="cb29-22"><a href=""></a>    <span class="cf">return</span> output<span class="op">;</span></span>
+<span id="cb29-23"><a href=""></a><span class="op">}</span></span>
+<span id="cb29-24"><a href=""></a></span>
+<span id="cb29-25"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb29-26"><a href=""></a>    RecType gold<span class="op">(</span><span class="dv">10</span><span class="op">,</span> <span class="dv">33</span><span class="op">);</span></span>
+<span id="cb29-27"><a href=""></a>    cout <span class="op">&lt;&lt;</span> gold <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb29-28"><a href=""></a></span>
+<span id="cb29-29"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb29-30"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The stand-alone operator function accesses private fields because it is a friend.</p>
 <!-- Slide 68 -->
 </section>
-<section id="nested-if-statements-questions-for-reflection" class="slide level2">
-<h2>Nested if Statements: Questions for Reflection</h2>
-<ul>
-<li>Does the inner question make sense before the outer question is answered?</li>
-<li>Which branch owns the inner decision?</li>
-<li>Can the nesting be reduced without changing the meaning?</li>
-</ul>
+<section id="friend-class-example" class="slide level2">
+<h2>Friend Class Example</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb30-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb30-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb30-3"><a href=""></a></span>
+<span id="cb30-4"><a href=""></a><span class="kw">class</span> Square<span class="op">;</span></span>
+<span id="cb30-5"><a href=""></a></span>
+<span id="cb30-6"><a href=""></a><span class="kw">class</span> Rectangle <span class="op">{</span></span>
+<span id="cb30-7"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb30-8"><a href=""></a>    <span class="dt">int</span> width<span class="op">;</span></span>
+<span id="cb30-9"><a href=""></a>    <span class="dt">int</span> height<span class="op">;</span></span>
+<span id="cb30-10"><a href=""></a></span>
+<span id="cb30-11"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb30-12"><a href=""></a>    <span class="dt">int</span> area<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb30-13"><a href=""></a>        <span class="cf">return</span> width <span class="op">*</span> height<span class="op">;</span></span>
+<span id="cb30-14"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb30-15"><a href=""></a></span>
+<span id="cb30-16"><a href=""></a>    <span class="dt">void</span> convert<span class="op">(</span><span class="at">const</span> Square<span class="op">&amp;</span> square<span class="op">);</span></span>
+<span id="cb30-17"><a href=""></a><span class="op">};</span></span>
+<span id="cb30-18"><a href=""></a></span>
+<span id="cb30-19"><a href=""></a><span class="kw">class</span> Square <span class="op">{</span></span>
+<span id="cb30-20"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb30-21"><a href=""></a>    <span class="dt">int</span> side<span class="op">;</span></span>
+<span id="cb30-22"><a href=""></a></span>
+<span id="cb30-23"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb30-24"><a href=""></a>    Square<span class="op">(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb30-25"><a href=""></a>        side <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb30-26"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb30-27"><a href=""></a></span>
+<span id="cb30-28"><a href=""></a>    <span class="kw">friend</span> <span class="kw">class</span> Rectangle<span class="op">;</span></span>
+<span id="cb30-29"><a href=""></a><span class="op">};</span></span>
+<span id="cb30-30"><a href=""></a></span>
+<span id="cb30-31"><a href=""></a><span class="dt">void</span> Rectangle<span class="op">::</span>convert<span class="op">(</span><span class="at">const</span> Square<span class="op">&amp;</span> square<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb30-32"><a href=""></a>    width <span class="op">=</span> square<span class="op">.</span>side<span class="op">;</span></span>
+<span id="cb30-33"><a href=""></a>    height <span class="op">=</span> square<span class="op">.</span>side<span class="op">;</span></span>
+<span id="cb30-34"><a href=""></a><span class="op">}</span></span>
+<span id="cb30-35"><a href=""></a></span>
+<span id="cb30-36"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb30-37"><a href=""></a>    Rectangle rect<span class="op">;</span></span>
+<span id="cb30-38"><a href=""></a>    Square square<span class="op">(</span><span class="dv">4</span><span class="op">);</span></span>
+<span id="cb30-39"><a href=""></a></span>
+<span id="cb30-40"><a href=""></a>    rect<span class="op">.</span>convert<span class="op">(</span>square<span class="op">);</span></span>
+<span id="cb30-41"><a href=""></a>    cout <span class="op">&lt;&lt;</span> rect<span class="op">.</span>area<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb30-42"><a href=""></a></span>
+<span id="cb30-43"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb30-44"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A friend class can access the private members of the class that grants friendship.</p>
 <!-- Slide 69 -->
 </section>
-<section id="compound-conditions-good-practices" class="slide level2">
-<h2>Compound Conditions: Good Practices</h2>
-<ul>
-<li>Combine conditions that belong to the same decision.</li>
-<li>Use parentheses when grouping improves readability.</li>
-<li>Put safety checks before expressions that depend on them.</li>
-</ul>
+<section id="friend-function-with-two-classes" class="slide level2">
+<h2>Friend Function with Two Classes</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb31-1"><a href=""></a><span class="kw">class</span> B<span class="op">;</span></span>
+<span id="cb31-2"><a href=""></a></span>
+<span id="cb31-3"><a href=""></a><span class="kw">class</span> A <span class="op">{</span></span>
+<span id="cb31-4"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb31-5"><a href=""></a>    <span class="dt">int</span> numA<span class="op">;</span></span>
+<span id="cb31-6"><a href=""></a></span>
+<span id="cb31-7"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb31-8"><a href=""></a>    A<span class="op">()</span> <span class="op">{</span> numA <span class="op">=</span> <span class="dv">12</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb31-9"><a href=""></a>    <span class="kw">friend</span> <span class="dt">int</span> add<span class="op">(</span><span class="at">const</span> A<span class="op">&amp;</span> left<span class="op">,</span> <span class="at">const</span> B<span class="op">&amp;</span> right<span class="op">);</span></span>
+<span id="cb31-10"><a href=""></a><span class="op">};</span></span>
+<span id="cb31-11"><a href=""></a></span>
+<span id="cb31-12"><a href=""></a><span class="kw">class</span> B <span class="op">{</span></span>
+<span id="cb31-13"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb31-14"><a href=""></a>    <span class="dt">int</span> numB<span class="op">;</span></span>
+<span id="cb31-15"><a href=""></a></span>
+<span id="cb31-16"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb31-17"><a href=""></a>    B<span class="op">()</span> <span class="op">{</span> numB <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb31-18"><a href=""></a>    <span class="kw">friend</span> <span class="dt">int</span> add<span class="op">(</span><span class="at">const</span> A<span class="op">&amp;</span> left<span class="op">,</span> <span class="at">const</span> B<span class="op">&amp;</span> right<span class="op">);</span></span>
+<span id="cb31-19"><a href=""></a><span class="op">};</span></span>
+<span id="cb31-20"><a href=""></a></span>
+<span id="cb31-21"><a href=""></a><span class="dt">int</span> add<span class="op">(</span><span class="at">const</span> A<span class="op">&amp;</span> left<span class="op">,</span> <span class="at">const</span> B<span class="op">&amp;</span> right<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb31-22"><a href=""></a>    <span class="cf">return</span> left<span class="op">.</span>numA <span class="op">+</span> right<span class="op">.</span>numB<span class="op">;</span></span>
+<span id="cb31-23"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Both classes grant the same stand-alone function access to their private data.</p>
 <!-- Slide 70 -->
 </section>
-<section id="compound-conditions-common-mistakes" class="slide level2">
-<h2>Compound Conditions: Common Mistakes</h2>
-<ul>
-<li>Using <code>&amp;&amp;</code> when either condition should be enough.</li>
-<li>Using <code>||</code> when both conditions are required.</li>
-<li>Forgetting that <code>!</code> reverses the condition that follows it.</li>
-</ul>
+<section id="friend-as-part-of-the-public-interface" class="slide level2">
+<h2>Friend as Part of the Public Interface</h2>
+<blockquote>
+<p>Don’t think of a friend as something outside of the class. Instead, think of it as part of the class’s public interface.</p>
+<p>— C++ FAQ</p>
+</blockquote>
+<p>A friend is still a deliberate part of the class design.</p>
 <!-- Slide 71 -->
 </section>
-<section id="compound-conditions-more-examples" class="slide level2">
-<h2>Compound Conditions: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb27-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>temperature <span class="op">&gt;=</span> <span class="dv">60</span> <span class="op">&amp;&amp;</span> temperature <span class="op">&lt;=</span> <span class="dv">80</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb27-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Comfortable"</span><span class="op">;</span></span>
-<span id="cb27-3"><a href=""></a><span class="op">}</span></span>
-<span id="cb27-4"><a href=""></a></span>
-<span id="cb27-5"><a href=""></a><span class="cf">if</span> <span class="op">(</span>choice <span class="op">==</span> <span class="ch">'Y'</span> <span class="op">||</span> choice <span class="op">==</span> <span class="ch">'y'</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb27-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Continuing"</span><span class="op">;</span></span>
-<span id="cb27-7"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="why-we-are-talking-about-this" class="slide level2">
+<h2>Why We Are Talking About This</h2>
+<p>Friend functions let a class participate naturally in operations whose left operand belongs to another class.</p>
+<p>They are especially useful for stream insertion and extraction.</p>
 <!-- Slide 72 -->
 </section>
-<section id="compound-conditions-practice-problems" class="slide level2">
-<h2>Compound Conditions: Practice Problems</h2>
-<ul>
-<li>Write a condition that accepts <code>Y</code> or <code>y</code>.</li>
-<li>Write a condition that requires a user to be logged in and active.</li>
-<li>Explain why short-circuit evaluation can protect a division.</li>
-</ul>
+<section id="stream-insertion" class="slide level2">
+<h2>Stream Insertion</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb32-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb32-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb32-3"><a href=""></a></span>
+<span id="cb32-4"><a href=""></a><span class="kw">class</span> RecType <span class="op">{</span></span>
+<span id="cb32-5"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb32-6"><a href=""></a>    <span class="dt">double</span> length<span class="op">;</span></span>
+<span id="cb32-7"><a href=""></a>    <span class="dt">double</span> width<span class="op">;</span></span>
+<span id="cb32-8"><a href=""></a></span>
+<span id="cb32-9"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb32-10"><a href=""></a>    RecType<span class="op">(</span><span class="dt">double</span> l <span class="op">=</span> <span class="fl">0.0</span><span class="op">,</span> <span class="dt">double</span> w <span class="op">=</span> <span class="fl">0.0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb32-11"><a href=""></a>        length <span class="op">=</span> l<span class="op">;</span></span>
+<span id="cb32-12"><a href=""></a>        width <span class="op">=</span> w<span class="op">;</span></span>
+<span id="cb32-13"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb32-14"><a href=""></a></span>
+<span id="cb32-15"><a href=""></a>    <span class="kw">friend</span> ostream<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">&lt;&lt;(</span>ostream<span class="op">&amp;</span> output<span class="op">,</span></span>
+<span id="cb32-16"><a href=""></a>                               <span class="at">const</span> RecType<span class="op">&amp;</span> rec<span class="op">);</span></span>
+<span id="cb32-17"><a href=""></a><span class="op">};</span></span>
+<span id="cb32-18"><a href=""></a></span>
+<span id="cb32-19"><a href=""></a>ostream<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">&lt;&lt;(</span>ostream<span class="op">&amp;</span> output<span class="op">,</span> <span class="at">const</span> RecType<span class="op">&amp;</span> rec<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb32-20"><a href=""></a>    output <span class="op">&lt;&lt;</span> <span class="st">"Length = "</span> <span class="op">&lt;&lt;</span> rec<span class="op">.</span>length</span>
+<span id="cb32-21"><a href=""></a>           <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">Width = "</span> <span class="op">&lt;&lt;</span> rec<span class="op">.</span>width<span class="op">;</span></span>
+<span id="cb32-22"><a href=""></a>    <span class="cf">return</span> output<span class="op">;</span></span>
+<span id="cb32-23"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The overload returns the stream by reference so insertion can continue with another value.</p>
 <!-- Slide 73 -->
 </section>
-<section id="compound-conditions-ai-search-terms" class="slide level2">
-<h2>Compound Conditions: AI Search Terms</h2>
-<ul>
-<li>C++ logical operators</li>
-<li>C++ AND OR NOT operators</li>
-<li>C++ short circuit evaluation</li>
-<li>C++ compound boolean expressions</li>
-</ul>
+<section id="stream-insertion-and-extraction" class="slide level2">
+<h2>Stream Insertion and Extraction</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb33-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb33-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb33-3"><a href=""></a></span>
+<span id="cb33-4"><a href=""></a><span class="kw">class</span> Complex <span class="op">{</span></span>
+<span id="cb33-5"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb33-6"><a href=""></a>    <span class="dt">int</span> real<span class="op">;</span></span>
+<span id="cb33-7"><a href=""></a>    <span class="dt">int</span> imag<span class="op">;</span></span>
+<span id="cb33-8"><a href=""></a></span>
+<span id="cb33-9"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb33-10"><a href=""></a>    Complex<span class="op">(</span><span class="dt">int</span> r <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb33-11"><a href=""></a>        real <span class="op">=</span> r<span class="op">;</span></span>
+<span id="cb33-12"><a href=""></a>        imag <span class="op">=</span> i<span class="op">;</span></span>
+<span id="cb33-13"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb33-14"><a href=""></a></span>
+<span id="cb33-15"><a href=""></a>    <span class="kw">friend</span> ostream<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">&lt;&lt;(</span>ostream<span class="op">&amp;</span> output<span class="op">,</span></span>
+<span id="cb33-16"><a href=""></a>                               <span class="at">const</span> Complex<span class="op">&amp;</span> value<span class="op">);</span></span>
+<span id="cb33-17"><a href=""></a>    <span class="kw">friend</span> istream<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">&gt;&gt;(</span>istream<span class="op">&amp;</span> input<span class="op">,</span></span>
+<span id="cb33-18"><a href=""></a>                               Complex<span class="op">&amp;</span> value<span class="op">);</span></span>
+<span id="cb33-19"><a href=""></a><span class="op">};</span></span>
+<span id="cb33-20"><a href=""></a></span>
+<span id="cb33-21"><a href=""></a>ostream<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">&lt;&lt;(</span>ostream<span class="op">&amp;</span> output<span class="op">,</span> <span class="at">const</span> Complex<span class="op">&amp;</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb33-22"><a href=""></a>    output <span class="op">&lt;&lt;</span> value<span class="op">.</span>real <span class="op">&lt;&lt;</span> <span class="st">"+"</span> <span class="op">&lt;&lt;</span> value<span class="op">.</span>imag <span class="op">&lt;&lt;</span> <span class="st">"i"</span><span class="op">;</span></span>
+<span id="cb33-23"><a href=""></a>    <span class="cf">return</span> output<span class="op">;</span></span>
+<span id="cb33-24"><a href=""></a><span class="op">}</span></span>
+<span id="cb33-25"><a href=""></a></span>
+<span id="cb33-26"><a href=""></a>istream<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">&gt;&gt;(</span>istream<span class="op">&amp;</span> input<span class="op">,</span> Complex<span class="op">&amp;</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb33-27"><a href=""></a>    input <span class="op">&gt;&gt;</span> value<span class="op">.</span>real <span class="op">&gt;&gt;</span> value<span class="op">.</span>imag<span class="op">;</span></span>
+<span id="cb33-28"><a href=""></a>    <span class="cf">return</span> input<span class="op">;</span></span>
+<span id="cb33-29"><a href=""></a><span class="op">}</span></span>
+<span id="cb33-30"><a href=""></a></span>
+<span id="cb33-31"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb33-32"><a href=""></a>    Complex value<span class="op">;</span></span>
+<span id="cb33-33"><a href=""></a>    cin <span class="op">&gt;&gt;</span> value<span class="op">;</span></span>
+<span id="cb33-34"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"The complex object is "</span> <span class="op">&lt;&lt;</span> value <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb33-35"><a href=""></a></span>
+<span id="cb33-36"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb33-37"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The input and output operators both remain stand-alone functions and both are friends of <code>Complex</code>.</p>
 <!-- Slide 74 -->
-</section>
-<section id="compound-conditions-questions-for-reflection" class="slide level2">
-<h2>Compound Conditions: Questions for Reflection</h2>
-<ul>
-<li>Do both smaller conditions need to be true?</li>
-<li>Is either condition enough?</li>
-<li>Does the second condition depend on the first being safe?</li>
-</ul>
+</section></section>
+<section>
+<section id="programming-exercise" class="title-slide slide level1 center">
+<h1>Programming Exercise</h1>
+<p>Activity</p>
 <!-- Slide 75 -->
 </section>
-<section id="range-checking-good-practices" class="slide level2">
-<h2>Range Checking: Good Practices</h2>
+<section id="exercise-goals" class="slide level2">
+<h2>Exercise Goals</h2>
 <ul>
-<li>Decide whether endpoints should count before writing the condition.</li>
-<li>Use <code>&amp;&amp;</code> for inside-range checks.</li>
-<li>Use <code>||</code> for outside-range checks.</li>
+<li>Increase topic mastery.</li>
+<li>Construct knowledge.</li>
+<li>Give you data to evaluate how well you are learning.</li>
 </ul>
 <!-- Slide 76 -->
 </section>
-<section id="range-checking-common-mistakes" class="slide level2">
-<h2>Range Checking: Common Mistakes</h2>
+<section id="programming-exercise-1" class="slide level2">
+<h2>Programming Exercise</h2>
+<p>Create a <code>Point2D</code> class that represents a point in a two-dimensional plane with <code>x</code> and <code>y</code> coordinates.</p>
 <ul>
-<li>Writing <code>0 &lt;= score &lt;= 100</code> as if C++ understood chained comparisons.</li>
-<li>Using <code>||</code> for inside-range checks.</li>
-<li>Using <code>&amp;&amp;</code> for outside-range checks.</li>
+<li>Overload <code>&lt;&lt;</code> to display the point as <code>(x, y)</code>.</li>
+<li>Overload <code>&gt;&gt;</code> to read the point’s coordinates.</li>
+<li>Implement both overloaded operators as friend functions.</li>
 </ul>
 <!-- Slide 77 -->
-</section>
-<section id="range-checking-more-examples" class="slide level2">
-<h2>Range Checking: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb28-1"><a href=""></a><span class="cf">if</span> <span class="op">(</span>quantity <span class="op">&gt;=</span> <span class="dv">1</span> <span class="op">&amp;&amp;</span> quantity <span class="op">&lt;=</span> <span class="dv">10</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb28-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Allowed quantity"</span><span class="op">;</span></span>
-<span id="cb28-3"><a href=""></a><span class="op">}</span></span>
-<span id="cb28-4"><a href=""></a></span>
-<span id="cb28-5"><a href=""></a><span class="cf">if</span> <span class="op">(</span>temperature <span class="op">&lt;</span> <span class="dv">32</span> <span class="op">||</span> temperature <span class="op">&gt;</span> <span class="dv">100</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb28-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Outside target range"</span><span class="op">;</span></span>
-<span id="cb28-7"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 78 -->
-</section>
-<section id="range-checking-practice-problems" class="slide level2">
-<h2>Range Checking: Practice Problems</h2>
-<ul>
-<li>Write a valid score check for <code>0</code> through <code>100</code>.</li>
-<li>Write an invalid score check for values outside <code>0</code> through <code>100</code>.</li>
-<li>Decide whether <code>100</code> should count as valid in a percent score.</li>
-</ul>
-<!-- Slide 79 -->
-</section>
-<section id="range-checking-ai-search-terms" class="slide level2">
-<h2>Range Checking: AI Search Terms</h2>
-<ul>
-<li>C++ range checking</li>
-<li>C++ validate number between two values</li>
-<li>C++ inclusive exclusive bounds</li>
-<li>C++ chained comparison error</li>
-</ul>
-<!-- Slide 80 -->
-</section>
-<section id="range-checking-questions-for-reflection" class="slide level2">
-<h2>Range Checking: Questions for Reflection</h2>
-<ul>
-<li>What is the lowest allowed value?</li>
-<li>What is the highest allowed value?</li>
-<li>Are the endpoints inside or outside the valid range?</li>
-</ul>
-<!-- Slide 81 -->
-
 </section></section>
+<section id="whats-this-section-about" class="title-slide slide level1 center">
+<h1>What’s This Section About?</h1>
+<aside class="notes">
+<p>Transition from the lecture content to the programming activity.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 78 -->
+
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
