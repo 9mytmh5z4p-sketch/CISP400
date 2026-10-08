@@ -1,0 +1,232 @@
+<!-- Topic 1: Operator Overloading -->
+<!-- Slides 10–15 -->
+
+# Operator Overloading
+<!-- Slide 10 -->
+
+## How Can a Class Define Its Own Arithmetic?
+
+- C++ already gives arithmetic operators familiar meanings for built-in values.
+- An operator method lets a class define what those symbols mean for its objects.
+
+::: notes
+Slides 10–15
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## The `operator+` Method
+
+::: {.columns}
+::: {.column width="60%"}
+<div style="font-size:50%">
+
+~~~cpp
+// overloadPlus.cpp
+#include <iostream>
+using namespace std;
+
+class Point2D {
+private:
+    int x;
+    int y;
+
+public:
+    Point2D(int xValue = 0, int yValue = 0);
+    Point2D operator+(const Point2D& other) const;
+    void print() const;
+};
+
+Point2D::Point2D(int xValue, int yValue) {
+    x = xValue;
+    y = yValue;
+}
+
+Point2D Point2D::operator+(const Point2D& other) const {
+    return Point2D(x + other.x, y + other.y);
+}
+
+void Point2D::print() const {
+    cout << "(" << x << ", " << y << ")" << endl;
+}
+
+int main() {
+    Point2D first(2, 3);
+    Point2D second(4, 1);
+    Point2D total = first + second;
+
+    total.print();
+
+    return 0;
+}
+~~~
+
+</div>
+:::
+::: {.column width="40%"}
+**Output**
+
+~~~text
+(6, 4)
+~~~
+:::
+:::
+
+::: notes
+Source file: cpp/overloadPlus.cpp
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## The `operator-` Method
+
+::: {.columns}
+::: {.column width="60%"}
+<div style="font-size:50%">
+
+~~~cpp
+// overloadminus.cpp
+#include <iostream>
+using namespace std;
+
+class Point2D {
+private:
+    int x;
+    int y;
+
+public:
+    Point2D(int xValue = 0, int yValue = 0);
+    Point2D operator-(const Point2D& other) const;
+    void print() const;
+};
+
+Point2D::Point2D(int xValue, int yValue) {
+    x = xValue;
+    y = yValue;
+}
+
+Point2D Point2D::operator-(const Point2D& other) const {
+    return Point2D(x - other.x, y - other.y);
+}
+
+void Point2D::print() const {
+    cout << "(" << x << ", " << y << ")" << endl;
+}
+
+int main() {
+    Point2D first(8, 5);
+    Point2D second(3, 7);
+    Point2D difference = first - second;
+
+    difference.print();
+
+    return 0;
+}
+~~~
+
+</div>
+:::
+::: {.column width="40%"}
+**Output**
+
+~~~text
+(5, -2)
+~~~
+:::
+:::
+
+::: notes
+Source file: cpp/overloadminus.cpp
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## Prefix and Postfix `operator++`
+
+::: {.columns}
+::: {.column width="60%"}
+<div style="font-size:50%">
+
+~~~cpp
+// demoPrePost.cpp
+#include <iostream>
+using namespace std;
+
+class Counter {
+private:
+    int value;
+
+public:
+    Counter(int start = 0);
+    Counter& operator++();
+    Counter operator++(int);
+    void print() const;
+};
+
+Counter::Counter(int start) {
+    value = start;
+}
+
+Counter& Counter::operator++() {
+    ++value;
+    return *this;
+}
+
+Counter Counter::operator++(int) {
+    Counter original = *this;
+    ++value;
+    return original;
+}
+
+void Counter::print() const {
+    cout << value << endl;
+}
+
+int main() {
+    Counter count(5);
+    Counter prefixResult = ++count;
+    prefixResult.print();
+    count.print();
+
+    Counter postfixResult = count++;
+    postfixResult.print();
+    count.print();
+
+    return 0;
+}
+~~~
+
+</div>
+:::
+::: {.column width="40%"}
+**Output**
+
+~~~text
+6
+6
+6
+7
+~~~
+:::
+:::
+
+::: notes
+Source file: cpp/demoPrePost.cpp
+:::
+
+<!-- Slide 14 -->
+
+---
+
+## Operator Methods Combine Object State
+
+- `operator+` and `operator-` return new objects built from two operands.
+- Prefix `operator++` changes the object before returning it. Postfix `operator++` returns the original value before changing the object.
+
+<!-- Slide 15 -->

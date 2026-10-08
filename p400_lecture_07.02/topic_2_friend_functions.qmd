@@ -1,0 +1,151 @@
+<!-- Topic 2: Friend Functions -->
+<!-- Slides 16–21 -->
+
+# Friend Functions
+<!-- Slide 16 -->
+
+## What Does `friend` Change?
+
+- A friend function is not a member of the class, but the class grants it access to private data.
+- The declaration inside the class controls which outside functions receive that access.
+
+::: notes
+Slides 16–21
+Prerequisite check: students should recognize private members, free functions, and function prototypes; the slide provides a brief review rather than reteaching them.
+Progression map: this topic moves from operator methods to controlled non-member access and prepares students for stream operators.
+:::
+
+<!-- Slide 17 -->
+
+---
+
+## A Friend Function Demonstration
+
+::: {.columns}
+::: {.column width="60%"}
+<div style="font-size:50%">
+
+~~~cpp
+// demoFriend.cpp
+#include <iostream>
+using namespace std;
+
+class Temperature; // forward declaration
+
+void showTemperature(const Temperature& value);
+
+class Temperature {
+    friend void showTemperature(const Temperature& value);
+
+private:
+    double celsius;
+
+public:
+    Temperature(double value = 0.0);
+};
+
+Temperature::Temperature(double value) {
+    celsius = value;
+}
+
+int main() {
+    Temperature reading(21.5);
+    showTemperature(reading);
+    return 0;
+}
+
+void showTemperature(const Temperature& value) {
+    cout << value.celsius << " degrees Celsius" << endl;
+}
+~~~
+
+</div>
+:::
+::: {.column width="40%"}
+**Output**
+
+~~~text
+21.5 degrees Celsius
+~~~
+:::
+:::
+
+::: notes
+Source file: cpp/demoFriend.cpp
+:::
+
+<!-- Slide 18 -->
+
+---
+
+## A Friend Function Without a Forward Class Declaration
+
+::: {.columns}
+::: {.column width="60%"}
+<div style="font-size:50%">
+
+~~~cpp
+// demoFriend2.cpp
+#include <iostream>
+using namespace std;
+
+class Temperature {
+    friend void showTemperature(const Temperature& value);
+
+private:
+    double celsius;
+
+public:
+    Temperature(double value = 0.0);
+};
+
+Temperature::Temperature(double value) {
+    celsius = value;
+}
+
+void showTemperature(const Temperature& value);
+
+int main() {
+    Temperature reading(21.5);
+    showTemperature(reading);
+    return 0;
+}
+
+void showTemperature(const Temperature& value) {
+    cout << value.celsius << " degrees Celsius" << endl;
+}
+~~~
+
+</div>
+:::
+::: {.column width="40%"}
+**Output**
+
+~~~text
+21.5 degrees Celsius
+~~~
+:::
+:::
+
+::: notes
+Source file: cpp/demoFriend2.cpp
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## The Class Controls Friendship
+
+- Friendship is granted by the class that owns the private data.
+- A friend function can read or change private members, but it does not become a member function.
+
+<!-- Slide 20 -->
+
+---
+
+## Friendship Is Selective
+
+The class names the specific function that receives access. This controlled access is useful when a non-member interface must work with private object state.
+
+<!-- Slide 21 -->

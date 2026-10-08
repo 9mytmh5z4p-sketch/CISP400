@@ -1,0 +1,155 @@
+<!-- Topic 3: Stream Operators -->
+<!-- Slides 22–26 -->
+
+# Stream Operators
+<!-- Slide 22 -->
+
+## How Can a Class Work with `cout` and `cin`?
+
+Stream operators let a class define how its objects are inserted into output and extracted from input. The operator functions are free functions because the stream object appears on the left side of each expression.
+
+::: notes
+Slides 22–26
+Prerequisite check: students should recognize friend functions, references, `cout`, and `cin`; the demonstrations connect those ideas rather than introduce new stream syntax in isolation.
+Progression map: this topic applies controlled non-member access to familiar input and output expressions.
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## `operator<<` Without a Friend
+
+::: {.columns}
+::: {.column width="60%"}
+<div style="font-size:50%">
+
+~~~cpp
+// demoStInsertNoFriend.cpp
+#include <iostream>
+using namespace std;
+
+class Rectangle {
+private:
+    int width;
+
+public:
+    Rectangle(int widthValue = 0, int heightValue = 0);
+    int height;
+};
+
+ostream& operator<<(ostream& output, const Rectangle& rectangle);
+
+Rectangle::Rectangle(int widthValue, int heightValue) {
+    width = widthValue;
+    height = heightValue;
+}
+
+int main() {
+    Rectangle room(8, 5);
+
+    cout << room << endl;
+
+    return 0;
+}
+
+ostream& operator<<(ostream& output, const Rectangle& rectangle) {
+    // output << rectangle.width << " x " << rectangle.height;
+    // The line above would fail because width is private.
+    output << "height = " << rectangle.height;
+    return output;
+}
+~~~
+
+</div>
+:::
+::: {.column width="40%"}
+**Output**
+
+~~~text
+height = 5
+~~~
+:::
+:::
+
+::: notes
+Source file: cpp/demoStInsertNoFriend.cpp
+:::
+
+<!-- Slide 24 -->
+
+---
+
+## `operator>>` for `cin`
+
+::: {.columns}
+::: {.column width="60%"}
+<div style="font-size:50%">
+
+~~~cpp
+// demoStExtract.cpp
+#include <iostream>
+using namespace std;
+
+class Rectangle;
+
+istream& operator>>(istream& input, Rectangle& rectangle);
+
+class Rectangle {
+    friend istream& operator>>(istream& input,
+                               Rectangle& rectangle);
+private:
+    int width;
+    int height;
+
+public:
+    void print() const;
+};
+
+void Rectangle::print() const {
+    cout << "Rectangle: " << width << " x " << height << endl;
+}
+
+int main() {
+    Rectangle room;
+
+    cout << "Enter width and height: ";
+    cin >> room;
+
+    room.print();
+
+    return 0;
+}
+
+istream& operator>>(istream& input, Rectangle& rectangle) {
+    input >> rectangle.width >> rectangle.height;
+    return input;
+}
+~~~
+
+</div>
+:::
+::: {.column width="40%"}
+**Sample run**
+
+~~~text
+Enter width and height: 8 5
+Rectangle: 8 x 5
+~~~
+:::
+:::
+
+::: notes
+Source file: cpp/demoStExtract.cpp
+:::
+
+<!-- Slide 25 -->
+
+---
+
+## Stream Operators Return the Stream
+
+- `operator<<` returns an `ostream&`, and `operator>>` returns an `istream&`.
+- Returning the stream preserves normal stream behavior and allows expressions to be chained.
+
+<!-- Slide 26 -->

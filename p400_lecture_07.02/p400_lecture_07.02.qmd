@@ -1,6 +1,117 @@
-{{< include topic_course_framing.qmd >}}
-{{< include topic_operator_overloading.qmd >}}
-{{< include topic_friend_functions.qmd >}}
-{{< include topic_code_together.qmd >}}
-{{< include topic_wrap_up.qmd >}}
+<!-- Course framing is part of the stitched deck, not an instructional topic. -->
 
+# Last Time
+
+::: {.incremental}
++ **The this Pointer and Constant Member Functions**
++ **Static Members**
++ **Operator Overloading**
++ **Friends of Classes**
+:::
+
+::: notes
+Non-activity topics from p400_lecture_07.01.
+:::
+
+<!-- Slide 1 -->
+
+# Course Framing
+
+![](images/source_pages/slide-01.png){width="100%" fig-alt="CISP 400"}
+
+::: notes
+Slides 2–9
+Source slide 1 from the authoritative PDF.
+:::
+
+<!-- Slide 2 -->
+
+---
+
+## <span style="display:none">Source Slide 2</span>
+
+![](images/source_pages/slide-02.png){width="100%" fig-alt="Start-Stop-Continue"}
+
+<!-- Slide 3 -->
+
+---
+
+## <span style="display:none">Source Slide 3</span>
+
+![](images/source_pages/slide-03.png){width="100%" fig-alt="Exercise Goals"}
+
+<!-- Slide 4 -->
+
+---
+
+## <span style="display:none">Source Slide 4</span>
+
+![](images/source_pages/slide-04.png){width="100%" fig-alt="Stop-Start-Continue"}
+
+<!-- Slide 5 -->
+
+---
+
+## <span style="display:none">Source Slide 5</span>
+
+![](images/source_pages/slide-05.png){width="100%" fig-alt="Chapter 11"}
+
+<!-- Slide 6 -->
+
+---
+
+## <span style="display:none">Source Slide 6</span>
+
+![](images/source_pages/slide-06.png){width="100%" fig-alt="Ch 11 - More OOP"}
+
+<!-- Slide 7 -->
+
+---
+
+## <span style="display:none">Source Slide 7</span>
+
+![](images/source_pages/slide-07.png){width="100%" fig-alt="Ch 11 - More OOP"}
+
+<!-- Slide 8 -->
+
+---
+
+## <span style="display:none">Source Slide 8</span>
+
+![](images/source_pages/slide-08.png){width="100%" fig-alt="Theme for Today"}
+
+<!-- Slide 9 -->
+
+{{< include topic_1_operator_overloading.qmd >}}
+{{< include topic_2_friend_functions.qmd >}}
+{{< include topic_3_stream_operators.qmd >}}
+{{< include topic_4_advanced_friendship.qmd >}}
+
+# Code Together
+
+![](images/source_pages/slide-57.png){width="100%" fig-alt="Code Together"}
+
+::: notes
+Slides 33–35
+Source slide 57 from the authoritative PDF.
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## <span style="display:none">Source Slide 58</span>
+
+![](images/source_pages/slide-58.png){width="100%" fig-alt="Code a rectangle class"}
+
+<!-- Slide 34 -->
+
+---
+
+## <span style="display:none">Source Slide 59</span>
+
+![](images/source_pages/slide-59.png){width="100%" fig-alt="Key Takeaway"}
+
+<!-- Slide 35 -->
+
+{{< include topic_wrap_up.qmd >}}

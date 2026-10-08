@@ -206,18 +206,20 @@ Dr.&nbsp;Caleb Fowler
 </div>
 
 </section>
+<section class="slide level2">
+
+<!-- Course framing is part of the stitched deck, not an instructional topic. -->
+</section>
 <section id="last-time" class="title-slide slide level1 center">
 <h1>Last Time</h1>
 <ul>
-<li class="fragment"><strong>Conditional Statements</strong></li>
-<li class="fragment"><strong>The Conditional Operator</strong></li>
-<li class="fragment"><strong>The switch Statement</strong></li>
-<li class="fragment"><strong>Nested if Statements</strong></li>
-<li class="fragment"><strong>Compound Conditions</strong></li>
-<li class="fragment"><strong>Range Checking</strong></li>
+<li class="fragment"><strong>The this Pointer and Constant Member Functions</strong></li>
+<li class="fragment"><strong>Static Members</strong></li>
+<li class="fragment"><strong>Operator Overloading</strong></li>
+<li class="fragment"><strong>Friends of Classes</strong></li>
 </ul>
 <aside class="notes">
-<p>Recall that conditionals used true/false questions to choose whether code should run. Today uses the same condition idea, but the control flow can return to an earlier point and repeat.</p>
+<p>Non-activity topics from p400_lecture_07.01.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -232,18 +234,12 @@ Dr.&nbsp;Caleb Fowler
 <!-- Slide 1 -->
 </section>
 
-<section id="todays-agenda" class="title-slide slide level1 center">
-<h1>Today’s Agenda</h1>
-<ul>
-<li>Why Iteration Matters</li>
-<li>Loop Anatomy and Program Control</li>
-<li>The while Loop</li>
-<li>The do-while Loop</li>
-<li>The for Loop</li>
-<li>Choosing a Loop</li>
-</ul>
-<aside class="notes">
+<section>
+<section id="course-framing" class="title-slide slide level1 center">
+<h1>Course Framing</h1>
 
+<img data-src="images/source_pages/slide-01.png" style="width:100.0%" alt="CISP 400" class="r-stretch"><aside class="notes">
+<p>Slides 2–9 Source slide 1 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -256,1220 +252,843 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 2 -->
-<!-- Topic 1: Why Iteration Matters -->
-<!-- Slides 3-8 -->
 </section>
+<section id="source-slide-2" class="slide level2">
+<h2><span style="display:none">Source Slide 2</span></h2>
 
-<section>
-<section id="why-iteration-matters" class="title-slide slide level1 center">
-<h1>Why Iteration Matters</h1>
 <!-- Slide 3 -->
-</section>
-<section id="why-repeat-work" class="slide level2 smaller">
-<h2>Why Repeat Work?</h2>
-<ul>
-<li>How do we tell a program to do the same kind of work more than once?</li>
-<li>Iteration is controlled repetition.</li>
-</ul>
-<aside class="notes">
-<p>Slides 3-8</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<img data-src="images/source_pages/slide-02.png" style="width:100.0%" alt="Start-Stop-Continue" class="r-stretch"></section>
+<section id="source-slide-3" class="slide level2">
+<h2><span style="display:none">Source Slide 3</span></h2>
+
 <!-- Slide 4 -->
-</section>
-<section id="programming-vs.-coding" class="slide level2">
-<h2>Programming vs.&nbsp;Coding</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Design Question</th>
-<th>Syntax Question</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>What work repeats?</td>
-<td>Which loop construct expresses it?</td>
-</tr>
-<tr class="even">
-<td>What changes each time?</td>
-<td>Where does the update happen?</td>
-</tr>
-<tr class="odd">
-<td>When should repetition stop?</td>
-<td>Where is the condition checked?</td>
-</tr>
-</tbody>
-</table>
+<img data-src="images/source_pages/slide-03.png" style="width:100.0%" alt="Exercise Goals" class="r-stretch"></section>
+<section id="source-slide-4" class="slide level2">
+<h2><span style="display:none">Source Slide 4</span></h2>
+
 <!-- Slide 5 -->
-</section>
-<section id="iteration-in-ipo" class="slide level2">
-<h2>Iteration in IPO</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>IPO Part</th>
-<th>Loop Connection</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Input</td>
-<td>New data may arrive each pass</td>
-</tr>
-<tr class="even">
-<td>Process</td>
-<td>The repeated work usually lives here</td>
-</tr>
-<tr class="odd">
-<td>Output</td>
-<td>Results may appear once per pass or after the loop</td>
-</tr>
-</tbody>
-</table>
+<img data-src="images/source_pages/slide-04.png" style="width:100.0%" alt="Stop-Start-Continue" class="r-stretch"></section>
+<section id="source-slide-5" class="slide level2">
+<h2><span style="display:none">Source Slide 5</span></h2>
+
 <!-- Slide 6 -->
-</section>
-<section id="same-work-new-data" class="slide level2">
-<h2>Same Work, New Data</h2>
-<ul>
-<li>Each pass through a loop should have a purpose.</li>
-<li>The repeated work may use a new input value, a new counter value, or a new program state.</li>
-<li>A loop is useful when the shape of the work stays the same.</li>
-</ul>
+<img data-src="images/source_pages/slide-05.png" style="width:100.0%" alt="Chapter 11" class="r-stretch"></section>
+<section id="source-slide-6" class="slide level2">
+<h2><span style="display:none">Source Slide 6</span></h2>
+
 <!-- Slide 7 -->
-</section>
-<section id="summary" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>Iteration repeats useful work under control of a condition.</li>
-<li>The design question comes first: what repeats, what changes, and when should it stop?</li>
-</ul>
+<img data-src="images/source_pages/slide-06.png" style="width:100.0%" alt="Ch 11 - More OOP" class="r-stretch"></section>
+<section id="source-slide-7" class="slide level2">
+<h2><span style="display:none">Source Slide 7</span></h2>
+
 <!-- Slide 8 -->
-<!-- Topic 2: Loop Anatomy and Program Control -->
-<!-- Slides 9-19 -->
-</section></section>
-<section>
-<section id="loop-anatomy-and-program-control" class="title-slide slide level1 center">
-<h1>Loop Anatomy and Program Control</h1>
+<img data-src="images/source_pages/slide-07.png" style="width:100.0%" alt="Ch 11 - More OOP" class="r-stretch"></section>
+<section id="source-slide-8" class="slide level2">
+<h2><span style="display:none">Source Slide 8</span></h2>
+
 <!-- Slide 9 -->
-</section>
-<section id="a-loop-you-already-know" class="slide level2 smaller">
-<h2>A Loop You Already Know</h2>
-<ul>
-<li>A range-based <code>for</code> loop says: do this once for each item in a collection.</li>
-<li>You have already used loops when reading or displaying every value in a vector.</li>
-</ul>
-<aside class="notes">
-<p>Slides 9-19</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<!-- Topic 1: Operator Overloading -->
+<!-- Slides 10–15 -->
+<img data-src="images/source_pages/slide-08.png" style="width:100.0%" alt="Theme for Today" class="r-stretch"></section></section>
+<section>
+<section id="operator-overloading" class="title-slide slide level1 center">
+<h1>Operator Overloading</h1>
 <!-- Slide 10 -->
 </section>
-<section id="what-for-each-hides" class="slide level2">
-<h2>What for-each Hides</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb1-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> score <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb1-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The loop visits each element, but the stopping condition and movement through the collection are handled for you.</p>
+<section id="how-can-a-class-define-its-own-arithmetic" class="slide level2">
+<h2>How Can a Class Define Its Own Arithmetic?</h2>
+<ul>
+<li>C++ already gives arithmetic operators familiar meanings for built-in values.</li>
+<li>An operator method lets a class define what those symbols mean for its objects.</li>
+</ul>
+<aside class="notes">
+<p>Slides 10–15</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 11 -->
 </section>
-<section id="that-sounds-like-an-if-statement" class="slide level2">
-<h2>That Sounds Like an if Statement</h2>
-<ul>
-<li>Both <code>if</code> statements and loops use a condition.</li>
-<li>The condition decides whether a block should run.</li>
-<li>The difference is what happens after the block finishes.</li>
-</ul>
+<section id="the-operator-method" class="slide level2">
+<h2>The <code>operator+</code> Method</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size:50%">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a><span class="co">// overloadPlus.cpp</span></span>
+<span id="cb1-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb1-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb1-4"><a href=""></a></span>
+<span id="cb1-5"><a href=""></a><span class="kw">class</span> Point2D <span class="op">{</span></span>
+<span id="cb1-6"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb1-7"><a href=""></a>    <span class="dt">int</span> x<span class="op">;</span></span>
+<span id="cb1-8"><a href=""></a>    <span class="dt">int</span> y<span class="op">;</span></span>
+<span id="cb1-9"><a href=""></a></span>
+<span id="cb1-10"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb1-11"><a href=""></a>    Point2D<span class="op">(</span><span class="dt">int</span> xValue <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">int</span> yValue <span class="op">=</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb1-12"><a href=""></a>    Point2D <span class="kw">operator</span><span class="op">+(</span><span class="at">const</span> Point2D<span class="op">&amp;</span> other<span class="op">)</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb1-13"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb1-14"><a href=""></a><span class="op">};</span></span>
+<span id="cb1-15"><a href=""></a></span>
+<span id="cb1-16"><a href=""></a>Point2D<span class="op">::</span>Point2D<span class="op">(</span><span class="dt">int</span> xValue<span class="op">,</span> <span class="dt">int</span> yValue<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-17"><a href=""></a>    x <span class="op">=</span> xValue<span class="op">;</span></span>
+<span id="cb1-18"><a href=""></a>    y <span class="op">=</span> yValue<span class="op">;</span></span>
+<span id="cb1-19"><a href=""></a><span class="op">}</span></span>
+<span id="cb1-20"><a href=""></a></span>
+<span id="cb1-21"><a href=""></a>Point2D Point2D<span class="op">::</span><span class="kw">operator</span><span class="op">+(</span><span class="at">const</span> Point2D<span class="op">&amp;</span> other<span class="op">)</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb1-22"><a href=""></a>    <span class="cf">return</span> Point2D<span class="op">(</span>x <span class="op">+</span> other<span class="op">.</span>x<span class="op">,</span> y <span class="op">+</span> other<span class="op">.</span>y<span class="op">);</span></span>
+<span id="cb1-23"><a href=""></a><span class="op">}</span></span>
+<span id="cb1-24"><a href=""></a></span>
+<span id="cb1-25"><a href=""></a><span class="dt">void</span> Point2D<span class="op">::</span>print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb1-26"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"("</span> <span class="op">&lt;&lt;</span> x <span class="op">&lt;&lt;</span> <span class="st">", "</span> <span class="op">&lt;&lt;</span> y <span class="op">&lt;&lt;</span> <span class="st">")"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb1-27"><a href=""></a><span class="op">}</span></span>
+<span id="cb1-28"><a href=""></a></span>
+<span id="cb1-29"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-30"><a href=""></a>    Point2D first<span class="op">(</span><span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">);</span></span>
+<span id="cb1-31"><a href=""></a>    Point2D second<span class="op">(</span><span class="dv">4</span><span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb1-32"><a href=""></a>    Point2D total <span class="op">=</span> first <span class="op">+</span> second<span class="op">;</span></span>
+<span id="cb1-33"><a href=""></a></span>
+<span id="cb1-34"><a href=""></a>    total<span class="op">.</span>print<span class="op">();</span></span>
+<span id="cb1-35"><a href=""></a></span>
+<span id="cb1-36"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-37"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><strong>Output</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href=""></a>(6, 4)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<aside class="notes">
+<p>Source file: cpp/overloadPlus.cpp</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 12 -->
 </section>
-<section id="the-difference-is-control-flow" class="slide level2">
-<h2>The Difference Is Control Flow</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Structure</th>
-<th>After the Block</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>if</code></td>
-<td>Continue to the next statement</td>
-</tr>
-<tr class="even">
-<td>Loop</td>
-<td>Return to the loop condition or end the loop</td>
-</tr>
-</tbody>
-</table>
+<section id="the-operator--method" class="slide level2">
+<h2>The <code>operator-</code> Method</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size:50%">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a><span class="co">// overloadminus.cpp</span></span>
+<span id="cb3-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb3-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb3-4"><a href=""></a></span>
+<span id="cb3-5"><a href=""></a><span class="kw">class</span> Point2D <span class="op">{</span></span>
+<span id="cb3-6"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb3-7"><a href=""></a>    <span class="dt">int</span> x<span class="op">;</span></span>
+<span id="cb3-8"><a href=""></a>    <span class="dt">int</span> y<span class="op">;</span></span>
+<span id="cb3-9"><a href=""></a></span>
+<span id="cb3-10"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb3-11"><a href=""></a>    Point2D<span class="op">(</span><span class="dt">int</span> xValue <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">int</span> yValue <span class="op">=</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb3-12"><a href=""></a>    Point2D <span class="kw">operator</span><span class="op">-(</span><span class="at">const</span> Point2D<span class="op">&amp;</span> other<span class="op">)</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb3-13"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb3-14"><a href=""></a><span class="op">};</span></span>
+<span id="cb3-15"><a href=""></a></span>
+<span id="cb3-16"><a href=""></a>Point2D<span class="op">::</span>Point2D<span class="op">(</span><span class="dt">int</span> xValue<span class="op">,</span> <span class="dt">int</span> yValue<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-17"><a href=""></a>    x <span class="op">=</span> xValue<span class="op">;</span></span>
+<span id="cb3-18"><a href=""></a>    y <span class="op">=</span> yValue<span class="op">;</span></span>
+<span id="cb3-19"><a href=""></a><span class="op">}</span></span>
+<span id="cb3-20"><a href=""></a></span>
+<span id="cb3-21"><a href=""></a>Point2D Point2D<span class="op">::</span><span class="kw">operator</span><span class="op">-(</span><span class="at">const</span> Point2D<span class="op">&amp;</span> other<span class="op">)</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb3-22"><a href=""></a>    <span class="cf">return</span> Point2D<span class="op">(</span>x <span class="op">-</span> other<span class="op">.</span>x<span class="op">,</span> y <span class="op">-</span> other<span class="op">.</span>y<span class="op">);</span></span>
+<span id="cb3-23"><a href=""></a><span class="op">}</span></span>
+<span id="cb3-24"><a href=""></a></span>
+<span id="cb3-25"><a href=""></a><span class="dt">void</span> Point2D<span class="op">::</span>print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb3-26"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"("</span> <span class="op">&lt;&lt;</span> x <span class="op">&lt;&lt;</span> <span class="st">", "</span> <span class="op">&lt;&lt;</span> y <span class="op">&lt;&lt;</span> <span class="st">")"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb3-27"><a href=""></a><span class="op">}</span></span>
+<span id="cb3-28"><a href=""></a></span>
+<span id="cb3-29"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-30"><a href=""></a>    Point2D first<span class="op">(</span><span class="dv">8</span><span class="op">,</span> <span class="dv">5</span><span class="op">);</span></span>
+<span id="cb3-31"><a href=""></a>    Point2D second<span class="op">(</span><span class="dv">3</span><span class="op">,</span> <span class="dv">7</span><span class="op">);</span></span>
+<span id="cb3-32"><a href=""></a>    Point2D difference <span class="op">=</span> first <span class="op">-</span> second<span class="op">;</span></span>
+<span id="cb3-33"><a href=""></a></span>
+<span id="cb3-34"><a href=""></a>    difference<span class="op">.</span>print<span class="op">();</span></span>
+<span id="cb3-35"><a href=""></a></span>
+<span id="cb3-36"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-37"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><strong>Output</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href=""></a>(5, -2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<aside class="notes">
+<p>Source file: cpp/overloadminus.cpp</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 13 -->
 </section>
-<section id="if-vs.-loop-control-flow" class="slide level2">
-<h2>if vs.&nbsp;Loop Control Flow</h2>
+<section id="prefix-and-postfix-operator" class="slide level2">
+<h2>Prefix and Postfix <code>operator++</code></h2>
 <div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>if</strong></p>
-<p><img data-src="images/if_small.png" style="width:52.0%" alt="Control flow for an if statement"></p>
-</div><div class="column" style="width:50%;">
-<p><strong>loop</strong></p>
-<p><img data-src="images/loop_small.png" style="width:68.0%" alt="Control flow for a loop statement"></p>
+<div class="column" style="width:60%;">
+<div style="font-size:50%">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a><span class="co">// demoPrePost.cpp</span></span>
+<span id="cb5-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb5-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb5-4"><a href=""></a></span>
+<span id="cb5-5"><a href=""></a><span class="kw">class</span> Counter <span class="op">{</span></span>
+<span id="cb5-6"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb5-7"><a href=""></a>    <span class="dt">int</span> value<span class="op">;</span></span>
+<span id="cb5-8"><a href=""></a></span>
+<span id="cb5-9"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb5-10"><a href=""></a>    Counter<span class="op">(</span><span class="dt">int</span> start <span class="op">=</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb5-11"><a href=""></a>    Counter<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">++();</span></span>
+<span id="cb5-12"><a href=""></a>    Counter <span class="kw">operator</span><span class="op">++(</span><span class="dt">int</span><span class="op">);</span></span>
+<span id="cb5-13"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb5-14"><a href=""></a><span class="op">};</span></span>
+<span id="cb5-15"><a href=""></a></span>
+<span id="cb5-16"><a href=""></a>Counter<span class="op">::</span>Counter<span class="op">(</span><span class="dt">int</span> start<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-17"><a href=""></a>    value <span class="op">=</span> start<span class="op">;</span></span>
+<span id="cb5-18"><a href=""></a><span class="op">}</span></span>
+<span id="cb5-19"><a href=""></a></span>
+<span id="cb5-20"><a href=""></a>Counter<span class="op">&amp;</span> Counter<span class="op">::</span><span class="kw">operator</span><span class="op">++()</span> <span class="op">{</span></span>
+<span id="cb5-21"><a href=""></a>    <span class="op">++</span>value<span class="op">;</span></span>
+<span id="cb5-22"><a href=""></a>    <span class="cf">return</span> <span class="op">*</span><span class="kw">this</span><span class="op">;</span></span>
+<span id="cb5-23"><a href=""></a><span class="op">}</span></span>
+<span id="cb5-24"><a href=""></a></span>
+<span id="cb5-25"><a href=""></a>Counter Counter<span class="op">::</span><span class="kw">operator</span><span class="op">++(</span><span class="dt">int</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-26"><a href=""></a>    Counter original <span class="op">=</span> <span class="op">*</span><span class="kw">this</span><span class="op">;</span></span>
+<span id="cb5-27"><a href=""></a>    <span class="op">++</span>value<span class="op">;</span></span>
+<span id="cb5-28"><a href=""></a>    <span class="cf">return</span> original<span class="op">;</span></span>
+<span id="cb5-29"><a href=""></a><span class="op">}</span></span>
+<span id="cb5-30"><a href=""></a></span>
+<span id="cb5-31"><a href=""></a><span class="dt">void</span> Counter<span class="op">::</span>print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb5-32"><a href=""></a>    cout <span class="op">&lt;&lt;</span> value <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb5-33"><a href=""></a><span class="op">}</span></span>
+<span id="cb5-34"><a href=""></a></span>
+<span id="cb5-35"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb5-36"><a href=""></a>    Counter count<span class="op">(</span><span class="dv">5</span><span class="op">);</span></span>
+<span id="cb5-37"><a href=""></a>    Counter prefixResult <span class="op">=</span> <span class="op">++</span>count<span class="op">;</span></span>
+<span id="cb5-38"><a href=""></a>    prefixResult<span class="op">.</span>print<span class="op">();</span></span>
+<span id="cb5-39"><a href=""></a>    count<span class="op">.</span>print<span class="op">();</span></span>
+<span id="cb5-40"><a href=""></a></span>
+<span id="cb5-41"><a href=""></a>    Counter postfixResult <span class="op">=</span> count<span class="op">++;</span></span>
+<span id="cb5-42"><a href=""></a>    postfixResult<span class="op">.</span>print<span class="op">();</span></span>
+<span id="cb5-43"><a href=""></a>    count<span class="op">.</span>print<span class="op">();</span></span>
+<span id="cb5-44"><a href=""></a></span>
+<span id="cb5-45"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-46"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><strong>Output</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a href=""></a>6</span>
+<span id="cb6-2"><a href=""></a>6</span>
+<span id="cb6-3"><a href=""></a>6</span>
+<span id="cb6-4"><a href=""></a>7</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
+<aside class="notes">
+<p>Source file: cpp/demoPrePost.cpp</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 14 -->
 </section>
-<section id="the-three-pieces-of-a-loop" class="slide level2">
-<h2>The Three Pieces of a Loop</h2>
+<section id="operator-methods-combine-object-state" class="slide level2">
+<h2>Operator Methods Combine Object State</h2>
 <ul>
-<li><strong>Condition</strong>: the true/false test that controls repetition.</li>
-<li><strong>Control variable</strong>: the value that helps decide whether to continue.</li>
-<li><strong>Body</strong>: the block of work that repeats.</li>
+<li><code>operator+</code> and <code>operator-</code> return new objects built from two operands.</li>
+<li>Prefix <code>operator++</code> changes the object before returning it. Postfix <code>operator++</code> returns the original value before changing the object.</li>
 </ul>
 <!-- Slide 15 -->
-</section>
-<section id="entry-vs.-exit-conditions" class="slide level2">
-<h2>Entry vs.&nbsp;Exit Conditions</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="images/while_loop.png" style="width:58.0%" alt="Entry-condition while loop flowchart"></p>
-</div><div class="column" style="width:50%;">
-<p><img data-src="images/do_loop.png" style="width:58.0%" alt="Exit-condition do-while loop flowchart"></p>
-</div></div>
-<p>Entry-condition loops may run zero times. Exit-condition loops run at least once.</p>
+<!-- Topic 2: Friend Functions -->
+<!-- Slides 16–21 -->
+</section></section>
+<section>
+<section id="friend-functions" class="title-slide slide level1 center">
+<h1>Friend Functions</h1>
 <!-- Slide 16 -->
 </section>
-<section id="the-condition-must-change" class="slide level2">
-<h2>The Condition Must Change</h2>
+<section id="what-does-friend-change" class="slide level2">
+<h2>What Does <code>friend</code> Change?</h2>
 <ul>
-<li>A loop must move toward stopping.</li>
-<li>That usually means input changes, a counter changes, or a flag changes.</li>
-<li>If the condition never becomes false, the loop does not end.</li>
+<li>A friend function is not a member of the class, but the class grants it access to private data.</li>
+<li>The declaration inside the class controls which outside functions receive that access.</li>
 </ul>
+<aside class="notes">
+<p>Slides 16–21 Prerequisite check: students should recognize private members, free functions, and function prototypes; the slide provides a brief review rather than reteaching them. Progression map: this topic moves from operator methods to controlled non-member access and prepares students for stream operators.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 17 -->
 </section>
-<section id="tracing-the-control-variable" class="slide level2">
-<h2>Tracing the Control Variable</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: right;">Pass</th>
-<th style="text-align: right;"><code>count</code></th>
-<th>Condition <code>count &lt;= 3</code></th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td>true</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td>true</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-<td>true</td>
-<td>3</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-<td>false</td>
-<td>stop</td>
-</tr>
-</tbody>
-</table>
+<section id="a-friend-function-demonstration" class="slide level2">
+<h2>A Friend Function Demonstration</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size:50%">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a><span class="co">// demoFriend.cpp</span></span>
+<span id="cb7-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb7-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb7-4"><a href=""></a></span>
+<span id="cb7-5"><a href=""></a><span class="kw">class</span> Temperature<span class="op">;</span> <span class="co">// forward declaration</span></span>
+<span id="cb7-6"><a href=""></a></span>
+<span id="cb7-7"><a href=""></a><span class="dt">void</span> showTemperature<span class="op">(</span><span class="at">const</span> Temperature<span class="op">&amp;</span> value<span class="op">);</span></span>
+<span id="cb7-8"><a href=""></a></span>
+<span id="cb7-9"><a href=""></a><span class="kw">class</span> Temperature <span class="op">{</span></span>
+<span id="cb7-10"><a href=""></a>    <span class="kw">friend</span> <span class="dt">void</span> showTemperature<span class="op">(</span><span class="at">const</span> Temperature<span class="op">&amp;</span> value<span class="op">);</span></span>
+<span id="cb7-11"><a href=""></a></span>
+<span id="cb7-12"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb7-13"><a href=""></a>    <span class="dt">double</span> celsius<span class="op">;</span></span>
+<span id="cb7-14"><a href=""></a></span>
+<span id="cb7-15"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb7-16"><a href=""></a>    Temperature<span class="op">(</span><span class="dt">double</span> value <span class="op">=</span> <span class="fl">0.0</span><span class="op">);</span></span>
+<span id="cb7-17"><a href=""></a><span class="op">};</span></span>
+<span id="cb7-18"><a href=""></a></span>
+<span id="cb7-19"><a href=""></a>Temperature<span class="op">::</span>Temperature<span class="op">(</span><span class="dt">double</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-20"><a href=""></a>    celsius <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb7-21"><a href=""></a><span class="op">}</span></span>
+<span id="cb7-22"><a href=""></a></span>
+<span id="cb7-23"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb7-24"><a href=""></a>    Temperature reading<span class="op">(</span><span class="fl">21.5</span><span class="op">);</span></span>
+<span id="cb7-25"><a href=""></a>    showTemperature<span class="op">(</span>reading<span class="op">);</span></span>
+<span id="cb7-26"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-27"><a href=""></a><span class="op">}</span></span>
+<span id="cb7-28"><a href=""></a></span>
+<span id="cb7-29"><a href=""></a><span class="dt">void</span> showTemperature<span class="op">(</span><span class="at">const</span> Temperature<span class="op">&amp;</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-30"><a href=""></a>    cout <span class="op">&lt;&lt;</span> value<span class="op">.</span>celsius <span class="op">&lt;&lt;</span> <span class="st">" degrees Celsius"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb7-31"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><strong>Output</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a href=""></a>21.5 degrees Celsius</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<aside class="notes">
+<p>Source file: cpp/demoFriend.cpp</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 18 -->
 </section>
-<section id="summary-1" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>Explicit loops expose the control machinery that range-based <code>for</code> keeps out of sight.</li>
-<li>A loop is a decision plus a path back to the decision.</li>
-</ul>
+<section id="a-friend-function-without-a-forward-class-declaration" class="slide level2">
+<h2>A Friend Function Without a Forward Class Declaration</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size:50%">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href=""></a><span class="co">// demoFriend2.cpp</span></span>
+<span id="cb9-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb9-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb9-4"><a href=""></a></span>
+<span id="cb9-5"><a href=""></a><span class="kw">class</span> Temperature <span class="op">{</span></span>
+<span id="cb9-6"><a href=""></a>    <span class="kw">friend</span> <span class="dt">void</span> showTemperature<span class="op">(</span><span class="at">const</span> Temperature<span class="op">&amp;</span> value<span class="op">);</span></span>
+<span id="cb9-7"><a href=""></a></span>
+<span id="cb9-8"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb9-9"><a href=""></a>    <span class="dt">double</span> celsius<span class="op">;</span></span>
+<span id="cb9-10"><a href=""></a></span>
+<span id="cb9-11"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb9-12"><a href=""></a>    Temperature<span class="op">(</span><span class="dt">double</span> value <span class="op">=</span> <span class="fl">0.0</span><span class="op">);</span></span>
+<span id="cb9-13"><a href=""></a><span class="op">};</span></span>
+<span id="cb9-14"><a href=""></a></span>
+<span id="cb9-15"><a href=""></a>Temperature<span class="op">::</span>Temperature<span class="op">(</span><span class="dt">double</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-16"><a href=""></a>    celsius <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb9-17"><a href=""></a><span class="op">}</span></span>
+<span id="cb9-18"><a href=""></a></span>
+<span id="cb9-19"><a href=""></a><span class="dt">void</span> showTemperature<span class="op">(</span><span class="at">const</span> Temperature<span class="op">&amp;</span> value<span class="op">);</span></span>
+<span id="cb9-20"><a href=""></a></span>
+<span id="cb9-21"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb9-22"><a href=""></a>    Temperature reading<span class="op">(</span><span class="fl">21.5</span><span class="op">);</span></span>
+<span id="cb9-23"><a href=""></a>    showTemperature<span class="op">(</span>reading<span class="op">);</span></span>
+<span id="cb9-24"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb9-25"><a href=""></a><span class="op">}</span></span>
+<span id="cb9-26"><a href=""></a></span>
+<span id="cb9-27"><a href=""></a><span class="dt">void</span> showTemperature<span class="op">(</span><span class="at">const</span> Temperature<span class="op">&amp;</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-28"><a href=""></a>    cout <span class="op">&lt;&lt;</span> value<span class="op">.</span>celsius <span class="op">&lt;&lt;</span> <span class="st">" degrees Celsius"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb9-29"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><strong>Output</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a href=""></a>21.5 degrees Celsius</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<aside class="notes">
+<p>Source file: cpp/demoFriend2.cpp</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 19 -->
-<!-- Topic 3: The while Loop -->
-<!-- Slides 20-29 -->
-</section></section>
-<section>
-<section id="the-while-loop" class="title-slide slide level1 center">
-<h1>The while Loop</h1>
+</section>
+<section id="the-class-controls-friendship" class="slide level2">
+<h2>The Class Controls Friendship</h2>
+<ul>
+<li>Friendship is granted by the class that owns the private data.</li>
+<li>A friend function can read or change private members, but it does not become a member function.</li>
+</ul>
 <!-- Slide 20 -->
 </section>
-<section id="when-might-the-work-happen-zero-times" class="slide level2 smaller">
-<h2>When Might the Work Happen Zero Times?</h2>
-<ul>
-<li>A <code>while</code> loop checks the condition before the body runs.</li>
-<li>Use it when the program may need to skip the repeated work entirely.</li>
-</ul>
-<aside class="notes">
-<p>Slides 20-29</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="friendship-is-selective" class="slide level2">
+<h2>Friendship Is Selective</h2>
+<p>The class names the specific function that receives access. This controlled access is useful when a non-member interface must work with private object state.</p>
 <!-- Slide 21 -->
-</section>
-<section id="the-shape-of-a-while-loop" class="slide level2">
-<h2>The Shape of a while Loop</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a><span class="cf">while</span> <span class="op">(</span>condition<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb2-2"><a href=""></a>    statement<span class="op">;</span></span>
-<span id="cb2-3"><a href=""></a>    statement<span class="op">;</span></span>
-<span id="cb2-4"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The condition is tested first. If it is true, the body runs.</p>
+<!-- Topic 3: Stream Operators -->
+<!-- Slides 22–26 -->
+</section></section>
+<section>
+<section id="stream-operators" class="title-slide slide level1 center">
+<h1>Stream Operators</h1>
 <!-- Slide 22 -->
 </section>
-<section id="while-loop-control-flow" class="slide level2">
-<h2>while Loop Control Flow</h2>
-
+<section id="how-can-a-class-work-with-cout-and-cin" class="slide level2">
+<h2>How Can a Class Work with <code>cout</code> and <code>cin</code>?</h2>
+<p>Stream operators let a class define how its objects are inserted into output and extracted from input. The operator functions are free functions because the stream object appears on the left side of each expression.</p>
+<aside class="notes">
+<p>Slides 22–26 Prerequisite check: students should recognize friend functions, references, <code>cout</code>, and <code>cin</code>; the demonstrations connect those ideas rather than introduce new stream syntax in isolation. Progression map: this topic applies controlled non-member access to familiar input and output expressions.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 23 -->
-<img data-src="images/while_loop.png" style="width:52.0%" alt="Control flow for a while loop" class="r-stretch"></section>
-<section id="while-in-ipo" class="slide level2">
-<h2>while in IPO</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>IPO Part</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Input</td>
-<td>Get or already have a value</td>
-</tr>
-<tr class="even">
-<td>Process</td>
-<td>Repeat while the condition is true</td>
-</tr>
-<tr class="odd">
-<td>Output</td>
-<td>Show each result or the final result</td>
-</tr>
-</tbody>
-</table>
-<p>The loop belongs to the processing design.</p>
+</section>
+<section id="operator-without-a-friend" class="slide level2">
+<h2><code>operator&lt;&lt;</code> Without a Friend</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size:50%">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href=""></a><span class="co">// demoStInsertNoFriend.cpp</span></span>
+<span id="cb11-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb11-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb11-4"><a href=""></a></span>
+<span id="cb11-5"><a href=""></a><span class="kw">class</span> Rectangle <span class="op">{</span></span>
+<span id="cb11-6"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb11-7"><a href=""></a>    <span class="dt">int</span> width<span class="op">;</span></span>
+<span id="cb11-8"><a href=""></a></span>
+<span id="cb11-9"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb11-10"><a href=""></a>    Rectangle<span class="op">(</span><span class="dt">int</span> widthValue <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">int</span> heightValue <span class="op">=</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb11-11"><a href=""></a>    <span class="dt">int</span> height<span class="op">;</span></span>
+<span id="cb11-12"><a href=""></a><span class="op">};</span></span>
+<span id="cb11-13"><a href=""></a></span>
+<span id="cb11-14"><a href=""></a>ostream<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">&lt;&lt;(</span>ostream<span class="op">&amp;</span> output<span class="op">,</span> <span class="at">const</span> Rectangle<span class="op">&amp;</span> rectangle<span class="op">);</span></span>
+<span id="cb11-15"><a href=""></a></span>
+<span id="cb11-16"><a href=""></a>Rectangle<span class="op">::</span>Rectangle<span class="op">(</span><span class="dt">int</span> widthValue<span class="op">,</span> <span class="dt">int</span> heightValue<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-17"><a href=""></a>    width <span class="op">=</span> widthValue<span class="op">;</span></span>
+<span id="cb11-18"><a href=""></a>    height <span class="op">=</span> heightValue<span class="op">;</span></span>
+<span id="cb11-19"><a href=""></a><span class="op">}</span></span>
+<span id="cb11-20"><a href=""></a></span>
+<span id="cb11-21"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb11-22"><a href=""></a>    Rectangle room<span class="op">(</span><span class="dv">8</span><span class="op">,</span> <span class="dv">5</span><span class="op">);</span></span>
+<span id="cb11-23"><a href=""></a></span>
+<span id="cb11-24"><a href=""></a>    cout <span class="op">&lt;&lt;</span> room <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb11-25"><a href=""></a></span>
+<span id="cb11-26"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-27"><a href=""></a><span class="op">}</span></span>
+<span id="cb11-28"><a href=""></a></span>
+<span id="cb11-29"><a href=""></a>ostream<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">&lt;&lt;(</span>ostream<span class="op">&amp;</span> output<span class="op">,</span> <span class="at">const</span> Rectangle<span class="op">&amp;</span> rectangle<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-30"><a href=""></a>    <span class="co">// output &lt;&lt; rectangle.width &lt;&lt; " x " &lt;&lt; rectangle.height;</span></span>
+<span id="cb11-31"><a href=""></a>    <span class="co">// The line above would fail because width is private.</span></span>
+<span id="cb11-32"><a href=""></a>    output <span class="op">&lt;&lt;</span> <span class="st">"height = "</span> <span class="op">&lt;&lt;</span> rectangle<span class="op">.</span>height<span class="op">;</span></span>
+<span id="cb11-33"><a href=""></a>    <span class="cf">return</span> output<span class="op">;</span></span>
+<span id="cb11-34"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><strong>Output</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a href=""></a>height = 5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<aside class="notes">
+<p>Source file: cpp/demoStInsertNoFriend.cpp</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 24 -->
 </section>
-<section id="a-first-while-example" class="slide level2">
-<h2>A First while Example</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb3-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb3-3"><a href=""></a></span>
-<span id="cb3-4"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb3-5"><a href=""></a>    <span class="dt">int</span> count <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb3-6"><a href=""></a></span>
-<span id="cb3-7"><a href=""></a>    <span class="cf">while</span> <span class="op">(</span>count <span class="op">&lt;=</span> <span class="dv">3</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-8"><a href=""></a>        cout <span class="op">&lt;&lt;</span> count <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb3-9"><a href=""></a>        count<span class="op">++;</span></span>
-<span id="cb3-10"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb3-11"><a href=""></a></span>
-<span id="cb3-12"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb3-13"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="operator-for-cin" class="slide level2">
+<h2><code>operator&gt;&gt;</code> for <code>cin</code></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size:50%">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href=""></a><span class="co">// demoStExtract.cpp</span></span>
+<span id="cb13-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb13-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb13-4"><a href=""></a></span>
+<span id="cb13-5"><a href=""></a><span class="kw">class</span> Rectangle<span class="op">;</span></span>
+<span id="cb13-6"><a href=""></a></span>
+<span id="cb13-7"><a href=""></a>istream<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">&gt;&gt;(</span>istream<span class="op">&amp;</span> input<span class="op">,</span> Rectangle<span class="op">&amp;</span> rectangle<span class="op">);</span></span>
+<span id="cb13-8"><a href=""></a></span>
+<span id="cb13-9"><a href=""></a><span class="kw">class</span> Rectangle <span class="op">{</span></span>
+<span id="cb13-10"><a href=""></a>    <span class="kw">friend</span> istream<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">&gt;&gt;(</span>istream<span class="op">&amp;</span> input<span class="op">,</span></span>
+<span id="cb13-11"><a href=""></a>                               Rectangle<span class="op">&amp;</span> rectangle<span class="op">);</span></span>
+<span id="cb13-12"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb13-13"><a href=""></a>    <span class="dt">int</span> width<span class="op">;</span></span>
+<span id="cb13-14"><a href=""></a>    <span class="dt">int</span> height<span class="op">;</span></span>
+<span id="cb13-15"><a href=""></a></span>
+<span id="cb13-16"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb13-17"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb13-18"><a href=""></a><span class="op">};</span></span>
+<span id="cb13-19"><a href=""></a></span>
+<span id="cb13-20"><a href=""></a><span class="dt">void</span> Rectangle<span class="op">::</span>print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb13-21"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Rectangle: "</span> <span class="op">&lt;&lt;</span> width <span class="op">&lt;&lt;</span> <span class="st">" x "</span> <span class="op">&lt;&lt;</span> height <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb13-22"><a href=""></a><span class="op">}</span></span>
+<span id="cb13-23"><a href=""></a></span>
+<span id="cb13-24"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb13-25"><a href=""></a>    Rectangle room<span class="op">;</span></span>
+<span id="cb13-26"><a href=""></a></span>
+<span id="cb13-27"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter width and height: "</span><span class="op">;</span></span>
+<span id="cb13-28"><a href=""></a>    cin <span class="op">&gt;&gt;</span> room<span class="op">;</span></span>
+<span id="cb13-29"><a href=""></a></span>
+<span id="cb13-30"><a href=""></a>    room<span class="op">.</span>print<span class="op">();</span></span>
+<span id="cb13-31"><a href=""></a></span>
+<span id="cb13-32"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb13-33"><a href=""></a><span class="op">}</span></span>
+<span id="cb13-34"><a href=""></a></span>
+<span id="cb13-35"><a href=""></a>istream<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">&gt;&gt;(</span>istream<span class="op">&amp;</span> input<span class="op">,</span> Rectangle<span class="op">&amp;</span> rectangle<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-36"><a href=""></a>    input <span class="op">&gt;&gt;</span> rectangle<span class="op">.</span>width <span class="op">&gt;&gt;</span> rectangle<span class="op">.</span>height<span class="op">;</span></span>
+<span id="cb13-37"><a href=""></a>    <span class="cf">return</span> input<span class="op">;</span></span>
+<span id="cb13-38"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><strong>Sample run</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a href=""></a>Enter width and height: 8 5</span>
+<span id="cb14-2"><a href=""></a>Rectangle: 8 x 5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<aside class="notes">
+<p>Source file: cpp/demoStExtract.cpp</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 25 -->
 </section>
-<section id="trace-the-control-variable" class="slide level2">
-<h2>Trace the Control Variable</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: right;">Pass</th>
-<th style="text-align: right;"><code>count</code> Before Test</th>
-<th>Test</th>
-<th style="text-align: right;"><code>count</code> After Update</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td>true</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td>true</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-<td>true</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-<td>false</td>
-<td style="text-align: right;">4</td>
-</tr>
-</tbody>
-</table>
-<!-- Slide 26 -->
-</section>
-<section id="the-stop-condition" class="slide level2">
-<h2>The Stop Condition</h2>
+<section id="stream-operators-return-the-stream" class="slide level2">
+<h2>Stream Operators Return the Stream</h2>
 <ul>
-<li>The loop stops when the condition becomes false.</li>
-<li>In the example, <code>count &lt;= 3</code> becomes false when <code>count</code> reaches <code>4</code>.</li>
-<li>The update is what moves the loop toward stopping.</li>
+<li><code>operator&lt;&lt;</code> returns an <code>ostream&amp;</code>, and <code>operator&gt;&gt;</code> returns an <code>istream&amp;</code>.</li>
+<li>Returning the stream preserves normal stream behavior and allows expressions to be chained.</li>
 </ul>
+<!-- Slide 26 -->
+<!-- Topic 4: Advanced Friendship Patterns -->
+<!-- Slides 27–32 -->
+</section></section>
+<section>
+<section id="advanced-friendship-patterns" class="title-slide slide level1 center">
+<h1>Advanced Friendship Patterns</h1>
 <!-- Slide 27 -->
 </section>
-<section id="unknown-repetition" class="slide level2">
-<h2>Unknown Repetition</h2>
-<ul>
-<li><code>while</code> is useful when the number of passes is not known ahead of time.</li>
-<li>The program keeps checking whether more work is needed.</li>
-<li>The loop might run many times, once, or not at all.</li>
-</ul>
+<section id="what-else-can-become-a-friend" class="slide level2">
+<h2>What Else Can Become a Friend?</h2>
+<p>Friendship can connect a class to another class or allow one function to work with private data from multiple classes. These patterns extend the selective access introduced in the previous topic.</p>
+<aside class="notes">
+<p>Slides 27–32 Prerequisite check: students should understand friend functions, private members, and stream operators from Topics 2 and 3. Progression map: this topic extends one friend function into friend classes and coordinated access across two classes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 28 -->
 </section>
-<section id="summary-2" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>A <code>while</code> loop tests first.</li>
-<li>Use it when repetition depends on a condition that may already be false.</li>
-</ul>
+<section id="a-friend-class-example" class="slide level2">
+<h2>A Friend Class Example</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size:50%">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href=""></a><span class="co">// demoFriendClass.cpp</span></span>
+<span id="cb15-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb15-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb15-4"><a href=""></a></span>
+<span id="cb15-5"><a href=""></a><span class="kw">class</span> Square<span class="op">;</span></span>
+<span id="cb15-6"><a href=""></a></span>
+<span id="cb15-7"><a href=""></a><span class="kw">class</span> Rectangle <span class="op">{</span></span>
+<span id="cb15-8"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb15-9"><a href=""></a>    <span class="dt">int</span> width<span class="op">;</span></span>
+<span id="cb15-10"><a href=""></a>    <span class="dt">int</span> height<span class="op">;</span></span>
+<span id="cb15-11"><a href=""></a></span>
+<span id="cb15-12"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb15-13"><a href=""></a>    Rectangle<span class="op">();</span></span>
+<span id="cb15-14"><a href=""></a>    <span class="dt">void</span> convert<span class="op">(</span><span class="at">const</span> Square<span class="op">&amp;</span> square<span class="op">);</span></span>
+<span id="cb15-15"><a href=""></a>    <span class="dt">int</span> area<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb15-16"><a href=""></a><span class="op">};</span></span>
+<span id="cb15-17"><a href=""></a></span>
+<span id="cb15-18"><a href=""></a><span class="kw">class</span> Square <span class="op">{</span></span>
+<span id="cb15-19"><a href=""></a>    <span class="kw">friend</span> <span class="kw">class</span> Rectangle<span class="op">;</span></span>
+<span id="cb15-20"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb15-21"><a href=""></a>    <span class="dt">int</span> side<span class="op">;</span></span>
+<span id="cb15-22"><a href=""></a></span>
+<span id="cb15-23"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb15-24"><a href=""></a>    Square<span class="op">(</span><span class="dt">int</span> value <span class="op">=</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb15-25"><a href=""></a><span class="op">};</span></span>
+<span id="cb15-26"><a href=""></a></span>
+<span id="cb15-27"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb15-28"><a href=""></a>    Rectangle rectangle<span class="op">;</span></span>
+<span id="cb15-29"><a href=""></a>    Square square<span class="op">(</span><span class="dv">4</span><span class="op">);</span></span>
+<span id="cb15-30"><a href=""></a></span>
+<span id="cb15-31"><a href=""></a>    rectangle<span class="op">.</span>convert<span class="op">(</span>square<span class="op">);</span></span>
+<span id="cb15-32"><a href=""></a></span>
+<span id="cb15-33"><a href=""></a>    cout <span class="op">&lt;&lt;</span> rectangle<span class="op">.</span>area<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb15-34"><a href=""></a></span>
+<span id="cb15-35"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb15-36"><a href=""></a><span class="op">}</span></span>
+<span id="cb15-37"><a href=""></a></span>
+<span id="cb15-38"><a href=""></a>Rectangle<span class="op">::</span>Rectangle<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb15-39"><a href=""></a>    width <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb15-40"><a href=""></a>    height <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb15-41"><a href=""></a><span class="op">}</span></span>
+<span id="cb15-42"><a href=""></a></span>
+<span id="cb15-43"><a href=""></a>Square<span class="op">::</span>Square<span class="op">(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb15-44"><a href=""></a>    side <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb15-45"><a href=""></a><span class="op">}</span></span>
+<span id="cb15-46"><a href=""></a></span>
+<span id="cb15-47"><a href=""></a><span class="dt">void</span> Rectangle<span class="op">::</span>convert<span class="op">(</span><span class="at">const</span> Square<span class="op">&amp;</span> square<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb15-48"><a href=""></a>    width <span class="op">=</span> square<span class="op">.</span>side<span class="op">;</span></span>
+<span id="cb15-49"><a href=""></a>    height <span class="op">=</span> square<span class="op">.</span>side<span class="op">;</span></span>
+<span id="cb15-50"><a href=""></a><span class="op">}</span></span>
+<span id="cb15-51"><a href=""></a></span>
+<span id="cb15-52"><a href=""></a><span class="dt">int</span> Rectangle<span class="op">::</span>area<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb15-53"><a href=""></a>    <span class="cf">return</span> width <span class="op">*</span> height<span class="op">;</span></span>
+<span id="cb15-54"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><strong>Output</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb16-1"><a href=""></a>16</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<aside class="notes">
+<p>Source file: cpp/demoFriendClass.cpp</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 29 -->
-<!-- Topic 4: The do-while Loop -->
-<!-- Slides 30-39 -->
-</section></section>
-<section>
-<section id="the-do-while-loop" class="title-slide slide level1 center">
-<h1>The do-while Loop</h1>
+</section>
+<section id="one-friend-function-across-two-classes" class="slide level2">
+<h2>One Friend Function Across Two Classes</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size:50%">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href=""></a><span class="co">// demoFriendTwoClasses.cpp</span></span>
+<span id="cb17-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb17-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb17-4"><a href=""></a></span>
+<span id="cb17-5"><a href=""></a><span class="kw">class</span> A<span class="op">;</span></span>
+<span id="cb17-6"><a href=""></a><span class="kw">class</span> B<span class="op">;</span></span>
+<span id="cb17-7"><a href=""></a></span>
+<span id="cb17-8"><a href=""></a><span class="dt">int</span> add<span class="op">(</span><span class="at">const</span> A<span class="op">&amp;</span> left<span class="op">,</span> <span class="at">const</span> B<span class="op">&amp;</span> right<span class="op">);</span></span>
+<span id="cb17-9"><a href=""></a></span>
+<span id="cb17-10"><a href=""></a><span class="kw">class</span> A <span class="op">{</span></span>
+<span id="cb17-11"><a href=""></a>    <span class="kw">friend</span> <span class="dt">int</span> add<span class="op">(</span><span class="at">const</span> A<span class="op">&amp;</span> left<span class="op">,</span> <span class="at">const</span> B<span class="op">&amp;</span> right<span class="op">);</span></span>
+<span id="cb17-12"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb17-13"><a href=""></a>    <span class="dt">int</span> value<span class="op">;</span></span>
+<span id="cb17-14"><a href=""></a></span>
+<span id="cb17-15"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb17-16"><a href=""></a>    A<span class="op">(</span><span class="dt">int</span> number <span class="op">=</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb17-17"><a href=""></a><span class="op">};</span></span>
+<span id="cb17-18"><a href=""></a></span>
+<span id="cb17-19"><a href=""></a><span class="kw">class</span> B <span class="op">{</span></span>
+<span id="cb17-20"><a href=""></a>    <span class="kw">friend</span> <span class="dt">int</span> add<span class="op">(</span><span class="at">const</span> A<span class="op">&amp;</span> left<span class="op">,</span> <span class="at">const</span> B<span class="op">&amp;</span> right<span class="op">);</span></span>
+<span id="cb17-21"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb17-22"><a href=""></a>    <span class="dt">int</span> value<span class="op">;</span></span>
+<span id="cb17-23"><a href=""></a></span>
+<span id="cb17-24"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb17-25"><a href=""></a>    B<span class="op">(</span><span class="dt">int</span> number <span class="op">=</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb17-26"><a href=""></a><span class="op">};</span></span>
+<span id="cb17-27"><a href=""></a></span>
+<span id="cb17-28"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb17-29"><a href=""></a>    A first<span class="op">(</span><span class="dv">12</span><span class="op">);</span></span>
+<span id="cb17-30"><a href=""></a>    B second<span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb17-31"><a href=""></a></span>
+<span id="cb17-32"><a href=""></a>    cout <span class="op">&lt;&lt;</span> add<span class="op">(</span>first<span class="op">,</span> second<span class="op">)</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb17-33"><a href=""></a></span>
+<span id="cb17-34"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb17-35"><a href=""></a><span class="op">}</span></span>
+<span id="cb17-36"><a href=""></a></span>
+<span id="cb17-37"><a href=""></a>A<span class="op">::</span>A<span class="op">(</span><span class="dt">int</span> number<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb17-38"><a href=""></a>    value <span class="op">=</span> number<span class="op">;</span></span>
+<span id="cb17-39"><a href=""></a><span class="op">}</span></span>
+<span id="cb17-40"><a href=""></a></span>
+<span id="cb17-41"><a href=""></a>B<span class="op">::</span>B<span class="op">(</span><span class="dt">int</span> number<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb17-42"><a href=""></a>    value <span class="op">=</span> number<span class="op">;</span></span>
+<span id="cb17-43"><a href=""></a><span class="op">}</span></span>
+<span id="cb17-44"><a href=""></a></span>
+<span id="cb17-45"><a href=""></a><span class="dt">int</span> add<span class="op">(</span><span class="at">const</span> A<span class="op">&amp;</span> left<span class="op">,</span> <span class="at">const</span> B<span class="op">&amp;</span> right<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb17-46"><a href=""></a>    <span class="cf">return</span> left<span class="op">.</span>value <span class="op">+</span> right<span class="op">.</span>value<span class="op">;</span></span>
+<span id="cb17-47"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><strong>Output</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a href=""></a>13</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<aside class="notes">
+<p>Source file: cpp/demoFriendTwoClasses.cpp</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 30 -->
 </section>
-<section id="when-must-the-work-happen-once" class="slide level2 smaller">
-<h2>When Must the Work Happen Once?</h2>
+<section id="friendship-as-part-of-the-public-interface" class="slide level2">
+<h2>Friendship as Part of the Public Interface</h2>
 <ul>
-<li>A <code>do-while</code> loop runs the body before testing the condition.</li>
-<li>Use it when the program must act once before it can decide whether to repeat.</li>
+<li>Friendship is a deliberate part of class design.</li>
+<li>The class chooses which outside functions or classes receive access to private data.</li>
 </ul>
-<aside class="notes">
-<p>Slides 30-39</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 <!-- Slide 31 -->
 </section>
-<section id="the-shape-of-a-do-while-loop" class="slide level2">
-<h2>The Shape of a do-while Loop</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href=""></a><span class="cf">do</span> <span class="op">{</span></span>
-<span id="cb4-2"><a href=""></a>    statement<span class="op">;</span></span>
-<span id="cb4-3"><a href=""></a>    statement<span class="op">;</span></span>
-<span id="cb4-4"><a href=""></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span>condition<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The semicolon after the condition is part of the syntax.</p>
+<section id="friendship-extends-a-class-interface" class="slide level2">
+<h2>Friendship Extends a Class Interface</h2>
+<p>Friend functions support non-member operations, friend classes support closely related classes, and both forms preserve selective access to private state.</p>
 <!-- Slide 32 -->
-</section>
-<section id="do-while-loop-control-flow" class="slide level2">
-<h2>do-while Loop Control Flow</h2>
+</section></section>
+<section>
+<section id="code-together" class="title-slide slide level1 center">
+<h1>Code Together</h1>
 
+<img data-src="images/source_pages/slide-57.png" style="width:100.0%" alt="Code Together" class="r-stretch"><aside class="notes">
+<p>Slides 33–35 Source slide 57 from the authoritative PDF.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 33 -->
-<img data-src="images/do_loop.png" style="width:52.0%" alt="Control flow for a do-while loop" class="r-stretch"></section>
-<section id="do-while-in-ipo" class="slide level2">
-<h2>do-while in IPO</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>IPO Part</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Input</td>
-<td>Ask at least once</td>
-</tr>
-<tr class="even">
-<td>Process</td>
-<td>Decide whether the value is acceptable</td>
-</tr>
-<tr class="odd">
-<td>Output</td>
-<td>Prompt again or continue</td>
-</tr>
-</tbody>
-</table>
-<p>The first pass happens before the loop can stop.</p>
+</section>
+<section id="source-slide-58" class="slide level2">
+<h2><span style="display:none">Source Slide 58</span></h2>
+
 <!-- Slide 34 -->
-</section>
-<section id="a-prompt-then-check-example" class="slide level2">
-<h2>A Prompt-Then-Check Example</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb5-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb5-3"><a href=""></a></span>
-<span id="cb5-4"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb5-5"><a href=""></a>    <span class="dt">int</span> choice<span class="op">;</span></span>
-<span id="cb5-6"><a href=""></a></span>
-<span id="cb5-7"><a href=""></a>    <span class="cf">do</span> <span class="op">{</span></span>
-<span id="cb5-8"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Enter 1 to continue or 0 to quit: "</span><span class="op">;</span></span>
-<span id="cb5-9"><a href=""></a>        cin <span class="op">&gt;&gt;</span> choice<span class="op">;</span></span>
-<span id="cb5-10"><a href=""></a>    <span class="op">}</span> <span class="cf">while</span> <span class="op">(</span>choice <span class="op">!=</span> <span class="dv">0</span><span class="op">);</span></span>
-<span id="cb5-11"><a href=""></a></span>
-<span id="cb5-12"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb5-13"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<img data-src="images/source_pages/slide-58.png" style="width:100.0%" alt="Code a rectangle class" class="r-stretch"></section>
+<section id="source-slide-59" class="slide level2">
+<h2><span style="display:none">Source Slide 59</span></h2>
+
 <!-- Slide 35 -->
-</section>
-<section id="trace-the-first-pass" class="slide level2">
-<h2>Trace the First Pass</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Moment</th>
-<th style="text-align: right;"><code>choice</code></th>
-<th>Condition <code>choice != 0</code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Before body</td>
-<td style="text-align: right;">unknown</td>
-<td>not tested yet</td>
-</tr>
-<tr class="even">
-<td>After input</td>
-<td style="text-align: right;">1</td>
-<td>true</td>
-</tr>
-<tr class="odd">
-<td>After input</td>
-<td style="text-align: right;">0</td>
-<td>false</td>
-</tr>
-</tbody>
-</table>
+<!-- Topic: Lecture Wrap-Up -->
+<!-- Slides 36–40 -->
+<img data-src="images/source_pages/slide-59.png" style="width:100.0%" alt="Key Takeaway" class="r-stretch"></section></section>
+<section>
+<section id="lecture-wrap-up" class="title-slide slide level1 center">
+<h1>Lecture Wrap-Up</h1>
+
+<img data-src="images/source_pages/slide-60.png" style="width:100.0%" alt="Lecture Wrap-Up" class="r-stretch"><aside class="notes">
+<p>Slides 36–40 Source slide 60 from the authoritative PDF.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 36 -->
 </section>
-<section id="menus-and-validation" class="slide level2">
-<h2>Menus and Validation</h2>
-<ul>
-<li>Menus usually need to display before the user can choose.</li>
-<li>Prompts usually need to ask before the program can judge the answer.</li>
-<li>That makes <code>do-while</code> a common fit for “ask, then check” designs.</li>
-</ul>
+<section id="source-slide-61" class="slide level2">
+<h2><span style="display:none">Source Slide 61</span></h2>
+
 <!-- Slide 37 -->
-</section>
-<section id="do-while-vs.-while" class="slide level2">
-<h2>do-while vs.&nbsp;while</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Use <code>while</code> when…</th>
-<th>Use <code>do-while</code> when…</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>The test should happen first</td>
-<td>The body must happen first</td>
-</tr>
-<tr class="even">
-<td>Zero passes are possible</td>
-<td>One pass is required</td>
-</tr>
-<tr class="odd">
-<td>Existing state controls entry</td>
-<td>New input controls the next pass</td>
-</tr>
-</tbody>
-</table>
+<img data-src="images/source_pages/slide-61.png" style="width:100.0%" alt="Ch 11 - More OOP" class="r-stretch"></section>
+<section id="source-slide-62" class="slide level2">
+<h2><span style="display:none">Source Slide 62</span></h2>
+
 <!-- Slide 38 -->
-</section>
-<section id="summary-3" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>A <code>do-while</code> loop tests after the body.</li>
-<li>Use it when the first pass is part of getting the information needed to decide.</li>
-</ul>
+<img data-src="images/source_pages/slide-62.png" style="width:100.0%" alt="62" class="r-stretch"></section>
+<section id="source-slide-63" class="slide level2">
+<h2><span style="display:none">Source Slide 63</span></h2>
+
 <!-- Slide 39 -->
-<!-- Topic 5: The for Loop -->
-<!-- Slides 40-49 -->
-</section></section>
-<section>
-<section id="the-for-loop" class="title-slide slide level1 center">
-<h1>The for Loop</h1>
+<img data-src="images/source_pages/slide-63.png" style="width:100.0%" alt="Agenda" class="r-stretch"></section>
+<section id="source-slide-64" class="slide level2">
+<h2><span style="display:none">Source Slide 64</span></h2>
+
 <!-- Slide 40 -->
-</section>
-<section id="when-do-we-know-the-count" class="slide level2 smaller">
-<h2>When Do We Know the Count?</h2>
-<ul>
-<li>A <code>for</code> loop is a natural fit for counted repetition.</li>
-<li>Use it when the program knows the number of passes or the numeric range to visit.</li>
-</ul>
-<aside class="notes">
-<p>Slides 40-49</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 41 -->
-</section>
-<section id="the-shape-of-a-for-loop" class="slide level2">
-<h2>The Shape of a for Loop</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span>initialization<span class="op">;</span> condition<span class="op">;</span> update<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-2"><a href=""></a>    statement<span class="op">;</span></span>
-<span id="cb6-3"><a href=""></a>    statement<span class="op">;</span></span>
-<span id="cb6-4"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The header gathers the counter setup, the test, and the update in one place.</p>
-<!-- Slide 42 -->
-</section>
-<section id="for-loop-control-flow" class="slide level2">
-<h2>for Loop Control Flow</h2>
 
-<!-- Slide 43 -->
-<img data-src="images/for_loop.png" style="width:54.0%" alt="Control flow for a for loop" class="r-stretch"></section>
-<section id="for-in-ipo" class="slide level2">
-<h2>for in IPO</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>IPO Part</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Input</td>
-<td>Read <code>speed</code> and <code>totalHours</code></td>
-</tr>
-<tr class="even">
-<td>Process</td>
-<td>Calculate distance once per hour</td>
-</tr>
-<tr class="odd">
-<td>Output</td>
-<td>Display the hour and distance</td>
-</tr>
-</tbody>
-</table>
-<p>The count is known before the repeated processing begins.</p>
-<!-- Slide 44 -->
-</section>
-<section id="the-header-controls-the-counter" class="slide level2">
-<h2>The Header Controls the Counter</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> hour <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> hour <span class="op">&lt;=</span> totalHours<span class="op">;</span> hour<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb7-2"><a href=""></a>    <span class="dt">int</span> distance <span class="op">=</span> speed <span class="op">*</span> hour<span class="op">;</span></span>
-<span id="cb7-3"><a href=""></a>    cout <span class="op">&lt;&lt;</span> hour <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> distance <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb7-4"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The counter starts at <code>1</code>, continues through <code>totalHours</code>, and changes by <code>1</code> each pass.</p>
-<!-- Slide 45 -->
-</section>
-<section id="distance-by-hour" class="slide level2">
-<h2>Distance by Hour</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb8-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb8-3"><a href=""></a></span>
-<span id="cb8-4"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb8-5"><a href=""></a>    <span class="dt">int</span> speed <span class="op">=</span> <span class="dv">40</span><span class="op">;</span></span>
-<span id="cb8-6"><a href=""></a>    <span class="dt">int</span> totalHours <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></span>
-<span id="cb8-7"><a href=""></a></span>
-<span id="cb8-8"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> hour <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> hour <span class="op">&lt;=</span> totalHours<span class="op">;</span> hour<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb8-9"><a href=""></a>        <span class="dt">int</span> distance <span class="op">=</span> speed <span class="op">*</span> hour<span class="op">;</span></span>
-<span id="cb8-10"><a href=""></a>        cout <span class="op">&lt;&lt;</span> hour <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> distance <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb8-11"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb8-12"><a href=""></a></span>
-<span id="cb8-13"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb8-14"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 46 -->
-</section>
-<section id="trace-the-counter" class="slide level2">
-<h2>Trace the Counter</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: right;"><code>hour</code></th>
-<th style="text-align: right;"><code>speed</code></th>
-<th style="text-align: right;"><code>distance = speed * hour</code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: right;">40</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: right;">80</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: right;">120</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: right;">stop</td>
-</tr>
-</tbody>
-</table>
-<!-- Slide 47 -->
-</section>
-<section id="for-vs.-range-based-for" class="slide level2">
-<h2>for vs.&nbsp;Range-Based for</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Use counted <code>for</code> when…</th>
-<th>Use range-based <code>for</code> when…</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>The position matters</td>
-<td>Each item is enough</td>
-</tr>
-<tr class="even">
-<td>A numeric range matters</td>
-<td>The collection controls the passes</td>
-</tr>
-<tr class="odd">
-<td>You need a counter value</td>
-<td>You do not need an index</td>
-</tr>
-</tbody>
-</table>
-<!-- Slide 48 -->
-</section>
-<section id="summary-4" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>A <code>for</code> loop packages counter setup, test, and update in the header.</li>
-<li>Use it when the repetition is naturally counted.</li>
-</ul>
-<!-- Slide 49 -->
-<!-- Topic 6: Choosing a Loop -->
-<!-- Slides 50-57 -->
-</section></section>
-<section>
-<section id="choosing-a-loop" class="title-slide slide level1 center">
-<h1>Choosing a Loop</h1>
-<!-- Slide 50 -->
-</section>
-<section id="start-with-the-repetition-need" class="slide level2 smaller">
-<h2>Start With the Repetition Need</h2>
-<ul>
-<li>Do not start by picking syntax.</li>
-<li>Start by asking what controls the repetition.</li>
-</ul>
-<aside class="notes">
-<p>Slides 50-57</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 51 -->
-</section>
-<section id="use-range-based-for-when-you-have-a-collection" class="slide level2">
-<h2>Use Range-Based for When You Have a Collection</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">:</span> scores<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb9-2"><a href=""></a>    total <span class="op">+=</span> score<span class="op">;</span></span>
-<span id="cb9-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Use this when every item in the collection should be processed and the item value is enough.</p>
-<!-- Slide 52 -->
-</section>
-<section id="use-for-when-you-know-the-count" class="slide level2">
-<h2>Use for When You Know the Count</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> hour <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> hour <span class="op">&lt;=</span> totalHours<span class="op">;</span> hour<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb10-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> hour <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb10-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Use this when the number of passes or the numeric range is known.</p>
-<!-- Slide 53 -->
-</section>
-<section id="use-while-when-you-must-test-first" class="slide level2">
-<h2>Use while When You Must Test First</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href=""></a><span class="cf">while</span> <span class="op">(</span>moreData<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb11-2"><a href=""></a>    processData<span class="op">();</span></span>
-<span id="cb11-3"><a href=""></a>    moreData <span class="op">=</span> checkForMoreData<span class="op">();</span></span>
-<span id="cb11-4"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Use this when the repeated work should happen only if the condition is already true.</p>
-<!-- Slide 54 -->
-</section>
-<section id="use-do-while-when-one-pass-is-required" class="slide level2">
-<h2>Use do-while When One Pass Is Required</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href=""></a><span class="cf">do</span> <span class="op">{</span></span>
-<span id="cb12-2"><a href=""></a>    displayMenu<span class="op">();</span></span>
-<span id="cb12-3"><a href=""></a>    cin <span class="op">&gt;&gt;</span> choice<span class="op">;</span></span>
-<span id="cb12-4"><a href=""></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span>choice <span class="op">!=</span> <span class="dv">0</span><span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Use this when the program must act once before it can decide whether to repeat.</p>
-<!-- Slide 55 -->
-</section>
-<section id="decision-table" class="slide level2">
-<h2>Decision Table</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Repetition Need</th>
-<th>Best Fit</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Process every item in a collection</td>
-<td>Range-based <code>for</code></td>
-</tr>
-<tr class="even">
-<td>Repeat a known number of times</td>
-<td><code>for</code></td>
-</tr>
-<tr class="odd">
-<td>Repeat while a condition is true</td>
-<td><code>while</code></td>
-</tr>
-<tr class="even">
-<td>Run once, then decide whether to repeat</td>
-<td><code>do-while</code></td>
-</tr>
-</tbody>
-</table>
-<!-- Slide 56 -->
-</section>
-<section id="summary-5" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>Choose the loop whose control structure matches the problem.</li>
-<li>The goal is not to memorize loops; the goal is to match the design need.</li>
-</ul>
-<!-- Slide 57 -->
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="key-takeaways" class="title-slide slide level1 center">
-<h1>Key Takeaways</h1>
-<ul>
-<li>Iteration is controlled repetition.</li>
-<li>Loops extend the IPO model by repeating part of the process.</li>
-<li><code>while</code> tests before the body; <code>do-while</code> tests after the body.</li>
-<li><code>for</code> is best for counted repetition.</li>
-<li>Range-based <code>for</code> remains the clearest choice when each collection item is enough.</li>
-</ul>
-<!-- Slide 58 -->
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="next-time" class="title-slide slide level1 center">
-<h1>Next Time</h1>
-<!-- Slide 59 -->
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="appendix" class="title-slide slide level1 center">
-<h1>Appendix</h1>
-<!-- Slide 60 -->
-</section>
-<section id="why-iteration-matters-good-practices" class="slide level2">
-<h2>Why Iteration Matters: Good Practices</h2>
-<ul>
-<li>Name the repeated work before choosing syntax.</li>
-<li>Identify what changes each pass.</li>
-<li>State the condition that should eventually stop the repetition.</li>
-</ul>
-<!-- Slide 61 -->
-</section>
-<section id="why-iteration-matters-common-mistakes" class="slide level2">
-<h2>Why Iteration Matters: Common Mistakes</h2>
-<ul>
-<li>Starting with loop syntax before identifying the repeated task.</li>
-<li>Repeating code by copying and pasting instead of using a loop.</li>
-<li>Forgetting that the loop needs a stopping condition.</li>
-</ul>
-<!-- Slide 62 -->
-</section>
-<section id="why-iteration-matters-more-examples" class="slide level2">
-<h2>Why Iteration Matters: More Examples</h2>
-<ul>
-<li>Display every item in a list.</li>
-<li>Ask for input until the user gives an acceptable value.</li>
-<li>Calculate one row of output for each hour, day, or record.</li>
-</ul>
-<!-- Slide 63 -->
-</section>
-<section id="why-iteration-matters-practice-problems" class="slide level2">
-<h2>Why Iteration Matters: Practice Problems</h2>
-<ul>
-<li>Identify the repeated work in a receipt-printing program.</li>
-<li>Describe what changes each pass when processing test scores.</li>
-<li>Decide whether output should appear each pass or after the loop.</li>
-</ul>
-<!-- Slide 64 -->
-</section>
-<section id="why-iteration-matters-ai-search-terms" class="slide level2">
-<h2>Why Iteration Matters: AI Search Terms</h2>
-<ul>
-<li>C++ iteration design</li>
-<li>C++ loop repetition condition</li>
-<li>C++ IPO model loops</li>
-<li>C++ loop control variable</li>
-</ul>
-<!-- Slide 65 -->
-</section>
-<section id="why-iteration-matters-questions-for-reflection" class="slide level2">
-<h2>Why Iteration Matters: Questions for Reflection</h2>
-<ul>
-<li>What work is the program repeating?</li>
-<li>What value or state changes each pass?</li>
-<li>How will the program know the repetition is done?</li>
-</ul>
-<!-- Slide 66 -->
-</section>
-<section id="loop-anatomy-and-program-control-good-practices" class="slide level2">
-<h2>Loop Anatomy and Program Control: Good Practices</h2>
-<ul>
-<li>Keep the condition readable.</li>
-<li>Update the loop-control value in a predictable place.</li>
-<li>Trace a few passes before trusting the loop.</li>
-</ul>
-<!-- Slide 67 -->
-</section>
-<section id="loop-anatomy-and-program-control-common-mistakes" class="slide level2">
-<h2>Loop Anatomy and Program Control: Common Mistakes</h2>
-<ul>
-<li>Writing a condition that never becomes false.</li>
-<li>Updating the wrong variable.</li>
-<li>Confusing the loop body with the code that runs after the loop.</li>
-</ul>
-<!-- Slide 68 -->
-</section>
-<section id="loop-anatomy-and-program-control-more-examples" class="slide level2">
-<h2>Loop Anatomy and Program Control: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href=""></a><span class="dt">int</span> count <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb13-2"><a href=""></a><span class="cf">while</span> <span class="op">(</span>count <span class="op">&lt;=</span> <span class="dv">5</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb13-3"><a href=""></a>    cout <span class="op">&lt;&lt;</span> count <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb13-4"><a href=""></a>    count<span class="op">++;</span></span>
-<span id="cb13-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 69 -->
-</section>
-<section id="loop-anatomy-and-program-control-practice-problems" class="slide level2">
-<h2>Loop Anatomy and Program Control: Practice Problems</h2>
-<ul>
-<li>Circle the condition in a loop.</li>
-<li>Identify the loop-control variable.</li>
-<li>Build a Table of Variables for three passes.</li>
-</ul>
-<!-- Slide 70 -->
-</section>
-<section id="loop-anatomy-and-program-control-ai-search-terms" class="slide level2">
-<h2>Loop Anatomy and Program Control: AI Search Terms</h2>
-<ul>
-<li>C++ loop control flow</li>
-<li>C++ loop control variable</li>
-<li>C++ entry condition loop</li>
-<li>C++ exit condition loop</li>
-</ul>
-<!-- Slide 71 -->
-</section>
-<section id="loop-anatomy-and-program-control-questions-for-reflection" class="slide level2">
-<h2>Loop Anatomy and Program Control: Questions for Reflection</h2>
-<ul>
-<li>Where is the condition checked?</li>
-<li>What sends control back to the top?</li>
-<li>What changes so the loop can eventually stop?</li>
-</ul>
-<!-- Slide 72 -->
-</section>
-<section id="the-while-loop-good-practices" class="slide level2">
-<h2>The while Loop: Good Practices</h2>
-<ul>
-<li>Use <code>while</code> when zero passes are possible.</li>
-<li>Make the condition describe the reason to continue.</li>
-<li>Update the value that affects the condition.</li>
-</ul>
-<!-- Slide 73 -->
-</section>
-<section id="the-while-loop-common-mistakes" class="slide level2">
-<h2>The while Loop: Common Mistakes</h2>
-<ul>
-<li>Forgetting the update.</li>
-<li>Writing the condition as the reason to stop instead of the reason to continue.</li>
-<li>Assuming the body always runs at least once.</li>
-</ul>
-<!-- Slide 74 -->
-</section>
-<section id="the-while-loop-more-examples" class="slide level2">
-<h2>The while Loop: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href=""></a><span class="dt">int</span> value <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb14-2"><a href=""></a></span>
-<span id="cb14-3"><a href=""></a><span class="cf">while</span> <span class="op">(</span>value <span class="op">&lt;=</span> <span class="dv">10</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb14-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> value <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb14-5"><a href=""></a>    value <span class="op">+=</span> <span class="dv">2</span><span class="op">;</span></span>
-<span id="cb14-6"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 75 -->
-</section>
-<section id="the-while-loop-practice-problems" class="slide level2">
-<h2>The while Loop: Practice Problems</h2>
-<ul>
-<li>Write a condition that repeats while <code>score</code> is below <code>70</code>.</li>
-<li>Trace a loop where <code>count</code> starts at <code>0</code> and increases by <code>2</code>.</li>
-<li>Explain why a <code>while</code> body might never run.</li>
-</ul>
-<!-- Slide 76 -->
-</section>
-<section id="the-while-loop-ai-search-terms" class="slide level2">
-<h2>The while Loop: AI Search Terms</h2>
-<ul>
-<li>C++ while loop</li>
-<li>C++ while loop trace table</li>
-<li>C++ while loop condition</li>
-<li>C++ infinite loop causes</li>
-</ul>
-<!-- Slide 77 -->
-</section>
-<section id="the-while-loop-questions-for-reflection" class="slide level2">
-<h2>The while Loop: Questions for Reflection</h2>
-<ul>
-<li>Should the program test before doing the work?</li>
-<li>Could the repeated work be skipped entirely?</li>
-<li>What value moves the loop toward stopping?</li>
-</ul>
-<!-- Slide 78 -->
-</section>
-<section id="the-do-while-loop-good-practices" class="slide level2">
-<h2>The do-while Loop: Good Practices</h2>
-<ul>
-<li>Use <code>do-while</code> when one pass is required.</li>
-<li>Keep the repeated prompt or menu inside the body.</li>
-<li>Remember the semicolon after the condition.</li>
-</ul>
-<!-- Slide 79 -->
-</section>
-<section id="the-do-while-loop-common-mistakes" class="slide level2">
-<h2>The do-while Loop: Common Mistakes</h2>
-<ul>
-<li>Forgetting that the body runs before the test.</li>
-<li>Omitting the final semicolon.</li>
-<li>Using <code>do-while</code> when the program should be allowed to skip the body.</li>
-</ul>
-<!-- Slide 80 -->
-</section>
-<section id="the-do-while-loop-more-examples" class="slide level2">
-<h2>The do-while Loop: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href=""></a><span class="dt">int</span> number<span class="op">;</span></span>
-<span id="cb15-2"><a href=""></a></span>
-<span id="cb15-3"><a href=""></a><span class="cf">do</span> <span class="op">{</span></span>
-<span id="cb15-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter a positive number: "</span><span class="op">;</span></span>
-<span id="cb15-5"><a href=""></a>    cin <span class="op">&gt;&gt;</span> number<span class="op">;</span></span>
-<span id="cb15-6"><a href=""></a><span class="op">}</span> <span class="cf">while</span> <span class="op">(</span>number <span class="op">&lt;=</span> <span class="dv">0</span><span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 81 -->
-</section>
-<section id="the-do-while-loop-practice-problems" class="slide level2">
-<h2>The do-while Loop: Practice Problems</h2>
-<ul>
-<li>Describe why a menu often uses <code>do-while</code>.</li>
-<li>Trace one pass where the user enters <code>0</code>.</li>
-<li>Rewrite a simple prompt loop as a <code>while</code> loop and compare the setup.</li>
-</ul>
-<!-- Slide 82 -->
-</section>
-<section id="the-do-while-loop-ai-search-terms" class="slide level2">
-<h2>The do-while Loop: AI Search Terms</h2>
-<ul>
-<li>C++ do while loop</li>
-<li>C++ exit condition loop</li>
-<li>C++ do while menu</li>
-<li>C++ do while semicolon</li>
-</ul>
-<!-- Slide 83 -->
-</section>
-<section id="the-do-while-loop-questions-for-reflection" class="slide level2">
-<h2>The do-while Loop: Questions for Reflection</h2>
-<ul>
-<li>Does the program need information from the first pass before testing?</li>
-<li>Is one pass always required?</li>
-<li>Would a <code>while</code> loop need extra setup before the loop?</li>
-</ul>
-<!-- Slide 84 -->
-</section>
-<section id="the-for-loop-good-practices" class="slide level2">
-<h2>The for Loop: Good Practices</h2>
-<ul>
-<li>Use <code>for</code> for counted repetition.</li>
-<li>Keep initialization, condition, and update easy to read.</li>
-<li>Use a counter name that describes the count, such as <code>hour</code> or <code>day</code>.</li>
-</ul>
-<!-- Slide 85 -->
-</section>
-<section id="the-for-loop-common-mistakes" class="slide level2">
-<h2>The for Loop: Common Mistakes</h2>
-<ul>
-<li>Using <code>&lt;=</code> when the intended range requires <code>&lt;</code>.</li>
-<li>Changing the counter unexpectedly inside the body.</li>
-<li>Using <code>for</code> when the number of passes is not known.</li>
-</ul>
-<!-- Slide 86 -->
-</section>
-<section id="the-for-loop-more-examples" class="slide level2">
-<h2>The for Loop: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> day <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> day <span class="op">&lt;=</span> <span class="dv">7</span><span class="op">;</span> day<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb16-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Day "</span> <span class="op">&lt;&lt;</span> day <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb16-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 87 -->
-</section>
-<section id="the-for-loop-practice-problems" class="slide level2">
-<h2>The for Loop: Practice Problems</h2>
-<ul>
-<li>Write a loop that displays numbers 1 through 10.</li>
-<li>Trace a loop that starts at 5 and counts down to 1.</li>
-<li>Decide whether the counter should start at 0 or 1 for a user-facing label.</li>
-</ul>
-<!-- Slide 88 -->
-</section>
-<section id="the-for-loop-ai-search-terms" class="slide level2">
-<h2>The for Loop: AI Search Terms</h2>
-<ul>
-<li>C++ for loop</li>
-<li>C++ counted loop</li>
-<li>C++ for loop initialization condition update</li>
-<li>C++ loop counter trace</li>
-</ul>
-<!-- Slide 89 -->
-</section>
-<section id="the-for-loop-questions-for-reflection" class="slide level2">
-<h2>The for Loop: Questions for Reflection</h2>
-<ul>
-<li>Is the number of passes known?</li>
-<li>What is the first counter value?</li>
-<li>What counter value should stop the loop?</li>
-</ul>
-<!-- Slide 90 -->
-</section>
-<section id="choosing-a-loop-good-practices" class="slide level2">
-<h2>Choosing a Loop: Good Practices</h2>
-<ul>
-<li>Choose based on the repetition need.</li>
-<li>Prefer range-based <code>for</code> when the collection controls the loop.</li>
-<li>Prefer the simplest loop that states the control clearly.</li>
-</ul>
-<!-- Slide 91 -->
-</section>
-<section id="choosing-a-loop-common-mistakes" class="slide level2">
-<h2>Choosing a Loop: Common Mistakes</h2>
-<ul>
-<li>Choosing a loop because it is familiar instead of because it fits.</li>
-<li>Using a counted <code>for</code> loop when the condition is not count-based.</li>
-<li>Forgetting that range-based <code>for</code> is still available.</li>
-</ul>
-<!-- Slide 92 -->
-</section>
-<section id="choosing-a-loop-more-examples" class="slide level2">
-<h2>Choosing a Loop: More Examples</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Situation</th>
-<th>Loop</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Every vector element</td>
-<td>Range-based <code>for</code></td>
-</tr>
-<tr class="even">
-<td>Hours 1 through N</td>
-<td><code>for</code></td>
-</tr>
-<tr class="odd">
-<td>Repeat while data exists</td>
-<td><code>while</code></td>
-</tr>
-<tr class="even">
-<td>Show menu at least once</td>
-<td><code>do-while</code></td>
-</tr>
-</tbody>
-</table>
-<!-- Slide 93 -->
-</section>
-<section id="choosing-a-loop-practice-problems" class="slide level2">
-<h2>Choosing a Loop: Practice Problems</h2>
-<ul>
-<li>Choose a loop for printing one line per student.</li>
-<li>Choose a loop for displaying a menu until quit.</li>
-<li>Choose a loop for processing every value in a vector.</li>
-</ul>
-<!-- Slide 94 -->
-</section>
-<section id="choosing-a-loop-ai-search-terms" class="slide level2">
-<h2>Choosing a Loop: AI Search Terms</h2>
-<ul>
-<li>C++ which loop to use</li>
-<li>C++ while vs do while</li>
-<li>C++ for loop vs range based for</li>
-<li>C++ loop selection decision table</li>
-</ul>
-<!-- Slide 95 -->
-</section>
-<section id="choosing-a-loop-questions-for-reflection" class="slide level2">
-<h2>Choosing a Loop: Questions for Reflection</h2>
-<ul>
-<li>What controls the repetition: a collection, a count, a condition, or one required pass?</li>
-<li>Which loop makes that control easiest to see?</li>
-<li>Would another loop require extra setup or awkward logic?</li>
-</ul>
-<!-- Slide 96 -->
-
-</section></section>
+<img data-src="images/source_pages/slide-64.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"></section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

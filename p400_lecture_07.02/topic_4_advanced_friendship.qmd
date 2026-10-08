@@ -1,0 +1,191 @@
+<!-- Topic 4: Advanced Friendship Patterns -->
+<!-- Slides 27–32 -->
+
+# Advanced Friendship Patterns
+<!-- Slide 27 -->
+
+## What Else Can Become a Friend?
+
+Friendship can connect a class to another class or allow one function to work with private data from multiple classes. These patterns extend the selective access introduced in the previous topic.
+
+::: notes
+Slides 27–32
+Prerequisite check: students should understand friend functions, private members, and stream operators from Topics 2 and 3.
+Progression map: this topic extends one friend function into friend classes and coordinated access across two classes.
+:::
+
+<!-- Slide 28 -->
+
+---
+
+## A Friend Class Example
+
+::: {.columns}
+::: {.column width="60%"}
+<div style="font-size:50%">
+
+~~~cpp
+// demoFriendClass.cpp
+#include <iostream>
+using namespace std;
+
+class Square;
+
+class Rectangle {
+private:
+    int width;
+    int height;
+
+public:
+    Rectangle();
+    void convert(const Square& square);
+    int area() const;
+};
+
+class Square {
+    friend class Rectangle;
+private:
+    int side;
+
+public:
+    Square(int value = 0);
+};
+
+int main() {
+    Rectangle rectangle;
+    Square square(4);
+
+    rectangle.convert(square);
+
+    cout << rectangle.area() << endl;
+
+    return 0;
+}
+
+Rectangle::Rectangle() {
+    width = 0;
+    height = 0;
+}
+
+Square::Square(int value) {
+    side = value;
+}
+
+void Rectangle::convert(const Square& square) {
+    width = square.side;
+    height = square.side;
+}
+
+int Rectangle::area() const {
+    return width * height;
+}
+~~~
+
+</div>
+:::
+::: {.column width="40%"}
+**Output**
+
+~~~text
+16
+~~~
+:::
+:::
+
+::: notes
+Source file: cpp/demoFriendClass.cpp
+:::
+
+<!-- Slide 29 -->
+
+---
+
+## One Friend Function Across Two Classes
+
+::: {.columns}
+::: {.column width="60%"}
+<div style="font-size:50%">
+
+~~~cpp
+// demoFriendTwoClasses.cpp
+#include <iostream>
+using namespace std;
+
+class A;
+class B;
+
+int add(const A& left, const B& right);
+
+class A {
+    friend int add(const A& left, const B& right);
+private:
+    int value;
+
+public:
+    A(int number = 0);
+};
+
+class B {
+    friend int add(const A& left, const B& right);
+private:
+    int value;
+
+public:
+    B(int number = 0);
+};
+
+int main() {
+    A first(12);
+    B second(1);
+
+    cout << add(first, second) << endl;
+
+    return 0;
+}
+
+A::A(int number) {
+    value = number;
+}
+
+B::B(int number) {
+    value = number;
+}
+
+int add(const A& left, const B& right) {
+    return left.value + right.value;
+}
+~~~
+
+</div>
+:::
+::: {.column width="40%"}
+**Output**
+
+~~~text
+13
+~~~
+:::
+:::
+
+::: notes
+Source file: cpp/demoFriendTwoClasses.cpp
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## Friendship as Part of the Public Interface
+
+- Friendship is a deliberate part of class design.
+- The class chooses which outside functions or classes receive access to private data.
+
+<!-- Slide 31 -->
+
+---
+
+## Friendship Extends a Class Interface
+
+Friend functions support non-member operations, friend classes support closely related classes, and both forms preserve selective access to private state.
+
+<!-- Slide 32 -->
