@@ -31,6 +31,7 @@ void myVec::addValue(int value) {
 
     delete[] values;
     values = expandedValues;
+    expandedValues = nullptr;
     ++size;
 }
 void myVec::print() const {

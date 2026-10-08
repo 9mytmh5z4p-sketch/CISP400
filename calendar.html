@@ -404,7 +404,12 @@
       letter-spacing: 0.05em;
     }
 
-    .calendar-grid { background: var(--line); gap: 1px; }
+    .calendar-grid {
+      background: var(--line);
+      gap: 1px;
+      grid-auto-rows: minmax(102px, auto);
+      align-items: stretch;
+    }
 
     .calendar-row { display: contents; }
 
@@ -984,6 +989,7 @@
       .month-jump { align-items: flex-start; flex-direction: column; }
       .weekday { padding: 7px 2px; text-align: center; font-size: 0.56rem; letter-spacing: 0.02em; }
       .day-cell { min-height: 53px; padding: 3px; }
+      .calendar-grid { grid-auto-rows: minmax(53px, auto); }
       .date-row { min-height: 30px; align-items: flex-start; justify-content: center; }
       .date-button { width: 26px; height: 26px; font-size: 0.68rem; }
       .week-tag, .cell-items { display: none; }
@@ -1075,8 +1081,8 @@
         </div>
 
         <div class="weekday-row" aria-hidden="true">
-          <div class="weekday">Sun</div><div class="weekday">Mon</div><div class="weekday meeting-weekday">Tue<span>Class</span></div>
-          <div class="weekday">Wed</div><div class="weekday meeting-weekday">Thu<span>Class</span></div><div class="weekday">Fri</div><div class="weekday">Sat</div>
+          <div class="weekday">Sun</div><div class="weekday meeting-weekday">Mon<span>Class</span></div><div class="weekday">Tue</div>
+          <div class="weekday meeting-weekday">Wed<span>Class</span></div><div class="weekday">Thu</div><div class="weekday">Fri</div><div class="weekday">Sat</div>
         </div>
         <div class="calendar-grid" id="calendar-grid" role="grid" aria-labelledby="month-title"></div>
       </section>
@@ -1236,12 +1242,12 @@
           lecture("05.02", "Dependencies, Object Arrays, and RAII"),
           lecture("06.01", "Design Patterns")
         ]},
-        { n: 7, start: "2026-10-05", end: "2026-10-07", section: "control", label: "Conditional Logic", lectures: [
-          lecture("06.02", "Conditionals"),
-          lecture("07.01", "Conditionals, Part 2")
+        { n: 7, start: "2026-10-05", end: "2026-10-07", section: "control", label: "C-Strings and More OOP", lectures: [
+          lecture("06.02", "C-Strings and Conversions"),
+          lecture("07.01", "More OOP: The this Pointer, Static Members, Operators, and Friends")
         ]},
-        { n: 8, start: "2026-10-12", end: "2026-10-14", section: "control", label: "Iteration and Nested Loops", lectures: [
-          lecture("07.02", "Iteration"),
+        { n: 8, start: "2026-10-12", end: "2026-10-14", section: "control", label: "More OOP and Object Semantics", lectures: [
+          lecture("07.02", "Operator Overloading, Friends, and Streams"),
           lecture("08.01", "Nested Loops and Multi-Dimensional Vectors")
         ]},
         { n: 9, start: "2026-10-19", end: "2026-10-21", section: "control", label: "Menus and Reliable Loops", lectures: [
