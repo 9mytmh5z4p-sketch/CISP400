@@ -1,4 +1,4 @@
-<!-- Topic: Rvalue References and Move Operations -->
+<!-- Topic 2: Rvalue References and Move Operations -->
 <!-- Slides 37–55 -->
 
 # Rvalue References and Move Operations
