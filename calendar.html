@@ -1287,33 +1287,38 @@
         { n: 17, start: "2026-12-14", end: "2026-12-16", section: "power", label: "Finals Period", note: "Exact CISP 400 final exam date and time are not yet assigned", lectures: [] }
       ];
 
-      // CISP 400 meets Tuesdays and Thursdays. The displayed sequence begins
-      // with lecture 03.01 on September 8, 2026.
-      const p400LectureIds = Object.keys(window.P400_LECTURE_TITLES);
+      // CISP 400 meets Tuesdays and Thursdays. These three dates are instructor
+      // cancellations; the remaining lectures move to the next available meeting.
+      const p400NoClassDates = new Set(["2026-10-27", "2026-10-29", "2026-11-17"]);
+      const p400LectureIds = Object.keys(window.P400_LECTURE_TITLES).slice(0, -3);
       const p400Start = new Date(2026, 7, 25, 12, 0, 0);
-      const p400Date = (index) => {
-        const date = new Date(p400Start);
-        date.setDate(date.getDate() + Math.floor(index / 2) * 7 + (index % 2) * 2);
+      const p400ISO = date => {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, "0");
         const day = String(date.getDate()).padStart(2, "0");
         return `${year}-${month}-${day}`;
       };
+      const p400MeetingDates = [];
+      for (const date = new Date(p400Start); p400MeetingDates.length < p400LectureIds.length; date.setDate(date.getDate() + 1)) {
+        const iso = p400ISO(date);
+        if ((date.getDay() === 2 || date.getDay() === 4) && !p400NoClassDates.has(iso)) {
+          p400MeetingDates.push(iso);
+        }
+      }
+      const p400Date = index => p400MeetingDates[index];
       Object.assign(sessionDates, Object.fromEntries(p400LectureIds.map((id, index) => [id, p400Date(index)])));
       weeks.splice(0, weeks.length, ...Array.from({ length: Math.ceil(p400LectureIds.length / 2) }, (_, index) => {
         const firstIndex = index * 2;
         const firstDate = p400Date(firstIndex);
         const secondDate = p400Date(firstIndex + 1);
+        const lectureIds = p400LectureIds.slice(firstIndex, firstIndex + 2);
         return {
           n: index + 1,
           start: firstDate,
           end: secondDate,
           section: index < 7 ? "foundations" : (index < 14 ? "control" : "power"),
           label: `CISP 400 Topics · Week ${index + 1}`,
-          lectures: [
-            lecture(p400LectureIds[firstIndex], ""),
-            lecture(p400LectureIds[firstIndex + 1], "")
-          ]
+          lectures: lectureIds.map(id => lecture(id, ""))
         };
       }));
       weeks.push({
@@ -1383,9 +1388,12 @@
       addEvent("2026-09-27", "homework", "Homework 2 due", "Due date.");
       addEvent("2026-10-11", "homework", "Homework 3 due", "Due date.");
       addEvent("2026-10-25", "homework", "Homework 4 due", "Due date.");
+      addEvent("2026-10-27", "holiday", "No class · Instructor unavailable", "CISP 400 does not meet today.");
+      addEvent("2026-10-29", "holiday", "No class · Instructor unavailable", "CISP 400 does not meet today.");
       addEvent("2026-09-07", "holiday", "Labor Day · No class", "No classes; offices closed.");
       addEvent("2026-11-11", "holiday", "Veterans Day · No class", "No classes; offices closed.");
       addEvent("2026-11-08", "homework", "Homework 5 due", "Due date.");
+      addEvent("2026-11-17", "holiday", "No class · Instructor unavailable", "CISP 400 does not meet today.");
       addEvent("2026-11-17", "deadline", "Withdraw with a “W”", "Last day to withdraw from classes with a “W” notation on record.");
       addEvent("2026-11-22", "homework", "Homework 6 due", "Due date.");
       addRange("2026-11-26", "2026-11-29", "recess", "Thanksgiving Recess", "No classes; offices closed November 26–29.");
@@ -1412,7 +1420,7 @@
         "2026-08": "Tuesday/Thursday classes · Labor Day closure",
         "2026-09": "Tuesday/Thursday class meetings",
         "2026-10": "Veterans Day closure · Thanksgiving Recess",
-        "2026-11": "Final lectures Dec 2, 7, and 9 · finals Dec 11–17",
+        "2026-11": "Final lectures Dec 1–10 · finals Dec 11–17",
         "2027-00": "Post-term · Winter Recess and grades due"
       };
 
@@ -1691,9 +1699,9 @@
       const renderMeetingDetail = (meeting, dayEvents) => {
         const container = document.getElementById("week-detail");
         if (!meeting) {
-          const holiday = dayEvents.some(event => event.type === "holiday");
-          container.innerHTML = holiday
-            ? `<p class="empty-note"><strong>No class.</strong> This Tuesday/Thursday meeting is cancelled for the campus holiday.</p>`
+          const noClassEvent = dayEvents.find(event => event.type === "holiday");
+          container.innerHTML = noClassEvent
+            ? `<p class="empty-note"><strong>No class.</strong> ${noClassEvent.detail || "CISP 400 does not meet today."}</p>`
             : `<p class="empty-note">No CISP 400 lecture is scheduled. Regular class meetings are Tuesdays and Thursdays.</p>`;
           return;
         }
@@ -1731,8 +1739,11 @@
           { date: "2026-09-27", title: "Homework 2 due", detail: "Assignment due" },
           { date: "2026-10-11", title: "Homework 3 due", detail: "Assignment due" },
           { date: "2026-10-25", title: "Homework 4 due", detail: "Assignment due" },
+          { date: "2026-10-27", title: "No class · Instructor unavailable", detail: "CISP 400 does not meet" },
+          { date: "2026-10-29", title: "No class · Instructor unavailable", detail: "CISP 400 does not meet" },
           { date: "2026-11-11", title: "Veterans Day · No class", detail: "Campus closed" },
           { date: "2026-11-08", title: "Homework 5 due", detail: "Assignment due" },
+          { date: "2026-11-17", title: "No class · Instructor unavailable", detail: "CISP 400 does not meet" },
           { date: "2026-11-17", title: "Withdrawal deadline", detail: "Withdraw with a “W”" },
           { date: "2026-11-22", title: "Homework 6 due", detail: "Assignment due" },
           { date: "2026-11-26", title: "Thanksgiving Recess", detail: "November 26–29" },

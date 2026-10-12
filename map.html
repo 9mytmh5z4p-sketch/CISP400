@@ -1023,31 +1023,44 @@
         }
       ];
 
-      // CISP 400 meets Tuesdays and Thursdays. The displayed sequence begins
-      // with lecture 03.01 on September 8, 2026.
-      const p400LectureIds = Object.keys(lectureTitles);
+      // CISP 400 meets Tuesdays and Thursdays. These three dates are instructor
+      // cancellations; later lectures move to the next available meeting.
+      const p400NoClassDates = new Set(["2026-10-27", "2026-10-29", "2026-11-17"]);
+      const p400LectureIds = Object.keys(lectureTitles).slice(0, -3);
       const p400Start = new Date(2026, 7, 25, 12, 0, 0);
-      const p400Date = (index) => {
-        const date = new Date(p400Start);
-        date.setDate(date.getDate() + Math.floor(index / 2) * 7 + (index % 2) * 2);
-        return date;
-      };
+      const p400ISO = (date) => date.toISOString().slice(0, 10);
       const formatP400Date = (date) => date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-      weeks.splice(0, weeks.length, ...Array.from({ length: Math.ceil(p400LectureIds.length / 2) }, (_, index) => {
-        const firstDate = p400Date(index * 2);
-        const secondDate = p400Date(index * 2 + 1);
-        const firstId = p400LectureIds[index * 2];
-        const secondId = p400LectureIds[index * 2 + 1];
+
+      let lectureIndex = 0;
+      const p400CalendarWeeks = Array.from({ length: 16 }, (_, index) => {
+        const tuesday = new Date(p400Start);
+        tuesday.setDate(tuesday.getDate() + index * 7);
+        const thursday = new Date(tuesday);
+        thursday.setDate(thursday.getDate() + 2);
+        return { tuesday, thursday };
+      });
+
+      weeks.splice(0, weeks.length, ...p400CalendarWeeks.map(({ tuesday, thursday }, index) => {
+        const dates = [tuesday, thursday];
+        const sessions = dates.map((date) => {
+          const iso = p400ISO(date);
+          if (p400NoClassDates.has(iso)) {
+            return { day: date.getDay() === 2 ? "Tue" : "Thu", date: formatP400Date(date), iso, type: "no-class", label: "No class", title: "Instructor unavailable", detail: "CISP 400 does not meet today" };
+          }
+          const code = p400LectureIds[lectureIndex++];
+          return { day: date.getDay() === 2 ? "Tue" : "Thu", date: formatP400Date(date), iso, type: "lecture", code, title: lectureTitles[code] || code };
+        });
+        const milestones = [];
+        if (p400NoClassDates.has(p400ISO(tuesday))) milestones.push([formatP400Date(tuesday), "No class · Instructor unavailable", "CISP 400 does not meet.", "break"]);
+        if (p400NoClassDates.has(p400ISO(thursday))) milestones.push([formatP400Date(thursday), "No class · Instructor unavailable", "CISP 400 does not meet.", "break"]);
+        if (p400ISO(tuesday) === "2026-11-17") milestones.push(["Nov 17", "Withdrawal deadline", "Last day to withdraw with a “W” notation.", "deadline"]);
         return {
           number: index + 1,
           unit: 1,
           title: `CISP 400 Topics · Week ${index + 1}`,
-          range: `Tue ${formatP400Date(firstDate)} · Thu ${formatP400Date(secondDate)}`,
-          sessions: [
-            { day: "Tue", date: formatP400Date(firstDate), iso: firstDate.toISOString().slice(0, 10), type: "lecture", code: firstId, title: lectureTitles[firstId] || firstId },
-            { day: "Thu", date: formatP400Date(secondDate), iso: secondDate.toISOString().slice(0, 10), type: "lecture", code: secondId, title: lectureTitles[secondId] || secondId }
-          ],
-          milestones: []
+          range: `Tue ${formatP400Date(tuesday)} · Thu ${formatP400Date(thursday)}`,
+          sessions,
+          milestones
         };
       }));
       weeks.push({
@@ -1159,7 +1172,7 @@
             .filter((session) => session.type === "lecture" && session.iso <= TODAY)
             .length;
           const currentWeek = weekContaining(todayIndex) || initialWeek;
-          summaryValue = `${lectureDatesReached}/32`;
+          summaryValue = `${lectureDatesReached}/29`;
           summaryLabel = `lecture dates reached · Week ${currentWeek.number} of 16`;
         } else if (TODAY <= TERM_END) {
           summaryValue = "Finals";

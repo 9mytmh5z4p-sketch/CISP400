@@ -108,6 +108,27 @@ The assignment schedule and grade plan below provide a high-level overview. Canv
 
 You are free to use the textbook or the online links. I do not expect students to read both. Reading just one should be sufficient.
 
+### Revised Meeting Schedule
+
+CISP 400 will not meet on October 27, October 29, or November 17, 2026. The later lectures move to the next available Tuesday or Thursday. The final three lectures — 16.01, 16.02, and 17.01 — have been removed from the schedule.
+
+| Date | Schedule |
+| --- | --- |
+| Tuesday, October 27, 2026 | No class — instructor unavailable |
+| Thursday, October 29, 2026 | No class — instructor unavailable |
+| Tuesday, November 3, 2026 | 10.02 — Converting Constructors and Object Conversions |
+| Thursday, November 5, 2026 | 11.01 — Class Relationships, Aggregation, and Composition |
+| Tuesday, November 10, 2026 | 11.02 — Inheritance and Multiple Inheritance |
+| Thursday, November 12, 2026 | 12.01 — Inheritance Construction and Overriding |
+| Tuesday, November 17, 2026 | No class — instructor unavailable |
+| Thursday, November 19, 2026 | 12.02 — Polymorphic Data Structures and Inheritance Applications |
+| Tuesday, November 24, 2026 | 13.01 — Inheritance and Arrays |
+| Thursday, November 26, 2026 | 13.02 — Polymorphism and Virtual Member Functions |
+| Tuesday, December 1, 2026 | 14.01 — Abstract Base Classes and Polymorphic Arrays |
+| Thursday, December 3, 2026 | 14.02 — Exception Handling and Exception Hierarchies |
+| Tuesday, December 8, 2026 | 15.01 — STL Preview and Vectors of Vectors |
+| Thursday, December 10, 2026 | 15.02 — Function Templates and Generic Programming |
+
 
 
 ### Assignment Schedule
