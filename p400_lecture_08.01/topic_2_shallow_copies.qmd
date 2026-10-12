@@ -1,4 +1,4 @@
-<!-- Topic: Shallow Copies and the Serialization Problem -->
+<!-- Topic 2: Shallow Copies and the Serialization Problem -->
 <!-- Slides 37–58 -->
 
 # Shallow Copies and the Serialization Problem

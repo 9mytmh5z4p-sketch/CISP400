@@ -28,72 +28,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="p400_lecture_08.01_files/libs/revealjs/dist/theme/quarto-99eeafcedac04850354b682963cedae3.css">
   <link rel="stylesheet" href="../styles/styles.css">
@@ -206,16 +140,17 @@ Dr.&nbsp;Caleb Fowler
 </div>
 
 </section>
-<section id="last-time" class="title-slide slide level1 center">
-<h1>Last Time</h1>
-<ul>
-<li class="fragment"><strong>The while Loop</strong></li>
-<li class="fragment"><strong>The do-while Loop</strong></li>
-<li class="fragment"><strong>The for Loop</strong></li>
-<li class="fragment"><strong>Choosing Loops</strong></li>
-</ul>
-<aside class="notes">
-<p>Review the loop syntax choices from the previous class before using loops to represent two-dimensional structure.</p>
+<section class="slide level2">
+
+<!-- Topic: Course Framing -->
+<!-- Slides 1–4 -->
+</section>
+<section>
+<section id="course-framing" class="title-slide slide level1 center">
+<h1>Course Framing</h1>
+
+<img data-src="images/source_pages/slide-01.png" style="width:100.0%" alt="CISP 400" class="r-stretch"><aside class="notes">
+<p>Slides 1–4 Source slide 1 from the lecture source images.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -229,44 +164,29 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 1 -->
 </section>
+<section id="source-slide-2" class="slide level2">
+<h2><span style="display:none">Source Slide 2</span></h2>
 
-<section id="todays-agenda" class="title-slide slide level1 center">
-<h1>Today’s Agenda</h1>
-<ul>
-<li>Nested Loops</li>
-<li>Multi-Dimensional Vectors</li>
-</ul>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 <!-- Slide 2 -->
-<!-- Topic 1: Nested Loops -->
-<!-- Slides 3-17 -->
-</section>
+<img data-src="images/source_pages/slide-02.png" style="width:100.0%" alt="Chapter 11" class="r-stretch"></section>
+<section id="source-slide-3" class="slide level2">
+<h2><span style="display:none">Source Slide 3</span></h2>
 
-<section>
-<section id="nested-loops" class="title-slide slide level1 center">
-<h1>Nested Loops</h1>
 <!-- Slide 3 -->
-</section>
-<section id="repeating-repetition" class="slide level2 smaller">
-<h2>Repeating Repetition</h2>
-<ul>
-<li>Sometimes each pass through a loop contains another full loop.</li>
-<li>That pattern is called a nested loop.</li>
-</ul>
-<aside class="notes">
-<p>Slides 3-17</p>
+<img data-src="images/source_pages/slide-03.png" style="width:100.0%" alt="Agenda" class="r-stretch"></section>
+<section id="source-slide-4" class="slide level2">
+<h2><span style="display:none">Source Slide 4</span></h2>
+
+<!-- Slide 4 -->
+<!-- Topic 1: Copy Constructors and Memberwise Assignment -->
+<!-- Slides 5–36 -->
+<img data-src="images/source_pages/slide-04.png" style="width:100.0%" alt="Agenda" class="r-stretch"></section></section>
+<section>
+<section id="copy-constructors-and-memberwise-assignment" class="title-slide slide level1 center">
+<h1>Copy Constructors and Memberwise Assignment</h1>
+
+<img data-src="images/source_pages/slide-05.png" style="width:100.0%" alt="Copy Constructors and Memberwise Assignment" class="r-stretch"><aside class="notes">
+<p>Slides 5–36 Source slide 5 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -278,220 +198,171 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 4 -->
-</section>
-<section id="outer-loop-inner-loop" class="slide level2">
-<h2>Outer Loop, Inner Loop</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Loop</th>
-<th>Role</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Outer loop</td>
-<td>Chooses the larger context</td>
-</tr>
-<tr class="even">
-<td>Inner loop</td>
-<td>Completes repeated work inside that context</td>
-</tr>
-</tbody>
-</table>
 <!-- Slide 5 -->
 </section>
-<section id="reading-nested-loops" class="slide level2">
-<h2>Reading Nested Loops</h2>
-<ul>
-<li>Read the outer loop first to understand the big structure.</li>
-<li>Then read the inner loop to understand what happens inside each outer pass.</li>
-<li>During execution, the inner loop finishes before the next outer pass begins.</li>
-</ul>
+<section id="source-slide-6" class="slide level2">
+<h2><span style="display:none">Source Slide 6</span></h2>
+
 <!-- Slide 6 -->
-</section>
-<section id="a-small-trace" class="slide level2">
-<h2>A Small Trace</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: right;">Outer Pass</th>
-<th>Inner Passes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;"><code>row = 1</code></td>
-<td><code>col = 1</code>, <code>col = 2</code>, <code>col = 3</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;"><code>row = 2</code></td>
-<td><code>col = 1</code>, <code>col = 2</code>, <code>col = 3</code></td>
-</tr>
-</tbody>
-</table>
-<p>The inner loop runs three times for each row.</p>
+<img data-src="images/source_pages/slide-06.png" style="width:100.0%" alt="• Code a rectangle class" class="r-stretch"></section>
+<section id="source-slide-7" class="slide level2">
+<h2><span style="display:none">Source Slide 7</span></h2>
+
 <!-- Slide 7 -->
-</section>
-<section id="the-inner-loop-starts-over" class="slide level2">
-<h2>The Inner Loop Starts Over</h2>
-<ul>
-<li>Each new outer-loop pass creates a fresh run of the inner loop.</li>
-<li>The inner loop’s control variable is initialized again.</li>
-<li>This is why the column count restarts on each row.</li>
-</ul>
+<img data-src="images/source_pages/slide-07.png" style="width:100.0%" alt="Debugging" class="r-stretch"></section>
+<section id="source-slide-8" class="slide level2">
+<h2><span style="display:none">Source Slide 8</span></h2>
+
 <!-- Slide 8 -->
-</section>
-<section id="rows-and-columns" class="slide level2">
-<h2>Rows And Columns</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Idea</th>
-<th>Loop Role</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Row</td>
-<td>Outer loop</td>
-</tr>
-<tr class="even">
-<td>Column</td>
-<td>Inner loop</td>
-</tr>
-<tr class="odd">
-<td>Cell</td>
-<td>One pass through the inner loop</td>
-</tr>
-</tbody>
-</table>
+<img data-src="images/source_pages/slide-08.png" style="width:100.0%" alt="Exercise Goals" class="r-stretch"></section>
+<section id="source-slide-9" class="slide level2">
+<h2><span style="display:none">Source Slide 9</span></h2>
+
 <!-- Slide 9 -->
-</section>
-<section id="printing-a-rectangle" class="slide level2">
-<h2>Printing A Rectangle</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb1-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb1-3"><a href=""></a></span>
-<span id="cb1-4"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb1-5"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> row <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> row <span class="op">&lt;=</span> <span class="dv">3</span><span class="op">;</span> row<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb1-6"><a href=""></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> col <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> col <span class="op">&lt;=</span> <span class="dv">5</span><span class="op">;</span> col<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb1-7"><a href=""></a>            cout <span class="op">&lt;&lt;</span> <span class="ch">'*'</span><span class="op">;</span></span>
-<span id="cb1-8"><a href=""></a>        <span class="op">}</span></span>
-<span id="cb1-9"><a href=""></a>        cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb1-10"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb1-11"><a href=""></a></span>
-<span id="cb1-12"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb1-13"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<img data-src="images/source_pages/slide-09.png" style="width:100.0%" alt="Debug Exercise" class="r-stretch"></section>
+<section id="source-slide-10" class="slide level2">
+<h2><span style="display:none">Source Slide 10</span></h2>
+
 <!-- Slide 10 -->
-</section>
-<section id="printing-a-triangle" class="slide level2">
-<h2>Printing A Triangle</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb2-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb2-3"><a href=""></a></span>
-<span id="cb2-4"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb2-5"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> row <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> row <span class="op">&lt;=</span> <span class="dv">5</span><span class="op">;</span> row<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb2-6"><a href=""></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> col <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> col <span class="op">&lt;=</span> row<span class="op">;</span> col<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb2-7"><a href=""></a>            cout <span class="op">&lt;&lt;</span> <span class="ch">'*'</span><span class="op">;</span></span>
-<span id="cb2-8"><a href=""></a>        <span class="op">}</span></span>
-<span id="cb2-9"><a href=""></a>        cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb2-10"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb2-11"><a href=""></a></span>
-<span id="cb2-12"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb2-13"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<img data-src="images/source_pages/slide-10.png" style="width:100.0%" alt="Source Slide 10" class="r-stretch"></section>
+<section id="source-slide-11" class="slide level2">
+<h2><span style="display:none">Source Slide 11</span></h2>
+
 <!-- Slide 11 -->
-</section>
-<section id="counting-total-passes" class="slide level2">
-<h2>Counting Total Passes</h2>
-<ul>
-<li>When both loops have fixed counts, multiply them.</li>
-<li><code>3</code> rows and <code>5</code> columns create <code>15</code> inner-loop passes.</li>
-<li>If one loop depends on the other, trace the rows one at a time.</li>
-</ul>
+<img data-src="images/source_pages/slide-11.png" style="width:100.0%" alt="Source Slide 11" class="r-stretch"></section>
+<section id="source-slide-12" class="slide level2">
+<h2><span style="display:none">Source Slide 12</span></h2>
+
 <!-- Slide 12 -->
-</section>
-<section id="loop-order-matters" class="slide level2">
-<h2>Loop Order Matters</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> row <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> row <span class="op">&lt;=</span> <span class="dv">3</span><span class="op">;</span> row<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb3-2"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> col <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> col <span class="op">&lt;=</span> <span class="dv">5</span><span class="op">;</span> col<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb3-3"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="ch">'*'</span><span class="op">;</span></span>
-<span id="cb3-4"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb3-5"><a href=""></a>    cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb3-6"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column" style="width:50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> col <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> col <span class="op">&lt;=</span> <span class="dv">5</span><span class="op">;</span> col<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb4-2"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> row <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> row <span class="op">&lt;=</span> <span class="dv">3</span><span class="op">;</span> row<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb4-3"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="ch">'*'</span><span class="op">;</span></span>
-<span id="cb4-4"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb4-5"><a href=""></a>    cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb4-6"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></div>
-<p>The same two counts can produce a different traversal pattern.</p>
+<img data-src="images/source_pages/slide-12.png" style="width:100.0%" alt="Functions &amp; Methods" class="r-stretch"></section>
+<section id="source-slide-13" class="slide level2">
+<h2><span style="display:none">Source Slide 13</span></h2>
+
 <!-- Slide 13 -->
-</section>
-<section id="choosing-loop-variables" class="slide level2">
-<h2>Choosing Loop Variables</h2>
-<ul>
-<li>Use names that describe the structure: <code>row</code>, <code>col</code>, <code>student</code>, <code>score</code>.</li>
-<li>Do not reuse the same loop variable name in both loops.</li>
-<li>Clear names make the nesting easier to trace.</li>
-</ul>
+<img data-src="images/source_pages/slide-13.png" style="width:100.0%" alt="3 ways to create functions/" class="r-stretch"></section>
+<section id="source-slide-14" class="slide level2">
+<h2><span style="display:none">Source Slide 14</span></h2>
+
 <!-- Slide 14 -->
-</section>
-<section id="nested-loops-with-totals" class="slide level2">
-<h2>Nested Loops With Totals</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a><span class="dt">int</span> grandTotal <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb5-2"><a href=""></a></span>
-<span id="cb5-3"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> student <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> student <span class="op">&lt;=</span> <span class="dv">3</span><span class="op">;</span> student<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb5-4"><a href=""></a>    <span class="dt">int</span> studentTotal <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb5-5"><a href=""></a></span>
-<span id="cb5-6"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> test <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> test <span class="op">&lt;=</span> <span class="dv">4</span><span class="op">;</span> test<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb5-7"><a href=""></a>        <span class="dt">int</span> score<span class="op">;</span></span>
-<span id="cb5-8"><a href=""></a>        cin <span class="op">&gt;&gt;</span> score<span class="op">;</span></span>
-<span id="cb5-9"><a href=""></a>        studentTotal <span class="op">+=</span> score<span class="op">;</span></span>
-<span id="cb5-10"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb5-11"><a href=""></a></span>
-<span id="cb5-12"><a href=""></a>    grandTotal <span class="op">+=</span> studentTotal<span class="op">;</span></span>
-<span id="cb5-13"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<img data-src="images/source_pages/slide-14.png" style="width:100.0%" alt="3 ways to create functions/" class="r-stretch"></section>
+<section id="source-slide-15" class="slide level2">
+<h2><span style="display:none">Source Slide 15</span></h2>
+
 <!-- Slide 15 -->
-</section>
-<section id="keeping-nesting-shallow" class="slide level2">
-<h2>Keeping Nesting Shallow</h2>
-<ul>
-<li>Two levels of nesting are common.</li>
-<li>Three or more levels can become hard to read quickly.</li>
-<li>When nesting gets deep, ask whether a function can name part of the work.</li>
-</ul>
+<img data-src="images/source_pages/slide-15.png" style="width:100.0%" alt="Source Slide 15" class="r-stretch"></section>
+<section id="source-slide-16" class="slide level2">
+<h2><span style="display:none">Source Slide 16</span></h2>
+
 <!-- Slide 16 -->
-</section>
-<section id="summary" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>The outer loop chooses the context.</li>
-<li>The inner loop completes the repeated work for that context.</li>
-<li>The inner loop starts over for each outer-loop pass.</li>
-</ul>
+<img data-src="images/source_pages/slide-16.png" style="width:100.0%" alt="Source Slide 16" class="r-stretch"></section>
+<section id="source-slide-17" class="slide level2">
+<h2><span style="display:none">Source Slide 17</span></h2>
+
 <!-- Slide 17 -->
-<!-- Topic 2: Multi-Dimensional Vectors -->
-<!-- Slides 18-37 -->
-</section></section>
-<section>
-<section id="multi-dimensional-vectors" class="title-slide slide level1 center">
-<h1>Multi-Dimensional Vectors</h1>
+<img data-src="images/source_pages/slide-17.png" style="width:100.0%" alt="3 ways to create functions/" class="r-stretch"></section>
+<section id="source-slide-18" class="slide level2">
+<h2><span style="display:none">Source Slide 18</span></h2>
+
 <!-- Slide 18 -->
-</section>
-<section id="a-vector-of-vectors" class="slide level2 smaller">
-<h2>A Vector Of Vectors</h2>
-<ul>
-<li>A vector can store other vectors.</li>
-<li>That lets us represent table-like data with rows and columns.</li>
-</ul>
-<aside class="notes">
-<p>Slides 18-37</p>
+<img data-src="images/source_pages/slide-18.png" style="width:100.0%" alt="Source Slide 18" class="r-stretch"></section>
+<section id="source-slide-19" class="slide level2">
+<h2><span style="display:none">Source Slide 19</span></h2>
+
+<!-- Slide 19 -->
+<img data-src="images/source_pages/slide-19.png" style="width:100.0%" alt="Recall…" class="r-stretch"></section>
+<section id="source-slide-20" class="slide level2">
+<h2><span style="display:none">Source Slide 20</span></h2>
+
+<!-- Slide 20 -->
+<img data-src="images/source_pages/slide-20.png" style="width:100.0%" alt="3 ways to create functions/" class="r-stretch"></section>
+<section id="source-slide-21" class="slide level2">
+<h2><span style="display:none">Source Slide 21</span></h2>
+
+<!-- Slide 21 -->
+<img data-src="images/source_pages/slide-21.png" style="width:100.0%" alt="Source Slide 21" class="r-stretch"></section>
+<section id="source-slide-22" class="slide level2">
+<h2><span style="display:none">Source Slide 22</span></h2>
+
+<!-- Slide 22 -->
+<img data-src="images/source_pages/slide-22.png" style="width:100.0%" alt="Source Slide 22" class="r-stretch"></section>
+<section id="source-slide-23" class="slide level2">
+<h2><span style="display:none">Source Slide 23</span></h2>
+
+<!-- Slide 23 -->
+<img data-src="images/source_pages/slide-23.png" style="width:100.0%" alt="11.5 Copy" class="r-stretch"></section>
+<section id="source-slide-24" class="slide level2">
+<h2><span style="display:none">Source Slide 24</span></h2>
+
+<!-- Slide 24 -->
+<img data-src="images/source_pages/slide-24.png" style="width:100.0%" alt="Have you ever wondered …" class="r-stretch"></section>
+<section id="source-slide-25" class="slide level2">
+<h2><span style="display:none">Source Slide 25</span></h2>
+
+<!-- Slide 25 -->
+<img data-src="images/source_pages/slide-25.png" style="width:100.0%" alt="Source Slide 25" class="r-stretch"></section>
+<section id="source-slide-26" class="slide level2">
+<h2><span style="display:none">Source Slide 26</span></h2>
+
+<!-- Slide 26 -->
+<img data-src="images/source_pages/slide-26.png" style="width:100.0%" alt="Source Slide 26" class="r-stretch"></section>
+<section id="source-slide-27" class="slide level2">
+<h2><span style="display:none">Source Slide 27</span></h2>
+
+<!-- Slide 27 -->
+<img data-src="images/source_pages/slide-27.png" style="width:100.0%" alt="Why does this work?" class="r-stretch"></section>
+<section id="source-slide-28" class="slide level2">
+<h2><span style="display:none">Source Slide 28</span></h2>
+
+<!-- Slide 28 -->
+<img data-src="images/source_pages/slide-28.png" style="width:100.0%" alt="• Constructors!" class="r-stretch"></section>
+<section id="source-slide-29" class="slide level2">
+<h2><span style="display:none">Source Slide 29</span></h2>
+
+<!-- Slide 29 -->
+<img data-src="images/source_pages/slide-29.png" style="width:100.0%" alt="Source Slide 29" class="r-stretch"></section>
+<section id="source-slide-30" class="slide level2">
+<h2><span style="display:none">Source Slide 30</span></h2>
+
+<!-- Slide 30 -->
+<img data-src="images/source_pages/slide-30.png" style="width:100.0%" alt="• The book &amp; I use the terms copy and assignment" class="r-stretch"></section>
+<section id="source-slide-31" class="slide level2">
+<h2><span style="display:none">Source Slide 31</span></h2>
+
+<!-- Slide 31 -->
+<img data-src="images/source_pages/slide-31.png" style="width:100.0%" alt="Source Slide 31" class="r-stretch"></section>
+<section id="source-slide-32" class="slide level2">
+<h2><span style="display:none">Source Slide 32</span></h2>
+
+<!-- Slide 32 -->
+<img data-src="images/source_pages/slide-32.png" style="width:100.0%" alt="Comparing the Assignment" class="r-stretch"></section>
+<section id="source-slide-33" class="slide level2">
+<h2><span style="display:none">Source Slide 33</span></h2>
+
+<!-- Slide 33 -->
+<img data-src="images/source_pages/slide-33.png" style="width:100.0%" alt="Initialization" class="r-stretch"></section>
+<section id="source-slide-34" class="slide level2">
+<h2><span style="display:none">Source Slide 34</span></h2>
+
+<!-- Slide 34 -->
+<img data-src="images/source_pages/slide-34.png" style="width:100.0%" alt="The assignment operator" class="r-stretch"></section>
+<section id="source-slide-35" class="slide level2">
+<h2><span style="display:none">Source Slide 35</span></h2>
+
+<!-- Slide 35 -->
+<img data-src="images/source_pages/slide-35.png" style="width:100.0%" alt="The copy constructor" class="r-stretch"></section>
+<section id="source-slide-36" class="slide level2">
+<h2><span style="display:none">Source Slide 36</span></h2>
+
+<!-- Slide 36 -->
+<!-- Topic 2: Shallow Copies and the Serialization Problem -->
+<!-- Slides 37–58 -->
+<img data-src="images/source_pages/slide-36.png" style="width:100.0%" alt="• Let’s take a second and explore Memberwise" class="r-stretch"></section></section>
+<section>
+<section id="shallow-copies-and-the-serialization-problem" class="title-slide slide level1 center">
+<h1>Shallow Copies and the Serialization Problem</h1>
+
+<img data-src="images/source_pages/slide-37.png" style="width:100.0%" alt="Shallow Copies and the Serialization Problem" class="r-stretch"><aside class="notes">
+<p>Slides 37–58 Source slide 37 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -503,345 +374,267 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 19 -->
-</section>
-<section id="rows-first" class="slide level2">
-<h2>Rows First</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Structure</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Outer vector</td>
-<td>The collection of rows</td>
-</tr>
-<tr class="even">
-<td>Inner vector</td>
-<td>One row of values</td>
-</tr>
-<tr class="odd">
-<td>Element</td>
-<td>One value inside a row</td>
-</tr>
-</tbody>
-</table>
-<!-- Slide 20 -->
-</section>
-<section id="include-the-vector-library" class="slide level2">
-<h2>Include The Vector Library</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb6-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
-<span id="cb6-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The vector type comes from the vector library.</p>
-<!-- Slide 21 -->
-</section>
-<section id="declaring-a-2d-vector" class="slide level2">
-<h2>Declaring A 2D Vector</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a>vector<span class="op">&lt;</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&gt;</span> scores<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Read this as a vector where each element is another <code>vector&lt;int&gt;</code>.</p>
-<!-- Slide 22 -->
-</section>
-<section id="creating-a-sized-grid" class="slide level2">
-<h2>Creating A Sized Grid</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a><span class="dt">int</span> rows <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></span>
-<span id="cb8-2"><a href=""></a><span class="dt">int</span> cols <span class="op">=</span> <span class="dv">4</span><span class="op">;</span></span>
-<span id="cb8-3"><a href=""></a></span>
-<span id="cb8-4"><a href=""></a>vector<span class="op">&lt;</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&gt;</span> grid<span class="op">(</span>rows<span class="op">,</span> vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;(</span>cols<span class="op">));</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This creates <code>3</code> rows. Each row starts with <code>4</code> integer values.</p>
-<!-- Slide 23 -->
-</section>
-<section id="initializer-lists" class="slide level2">
-<h2>Initializer Lists</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href=""></a>vector<span class="op">&lt;</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&gt;</span> grid <span class="op">=</span> <span class="op">{</span></span>
-<span id="cb9-2"><a href=""></a>    <span class="op">{</span><span class="dv">10</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">30</span><span class="op">},</span></span>
-<span id="cb9-3"><a href=""></a>    <span class="op">{</span><span class="dv">40</span><span class="op">,</span> <span class="dv">50</span><span class="op">,</span> <span class="dv">60</span><span class="op">},</span></span>
-<span id="cb9-4"><a href=""></a>    <span class="op">{</span><span class="dv">70</span><span class="op">,</span> <span class="dv">80</span><span class="op">,</span> <span class="dv">90</span><span class="op">}</span></span>
-<span id="cb9-5"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Nested braces show the rows directly.</p>
-<!-- Slide 24 -->
-</section>
-<section id="accessing-one-element" class="slide level2">
-<h2>Accessing One Element</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href=""></a><span class="dt">int</span> value <span class="op">=</span> grid<span class="op">[</span><span class="dv">1</span><span class="op">][</span><span class="dv">2</span><span class="op">];</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The first index selects the row. The second index selects the column inside that row.</p>
-<!-- Slide 25 -->
-</section>
-<section id="changing-one-element" class="slide level2">
-<h2>Changing One Element</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href=""></a>grid<span class="op">[</span><span class="dv">1</span><span class="op">][</span><span class="dv">2</span><span class="op">]</span> <span class="op">=</span> <span class="dv">99</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The same row-column indexing can assign a new value.</p>
-<!-- Slide 26 -->
-</section>
-<section id="rows-columns-and-.size" class="slide level2">
-<h2>Rows, Columns, And <code>.size()</code></h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href=""></a><span class="dt">int</span> rows <span class="op">=</span> grid<span class="op">.</span>size<span class="op">();</span></span>
-<span id="cb12-2"><a href=""></a><span class="dt">int</span> cols <span class="op">=</span> grid<span class="op">[</span><span class="dv">0</span><span class="op">].</span>size<span class="op">();</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>grid.size()</code> counts rows. <code>grid[0].size()</code> counts columns in the first row.</p>
-<!-- Slide 27 -->
-</section>
-<section id="traversing-with-nested-loops" class="slide level2">
-<h2>Traversing With Nested Loops</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> row <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> row <span class="op">&lt;</span> grid<span class="op">.</span>size<span class="op">();</span> row<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb13-2"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> col <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> col <span class="op">&lt;</span> grid<span class="op">[</span>row<span class="op">].</span>size<span class="op">();</span> col<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb13-3"><a href=""></a>        cout <span class="op">&lt;&lt;</span> grid<span class="op">[</span>row<span class="op">][</span>col<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
-<span id="cb13-4"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb13-5"><a href=""></a>    cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb13-6"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The outer loop moves row to row. The inner loop moves across one row.</p>
-<!-- Slide 28 -->
-</section>
-<section id="displaying-a-grid" class="slide level2">
-<h2>Displaying A Grid</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iomanip&gt;</span></span>
-<span id="cb14-2"><a href=""></a></span>
-<span id="cb14-3"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> row <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> row <span class="op">&lt;</span> grid<span class="op">.</span>size<span class="op">();</span> row<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb14-4"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> col <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> col <span class="op">&lt;</span> grid<span class="op">[</span>row<span class="op">].</span>size<span class="op">();</span> col<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb14-5"><a href=""></a>        cout <span class="op">&lt;&lt;</span> setw<span class="op">(</span><span class="dv">5</span><span class="op">)</span> <span class="op">&lt;&lt;</span> grid<span class="op">[</span>row<span class="op">][</span>col<span class="op">];</span></span>
-<span id="cb14-6"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb14-7"><a href=""></a>    cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb14-8"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>setw</code> keeps columns visually aligned.</p>
-<!-- Slide 29 -->
-</section>
-<section id="filling-a-grid-from-input" class="slide level2">
-<h2>Filling A Grid From Input</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> row <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> row <span class="op">&lt;</span> grid<span class="op">.</span>size<span class="op">();</span> row<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb15-2"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> col <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> col <span class="op">&lt;</span> grid<span class="op">[</span>row<span class="op">].</span>size<span class="op">();</span> col<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb15-3"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Row "</span> <span class="op">&lt;&lt;</span> row <span class="op">&lt;&lt;</span> <span class="st">", col "</span> <span class="op">&lt;&lt;</span> col <span class="op">&lt;&lt;</span> <span class="st">": "</span><span class="op">;</span></span>
-<span id="cb15-4"><a href=""></a>        cin <span class="op">&gt;&gt;</span> grid<span class="op">[</span>row<span class="op">][</span>col<span class="op">];</span></span>
-<span id="cb15-5"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb15-6"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 30 -->
-</section>
-<section id="row-totals" class="slide level2">
-<h2>Row Totals</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> row <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> row <span class="op">&lt;</span> grid<span class="op">.</span>size<span class="op">();</span> row<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb16-2"><a href=""></a>    <span class="dt">int</span> rowTotal <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb16-3"><a href=""></a></span>
-<span id="cb16-4"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> col <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> col <span class="op">&lt;</span> grid<span class="op">[</span>row<span class="op">].</span>size<span class="op">();</span> col<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb16-5"><a href=""></a>        rowTotal <span class="op">+=</span> grid<span class="op">[</span>row<span class="op">][</span>col<span class="op">];</span></span>
-<span id="cb16-6"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb16-7"><a href=""></a></span>
-<span id="cb16-8"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Row total: "</span> <span class="op">&lt;&lt;</span> rowTotal <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb16-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 31 -->
-</section>
-<section id="column-totals" class="slide level2">
-<h2>Column Totals</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> col <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> col <span class="op">&lt;</span> grid<span class="op">[</span><span class="dv">0</span><span class="op">].</span>size<span class="op">();</span> col<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb17-2"><a href=""></a>    <span class="dt">int</span> colTotal <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb17-3"><a href=""></a></span>
-<span id="cb17-4"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> row <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> row <span class="op">&lt;</span> grid<span class="op">.</span>size<span class="op">();</span> row<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb17-5"><a href=""></a>        colTotal <span class="op">+=</span> grid<span class="op">[</span>row<span class="op">][</span>col<span class="op">];</span></span>
-<span id="cb17-6"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb17-7"><a href=""></a></span>
-<span id="cb17-8"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Column total: "</span> <span class="op">&lt;&lt;</span> colTotal <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb17-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Column totals assume each row has the same number of columns.</p>
-<!-- Slide 32 -->
-</section>
-<section id="range-based-traversal" class="slide level2">
-<h2>Range-Based Traversal</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> row <span class="op">:</span> grid<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb18-2"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> value <span class="op">:</span> row<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb18-3"><a href=""></a>        cout <span class="op">&lt;&lt;</span> value <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
-<span id="cb18-4"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb18-5"><a href=""></a>    cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb18-6"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Use this when you need each value but do not need row or column numbers.</p>
-<!-- Slide 33 -->
-</section>
-<section id="jagged-vectors" class="slide level2">
-<h2>Jagged Vectors</h2>
-<ul>
-<li>Each row is its own vector.</li>
-<li>Rows can have different lengths.</li>
-<li>Use <code>grid[row].size()</code> when the shape may not be rectangular.</li>
-</ul>
-<!-- Slide 34 -->
-</section>
-<section id="bounds-and-shape-assumptions" class="slide level2">
-<h2>Bounds And Shape Assumptions</h2>
-<ul>
-<li><code>grid[0].size()</code> assumes the grid has at least one row.</li>
-<li>Column-total code assumes every row has enough columns.</li>
-<li>Check the shape before relying on a rectangular grid.</li>
-</ul>
-<!-- Slide 35 -->
-</section>
-<section id="when-to-use-2d-vectors" class="slide level2">
-<h2>When To Use 2D Vectors</h2>
-<ul>
-<li>Gradebooks</li>
-<li>Game boards</li>
-<li>Seating charts</li>
-<li>Tables of row-and-column data</li>
-</ul>
-<!-- Slide 36 -->
-</section>
-<section id="summary-1" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li>The outer vector selects a row.</li>
-<li>The inner vector stores the values in that row.</li>
-<li>Nested loops are the natural way to traverse row-column data.</li>
-</ul>
 <!-- Slide 37 -->
 </section>
-<section class="slide level2">
+<section id="source-slide-38" class="slide level2">
+<h2><span style="display:none">Source Slide 38</span></h2>
 
-</section></section>
-<section>
-<section id="key-takeaways" class="title-slide slide level1 center">
-<h1>Key Takeaways</h1>
-<ul>
-<li>Nested loops represent repeated work inside repeated work.</li>
-<li>Row-column thinking gives nested loops a concrete structure.</li>
-<li>Multi-dimensional vectors store table-like data as a vector of rows.</li>
-</ul>
 <!-- Slide 38 -->
-</section>
-<section class="slide level2">
+<img data-src="images/source_pages/slide-38.png" style="width:100.0%" alt="Have you ever wondered what happens when we" class="r-stretch"></section>
+<section id="source-slide-39" class="slide level2">
+<h2><span style="display:none">Source Slide 39</span></h2>
 
-</section></section>
-<section>
-<section id="next-time" class="title-slide slide level1 center">
-<h1>Next Time</h1>
-<ul>
-<li>Processing row-column data</li>
-<li>Searching and summarizing 2D structures</li>
-</ul>
 <!-- Slide 39 -->
-</section>
-<section class="slide level2">
+<img data-src="images/source_pages/slide-39.png" style="width:100.0%" alt="We use memberwise assignment." class="r-stretch"></section>
+<section id="source-slide-40" class="slide level2">
+<h2><span style="display:none">Source Slide 40</span></h2>
 
-</section></section>
-<section>
-<section id="appendix" class="title-slide slide level1 center">
-<h1>Appendix</h1>
 <!-- Slide 40 -->
-</section>
-<section id="nested-loops-good-practices" class="slide level2">
-<h2>Nested Loops: Good Practices</h2>
-<ul>
-<li>Name loop variables for their roles.</li>
-<li>Keep the inner loop focused on one repeated task.</li>
-<li>Trace one outer pass before tracing the whole structure.</li>
-</ul>
-<!-- Slide 41 -->
-</section>
-<section id="nested-loops-common-mistakes" class="slide level2">
-<h2>Nested Loops: Common Mistakes</h2>
-<ul>
-<li>Forgetting that the inner loop starts over for each outer pass.</li>
-<li>Reusing the same loop variable name in both loops.</li>
-<li>Assuming total passes without checking whether the inner loop count changes.</li>
-</ul>
-<!-- Slide 42 -->
-</section>
-<section id="nested-loops-more-examples" class="slide level2">
-<h2>Nested Loops: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> student <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> student <span class="op">&lt;=</span> <span class="dv">3</span><span class="op">;</span> student<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb19-2"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> score <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> score <span class="op">&lt;=</span> <span class="dv">4</span><span class="op">;</span> score<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb19-3"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Student "</span> <span class="op">&lt;&lt;</span> student <span class="op">&lt;&lt;</span> <span class="st">", score "</span> <span class="op">&lt;&lt;</span> score <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb19-4"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb19-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 43 -->
-</section>
-<section id="nested-loops-practice-problems" class="slide level2">
-<h2>Nested Loops: Practice Problems</h2>
-<ul>
-<li>Print a 4-by-6 rectangle of <code>#</code> symbols.</li>
-<li>Print a right triangle with seven rows.</li>
-<li>Count how many times the inner loop runs in a 5-by-3 structure.</li>
-</ul>
-<!-- Slide 44 -->
-</section>
-<section id="nested-loops-ai-search-terms" class="slide level2">
-<h2>Nested Loops: AI Search Terms</h2>
-<ul>
-<li>C++ nested loops row column</li>
-<li>C++ nested loop trace</li>
-<li>C++ print rectangle nested loops</li>
-<li>C++ nested loops totals</li>
-</ul>
-<!-- Slide 45 -->
-</section>
-<section id="nested-loops-questions-for-reflection" class="slide level2">
-<h2>Nested Loops: Questions for Reflection</h2>
-<ul>
-<li>What does the outer loop represent?</li>
-<li>What does the inner loop complete?</li>
-<li>Does the inner loop count stay the same on every outer pass?</li>
-</ul>
-<!-- Slide 46 -->
-</section>
-<section id="multi-dimensional-vectors-good-practices" class="slide level2">
-<h2>Multi-Dimensional Vectors: Good Practices</h2>
-<ul>
-<li>Treat the outer vector as rows.</li>
-<li>Use <code>grid[row].size()</code> when rows may have different lengths.</li>
-<li>Check shape assumptions before using <code>grid[0].size()</code>.</li>
-</ul>
-<!-- Slide 47 -->
-</section>
-<section id="multi-dimensional-vectors-common-mistakes" class="slide level2">
-<h2>Multi-Dimensional Vectors: Common Mistakes</h2>
-<ul>
-<li>Forgetting <code>#include &lt;vector&gt;</code>.</li>
-<li>Reversing row and column indexes.</li>
-<li>Assuming every row has the same number of columns.</li>
-</ul>
-<!-- Slide 48 -->
-</section>
-<section id="multi-dimensional-vectors-more-examples" class="slide level2">
-<h2>Multi-Dimensional Vectors: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href=""></a>vector<span class="op">&lt;</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&gt;</span> seats <span class="op">=</span> <span class="op">{</span></span>
-<span id="cb20-2"><a href=""></a>    <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">0</span><span class="op">},</span></span>
-<span id="cb20-3"><a href=""></a>    <span class="op">{</span><span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">}</span></span>
-<span id="cb20-4"><a href=""></a><span class="op">};</span></span>
-<span id="cb20-5"><a href=""></a></span>
-<span id="cb20-6"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> row <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> row <span class="op">&lt;</span> seats<span class="op">.</span>size<span class="op">();</span> row<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb20-7"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> col <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> col <span class="op">&lt;</span> seats<span class="op">[</span>row<span class="op">].</span>size<span class="op">();</span> col<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb20-8"><a href=""></a>        cout <span class="op">&lt;&lt;</span> seats<span class="op">[</span>row<span class="op">][</span>col<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span><span class="op">;</span></span>
-<span id="cb20-9"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb20-10"><a href=""></a>    cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb20-11"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 49 -->
-</section>
-<section id="multi-dimensional-vectors-practice-problems" class="slide level2">
-<h2>Multi-Dimensional Vectors: Practice Problems</h2>
-<ul>
-<li>Create a 3-by-4 vector of integers.</li>
-<li>Fill every cell from input.</li>
-<li>Print the total for each row.</li>
-</ul>
-<!-- Slide 50 -->
-</section>
-<section id="multi-dimensional-vectors-ai-search-terms" class="slide level2">
-<h2>Multi-Dimensional Vectors: AI Search Terms</h2>
-<ul>
-<li>C++ vector of vectors</li>
-<li>C++ 2D vector rows columns</li>
-<li>C++ traverse vector of vectors</li>
-<li>C++ row totals 2D vector</li>
-</ul>
-<!-- Slide 51 -->
-</section>
-<section id="multi-dimensional-vectors-questions-for-reflection" class="slide level2">
-<h2>Multi-Dimensional Vectors: Questions for Reflection</h2>
-<ul>
-<li>What does the first index select?</li>
-<li>What does the second index select?</li>
-<li>Is this grid rectangular or jagged?</li>
-</ul>
-<!-- Slide 52 -->
+<img data-src="images/source_pages/slide-40.png" style="width:100.0%" alt="This is called a Shallow Copy." class="r-stretch"></section>
+<section id="source-slide-41" class="slide level2">
+<h2><span style="display:none">Source Slide 41</span></h2>
 
-</section></section>
+<!-- Slide 41 -->
+<img data-src="images/source_pages/slide-41.png" style="width:100.0%" alt="• but sometimes, it is." class="r-stretch"></section>
+<section id="source-slide-42" class="slide level2">
+<h2><span style="display:none">Source Slide 42</span></h2>
+
+<!-- Slide 42 -->
+<img data-src="images/source_pages/slide-42.png" style="width:100.0%" alt="Have you ever wondered what happens when we" class="r-stretch"></section>
+<section id="source-slide-43" class="slide level2">
+<h2><span style="display:none">Source Slide 43</span></h2>
+
+<!-- Slide 43 -->
+<img data-src="images/source_pages/slide-43.png" style="width:100.0%" alt="Source Slide 43" class="r-stretch"></section>
+<section id="source-slide-44" class="slide level2">
+<h2><span style="display:none">Source Slide 44</span></h2>
+
+<!-- Slide 44 -->
+<img data-src="images/source_pages/slide-44.png" style="width:100.0%" alt="Source Slide 44" class="r-stretch"></section>
+<section id="source-slide-45" class="slide level2">
+<h2><span style="display:none">Source Slide 45</span></h2>
+
+<!-- Slide 45 -->
+<img data-src="images/source_pages/slide-45.png" style="width:100.0%" alt="Let’s see this example" class="r-stretch"></section>
+<section id="source-slide-46" class="slide level2">
+<h2><span style="display:none">Source Slide 46</span></h2>
+
+<!-- Slide 46 -->
+<img data-src="images/source_pages/slide-46.png" style="width:100.0%" alt="Source Slide 46" class="r-stretch"></section>
+<section id="source-slide-47" class="slide level2">
+<h2><span style="display:none">Source Slide 47</span></h2>
+
+<!-- Slide 47 -->
+<img data-src="images/source_pages/slide-47.png" style="width:100.0%" alt="Source Slide 47" class="r-stretch"></section>
+<section id="source-slide-48" class="slide level2">
+<h2><span style="display:none">Source Slide 48</span></h2>
+
+<!-- Slide 48 -->
+<img data-src="images/source_pages/slide-48.png" style="width:100.0%" alt="This means …" class="r-stretch"></section>
+<section id="source-slide-49" class="slide level2">
+<h2><span style="display:none">Source Slide 49</span></h2>
+
+<!-- Slide 49 -->
+<img data-src="images/source_pages/slide-49.png" style="width:100.0%" alt="Source Slide 49" class="r-stretch"></section>
+<section id="source-slide-50" class="slide level2">
+<h2><span style="display:none">Source Slide 50</span></h2>
+
+<!-- Slide 50 -->
+<img data-src="images/source_pages/slide-50.png" style="width:100.0%" alt="• But the program works!" class="r-stretch"></section>
+<section id="source-slide-51" class="slide level2">
+<h2><span style="display:none">Source Slide 51</span></h2>
+
+<!-- Slide 51 -->
+<img data-src="images/source_pages/slide-51.png" style="width:100.0%" alt="Source Slide 51" class="r-stretch"></section>
+<section id="source-slide-52" class="slide level2">
+<h2><span style="display:none">Source Slide 52</span></h2>
+
+<!-- Slide 52 -->
+<img data-src="images/source_pages/slide-52.png" style="width:100.0%" alt="Source Slide 52" class="r-stretch"></section>
+<section id="source-slide-53" class="slide level2">
+<h2><span style="display:none">Source Slide 53</span></h2>
+
+<!-- Slide 53 -->
+<img data-src="images/source_pages/slide-53.png" style="width:100.0%" alt="• This is actually very bad." class="r-stretch"></section>
+<section id="source-slide-54" class="slide level2">
+<h2><span style="display:none">Source Slide 54</span></h2>
+
+<!-- Slide 54 -->
+<img data-src="images/source_pages/slide-54.png" style="width:100.0%" alt="Assignment operator" class="r-stretch"></section>
+<section id="source-slide-55" class="slide level2">
+<h2><span style="display:none">Source Slide 55</span></h2>
+
+<!-- Slide 55 -->
+<img data-src="images/source_pages/slide-55.png" style="width:100.0%" alt="Copy constructor" class="r-stretch"></section>
+<section id="source-slide-56" class="slide level2">
+<h2><span style="display:none">Source Slide 56</span></h2>
+
+<!-- Slide 56 -->
+<img data-src="images/source_pages/slide-56.png" style="width:100.0%" alt="function calls" class="r-stretch"></section>
+<section id="source-slide-57" class="slide level2">
+<h2><span style="display:none">Source Slide 57</span></h2>
+
+<!-- Slide 57 -->
+<img data-src="images/source_pages/slide-57.png" style="width:100.0%" alt="Hard Drive" class="r-stretch"></section>
+<section id="source-slide-58" class="slide level2">
+<h2><span style="display:none">Source Slide 58</span></h2>
+
+<!-- Slide 58 -->
+<!-- Topic: Programming Exercise -->
+<!-- Slides 59–63 -->
+<img data-src="images/source_pages/slide-58.png" style="width:100.0%" alt="How do we x it?" class="r-stretch"></section></section>
+<section>
+<section id="programming-exercise" class="title-slide slide level1 center">
+<h1>Programming Exercise</h1>
+
+<img data-src="images/source_pages/slide-59.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"><aside class="notes">
+<p>Slides 59–63 Source slide 59 from the lecture source images.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 59 -->
+</section>
+<section id="source-slide-60" class="slide level2">
+<h2><span style="display:none">Source Slide 60</span></h2>
+
+<!-- Slide 60 -->
+<img data-src="images/source_pages/slide-60.png" style="width:100.0%" alt="Exercise Goals" class="r-stretch"></section>
+<section id="source-slide-61" class="slide level2">
+<h2><span style="display:none">Source Slide 61</span></h2>
+
+<!-- Slide 61 -->
+<img data-src="images/source_pages/slide-61.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"></section>
+<section id="source-slide-62" class="slide level2">
+<h2><span style="display:none">Source Slide 62</span></h2>
+
+<!-- Slide 62 -->
+<img data-src="images/source_pages/slide-62.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"></section>
+<section id="source-slide-63" class="slide level2">
+<h2><span style="display:none">Source Slide 63</span></h2>
+
+<!-- Slide 63 -->
+<!-- Topic: Lecture Wrap-Up -->
+<!-- Slides 64–74 -->
+<img data-src="images/source_pages/slide-63.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"></section></section>
+<section>
+<section id="lecture-wrap-up" class="title-slide slide level1 center">
+<h1>Lecture Wrap-Up</h1>
+
+<img data-src="images/source_pages/slide-64.png" style="width:100.0%" alt="Lecture Wrap-Up" class="r-stretch"><aside class="notes">
+<p>Slides 64–74 Source slide 64 from the authoritative PDF.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 64 -->
+</section>
+<section id="source-slide-65" class="slide level2">
+<h2><span style="display:none">Source Slide 65</span></h2>
+
+<!-- Slide 65 -->
+<img data-src="images/source_pages/slide-65.png" style="width:100.0%" alt="Agenda" class="r-stretch"></section>
+<section id="source-slide-66" class="slide level2">
+<h2><span style="display:none">Source Slide 66</span></h2>
+
+<!-- Slide 66 -->
+<img data-src="images/source_pages/slide-66.png" style="width:100.0%" alt="Key Takeaway" class="r-stretch"></section>
+<section id="source-slide-67" class="slide level2">
+<h2><span style="display:none">Source Slide 67</span></h2>
+
+<!-- Slide 67 -->
+<img data-src="images/source_pages/slide-67.png" style="width:100.0%" alt="67" class="r-stretch"></section>
+<section id="source-slide-68" class="slide level2">
+<h2><span style="display:none">Source Slide 68</span></h2>
+
+<!-- Slide 68 -->
+<img data-src="images/source_pages/slide-68.png" style="width:100.0%" alt="Agenda" class="r-stretch"></section>
+<section id="source-slide-69" class="slide level2">
+<h2><span style="display:none">Source Slide 69</span></h2>
+
+<!-- Slide 69 -->
+<img data-src="images/source_pages/slide-69.png" style="width:100.0%" alt="We x this …" class="r-stretch"></section>
+<section id="source-slide-70" class="slide level2">
+<h2><span style="display:none">Source Slide 70</span></h2>
+
+<!-- Slide 70 -->
+<img data-src="images/source_pages/slide-70.png" style="width:100.0%" alt="Source Slide 70" class="r-stretch"></section>
+<section id="source-slide-71" class="slide level2">
+<h2><span style="display:none">Source Slide 71</span></h2>
+
+<!-- Slide 71 -->
+<img data-src="images/source_pages/slide-71.png" style="width:100.0%" alt="Source Slide 71" class="r-stretch"></section>
+<section id="source-slide-72" class="slide level2">
+<h2><span style="display:none">Source Slide 72</span></h2>
+
+<!-- Slide 72 -->
+<img data-src="images/source_pages/slide-72.png" style="width:100.0%" alt="• Now let’s put joan in her own scope and then go" class="r-stretch"></section>
+<section id="source-slide-73" class="slide level2">
+<h2><span style="display:none">Source Slide 73</span></h2>
+
+<!-- Slide 73 -->
+<img data-src="images/source_pages/slide-73.png" style="width:100.0%" alt="Source Slide 73" class="r-stretch"></section>
+<section id="source-slide-74" class="slide level2">
+<h2><span style="display:none">Source Slide 74</span></h2>
+
+<!-- Slide 74 -->
+<!-- Topic: Desk Check -->
+<!-- Slides 75–79 -->
+<img data-src="images/source_pages/slide-74.png" style="width:100.0%" alt="Source Slide 74" class="r-stretch"></section></section>
+<section>
+<section id="desk-check" class="title-slide slide level1 center">
+<h1>Desk Check</h1>
+
+<img data-src="images/source_pages/slide-75.png" style="width:100.0%" alt="Desk Check" class="r-stretch"><aside class="notes">
+<p>Slides 75–79 Source slide 75 from the authoritative PDF.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 75 -->
+</section>
+<section id="source-slide-76" class="slide level2">
+<h2><span style="display:none">Source Slide 76</span></h2>
+
+<!-- Slide 76 -->
+<img data-src="images/source_pages/slide-76.png" style="width:100.0%" alt="Exercise Goals" class="r-stretch"></section>
+<section id="source-slide-77" class="slide level2">
+<h2><span style="display:none">Source Slide 77</span></h2>
+
+<!-- Slide 77 -->
+<img data-src="images/source_pages/slide-77.png" style="width:100.0%" alt="Desk Check Exercise" class="r-stretch"></section>
+<section id="source-slide-78" class="slide level2">
+<h2><span style="display:none">Source Slide 78</span></h2>
+
+<!-- Slide 78 -->
+<img data-src="images/source_pages/slide-78.png" style="width:100.0%" alt="Source Slide 78" class="r-stretch"></section>
+<section id="source-slide-79" class="slide level2">
+<h2><span style="display:none">Source Slide 79</span></h2>
+
+<!-- Slide 79 -->
+
+<img data-src="images/source_pages/slide-79.png" style="width:100.0%" alt="Source Slide 79" class="r-stretch"></section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
