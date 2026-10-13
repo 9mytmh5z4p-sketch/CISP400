@@ -1,16 +1,16 @@
 <!-- Topic: Programming Exercise -->
-<!-- Slides 81–85 -->
+<!-- Slides 83–87 -->
 
 # Programming Exercise
 
 ![](images/source_pages/slide-59.png){width="100%" fig-alt="Programming Exercise"}
 
 ::: notes
-Slides 81–85
+Slides 83–87
 Source slide 59 from the lecture source images.
 :::
 
-<!-- Slide 81 -->
+<!-- Slide 83 -->
 
 ---
 
@@ -18,7 +18,7 @@ Source slide 59 from the lecture source images.
 
 ![](images/source_pages/slide-60.png){width="100%" fig-alt="Exercise Goals"}
 
-<!-- Slide 82 -->
+<!-- Slide 84 -->
 
 ---
 
@@ -26,7 +26,7 @@ Source slide 59 from the lecture source images.
 
 ![](images/source_pages/slide-61.png){width="100%" fig-alt="Programming Exercise"}
 
-<!-- Slide 83 -->
+<!-- Slide 85 -->
 
 ---
 
@@ -34,7 +34,7 @@ Source slide 59 from the lecture source images.
 
 ![](images/source_pages/slide-62.png){width="100%" fig-alt="Programming Exercise"}
 
-<!-- Slide 84 -->
+<!-- Slide 86 -->
 
 ---
 
@@ -42,4 +42,4 @@ Source slide 59 from the lecture source images.
 
 ![](images/source_pages/slide-63.png){width="100%" fig-alt="Programming Exercise"}
 
-<!-- Slide 85 -->
+<!-- Slide 87 -->

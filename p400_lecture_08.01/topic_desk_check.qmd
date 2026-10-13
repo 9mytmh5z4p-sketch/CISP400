@@ -1,16 +1,16 @@
 <!-- Topic: Desk Check -->
-<!-- Slides 97–101 -->
+<!-- Slides 99–103 -->
 
 # Desk Check
 
 ![](images/source_pages/slide-75.png){width="100%" fig-alt="Desk Check"}
 
 ::: notes
-Slides 97–101
+Slides 99–103
 Source slide 75 from the authoritative PDF.
 :::
 
-<!-- Slide 97 -->
+<!-- Slide 99 -->
 
 ---
 
@@ -18,7 +18,7 @@ Source slide 75 from the authoritative PDF.
 
 ![](images/source_pages/slide-76.png){width="100%" fig-alt="Exercise Goals"}
 
-<!-- Slide 98 -->
+<!-- Slide 100 -->
 
 ---
 
@@ -26,7 +26,7 @@ Source slide 75 from the authoritative PDF.
 
 ![](images/source_pages/slide-77.png){width="100%" fig-alt="Desk Check Exercise"}
 
-<!-- Slide 99 -->
+<!-- Slide 101 -->
 
 ---
 
@@ -34,7 +34,7 @@ Source slide 75 from the authoritative PDF.
 
 ![](images/source_pages/slide-78.png){width="100%" fig-alt="Source Slide 78"}
 
-<!-- Slide 100 -->
+<!-- Slide 102 -->
 
 ---
 
@@ -42,4 +42,4 @@ Source slide 75 from the authoritative PDF.
 
 ![](images/source_pages/slide-79.png){width="100%" fig-alt="Source Slide 79"}
 
-<!-- Slide 101 -->
+<!-- Slide 103 -->

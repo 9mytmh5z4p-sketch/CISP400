@@ -79,24 +79,26 @@ Slide Number,Topic,Subject,Title,Category,Filename
 78,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,function calls,Image,source_pages/slide-56.png
 79,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,Hard Drive,Image,source_pages/slide-57.png
 80,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,How do we x it?,Process Pattern,source_pages/slide-58.png
-81,Programming Exercise,,Programming Exercise,Demonstration,source_pages/slide-59.png
-82,Programming Exercise,,Exercise Goals,Demonstration,source_pages/slide-60.png
-83,Programming Exercise,,Programming Exercise,Demonstration,source_pages/slide-61.png
-84,Programming Exercise,,Programming Exercise,Demonstration,source_pages/slide-62.png
-85,Programming Exercise,,Programming Exercise,Demonstration,source_pages/slide-63.png
-86,Lecture Wrap-Up,,Lecture Wrap-Up,Section Divider,source_pages/slide-64.png
-87,Lecture Wrap-Up,,Agenda,Agenda,source_pages/slide-65.png
-88,Lecture Wrap-Up,,Key Takeaway,Image,source_pages/slide-66.png
-89,Lecture Wrap-Up,,67,Image,source_pages/slide-67.png
-90,Lecture Wrap-Up,,Agenda,Agenda,source_pages/slide-68.png
-91,Lecture Wrap-Up,,We x this …,Image,source_pages/slide-69.png
-92,Lecture Wrap-Up,,Source Slide 70,Image,source_pages/slide-70.png
-93,Lecture Wrap-Up,,Source Slide 71,Image,source_pages/slide-71.png
-94,Lecture Wrap-Up,,• Now let’s put joan in her own scope and then go,Image,source_pages/slide-72.png
-95,Lecture Wrap-Up,,Source Slide 73,Image,source_pages/slide-73.png
-96,Lecture Wrap-Up,,Source Slide 74,Image,source_pages/slide-74.png
-97,Desk Check,,Desk Check,Section Divider,source_pages/slide-75.png
-98,Desk Check,,Exercise Goals,Demonstration,source_pages/slide-76.png
-99,Desk Check,,Desk Check Exercise,Demonstration,source_pages/slide-77.png
-100,Desk Check,,Source Slide 78,Image,source_pages/slide-78.png
-101,Desk Check,,Source Slide 79,Image,source_pages/slide-79.png
+81,topic 4 Bug Hunt,Exercise,Bug Hunt,Section Divider,
+82,topic 4 Bug Hunt,Exercise,<no title>,complete example,file:cpp/debugging_0101_0801.cpp
+83,Programming Exercise,,Programming Exercise,Demonstration,source_pages/slide-59.png
+84,Programming Exercise,,Exercise Goals,Demonstration,source_pages/slide-60.png
+85,Programming Exercise,,Programming Exercise,Demonstration,source_pages/slide-61.png
+86,Programming Exercise,,Programming Exercise,Demonstration,source_pages/slide-62.png
+87,Programming Exercise,,Programming Exercise,Demonstration,source_pages/slide-63.png
+88,Lecture Wrap-Up,,Lecture Wrap-Up,Section Divider,source_pages/slide-64.png
+89,Lecture Wrap-Up,,Agenda,Agenda,source_pages/slide-65.png
+90,Lecture Wrap-Up,,Key Takeaway,Image,source_pages/slide-66.png
+91,Lecture Wrap-Up,,67,Image,source_pages/slide-67.png
+92,Lecture Wrap-Up,,Agenda,Agenda,source_pages/slide-68.png
+93,Lecture Wrap-Up,,We x this …,Image,source_pages/slide-69.png
+94,Lecture Wrap-Up,,Source Slide 70,Image,source_pages/slide-70.png
+95,Lecture Wrap-Up,,Source Slide 71,Image,source_pages/slide-71.png
+96,Lecture Wrap-Up,,• Now let’s put joan in her own scope and then go,Image,source_pages/slide-72.png
+97,Lecture Wrap-Up,,Source Slide 73,Image,source_pages/slide-73.png
+98,Lecture Wrap-Up,,Source Slide 74,Image,source_pages/slide-74.png
+99,Desk Check,,Desk Check,Section Divider,source_pages/slide-75.png
+100,Desk Check,,Exercise Goals,Demonstration,source_pages/slide-76.png
+101,Desk Check,,Desk Check Exercise,Demonstration,source_pages/slide-77.png
+102,Desk Check,,Source Slide 78,Image,source_pages/slide-78.png
+103,Desk Check,,Source Slide 79,Image,source_pages/slide-79.png

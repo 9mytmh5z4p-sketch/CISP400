@@ -1,0 +1,16 @@
+<!-- Topic 4: Bug Hunt -->
+<!-- Slides 81–82 -->
+
+# Bug Hunt
+<!-- Slide 81 -->
+
+## <span style="display:none">Complete Example</span>
+
+[Open the complete example](cpp/debugging_0101_0801.cpp)
+
+::: notes
+Slides 81–82
+Use the student version of the complete example for the debugging activity.
+:::
+
+<!-- Slide 82 -->
