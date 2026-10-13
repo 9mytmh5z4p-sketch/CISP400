@@ -1,80 +1,102 @@
-"Slide Number","Topic","Subject","Title","Category","Filename"
-"1","Course Framing","","CISP 400","Section Divider","source_pages/slide-01.png"
-"2","Course Framing","","Chapter 11","Image","source_pages/slide-02.png"
-"3","Course Framing","","Agenda","Agenda","source_pages/slide-03.png"
-"4","Course Framing","","Agenda","Agenda","source_pages/slide-04.png"
-"5","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Code Together","Demonstration","source_pages/slide-05.png"
-"6","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","• Code a rectangle class","Image","source_pages/slide-06.png"
-"7","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Debugging","Demonstration","source_pages/slide-07.png"
-"8","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Exercise Goals","Demonstration","source_pages/slide-08.png"
-"9","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Debug Exercise","Demonstration","source_pages/slide-09.png"
-"10","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Source Slide 10","Image","source_pages/slide-10.png"
-"11","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Source Slide 11","Image","source_pages/slide-11.png"
-"12","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Functions & Methods","Image","source_pages/slide-12.png"
-"13","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","3 ways to create functions/","Process Pattern","source_pages/slide-13.png"
-"14","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","3 ways to create functions/","Process Pattern","source_pages/slide-14.png"
-"15","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Source Slide 15","Image","source_pages/slide-15.png"
-"16","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Source Slide 16","Image","source_pages/slide-16.png"
-"17","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","3 ways to create functions/","Process Pattern","source_pages/slide-17.png"
-"18","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Source Slide 18","Image","source_pages/slide-18.png"
-"19","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Recall…","Image","source_pages/slide-19.png"
-"20","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","3 ways to create functions/","Process Pattern","source_pages/slide-20.png"
-"21","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Source Slide 21","Image","source_pages/slide-21.png"
-"22","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Source Slide 22","Image","source_pages/slide-22.png"
-"23","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","11.5 Copy","Image","source_pages/slide-23.png"
-"24","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Have you ever wondered …","Image","source_pages/slide-24.png"
-"25","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Source Slide 25","Image","source_pages/slide-25.png"
-"26","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Source Slide 26","Image","source_pages/slide-26.png"
-"27","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Why does this work?","Opening Question","source_pages/slide-27.png"
-"28","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","• Constructors!","Image","source_pages/slide-28.png"
-"29","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Source Slide 29","Image","source_pages/slide-29.png"
-"30","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","• The book & I use the terms copy and assignment","Image","source_pages/slide-30.png"
-"31","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Source Slide 31","Image","source_pages/slide-31.png"
-"32","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Comparing the Assignment","Image","source_pages/slide-32.png"
-"33","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","Initialization","Image","source_pages/slide-33.png"
-"34","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","The assignment operator","Image","source_pages/slide-34.png"
-"35","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","The copy constructor","Image","source_pages/slide-35.png"
-"36","Topic 1: Copy Constructors and Memberwise Assignment","Copy Constructors and Memberwise Assignment","• Let’s take a second and explore Memberwise","Image","source_pages/slide-36.png"
-"37","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","11.4 Memberwise","Section Divider","source_pages/slide-37.png"
-"38","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","Have you ever wondered what happens when we","Image","source_pages/slide-38.png"
-"39","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","We use memberwise assignment.","Image","source_pages/slide-39.png"
-"40","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","This is called a Shallow Copy.","Image","source_pages/slide-40.png"
-"41","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","• but sometimes  it is.","Image","source_pages/slide-41.png"
-"42","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","Have you ever wondered what happens when we","Image","source_pages/slide-42.png"
-"43","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","Source Slide 43","Image","source_pages/slide-43.png"
-"44","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","Source Slide 44","Image","source_pages/slide-44.png"
-"45","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","Let’s see this example","Image","source_pages/slide-45.png"
-"46","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","Source Slide 46","Image","source_pages/slide-46.png"
-"47","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","Source Slide 47","Image","source_pages/slide-47.png"
-"48","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","This means …","Image","source_pages/slide-48.png"
-"49","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","Source Slide 49","Image","source_pages/slide-49.png"
-"50","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","• But the program works!","Image","source_pages/slide-50.png"
-"51","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","Source Slide 51","Image","source_pages/slide-51.png"
-"52","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","Source Slide 52","Image","source_pages/slide-52.png"
-"53","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","• This is actually very bad.","Image","source_pages/slide-53.png"
-"54","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","Assignment operator","Image","source_pages/slide-54.png"
-"55","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","Copy constructor","Image","source_pages/slide-55.png"
-"56","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","function calls","Image","source_pages/slide-56.png"
-"57","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","Hard Drive","Image","source_pages/slide-57.png"
-"58","Topic 2: Shallow Copies and the Serialization Problem","Shallow Copies and the Serialization Problem","How do we x it?","Process Pattern","source_pages/slide-58.png"
-"59","Programming Exercise","","Programming Exercise","Demonstration","source_pages/slide-59.png"
-"60","Programming Exercise","","Exercise Goals","Demonstration","source_pages/slide-60.png"
-"61","Programming Exercise","","Programming Exercise","Demonstration","source_pages/slide-61.png"
-"62","Programming Exercise","","Programming Exercise","Demonstration","source_pages/slide-62.png"
-"63","Programming Exercise","","Programming Exercise","Demonstration","source_pages/slide-63.png"
-"64","Lecture Wrap-Up","","What’s this section","Section Divider","source_pages/slide-64.png"
-"65","Lecture Wrap-Up","","Agenda","Agenda","source_pages/slide-65.png"
-"66","Lecture Wrap-Up","","Key Takeaway","Image","source_pages/slide-66.png"
-"67","Lecture Wrap-Up","","67","Image","source_pages/slide-67.png"
-"68","Lecture Wrap-Up","","Agenda","Agenda","source_pages/slide-68.png"
-"69","Lecture Wrap-Up","","We x this …","Image","source_pages/slide-69.png"
-"70","Lecture Wrap-Up","","Source Slide 70","Image","source_pages/slide-70.png"
-"71","Lecture Wrap-Up","","Source Slide 71","Image","source_pages/slide-71.png"
-"72","Lecture Wrap-Up","","• Now let’s put joan in her own scope and then go","Image","source_pages/slide-72.png"
-"73","Lecture Wrap-Up","","Source Slide 73","Image","source_pages/slide-73.png"
-"74","Lecture Wrap-Up","","Source Slide 74","Image","source_pages/slide-74.png"
-"75","Desk Check","","What’s My Output?","Section Divider","source_pages/slide-75.png"
-"76","Desk Check","","Exercise Goals","Demonstration","source_pages/slide-76.png"
-"77","Desk Check","","Desk Check Exercise","Demonstration","source_pages/slide-77.png"
-"78","Desk Check","","Source Slide 78","Image","source_pages/slide-78.png"
-"79","Desk Check","","Source Slide 79","Image","source_pages/slide-79.png"
+Slide Number,Topic,Subject,Title,Category,Filename
+1,Course Framing,,Course Framing,Section Divider,source_pages/slide-01.png
+2,Course Framing,,Chapter 11,Image,source_pages/slide-02.png
+3,Course Framing,,Agenda,Agenda,source_pages/slide-03.png
+4,Course Framing,,Agenda,Agenda,source_pages/slide-04.png
+5,Topic 1: Moving & Copying,Moving & Copying Use Case,Moving & Copying,Section Divider,
+6,Topic 1: Moving & Copying,Moving & Copying Use Case,Why do copy and move operations matter?,Motivating Question,
+7,Topic 1: Moving & Copying,Moving & Copying Use Case,Background: C++ gives you a choice,Text,
+8,Topic 1: Moving & Copying,Moving & Copying Use Case,Before C++11: copying was the only handoff,Text,
+9,Topic 1: Moving & Copying,Moving & Copying Use Case,Moving a resource,Image,images/buffMove.png
+10,Topic 1: Moving & Copying,Moving & Copying Use Case,What does moving make possible?,Enumerate,
+11,Topic 1: Moving & Copying,Moving & Copying Use Case,C++ copies by default,Value Added,
+12,Topic 1: Moving & Copying,Moving & Copying Use Case,Performance,Value Added,
+13,Topic 1: Moving & Copying,Moving & Copying Use Case,Correctness,Ownership Model,
+14,Topic 1: Moving & Copying,Moving & Copying Use Case,Some things should not be copied,Ownership Model,
+15,Topic 1: Moving & Copying,Moving & Copying Use Case,The rule of zero,Common Practice,
+16,Topic 1: Moving & Copying,Moving & Copying Use Case,Practical guidance,Common Practice,
+17,Topic 1: Moving & Copying,Moving & Copying Use Case,Into the weeds,Enumerate,
+18,Topic 1: Moving & Copying,Moving & Copying Use Case,lvalues,Define,
+19,Topic 1: Moving & Copying,Moving & Copying Use Case,rvalues,Define,
+20,Topic 1: Moving & Copying,Moving & Copying Use Case,A quick test,Contrast,
+21,Topic 1: Moving & Copying,Moving & Copying Use Case,Value categories in code,Code Block,cpp/0801Block1.cpp
+22,Topic 1: Moving & Copying,Moving & Copying Use Case,Why the distinction matters,Value Added,
+23,Topic 1: Moving & Copying,Moving & Copying Use Case,Overloading on value category,Code Block,cpp/0801Demo1.cpp
+24,Topic 1: Moving & Copying,Moving & Copying Use Case,The compiler chooses the overload,Demonstration,cpp/0801Demo1.cpp
+25,Topic 1: Moving & Copying,Moving & Copying Use Case,move does not move anything,Demonstration,cpp/0801Demo1.cpp
+26,Topic 1: Moving & Copying,Moving & Copying Use Case,Summary,Summary,
+27,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Section Divider,source_pages/slide-05.png
+28,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,• Code a rectangle class,Image,source_pages/slide-06.png
+29,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Debugging,Demonstration,source_pages/slide-07.png
+30,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Exercise Goals,Demonstration,source_pages/slide-08.png
+31,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Debug Exercise,Demonstration,source_pages/slide-09.png
+32,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Source Slide 10,Image,source_pages/slide-10.png
+33,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Source Slide 11,Image,source_pages/slide-11.png
+34,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Functions & Methods,Image,source_pages/slide-12.png
+35,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,3 ways to create functions/,Process Pattern,source_pages/slide-13.png
+36,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,3 ways to create functions/,Process Pattern,source_pages/slide-14.png
+37,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Source Slide 15,Image,source_pages/slide-15.png
+38,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Source Slide 16,Image,source_pages/slide-16.png
+39,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,3 ways to create functions/,Process Pattern,source_pages/slide-17.png
+40,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Source Slide 18,Image,source_pages/slide-18.png
+41,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Recall…,Image,source_pages/slide-19.png
+42,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,3 ways to create functions/,Process Pattern,source_pages/slide-20.png
+43,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Source Slide 21,Image,source_pages/slide-21.png
+44,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Source Slide 22,Image,source_pages/slide-22.png
+45,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,11.5 Copy,Image,source_pages/slide-23.png
+46,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Have you ever wondered …,Image,source_pages/slide-24.png
+47,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Source Slide 25,Image,source_pages/slide-25.png
+48,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Source Slide 26,Image,source_pages/slide-26.png
+49,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Why does this work?,Motivating Question,source_pages/slide-27.png
+50,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,• Constructors!,Image,source_pages/slide-28.png
+51,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Source Slide 29,Image,source_pages/slide-29.png
+52,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,• The book & I use the terms copy and assignment,Image,source_pages/slide-30.png
+53,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Source Slide 31,Image,source_pages/slide-31.png
+54,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Comparing the Assignment,Image,source_pages/slide-32.png
+55,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,Initialization,Image,source_pages/slide-33.png
+56,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,The assignment operator,Image,source_pages/slide-34.png
+57,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,The copy constructor,Image,source_pages/slide-35.png
+58,Topic 2: Copy Constructors and Memberwise Assignment,Copy Constructors and Memberwise Assignment,• Let’s take a second and explore Memberwise,Image,source_pages/slide-36.png
+59,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,Section Divider,source_pages/slide-37.png
+60,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,Have you ever wondered what happens when we,Image,source_pages/slide-38.png
+61,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,We use memberwise assignment.,Image,source_pages/slide-39.png
+62,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,This is called a Shallow Copy.,Image,source_pages/slide-40.png
+63,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,• but sometimes  it is.,Image,source_pages/slide-41.png
+64,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,Have you ever wondered what happens when we,Image,source_pages/slide-42.png
+65,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,Source Slide 43,Image,source_pages/slide-43.png
+66,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,Source Slide 44,Image,source_pages/slide-44.png
+67,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,Let’s see this example,Image,source_pages/slide-45.png
+68,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,Source Slide 46,Image,source_pages/slide-46.png
+69,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,Source Slide 47,Image,source_pages/slide-47.png
+70,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,This means …,Image,source_pages/slide-48.png
+71,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,Source Slide 49,Image,source_pages/slide-49.png
+72,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,• But the program works!,Image,source_pages/slide-50.png
+73,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,Source Slide 51,Image,source_pages/slide-51.png
+74,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,Source Slide 52,Image,source_pages/slide-52.png
+75,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,• This is actually very bad.,Image,source_pages/slide-53.png
+76,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,Assignment operator,Image,source_pages/slide-54.png
+77,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,Copy constructor,Image,source_pages/slide-55.png
+78,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,function calls,Image,source_pages/slide-56.png
+79,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,Hard Drive,Image,source_pages/slide-57.png
+80,Topic 3: Shallow Copies and the Serialization Problem,Shallow Copies and the Serialization Problem,How do we x it?,Process Pattern,source_pages/slide-58.png
+81,Programming Exercise,,Programming Exercise,Demonstration,source_pages/slide-59.png
+82,Programming Exercise,,Exercise Goals,Demonstration,source_pages/slide-60.png
+83,Programming Exercise,,Programming Exercise,Demonstration,source_pages/slide-61.png
+84,Programming Exercise,,Programming Exercise,Demonstration,source_pages/slide-62.png
+85,Programming Exercise,,Programming Exercise,Demonstration,source_pages/slide-63.png
+86,Lecture Wrap-Up,,Lecture Wrap-Up,Section Divider,source_pages/slide-64.png
+87,Lecture Wrap-Up,,Agenda,Agenda,source_pages/slide-65.png
+88,Lecture Wrap-Up,,Key Takeaway,Image,source_pages/slide-66.png
+89,Lecture Wrap-Up,,67,Image,source_pages/slide-67.png
+90,Lecture Wrap-Up,,Agenda,Agenda,source_pages/slide-68.png
+91,Lecture Wrap-Up,,We x this …,Image,source_pages/slide-69.png
+92,Lecture Wrap-Up,,Source Slide 70,Image,source_pages/slide-70.png
+93,Lecture Wrap-Up,,Source Slide 71,Image,source_pages/slide-71.png
+94,Lecture Wrap-Up,,• Now let’s put joan in her own scope and then go,Image,source_pages/slide-72.png
+95,Lecture Wrap-Up,,Source Slide 73,Image,source_pages/slide-73.png
+96,Lecture Wrap-Up,,Source Slide 74,Image,source_pages/slide-74.png
+97,Desk Check,,Desk Check,Section Divider,source_pages/slide-75.png
+98,Desk Check,,Exercise Goals,Demonstration,source_pages/slide-76.png
+99,Desk Check,,Desk Check Exercise,Demonstration,source_pages/slide-77.png
+100,Desk Check,,Source Slide 78,Image,source_pages/slide-78.png
+101,Desk Check,,Source Slide 79,Image,source_pages/slide-79.png
