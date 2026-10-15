@@ -28,6 +28,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="p400_lecture_08.02_files/libs/revealjs/dist/theme/quarto-99eeafcedac04850354b682963cedae3.css">
   <link rel="stylesheet" href="../styles/styles.css">
@@ -465,15 +531,19 @@ Dr.&nbsp;Caleb Fowler
 <h2><span style="display:none">Source Slide 55</span></h2>
 
 <!-- Slide 55 -->
-<!-- Topic: Programming Exercise -->
-<!-- Slides 56–57 -->
+<!-- Topic 3: Rule of Five -->
+<!-- Slides 56–74 -->
 <img data-src="images/source_pages/slide-55.png" style="width:100.0%" alt="Source Slide 55" class="r-stretch"></section></section>
 <section>
-<section id="programming-exercise" class="title-slide slide level1 center">
-<h1>Programming Exercise</h1>
-
-<img data-src="images/source_pages/slide-56.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"><aside class="notes">
-<p>Slides 56–57 Source slide 56 from the authoritative PDF.</p>
+<section id="rule-of-five" class="title-slide slide level1 center">
+<h1>Rule of Five</h1>
+<!-- Slide 56 -->
+</section>
+<section id="the-rule-of-one" class="slide level2">
+<h2>The Rule of One</h2>
+<p>One class should have one clear resource-management responsibility. When a class owns a resource, its design must define how ownership begins, changes, and ends.</p>
+<aside class="notes">
+<p>Slides 56–74 This opening slide recalls the previously introduced Rule of One before extending the idea to copying and moving.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -485,21 +555,515 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 56 -->
+<!-- Slide 57 -->
+</section>
+<section id="the-rule-of-one-1" class="slide level2">
+<h2>The Rule of One</h2>
+<p>One class should have one clear resource-management responsibility. When a class owns a resource, its design must define how ownership begins, changes, and ends.</p>
+<p>This means we prefer using tools that manage resources for us like smart pointers</p>
+<!-- Slide 58 -->
+</section>
+<section id="complete-buffer-example" class="slide level2 smaller">
+<h2>Complete Buffer Example</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb1-2"><a href=""></a></span>
+<span id="cb1-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb1-4"><a href=""></a></span>
+<span id="cb1-5"><a href=""></a><span class="kw">class</span> Buffer <span class="op">{</span></span>
+<span id="cb1-6"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb1-7"><a href=""></a>    Buffer<span class="op">(</span><span class="dt">int</span> size<span class="op">)</span> <span class="op">:</span> data<span class="op">(</span><span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>size<span class="op">]),</span> size<span class="op">(</span>size<span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb1-8"><a href=""></a></span>
+<span id="cb1-9"><a href=""></a>    <span class="op">~</span>Buffer<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-10"><a href=""></a>        <span class="kw">delete</span><span class="op">[]</span> data<span class="op">;</span></span>
+<span id="cb1-11"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb1-12"><a href=""></a></span>
+<span id="cb1-13"><a href=""></a>    Buffer<span class="op">(</span><span class="at">const</span> Buffer<span class="op">&amp;</span> other<span class="op">)</span> <span class="op">:</span> data<span class="op">(</span><span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>other<span class="op">.</span>size<span class="op">]),</span> size<span class="op">(</span>other<span class="op">.</span>size<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-14"><a href=""></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb1-15"><a href=""></a>            data<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> other<span class="op">.</span>data<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb1-16"><a href=""></a>        <span class="op">}</span></span>
+<span id="cb1-17"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb1-18"><a href=""></a></span>
+<span id="cb1-19"><a href=""></a>    Buffer<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">=(</span><span class="at">const</span> Buffer<span class="op">&amp;</span> other<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-20"><a href=""></a>        <span class="cf">if</span> <span class="op">(</span><span class="kw">this</span> <span class="op">!=</span> <span class="op">&amp;</span>other<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-21"><a href=""></a>            <span class="kw">delete</span><span class="op">[]</span> data<span class="op">;</span></span>
+<span id="cb1-22"><a href=""></a>            size <span class="op">=</span> other<span class="op">.</span>size<span class="op">;</span></span>
+<span id="cb1-23"><a href=""></a>            data <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>size<span class="op">];</span></span>
+<span id="cb1-24"><a href=""></a>            <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb1-25"><a href=""></a>                data<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> other<span class="op">.</span>data<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb1-26"><a href=""></a>            <span class="op">}</span></span>
+<span id="cb1-27"><a href=""></a>        <span class="op">}</span></span>
+<span id="cb1-28"><a href=""></a>        <span class="cf">return</span> <span class="op">*</span><span class="kw">this</span><span class="op">;</span></span>
+<span id="cb1-29"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb1-30"><a href=""></a></span>
+<span id="cb1-31"><a href=""></a>    Buffer<span class="op">(</span>Buffer<span class="op">&amp;&amp;</span> other<span class="op">)</span></span>
+<span id="cb1-32"><a href=""></a>        <span class="op">:</span> data<span class="op">(</span>other<span class="op">.</span>data<span class="op">),</span> size<span class="op">(</span>other<span class="op">.</span>size<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-33"><a href=""></a>        other<span class="op">.</span>data <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb1-34"><a href=""></a>        other<span class="op">.</span>size <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-35"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb1-36"><a href=""></a></span>
+<span id="cb1-37"><a href=""></a>    Buffer<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">=(</span>Buffer<span class="op">&amp;&amp;</span> other<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-38"><a href=""></a>        <span class="cf">if</span> <span class="op">(</span><span class="kw">this</span> <span class="op">!=</span> <span class="op">&amp;</span>other<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-39"><a href=""></a>            <span class="kw">delete</span><span class="op">[]</span> data<span class="op">;</span></span>
+<span id="cb1-40"><a href=""></a>            data <span class="op">=</span> other<span class="op">.</span>data<span class="op">;</span></span>
+<span id="cb1-41"><a href=""></a>            size <span class="op">=</span> other<span class="op">.</span>size<span class="op">;</span></span>
+<span id="cb1-42"><a href=""></a>            other<span class="op">.</span>data <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb1-43"><a href=""></a>            other<span class="op">.</span>size <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-44"><a href=""></a>        <span class="op">}</span></span>
+<span id="cb1-45"><a href=""></a>        <span class="cf">return</span> <span class="op">*</span><span class="kw">this</span><span class="op">;</span></span>
+<span id="cb1-46"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb1-47"><a href=""></a></span>
+<span id="cb1-48"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb1-49"><a href=""></a>    <span class="dt">int</span><span class="op">*</span> data<span class="op">;</span></span>
+<span id="cb1-50"><a href=""></a>    <span class="dt">int</span> size<span class="op">;</span></span>
+<span id="cb1-51"><a href=""></a><span class="op">};</span></span>
+<span id="cb1-52"><a href=""></a></span>
+<span id="cb1-53"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-54"><a href=""></a>    Buffer first<span class="op">(</span><span class="dv">3</span><span class="op">);</span></span>
+<span id="cb1-55"><a href=""></a>    Buffer second <span class="op">=</span> first<span class="op">;</span></span>
+<span id="cb1-56"><a href=""></a>    Buffer third<span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb1-57"><a href=""></a>    third <span class="op">=</span> first<span class="op">;</span></span>
+<span id="cb1-58"><a href=""></a>    Buffer fourth <span class="op">=</span> Buffer<span class="op">(</span><span class="dv">4</span><span class="op">);</span></span>
+<span id="cb1-59"><a href=""></a>    Buffer fifth<span class="op">(</span><span class="dv">2</span><span class="op">);</span></span>
+<span id="cb1-60"><a href=""></a>    fifth <span class="op">=</span> Buffer<span class="op">(</span><span class="dv">5</span><span class="op">);</span></span>
+<span id="cb1-61"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>This is the complete running example used throughout the topic. Each later slide isolates one part of this class.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 59 -->
+</section>
+<section id="one-resource-one-failure" class="slide level2">
+<h2>One Resource, One Failure</h2>
+<p>Consider one resource-owning class with the compiler-generated operations.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a>Buffer first<span class="op">(</span><span class="dv">10</span><span class="op">);</span></span>
+<span id="cb2-2"><a href=""></a>Buffer second <span class="op">=</span> first<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Memberwise copying gives both objects the same pointer. When both destructors run, the same resource can be released twice.</p>
+<aside class="notes">
+<p>[Graphic suggestion: show two Buffer objects pointing to one allocation, then show both destructors reaching the same resource.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 60 -->
+</section>
+<section id="from-one-failure-to-five-responsibilities" class="slide level2">
+<h2>From One Failure to Five Responsibilities</h2>
+<p>The shared-resource failure creates five responsibilities:</p>
+<ul>
+<li>End ownership when an object is destroyed.</li>
+<li>Create an independent resource during copy construction.</li>
+<li>Replace an existing resource during copy assignment.</li>
+<li>Transfer ownership during move construction.</li>
+<li>Replace and transfer ownership during move assignment.</li>
+</ul>
+<p>Predict which operations the class must control before naming them.</p>
+<!-- Slide 61 -->
+</section>
+<section id="the-five-special-member-functions" class="slide level2">
+<h2>The Five Special Member Functions</h2>
+<ol type="1">
+<li>Destructor</li>
+<li>Copy constructor</li>
+<li>Copy assignment operator</li>
+<li>Move constructor</li>
+<li>Move assignment operator</li>
+</ol>
+<!-- Slide 62 -->
+</section>
+<section id="destructor-end-ownership" class="slide level2">
+<h2>Destructor: End Ownership</h2>
+<p>The destructor releases the resource owned by the object. It must leave cleanup with one owner and one matching release operation.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a>Buffer<span class="op">::~</span>Buffer<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-2"><a href=""></a>    <span class="kw">delete</span><span class="op">[]</span> data<span class="op">;</span></span>
+<span id="cb3-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 63 -->
+</section>
+<section id="copy-constructor-create-a-new-owner" class="slide level2">
+<h2>Copy Constructor: Create a New Owner</h2>
+<p>The copy constructor creates independent storage and copies the source contents into it. The source and destination become separate owners.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href=""></a>Buffer<span class="op">::</span>Buffer<span class="op">(</span><span class="at">const</span> Buffer<span class="op">&amp;</span> other<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-2"><a href=""></a>    data <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>other<span class="op">.</span>size<span class="op">];</span></span>
+<span id="cb4-3"><a href=""></a>    size <span class="op">=</span> other<span class="op">.</span>size<span class="op">;</span></span>
+<span id="cb4-4"><a href=""></a>    <span class="co">// Copy each element from other.data.</span></span>
+<span id="cb4-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 64 -->
+</section>
+<section id="copy-assignment-replace-ownership" class="slide level2">
+<h2>Copy Assignment: Replace Ownership</h2>
+<p>Copy assignment replaces the destination’s existing resource with an independent copy of the source resource.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a>Buffer<span class="op">&amp;</span> Buffer<span class="op">::</span><span class="kw">operator</span><span class="op">=(</span><span class="at">const</span> Buffer<span class="op">&amp;</span> other<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-2"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span><span class="kw">this</span> <span class="op">!=</span> <span class="op">&amp;</span>other<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-3"><a href=""></a>        <span class="kw">delete</span><span class="op">[]</span> data<span class="op">;</span></span>
+<span id="cb5-4"><a href=""></a>        data <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>other<span class="op">.</span>size<span class="op">];</span></span>
+<span id="cb5-5"><a href=""></a>        size <span class="op">=</span> other<span class="op">.</span>size<span class="op">;</span></span>
+<span id="cb5-6"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb5-7"><a href=""></a>    <span class="cf">return</span> <span class="op">*</span><span class="kw">this</span><span class="op">;</span></span>
+<span id="cb5-8"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 65 -->
+</section>
+<section id="self-assignment-must-be-safe" class="slide level2">
+<h2>Self-Assignment Must Be Safe</h2>
+<p>Self-assignment is valid and should leave the object unchanged.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href=""></a>buffer <span class="op">=</span> buffer<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Detect self-assignment before releasing the destination’s resource.</p>
+<!-- Slide 66 -->
+</section>
+<section id="detecting-self-assignment" class="slide level2">
+<h2>Detecting Self-Assignment</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a>Buffer<span class="op">&amp;</span> Buffer<span class="op">::</span><span class="kw">operator</span><span class="op">=(</span><span class="at">const</span> Buffer<span class="op">&amp;</span> other<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-2"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span><span class="kw">this</span> <span class="op">==</span> <span class="op">&amp;</span>other<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-3"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Self-assignment detected</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb7-4"><a href=""></a>        <span class="cf">return</span> <span class="op">*</span><span class="kw">this</span><span class="op">;</span></span>
+<span id="cb7-5"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb7-6"><a href=""></a></span>
+<span id="cb7-7"><a href=""></a>    <span class="kw">delete</span><span class="op">[]</span> data<span class="op">;</span></span>
+<span id="cb7-8"><a href=""></a>    data <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>other<span class="op">.</span>size<span class="op">];</span></span>
+<span id="cb7-9"><a href=""></a>    size <span class="op">=</span> other<span class="op">.</span>size<span class="op">;</span></span>
+<span id="cb7-10"><a href=""></a>    <span class="cf">return</span> <span class="op">*</span><span class="kw">this</span><span class="op">;</span></span>
+<span id="cb7-11"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 67 -->
+</section>
+<section id="move-constructor-transfer-ownership" class="slide level2">
+<h2>Move Constructor: Transfer Ownership</h2>
+<p>The move constructor transfers the resource instead of allocating a second one. The source must be left in a valid state.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a>Buffer<span class="op">::</span>Buffer<span class="op">(</span>Buffer<span class="op">&amp;&amp;</span> other<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-2"><a href=""></a>    data <span class="op">=</span> other<span class="op">.</span>data<span class="op">;</span></span>
+<span id="cb8-3"><a href=""></a>    size <span class="op">=</span> other<span class="op">.</span>size<span class="op">;</span></span>
+<span id="cb8-4"><a href=""></a>    other<span class="op">.</span>data <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb8-5"><a href=""></a>    other<span class="op">.</span>size <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb8-6"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 68 -->
+</section>
+<section id="move-assignment-replace-and-transfer" class="slide level2">
+<h2>Move Assignment: Replace and Transfer</h2>
+<p>Move assignment releases the destination’s current resource, takes ownership of the source resource, and resets the source.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href=""></a>Buffer<span class="op">&amp;</span> Buffer<span class="op">::</span><span class="kw">operator</span><span class="op">=(</span>Buffer<span class="op">&amp;&amp;</span> other<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-2"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span><span class="kw">this</span> <span class="op">!=</span> <span class="op">&amp;</span>other<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-3"><a href=""></a>        <span class="kw">delete</span><span class="op">[]</span> data<span class="op">;</span></span>
+<span id="cb9-4"><a href=""></a>        data <span class="op">=</span> other<span class="op">.</span>data<span class="op">;</span></span>
+<span id="cb9-5"><a href=""></a>        size <span class="op">=</span> other<span class="op">.</span>size<span class="op">;</span></span>
+<span id="cb9-6"><a href=""></a>        other<span class="op">.</span>data <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb9-7"><a href=""></a>        other<span class="op">.</span>size <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb9-8"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb9-9"><a href=""></a>    <span class="cf">return</span> <span class="op">*</span><span class="kw">this</span><span class="op">;</span></span>
+<span id="cb9-10"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 69 -->
+</section>
+<section id="which-operation-does-the-call-use" class="slide level2">
+<h2>Which Operation Does the Call Use?</h2>
+<p>Predict the operation selected at each call site.</p>
+<p>For this prediction, treat each temporary result as if it is moved into its destination. Do not worry about compiler optimizations that might skip a move or copy.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href=""></a>Buffer a<span class="op">;</span></span>
+<span id="cb10-2"><a href=""></a>Buffer b <span class="op">=</span> a<span class="op">;</span></span>
+<span id="cb10-3"><a href=""></a>Buffer c <span class="op">=</span> makeBuffer<span class="op">();</span></span>
+<span id="cb10-4"><a href=""></a>b <span class="op">=</span> a<span class="op">;</span></span>
+<span id="cb10-5"><a href=""></a>b <span class="op">=</span> makeBuffer<span class="op">();</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>C++ may elide a move in some temporary-return cases. The assumption keeps the instructional focus on the intended move constructor and move assignment operations.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 70 -->
+</section>
+<section id="which-operation-does-the-call-use-1" class="slide level2">
+<h2>Which Operation Does the Call Use?</h2>
+<p>The comments identify the operation selected at each call site.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href=""></a>Buffer a<span class="op">;</span>             <span class="co">// Default constructor</span></span>
+<span id="cb11-2"><a href=""></a>Buffer b <span class="op">=</span> a<span class="op">;</span>         <span class="co">// Copy constructor</span></span>
+<span id="cb11-3"><a href=""></a>Buffer c <span class="op">=</span> makeBuffer<span class="op">();</span> <span class="co">// Move constructor</span></span>
+<span id="cb11-4"><a href=""></a>b <span class="op">=</span> a<span class="op">;</span>                <span class="co">// Copy assignment</span></span>
+<span id="cb11-5"><a href=""></a>b <span class="op">=</span> makeBuffer<span class="op">();</span>    <span class="co">// Move assignment</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>This duplicate reveals the answer after students predict the operations on the previous slide.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 71 -->
+</section>
+<section id="tracing-object-lifetime" class="slide level2">
+<h2>Tracing Object Lifetime</h2>
+<p>Follow the resource as objects are created, copied, assigned, moved, and destroyed. At every point, identify the current owner and the resource held by each object.</p>
+<aside class="notes">
+<p>[Graphic suggestion: show a timeline with constructor, copy, move, assignment, and destructor events.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 72 -->
+</section>
+<section id="the-rule-of-five-in-class-syntax" class="slide level2">
+<h2>The Rule of Five in Class Syntax</h2>
+<p>The five declarations form one ownership contract.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href=""></a><span class="op">~</span>Buffer<span class="op">();</span></span>
+<span id="cb12-2"><a href=""></a>Buffer<span class="op">(</span><span class="at">const</span> Buffer<span class="op">&amp;</span> other<span class="op">);</span></span>
+<span id="cb12-3"><a href=""></a>Buffer<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">=(</span><span class="at">const</span> Buffer<span class="op">&amp;</span> other<span class="op">);</span></span>
+<span id="cb12-4"><a href=""></a>Buffer<span class="op">(</span>Buffer<span class="op">&amp;&amp;</span> other<span class="op">);</span></span>
+<span id="cb12-5"><a href=""></a>Buffer<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">=(</span>Buffer<span class="op">&amp;&amp;</span> other<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 73 -->
+</section>
+<section id="common-practices" class="slide level2">
+<h2>Common Practices</h2>
+<p>Define the five functions when a class directly owns a resource and copying or moving needs special behavior. If the class does not manage a resource directly, prefer a design that lets the compiler manage these operations.</p>
+<!-- Slide 74 -->
+<!-- Topic 4: Introduction to Structured Debugging -->
+<!-- Slides 75–90 -->
+</section></section>
+<section>
+<section id="introduction-to-structured-debugging" class="title-slide slide level1 center">
+<h1>Introduction to Structured Debugging</h1>
+<!-- Slide 75 -->
+</section>
+<section id="where-do-you-begin-when-the-program-is-wrong" class="slide level2">
+<h2>Where Do You Begin When the Program Is Wrong?</h2>
+<p>A program can compile and run while still producing the wrong result. Structured debugging turns that failure into a sequence of questions and evidence.</p>
+<aside class="notes">
+<p>Slides 75–90 This topic introduces the complete debugging process, then develops the first two steps and shows how diagnostics and LLM prompts support the investigation.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 76 -->
+</section>
+<section id="debugging-is-evidence-based" class="slide level2">
+<h2>Debugging Is Evidence-Based</h2>
+<p>Debugging is the process of locating the first incorrect state and explaining why it occurred.</p>
+<p>Changing code until the output looks right does not show which change repaired the defect. Evidence makes the repair explainable and testable.</p>
+<!-- Slide 77 -->
+</section>
+<section id="the-complete-debugging-process" class="slide level2">
+<h2>The Complete Debugging Process</h2>
+<ol type="1">
+<li>Establish a reliable starting point.</li>
+<li>State the expected behavior.</li>
+<li>Reproduce the failure.</li>
+<li>Reduce the investigation.</li>
+<li>Classify the failure.</li>
+<li>Identify the relevant state.</li>
+<li>Find the first divergence.</li>
+<li>Form one hypothesis.</li>
+<li>Design a focused experiment.</li>
+<li>Make one focused change.</li>
+<li>Verify the repair.</li>
+<li>Add a regression test.</li>
+<li>Explain the result.</li>
+</ol>
+<aside class="notes">
+<p>This slide shows the full process. The next slides develop Steps 1 and 2. Later steps become the structure for the Bug Hunt and future debugging work.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 78 -->
+</section>
+<section id="step-1-establish-a-reliable-starting-point" class="slide level2">
+<h2>Step 1: Establish a Reliable Starting Point</h2>
+<p>Confirm which source file is compiled, that the program builds, that the input is repeatable, and that compiler warnings are visible.</p>
+<p>In production software, preserve evidence and reproduce safely in a test or staging environment whenever possible. Reduce the investigation without experimenting destructively with the live system.</p>
+<!-- Slide 79 -->
+</section>
+<section id="step-2-state-the-expected-behavior" class="slide level2">
+<h2>Step 2: State the Expected Behavior</h2>
+<p>Before studying the implementation, write down what should happen. Use preconditions, postconditions, invariants, expected output, and expected state transitions.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a href=""></a>A rejected operation leaves the object unchanged.</span>
+<span id="cb13-2"><a href=""></a>A copied object owns independent storage.</span>
+<span id="cb13-3"><a href=""></a>A moved-from object remains valid.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 80 -->
+</section>
+<section id="check-results-directly" class="slide level2">
+<h2>Check Results Directly</h2>
+<p>This function prints whether a Boolean condition passed or failed.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href=""></a><span class="dt">void</span> check<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> label<span class="op">,</span> <span class="dt">bool</span> result<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb14-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="op">(</span>result <span class="op">?</span> <span class="st">"PASS: "</span> <span class="op">:</span> <span class="st">"FAIL: "</span><span class="op">)</span></span>
+<span id="cb14-3"><a href=""></a>         <span class="op">&lt;&lt;</span> label <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
+<span id="cb14-4"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It is important because it turns an expected behavior into visible evidence. A failed check tells you which expectation needs investigation without requiring you to interpret a large output trace.</p>
+<!-- Slide 81 -->
+</section>
+<section id="print-pointer-addresses" class="slide level2">
+<h2>Print Pointer Addresses</h2>
+<p>This function prints the address associated with a pointer or resource handle.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href=""></a><span class="dt">void</span> printPointer<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> label<span class="op">,</span> <span class="at">const</span> <span class="dt">void</span><span class="op">*</span> address<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb15-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> label <span class="op">&lt;&lt;</span> <span class="st">": "</span> <span class="op">&lt;&lt;</span> address <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
+<span id="cb15-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It is important when ownership or copying is in question. Equal addresses can reveal unintended sharing, while different addresses can support the claim that two objects own independent storage.</p>
+<!-- Slide 82 -->
+</section>
+<section id="print-relevant-object-state" class="slide level2">
+<h2>Print Relevant Object State</h2>
+<p>This function prints the values that describe an object at a particular point in the program.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href=""></a><span class="dt">void</span> printState<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> label<span class="op">,</span> <span class="dt">double</span> balance<span class="op">,</span> <span class="dt">int</span> count<span class="op">,</span></span>
+<span id="cb16-2"><a href=""></a>                <span class="dt">int</span> capacity<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-3"><a href=""></a>    cout <span class="op">&lt;&lt;</span> label <span class="op">&lt;&lt;</span> <span class="st">" balance="</span> <span class="op">&lt;&lt;</span> balance</span>
+<span id="cb16-4"><a href=""></a>         <span class="op">&lt;&lt;</span> <span class="st">" count="</span> <span class="op">&lt;&lt;</span> count</span>
+<span id="cb16-5"><a href=""></a>         <span class="op">&lt;&lt;</span> <span class="st">" capacity="</span> <span class="op">&lt;&lt;</span> capacity <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
+<span id="cb16-6"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It is important because logic errors often appear as an unexpected change in one field. Printing state before and after an operation helps locate the first broken invariant.</p>
+<!-- Slide 83 -->
+</section>
+<section id="choosing-what-to-observe" class="slide level2">
+<h2>Choosing What to Observe</h2>
+<p>Diagnostic output should answer a question rather than print everything.</p>
+<ul>
+<li>Compare state before and after an operation.</li>
+<li>Compare expected and actual values.</li>
+<li>Print pointer addresses when ownership is in question.</li>
+<li>Print counts and capacities at boundaries.</li>
+</ul>
+<!-- Slide 84 -->
+</section>
+<section id="llm-assistance-begins-with-evidence" class="slide level2">
+<h2>LLM Assistance Begins With Evidence</h2>
+<p>Give the LLM the context, expected behavior, actual behavior, reproducible test, relevant code, and a specific task.</p>
+<p>Ask for analysis before asking for a rewrite. Require line numbers, evidence, and a test that could confirm the hypothesis.</p>
+<!-- Slide 85 -->
+</section>
+<section id="find-the-first-divergence" class="slide level2">
+<h2>Find the First Divergence</h2>
+<p>This prompt asks the LLM to identify the first line where actual state can differ from the expected state.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb17-1"><a href=""></a>Find the first place where the actual state can diverge</span>
+<span id="cb17-2"><a href=""></a>from the expected state. Cite the function and line number.</span>
+<span id="cb17-3"><a href=""></a>Do not rewrite the code.</span>
+<span id="cb17-4"><a href=""></a>Display the results in the chat window as a markdown table.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It is important because the first incorrect state usually provides stronger evidence than a later symptom. Requiring a location and forbidding a rewrite keeps the LLM focused on analysis.</p>
+<!-- Slide 86 -->
+</section>
+<section id="extract-formulas-and-mutations" class="slide level2">
+<h2>Extract Formulas and Mutations</h2>
+<p>This prompt asks the LLM to list every calculation and state change involving the values under investigation.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a href=""></a>List every formula and mutation involving balance, count,</span>
+<span id="cb18-2"><a href=""></a>capacity, or pointers. Include line numbers and explain</span>
+<span id="cb18-3"><a href=""></a>what each operation should preserve.</span>
+<span id="cb18-4"><a href=""></a>Display the results in the chat window as a markdown table.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It is important because incorrect arithmetic and accidental state changes can be difficult to spot in a long function. The line numbers and preservation conditions make each operation available for direct review.</p>
+<!-- Slide 87 -->
+</section>
+<section id="generate-focused-tests" class="slide level2">
+<h2>Generate Focused Tests</h2>
+<p>This prompt asks the LLM to turn the suspected behavior into small tests, including an edge case.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb19-1"><a href=""></a>Generate three focused tests for this failure, including</span>
+<span id="cb19-2"><a href=""></a>one boundary case. Give the expected result and assertion</span>
+<span id="cb19-3"><a href=""></a>for each test. Do not modify the implementation.</span>
+<span id="cb19-4"><a href=""></a>Display the results in the chat window as a markdown table.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It is important because a test can distinguish a plausible explanation from a confirmed one. Boundary cases also expose assumptions that ordinary inputs may leave hidden.</p>
+<!-- Slide 88 -->
+</section>
+<section id="bug-hunt-demonstration" class="slide level2">
+<h2>Bug Hunt Demonstration</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href=""></a>BusinessAccount account<span class="op">(</span><span class="st">"Test Customer"</span><span class="op">,</span> <span class="dv">9001</span><span class="op">);</span></span>
+<span id="cb20-2"><a href=""></a>account<span class="op">.</span>deposit<span class="op">(</span><span class="fl">100.00</span><span class="op">);</span></span>
+<span id="cb20-3"><a href=""></a></span>
+<span id="cb20-4"><a href=""></a>printState<span class="op">(</span><span class="st">"Before withdrawal"</span><span class="op">,</span> account<span class="op">.</span>getBalance<span class="op">(),</span></span>
+<span id="cb20-5"><a href=""></a>           account<span class="op">.</span>getTransactionCount<span class="op">(),</span> <span class="dv">4</span><span class="op">);</span></span>
+<span id="cb20-6"><a href=""></a></span>
+<span id="cb20-7"><a href=""></a><span class="dt">bool</span> result <span class="op">=</span> account<span class="op">.</span>withdraw<span class="op">(</span><span class="fl">0.00</span><span class="op">);</span></span>
+<span id="cb20-8"><a href=""></a></span>
+<span id="cb20-9"><a href=""></a>check<span class="op">(</span><span class="st">"zero withdrawal is rejected"</span><span class="op">,</span> <span class="op">!</span>result<span class="op">);</span></span>
+<span id="cb20-10"><a href=""></a>printState<span class="op">(</span><span class="st">"After withdrawal"</span><span class="op">,</span> account<span class="op">.</span>getBalance<span class="op">(),</span></span>
+<span id="cb20-11"><a href=""></a>           account<span class="op">.</span>getTransactionCount<span class="op">(),</span> <span class="dv">4</span><span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>State the expectation, run the smallest test, inspect the first difference, form one hypothesis, and make one focused repair.</p>
+<!-- Slide 89 -->
+</section>
+<section id="structured-debugging-checklist" class="slide level2">
+<h2>Structured Debugging Checklist</h2>
+<ul>
+<li>What should happen?</li>
+<li>Can the failure be reproduced?</li>
+<li>What state matters?</li>
+<li>Where was the first divergence?</li>
+<li>What hypothesis explains it?</li>
+<li>What small test can check it?</li>
+<li>Did the repair preserve earlier behavior?</li>
+<li>What regression test should remain?</li>
+</ul>
+<!-- Slide 90 -->
+<!-- Topic: Programming Exercise -->
+<!-- Slides 91–92 -->
+</section></section>
+<section>
+<section id="programming-exercise" class="title-slide slide level1 center">
+<h1>Programming Exercise</h1>
+
+<img data-src="images/source_pages/slide-56.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"><aside class="notes">
+<p>Slides 74–75 Source slide 56 from the authoritative PDF.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 91 -->
 </section>
 <section id="source-slide-57" class="slide level2">
 <h2><span style="display:none">Source Slide 57</span></h2>
 
-<!-- Slide 57 -->
+<!-- Slide 92 -->
 <!-- Topic: Lecture Wrap-Up -->
-<!-- Slides 58–62 -->
+<!-- Slides 93–97 -->
 <img data-src="images/source_pages/slide-57.png" style="width:100.0%" alt="Programming Exercise" class="r-stretch"></section></section>
 <section>
 <section id="lecture-wrap-up" class="title-slide slide level1 center">
 <h1>Lecture Wrap-Up</h1>
 
 <img data-src="images/source_pages/slide-58.png" style="width:100.0%" alt="Lecture Wrap-Up" class="r-stretch"><aside class="notes">
-<p>Slides 58–62 Source slide 58 from the authoritative PDF.</p>
+<p>Slides 93–97 Source slide 58 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -511,36 +1075,36 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 58 -->
+<!-- Slide 93 -->
 </section>
 <section id="source-slide-59" class="slide level2">
 <h2><span style="display:none">Source Slide 59</span></h2>
 
-<!-- Slide 59 -->
+<!-- Slide 94 -->
 <img data-src="images/source_pages/slide-59.png" style="width:100.0%" alt="Agenda" class="r-stretch"></section>
 <section id="source-slide-60" class="slide level2">
 <h2><span style="display:none">Source Slide 60</span></h2>
 
-<!-- Slide 60 -->
+<!-- Slide 95 -->
 <img data-src="images/source_pages/slide-60.png" style="width:100.0%" alt="Key Takeaway" class="r-stretch"></section>
 <section id="source-slide-61" class="slide level2">
 <h2><span style="display:none">Source Slide 61</span></h2>
 
-<!-- Slide 61 -->
+<!-- Slide 96 -->
 <img data-src="images/source_pages/slide-61.png" style="width:100.0%" alt="61" class="r-stretch"></section>
 <section id="source-slide-62" class="slide level2">
 <h2><span style="display:none">Source Slide 62</span></h2>
 
-<!-- Slide 62 -->
+<!-- Slide 97 -->
 <!-- Topic: Homework Peer Review -->
-<!-- Slides 63–68 -->
+<!-- Slides 98–103 -->
 <img data-src="images/source_pages/slide-62.png" style="width:100.0%" alt="Agenda" class="r-stretch"></section></section>
 <section>
 <section id="homework-peer-review" class="title-slide slide level1 center">
 <h1>Homework Peer Review</h1>
 
 <img data-src="images/source_pages/slide-63.png" style="width:100.0%" alt="Homework Peer Review" class="r-stretch"><aside class="notes">
-<p>Slides 63–68 Source slide 63 from the authoritative PDF.</p>
+<p>Slides 98–103 Source slide 63 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -552,41 +1116,41 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 63 -->
+<!-- Slide 98 -->
 </section>
 <section id="source-slide-64" class="slide level2">
 <h2><span style="display:none">Source Slide 64</span></h2>
 
-<!-- Slide 64 -->
+<!-- Slide 99 -->
 <img data-src="images/source_pages/slide-64.png" style="width:100.0%" alt="Homework 3 Peer" class="r-stretch"></section>
 <section id="source-slide-65" class="slide level2">
 <h2><span style="display:none">Source Slide 65</span></h2>
 
-<!-- Slide 65 -->
+<!-- Slide 100 -->
 <img data-src="images/source_pages/slide-65.png" style="width:100.0%" alt="Hw Debrief" class="r-stretch"></section>
 <section id="source-slide-66" class="slide level2">
 <h2><span style="display:none">Source Slide 66</span></h2>
 
-<!-- Slide 66 -->
+<!-- Slide 101 -->
 <img data-src="images/source_pages/slide-66.png" style="width:100.0%" alt="Process" class="r-stretch"></section>
 <section id="source-slide-67" class="slide level2">
 <h2><span style="display:none">Source Slide 67</span></h2>
 
-<!-- Slide 67 -->
+<!-- Slide 102 -->
 <img data-src="images/source_pages/slide-67.png" style="width:100.0%" alt="Analysis" class="r-stretch"></section>
 <section id="source-slide-68" class="slide level2">
 <h2><span style="display:none">Source Slide 68</span></h2>
 
-<!-- Slide 68 -->
+<!-- Slide 103 -->
 <!-- Topic: Desk Check -->
-<!-- Slides 69–77 -->
+<!-- Slides 104–112 -->
 <img data-src="images/source_pages/slide-68.png" style="width:100.0%" alt="Debrief" class="r-stretch"></section></section>
 <section>
 <section id="desk-check" class="title-slide slide level1 center">
 <h1>Desk Check</h1>
 
 <img data-src="images/source_pages/slide-69.png" style="width:100.0%" alt="Desk Check" class="r-stretch"><aside class="notes">
-<p>Slides 69–77 Source slide 69 from the authoritative PDF.</p>
+<p>Slides 104–112 Source slide 69 from the authoritative PDF.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -598,47 +1162,47 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 69 -->
+<!-- Slide 104 -->
 </section>
 <section id="source-slide-70" class="slide level2">
 <h2><span style="display:none">Source Slide 70</span></h2>
 
-<!-- Slide 70 -->
+<!-- Slide 105 -->
 <img data-src="images/source_pages/slide-70.png" style="width:100.0%" alt="Source Slide 70" class="r-stretch"></section>
 <section id="source-slide-71" class="slide level2">
 <h2><span style="display:none">Source Slide 71</span></h2>
 
-<!-- Slide 71 -->
+<!-- Slide 106 -->
 <img data-src="images/source_pages/slide-71.png" style="width:100.0%" alt="Source Slide 71" class="r-stretch"></section>
 <section id="source-slide-72" class="slide level2">
 <h2><span style="display:none">Source Slide 72</span></h2>
 
-<!-- Slide 72 -->
+<!-- Slide 107 -->
 <img data-src="images/source_pages/slide-72.png" style="width:100.0%" alt="Move Operations" class="r-stretch"></section>
 <section id="source-slide-73" class="slide level2">
 <h2><span style="display:none">Source Slide 73</span></h2>
 
-<!-- Slide 73 -->
+<!-- Slide 108 -->
 <img data-src="images/source_pages/slide-73.png" style="width:100.0%" alt="Source Slide 73" class="r-stretch"></section>
 <section id="source-slide-74" class="slide level2">
 <h2><span style="display:none">Source Slide 74</span></h2>
 
-<!-- Slide 74 -->
+<!-- Slide 109 -->
 <img data-src="images/source_pages/slide-74.png" style="width:100.0%" alt="Source Slide 74" class="r-stretch"></section>
 <section id="source-slide-75" class="slide level2">
 <h2><span style="display:none">Source Slide 75</span></h2>
 
-<!-- Slide 75 -->
+<!-- Slide 110 -->
 <img data-src="images/source_pages/slide-75.png" style="width:100.0%" alt="Source Slide 75" class="r-stretch"></section>
 <section id="source-slide-76" class="slide level2">
 <h2><span style="display:none">Source Slide 76</span></h2>
 
-<!-- Slide 76 -->
+<!-- Slide 111 -->
 <img data-src="images/source_pages/slide-76.png" style="width:100.0%" alt="Source Slide 76" class="r-stretch"></section>
 <section id="source-slide-77" class="slide level2">
 <h2><span style="display:none">Source Slide 77</span></h2>
 
-<!-- Slide 77 -->
+<!-- Slide 112 -->
 
 <img data-src="images/source_pages/slide-77.png" style="width:100.0%" alt="Source Slide 77" class="r-stretch"></section></section>
     </div>

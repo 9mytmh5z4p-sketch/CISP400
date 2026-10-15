@@ -1,0 +1,346 @@
+<!-- Topic 3: Rule of Five -->
+<!-- Slides 56–74 -->
+
+# Rule of Five
+<!-- Slide 56 -->
+
+## The Rule of One
+
+One class should have one clear resource-management responsibility. When a class owns a resource, its design must define how ownership begins, changes, and ends.
+
+::: notes
+Slides 56–74
+This opening slide recalls the previously introduced Rule of One before extending the idea to copying and moving.
+:::
+
+<!-- Slide 57 -->
+
+---
+
+## The Rule of One
+
+One class should have one clear resource-management responsibility. When a class owns a resource, its design must define how ownership begins, changes, and ends.
+
+This means we prefer using tools that manage resources for us like smart pointers
+
+<!-- Slide 58 -->
+
+---
+
+## Complete Buffer Example {.smaller}
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+class Buffer {
+public:
+    Buffer(int size) : data(new int[size]), size(size) {}
+
+    ~Buffer() {
+        delete[] data;
+    }
+
+    Buffer(const Buffer& other) : data(new int[other.size]), size(other.size) {
+        for (int i = 0; i < size; i++) {
+            data[i] = other.data[i];
+        }
+    }
+
+    Buffer& operator=(const Buffer& other) {
+        if (this != &other) {
+            delete[] data;
+            size = other.size;
+            data = new int[size];
+            for (int i = 0; i < size; i++) {
+                data[i] = other.data[i];
+            }
+        }
+        return *this;
+    }
+
+    Buffer(Buffer&& other)
+        : data(other.data), size(other.size) {
+        other.data = nullptr;
+        other.size = 0;
+    }
+
+    Buffer& operator=(Buffer&& other) {
+        if (this != &other) {
+            delete[] data;
+            data = other.data;
+            size = other.size;
+            other.data = nullptr;
+            other.size = 0;
+        }
+        return *this;
+    }
+
+private:
+    int* data;
+    int size;
+};
+
+int main() {
+    Buffer first(3);
+    Buffer second = first;
+    Buffer third(1);
+    third = first;
+    Buffer fourth = Buffer(4);
+    Buffer fifth(2);
+    fifth = Buffer(5);
+}
+```
+
+::: notes
+This is the complete running example used throughout the topic. Each later slide isolates one part of this class.
+:::
+
+<!-- Slide 59 -->
+
+---
+
+## One Resource, One Failure
+
+Consider one resource-owning class with the compiler-generated operations.
+
+```cpp
+Buffer first(10);
+Buffer second = first;
+```
+
+Memberwise copying gives both objects the same pointer. When both destructors run, the same resource can be released twice.
+
+::: notes
+[Graphic suggestion: show two Buffer objects pointing to one allocation, then show both destructors reaching the same resource.]
+:::
+
+<!-- Slide 60 -->
+
+---
+
+## From One Failure to Five Responsibilities
+
+The shared-resource failure creates five responsibilities:
+
+- End ownership when an object is destroyed.
+- Create an independent resource during copy construction.
+- Replace an existing resource during copy assignment.
+- Transfer ownership during move construction.
+- Replace and transfer ownership during move assignment.
+
+Predict which operations the class must control before naming them.
+
+<!-- Slide 61 -->
+
+---
+
+## The Five Special Member Functions
+
+1. Destructor
+2. Copy constructor
+3. Copy assignment operator
+4. Move constructor
+5. Move assignment operator
+
+<!-- Slide 62 -->
+
+---
+
+## Destructor: End Ownership
+
+The destructor releases the resource owned by the object. It must leave cleanup with one owner and one matching release operation.
+
+```cpp
+Buffer::~Buffer() {
+    delete[] data;
+}
+```
+
+<!-- Slide 63 -->
+
+---
+
+## Copy Constructor: Create a New Owner
+
+The copy constructor creates independent storage and copies the source contents into it. The source and destination become separate owners.
+
+```cpp
+Buffer::Buffer(const Buffer& other) {
+    data = new int[other.size];
+    size = other.size;
+    // Copy each element from other.data.
+}
+```
+
+<!-- Slide 64 -->
+
+---
+
+## Copy Assignment: Replace Ownership
+
+Copy assignment replaces the destination’s existing resource with an independent copy of the source resource.
+
+```cpp
+Buffer& Buffer::operator=(const Buffer& other) {
+    if (this != &other) {
+        delete[] data;
+        data = new int[other.size];
+        size = other.size;
+    }
+    return *this;
+}
+```
+
+<!-- Slide 65 -->
+
+---
+
+## Self-Assignment Must Be Safe
+
+Self-assignment is valid and should leave the object unchanged.
+
+```cpp
+buffer = buffer;
+```
+
+Detect self-assignment before releasing the destination’s resource.
+
+<!-- Slide 66 -->
+
+---
+
+## Detecting Self-Assignment
+
+```cpp
+Buffer& Buffer::operator=(const Buffer& other) {
+    if (this == &other) {
+        cout << "Self-assignment detected\n";
+        return *this;
+    }
+
+    delete[] data;
+    data = new int[other.size];
+    size = other.size;
+    return *this;
+}
+```
+
+<!-- Slide 67 -->
+
+---
+
+## Move Constructor: Transfer Ownership
+
+The move constructor transfers the resource instead of allocating a second one. The source must be left in a valid state.
+
+```cpp
+Buffer::Buffer(Buffer&& other) {
+    data = other.data;
+    size = other.size;
+    other.data = nullptr;
+    other.size = 0;
+}
+```
+
+<!-- Slide 68 -->
+
+---
+
+## Move Assignment: Replace and Transfer
+
+Move assignment releases the destination’s current resource, takes ownership of the source resource, and resets the source.
+
+```cpp
+Buffer& Buffer::operator=(Buffer&& other) {
+    if (this != &other) {
+        delete[] data;
+        data = other.data;
+        size = other.size;
+        other.data = nullptr;
+        other.size = 0;
+    }
+    return *this;
+}
+```
+
+<!-- Slide 69 -->
+
+---
+
+## Which Operation Does the Call Use?
+
+Predict the operation selected at each call site.
+
+For this prediction, treat each temporary result as if it is moved into its destination. Do not worry about compiler optimizations that might skip a move or copy.
+
+```cpp
+Buffer a;
+Buffer b = a;
+Buffer c = makeBuffer();
+b = a;
+b = makeBuffer();
+```
+
+::: notes
+C++ may elide a move in some temporary-return cases. The assumption keeps the instructional focus on the intended move constructor and move assignment operations.
+:::
+
+<!-- Slide 70 -->
+
+---
+
+## Which Operation Does the Call Use?
+
+The comments identify the operation selected at each call site.
+
+```cpp
+Buffer a;             // Default constructor
+Buffer b = a;         // Copy constructor
+Buffer c = makeBuffer(); // Move constructor
+b = a;                // Copy assignment
+b = makeBuffer();    // Move assignment
+```
+
+::: notes
+This duplicate reveals the answer after students predict the operations on the previous slide.
+:::
+
+<!-- Slide 71 -->
+
+---
+
+## Tracing Object Lifetime
+
+Follow the resource as objects are created, copied, assigned, moved, and destroyed. At every point, identify the current owner and the resource held by each object.
+
+::: notes
+[Graphic suggestion: show a timeline with constructor, copy, move, assignment, and destructor events.]
+:::
+
+<!-- Slide 72 -->
+
+---
+
+## The Rule of Five in Class Syntax
+
+The five declarations form one ownership contract.
+
+```cpp
+~Buffer();
+Buffer(const Buffer& other);
+Buffer& operator=(const Buffer& other);
+Buffer(Buffer&& other);
+Buffer& operator=(Buffer&& other);
+```
+
+<!-- Slide 73 -->
+
+---
+
+## Common Practices
+
+Define the five functions when a class directly owns a resource and copying or moving needs special behavior. If the class does not manage a resource directly, prefer a design that lets the compiler manage these operations.
+
+<!-- Slide 74 -->

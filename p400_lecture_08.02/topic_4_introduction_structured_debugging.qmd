@@ -1,0 +1,238 @@
+<!-- Topic 4: Introduction to Structured Debugging -->
+<!-- Slides 75–90 -->
+
+# Introduction to Structured Debugging
+<!-- Slide 75 -->
+
+## Where Do You Begin When the Program Is Wrong?
+
+A program can compile and run while still producing the wrong result. Structured debugging turns that failure into a sequence of questions and evidence.
+
+::: notes
+Slides 75–90
+This topic introduces the complete debugging process, then develops the first two steps and shows how diagnostics and LLM prompts support the investigation.
+:::
+
+<!-- Slide 76 -->
+
+---
+
+## Debugging Is Evidence-Based
+
+Debugging is the process of locating the first incorrect state and explaining why it occurred.
+
+Changing code until the output looks right does not show which change repaired the defect. Evidence makes the repair explainable and testable.
+
+<!-- Slide 77 -->
+
+---
+
+## The Complete Debugging Process
+
+1. Establish a reliable starting point.
+2. State the expected behavior.
+3. Reproduce the failure.
+4. Reduce the investigation.
+5. Classify the failure.
+6. Identify the relevant state.
+7. Find the first divergence.
+8. Form one hypothesis.
+9. Design a focused experiment.
+10. Make one focused change.
+11. Verify the repair.
+12. Add a regression test.
+13. Explain the result.
+
+::: notes
+This slide shows the full process. The next slides develop Steps 1 and 2. Later steps become the structure for the Bug Hunt and future debugging work.
+:::
+
+<!-- Slide 78 -->
+
+---
+
+## Step 1: Establish a Reliable Starting Point
+
+Confirm which source file is compiled, that the program builds, that the input is repeatable, and that compiler warnings are visible.
+
+In production software, preserve evidence and reproduce safely in a test or staging environment whenever possible. Reduce the investigation without experimenting destructively with the live system.
+
+<!-- Slide 79 -->
+
+---
+
+## Step 2: State the Expected Behavior
+
+Before studying the implementation, write down what should happen. Use preconditions, postconditions, invariants, expected output, and expected state transitions.
+
+```text
+A rejected operation leaves the object unchanged.
+A copied object owns independent storage.
+A moved-from object remains valid.
+```
+
+<!-- Slide 80 -->
+
+---
+
+## Check Results Directly
+
+This function prints whether a Boolean condition passed or failed.
+
+```cpp
+void check(const string& label, bool result) {
+    cout << (result ? "PASS: " : "FAIL: ")
+         << label << '\n';
+}
+```
+
+It is important because it turns an expected behavior into visible evidence. A failed check tells you which expectation needs investigation without requiring you to interpret a large output trace.
+
+<!-- Slide 81 -->
+
+---
+
+## Print Pointer Addresses
+
+This function prints the address associated with a pointer or resource handle.
+
+```cpp
+void printPointer(const string& label, const void* address) {
+    cout << label << ": " << address << '\n';
+}
+```
+
+It is important when ownership or copying is in question. Equal addresses can reveal unintended sharing, while different addresses can support the claim that two objects own independent storage.
+
+<!-- Slide 82 -->
+
+---
+
+## Print Relevant Object State
+
+This function prints the values that describe an object at a particular point in the program.
+
+```cpp
+void printState(const string& label, double balance, int count,
+                int capacity) {
+    cout << label << " balance=" << balance
+         << " count=" << count
+         << " capacity=" << capacity << '\n';
+}
+```
+
+It is important because logic errors often appear as an unexpected change in one field. Printing state before and after an operation helps locate the first broken invariant.
+
+<!-- Slide 83 -->
+
+---
+
+## Choosing What to Observe
+
+Diagnostic output should answer a question rather than print everything.
+
+- Compare state before and after an operation.
+- Compare expected and actual values.
+- Print pointer addresses when ownership is in question.
+- Print counts and capacities at boundaries.
+
+<!-- Slide 84 -->
+
+---
+
+## LLM Assistance Begins With Evidence
+
+Give the LLM the context, expected behavior, actual behavior, reproducible test, relevant code, and a specific task.
+
+Ask for analysis before asking for a rewrite. Require line numbers, evidence, and a test that could confirm the hypothesis.
+
+<!-- Slide 85 -->
+
+---
+
+## Find the First Divergence
+
+This prompt asks the LLM to identify the first line where actual state can differ from the expected state.
+
+```text
+Find the first place where the actual state can diverge
+from the expected state. Cite the function and line number.
+Do not rewrite the code.
+Display the results in the chat window as a markdown table.
+```
+
+It is important because the first incorrect state usually provides stronger evidence than a later symptom. Requiring a location and forbidding a rewrite keeps the LLM focused on analysis.
+
+<!-- Slide 86 -->
+
+---
+
+## Extract Formulas and Mutations
+
+This prompt asks the LLM to list every calculation and state change involving the values under investigation.
+
+```text
+List every formula and mutation involving balance, count,
+capacity, or pointers. Include line numbers and explain
+what each operation should preserve.
+Display the results in the chat window as a markdown table.
+```
+
+It is important because incorrect arithmetic and accidental state changes can be difficult to spot in a long function. The line numbers and preservation conditions make each operation available for direct review.
+
+<!-- Slide 87 -->
+
+---
+
+## Generate Focused Tests
+
+This prompt asks the LLM to turn the suspected behavior into small tests, including an edge case.
+
+```text
+Generate three focused tests for this failure, including
+one boundary case. Give the expected result and assertion
+for each test. Do not modify the implementation.
+Display the results in the chat window as a markdown table.
+```
+
+It is important because a test can distinguish a plausible explanation from a confirmed one. Boundary cases also expose assumptions that ordinary inputs may leave hidden.
+
+<!-- Slide 88 -->
+
+---
+
+## Bug Hunt Demonstration
+
+```cpp
+BusinessAccount account("Test Customer", 9001);
+account.deposit(100.00);
+
+printState("Before withdrawal", account.getBalance(),
+           account.getTransactionCount(), 4);
+
+bool result = account.withdraw(0.00);
+
+check("zero withdrawal is rejected", !result);
+printState("After withdrawal", account.getBalance(),
+           account.getTransactionCount(), 4);
+```
+
+State the expectation, run the smallest test, inspect the first difference, form one hypothesis, and make one focused repair.
+
+<!-- Slide 89 -->
+
+---
+
+## Structured Debugging Checklist
+
+- What should happen?
+- Can the failure be reproduced?
+- What state matters?
+- Where was the first divergence?
+- What hypothesis explains it?
+- What small test can check it?
+- Did the repair preserve earlier behavior?
+- What regression test should remain?
+
+<!-- Slide 90 -->
+

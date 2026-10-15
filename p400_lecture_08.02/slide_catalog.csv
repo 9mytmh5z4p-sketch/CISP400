@@ -1,78 +1,113 @@
-"Slide Number","Topic","Subject","Title","Category","Filename"
-"1","Course Framing","","CISP 400","Section Divider","source_pages/slide-01.png"
-"2","Course Framing","","Chapter 11","Image","source_pages/slide-02.png"
-"3","Course Framing","","Agenda","Agenda","source_pages/slide-03.png"
-"4","Course Framing","","Agenda","Agenda","source_pages/slide-04.png"
-"5","Course Framing","","Lightning Review","Demonstration","source_pages/slide-05.png"
-"6","Course Framing","","Lightning Review","Demonstration","source_pages/slide-06.png"
-"7","Topic 1: Deep Copy","Deep Copy","Programming Exercise","Demonstration","source_pages/slide-07.png"
-"8","Topic 1: Deep Copy","Deep Copy","Programming Exercise","Demonstration","source_pages/slide-08.png"
-"9","Topic 1: Deep Copy","Deep Copy","Programming Exercise","Demonstration","source_pages/slide-09.png"
-"10","Topic 1: Deep Copy","Deep Copy","Let’s build the assignment","Image","source_pages/slide-10.png"
-"11","Topic 1: Deep Copy","Deep Copy","Source Slide 11","Image","source_pages/slide-11.png"
-"12","Topic 1: Deep Copy","Deep Copy","Now  lets move those scalar variables","Image","source_pages/slide-12.png"
-"13","Topic 1: Deep Copy","Deep Copy","Source Slide 13","Image","source_pages/slide-13.png"
-"14","Topic 1: Deep Copy","Deep Copy","Let’s make the array out of","Image","source_pages/slide-14.png"
-"15","Topic 1: Deep Copy","Deep Copy","Source Slide 15","Image","source_pages/slide-15.png"
-"16","Topic 1: Deep Copy","Deep Copy","What went wrong?","Image","source_pages/slide-16.png"
-"17","Topic 1: Deep Copy","Deep Copy","Let’s x that …","Image","source_pages/slide-17.png"
-"18","Topic 1: Deep Copy","Deep Copy","Deep Copy","Image","source_pages/slide-18.png"
-"19","Topic 1: Deep Copy","Deep Copy","Let’s x the copy constructor","Image","source_pages/slide-19.png"
-"20","Topic 1: Deep Copy","Deep Copy","Source Slide 20","Image","source_pages/slide-20.png"
-"21","Topic 1: Deep Copy","Deep Copy","Finally  x the assignment","Image","source_pages/slide-21.png"
-"22","Topic 1: Deep Copy","Deep Copy","Source Slide 22","Image","source_pages/slide-22.png"
-"23","Topic 1: Deep Copy","Deep Copy","Ta Da! Fixed!","Image","source_pages/slide-23.png"
-"24","Topic 1: Deep Copy","Deep Copy","Serialization Problem","Opening Question","source_pages/slide-24.png"
-"25","Topic 1: Deep Copy","Deep Copy","Serialization Problem","Opening Question","source_pages/slide-25.png"
-"26","Topic 1: Deep Copy","Deep Copy","what to do???","Image","source_pages/slide-26.png"
-"27","Topic 1: Deep Copy","Deep Copy","why?","Opening Question","source_pages/slide-27.png"
-"28","Topic 1: Deep Copy","Deep Copy","How?","Process Pattern","source_pages/slide-28.png"
-"29","Topic 1: Deep Copy","Deep Copy","• Shallow Copy - Memberwise assignment","Image","source_pages/slide-29.png"
-"30","Topic 1: Deep Copy","Deep Copy","Possible Deep/Shallow","Process Pattern","source_pages/slide-30.png"
-"31","Topic 1: Deep Copy","Deep Copy","• So  we need to decide if we want to use a deep or","Image","source_pages/slide-31.png"
-"32","Topic 1: Deep Copy","Deep Copy","Pointer decisions","Process Pattern","source_pages/slide-32.png"
-"33","Topic 1: Deep Copy","Deep Copy","Shallow Copy","Image","source_pages/slide-33.png"
-"34","Topic 1: Deep Copy","Deep Copy","Deep Copy","Image","source_pages/slide-34.png"
-"35","Topic 1: Deep Copy","Deep Copy","Forbid Copy","Image","source_pages/slide-35.png"
-"36","Topic 1: Deep Copy","Deep Copy","• DOCUMENT whatever you do and why.","Opening Question","source_pages/slide-36.png"
-"37","Topic 2: Rvalue References and Move Operations","Rvalue References and Move Operations","Let’s take another look","Section Divider","source_pages/slide-37.png"
-"38","Topic 2: Rvalue References and Move Operations","Rvalue References and Move Operations","Source Slide 38","Image","source_pages/slide-38.png"
-"39","Topic 2: Rvalue References and Move Operations","Rvalue References and Move Operations","Source Slide 39","Image","source_pages/slide-39.png"
-"40","Topic 2: Rvalue References and Move Operations","Rvalue References and Move Operations","Remember","Image","source_pages/slide-40.png"
-"41","Topic 2: Rvalue References and Move Operations","Rvalue References and Move Operations","Cool! Now let’s say …","Image","source_pages/slide-41.png"
-"42","Topic 2: Rvalue References and Move Operations","Rvalue References and Move Operations","We have a function call …","Image","source_pages/slide-42.png"
-"43","Topic 2: Rvalue References and Move Operations","Rvalue References and Move Operations","11.7 Rvalue References","Enumerate","source_pages/slide-43.png"
-"44","Topic 2: Rvalue References and Move Operations","Rvalue References and Move Operations","What REALLY happens during a function call …","Image","source_pages/slide-44.png"
-"45","Topic 2: Rvalue References and Move Operations","Rvalue References and Move Operations","• lvalue - A ‘named’ variable which can be called","Image","source_pages/slide-45.png"
-"46","Topic 2: Rvalue References and Move Operations","Rvalue References and Move Operations","An lvalue reference is any value which can have a","Enumerate","source_pages/slide-46.png"
-"47","Topic 2: Rvalue References and Move Operations","Rvalue References and Move Operations","• Normally  we can’t access rValues.","Image","source_pages/slide-47.png"
-"48","Topic 2: Rvalue References and Move Operations","Rvalue References and Move Operations","Ok. So what?","Image","source_pages/slide-48.png"
-"49","Topic 2: Rvalue References and Move Operations","Rvalue References and Move Operations","A Reference Variable works here because Db","Enumerate","source_pages/slide-49.png"
-"50","Topic 2: Rvalue References and Move Operations","Rvalue References and Move Operations","Now  what if we did this …","Image","source_pages/slide-50.png"
-"51","Topic 2: Rvalue References and Move Operations","Rvalue References and Move Operations","What happens is Foo() returns an rValue. That","Image","source_pages/slide-51.png"
-"52","Topic 2: Rvalue References and Move Operations","Rvalue References and Move Operations","Then  assignment performs another shallow copy","Image","source_pages/slide-52.png"
-"53","Topic 2: Rvalue References and Move Operations","Rvalue References and Move Operations","What do we do?","Image","source_pages/slide-53.png"
-"54","Topic 2: Rvalue References and Move Operations","Rvalue References and Move Operations","Complete setup looks like","Image","source_pages/slide-54.png"
-"55","Topic 2: Rvalue References and Move Operations","Rvalue References and Move Operations","Source Slide 55","Image","source_pages/slide-55.png"
-"56","Programming Exercise","","Exercise","Demonstration","source_pages/slide-56.png"
-"57","Programming Exercise","","Programming Exercise","Demonstration","source_pages/slide-57.png"
-"58","Lecture Wrap-Up","","What’s this section","Section Divider","source_pages/slide-58.png"
-"59","Lecture Wrap-Up","","Agenda","Agenda","source_pages/slide-59.png"
-"60","Lecture Wrap-Up","","Key Takeaway","Image","source_pages/slide-60.png"
-"61","Lecture Wrap-Up","","61","Image","source_pages/slide-61.png"
-"62","Lecture Wrap-Up","","Agenda","Agenda","source_pages/slide-62.png"
-"63","Homework Peer Review","","Peer Review 3 due Sunday.","Demonstration","source_pages/slide-63.png"
-"64","Homework Peer Review","","Homework 3 Peer","Demonstration","source_pages/slide-64.png"
-"65","Homework Peer Review","","Hw Debrief","Demonstration","source_pages/slide-65.png"
-"66","Homework Peer Review","","Process","Demonstration","source_pages/slide-66.png"
-"67","Homework Peer Review","","Analysis","Demonstration","source_pages/slide-67.png"
-"68","Homework Peer Review","","Debrief","Demonstration","source_pages/slide-68.png"
-"69","Desk Check","","Source Slide 69","Section Divider","source_pages/slide-69.png"
-"70","Desk Check","","Source Slide 70","Image","source_pages/slide-70.png"
-"71","Desk Check","","Source Slide 71","Image","source_pages/slide-71.png"
-"72","Desk Check","","Move Operations","Image","source_pages/slide-72.png"
-"73","Desk Check","","Source Slide 73","Image","source_pages/slide-73.png"
-"74","Desk Check","","Source Slide 74","Image","source_pages/slide-74.png"
-"75","Desk Check","","Source Slide 75","Image","source_pages/slide-75.png"
-"76","Desk Check","","Source Slide 76","Image","source_pages/slide-76.png"
-"77","Desk Check","","Source Slide 77","Image","source_pages/slide-77.png"
+Slide Number,Topic,Subject,Title,Category,Filename
+1,Course Framing,,CISP 400,Section Divider,source_pages/slide-01.png
+2,Course Framing,,Chapter 11,Image,source_pages/slide-02.png
+3,Course Framing,,Agenda,Agenda,source_pages/slide-03.png
+4,Course Framing,,Agenda,Agenda,source_pages/slide-04.png
+5,Course Framing,,Lightning Review,Demonstration,source_pages/slide-05.png
+6,Course Framing,,Lightning Review,Demonstration,source_pages/slide-06.png
+7,Topic 1: Deep Copy,Deep Copy,Programming Exercise,Demonstration,source_pages/slide-07.png
+8,Topic 1: Deep Copy,Deep Copy,Programming Exercise,Demonstration,source_pages/slide-08.png
+9,Topic 1: Deep Copy,Deep Copy,Programming Exercise,Demonstration,source_pages/slide-09.png
+10,Topic 1: Deep Copy,Deep Copy,Let’s build the assignment,Image,source_pages/slide-10.png
+11,Topic 1: Deep Copy,Deep Copy,Source Slide 11,Image,source_pages/slide-11.png
+12,Topic 1: Deep Copy,Deep Copy,Now  lets move those scalar variables,Image,source_pages/slide-12.png
+13,Topic 1: Deep Copy,Deep Copy,Source Slide 13,Image,source_pages/slide-13.png
+14,Topic 1: Deep Copy,Deep Copy,Let’s make the array out of,Image,source_pages/slide-14.png
+15,Topic 1: Deep Copy,Deep Copy,Source Slide 15,Image,source_pages/slide-15.png
+16,Topic 1: Deep Copy,Deep Copy,What went wrong?,Image,source_pages/slide-16.png
+17,Topic 1: Deep Copy,Deep Copy,Let’s x that …,Image,source_pages/slide-17.png
+18,Topic 1: Deep Copy,Deep Copy,Deep Copy,Image,source_pages/slide-18.png
+19,Topic 1: Deep Copy,Deep Copy,Let’s x the copy constructor,Image,source_pages/slide-19.png
+20,Topic 1: Deep Copy,Deep Copy,Source Slide 20,Image,source_pages/slide-20.png
+21,Topic 1: Deep Copy,Deep Copy,Finally  x the assignment,Image,source_pages/slide-21.png
+22,Topic 1: Deep Copy,Deep Copy,Source Slide 22,Image,source_pages/slide-22.png
+23,Topic 1: Deep Copy,Deep Copy,Ta Da! Fixed!,Image,source_pages/slide-23.png
+24,Topic 1: Deep Copy,Deep Copy,Serialization Problem,Opening Question,source_pages/slide-24.png
+25,Topic 1: Deep Copy,Deep Copy,Serialization Problem,Opening Question,source_pages/slide-25.png
+26,Topic 1: Deep Copy,Deep Copy,what to do???,Image,source_pages/slide-26.png
+27,Topic 1: Deep Copy,Deep Copy,why?,Opening Question,source_pages/slide-27.png
+28,Topic 1: Deep Copy,Deep Copy,How?,Process Pattern,source_pages/slide-28.png
+29,Topic 1: Deep Copy,Deep Copy,• Shallow Copy - Memberwise assignment,Image,source_pages/slide-29.png
+30,Topic 1: Deep Copy,Deep Copy,Possible Deep/Shallow,Process Pattern,source_pages/slide-30.png
+31,Topic 1: Deep Copy,Deep Copy,• So  we need to decide if we want to use a deep or,Image,source_pages/slide-31.png
+32,Topic 1: Deep Copy,Deep Copy,Pointer decisions,Process Pattern,source_pages/slide-32.png
+33,Topic 1: Deep Copy,Deep Copy,Shallow Copy,Image,source_pages/slide-33.png
+34,Topic 1: Deep Copy,Deep Copy,Deep Copy,Image,source_pages/slide-34.png
+35,Topic 1: Deep Copy,Deep Copy,Forbid Copy,Image,source_pages/slide-35.png
+36,Topic 1: Deep Copy,Deep Copy,• DOCUMENT whatever you do and why.,Opening Question,source_pages/slide-36.png
+37,Topic 2: Rvalue References and Move Operations,Rvalue References and Move Operations,Let’s take another look,Section Divider,source_pages/slide-37.png
+38,Topic 2: Rvalue References and Move Operations,Rvalue References and Move Operations,Source Slide 38,Image,source_pages/slide-38.png
+39,Topic 2: Rvalue References and Move Operations,Rvalue References and Move Operations,Source Slide 39,Image,source_pages/slide-39.png
+40,Topic 2: Rvalue References and Move Operations,Rvalue References and Move Operations,Remember,Image,source_pages/slide-40.png
+41,Topic 2: Rvalue References and Move Operations,Rvalue References and Move Operations,Cool! Now let’s say …,Image,source_pages/slide-41.png
+42,Topic 2: Rvalue References and Move Operations,Rvalue References and Move Operations,We have a function call …,Image,source_pages/slide-42.png
+43,Topic 2: Rvalue References and Move Operations,Rvalue References and Move Operations,11.7 Rvalue References,Enumerate,source_pages/slide-43.png
+44,Topic 2: Rvalue References and Move Operations,Rvalue References and Move Operations,What REALLY happens during a function call …,Image,source_pages/slide-44.png
+45,Topic 2: Rvalue References and Move Operations,Rvalue References and Move Operations,• lvalue - A ‘named’ variable which can be called,Image,source_pages/slide-45.png
+46,Topic 2: Rvalue References and Move Operations,Rvalue References and Move Operations,An lvalue reference is any value which can have a,Enumerate,source_pages/slide-46.png
+47,Topic 2: Rvalue References and Move Operations,Rvalue References and Move Operations,• Normally  we can’t access rValues.,Image,source_pages/slide-47.png
+48,Topic 2: Rvalue References and Move Operations,Rvalue References and Move Operations,Ok. So what?,Image,source_pages/slide-48.png
+49,Topic 2: Rvalue References and Move Operations,Rvalue References and Move Operations,A Reference Variable works here because Db,Enumerate,source_pages/slide-49.png
+50,Topic 2: Rvalue References and Move Operations,Rvalue References and Move Operations,Now  what if we did this …,Image,source_pages/slide-50.png
+51,Topic 2: Rvalue References and Move Operations,Rvalue References and Move Operations,What happens is Foo() returns an rValue. That,Image,source_pages/slide-51.png
+52,Topic 2: Rvalue References and Move Operations,Rvalue References and Move Operations,Then  assignment performs another shallow copy,Image,source_pages/slide-52.png
+53,Topic 2: Rvalue References and Move Operations,Rvalue References and Move Operations,What do we do?,Image,source_pages/slide-53.png
+54,Topic 2: Rvalue References and Move Operations,Rvalue References and Move Operations,Complete setup looks like,Image,source_pages/slide-54.png
+55,Topic 2: Rvalue References and Move Operations,Rvalue References and Move Operations,Source Slide 55,Image,source_pages/slide-55.png
+56,Topic 3: Rule of Five,Rule of Five,Rule of Five,Section Divider,
+57,Topic 3: Rule of Five,Rule of Five,The Rule of One,Summary,
+58,Topic 3: Rule of Five,Rule of Five,The Rule of One,Summary,
+59,Topic 3: Rule of Five,Rule of Five,Complete Buffer Example,Complete Example,
+60,Topic 3: Rule of Five,Rule of Five,"One Resource, One Failure",Model,
+61,Topic 3: Rule of Five,Rule of Five,From One Failure to Five Responsibilities,Connect,
+62,Topic 3: Rule of Five,Rule of Five,The Five Special Member Functions,Enumerate,
+63,Topic 3: Rule of Five,Rule of Five,Destructor: End Ownership,Demonstration,
+64,Topic 3: Rule of Five,Rule of Five,Copy Constructor: Create a New Owner,Demonstration,
+65,Topic 3: Rule of Five,Rule of Five,Copy Assignment: Replace Ownership,Demonstration,
+66,Topic 3: Rule of Five,Rule of Five,Self-Assignment Must Be Safe,Boundary,
+67,Topic 3: Rule of Five,Rule of Five,Detecting Self-Assignment,Code Block,
+68,Topic 3: Rule of Five,Rule of Five,Move Constructor: Transfer Ownership,Demonstration,
+69,Topic 3: Rule of Five,Rule of Five,Move Assignment: Replace and Transfer,Demonstration,
+70,Topic 3: Rule of Five,Rule of Five,Which Operation Does the Call Use?,Decision Point,
+71,Topic 3: Rule of Five,Rule of Five,Which Operation Does the Call Use?,Code Block,
+72,Topic 3: Rule of Five,Rule of Five,Tracing Object Lifetime,Trace,
+73,Topic 3: Rule of Five,Rule of Five,The Rule of Five in Class Syntax,Anatomy,
+74,Topic 3: Rule of Five,Rule of Five,Common Practices,Summary,
+75,Topic 4: Introduction to Structured Debugging,Structured Debugging,Introduction to Structured Debugging,Section Divider,
+76,Topic 4: Introduction to Structured Debugging,Structured Debugging,Where Do You Begin When the Program Is Wrong?,Motivating Question,
+77,Topic 4: Introduction to Structured Debugging,Structured Debugging,Debugging Is Evidence-Based,Value Added,
+78,Topic 4: Introduction to Structured Debugging,Structured Debugging,The Complete Debugging Process,Process Pattern,
+79,Topic 4: Introduction to Structured Debugging,Structured Debugging,Step 1: Establish a Reliable Starting Point,Setup,
+80,Topic 4: Introduction to Structured Debugging,Structured Debugging,Step 2: State the Expected Behavior,Invariant,
+81,Topic 4: Introduction to Structured Debugging,Structured Debugging,Check Results Directly,Code Block,
+82,Topic 4: Introduction to Structured Debugging,Structured Debugging,Print Pointer Addresses,Code Block,
+83,Topic 4: Introduction to Structured Debugging,Structured Debugging,Print Relevant Object State,Code Block,
+84,Topic 4: Introduction to Structured Debugging,Structured Debugging,Choosing What to Observe,Decision Point,
+85,Topic 4: Introduction to Structured Debugging,Structured Debugging,LLM Assistance Begins With Evidence,Demonstration,
+86,Topic 4: Introduction to Structured Debugging,Structured Debugging,Find the First Divergence,Code Block,
+87,Topic 4: Introduction to Structured Debugging,Structured Debugging,Extract Formulas and Mutations,Code Block,
+88,Topic 4: Introduction to Structured Debugging,Structured Debugging,Generate Focused Tests,Code Block,
+89,Topic 4: Introduction to Structured Debugging,Structured Debugging,Bug Hunt Demonstration,Demonstration,
+90,Topic 4: Introduction to Structured Debugging,Structured Debugging,Structured Debugging Checklist,Checklist,
+91,Programming Exercise,,Exercise,Demonstration,source_pages/slide-56.png
+92,Programming Exercise,,Programming Exercise,Demonstration,source_pages/slide-57.png
+93,Lecture Wrap-Up,,What’s this section,Section Divider,source_pages/slide-58.png
+94,Lecture Wrap-Up,,Agenda,Agenda,source_pages/slide-59.png
+95,Lecture Wrap-Up,,Key Takeaway,Image,source_pages/slide-60.png
+96,Lecture Wrap-Up,,61,Image,source_pages/slide-61.png
+97,Lecture Wrap-Up,,Agenda,Agenda,source_pages/slide-62.png
+98,Homework Peer Review,,Peer Review 3 due Sunday.,Demonstration,source_pages/slide-63.png
+99,Homework Peer Review,,Homework 3 Peer,Demonstration,source_pages/slide-64.png
+100,Homework Peer Review,,Hw Debrief,Demonstration,source_pages/slide-65.png
+101,Homework Peer Review,,Process,Demonstration,source_pages/slide-66.png
+102,Homework Peer Review,,Analysis,Demonstration,source_pages/slide-67.png
+103,Homework Peer Review,,Debrief,Demonstration,source_pages/slide-68.png
+104,Desk Check,,Source Slide 69,Section Divider,source_pages/slide-69.png
+105,Desk Check,,Source Slide 70,Image,source_pages/slide-70.png
+106,Desk Check,,Source Slide 71,Image,source_pages/slide-71.png
+107,Desk Check,,Move Operations,Image,source_pages/slide-72.png
+108,Desk Check,,Source Slide 73,Image,source_pages/slide-73.png
+109,Desk Check,,Source Slide 74,Image,source_pages/slide-74.png
+110,Desk Check,,Source Slide 75,Image,source_pages/slide-75.png
+111,Desk Check,,Source Slide 76,Image,source_pages/slide-76.png
+112,Desk Check,,Source Slide 77,Image,source_pages/slide-77.png

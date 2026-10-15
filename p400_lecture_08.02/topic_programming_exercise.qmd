@@ -1,16 +1,16 @@
 <!-- Topic: Programming Exercise -->
-<!-- Slides 56–57 -->
+<!-- Slides 91–92 -->
 
 # Programming Exercise
 
 ![](images/source_pages/slide-56.png){width="100%" fig-alt="Programming Exercise"}
 
 ::: notes
-Slides 56–57
+Slides 74–75
 Source slide 56 from the authoritative PDF.
 :::
 
-<!-- Slide 56 -->
+<!-- Slide 91 -->
 
 ---
 
@@ -18,4 +18,4 @@ Source slide 56 from the authoritative PDF.
 
 ![](images/source_pages/slide-57.png){width="100%" fig-alt="Programming Exercise"}
 
-<!-- Slide 57 -->
+<!-- Slide 92 -->
