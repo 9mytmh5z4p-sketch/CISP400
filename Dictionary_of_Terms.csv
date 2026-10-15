@@ -1,5 +1,6 @@
 Term,Definition
 Agenda,"A slide that enumerates the instructional topics for the entire lecture. The topics come from the topic_x.qmd file topics, excluding activities and exercises. Do not list the topic_x however."
+Agenda Item,
 Anatomy,A slide that labels the parts of a syntax form or process or expression or concept
 Appendix - AI Search Terms,An appendix slide that gives students useful search phrases for independent review or AI assisted study
 Appendix - Common Mistakes,An appendix slide that lists frequent errors students should learn to recognize and avoid
@@ -35,7 +36,7 @@ Text,Textual content appearinig in the body of  the slide.
 Transfer,A slide that applies an idea in a new context or repeated use situation. Example: Adapt a dynamically allocated score array into a dynamically allocated temperature array.
 Value Added,A slide that explains why a topic matters and what new programming capability it gives students
 Visualization,An interactive demonstration of some specific phenomona or topic.
-Image,An image of some material.
+Image,An image of some material. The notes column contains the filename.
 Partial Example,A slide that shows a program fragment that models use in context. This will not execute if copied and pasted into a compiler.
 Before/After,"Compare program state surrounding an operation.
 Example: Show the original allocation and the larger replacement allocation after resizing."
