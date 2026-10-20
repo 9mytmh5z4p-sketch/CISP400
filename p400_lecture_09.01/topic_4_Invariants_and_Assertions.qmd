@@ -1,0 +1,446 @@
+<!-- Topic 4: Invariants and Assertions -->
+<!-- Slides 49–71 -->
+
+# Invariants and Assertions
+<!-- Slide 48 -->
+
+## Where Did This Bug Start?
+
+A program crashes inside a print function, but the print function is correct. The real mistake happened earlier, when a counter quietly moved past its limit. This topic shows how to make a program stop at the cause instead of the symptom.
+
+::: notes
+Slides 49–71
+
+Open with a short story: the crash appears far from the line that broke the data. Students should leave able to explain why invariants and assertions shorten that distance.
+:::
+
+<!-- Slide 49 -->
+
+---
+
+## You Already Reason About Conditions
+
+A loop condition decides whether another iteration is safe. A range boundary tells an algorithm where to stop. A functor's call contract tells the caller what each invocation accepts and returns.
+
+::: notes
+Connect to Topics 1 and 2. Students have already relied on conditions that must be true for code to work; today those conditions become explicit and checkable.
+:::
+
+<!-- Slide 50 -->
+
+---
+
+## An Invariant Is a Condition That Must Hold
+
+An invariant is a condition that must be true at a specific point in a program every time execution reaches that point. When an invariant is false, the program's data is no longer valid.
+
+- A sorted array stays sorted after an insert.
+- A stack's count stays between 0 and its capacity.
+- A fraction's denominator is never 0.
+
+<!-- Slide 51 -->
+
+---
+
+## Where Conditions Live
+
+- Preconditions
+- Postconditions
+- Class invariants
+- Loop invariants
+
+<!-- Slide 52 -->
+
+---
+
+## Preconditions and Postconditions
+
+A precondition is what the caller must guarantee before a call. A postcondition is what the function guarantees when it returns.
+
+~~~cpp
+// Precondition: size > 0
+// Postcondition: returns the largest element of values
+int findMax(const int values[], int size);
+~~~
+
+::: notes
+[Graphic suggestion: a function drawn as a box, with the precondition on the arrow going in and the postcondition on the arrow coming out. Label the caller's side and the function's side to show who is responsible for each.]
+:::
+
+<!-- Slide 53 -->
+
+---
+
+## Class Invariants
+
+A class invariant is a condition every object of the class keeps whenever outside code can see it. In BoundedStack, count is both the number of stored values and the index of the next open slot, so it must stay between 0 and CAPACITY. A push on a full stack would write past the end of items and leave count at 4.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+~~~cpp
+// Class invariant: 0 <= count <= CAPACITY
+class BoundedStack {
+private:
+    int items[CAPACITY];
+    int count = 0;
+
+public:
+    void push(int value);
+    int pop();
+    int size() const;
+};
+~~~
+:::
+
+::: {.column width="50%"}
+~~~cpp
+void BoundedStack::push(int value) {
+    // Invariant holds on entry
+    items[count] = value;
+    count++;
+    // Invariant must hold again on exit
+}
+~~~
+:::
+
+::::
+
+::: notes
+The initializer count = 0 establishes the invariant when the object is created. Every public member function may assume it on entry and must restore it before returning. Inside the function, between those two points, it may be briefly false.
+
+This push still has a hole: nothing stops a fourth call on a full stack. Slide 58 closes that hole with an assertion.
+
+[Graphic suggestion: the items array drawn as three boxes with count as an arrow pointing at the next open slot, shown at counts 0 through 3.]
+:::
+
+<!-- Slide 54 -->
+
+---
+
+## Encapsulation Protects the Invariant
+
+If count is public, any code anywhere can set it to 50 and break the invariant. If count is private, only the member functions can change it, so only they need to be checked.
+
+::: notes
+This is the design payoff of private data. Encapsulation shrinks the number of places a bug can come from, which makes troubleshooting faster.
+:::
+
+<!-- Slide 55 -->
+
+---
+
+## Loop Invariants
+
+A loop invariant is true at the top of every iteration. When the loop ends, the invariant plus the exit condition tells you the result.
+
+~~~cpp
+int maxValue = values[0];
+for (int i = 1; i < size; i++) {
+    // Invariant: maxValue is the largest of values[0] through values[i - 1]
+    if (values[i] > maxValue) {
+        maxValue = values[i];
+    }
+}
+~~~
+
+| i | values[0..i-1] | maxValue |
+|---|---|---|
+| 1 | 4 | 4 |
+| 2 | 4 9 | 9 |
+| 3 | 4 9 2 | 9 |
+| 4 (exit) | 4 9 2 7 | 9 |
+
+::: notes
+Trace with values = {4, 9, 2, 7}. At exit, i equals size, so the invariant now says maxValue is the largest of the whole array.
+
+[Graphic suggestion: an interactive step-through that highlights the checked portion of the array and the current maxValue at the top of each iteration.]
+:::
+
+<!-- Slide 56 -->
+
+---
+
+## assert Anatomy
+
+assert evaluates an expression at run time. If the expression is false, it prints the expression, file, and line, then stops the program with abort().
+
+~~~cpp
+#include <cassert>
+
+assert(count < CAPACITY);
+//     ^ condition that must be true here
+~~~
+
+<!-- Slide 57 -->
+
+---
+
+## An Assertion Catches the Cause
+
+:::: {.columns}
+
+::: {.column width="60%" style="font-size: 50%;"}
+~~~cpp
+int main() {
+    BoundedStack stack;
+
+    stack.push(10);
+    stack.push(20);
+    stack.push(30);
+    // size() returns count, which is 3 after three pushes
+    cout << "Size: " << stack.size() << '\n';
+
+    // This call violates the precondition of push
+    stack.push(40);
+    cout << "This line never prints\n";
+
+    return 0;
+}
+
+void BoundedStack::push(int value) {
+    // Precondition: check before writing, while count is the next open slot
+    assert(count < CAPACITY && "push on a full stack");
+    items[count] = value;
+    count++;
+    // After the change, confirm 0 <= count <= CAPACITY
+    checkInvariant();
+}
+
+int BoundedStack::size() const {
+    // The size of the stack is the value of count
+    return count;
+}
+~~~
+:::
+
+::: {.column width="40%"}
+~~~
+Size: 3
+Assertion failed:
+(count < CAPACITY && "push on a full stack"),
+function push,
+file invariant_stack.cpp,
+line 42.
+~~~
+:::
+
+::::
+
+::: notes
+Full program: cpp/invariant_stack.cpp. CAPACITY is 3, so the fourth push finds count equal to 3 and the assertion fails before items[3] is written.
+
+The assertion comes before the increment on purpose. A precondition is checked before the operation, while count still names the slot about to be written. Checking after count++ would be too late: the out-of-bounds write would already have happened, and the test would also reject the legal third push, where count becomes 3. The check after the change is checkInvariant(), which uses <= instead of <.
+
+The output shown is the macOS clang format. g++ on Linux prints the same information in a different order. Without the assertion, the fourth push writes past the end of items and the program fails later, somewhere unrelated.
+:::
+
+<!-- Slide 58 -->
+
+---
+
+## Check the Invariant After Every Change
+
+Write the class invariant once in a private checkInvariant() member function. Call it at the end of every member function that changes the object.
+
+~~~cpp
+void BoundedStack::checkInvariant() const {
+    assert(count >= 0 && count <= CAPACITY && "count is out of range");
+}
+
+int BoundedStack::pop() {
+    assert(count > 0 && "pop on an empty stack");
+    count--;
+    checkInvariant();
+    return items[count];
+}
+~~~
+
+<!-- Slide 59 -->
+
+---
+
+## Make the Failure Message Informative
+
+A string literal is always true, so adding it with && does not change the test. It does put a readable explanation into the failure message.
+
+~~~cpp
+assert(denominator != 0 && "Fraction denominator must not be zero");
+~~~
+
+<!-- Slide 60 -->
+
+---
+
+## NDEBUG Removes Assertions
+
+When the macro NDEBUG is defined, every assert expands to nothing. Release builds commonly define it, so assertions cost nothing in the shipped program.
+
+~~~cpp
+// Defined on the command line: g++ -DNDEBUG main.cpp
+// or in code, before the include:
+#define NDEBUG
+#include <cassert>
+~~~
+
+<!-- Slide 61 -->
+
+---
+
+## Debug Build or Release Build?
+
+What does this print in a debug build? What does it print when NDEBUG is defined?
+
+~~~cpp
+int attempts = 0;
+assert(++attempts == 1);
+cout << attempts << '\n';
+~~~
+
+. . .
+
+The debug build prints 1. The release build prints 0, because the increment disappears with the assertion.
+
+::: notes
+Let students commit to an answer before advancing. The lesson: an assertion should only test state, never change it.
+:::
+
+<!-- Slide 62 -->
+
+---
+
+## static_assert Checks at Compile Time
+
+assert checks a condition while the program runs. static_assert checks a constant condition while the program compiles, so a violation never produces an executable.
+
+~~~cpp
+const int CAPACITY = 3;
+
+static_assert(CAPACITY > 0, "CAPACITY must be positive");
+static_assert(sizeof(int) >= 4, "int must be at least 32 bits");
+~~~
+
+Use it to guard assumptions that are already fixed when the program is built, such as a constant's value or the size of a type. If someone later sets CAPACITY to 0 or builds on a platform with a 16-bit int, the build fails with your message instead of the program misbehaving. It costs nothing at run time, and NDEBUG cannot turn it off.
+
+<!-- Slide 63 -->
+
+---
+
+## Assertions or Error Handling?
+
+|  | assert | Exception or error code |
+|---|---|---|
+| Purpose | Catch programmer errors | Handle expected failures |
+| Example | count exceeds capacity | user types a negative age |
+| Release build | Removed by NDEBUG | Still runs |
+| Response | Stop and fix the code | Recover or report to the user |
+
+::: notes
+Rule of thumb: if a correct program could still reach this condition, it is not an assertion. Bad input and missing files are normal events; a full stack being pushed is a bug.
+:::
+
+<!-- Slide 64 -->
+
+---
+
+## Fail Fast Turns a Symptom into a Cause
+
+Without the check, bad data travels until something unrelated crashes. With the check, the program stops at the exact line where the invariant broke, and the debugger's call stack points at the caller who broke it.
+
+::: notes
+Return to the opening story from Slide 49. The assertion moved the crash from the print function back to the push that caused it.
+
+[Graphic suggestion: two timelines side by side. Without an assertion, a long gap separates the bad write from the crash. With an assertion, the two points coincide.]
+:::
+
+<!-- Slide 65 -->
+
+---
+
+## Contracts in C++26
+
+C++26 adds contract assertions that place preconditions and postconditions in the function declaration. The idea is the same as assert; the condition becomes part of the function's interface.
+
+~~~cpp
+int findMax(const int values[], int size)
+    pre(size > 0);
+
+void push(int value)
+    pre(count < CAPACITY)
+    post(count <= CAPACITY);
+
+contract_assert(count >= 0);
+~~~
+
+::: notes
+Forward-looking only. Compiler support is still arriving, so students should keep using assert and static_assert in this course.
+:::
+
+<!-- Slide 66 -->
+
+---
+
+## Contract Evaluation Semantics
+
+Every contract check runs under one of four evaluation semantics. The choice is made per build, usually with a compiler flag, not with NDEBUG.
+
+- **ignore**: the condition is not checked.
+- **observe**: a failed check calls a violation handler, then the program continues.
+- **enforce**: a failed check calls a violation handler, then the program terminates.
+- **quick_enforce**: a failed check terminates the program immediately.
+
+::: notes
+The default semantic is implementation-defined, and an implementation may apply different semantics to different checks in the same program.
+:::
+
+<!-- Slide 67 -->
+
+---
+
+## Contracts Versus assert
+
+|  | assert | Contract assertions |
+|---|---|---|
+| Turned off by | NDEBUG | The ignore semantic |
+| Choices | On or off | ignore, observe, enforce, quick_enforce |
+| On failure | Print a message and abort | Call a replaceable violation handler |
+| Keep running after a failure | No | Yes, under observe |
+
+::: notes
+The observe semantic has no assert equivalent. It lets a production build record violations without crashing, which is useful when a failure must be reported but stopping the program would do more harm.
+:::
+
+<!-- Slide 68 -->
+
+---
+
+## Contract Support Is Still Evolving
+
+Contracts are part of C++26, but compiler support is still arriving and flag names differ between compilers. In this course, use assert and static_assert.
+
+A contract condition may be evaluated once, more than once, or not at all. Like an assert expression, it should test state and never change it.
+
+::: notes
+Check your compiler's documentation before demonstrating a specific flag.
+:::
+
+<!-- Slide 69 -->
+
+---
+
+## Common Practices
+
+- Write the invariant in a comment first, then enforce it in code.
+- Check preconditions at the start of public member functions.
+- Call checkInvariant() at the end of every member function that changes the object.
+- Use assertions for programmer errors and exceptions or error codes for expected failures.
+
+<!-- Slide 70 -->
+
+---
+
+## Summary
+
+An invariant is a condition that must always hold, and an assertion makes the program stop the moment it does not. Stopping at the cause, not the symptom, is what turns invariants into a troubleshooting tool.
+
+<!-- Slide 71 -->

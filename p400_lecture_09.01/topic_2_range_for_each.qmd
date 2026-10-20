@@ -1,0 +1,329 @@
+<!-- Topic 2: Range-Based Loops and std::for_each -->
+<!-- Slides 24–41 -->
+
+# Range-Based Loops and std::for_each
+<!-- Slide 23 -->
+
+## Why Have Two Looping Tools?
+
+A range-based for loop makes direct traversal readable. std::for_each separates traversal from the action applied to each element.
+
+::: notes
+Slides 24–41
+:::
+
+<!-- Slide 24 -->
+
+---
+
+## Range-Based Loop Anatomy
+
+A range-based loop names an element variable and a range. The loop obtains each element without requiring an index.
+
+~~~cpp
+for (auto& value : values) {
+    value *= 2;
+}
+~~~
+
+<!-- Slide 25 -->
+
+---
+
+## Choose the Element Reference Carefully
+
+auto makes a copy, auto& permits modification of the original element, and const auto& avoids copying while preventing modification.
+
+:::: {.columns}
+
+::: {.column width="60%" style="font-size: 50%;"}
+~~~cpp
+vector<int> values = {1, 2, 3};
+
+for (auto value : values) {
+    value *= 10;            // changes a copy
+}
+for (const auto& value : values) {
+    cout << value << ' ';   // reads without copying
+}
+cout << '\n';
+
+for (auto& value : values) {
+    value *= 10;            // changes the original
+}
+for (const auto& value : values) {
+    cout << value << ' ';
+}
+cout << '\n';
+~~~
+:::
+
+::: {.column width="40%"}
+~~~
+1 2 3
+10 20 30
+~~~
+:::
+
+::::
+
+<!-- Slide 26 -->
+
+---
+
+## A Range Has a Boundary
+
+A vector knows its size, so a range-based loop can discover where to stop. A built-in array also knows its size, until it is passed to a function and becomes a pointer.
+
+<!-- Slide 27 -->
+
+---
+
+## A Pointer Is Not a Complete Range
+
+When an array is passed as a pointer, the size is no longer part of the pointer value. An algorithm needs both a first position and a one-past-the-end position.
+
+~~~cpp
+int values[] = {1, 2, 3, 4};
+int* first = values;
+int* last = values + 4;
+~~~
+
+<!-- Slide 28 -->
+
+---
+
+## std::for_each Separates Traversal and Action
+
+std::for_each walks through an iterator range and invokes a callable for each element. The algorithm owns the traversal; the callable owns the action.
+
+<!-- Slide 29 -->
+
+---
+
+## std::for_each Anatomy
+
+The call supplies a beginning position, an ending position, and an object that can be called with one element. for_each is declared in the algorithm header.
+
+~~~cpp
+#include <algorithm>
+
+for_each(first, last, action);
+~~~
+
+<!-- Slide 30 -->
+
+---
+
+## Use a Named Functor with for_each
+
+A named functor gives for_each the behavior it should apply to each element. begin(values) and end(values) supply the first and one-past-the-end positions, so the size is never typed by hand.
+
+~~~cpp
+class DoubleValue {
+public:
+    void operator()(int& value) const {
+        value *= 2;
+    }
+};
+
+int values[] = {1, 2, 3, 4};
+for_each(begin(values), end(values), DoubleValue());
+~~~
+
+::: notes
+DoubleValue() is an anonymous object: a temporary DoubleValue with no name, as in 06.01. It exists only for this call.
+:::
+
+<!-- Slide 31 -->
+
+---
+
+## Trace One for_each Call
+
+| Step | Current position | Action | values afterward |
+|---|---|---|---|
+| 1 | values[0] | double 1 | 2 2 3 4 |
+| 2 | values[1] | double 2 | 2 4 3 4 |
+| 3 | values[2] | double 3 | 2 4 6 4 |
+| 4 | values[3] | double 4 | 2 4 6 8 |
+| 5 | end reached | stop | 2 4 6 8 |
+
+The algorithm advances the position and decides when to stop. The functor never sees the loop.
+
+<!-- Slide 32 -->
+
+---
+
+## Predict the Total After for_each
+
+AddToTotal adds every value it receives to its own total. What does this print?
+
+:::: {.columns}
+
+::: {.column width="50%"}
+~~~cpp
+int values[] = {1, 2, 3, 4};
+AddToTotal total;
+
+for_each(begin(values), end(values), total);
+
+cout << total.result() << '\n';
+~~~
+:::
+
+::: {.column width="50%"}
+~~~cpp
+class AddToTotal {
+private:
+    int total = 0;
+
+public:
+    void operator()(int value) {
+        total += value;
+    }
+
+    int result() const {
+        return total;
+    }
+};
+~~~
+:::
+
+::::
+
+::: notes
+Let students commit to an answer before advancing. Most will say 10.
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## for_each Works on a Copy of the Functor
+
+It prints 0. for_each takes the functor by value, so it adds 1, 2, 3, and 4 to its own copy of total. The original object is never touched, and the updated copy is returned and thrown away.
+
+Store the copy that for_each returns to see the result.
+
+~~~cpp
+total = for_each(begin(values), end(values), total);
+cout << total.result() << '\n';   // prints 10
+~~~
+
+::: notes
+[Graphic suggestion: two boxes labeled total and copy. The copy box fills to 10 while for_each runs; total stays at 0.]
+:::
+
+<!-- Slide 34 -->
+
+---
+
+## Pass a Fresh Anonymous Object
+
+The usual way to write this call skips the named object. AddToTotal() creates an anonymous object, a temporary with no name, and for_each returns its updated copy.
+
+~~~cpp
+AddToTotal result = for_each(begin(values), end(values), AddToTotal());
+cout << result.result() << '\n';   // prints 10
+~~~
+
+Because for_each works on a copy anyway, a named original only adds a variable that never changes. Name the object only when the code must use it again before or after the call.
+
+::: notes
+Students saw anonymous objects in 06.01. The same idiom appears with DoubleValue(), PrintValue(), and CountAtLeast(70); constructor arguments still configure an anonymous object.
+:::
+
+<!-- Slide 35 -->
+
+---
+
+## Range-Based for and for_each
+
+Both forms visit each element in a range. The range-based loop keeps the action in the loop body; for_each makes the action an object that can be named, passed, and reused.
+
+<!-- Slide 36 -->
+
+---
+
+## When Should You Choose Each One?
+
+Use a range-based for when the action is local, simple, and clear in the loop body. Use for_each when the action is an independent policy that should be named, passed to another function, reused, or paired with stored state.
+
+<!-- Slide 37 -->
+
+---
+
+## Count Matching Values in a vector
+
+The same pattern works on a vector, and the functor can answer a question about the data instead of changing it.
+
+:::: {.columns}
+
+::: {.column width="60%" style="font-size: 50%;"}
+~~~cpp
+class CountAtLeast {
+private:
+    int threshold;
+    int count = 0;
+
+public:
+    CountAtLeast(int limit) : threshold(limit) {}
+
+    void operator()(int value) {
+        if (value >= threshold) {
+            count++;
+        }
+    }
+
+    int result() const {
+        return count;
+    }
+};
+
+vector<int> scores = {72, 95, 58, 88};
+CountAtLeast passing =
+    for_each(scores.begin(), scores.end(), CountAtLeast(70));
+cout << passing.result() << '\n';
+~~~
+:::
+
+::: {.column width="40%"}
+~~~
+3
+~~~
+:::
+
+::::
+
+<!-- Slide 38 -->
+
+---
+
+## Apply the Pattern to a Raw Pointer Range
+
+For a raw dynamic array, the caller must preserve the range boundary. The callable can remain independent of how the memory was allocated.
+
+~~~cpp
+int* first = scores;
+int* last = scores + size;
+for_each(first, last, PrintValue());
+~~~
+
+<!-- Slide 39 -->
+
+---
+
+## The Shared Model
+
+The loop form changes, but the responsibility split stays the same: one component traverses the range and another component defines what happens to each element.
+
+<!-- Slide 40 -->
+
+---
+
+## Summary
+
+A range-based for is direct and local. std::for_each makes the action a reusable callable, which allows functors to carry policy and state through an algorithm.
+
+<!-- Slide 41 -->

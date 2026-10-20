@@ -1,1 +1,36 @@
-{{< include topic_functors.qmd >}}\n{{< include topic_range_for_each.qmd >}}\n{{< include topic_lambda_expressions.qmd >}}\n{{< include topic_lambda_use_cases.qmd >}}\n{{< include topic_activities.qmd >}}\n
+# Last Time
+
+::: {.incremental}
++ **Deep Copy**
++ **Rvalue References and Move Operations**
++ **Rule of Five**
++ **Structured Debugging**
+:::
+
+::: notes
+Recall that a deep copy gives each object its own resource, move operations transfer a resource instead of copying it, and the Rule of Five keeps the special member functions consistent. Structured debugging connects directly to today's invariants and assertions.
+:::
+
+<!-- Slide 2 -->
+
+# Today's Agenda
+
+- Functors
+- Range-Based Loops and std::for_each
+- Invariants and Assertions
+
+::: notes
+
+:::
+
+<!-- Slide 3 -->
+
+{{< include topic_1_functors.qmd >}}
+
+{{< include topic_2_range_for_each.qmd >}}
+
+{{< include topic_3_activities.qmd >}}
+
+{{< include topic_4_Invariants_and_Assertions.qmd >}}
+
+{{< include topic_5_Invariant_lab.qmd >}}

@@ -1,0 +1,389 @@
+<!-- Topic 1: Functors -->
+<!-- Slides 5–22 -->
+
+# Functors
+<!-- Slide 4 -->
+
+## Why Pass Behavior as Data?
+
+A program can pass values into a function. Can it also pass the action that should be performed? This topic answers that question with function objects.
+
+::: notes
+Slides 5–22
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## A Function Pointer Already Passes Behavior
+
+A function pointer lets one function receive another function's address. The receiving function can decide when to invoke the behavior.
+
+~~~cpp
+#include <iostream>
+using namespace std;
+
+void printValue(int value);
+void applyOnce(int value, void (*action)(int));
+
+int main() {
+    applyOnce(42, printValue);
+    return 0;
+}
+
+void printValue(int value) {
+    cout << value << '\n';
+}
+
+void applyOnce(int value, void (*action)(int)) {
+    action(value);
+}
+~~~
+
+<!-- Slide 6 -->
+
+---
+
+## A Functor Is a Callable Object
+
+A functor is an object whose class overloads operator(). The object carries behavior and can be passed where a callable is expected.
+
+<!-- Slide 7 -->
+
+---
+
+## A Complete Functor Program
+
+:::: {.columns}
+
+::: {.column width="60%" style="font-size: 50%;"}
+~~~cpp
+#include <iostream>
+using namespace std;
+
+// A functor that prints one value
+class PrintValue {
+public:
+    void operator()(int value) const;
+};
+
+int main() {
+    PrintValue printer;
+
+    // Call the object as if it were a function
+    printer(42);
+    printer(7);
+
+    return 0;
+}
+
+void PrintValue::operator()(int value) const {
+    cout << "Value: " << value << '\n';
+}
+~~~
+:::
+
+::: {.column width="40%"}
+~~~
+Value: 42
+Value: 7
+~~~
+:::
+
+::::
+
+::: notes
+This is the whole pattern in one runnable program. The slides that follow take it apart piece by piece.
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Functor Anatomy
+
+A functor's class overloads operator(), the function-call operator, just as other classes overload operator+ or operator[]. Calling the object with parentheses runs operator().
+
+~~~cpp
+class PrintValue {                       // an ordinary class
+public:
+    void operator()(int value) const {   // the function-call operator
+        cout << value << '\n';
+    }
+};
+
+PrintValue printer;   // create the object
+printer(42);          // call the object, which runs operator()
+~~~
+
+<!-- Slide 9 -->
+
+---
+
+## The Call Contract
+
+The functor's operator() signature tells the caller what each invocation accepts and returns. A clear contract makes the object usable by other code.
+
+~~~cpp
+class IsPositive {
+public:
+    bool operator()(int value) const {
+        return value > 0;
+    }
+};
+~~~
+
+<!-- Slide 10 -->
+
+---
+
+## Pass the Object to Another Function
+
+The receiving function decides when to call the functor; the functor decides what the call does. Because the parameter type is IsPositive, this version accepts only that one functor. Topic 2 shows how for_each accepts any callable.
+
+~~~cpp
+void reportIfPositive(int value, const IsPositive& test) {
+    if (test(value)) {
+        cout << value << " is positive\n";
+    }
+}
+~~~
+
+<!-- Slide 11 -->
+
+---
+
+## One Object Can Be Called Repeatedly
+
+The same functor object can be invoked for many values. The receiving algorithm controls the repetition while the functor controls the behavior.
+
+~~~cpp
+PrintValue printer;
+printer(10);
+printer(20);
+printer(30);
+~~~
+
+<!-- Slide 12 -->
+
+---
+
+## A Stateless Functor
+
+A stateless functor contains no changing data. It is useful when the behavior is reusable but does not need to remember previous calls.
+
+~~~cpp
+class DoubleValue {
+public:
+    void operator()(int& value) const {
+        value *= 2;
+    }
+};
+~~~
+
+<!-- Slide 13 -->
+
+---
+
+## Predicates Ask Yes-or-No Questions
+
+A predicate is a callable that returns true or false. Predicate functors let an algorithm ask a question without owning the question's implementation.
+
+~~~cpp
+class IsEven {
+public:
+    bool operator()(int value) const {
+        return value % 2 == 0;
+    }
+};
+
+IsEven isEven;
+cout << boolalpha << isEven(10) << ' ' << isEven(7) << '\n';   // prints true false
+~~~
+
+<!-- Slide 14 -->
+
+---
+
+## Predicate Invariant
+
+For the same unchanged input, a simple predicate should answer the same question every time. Its parameter and return type form a contract with the algorithm using it.
+
+~~~cpp
+IsEven isEven;
+cout << boolalpha << isEven(10) << ' ' << isEven(10) << '\n';   // true true
+
+// Breaks the invariant: the answer depends on how many calls came before
+class EveryOther {
+private:
+    int calls = 0;
+
+public:
+    bool operator()(int value) {
+        calls++;
+        return calls % 2 == 0;
+    }
+};
+
+EveryOther flaky;
+cout << flaky(10) << ' ' << flaky(10) << '\n';                  // false true
+~~~
+
+::: notes
+An algorithm may call a predicate more than once on the same element, or call a copy of it. A predicate whose answer changes between calls gives unpredictable results.
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## Stateful Functors Store a Policy
+
+A functor can store data that controls its behavior. The object then packages both the policy and the operation that applies it.
+
+~~~cpp
+class AddToTotal {
+private:
+    int total = 0;
+
+public:
+    void operator()(int value) {
+        total += value;
+    }
+
+    int result() const {
+        return total;
+    }
+};
+~~~
+
+<!-- Slide 16 -->
+
+---
+
+## Stateful Functor Demonstration
+
+The object remembers information between calls because its state belongs to the object.
+
+~~~cpp
+AddToTotal total;
+total(4);
+total(7);
+cout << total.result() << '\n';
+~~~
+
+<!-- Slide 17 -->
+
+---
+
+## Trace the Object State
+
+| Statement | total before | total after |
+|---|---|---|
+| AddToTotal total; | none | 0 |
+| total(4); | 0 | 4 |
+| total(7); | 4 | 11 |
+| total.result() | 11 | 11 |
+
+The state lives inside the object, so each call starts from the value the previous call left behind.
+
+<!-- Slide 18 -->
+
+---
+
+## Why Use a Functor?
+
+A functor keeps the behavior close to its state, gives the behavior a type, and can be passed to reusable algorithms. It is useful when a plain function does not have enough context.
+
+<!-- Slide 19 -->
+
+---
+
+## Validate Input Length with a Functor
+
+The constructor sets the number of characters the functor will count to. Each call takes the actual string, counts its characters, and answers whether the input is valid.
+
+:::: {.columns}
+
+::: {.column width="60%" style="font-size: 50%;"}
+~~~cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+// A functor that checks whether input fits within a character limit
+class MaxLength {
+private:
+    int limit;
+
+public:
+    MaxLength(int maxCharacters);
+    bool operator()(const string& input) const;
+};
+
+int main() {
+    // The constructor sets how many characters are allowed
+    MaxLength validUsername(8);
+
+    string names[] = {"ada", "grace_hopper", "linus"};
+    for (const auto& name : names) {
+        if (validUsername(name)) {
+            cout << name << ": accepted\n";
+        } else {
+            cout << name << ": too long\n";
+        }
+    }
+
+    return 0;
+}
+
+MaxLength::MaxLength(int maxCharacters) : limit(maxCharacters) {}
+
+// Count the characters, stopping as soon as the count passes the limit
+bool MaxLength::operator()(const string& input) const {
+    int count = 0;
+    for (size_t i = 0; i < input.length(); i++) {
+        count++;
+        if (count > limit) {
+            return false;
+        }
+    }
+    return true;
+}
+~~~
+:::
+
+::: {.column width="40%"}
+~~~
+ada: accepted
+grace_hopper: too long
+linus: accepted
+~~~
+:::
+
+::::
+
+::: notes
+The policy, eight characters, is set once when the object is created. The same object then validates every name. A different limit is a different object: MaxLength validPassword(16).
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## Common Practices
+
+- Give operator() a narrow, clearly named responsibility.
+- Keep stored state minimal and expose only the results the caller needs.
+- Make operator() const when invoking it should not change the object.
+
+<!-- Slide 21 -->
+
+---
+
+## Summary
+
+A functor is an object that packages callable behavior. Its operator() defines the call contract, and its state can preserve information across repeated invocations.
+
+<!-- Slide 22 -->

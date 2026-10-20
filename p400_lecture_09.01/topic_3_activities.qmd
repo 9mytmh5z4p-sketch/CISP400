@@ -1,0 +1,71 @@
+<!-- Topic 3: Activities and Desk Check -->
+<!-- Slides 43–47 -->
+
+# Activities and Desk Check
+<!-- Slide 42 -->
+
+## Exercise Goals
+
+- Write a small functor with operator().
+- Trace repeated calls through for_each.
+- Predict the final state of a stateful functor.
+
+::: notes
+Slides 43–47
+:::
+
+<!-- Slide 43 -->
+
+---
+
+## Practice: Build a Functor
+
+Starter file: [multiply_by_starter.cpp](cpp/multiply_by_starter.cpp){target="_blank"}
+
+Create a MultiplyBy functor that stores a multiplier and applies it to an integer by reference. Use it with for_each to triple every value in the array.
+
+~~~
+Before: 1 2 3 4 5
+After:  3 6 9 12 15
+~~~
+
+<!-- Slide 44 -->
+
+---
+
+## Desk Check: Predict the Output
+
+Predict the output before running the program.
+
+~~~cpp
+int values[] = {2, 4, 6};
+AddToTotal total;
+
+for_each(begin(values), end(values), total);
+total(5);
+AddToTotal result = for_each(begin(values), end(values), total);
+
+cout << total.result() << ' ' << result.result() << '\n';
+~~~
+
+::: notes
+Answer: 5 17. The first for_each updates a copy that is thrown away, so total is still 0. total(5) changes the original to 5. The second for_each copies total, starting at 5, adds 2, 4, and 6 to the copy, and returns it as result with 17. The original total stays at 5.
+:::
+
+<!-- Slide 45 -->
+
+---
+
+## Explain the Trace
+
+Using the desk check code, give the value stored in total after each statement. For each for_each call, identify which object it updates and which object it returns.
+
+<!-- Slide 46 -->
+
+---
+
+## Debrief: Behavior Has a Type
+
+A functor gives reusable behavior a type and an optional memory of prior calls. An algorithm can invoke that behavior without knowing its implementation.
+
+<!-- Slide 47 -->

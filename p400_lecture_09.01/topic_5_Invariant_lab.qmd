@@ -1,0 +1,35 @@
+<!-- Topic 5: Invariant Lab -->
+<!-- Slides 73–74 -->
+
+# Invariant Lab
+<!-- Slide 72 -->
+
+## Can Assertions Find the Bugs for You?
+
+The gradebook program compiles, runs to the end, and prints results that look reasonable at a glance. Five of those results are wrong. In this lab, you will add assertions to the program and let each one stop the program at the cause of a bug.
+
+::: notes
+Slides 73–74
+
+Have students run the buggy program first and write down anything that looks wrong before they add any assertions. Comparing that list with what the assertions find is the point of the lab.
+:::
+
+<!-- Slide 73 -->
+
+---
+
+## How to Run the Lab
+
+Lab files: [assert_lab_prompt.md](assets/assert_lab_prompt.md){target="_blank"} and [gradebook_buggy.cpp](cpp/gradebook_buggy.cpp){target="_blank"}
+
+1. Compile and run gradebook_buggy.cpp. Read the output carefully and write down anything that looks wrong.
+2. Paste the prompt from assert_lab_prompt.md and your program into an AI assistant.
+3. Compile and run the new version. The program stops at the first assertion that fails.
+4. Read the failure message, find the cause, and fix that one bug. Do not remove the assert.
+5. Rerun. Repeat until the program runs to the end with no assertion failures.
+
+::: notes
+The bugs surface one per run. Students who finish early can explain which kind of condition caught each bug: precondition, postcondition, or class invariant.
+:::
+
+<!-- Slide 74 -->

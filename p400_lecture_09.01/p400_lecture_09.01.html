@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="p400_lecture_09.01_files/libs/clipboard/clipboard.min.js"></script>
+<script src="p400_lecture_09.01_files/libs/quarto-html/tabby.min.js"></script>
+<script src="p400_lecture_09.01_files/libs/quarto-html/popper.min.js"></script>
+<script src="p400_lecture_09.01_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="p400_lecture_09.01_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="p400_lecture_09.01_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="p400_lecture_09.01_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.26">
+
+  <meta name="author" content="Dr.&nbsp;Caleb Fowler">
+  <title>CISP 400 Object-Oriented Programming</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="p400_lecture_09.01_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="p400_lecture_09.01_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="p400_lecture_09.01_files/libs/revealjs/dist/theme/quarto-99eeafcedac04850354b682963cedae3.css">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <link href="p400_lecture_09.01_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="p400_lecture_09.01_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="p400_lecture_09.01_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="p400_lecture_09.01_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">CISP 400 Object-Oriented Programming</h1>
+  <p class="subtitle">C++</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Dr.&nbsp;Caleb Fowler 
+</div>
+</div>
+</div>
+
+</section>
+<section id="last-time" class="title-slide slide level1 center">
+<h1>Last Time</h1>
+<ul>
+<li class="fragment"><strong>Deep Copy</strong></li>
+<li class="fragment"><strong>Rvalue References and Move Operations</strong></li>
+<li class="fragment"><strong>Rule of Five</strong></li>
+<li class="fragment"><strong>Structured Debugging</strong></li>
+</ul>
+<aside class="notes">
+<p>Recall that a deep copy gives each object its own resource, move operations transfer a resource instead of copying it, and the Rule of Five keeps the special member functions consistent. Structured debugging connects directly to today’s invariants and assertions.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 2 -->
+</section>
+
+<section id="todays-agenda" class="title-slide slide level1 center">
+<h1>Today’s Agenda</h1>
+<ul>
+<li>Functors</li>
+<li>Range-Based Loops and std::for_each</li>
+<li>Invariants and Assertions</li>
+</ul>
+<aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 3 -->
+<!-- Topic 1: Functors -->
+<!-- Slides 5–22 -->
+</section>
+
+<section>
+<section id="functors" class="title-slide slide level1 center">
+<h1>Functors</h1>
+<!-- Slide 4 -->
+</section>
+<section id="why-pass-behavior-as-data" class="slide level2">
+<h2>Why Pass Behavior as Data?</h2>
+<p>A program can pass values into a function. Can it also pass the action that should be performed? This topic answers that question with function objects.</p>
+<aside class="notes">
+<p>Slides 5–22</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 5 -->
+</section>
+<section id="a-function-pointer-already-passes-behavior" class="slide level2">
+<h2>A Function Pointer Already Passes Behavior</h2>
+<p>A function pointer lets one function receive another function’s address. The receiving function can decide when to invoke the behavior.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb1-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb1-3"><a href=""></a></span>
+<span id="cb1-4"><a href=""></a><span class="dt">void</span> printValue<span class="op">(</span><span class="dt">int</span> value<span class="op">);</span></span>
+<span id="cb1-5"><a href=""></a><span class="dt">void</span> applyOnce<span class="op">(</span><span class="dt">int</span> value<span class="op">,</span> <span class="dt">void</span> <span class="op">(*</span>action<span class="op">)(</span><span class="dt">int</span><span class="op">));</span></span>
+<span id="cb1-6"><a href=""></a></span>
+<span id="cb1-7"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-8"><a href=""></a>    applyOnce<span class="op">(</span><span class="dv">42</span><span class="op">,</span> printValue<span class="op">);</span></span>
+<span id="cb1-9"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-10"><a href=""></a><span class="op">}</span></span>
+<span id="cb1-11"><a href=""></a></span>
+<span id="cb1-12"><a href=""></a><span class="dt">void</span> printValue<span class="op">(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-13"><a href=""></a>    cout <span class="op">&lt;&lt;</span> value <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
+<span id="cb1-14"><a href=""></a><span class="op">}</span></span>
+<span id="cb1-15"><a href=""></a></span>
+<span id="cb1-16"><a href=""></a><span class="dt">void</span> applyOnce<span class="op">(</span><span class="dt">int</span> value<span class="op">,</span> <span class="dt">void</span> <span class="op">(*</span>action<span class="op">)(</span><span class="dt">int</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb1-17"><a href=""></a>    action<span class="op">(</span>value<span class="op">);</span></span>
+<span id="cb1-18"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 6 -->
+</section>
+<section id="a-functor-is-a-callable-object" class="slide level2">
+<h2>A Functor Is a Callable Object</h2>
+<p>A functor is an object whose class overloads operator(). The object carries behavior and can be passed where a callable is expected.</p>
+<!-- Slide 7 -->
+</section>
+<section id="a-complete-functor-program" class="slide level2">
+<h2>A Complete Functor Program</h2>
+<div class="columns">
+<div class="column" style="font-size: 50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb2-2"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb2-3"><a href=""></a></span>
+<span id="cb2-4"><a href=""></a><span class="co">// A functor that prints one value</span></span>
+<span id="cb2-5"><a href=""></a><span class="kw">class</span> PrintValue <span class="op">{</span></span>
+<span id="cb2-6"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb2-7"><a href=""></a>    <span class="dt">void</span> <span class="kw">operator</span><span class="op">()(</span><span class="dt">int</span> value<span class="op">)</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb2-8"><a href=""></a><span class="op">};</span></span>
+<span id="cb2-9"><a href=""></a></span>
+<span id="cb2-10"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-11"><a href=""></a>    PrintValue printer<span class="op">;</span></span>
+<span id="cb2-12"><a href=""></a></span>
+<span id="cb2-13"><a href=""></a>    <span class="co">// Call the object as if it were a function</span></span>
+<span id="cb2-14"><a href=""></a>    printer<span class="op">(</span><span class="dv">42</span><span class="op">);</span></span>
+<span id="cb2-15"><a href=""></a>    printer<span class="op">(</span><span class="dv">7</span><span class="op">);</span></span>
+<span id="cb2-16"><a href=""></a></span>
+<span id="cb2-17"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-18"><a href=""></a><span class="op">}</span></span>
+<span id="cb2-19"><a href=""></a></span>
+<span id="cb2-20"><a href=""></a><span class="dt">void</span> PrintValue<span class="op">::</span><span class="kw">operator</span><span class="op">()(</span><span class="dt">int</span> value<span class="op">)</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb2-21"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Value: "</span> <span class="op">&lt;&lt;</span> value <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
+<span id="cb2-22"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:40%;">
+<pre><code>Value: 42
+Value: 7</code></pre>
+</div></div>
+<aside class="notes">
+<p>This is the whole pattern in one runnable program. The slides that follow take it apart piece by piece.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 8 -->
+</section>
+<section id="functor-anatomy" class="slide level2">
+<h2>Functor Anatomy</h2>
+<p>A functor’s class overloads operator(), the function-call operator, just as other classes overload operator+ or operator[]. Calling the object with parentheses runs operator().</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href=""></a><span class="kw">class</span> PrintValue <span class="op">{</span>                       <span class="co">// an ordinary class</span></span>
+<span id="cb4-2"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb4-3"><a href=""></a>    <span class="dt">void</span> <span class="kw">operator</span><span class="op">()(</span><span class="dt">int</span> value<span class="op">)</span> <span class="at">const</span> <span class="op">{</span>   <span class="co">// the function-call operator</span></span>
+<span id="cb4-4"><a href=""></a>        cout <span class="op">&lt;&lt;</span> value <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
+<span id="cb4-5"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb4-6"><a href=""></a><span class="op">};</span></span>
+<span id="cb4-7"><a href=""></a></span>
+<span id="cb4-8"><a href=""></a>PrintValue printer<span class="op">;</span>   <span class="co">// create the object</span></span>
+<span id="cb4-9"><a href=""></a>printer<span class="op">(</span><span class="dv">42</span><span class="op">);</span>          <span class="co">// call the object, which runs operator()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 9 -->
+</section>
+<section id="the-call-contract" class="slide level2">
+<h2>The Call Contract</h2>
+<p>The functor’s operator() signature tells the caller what each invocation accepts and returns. A clear contract makes the object usable by other code.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a><span class="kw">class</span> IsPositive <span class="op">{</span></span>
+<span id="cb5-2"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb5-3"><a href=""></a>    <span class="dt">bool</span> <span class="kw">operator</span><span class="op">()(</span><span class="dt">int</span> value<span class="op">)</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb5-4"><a href=""></a>        <span class="cf">return</span> value <span class="op">&gt;</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-5"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb5-6"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 10 -->
+</section>
+<section id="pass-the-object-to-another-function" class="slide level2">
+<h2>Pass the Object to Another Function</h2>
+<p>The receiving function decides when to call the functor; the functor decides what the call does. Because the parameter type is IsPositive, this version accepts only that one functor. Topic 2 shows how for_each accepts any callable.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href=""></a><span class="dt">void</span> reportIfPositive<span class="op">(</span><span class="dt">int</span> value<span class="op">,</span> <span class="at">const</span> IsPositive<span class="op">&amp;</span> test<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-2"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>test<span class="op">(</span>value<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb6-3"><a href=""></a>        cout <span class="op">&lt;&lt;</span> value <span class="op">&lt;&lt;</span> <span class="st">" is positive</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb6-4"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb6-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 11 -->
+</section>
+<section id="one-object-can-be-called-repeatedly" class="slide level2">
+<h2>One Object Can Be Called Repeatedly</h2>
+<p>The same functor object can be invoked for many values. The receiving algorithm controls the repetition while the functor controls the behavior.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a>PrintValue printer<span class="op">;</span></span>
+<span id="cb7-2"><a href=""></a>printer<span class="op">(</span><span class="dv">10</span><span class="op">);</span></span>
+<span id="cb7-3"><a href=""></a>printer<span class="op">(</span><span class="dv">20</span><span class="op">);</span></span>
+<span id="cb7-4"><a href=""></a>printer<span class="op">(</span><span class="dv">30</span><span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 12 -->
+</section>
+<section id="a-stateless-functor" class="slide level2">
+<h2>A Stateless Functor</h2>
+<p>A stateless functor contains no changing data. It is useful when the behavior is reusable but does not need to remember previous calls.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a><span class="kw">class</span> DoubleValue <span class="op">{</span></span>
+<span id="cb8-2"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb8-3"><a href=""></a>    <span class="dt">void</span> <span class="kw">operator</span><span class="op">()(</span><span class="dt">int</span><span class="op">&amp;</span> value<span class="op">)</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb8-4"><a href=""></a>        value <span class="op">*=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb8-5"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb8-6"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 13 -->
+</section>
+<section id="predicates-ask-yes-or-no-questions" class="slide level2">
+<h2>Predicates Ask Yes-or-No Questions</h2>
+<p>A predicate is a callable that returns true or false. Predicate functors let an algorithm ask a question without owning the question’s implementation.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href=""></a><span class="kw">class</span> IsEven <span class="op">{</span></span>
+<span id="cb9-2"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb9-3"><a href=""></a>    <span class="dt">bool</span> <span class="kw">operator</span><span class="op">()(</span><span class="dt">int</span> value<span class="op">)</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb9-4"><a href=""></a>        <span class="cf">return</span> value <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb9-5"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb9-6"><a href=""></a><span class="op">};</span></span>
+<span id="cb9-7"><a href=""></a></span>
+<span id="cb9-8"><a href=""></a>IsEven isEven<span class="op">;</span></span>
+<span id="cb9-9"><a href=""></a>cout <span class="op">&lt;&lt;</span> boolalpha <span class="op">&lt;&lt;</span> isEven<span class="op">(</span><span class="dv">10</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="ch">' '</span> <span class="op">&lt;&lt;</span> isEven<span class="op">(</span><span class="dv">7</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span>   <span class="co">// prints true false</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 14 -->
+</section>
+<section id="predicate-invariant" class="slide level2">
+<h2>Predicate Invariant</h2>
+<p>For the same unchanged input, a simple predicate should answer the same question every time. Its parameter and return type form a contract with the algorithm using it.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href=""></a>IsEven isEven<span class="op">;</span></span>
+<span id="cb10-2"><a href=""></a>cout <span class="op">&lt;&lt;</span> boolalpha <span class="op">&lt;&lt;</span> isEven<span class="op">(</span><span class="dv">10</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="ch">' '</span> <span class="op">&lt;&lt;</span> isEven<span class="op">(</span><span class="dv">10</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span>   <span class="co">// true true</span></span>
+<span id="cb10-3"><a href=""></a></span>
+<span id="cb10-4"><a href=""></a><span class="co">// Breaks the invariant: the answer depends on how many calls came before</span></span>
+<span id="cb10-5"><a href=""></a><span class="kw">class</span> EveryOther <span class="op">{</span></span>
+<span id="cb10-6"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb10-7"><a href=""></a>    <span class="dt">int</span> calls <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb10-8"><a href=""></a></span>
+<span id="cb10-9"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb10-10"><a href=""></a>    <span class="dt">bool</span> <span class="kw">operator</span><span class="op">()(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-11"><a href=""></a>        calls<span class="op">++;</span></span>
+<span id="cb10-12"><a href=""></a>        <span class="cf">return</span> calls <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb10-13"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb10-14"><a href=""></a><span class="op">};</span></span>
+<span id="cb10-15"><a href=""></a></span>
+<span id="cb10-16"><a href=""></a>EveryOther flaky<span class="op">;</span></span>
+<span id="cb10-17"><a href=""></a>cout <span class="op">&lt;&lt;</span> flaky<span class="op">(</span><span class="dv">10</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="ch">' '</span> <span class="op">&lt;&lt;</span> flaky<span class="op">(</span><span class="dv">10</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span>                  <span class="co">// false true</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>An algorithm may call a predicate more than once on the same element, or call a copy of it. A predicate whose answer changes between calls gives unpredictable results.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 15 -->
+</section>
+<section id="stateful-functors-store-a-policy" class="slide level2">
+<h2>Stateful Functors Store a Policy</h2>
+<p>A functor can store data that controls its behavior. The object then packages both the policy and the operation that applies it.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href=""></a><span class="kw">class</span> AddToTotal <span class="op">{</span></span>
+<span id="cb11-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb11-3"><a href=""></a>    <span class="dt">int</span> total <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-4"><a href=""></a></span>
+<span id="cb11-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb11-6"><a href=""></a>    <span class="dt">void</span> <span class="kw">operator</span><span class="op">()(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-7"><a href=""></a>        total <span class="op">+=</span> value<span class="op">;</span></span>
+<span id="cb11-8"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb11-9"><a href=""></a></span>
+<span id="cb11-10"><a href=""></a>    <span class="dt">int</span> result<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb11-11"><a href=""></a>        <span class="cf">return</span> total<span class="op">;</span></span>
+<span id="cb11-12"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb11-13"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 16 -->
+</section>
+<section id="stateful-functor-demonstration" class="slide level2">
+<h2>Stateful Functor Demonstration</h2>
+<p>The object remembers information between calls because its state belongs to the object.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href=""></a>AddToTotal total<span class="op">;</span></span>
+<span id="cb12-2"><a href=""></a>total<span class="op">(</span><span class="dv">4</span><span class="op">);</span></span>
+<span id="cb12-3"><a href=""></a>total<span class="op">(</span><span class="dv">7</span><span class="op">);</span></span>
+<span id="cb12-4"><a href=""></a>cout <span class="op">&lt;&lt;</span> total<span class="op">.</span>result<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 17 -->
+</section>
+<section id="trace-the-object-state" class="slide level2">
+<h2>Trace the Object State</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Statement</th>
+<th>total before</th>
+<th>total after</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AddToTotal total;</td>
+<td>none</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>total(4);</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>total(7);</td>
+<td>4</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td>total.result()</td>
+<td>11</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<p>The state lives inside the object, so each call starts from the value the previous call left behind.</p>
+<!-- Slide 18 -->
+</section>
+<section id="why-use-a-functor" class="slide level2">
+<h2>Why Use a Functor?</h2>
+<p>A functor keeps the behavior close to its state, gives the behavior a type, and can be passed to reusable algorithms. It is useful when a plain function does not have enough context.</p>
+<!-- Slide 19 -->
+</section>
+<section id="validate-input-length-with-a-functor" class="slide level2">
+<h2>Validate Input Length with a Functor</h2>
+<p>The constructor sets the number of characters the functor will count to. Each call takes the actual string, counts its characters, and answers whether the input is valid.</p>
+<div class="columns">
+<div class="column" style="font-size: 50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb13-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
+<span id="cb13-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb13-4"><a href=""></a></span>
+<span id="cb13-5"><a href=""></a><span class="co">// A functor that checks whether input fits within a character limit</span></span>
+<span id="cb13-6"><a href=""></a><span class="kw">class</span> MaxLength <span class="op">{</span></span>
+<span id="cb13-7"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb13-8"><a href=""></a>    <span class="dt">int</span> limit<span class="op">;</span></span>
+<span id="cb13-9"><a href=""></a></span>
+<span id="cb13-10"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb13-11"><a href=""></a>    MaxLength<span class="op">(</span><span class="dt">int</span> maxCharacters<span class="op">);</span></span>
+<span id="cb13-12"><a href=""></a>    <span class="dt">bool</span> <span class="kw">operator</span><span class="op">()(</span><span class="at">const</span> string<span class="op">&amp;</span> input<span class="op">)</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb13-13"><a href=""></a><span class="op">};</span></span>
+<span id="cb13-14"><a href=""></a></span>
+<span id="cb13-15"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb13-16"><a href=""></a>    <span class="co">// The constructor sets how many characters are allowed</span></span>
+<span id="cb13-17"><a href=""></a>    MaxLength validUsername<span class="op">(</span><span class="dv">8</span><span class="op">);</span></span>
+<span id="cb13-18"><a href=""></a></span>
+<span id="cb13-19"><a href=""></a>    string names<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="st">"ada"</span><span class="op">,</span> <span class="st">"grace_hopper"</span><span class="op">,</span> <span class="st">"linus"</span><span class="op">};</span></span>
+<span id="cb13-20"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="at">const</span> <span class="kw">auto</span><span class="op">&amp;</span> name <span class="op">:</span> names<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-21"><a href=""></a>        <span class="cf">if</span> <span class="op">(</span>validUsername<span class="op">(</span>name<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb13-22"><a href=""></a>            cout <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> <span class="st">": accepted</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb13-23"><a href=""></a>        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb13-24"><a href=""></a>            cout <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> <span class="st">": too long</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb13-25"><a href=""></a>        <span class="op">}</span></span>
+<span id="cb13-26"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb13-27"><a href=""></a></span>
+<span id="cb13-28"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb13-29"><a href=""></a><span class="op">}</span></span>
+<span id="cb13-30"><a href=""></a></span>
+<span id="cb13-31"><a href=""></a>MaxLength<span class="op">::</span>MaxLength<span class="op">(</span><span class="dt">int</span> maxCharacters<span class="op">)</span> <span class="op">:</span> limit<span class="op">(</span>maxCharacters<span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb13-32"><a href=""></a></span>
+<span id="cb13-33"><a href=""></a><span class="co">// Count the characters, stopping as soon as the count passes the limit</span></span>
+<span id="cb13-34"><a href=""></a><span class="dt">bool</span> MaxLength<span class="op">::</span><span class="kw">operator</span><span class="op">()(</span><span class="at">const</span> string<span class="op">&amp;</span> input<span class="op">)</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb13-35"><a href=""></a>    <span class="dt">int</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb13-36"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">size_t</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> input<span class="op">.</span>length<span class="op">();</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb13-37"><a href=""></a>        count<span class="op">++;</span></span>
+<span id="cb13-38"><a href=""></a>        <span class="cf">if</span> <span class="op">(</span>count <span class="op">&gt;</span> limit<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-39"><a href=""></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb13-40"><a href=""></a>        <span class="op">}</span></span>
+<span id="cb13-41"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb13-42"><a href=""></a>    <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb13-43"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:40%;">
+<pre><code>ada: accepted
+grace_hopper: too long
+linus: accepted</code></pre>
+</div></div>
+<aside class="notes">
+<p>The policy, eight characters, is set once when the object is created. The same object then validates every name. A different limit is a different object: MaxLength validPassword(16).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 20 -->
+</section>
+<section id="common-practices" class="slide level2">
+<h2>Common Practices</h2>
+<ul>
+<li>Give operator() a narrow, clearly named responsibility.</li>
+<li>Keep stored state minimal and expose only the results the caller needs.</li>
+<li>Make operator() const when invoking it should not change the object.</li>
+</ul>
+<!-- Slide 21 -->
+</section>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
+<p>A functor is an object that packages callable behavior. Its operator() defines the call contract, and its state can preserve information across repeated invocations.</p>
+<!-- Slide 22 -->
+<!-- Topic 2: Range-Based Loops and std::for_each -->
+<!-- Slides 24–41 -->
+</section></section>
+<section>
+<section id="range-based-loops-and-stdfor_each" class="title-slide slide level1 center">
+<h1>Range-Based Loops and std::for_each</h1>
+<!-- Slide 23 -->
+</section>
+<section id="why-have-two-looping-tools" class="slide level2">
+<h2>Why Have Two Looping Tools?</h2>
+<p>A range-based for loop makes direct traversal readable. std::for_each separates traversal from the action applied to each element.</p>
+<aside class="notes">
+<p>Slides 24–41</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 24 -->
+</section>
+<section id="range-based-loop-anatomy" class="slide level2">
+<h2>Range-Based Loop Anatomy</h2>
+<p>A range-based loop names an element variable and a range. The loop obtains each element without requiring an index.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="kw">auto</span><span class="op">&amp;</span> value <span class="op">:</span> values<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb15-2"><a href=""></a>    value <span class="op">*=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb15-3"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 25 -->
+</section>
+<section id="choose-the-element-reference-carefully" class="slide level2">
+<h2>Choose the Element Reference Carefully</h2>
+<p>auto makes a copy, auto&amp; permits modification of the original element, and const auto&amp; avoids copying while preventing modification.</p>
+<div class="columns">
+<div class="column" style="font-size: 50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> values <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">};</span></span>
+<span id="cb16-2"><a href=""></a></span>
+<span id="cb16-3"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="kw">auto</span> value <span class="op">:</span> values<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-4"><a href=""></a>    value <span class="op">*=</span> <span class="dv">10</span><span class="op">;</span>            <span class="co">// changes a copy</span></span>
+<span id="cb16-5"><a href=""></a><span class="op">}</span></span>
+<span id="cb16-6"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="at">const</span> <span class="kw">auto</span><span class="op">&amp;</span> value <span class="op">:</span> values<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-7"><a href=""></a>    cout <span class="op">&lt;&lt;</span> value <span class="op">&lt;&lt;</span> <span class="ch">' '</span><span class="op">;</span>   <span class="co">// reads without copying</span></span>
+<span id="cb16-8"><a href=""></a><span class="op">}</span></span>
+<span id="cb16-9"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
+<span id="cb16-10"><a href=""></a></span>
+<span id="cb16-11"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="kw">auto</span><span class="op">&amp;</span> value <span class="op">:</span> values<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-12"><a href=""></a>    value <span class="op">*=</span> <span class="dv">10</span><span class="op">;</span>            <span class="co">// changes the original</span></span>
+<span id="cb16-13"><a href=""></a><span class="op">}</span></span>
+<span id="cb16-14"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="at">const</span> <span class="kw">auto</span><span class="op">&amp;</span> value <span class="op">:</span> values<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-15"><a href=""></a>    cout <span class="op">&lt;&lt;</span> value <span class="op">&lt;&lt;</span> <span class="ch">' '</span><span class="op">;</span></span>
+<span id="cb16-16"><a href=""></a><span class="op">}</span></span>
+<span id="cb16-17"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:40%;">
+<pre><code>1 2 3
+10 20 30</code></pre>
+</div></div>
+<!-- Slide 26 -->
+</section>
+<section id="a-range-has-a-boundary" class="slide level2">
+<h2>A Range Has a Boundary</h2>
+<p>A vector knows its size, so a range-based loop can discover where to stop. A built-in array also knows its size, until it is passed to a function and becomes a pointer.</p>
+<!-- Slide 27 -->
+</section>
+<section id="a-pointer-is-not-a-complete-range" class="slide level2">
+<h2>A Pointer Is Not a Complete Range</h2>
+<p>When an array is passed as a pointer, the size is no longer part of the pointer value. An algorithm needs both a first position and a one-past-the-end position.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href=""></a><span class="dt">int</span> values<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">};</span></span>
+<span id="cb18-2"><a href=""></a><span class="dt">int</span><span class="op">*</span> first <span class="op">=</span> values<span class="op">;</span></span>
+<span id="cb18-3"><a href=""></a><span class="dt">int</span><span class="op">*</span> last <span class="op">=</span> values <span class="op">+</span> <span class="dv">4</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 28 -->
+</section>
+<section id="stdfor_each-separates-traversal-and-action" class="slide level2">
+<h2>std::for_each Separates Traversal and Action</h2>
+<p>std::for_each walks through an iterator range and invokes a callable for each element. The algorithm owns the traversal; the callable owns the action.</p>
+<!-- Slide 29 -->
+</section>
+<section id="stdfor_each-anatomy" class="slide level2">
+<h2>std::for_each Anatomy</h2>
+<p>The call supplies a beginning position, an ending position, and an object that can be called with one element. for_each is declared in the algorithm header.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb19-2"><a href=""></a></span>
+<span id="cb19-3"><a href=""></a>for_each<span class="op">(</span>first<span class="op">,</span> last<span class="op">,</span> action<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 30 -->
+</section>
+<section id="use-a-named-functor-with-for_each" class="slide level2">
+<h2>Use a Named Functor with for_each</h2>
+<p>A named functor gives for_each the behavior it should apply to each element. begin(values) and end(values) supply the first and one-past-the-end positions, so the size is never typed by hand.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href=""></a><span class="kw">class</span> DoubleValue <span class="op">{</span></span>
+<span id="cb20-2"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb20-3"><a href=""></a>    <span class="dt">void</span> <span class="kw">operator</span><span class="op">()(</span><span class="dt">int</span><span class="op">&amp;</span> value<span class="op">)</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb20-4"><a href=""></a>        value <span class="op">*=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb20-5"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb20-6"><a href=""></a><span class="op">};</span></span>
+<span id="cb20-7"><a href=""></a></span>
+<span id="cb20-8"><a href=""></a><span class="dt">int</span> values<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">};</span></span>
+<span id="cb20-9"><a href=""></a>for_each<span class="op">(</span>begin<span class="op">(</span>values<span class="op">),</span> end<span class="op">(</span>values<span class="op">),</span> DoubleValue<span class="op">());</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>DoubleValue() is an anonymous object: a temporary DoubleValue with no name, as in 06.01. It exists only for this call.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 31 -->
+</section>
+<section id="trace-one-for_each-call" class="slide level2">
+<h2>Trace One for_each Call</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Current position</th>
+<th>Action</th>
+<th>values afterward</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>values[0]</td>
+<td>double 1</td>
+<td>2 2 3 4</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>values[1]</td>
+<td>double 2</td>
+<td>2 4 3 4</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>values[2]</td>
+<td>double 3</td>
+<td>2 4 6 4</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>values[3]</td>
+<td>double 4</td>
+<td>2 4 6 8</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>end reached</td>
+<td>stop</td>
+<td>2 4 6 8</td>
+</tr>
+</tbody>
+</table>
+<p>The algorithm advances the position and decides when to stop. The functor never sees the loop.</p>
+<!-- Slide 32 -->
+</section>
+<section id="predict-the-total-after-for_each" class="slide level2">
+<h2>Predict the Total After for_each</h2>
+<p>AddToTotal adds every value it receives to its own total. What does this print?</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb21-1"><a href=""></a><span class="dt">int</span> values<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">};</span></span>
+<span id="cb21-2"><a href=""></a>AddToTotal total<span class="op">;</span></span>
+<span id="cb21-3"><a href=""></a></span>
+<span id="cb21-4"><a href=""></a>for_each<span class="op">(</span>begin<span class="op">(</span>values<span class="op">),</span> end<span class="op">(</span>values<span class="op">),</span> total<span class="op">);</span></span>
+<span id="cb21-5"><a href=""></a></span>
+<span id="cb21-6"><a href=""></a>cout <span class="op">&lt;&lt;</span> total<span class="op">.</span>result<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb22-1"><a href=""></a><span class="kw">class</span> AddToTotal <span class="op">{</span></span>
+<span id="cb22-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb22-3"><a href=""></a>    <span class="dt">int</span> total <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb22-4"><a href=""></a></span>
+<span id="cb22-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb22-6"><a href=""></a>    <span class="dt">void</span> <span class="kw">operator</span><span class="op">()(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb22-7"><a href=""></a>        total <span class="op">+=</span> value<span class="op">;</span></span>
+<span id="cb22-8"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb22-9"><a href=""></a></span>
+<span id="cb22-10"><a href=""></a>    <span class="dt">int</span> result<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb22-11"><a href=""></a>        <span class="cf">return</span> total<span class="op">;</span></span>
+<span id="cb22-12"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb22-13"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<aside class="notes">
+<p>Let students commit to an answer before advancing. Most will say 10.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 33 -->
+</section>
+<section id="for_each-works-on-a-copy-of-the-functor" class="slide level2">
+<h2>for_each Works on a Copy of the Functor</h2>
+<p>It prints 0. for_each takes the functor by value, so it adds 1, 2, 3, and 4 to its own copy of total. The original object is never touched, and the updated copy is returned and thrown away.</p>
+<p>Store the copy that for_each returns to see the result.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb23-1"><a href=""></a>total <span class="op">=</span> for_each<span class="op">(</span>begin<span class="op">(</span>values<span class="op">),</span> end<span class="op">(</span>values<span class="op">),</span> total<span class="op">);</span></span>
+<span id="cb23-2"><a href=""></a>cout <span class="op">&lt;&lt;</span> total<span class="op">.</span>result<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span>   <span class="co">// prints 10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>[Graphic suggestion: two boxes labeled total and copy. The copy box fills to 10 while for_each runs; total stays at 0.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 34 -->
+</section>
+<section id="pass-a-fresh-anonymous-object" class="slide level2">
+<h2>Pass a Fresh Anonymous Object</h2>
+<p>The usual way to write this call skips the named object. AddToTotal() creates an anonymous object, a temporary with no name, and for_each returns its updated copy.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb24-1"><a href=""></a>AddToTotal result <span class="op">=</span> for_each<span class="op">(</span>begin<span class="op">(</span>values<span class="op">),</span> end<span class="op">(</span>values<span class="op">),</span> AddToTotal<span class="op">());</span></span>
+<span id="cb24-2"><a href=""></a>cout <span class="op">&lt;&lt;</span> result<span class="op">.</span>result<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span>   <span class="co">// prints 10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Because for_each works on a copy anyway, a named original only adds a variable that never changes. Name the object only when the code must use it again before or after the call.</p>
+<aside class="notes">
+<p>Students saw anonymous objects in 06.01. The same idiom appears with DoubleValue(), PrintValue(), and CountAtLeast(70); constructor arguments still configure an anonymous object.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 35 -->
+</section>
+<section id="range-based-for-and-for_each" class="slide level2">
+<h2>Range-Based for and for_each</h2>
+<p>Both forms visit each element in a range. The range-based loop keeps the action in the loop body; for_each makes the action an object that can be named, passed, and reused.</p>
+<!-- Slide 36 -->
+</section>
+<section id="when-should-you-choose-each-one" class="slide level2">
+<h2>When Should You Choose Each One?</h2>
+<p>Use a range-based for when the action is local, simple, and clear in the loop body. Use for_each when the action is an independent policy that should be named, passed to another function, reused, or paired with stored state.</p>
+<!-- Slide 37 -->
+</section>
+<section id="count-matching-values-in-a-vector" class="slide level2">
+<h2>Count Matching Values in a vector</h2>
+<p>The same pattern works on a vector, and the functor can answer a question about the data instead of changing it.</p>
+<div class="columns">
+<div class="column" style="font-size: 50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb25-1"><a href=""></a><span class="kw">class</span> CountAtLeast <span class="op">{</span></span>
+<span id="cb25-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb25-3"><a href=""></a>    <span class="dt">int</span> threshold<span class="op">;</span></span>
+<span id="cb25-4"><a href=""></a>    <span class="dt">int</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb25-5"><a href=""></a></span>
+<span id="cb25-6"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb25-7"><a href=""></a>    CountAtLeast<span class="op">(</span><span class="dt">int</span> limit<span class="op">)</span> <span class="op">:</span> threshold<span class="op">(</span>limit<span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb25-8"><a href=""></a></span>
+<span id="cb25-9"><a href=""></a>    <span class="dt">void</span> <span class="kw">operator</span><span class="op">()(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb25-10"><a href=""></a>        <span class="cf">if</span> <span class="op">(</span>value <span class="op">&gt;=</span> threshold<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb25-11"><a href=""></a>            count<span class="op">++;</span></span>
+<span id="cb25-12"><a href=""></a>        <span class="op">}</span></span>
+<span id="cb25-13"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb25-14"><a href=""></a></span>
+<span id="cb25-15"><a href=""></a>    <span class="dt">int</span> result<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb25-16"><a href=""></a>        <span class="cf">return</span> count<span class="op">;</span></span>
+<span id="cb25-17"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb25-18"><a href=""></a><span class="op">};</span></span>
+<span id="cb25-19"><a href=""></a></span>
+<span id="cb25-20"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores <span class="op">=</span> <span class="op">{</span><span class="dv">72</span><span class="op">,</span> <span class="dv">95</span><span class="op">,</span> <span class="dv">58</span><span class="op">,</span> <span class="dv">88</span><span class="op">};</span></span>
+<span id="cb25-21"><a href=""></a>CountAtLeast passing <span class="op">=</span></span>
+<span id="cb25-22"><a href=""></a>    for_each<span class="op">(</span>scores<span class="op">.</span>begin<span class="op">(),</span> scores<span class="op">.</span>end<span class="op">(),</span> CountAtLeast<span class="op">(</span><span class="dv">70</span><span class="op">));</span></span>
+<span id="cb25-23"><a href=""></a>cout <span class="op">&lt;&lt;</span> passing<span class="op">.</span>result<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:40%;">
+<pre><code>3</code></pre>
+</div></div>
+<!-- Slide 38 -->
+</section>
+<section id="apply-the-pattern-to-a-raw-pointer-range" class="slide level2">
+<h2>Apply the Pattern to a Raw Pointer Range</h2>
+<p>For a raw dynamic array, the caller must preserve the range boundary. The callable can remain independent of how the memory was allocated.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb27-1"><a href=""></a><span class="dt">int</span><span class="op">*</span> first <span class="op">=</span> scores<span class="op">;</span></span>
+<span id="cb27-2"><a href=""></a><span class="dt">int</span><span class="op">*</span> last <span class="op">=</span> scores <span class="op">+</span> size<span class="op">;</span></span>
+<span id="cb27-3"><a href=""></a>for_each<span class="op">(</span>first<span class="op">,</span> last<span class="op">,</span> PrintValue<span class="op">());</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 39 -->
+</section>
+<section id="the-shared-model" class="slide level2">
+<h2>The Shared Model</h2>
+<p>The loop form changes, but the responsibility split stays the same: one component traverses the range and another component defines what happens to each element.</p>
+<!-- Slide 40 -->
+</section>
+<section id="summary-1" class="slide level2">
+<h2>Summary</h2>
+<p>A range-based for is direct and local. std::for_each makes the action a reusable callable, which allows functors to carry policy and state through an algorithm.</p>
+<!-- Slide 41 -->
+<!-- Topic 3: Activities and Desk Check -->
+<!-- Slides 43–47 -->
+</section></section>
+<section>
+<section id="activities-and-desk-check" class="title-slide slide level1 center">
+<h1>Activities and Desk Check</h1>
+<!-- Slide 42 -->
+</section>
+<section id="exercise-goals" class="slide level2">
+<h2>Exercise Goals</h2>
+<ul>
+<li>Write a small functor with operator().</li>
+<li>Trace repeated calls through for_each.</li>
+<li>Predict the final state of a stateful functor.</li>
+</ul>
+<aside class="notes">
+<p>Slides 43–47</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 43 -->
+</section>
+<section id="practice-build-a-functor" class="slide level2">
+<h2>Practice: Build a Functor</h2>
+<p>Starter file: <a href="cpp/multiply_by_starter.cpp" target="_blank">multiply_by_starter.cpp</a></p>
+<p>Create a MultiplyBy functor that stores a multiplier and applies it to an integer by reference. Use it with for_each to triple every value in the array.</p>
+<pre><code>Before: 1 2 3 4 5
+After:  3 6 9 12 15</code></pre>
+<!-- Slide 44 -->
+</section>
+<section id="desk-check-predict-the-output" class="slide level2">
+<h2>Desk Check: Predict the Output</h2>
+<p>Predict the output before running the program.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb29-1"><a href=""></a><span class="dt">int</span> values<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">2</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">6</span><span class="op">};</span></span>
+<span id="cb29-2"><a href=""></a>AddToTotal total<span class="op">;</span></span>
+<span id="cb29-3"><a href=""></a></span>
+<span id="cb29-4"><a href=""></a>for_each<span class="op">(</span>begin<span class="op">(</span>values<span class="op">),</span> end<span class="op">(</span>values<span class="op">),</span> total<span class="op">);</span></span>
+<span id="cb29-5"><a href=""></a>total<span class="op">(</span><span class="dv">5</span><span class="op">);</span></span>
+<span id="cb29-6"><a href=""></a>AddToTotal result <span class="op">=</span> for_each<span class="op">(</span>begin<span class="op">(</span>values<span class="op">),</span> end<span class="op">(</span>values<span class="op">),</span> total<span class="op">);</span></span>
+<span id="cb29-7"><a href=""></a></span>
+<span id="cb29-8"><a href=""></a>cout <span class="op">&lt;&lt;</span> total<span class="op">.</span>result<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="ch">' '</span> <span class="op">&lt;&lt;</span> result<span class="op">.</span>result<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>Answer: 5 17. The first for_each updates a copy that is thrown away, so total is still 0. total(5) changes the original to 5. The second for_each copies total, starting at 5, adds 2, 4, and 6 to the copy, and returns it as result with 17. The original total stays at 5.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 45 -->
+</section>
+<section id="explain-the-trace" class="slide level2">
+<h2>Explain the Trace</h2>
+<p>Using the desk check code, give the value stored in total after each statement. For each for_each call, identify which object it updates and which object it returns.</p>
+<!-- Slide 46 -->
+</section>
+<section id="debrief-behavior-has-a-type" class="slide level2">
+<h2>Debrief: Behavior Has a Type</h2>
+<p>A functor gives reusable behavior a type and an optional memory of prior calls. An algorithm can invoke that behavior without knowing its implementation.</p>
+<!-- Slide 47 -->
+<!-- Topic 4: Invariants and Assertions -->
+<!-- Slides 49–71 -->
+</section></section>
+<section>
+<section id="invariants-and-assertions" class="title-slide slide level1 center">
+<h1>Invariants and Assertions</h1>
+<!-- Slide 48 -->
+</section>
+<section id="where-did-this-bug-start" class="slide level2">
+<h2>Where Did This Bug Start?</h2>
+<p>A program crashes inside a print function, but the print function is correct. The real mistake happened earlier, when a counter quietly moved past its limit. This topic shows how to make a program stop at the cause instead of the symptom.</p>
+<aside class="notes">
+<p>Slides 49–71</p>
+<p>Open with a short story: the crash appears far from the line that broke the data. Students should leave able to explain why invariants and assertions shorten that distance.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 49 -->
+</section>
+<section id="you-already-reason-about-conditions" class="slide level2">
+<h2>You Already Reason About Conditions</h2>
+<p>A loop condition decides whether another iteration is safe. A range boundary tells an algorithm where to stop. A functor’s call contract tells the caller what each invocation accepts and returns.</p>
+<aside class="notes">
+<p>Connect to Topics 1 and 2. Students have already relied on conditions that must be true for code to work; today those conditions become explicit and checkable.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 50 -->
+</section>
+<section id="an-invariant-is-a-condition-that-must-hold" class="slide level2">
+<h2>An Invariant Is a Condition That Must Hold</h2>
+<p>An invariant is a condition that must be true at a specific point in a program every time execution reaches that point. When an invariant is false, the program’s data is no longer valid.</p>
+<ul>
+<li>A sorted array stays sorted after an insert.</li>
+<li>A stack’s count stays between 0 and its capacity.</li>
+<li>A fraction’s denominator is never 0.</li>
+</ul>
+<!-- Slide 51 -->
+</section>
+<section id="where-conditions-live" class="slide level2">
+<h2>Where Conditions Live</h2>
+<ul>
+<li>Preconditions</li>
+<li>Postconditions</li>
+<li>Class invariants</li>
+<li>Loop invariants</li>
+</ul>
+<!-- Slide 52 -->
+</section>
+<section id="preconditions-and-postconditions" class="slide level2">
+<h2>Preconditions and Postconditions</h2>
+<p>A precondition is what the caller must guarantee before a call. A postcondition is what the function guarantees when it returns.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb30-1"><a href=""></a><span class="co">// Precondition: size &gt; 0</span></span>
+<span id="cb30-2"><a href=""></a><span class="co">// Postcondition: returns the largest element of values</span></span>
+<span id="cb30-3"><a href=""></a><span class="dt">int</span> findMax<span class="op">(</span><span class="at">const</span> <span class="dt">int</span> values<span class="op">[],</span> <span class="dt">int</span> size<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>[Graphic suggestion: a function drawn as a box, with the precondition on the arrow going in and the postcondition on the arrow coming out. Label the caller’s side and the function’s side to show who is responsible for each.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 53 -->
+</section>
+<section id="class-invariants" class="slide level2">
+<h2>Class Invariants</h2>
+<p>A class invariant is a condition every object of the class keeps whenever outside code can see it. In BoundedStack, count is both the number of stored values and the index of the next open slot, so it must stay between 0 and CAPACITY. A push on a full stack would write past the end of items and leave count at 4.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb31-1"><a href=""></a><span class="co">// Class invariant: 0 &lt;= count &lt;= CAPACITY</span></span>
+<span id="cb31-2"><a href=""></a><span class="kw">class</span> BoundedStack <span class="op">{</span></span>
+<span id="cb31-3"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb31-4"><a href=""></a>    <span class="dt">int</span> items<span class="op">[</span>CAPACITY<span class="op">];</span></span>
+<span id="cb31-5"><a href=""></a>    <span class="dt">int</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb31-6"><a href=""></a></span>
+<span id="cb31-7"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb31-8"><a href=""></a>    <span class="dt">void</span> push<span class="op">(</span><span class="dt">int</span> value<span class="op">);</span></span>
+<span id="cb31-9"><a href=""></a>    <span class="dt">int</span> pop<span class="op">();</span></span>
+<span id="cb31-10"><a href=""></a>    <span class="dt">int</span> size<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb31-11"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb32-1"><a href=""></a><span class="dt">void</span> BoundedStack<span class="op">::</span>push<span class="op">(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb32-2"><a href=""></a>    <span class="co">// Invariant holds on entry</span></span>
+<span id="cb32-3"><a href=""></a>    items<span class="op">[</span>count<span class="op">]</span> <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb32-4"><a href=""></a>    count<span class="op">++;</span></span>
+<span id="cb32-5"><a href=""></a>    <span class="co">// Invariant must hold again on exit</span></span>
+<span id="cb32-6"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<aside class="notes">
+<p>The initializer count = 0 establishes the invariant when the object is created. Every public member function may assume it on entry and must restore it before returning. Inside the function, between those two points, it may be briefly false.</p>
+<p>This push still has a hole: nothing stops a fourth call on a full stack. Slide 58 closes that hole with an assertion.</p>
+<p>[Graphic suggestion: the items array drawn as three boxes with count as an arrow pointing at the next open slot, shown at counts 0 through 3.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 54 -->
+</section>
+<section id="encapsulation-protects-the-invariant" class="slide level2">
+<h2>Encapsulation Protects the Invariant</h2>
+<p>If count is public, any code anywhere can set it to 50 and break the invariant. If count is private, only the member functions can change it, so only they need to be checked.</p>
+<aside class="notes">
+<p>This is the design payoff of private data. Encapsulation shrinks the number of places a bug can come from, which makes troubleshooting faster.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 55 -->
+</section>
+<section id="loop-invariants" class="slide level2">
+<h2>Loop Invariants</h2>
+<p>A loop invariant is true at the top of every iteration. When the loop ends, the invariant plus the exit condition tells you the result.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb33-1"><a href=""></a><span class="dt">int</span> maxValue <span class="op">=</span> values<span class="op">[</span><span class="dv">0</span><span class="op">];</span></span>
+<span id="cb33-2"><a href=""></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb33-3"><a href=""></a>    <span class="co">// Invariant: maxValue is the largest of values[0] through values[i - 1]</span></span>
+<span id="cb33-4"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>values<span class="op">[</span>i<span class="op">]</span> <span class="op">&gt;</span> maxValue<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb33-5"><a href=""></a>        maxValue <span class="op">=</span> values<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb33-6"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb33-7"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>i</th>
+<th>values[0..i-1]</th>
+<th>maxValue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>4 9</td>
+<td>9</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>4 9 2</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td>4 (exit)</td>
+<td>4 9 2 7</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>Trace with values = {4, 9, 2, 7}. At exit, i equals size, so the invariant now says maxValue is the largest of the whole array.</p>
+<p>[Graphic suggestion: an interactive step-through that highlights the checked portion of the array and the current maxValue at the top of each iteration.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 56 -->
+</section>
+<section id="assert-anatomy" class="slide level2">
+<h2>assert Anatomy</h2>
+<p>assert evaluates an expression at run time. If the expression is false, it prints the expression, file, and line, then stops the program with abort().</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb34-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;cassert&gt;</span></span>
+<span id="cb34-2"><a href=""></a></span>
+<span id="cb34-3"><a href=""></a><span class="ot">assert</span><span class="op">(</span>count <span class="op">&lt;</span> CAPACITY<span class="op">);</span></span>
+<span id="cb34-4"><a href=""></a><span class="co">//     ^ condition that must be true here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 57 -->
+</section>
+<section id="an-assertion-catches-the-cause" class="slide level2">
+<h2>An Assertion Catches the Cause</h2>
+<div class="columns">
+<div class="column" style="font-size: 50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb35-1"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb35-2"><a href=""></a>    BoundedStack stack<span class="op">;</span></span>
+<span id="cb35-3"><a href=""></a></span>
+<span id="cb35-4"><a href=""></a>    stack<span class="op">.</span>push<span class="op">(</span><span class="dv">10</span><span class="op">);</span></span>
+<span id="cb35-5"><a href=""></a>    stack<span class="op">.</span>push<span class="op">(</span><span class="dv">20</span><span class="op">);</span></span>
+<span id="cb35-6"><a href=""></a>    stack<span class="op">.</span>push<span class="op">(</span><span class="dv">30</span><span class="op">);</span></span>
+<span id="cb35-7"><a href=""></a>    <span class="co">// size() returns count, which is 3 after three pushes</span></span>
+<span id="cb35-8"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Size: "</span> <span class="op">&lt;&lt;</span> stack<span class="op">.</span>size<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
+<span id="cb35-9"><a href=""></a></span>
+<span id="cb35-10"><a href=""></a>    <span class="co">// This call violates the precondition of push</span></span>
+<span id="cb35-11"><a href=""></a>    stack<span class="op">.</span>push<span class="op">(</span><span class="dv">40</span><span class="op">);</span></span>
+<span id="cb35-12"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"This line never prints</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb35-13"><a href=""></a></span>
+<span id="cb35-14"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb35-15"><a href=""></a><span class="op">}</span></span>
+<span id="cb35-16"><a href=""></a></span>
+<span id="cb35-17"><a href=""></a><span class="dt">void</span> BoundedStack<span class="op">::</span>push<span class="op">(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb35-18"><a href=""></a>    <span class="co">// Precondition: check before writing, while count is the next open slot</span></span>
+<span id="cb35-19"><a href=""></a>    <span class="ot">assert</span><span class="op">(</span>count <span class="op">&lt;</span> CAPACITY <span class="op">&amp;&amp;</span> <span class="st">"push on a full stack"</span><span class="op">);</span></span>
+<span id="cb35-20"><a href=""></a>    items<span class="op">[</span>count<span class="op">]</span> <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb35-21"><a href=""></a>    count<span class="op">++;</span></span>
+<span id="cb35-22"><a href=""></a>    <span class="co">// After the change, confirm 0 &lt;= count &lt;= CAPACITY</span></span>
+<span id="cb35-23"><a href=""></a>    checkInvariant<span class="op">();</span></span>
+<span id="cb35-24"><a href=""></a><span class="op">}</span></span>
+<span id="cb35-25"><a href=""></a></span>
+<span id="cb35-26"><a href=""></a><span class="dt">int</span> BoundedStack<span class="op">::</span>size<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb35-27"><a href=""></a>    <span class="co">// The size of the stack is the value of count</span></span>
+<span id="cb35-28"><a href=""></a>    <span class="cf">return</span> count<span class="op">;</span></span>
+<span id="cb35-29"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:40%;">
+<pre><code>Size: 3
+Assertion failed:
+(count &lt; CAPACITY &amp;&amp; "push on a full stack"),
+function push,
+file invariant_stack.cpp,
+line 42.</code></pre>
+</div></div>
+<aside class="notes">
+<p>Full program: cpp/invariant_stack.cpp. CAPACITY is 3, so the fourth push finds count equal to 3 and the assertion fails before items[3] is written.</p>
+<p>The assertion comes before the increment on purpose. A precondition is checked before the operation, while count still names the slot about to be written. Checking after count++ would be too late: the out-of-bounds write would already have happened, and the test would also reject the legal third push, where count becomes 3. The check after the change is checkInvariant(), which uses &lt;= instead of &lt;.</p>
+<p>The output shown is the macOS clang format. g++ on Linux prints the same information in a different order. Without the assertion, the fourth push writes past the end of items and the program fails later, somewhere unrelated.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 58 -->
+</section>
+<section id="check-the-invariant-after-every-change" class="slide level2">
+<h2>Check the Invariant After Every Change</h2>
+<p>Write the class invariant once in a private checkInvariant() member function. Call it at the end of every member function that changes the object.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb37-1"><a href=""></a><span class="dt">void</span> BoundedStack<span class="op">::</span>checkInvariant<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb37-2"><a href=""></a>    <span class="ot">assert</span><span class="op">(</span>count <span class="op">&gt;=</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> count <span class="op">&lt;=</span> CAPACITY <span class="op">&amp;&amp;</span> <span class="st">"count is out of range"</span><span class="op">);</span></span>
+<span id="cb37-3"><a href=""></a><span class="op">}</span></span>
+<span id="cb37-4"><a href=""></a></span>
+<span id="cb37-5"><a href=""></a><span class="dt">int</span> BoundedStack<span class="op">::</span>pop<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb37-6"><a href=""></a>    <span class="ot">assert</span><span class="op">(</span>count <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> <span class="st">"pop on an empty stack"</span><span class="op">);</span></span>
+<span id="cb37-7"><a href=""></a>    count<span class="op">--;</span></span>
+<span id="cb37-8"><a href=""></a>    checkInvariant<span class="op">();</span></span>
+<span id="cb37-9"><a href=""></a>    <span class="cf">return</span> items<span class="op">[</span>count<span class="op">];</span></span>
+<span id="cb37-10"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 59 -->
+</section>
+<section id="make-the-failure-message-informative" class="slide level2">
+<h2>Make the Failure Message Informative</h2>
+<p>A string literal is always true, so adding it with &amp;&amp; does not change the test. It does put a readable explanation into the failure message.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb38-1"><a href=""></a><span class="ot">assert</span><span class="op">(</span>denominator <span class="op">!=</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> <span class="st">"Fraction denominator must not be zero"</span><span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 60 -->
+</section>
+<section id="ndebug-removes-assertions" class="slide level2">
+<h2>NDEBUG Removes Assertions</h2>
+<p>When the macro NDEBUG is defined, every assert expands to nothing. Release builds commonly define it, so assertions cost nothing in the shipped program.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb39-1"><a href=""></a><span class="co">// Defined on the command line: g++ -DNDEBUG main.cpp</span></span>
+<span id="cb39-2"><a href=""></a><span class="co">// or in code, before the include:</span></span>
+<span id="cb39-3"><a href=""></a><span class="pp">#define NDEBUG</span></span>
+<span id="cb39-4"><a href=""></a><span class="pp">#include </span><span class="im">&lt;cassert&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 61 -->
+</section>
+<section id="debug-build-or-release-build" class="slide level2">
+<h2>Debug Build or Release Build?</h2>
+<p>What does this print in a debug build? What does it print when NDEBUG is defined?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb40-1"><a href=""></a><span class="dt">int</span> attempts <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb40-2"><a href=""></a><span class="ot">assert</span><span class="op">(++</span>attempts <span class="op">==</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb40-3"><a href=""></a>cout <span class="op">&lt;&lt;</span> attempts <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment">
+<p>The debug build prints 1. The release build prints 0, because the increment disappears with the assertion.</p>
+<aside class="notes">
+<p>Let students commit to an answer before advancing. The lesson: an assertion should only test state, never change it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 62 -->
+</div>
+</section>
+<section id="static_assert-checks-at-compile-time" class="slide level2">
+<h2>static_assert Checks at Compile Time</h2>
+<p>assert checks a condition while the program runs. static_assert checks a constant condition while the program compiles, so a violation never produces an executable.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb41-1"><a href=""></a><span class="at">const</span> <span class="dt">int</span> CAPACITY <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></span>
+<span id="cb41-2"><a href=""></a></span>
+<span id="cb41-3"><a href=""></a><span class="kw">static_assert</span><span class="op">(</span>CAPACITY <span class="op">&gt;</span> <span class="dv">0</span><span class="op">,</span> <span class="st">"CAPACITY must be positive"</span><span class="op">);</span></span>
+<span id="cb41-4"><a href=""></a><span class="kw">static_assert</span><span class="op">(</span><span class="kw">sizeof</span><span class="op">(</span><span class="dt">int</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="dv">4</span><span class="op">,</span> <span class="st">"int must be at least 32 bits"</span><span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use it to guard assumptions that are already fixed when the program is built, such as a constant’s value or the size of a type. If someone later sets CAPACITY to 0 or builds on a platform with a 16-bit int, the build fails with your message instead of the program misbehaving. It costs nothing at run time, and NDEBUG cannot turn it off.</p>
+<!-- Slide 63 -->
+</section>
+<section id="assertions-or-error-handling" class="slide level2">
+<h2>Assertions or Error Handling?</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>assert</th>
+<th>Exception or error code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Purpose</td>
+<td>Catch programmer errors</td>
+<td>Handle expected failures</td>
+</tr>
+<tr class="even">
+<td>Example</td>
+<td>count exceeds capacity</td>
+<td>user types a negative age</td>
+</tr>
+<tr class="odd">
+<td>Release build</td>
+<td>Removed by NDEBUG</td>
+<td>Still runs</td>
+</tr>
+<tr class="even">
+<td>Response</td>
+<td>Stop and fix the code</td>
+<td>Recover or report to the user</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>Rule of thumb: if a correct program could still reach this condition, it is not an assertion. Bad input and missing files are normal events; a full stack being pushed is a bug.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 64 -->
+</section>
+<section id="fail-fast-turns-a-symptom-into-a-cause" class="slide level2">
+<h2>Fail Fast Turns a Symptom into a Cause</h2>
+<p>Without the check, bad data travels until something unrelated crashes. With the check, the program stops at the exact line where the invariant broke, and the debugger’s call stack points at the caller who broke it.</p>
+<aside class="notes">
+<p>Return to the opening story from Slide 49. The assertion moved the crash from the print function back to the push that caused it.</p>
+<p>[Graphic suggestion: two timelines side by side. Without an assertion, a long gap separates the bad write from the crash. With an assertion, the two points coincide.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 65 -->
+</section>
+<section id="contracts-in-c26" class="slide level2">
+<h2>Contracts in C++26</h2>
+<p>C++26 adds contract assertions that place preconditions and postconditions in the function declaration. The idea is the same as assert; the condition becomes part of the function’s interface.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb42-1"><a href=""></a><span class="dt">int</span> findMax<span class="op">(</span><span class="at">const</span> <span class="dt">int</span> values<span class="op">[],</span> <span class="dt">int</span> size<span class="op">)</span></span>
+<span id="cb42-2"><a href=""></a>    pre<span class="op">(</span>size <span class="op">&gt;</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb42-3"><a href=""></a></span>
+<span id="cb42-4"><a href=""></a><span class="dt">void</span> push<span class="op">(</span><span class="dt">int</span> value<span class="op">)</span></span>
+<span id="cb42-5"><a href=""></a>    pre<span class="op">(</span>count <span class="op">&lt;</span> CAPACITY<span class="op">)</span></span>
+<span id="cb42-6"><a href=""></a>    post<span class="op">(</span>count <span class="op">&lt;=</span> CAPACITY<span class="op">);</span></span>
+<span id="cb42-7"><a href=""></a></span>
+<span id="cb42-8"><a href=""></a>contract_assert<span class="op">(</span>count <span class="op">&gt;=</span> <span class="dv">0</span><span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>Forward-looking only. Compiler support is still arriving, so students should keep using assert and static_assert in this course.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 66 -->
+</section>
+<section id="contract-evaluation-semantics" class="slide level2">
+<h2>Contract Evaluation Semantics</h2>
+<p>Every contract check runs under one of four evaluation semantics. The choice is made per build, usually with a compiler flag, not with NDEBUG.</p>
+<ul>
+<li><strong>ignore</strong>: the condition is not checked.</li>
+<li><strong>observe</strong>: a failed check calls a violation handler, then the program continues.</li>
+<li><strong>enforce</strong>: a failed check calls a violation handler, then the program terminates.</li>
+<li><strong>quick_enforce</strong>: a failed check terminates the program immediately.</li>
+</ul>
+<aside class="notes">
+<p>The default semantic is implementation-defined, and an implementation may apply different semantics to different checks in the same program.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 67 -->
+</section>
+<section id="contracts-versus-assert" class="slide level2">
+<h2>Contracts Versus assert</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>assert</th>
+<th>Contract assertions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Turned off by</td>
+<td>NDEBUG</td>
+<td>The ignore semantic</td>
+</tr>
+<tr class="even">
+<td>Choices</td>
+<td>On or off</td>
+<td>ignore, observe, enforce, quick_enforce</td>
+</tr>
+<tr class="odd">
+<td>On failure</td>
+<td>Print a message and abort</td>
+<td>Call a replaceable violation handler</td>
+</tr>
+<tr class="even">
+<td>Keep running after a failure</td>
+<td>No</td>
+<td>Yes, under observe</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>The observe semantic has no assert equivalent. It lets a production build record violations without crashing, which is useful when a failure must be reported but stopping the program would do more harm.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 68 -->
+</section>
+<section id="contract-support-is-still-evolving" class="slide level2">
+<h2>Contract Support Is Still Evolving</h2>
+<p>Contracts are part of C++26, but compiler support is still arriving and flag names differ between compilers. In this course, use assert and static_assert.</p>
+<p>A contract condition may be evaluated once, more than once, or not at all. Like an assert expression, it should test state and never change it.</p>
+<aside class="notes">
+<p>Check your compiler’s documentation before demonstrating a specific flag.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 69 -->
+</section>
+<section id="common-practices-1" class="slide level2">
+<h2>Common Practices</h2>
+<ul>
+<li>Write the invariant in a comment first, then enforce it in code.</li>
+<li>Check preconditions at the start of public member functions.</li>
+<li>Call checkInvariant() at the end of every member function that changes the object.</li>
+<li>Use assertions for programmer errors and exceptions or error codes for expected failures.</li>
+</ul>
+<!-- Slide 70 -->
+</section>
+<section id="summary-2" class="slide level2">
+<h2>Summary</h2>
+<p>An invariant is a condition that must always hold, and an assertion makes the program stop the moment it does not. Stopping at the cause, not the symptom, is what turns invariants into a troubleshooting tool.</p>
+<!-- Slide 71 -->
+<!-- Topic 5: Invariant Lab -->
+<!-- Slides 73–74 -->
+</section></section>
+<section>
+<section id="invariant-lab" class="title-slide slide level1 center">
+<h1>Invariant Lab</h1>
+<!-- Slide 72 -->
+</section>
+<section id="can-assertions-find-the-bugs-for-you" class="slide level2">
+<h2>Can Assertions Find the Bugs for You?</h2>
+<p>The gradebook program compiles, runs to the end, and prints results that look reasonable at a glance. Five of those results are wrong. In this lab, you will add assertions to the program and let each one stop the program at the cause of a bug.</p>
+<aside class="notes">
+<p>Slides 73–74</p>
+<p>Have students run the buggy program first and write down anything that looks wrong before they add any assertions. Comparing that list with what the assertions find is the point of the lab.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 73 -->
+</section>
+<section id="how-to-run-the-lab" class="slide level2">
+<h2>How to Run the Lab</h2>
+<p>Lab files: <a href="assets/assert_lab_prompt.md" target="_blank">assert_lab_prompt.md</a> and <a href="cpp/gradebook_buggy.cpp" target="_blank">gradebook_buggy.cpp</a></p>
+<ol type="1">
+<li>Compile and run gradebook_buggy.cpp. Read the output carefully and write down anything that looks wrong.</li>
+<li>Paste the prompt from assert_lab_prompt.md and your program into an AI assistant.</li>
+<li>Compile and run the new version. The program stops at the first assertion that fails.</li>
+<li>Read the failure message, find the cause, and fix that one bug. Do not remove the assert.</li>
+<li>Rerun. Repeat until the program runs to the end with no assertion failures.</li>
+</ol>
+<aside class="notes">
+<p>The bugs surface one per run. Students who finish early can explain which kind of condition caught each bug: precondition, postcondition, or class invariant.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 74 -->
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>CISP 400 · Fowler</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="p400_lecture_09.01_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="p400_lecture_09.01_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="p400_lecture_09.01_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="p400_lecture_09.01_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="p400_lecture_09.01_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="p400_lecture_09.01_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="p400_lecture_09.01_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="p400_lecture_09.01_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="p400_lecture_09.01_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="p400_lecture_09.01_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
