@@ -1,9 +1,6 @@
 // debugging_0802.cpp
 // Student debugging program for Lecture 08.02.
 // The program contains exactly ten intentional defects.
-//
-// The two account classes use the same ownership rules.
-// One implementation is complete and one implementation needs debugging.
 
 #include <cassert>
 #include <iomanip>
@@ -12,10 +9,6 @@
 #include <utility>
 
 using namespace std;
-
-// This is the only namespace directive used in this program.
-// It lets us write cout, string, and ostream instead of
-// std::cout, std::string, and std::ostream.
 
 struct Transaction {
     string type;

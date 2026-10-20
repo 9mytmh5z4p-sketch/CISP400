@@ -111,3 +111,10 @@ p400_lecture_08.01,8,object_oriented_programming,Shallow Copies and the Serializ
 p400_lecture_08.01,8,application,Exercise,standard,,no,Bug Hunt; Complete Example; Debugging a complete C++ program using material from lectures 0101 through 0801
 p400_lecture_08.02,8,application,Structured Debugging,high,,no,Complete debugging process; Step 1 reliable starting point; Step 2 expected behavior; diagnostic output; LLM-assisted debugging
 p400_lecture_08.02,8,object_oriented_programming,Rule of Five,high,,no,Rule of One; Destructor; Copy constructor; Copy assignment; Move constructor; Move assignment; Resource ownership
+p400_lecture_08.02,8,object_oriented_programming,Deep Copy,high,,no,Copy constructor; Deep copy; Shallow copy; Dynamic arrays; Pointer ownership; Serialization problem; Forbid copy
+p400_lecture_08.02,8,object_oriented_programming,Rvalue References and Move Operations,high,,no,Lvalues and rvalues; References; Temporary objects; Rvalue references; Move operations; Move semantics; Resource ownership
+p400_lecture_09.01,9,object_oriented_programming,Functors,high,,no,Function pointers; Callable objects; operator(); Call contract; Stateless functors; Predicates; Stateful functors; Object state trace
+p400_lecture_09.01,9,object_oriented_programming,Range-Based Loops and std::for_each,high,,no,Range-based for; auto and auto& and const auto&; Range boundaries; Pointer ranges; std::for_each; begin and end; for_each copies the functor; Choosing a loop form
+p400_lecture_09.01,9,application,Activities and Desk Check,standard,,no,MultiplyBy functor practice; Desk check with for_each copies; Trace explanation
+p400_lecture_09.01,9,application,Invariants and Assertions,high,,no,Symptom versus cause; Preconditions; Postconditions; Class invariants; Loop invariants; assert; NDEBUG; static_assert; Assertions versus error handling; Fail fast; C++26 contracts; Contract evaluation semantics
+p400_lecture_09.01,9,application,Invariant Lab,standard,,no,Buggy gradebook program; LLM-assisted assertion insertion; Run and fix one bug per assertion
