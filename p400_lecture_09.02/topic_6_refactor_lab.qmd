@@ -1,0 +1,68 @@
+<!-- Topic 6: Lambda Refactor Lab -->
+<!-- Slides 58–61 -->
+
+# Lambda Refactor Lab
+<!-- Slide 57 -->
+
+## Can Lambdas Shorten This Program Without Changing It?
+
+The roster program works. Make it shorter and clearer with standard algorithms and lambdas, without changing a single character of its output.
+
+::: notes
+Slides 58–61
+
+Have students run the original and save its output before they touch anything. The saved output is the test: any refactor that changes it is wrong, however good the code looks.
+:::
+
+<!-- Slide 58 -->
+
+---
+
+## How to Run the Lab
+
+Lab files: [refactor_lab_prompt.md](assets/refactor_lab_prompt.md){target="_blank"} and [roster_loops.cpp](cpp/roster_loops.cpp){target="_blank"}
+
+1. Compile and run roster_loops.cpp. Save its output with `./roster_loops > before.txt`.
+2. Paste the prompt and your program into an AI assistant. Save the result as roster_lambdas.cpp.
+3. Run `./roster_lambdas > after.txt`, then `diff before.txt after.txt`. If diff prints nothing, the outputs match.
+4. If diff shows a difference, find which job changed and fix it yourself before asking the AI again.
+5. Audit every lambda with the checklist. Fix what it flags, then run diff again.
+
+::: notes
+diff compares two files line by line and prints only the lines that differ. Empty output means identical files.
+
+Instructor answer key: assets/refactor_lab_answer_key.md. Reference solution: cpp/roster_lambdas_reference.cpp.
+:::
+
+<!-- Slide 59 -->
+
+---
+
+## Audit Checklist
+
+- Is every capture named, rather than `[=]` or `[&]`?
+- Is each capture by value or by reference for the right reason?
+- Is each Student parameter `const Student&`, or `Student&` only when the lambda changes the student?
+- Is every find_if result checked against end before it is used?
+- Does every comparator use `<` or `>`?
+- Was any loop forced into an algorithm it does not fit?
+
+::: notes
+The last question is the trap. The letter-grade tally computes five results in one pass and should stay a loop. AI tools often convert it to for_each with [&] capturing five counters, or to five count_if calls. Both pass diff, and both fail the audit.
+:::
+
+<!-- Slide 60 -->
+
+---
+
+## Report Back
+
+- Which loop did you keep, and why?
+- Which capture or parameter did you change, and why?
+- What did the AI get wrong?
+
+::: notes
+Collect two or three answers to the last question from the room. The point of the lab is that a refactor passing diff is not finished until a person who understands the rules has checked it.
+:::
+
+<!-- Slide 61 -->

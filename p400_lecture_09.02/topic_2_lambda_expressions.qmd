@@ -1,0 +1,256 @@
+<!-- Topic 2: Lambda Expressions -->
+<!-- Slides 12–21 -->
+
+# Lambda Expressions
+<!-- Slide 11 -->
+
+## Can We Write the Behavior Where It Is Used?
+
+The functor review ended with a question: what if the behavior could be written right where it is needed? C++ answers it with the lambda expression.
+
+::: notes
+Slides 12–21
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Functor and Lambda Side by Side
+
+:::: {.columns}
+
+::: {.column width="50%"}
+~~~cpp
+class DoubleValue {
+public:
+    void operator()(int& value) const {
+        value *= 2;
+    }
+};
+
+for_each(begin(values), end(values),
+         DoubleValue());
+~~~
+:::
+
+::: {.column width="50%"}
+~~~cpp
+for_each(begin(values), end(values),
+         [](int& value) { value *= 2; });
+~~~
+:::
+
+::::
+
+Same behavior and same call. The lambda needs no class, and the behavior sits where for_each uses it.
+
+::: notes
+DoubleValue is the stateless functor from 09.01. Ask students what disappeared and what stayed the same: the parameter and the body survive unchanged.
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## A Lambda Is a Functor Without the Class
+
+A lambda expression creates an unnamed callable object in the middle of other code. The compiler writes the class and its operator() for you. The object a lambda expression creates is called a closure.
+
+<!-- Slide 14 -->
+
+---
+
+## Lambda Anatomy
+
+~~~cpp
+[]               // capture list
+(int& value)     // parameter list
+-> void          // return type
+{ value *= 2; }  // body
+~~~
+
+- **Capture list:** names outside variables the lambda may use.
+- **Parameter list:** works exactly like a function's parameter list.
+- **Return type:** optional; the compiler usually works it out.
+- **Body:** the code that runs each time the lambda is called.
+
+::: notes
+The capture list stays empty until topic 3. When a lambda takes no parameters, the empty parentheses may be left out: [] { ... } is legal. This layout, one part per line, is legal C++, but nobody writes lambdas this way; it is spread out here only for labeling.
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## A Complete Lambda Program
+
+:::: {.columns}
+
+::: {.column width="60%" style="font-size: 50%;"}
+~~~cpp
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int values[] = {1, 2, 3, 4};
+
+    // Store a lambda in a variable
+    auto doubleIt = [](int& value) { value *= 2; };
+
+    // Call it directly
+    int single = 5;
+    doubleIt(single);
+    cout << "single: " << single << '\n';
+
+    // Pass the same lambda to for_each
+    for_each(begin(values), end(values), doubleIt);
+
+    for (int value : values) {
+        cout << value << ' ';
+    }
+    cout << '\n';
+
+    return 0;
+}
+~~~
+:::
+
+::: {.column width="40%"}
+~~~
+single: 10
+2 4 6 8
+~~~
+:::
+
+::::
+
+::: notes
+Calling a lambda looks exactly like calling a function or a functor. The same object can be called directly and handed to an algorithm.
+:::
+
+<!-- Slide 16 -->
+
+---
+
+## What the Compiler Writes for You
+
+:::: {.columns}
+
+::: {.column width="45%"}
+~~~cpp
+auto doubleIt =
+    [](int& value) { value *= 2; };
+~~~
+:::
+
+::: {.column width="55%"}
+~~~cpp
+class __Lambda_1 {   // name chosen by the compiler
+public:
+    void operator()(int& value) const {
+        value *= 2;
+    }
+};
+
+auto doubleIt = __Lambda_1();
+~~~
+:::
+
+::::
+
+Every lambda gets its own class with a name only the compiler knows. That is why the variable is declared with auto: there is no type name you could write.
+
+::: notes
+This is a model, not literal code; the real class name is chosen by the compiler and differs between compilers. Point out that the generated operator() is const by default. Topic 3 needs that detail to explain mutable.
+:::
+
+<!-- Slide 17 -->
+
+---
+
+## What Does This Print?
+
+~~~cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    auto greet = []() { cout << "Hello from the lambda\n"; };
+
+    cout << "Done\n";
+    return 0;
+}
+~~~
+
+::: notes
+Answer: only "Done". Defining a lambda creates the object; the body runs only when the object is called with greet(). It is the same as creating a functor object and never calling it. With -Wall, g++ even warns that greet is set but not used.
+:::
+
+<!-- Slide 18 -->
+
+---
+
+## When the Return Type Must Be Stated
+
+The compiler deduces the return type from the return statements. When they disagree, compilation stops.
+
+:::: {.columns}
+
+::: {.column width="50%" style="font-size: 70%;"}
+~~~cpp
+auto average = [](int sum, int count) {
+    if (count == 0) {
+        return 0;
+    }
+    return sum / static_cast<double>(count);
+};
+// error: inconsistent types 'int' and
+// 'double' deduced for lambda return type
+~~~
+:::
+
+::: {.column width="50%" style="font-size: 70%;"}
+~~~cpp
+auto average = [](int sum, int count) -> double {
+    if (count == 0) {
+        return 0;
+    }
+    return sum / static_cast<double>(count);
+};
+// compiles: return 0 converts to 0.0
+~~~
+:::
+
+::::
+
+::: notes
+The first return yields int and the second yields double, so deduction fails. Stating -> double gives the compiler one type and converts the first return to match.
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## Functor or Lambda?
+
+- **Lambda:** short behavior used in one place, especially as an algorithm argument.
+- **Named function:** reusable behavior that keeps no state between calls.
+- **Functor:** reusable behavior with state, or behavior other code must refer to by type name.
+
+If a lambda grows past a few lines, give the behavior a name.
+
+::: notes
+Students often ask how to write their own function that accepts a lambda. The full answer needs templates or std::function, both covered in a later lecture. For now, store lambdas with auto and pass them to standard algorithms.
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## Summary
+
+A lambda is a functor the compiler writes for you, defined where it is used. Leave the return type off unless the compiler cannot work it out.
+
+<!-- Slide 21 -->

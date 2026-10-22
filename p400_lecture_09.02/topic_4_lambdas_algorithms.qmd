@@ -1,0 +1,306 @@
+<!-- Topic 4: Lambdas with STL Algorithms -->
+<!-- Slides 37–48 -->
+
+# Lambdas with STL Algorithms
+<!-- Slide 36 -->
+
+## Where Do Lambdas Earn Their Keep?
+
+The standard algorithms already know how to walk a range. What they cannot know is which question to ask about each element or what order you want. A lambda supplies that missing piece right at the call.
+
+::: notes
+Slides 37–48
+:::
+
+<!-- Slide 37 -->
+
+---
+
+## Algorithms That Take a Lambda
+
+| Algorithm | What the lambda supplies |
+|---|---|
+| `for_each` | The action to perform on each element |
+| `count_if` | The yes-or-no question to count |
+| `find_if` | The yes-or-no question to search for |
+| `sort` | The ordering rule |
+
+::: notes
+All four come from <algorithm>. begin and end are officially declared in <iterator>; <iostream> often pulls them in, but include <iterator> so the code compiles everywhere. Many other algorithms, such as any_of and all_of, follow the same pattern; examples are in the appendix.
+:::
+
+<!-- Slide 38 -->
+
+---
+
+## count_if Asks a Predicate
+
+~~~cpp
+int scores[] = {88, 64, 92, 71, 55};
+
+int passed = count_if(begin(scores), end(scores),
+                      [](int score) { return score >= 70; });
+
+cout << passed << '\n';   // prints 3
+~~~
+
+count_if calls the predicate once per element and counts the true answers.
+
+::: notes
+This is the predicate idea from slide 7, now written as a lambda at the call site instead of as an IsPositive-style class.
+:::
+
+<!-- Slide 39 -->
+
+---
+
+## Capture the Threshold
+
+~~~cpp
+int passing = 70;
+
+int passed = count_if(begin(scores), end(scores),
+                      [passing](int score) { return score >= passing; });
+~~~
+
+The passing score now lives in one variable. Change it, and the same lambda counts against the new threshold.
+
+::: notes
+Capture by value is the right choice here: the lambda only reads passing and runs immediately. This is topic 3's decision rule applied to a real algorithm.
+:::
+
+<!-- Slide 40 -->
+
+---
+
+## find_if Returns a Position
+
+~~~cpp
+int scores[] = {88, 64, 92, 71, 55};
+
+int* firstFail = find_if(begin(scores), end(scores),
+                         [](int score) { return score < 70; });
+
+if (firstFail != end(scores)) {
+    cout << "First failing score: " << *firstFail << '\n';   // 64
+}
+~~~
+
+find_if returns a pointer to the first matching element. When nothing matches, it returns end(scores), the one-past-the-end position, so check before dereferencing.
+
+::: notes
+For an array, the position is a plain pointer, which is why int* works here. Containers such as vector return an iterator instead, which acts like a pointer; auto works for both. Iterators are covered properly in the STL lectures.
+:::
+
+<!-- Slide 41 -->
+
+---
+
+## What Does This Print?
+
+~~~cpp
+int scores[] = {88, 92, 71, 95};
+
+int* firstFail = find_if(begin(scores), end(scores),
+                         [](int score) { return score < 70; });
+
+if (firstFail != end(scores)) {
+    cout << "First failing score: " << *firstFail << '\n';
+} else {
+    cout << "Everyone passed\n";
+}
+~~~
+
+::: notes
+Answer: Everyone passed. No score is below 70, so find_if returns end(scores). Without the check, *firstFail would read one past the end of the array, which is undefined behavior. The appendix shows that mistake in full.
+:::
+
+<!-- Slide 42 -->
+
+---
+
+## sort with a Comparator
+
+~~~cpp
+int scores[] = {88, 64, 92, 71, 55};
+
+sort(begin(scores), end(scores));
+
+sort(begin(scores), end(scores),
+     [](int a, int b) { return a > b; });
+~~~
+
+| | Contents |
+|---|---|
+| Before | 88 64 92 71 55 |
+| After sort with no comparator | 55 64 71 88 92 |
+| After sort with a > b | 92 88 71 64 55 |
+
+The comparator answers one question: should a come before b?
+
+<!-- Slide 43 -->
+
+---
+
+## The Comparator Rule
+
+When a and b are equal, neither should come before the other, so the comparator must return false.
+
+~~~cpp
+[](int a, int b) { return a > b; }    // false when a == b
+[](int a, int b) { return a >= b; }   // true when a == b: breaks sort
+~~~
+
+Use < or >, never <= or >=.
+
+::: notes
+sort assumes a strict ordering. A comparator that answers true for equal elements is undefined behavior: the result may be misordered, and with many equal values the program can crash. This is the same principle as the predicate invariant from 09.01: the algorithm relies on the callable answering consistently.
+:::
+
+<!-- Slide 44 -->
+
+---
+
+## Sorting Objects by a Member
+
+~~~cpp
+class Student {
+private:
+    string name;
+    int score;
+
+public:
+    Student(string studentName, int studentScore);
+    string getName() const;
+    int getScore() const;
+};
+
+Student roster[] = {{"Ada", 88}, {"Linus", 64}, {"Grace", 92}};
+
+sort(begin(roster), end(roster),
+     [](const Student& a, const Student& b) {
+         return a.getScore() > b.getScore();
+     });
+~~~
+
+::: notes
+The const Student& parameters matter: sort makes many comparisons, and by-value parameters would copy two Student objects every time. Because the parameters are const references, getScore must be a const member function, as in 07.01.
+:::
+
+<!-- Slide 45 -->
+
+---
+
+## Putting It Together: A Student Roster
+
+:::: {.columns}
+
+::: {.column width="60%" style="font-size: 50%;"}
+~~~cpp
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <iterator>
+using namespace std;
+
+// A student's name and course score
+class Student {
+private:
+    string name;
+    int score;
+
+public:
+    Student(string studentName, int studentScore);
+    string getName() const;
+    int getScore() const;
+};
+
+int main() {
+    Student roster[] = {{"Ada", 88}, {"Linus", 64},
+                        {"Grace", 92}, {"Alan", 55}};
+    int passing = 70;
+
+    // Highest score first
+    sort(begin(roster), end(roster),
+         [](const Student& a, const Student& b) {
+             return a.getScore() > b.getScore();
+         });
+
+    // Count students at or above the passing score
+    int passed = count_if(begin(roster), end(roster),
+        [passing](const Student& student) {
+            return student.getScore() >= passing;
+        });
+
+    // Find the first student below the passing score
+    Student* firstFail = find_if(begin(roster), end(roster),
+        [passing](const Student& student) {
+            return student.getScore() < passing;
+        });
+
+    for (const Student& student : roster) {
+        cout << student.getName() << ' '
+             << student.getScore() << '\n';
+    }
+    cout << "Passed: " << passed << '\n';
+
+    if (firstFail != end(roster)) {
+        cout << "Highest failing: "
+             << firstFail->getName() << '\n';
+    }
+
+    return 0;
+}
+
+Student::Student(string studentName, int studentScore)
+    : name(studentName), score(studentScore) {}
+
+string Student::getName() const {
+    return name;
+}
+
+int Student::getScore() const {
+    return score;
+}
+~~~
+:::
+
+::: {.column width="40%"}
+~~~
+Grace 92
+Ada 88
+Linus 64
+Alan 55
+Passed: 2
+Highest failing: Linus
+~~~
+:::
+
+::::
+
+::: notes
+Three algorithms, three lambdas, one program. Because the roster is sorted highest first, find_if's first failing student is also the highest failing student. Ask students why the output says "Highest failing" rather than "First failing."
+:::
+
+<!-- Slide 46 -->
+
+---
+
+## Algorithm or Loop?
+
+- **Use an algorithm** when one matches the job. Its name states the intent, and it cannot go off by one.
+- **Write a loop** when the job does not fit a single algorithm, such as computing several results in one pass.
+
+::: notes
+Students have written counting and searching loops since CISP 360. count_if is not a fancier way to do the same thing; it replaces bookkeeping code with a statement of intent.
+:::
+
+<!-- Slide 47 -->
+
+---
+
+## Summary
+
+Standard algorithms supply the loop, and a lambda supplies the question or the ordering. Captures let the same lambda adapt to local values.
+
+<!-- Slide 48 -->

@@ -1,0 +1,346 @@
+<!-- Topic 3: Captures and Closures -->
+<!-- Slides 23–35 -->
+
+# Captures and Closures
+<!-- Slide 22 -->
+
+## Why Won't This Compile?
+
+This lambda tries to do AddToTotal's job with a local variable instead of a class.
+
+~~~cpp
+int values[] = {1, 2, 3, 4};
+int total = 0;
+
+for_each(begin(values), end(values),
+         [](int value) { total += value; });
+// error: 'total' is not captured
+~~~
+
+::: notes
+Slides 23–35
+
+Let students guess before revealing the error. A lambda body cannot see the local variables around it unless the capture list hands them over. The empty brackets from topic 2 are the reason.
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## What a Capture Does
+
+The capture list names the outside variables a lambda may use. The closure, the object created when the lambda expression runs, carries those variables with it.
+
+::: notes
+Global and static variables are visible without a capture, which is why cout never appears in a capture list. Captures are only needed for local variables.
+:::
+
+<!-- Slide 24 -->
+
+---
+
+## Capture Forms
+
+| Capture | Meaning |
+|---|---|
+| `[]` | Nothing |
+| `[x]` | x by value |
+| `[&x]` | x by reference |
+| `[=]` | Every variable the body uses, by value |
+| `[&]` | Every variable the body uses, by reference |
+| `[=, &x]` | By value, except x by reference |
+| `[&, x]` | By reference, except x by value |
+| `[this]` | The current object, through its pointer |
+
+::: notes
+Students often assume [=] copies everything in scope. It captures only the variables the body actually uses.
+:::
+
+<!-- Slide 25 -->
+
+---
+
+## Captures Become Member Variables
+
+:::: {.columns}
+
+::: {.column width="45%" style="font-size: 70%;"}
+~~~cpp
+int bonus = 5;
+int total = 0;
+
+auto addBonus =
+    [bonus](int x) { return x + bonus; };
+
+auto addToTotal =
+    [&total](int x) { total += x; };
+~~~
+:::
+
+::: {.column width="55%" style="font-size: 70%;"}
+~~~cpp
+class __Lambda_2 {
+private:
+    int bonus;    // a copy
+public:
+    __Lambda_2(int b) : bonus(b) {}
+    int operator()(int x) const {
+        return x + bonus;
+    }
+};
+
+class __Lambda_3 {
+private:
+    int& total;   // a reference to the original
+public:
+    __Lambda_3(int& t) : total(t) {}
+    void operator()(int x) const {
+        total += x;
+    }
+};
+~~~
+:::
+
+::::
+
+The constructor runs when the lambda expression runs, so captured values are fixed at creation, not at the call.
+
+::: notes
+This extends the model from slide 17. Note that addToTotal's operator() is still const, yet total += x compiles: const protects the closure's own members, and a reference member is never reseated. The variable it refers to belongs to main.
+:::
+
+<!-- Slide 26 -->
+
+---
+
+## Capturing this in a Member Function
+
+:::: {.columns}
+
+::: {.column width="60%" style="font-size: 50%;"}
+~~~cpp
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+// Applies a fixed curve to an array of scores
+class Gradebook {
+private:
+    int curve;
+
+public:
+    Gradebook(int points);
+    void applyCurve(int scores[], int size) const;
+};
+
+int main() {
+    Gradebook gradebook(5);
+    int scores[] = {70, 82, 91};
+
+    gradebook.applyCurve(scores, 3);
+
+    for (int score : scores) {
+        cout << score << ' ';
+    }
+    cout << '\n';
+
+    return 0;
+}
+
+Gradebook::Gradebook(int points) : curve(points) {}
+
+void Gradebook::applyCurve(int scores[], int size) const {
+    // [this] lets the lambda reach the object's members
+    for_each(scores, scores + size,
+             [this](int& score) { score += curve; });
+}
+~~~
+:::
+
+::: {.column width="40%"}
+~~~
+75 87 96
+~~~
+:::
+
+::::
+
+::: notes
+Inside a member function, curve really means this->curve, as in 07.01. A data member is not a local variable, so it cannot be captured by name; capturing this gives the closure the object's pointer, and the lambda reaches curve through it.
+:::
+
+<!-- Slide 27 -->
+
+---
+
+## When Is the Copy Made?
+
+What does this print?
+
+~~~cpp
+int bonus = 5;
+auto addBonus = [bonus](int x) { return x + bonus; };
+
+bonus = 100;
+cout << addBonus(1) << '\n';
+~~~
+
+::: notes
+Answer: 6. The closure copied bonus when the lambda expression ran, while bonus was still 5. Changing bonus afterward does not reach the copy.
+:::
+
+<!-- Slide 28 -->
+
+---
+
+## Value Versus Reference
+
+:::: {.columns}
+
+::: {.column width="50%" style="font-size: 70%;"}
+~~~cpp
+int bonus = 5;
+auto addBonus =
+    [bonus](int x) { return x + bonus; };
+bonus = 100;
+cout << addBonus(1) << '\n';   // 6
+~~~
+:::
+
+::: {.column width="50%" style="font-size: 70%;"}
+~~~cpp
+int bonus = 5;
+auto addBonus =
+    [&bonus](int x) { return x + bonus; };
+bonus = 100;
+cout << addBonus(1) << '\n';   // 101
+~~~
+:::
+
+::::
+
+| | `[bonus]` | `[&bonus]` |
+|---|---|---|
+| Closure holds | A copy of 5 | A reference to bonus |
+| bonus after assignment | 100 | 100 |
+| addBonus(1) | 6 | 101 |
+
+<!-- Slide 29 -->
+
+---
+
+## Fixing the Total
+
+~~~cpp
+int values[] = {1, 2, 3, 4};
+int total = 0;
+
+for_each(begin(values), end(values),
+         [&total](int value) { total += value; });
+
+cout << total << '\n';   // prints 10
+~~~
+
+The functor version on slide 8 printed 0. Capturing total by reference lets the closure update the original.
+
+::: notes
+for_each still copies the closure, exactly as it copied AddToTotal. The difference is what gets copied: a reference member. The copy refers to the same total in main, so every addition lands in the original.
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## By-Value Captures Are Read-Only
+
+~~~cpp
+int count = 0;
+
+auto bad = [count]() { count++; };
+// error: increment of read-only variable 'count'
+
+auto tick = [count]() mutable { return ++count; };
+// compiles: changes the closure's own copy
+~~~
+
+A by-value capture never changes the original variable, with or without mutable.
+
+::: notes
+The generated operator() is const, as noted on slide 17, so a by-value capture cannot be modified. mutable removes that const. It does not turn the capture into a reference; the original count is untouched.
+:::
+
+<!-- Slide 31 -->
+
+---
+
+## Trace a mutable Closure
+
+:::: {.columns}
+
+::: {.column width="45%" style="font-size: 70%;"}
+~~~cpp
+int count = 0;
+auto tick = [count]() mutable {
+    return ++count;
+};
+
+cout << tick() << ' ';
+cout << tick() << ' ';
+cout << tick() << '\n';
+cout << count << '\n';
+~~~
+:::
+
+::: {.column width="55%" style="font-size: 70%;"}
+| Statement | Closure's count | main's count | Prints |
+|---|---|---|---|
+| auto tick = ... | 0 | 0 | |
+| tick() | 1 | 0 | 1 |
+| tick() | 2 | 0 | 2 |
+| tick() | 3 | 0 | 3 |
+| cout << count | 3 | 0 | 0 |
+:::
+
+::::
+
+::: notes
+Output: 1 2 3 on the first line and 0 on the second. The closure remembers its count between calls, just like a stateful functor, while main's count never moves.
+:::
+
+<!-- Slide 32 -->
+
+---
+
+## Who Owns the Captured Data?
+
+| Capture | Closure holds | Safe to call |
+|---|---|---|
+| `[x]` | Its own copy | Any time |
+| `[&x]` | A reference to x | Only while x exists |
+| `[this]` | A copy of the object's pointer | Only while the object exists |
+
+A by-value closure owns its data. A by-reference closure borrows it.
+
+::: notes
+[this] copies the pointer, not the object, so it carries the same lifetime risk as a reference capture. Before C++20, [=] also captured this silently; that implicit capture is now deprecated, so write [this] explicitly. A code example of a dangling reference capture is in the appendix.
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## Value or Reference?
+
+- **Capture by reference** when the lambda must update the caller's variable, or the data is large and the lambda runs immediately.
+- **Capture by value** when the lambda only reads a small value, or might run after the variable is gone.
+- **Name each capture** instead of using `[=]` or `[&]`, so the capture list documents what the lambda depends on.
+
+<!-- Slide 34 -->
+
+---
+
+## Summary
+
+A capture becomes a member of the closure: a copy when captured by value, a reference when captured by reference. Reference captures, including this, must not outlive what they refer to.
+
+<!-- Slide 35 -->

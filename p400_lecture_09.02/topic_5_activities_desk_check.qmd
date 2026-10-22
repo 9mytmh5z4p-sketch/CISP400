@@ -1,0 +1,151 @@
+<!-- Topic 5: Activities and Desk Check -->
+<!-- Slides 50–56 -->
+
+# Activities and Desk Check
+<!-- Slide 49 -->
+
+## Exercise Goals
+
+- Rewrite a functor as a lambda with a capture.
+- Use count_if, find_if, and sort with lambdas.
+- Choose the right capture for a lambda.
+- Trace closure state through for_each.
+
+::: notes
+Slides 50–56
+:::
+
+<!-- Slide 50 -->
+
+---
+
+## Practice: Replace the Functor
+
+Starter file: [lambda_multiply_starter.cpp](cpp/lambda_multiply_starter.cpp){target="_blank"}
+
+The program already triples every value with the MultiplyBy functor from 09.01. Replace MultiplyBy with a lambda that captures multiplier, then delete the class. The output must not change.
+
+~~~
+Before: 1 2 3 4 5
+After:  3 6 9 12 15
+~~~
+
+::: notes
+Solution: cpp/lambda_multiply_solution.cpp. The whole class collapses to one argument: [multiplier](int& value) { value *= multiplier; }. By-value capture is right because the lambda only reads multiplier; the int& parameter, not the capture, is what changes the array.
+:::
+
+<!-- Slide 51 -->
+
+---
+
+## Practice: Ask the Array a Question
+
+Starter file: [score_queries_starter.cpp](cpp/score_queries_starter.cpp){target="_blank"}
+
+Complete the three TODOs. Count the scores at or above passing with count_if, find the first failing score with find_if, and sort the scores from highest to lowest.
+
+~~~
+Passing scores: 4
+First failing score: 64
+Highest first: 92 88 79 71 64 55
+~~~
+
+::: notes
+Solution: cpp/score_queries_solution.cpp. Check that every student guards the find_if result against end(scores) before dereferencing it, and that the comparator uses > rather than >=.
+:::
+
+<!-- Slide 52 -->
+
+---
+
+## Fix the Capture
+
+What is wrong with each lambda, and how would you fix it?
+
+~~~cpp
+// 1
+int highScores = 0;
+for_each(begin(scores), end(scores),
+         [](int score) { if (score > 90) highScores++; });
+
+// 2
+int highScores = 0;
+for_each(begin(scores), end(scores),
+         [highScores](int score) mutable { if (score > 90) highScores++; });
+cout << highScores << '\n';
+
+// 3
+int passing = 70;
+int passed = count_if(begin(scores), end(scores),
+                      [&passing](int score) { return score >= passing; });
+~~~
+
+::: notes
+1: Does not compile: 'highScores' is not captured. Fix: [&highScores].
+
+2: Compiles but always prints 0. mutable lets the closure change its own copy; main's highScores never moves. Fix: [&highScores] and drop mutable.
+
+3: Nothing is broken; it prints the right count. The lambda only reads passing, so [passing] states that intent better. Include this one so students stop assuming every snippet is broken.
+:::
+
+<!-- Slide 53 -->
+
+---
+
+## Desk Check: Predict the Output
+
+Predict the output before running the program.
+
+~~~cpp
+int values[] = {2, 4, 6};
+int total = 0;
+int calls = 0;
+
+auto add = [&total, calls](int value) mutable {
+    total += value;
+    calls++;
+};
+
+for_each(begin(values), end(values), add);
+add(5);
+
+cout << total << ' ' << calls << '\n';
+~~~
+
+::: notes
+Answer: 17 0. total is captured by reference, so both the for_each copy and add itself update main's total: 2 + 4 + 6 + 5 = 17. calls is captured by value, so every increment lands in a closure's own copy; main's calls stays 0.
+:::
+
+<!-- Slide 54 -->
+
+---
+
+## Explain the Trace
+
+Using the desk check code, give each value after each statement. Explain why for_each's three calls never appear in add's count.
+
+| Statement | main's total | main's calls | for_each copy's calls | add's calls |
+|---|---|---|---|---|
+| auto add = ... | | | | |
+| for_each(...) | | | | |
+| add(5); | | | | |
+
+::: notes
+| Statement | main's total | main's calls | for_each copy's calls | add's calls |
+|---|---|---|---|---|
+| auto add = ... | 0 | 0 | none yet | 0 |
+| for_each(...) | 12 | 0 | 3, then discarded | 0 |
+| add(5); | 17 | 0 | none | 1 |
+
+for_each received a copy of add. The copy's reference member pointed at main's total, so its additions reached main. Its calls member was its own value, counted to 3, and was discarded with the copy. This is 09.01's desk check again, with a closure in place of the functor.
+:::
+
+<!-- Slide 55 -->
+
+---
+
+## Debrief: Behavior Written Where It Is Used
+
+A lambda is a functor written at the call site. Its captures decide whether it changes the caller's data or only its own copy.
+
+<!-- Slide 56 -->

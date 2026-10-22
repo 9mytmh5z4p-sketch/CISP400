@@ -1,1 +1,415 @@
-{{< include topic_function_templates.qmd >}}\n{{< include topic_class_templates.qmd >}}\n{{< include topic_template_deduction.qmd >}}\n{{< include topic_activities.qmd >}}\n{{< include topic_lambda_expressions.qmd >}}\n{{< include topic_lambda_use_cases.qmd >}}\n
+# Last Time
+
+::: {.incremental}
++ **Functors**
++ **Range-Based Loops and std::for_each**
++ **Invariants and Assertions**
+:::
+
+::: notes
+Recall that a functor is an object whose class overloads operator(), so behavior can be passed around like data. Range-based loops and std::for_each separate walking a container from the action performed on each element. Invariants and assertions state what must stay true and check it while the program runs. Today's lambdas are a shorter way to write the functors we built last time.
+:::
+
+<!-- Slide 2 -->
+
+# Today's Agenda
+
+- Functor Review
+- Lambda Expressions
+- Captures and Closures
+- Lambdas with STL Algorithms
+
+::: notes
+
+:::
+
+<!-- Slide 3 -->
+
+{{< include topic_1_functor_review.qmd >}}
+
+{{< include topic_2_lambda_expressions.qmd >}}
+
+{{< include topic_3_captures_closures.qmd >}}
+
+{{< include topic_4_lambdas_algorithms.qmd >}}
+
+{{< include topic_5_activities_desk_check.qmd >}}
+
+{{< include topic_6_refactor_lab.qmd >}}
+
+# Key Takeaways
+
+- A lambda is a functor the compiler writes for you, defined where it is used.
+- A capture becomes a member of the closure: a copy by value, a reference by reference. A reference capture must not outlive its variable.
+- Standard algorithms supply the loop; a lambda supplies the question or the ordering.
+- Code that passes its tests still needs a check against the capture and comparator rules.
+
+<!-- Slide 62 -->
+
+# Next Time
+
+- Type Conversion Operators
+- Conversion Constructors
+- Operator Chaining
+
+<!-- Slide 63 -->
+
+# Appendix
+<!-- Slide 64 -->
+
+## Lambda Expressions: Good Practices
+
+- Keep a lambda short enough to read at the call site; give longer behavior a name.
+- Name a stored lambda with a verb, such as doubleIt or isPassing.
+- Leave the return type off unless the compiler cannot deduce a single type.
+- Write a lambda directly in the algorithm call when it is used only once.
+
+<!-- Slide 65 -->
+
+---
+
+## Lambda Expressions: Common Mistakes
+
+- Forgetting the semicolon after a stored lambda. `auto f = [](int x) { return x * 2; };` is a declaration and needs the final `;`.
+- Defining a lambda and expecting it to run. Only a call such as `f(3)` runs the body.
+- Writing `greet;` instead of `greet();`. The first names the object and does nothing; g++ warns "statement has no effect."
+- Returning different types on different paths without stating `-> type`.
+
+<!-- Slide 66 -->
+
+---
+
+## Lambda Expressions: More Examples (Generic Lambdas)
+
+~~~cpp
+auto larger = [](auto a, auto b) { return a > b ? a : b; };
+
+cout << larger(3, 7) << '\n';                            // 7
+cout << larger(2.5, 1.5) << '\n';                        // 2.5
+cout << larger(string("ant"), string("bee")) << '\n';    // bee
+~~~
+
+An auto parameter lets one lambda work with any type that supports the operations in its body. The compiler turns operator() into a template, a topic for a later lecture.
+
+::: notes
+Generic lambdas arrived in C++14. They are the first template most students will write without realizing it, which makes them a useful bridge into function templates.
+:::
+
+<!-- Slide 67 -->
+
+---
+
+## Lambda Expressions: More Examples (Immediately Invoked Lambdas)
+
+~~~cpp
+int scores[] = {88, 64, 92, 71};
+
+const int highest = [&scores]() {
+    int best = scores[0];
+    for (int score : scores) {
+        if (score > best) {
+            best = score;
+        }
+    }
+    return best;
+}();
+
+cout << highest << '\n';   // 92
+~~~
+
+The trailing `()` calls the lambda the moment it is defined. This lets a const variable be initialized by logic that takes several steps.
+
+<!-- Slide 68 -->
+
+---
+
+## Lambda Expressions: Practice Problems
+
+1. Write a lambda named isEven that returns whether an int is even. Call it on 4 and 7 and print the results.
+2. Rewrite the PrintValue functor from 09.01 as a lambda and pass it to for_each over an int array.
+3. Write a lambda that takes a sum and a count and returns the average as a double, or 0 when the count is 0. Make it compile.
+
+<!-- Slide 69 -->
+
+---
+
+## Lambda Expressions: AI Search Terms
+
+- C++ lambda expression syntax
+- C++ lambda closure type
+- C++ lambda return type deduction
+- C++ lambda versus functor
+- C++ generic lambda auto parameter
+- C++ immediately invoked lambda expression
+
+<!-- Slide 70 -->
+
+---
+
+## Lambda Expressions: Questions for Reflection
+
+- Why must a stored lambda be declared with auto?
+- What does the compiler generate when it sees a lambda expression?
+- When would you choose a named functor over a lambda?
+
+<!-- Slide 71 -->
+
+---
+
+## Captures and Closures: Good Practices
+
+- Name each capture instead of using `[=]` or `[&]`.
+- Capture by value when the lambda only reads; capture by reference only when it must change the original.
+- Never let a reference capture, or `[this]`, outlive what it refers to.
+- Write `[this]` explicitly in member functions.
+
+<!-- Slide 72 -->
+
+---
+
+## Captures and Closures: Common Mistakes
+
+- Assuming `[=]` copies every variable in scope. It captures only the variables the body uses.
+- Expecting mutable to change the original variable. It changes only the closure's copy.
+- Expecting a by-value capture to see later changes. The copy is made when the lambda is created.
+- Passing a lambda with a by-value counter to for_each, then reading the original counter.
+
+<!-- Slide 73 -->
+
+---
+
+## Captures and Closures: Common Mistakes (Dangling Reference)
+
+~~~cpp
+#include <iostream>
+using namespace std;
+
+// Returns a lambda that captures a local variable by reference
+auto makeCounter() {
+    int count = 0;
+    return [&count]() { return ++count; };   // count is destroyed when makeCounter returns
+}
+
+int main() {
+    auto counter = makeCounter();
+    cout << counter() << '\n';   // undefined behavior: count no longer exists
+    return 0;
+}
+~~~
+
+The fix is to capture by value: `[count]() mutable { return ++count; }`.
+
+::: notes
+This compiles with no warning under g++ -Wall, which is what makes it dangerous. A function that returns auto must be defined before it is called, so this example is an exception to the prototypes-above-main style.
+:::
+
+<!-- Slide 74 -->
+
+---
+
+## Captures and Closures: More Examples (Init Captures)
+
+~~~cpp
+auto nextTicket = [number = 100]() mutable { return number++; };
+
+cout << nextTicket() << ' ' << nextTicket() << ' ' << nextTicket() << '\n';
+// 100 101 102
+~~~
+
+An init capture creates a new closure member and initializes it from any expression. No outside variable is needed.
+
+::: notes
+Init captures arrived in C++14. The capture can also compute from outside values, such as [limit = passing + 10].
+:::
+
+<!-- Slide 75 -->
+
+---
+
+## Captures and Closures: Practice Problems
+
+1. Predict the output: `int x = 1; auto f = [x]() { return x * 10; }; x = 5; cout << f();`
+2. Use for_each with a lambda that captures a counter by reference to count the even values in an int array.
+3. Write a Thermostat class with a target member and a member function that uses for_each and `[this]` to count the readings in an array above the target.
+
+<!-- Slide 76 -->
+
+---
+
+## Captures and Closures: AI Search Terms
+
+- C++ lambda capture by value versus by reference
+- C++ lambda mutable keyword
+- C++ lambda capture this
+- C++ dangling reference lambda capture
+- C++14 lambda init capture
+
+<!-- Slide 77 -->
+
+---
+
+## Captures and Closures: Questions for Reflection
+
+- Why can a by-reference capture change the original even though operator() is const?
+- Why does `[this]` carry the same lifetime risk as a reference capture?
+- When, if ever, would you choose `[=]` over naming each capture?
+
+<!-- Slide 78 -->
+
+---
+
+## Lambdas with STL Algorithms: Good Practices
+
+- Choose the algorithm whose name states the job: count_if to count, find_if to search.
+- Take object parameters by const reference in predicates and comparators.
+- Check every find_if result against end before using it.
+- Include `<algorithm>` and `<iterator>`.
+
+<!-- Slide 79 -->
+
+---
+
+## Lambdas with STL Algorithms: Common Mistakes
+
+- Dereferencing a find_if result without checking it against end.
+- Using `<=` or `>=` in a sort comparator.
+- Taking objects by value in a comparator, which copies two objects per comparison.
+- Relying on `<iostream>` to supply begin and end.
+
+<!-- Slide 80 -->
+
+---
+
+## Lambdas with STL Algorithms: More Examples (any_of and all_of)
+
+~~~cpp
+int scores[] = {88, 64, 92, 71};
+
+bool anyFailing = any_of(begin(scores), end(scores),
+                         [](int score) { return score < 70; });
+bool allPassing = all_of(begin(scores), end(scores),
+                         [](int score) { return score >= 70; });
+
+cout << boolalpha << anyFailing << ' ' << allPassing << '\n';   // true false
+~~~
+
+any_of answers whether at least one element matches; all_of answers whether every element does. Both stop as soon as the answer is known.
+
+<!-- Slide 81 -->
+
+---
+
+## Lambdas with STL Algorithms: More Examples (transform)
+
+~~~cpp
+int scores[] = {88, 64, 92, 71};
+double percents[4];
+
+transform(begin(scores), end(scores), begin(percents),
+          [](int score) { return score / 100.0; });
+// percents: 0.88 0.64 0.92 0.71
+~~~
+
+transform calls the lambda on each element and writes each result to a destination range. The destination must be large enough to hold every result.
+
+<!-- Slide 82 -->
+
+---
+
+## Lambdas with STL Algorithms: More Examples (remove_if)
+
+~~~cpp
+#include <vector>
+
+vector<int> scores = {88, 64, 92, 55, 71};
+
+scores.erase(remove_if(scores.begin(), scores.end(),
+                       [](int score) { return score < 70; }),
+             scores.end());
+// scores: 88 92 71
+~~~
+
+remove_if moves the elements to keep to the front and returns the new logical end, but it cannot change the container's size. erase then removes the leftover tail. Together they are the erase-remove idiom.
+
+::: notes
+vector has not been covered formally yet; this example needs a container that can shrink. C++20 adds erase_if(scores, predicate), which does both steps in one call.
+:::
+
+<!-- Slide 83 -->
+
+---
+
+## Lambdas with STL Algorithms: More Examples (stable_sort)
+
+~~~cpp
+Student roster[] = {{"Ada", 88}, {"Linus", 92}, {"Grace", 88}, {"Alan", 92}};
+
+stable_sort(begin(roster), end(roster),
+            [](const Student& a, const Student& b) {
+                return a.getScore() > b.getScore();
+            });
+// Linus 92, Alan 92, Ada 88, Grace 88
+~~~
+
+stable_sort keeps equal elements in their original order. sort makes no such promise, so Ada and Grace could trade places.
+
+::: notes
+Uses the Student class from slide 45. This is why the refactor lab gives every student a unique score.
+:::
+
+<!-- Slide 84 -->
+
+---
+
+## Lambdas with STL Algorithms: More Examples (accumulate)
+
+~~~cpp
+#include <numeric>
+
+int scores[] = {88, 64, 92, 71};
+
+int total = accumulate(begin(scores), end(scores), 0);
+int passingTotal = accumulate(begin(scores), end(scores), 0,
+    [](int sum, int score) { return score >= 70 ? sum + score : sum; });
+// total: 315  passingTotal: 251
+~~~
+
+accumulate combines every element into one value, starting from an initial value. A lambda replaces the default addition.
+
+::: notes
+The type of the starting value sets the type of the result. Starting a sum of doubles at 0 instead of 0.0 silently truncates every step.
+:::
+
+<!-- Slide 85 -->
+
+---
+
+## Lambdas with STL Algorithms: Practice Problems
+
+1. Use count_if to count the negative values in an int array.
+2. Sort an array of strings from shortest to longest with a comparator lambda.
+3. Use find_if to find the first Student whose name starts with 'G', and handle the case where none does.
+
+<!-- Slide 86 -->
+
+---
+
+## Lambdas with STL Algorithms: AI Search Terms
+
+- C++ count_if lambda
+- C++ find_if returns end
+- C++ sort custom comparator strict weak ordering
+- C++ erase remove idiom
+- C++ stable_sort versus sort
+
+<!-- Slide 87 -->
+
+---
+
+## Lambdas with STL Algorithms: Questions for Reflection
+
+- Why does find_if return a position instead of the element itself?
+- Why must a comparator return false for equal elements?
+- When is a hand-written loop clearer than an algorithm?
+
+<!-- Slide 88 -->

@@ -1,0 +1,127 @@
+<!-- Topic 1: Functor Review -->
+<!-- Slides 5–10 -->
+
+# Functor Review
+<!-- Slide 4 -->
+
+## What Did a Functor Give Us?
+
+A functor is an object whose class overloads operator(), so calling the object runs code. That let us hand behavior to for_each the same way we hand it data. What did that convenience cost?
+
+::: notes
+Slides 5–10
+
+Keep this review brisk. Every idea here was covered in 09.01; the point is to reload the model and expose its cost before lambdas arrive.
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## Functor Anatomy in Brief
+
+~~~cpp
+class AddToTotal {                 // an ordinary named class
+private:
+    int total = 0;                 // state the object keeps between calls
+
+public:
+    void operator()(int value) {   // the function-call operator
+        total += value;
+    }
+
+    int result() const {
+        return total;
+    }
+};
+
+AddToTotal total;                  // create the object
+total(4);                          // call the object, which runs operator()
+~~~
+
+::: notes
+Point at the total member. In topic 3, a lambda capture plays exactly this role: it is the state the callable carries with it.
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Predicates Answer Yes or No
+
+A predicate is a callable that returns true or false. An algorithm can ask the question without knowing how it is answered.
+
+~~~cpp
+class IsPositive {
+public:
+    bool operator()(int value) const {
+        return value > 0;
+    }
+};
+
+IsPositive isPositive;
+cout << boolalpha << isPositive(5) << ' ' << isPositive(-3) << '\n';   // prints true false
+~~~
+
+::: notes
+Topic 4 hands predicates like this one to count_if and find_if.
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## What Does total Hold?
+
+What does this program print?
+
+~~~cpp
+int values[] = {1, 2, 3, 4};
+AddToTotal total;
+
+for_each(begin(values), end(values), total);
+
+cout << total.result() << '\n';
+~~~
+
+::: notes
+Answer: 0. for_each receives a copy of total, adds 1 through 4 to the copy, and returns it. The original total never changes. A lambda that captures by value makes this same mistake in topic 3, so let students state the cause in their own words before moving on.
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## The Class Is Bigger Than the Work
+
+``` {.cpp code-line-numbers="7"}
+class AddToTotal {
+private:
+    int total = 0;
+
+public:
+    void operator()(int value) {
+        total += value;
+    }
+
+    int result() const {
+        return total;
+    }
+};
+```
+
+One line does the work. The rest is a class definition written somewhere other than the for_each call that uses it. What if the behavior could be written right where it is needed?
+
+::: notes
+Let the closing question hang. Topic 2 answers it.
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Summary
+
+A functor packages behavior and state as an object, but even one line of logic needs a named class.
+
+<!-- Slide 10 -->
