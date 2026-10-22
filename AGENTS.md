@@ -110,7 +110,7 @@ Planning markers shape the proposal but do not automatically require their own s
 18. **Prerequisite Check** — Identify the knowledge students need before the topic and determine whether it needs a brief review, can be assumed, or reveals a prerequisite gap that must be raised with the instructor.
 19. **Progression Map** — Show where the topic sits in the larger learning sequence and how it prepares students for what follows.
 
-For every initial topic slide proposal, explicitly report the **Prerequisite Check** and **Progression Map** decisions. Also identify every proposed slide that serves one or more of markers 1–17. Marker labels may be removed when generating the `.qmd`; their purpose is to make the instructional design visible during proposal and approval.
+For every initial topic slide proposal, explicitly report the **Prerequisite Check** and **Progression Map** decisions. Also identify every proposed slide that serves one or more of markers 1–17. Marker labels appear only in the proposal, where they make the instructional design visible during approval. Never put a marker label in a slide title, heading, or visible slide text in the generated `.qmd`.
 
 ---
 
@@ -171,12 +171,13 @@ All running code examples use the following style:
 
 **Slide numbering — global (matches the Reveal.js counter):**
 - `<!-- Slide N -->` comments use **global** slide numbers that match what appears on screen, not local topic numbers.
-- Numbering starts in the stitched `.qmd` file: `# Last Time` = Slide 1, `# Today's Agenda` = Slide 2.
+- Slide 1 is the title slide that Quarto generates from `_quarto.yml`; it has no `<!-- Slide N -->` marker.
+- Numbering continues in the stitched `.qmd` file: `# Last Time` = Slide 2, `# Today's Agenda` = Slide 3.
 - Each topic file contributes: one slide for the `# Topic Name` section header, then one per `##` content slide.
 - The topic file header should read `<!-- Slides X–Y -->` showing the global range for that topic.
 - The speaker notes on the first `##` slide should read `Slides X–Y` (global range).
 - The `# Topic Name` heading in each topic file gets its own `<!-- Slide N -->` marker immediately after it.
-- When building a new lecture, compute global offsets before writing any topic file: count Last Time (1) + Today's Agenda (1) + each prior topic's section header (1) + content slides, then continue from there.
+- When building a new lecture, compute global offsets before writing any topic file: count the title slide (1) + Last Time (1) + Today's Agenda (1) + each prior topic's section header (1) + content slides, then continue from there. The first topic's section header is therefore Slide 4.
 
 **Per topic file:**
 - First slide: one introductory slide — preferably a question the section will answer. Max 3 sentences.
