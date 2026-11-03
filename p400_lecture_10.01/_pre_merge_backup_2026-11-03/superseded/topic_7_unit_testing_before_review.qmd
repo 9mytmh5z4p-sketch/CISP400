@@ -1,0 +1,342 @@
+<!-- Topic 7: Unit Testing -->
+<!-- Slides 62–76 -->
+# Unit Testing
+
+<!-- Slide 61 -->
+
+## Can You Prove the Bug Stays Fixed?
+
+The gradebook now passes every assertion. Next month someone tidies the code and changes one loop. How would you find out that an old bug came back before a user does?
+
+::: notes
+Slides 62–76
+
+This topic completes the debugging sequence: structured debugging in 08.02, assertions in 09.01, and now tests that rerun the checks on purpose.
+:::
+
+<!-- Slide 62 -->
+
+---
+
+## You Already Wrote the Checks
+
+The assertions from the Invariant Lab stop the program when a rule breaks, but only on code the program happens to run. Nothing forces the program to call highestScore when the largest score is last.
+
+A unit test chooses the inputs on purpose, so the check runs every time the tests run.
+
+<!-- Slide 63 -->
+
+---
+
+## What Is a Unit Test?
+
+- **Unit**: the smallest testable piece of a program, usually one function or member function.
+- **Unit test**: code that calls a unit with known input and compares the result with an expected value worked out by hand.
+- **Test suite**: all of a program's tests, run together.
+
+::: notes
+Tests can only call public members. scores and count are private, so every test goes through the class's public interface. That is encapsulation paying off: a test checks the promises a class makes, not how it keeps them.
+:::
+
+<!-- Slide 64 -->
+
+---
+
+## Parts of a Unit Test
+
+Arrange builds the situation, Act calls the function under test, and Assert checks the result. Here Assert names the step, not the assert macro; the check() helper does the checking.
+
+~~~cpp
+bool testHighestScoreIncludesLastElement() {
+    // Arrange: build a gradebook whose largest score is last
+    Gradebook book;
+    book.addScore(88);
+    book.addScore(72);
+    book.addScore(95);
+    book.addScore(99);
+
+    // Act: call the function under test
+    int result = book.highestScore();
+
+    // Assert: check the result against the value worked out by hand
+    return check(result == 99, "highestScore includes the last score");
+}
+~~~
+
+<!-- Slide 65 -->
+
+---
+
+## Keep the Tests in the Same File
+
+The class, the tests, and the program share one file, so it compiles in any online compiler. One constant at the top decides what main does.
+
+~~~cpp
+// true runs the unit tests, false runs the gradebook program
+const bool RUN_TESTS = true;
+
+int main() {
+    if (RUN_TESTS) {
+        int failures = runTests();
+        return failures == 0 ? 0 : 1;
+    }
+
+    runProgram();
+    return 0;
+}
+~~~
+
+::: notes
+The tests check the real class, not a copy. Pasting the class into a second file would create two versions that drift apart, which defeats the purpose. Professional projects put tests in separate files, which students will see later.
+
+Full program: cpp/gradebook_tests.cpp
+:::
+
+<!-- Slide 66 -->
+
+---
+
+## A Complete Test Program
+
+:::: {.columns}
+
+::: {.column width="60%" style="font-size: 50%;"}
+~~~cpp
+// Print one test result and return whether it passed
+bool check(bool condition, const string& testName) {
+    if (condition) {
+        cout << "PASS  " << testName << '\n';
+    } else {
+        cout << "FAIL  " << testName << '\n';
+    }
+    return condition;
+}
+
+// Run every test, keep going after a failure, and report the total
+int runTests() {
+    bool (*tests[])() = {
+        testNewGradebookIsEmpty,
+        testAddScoreIncreasesSize,
+        testRemoveLastDecreasesSize,
+        testHighestScoreIncludesLastElement,
+        testAverageOfThreeScores,
+        testOneScore,
+        testFullGradebook,
+        testScoresAtLimits,
+        testCurveNeverExceeds100
+    };
+
+    int total = 0;
+    int failures = 0;
+    for (auto test : tests) {
+        total++;
+        if (!test()) {
+            failures++;
+        }
+    }
+
+    cout << '\n' << total << " tests run, " << failures << " failed\n";
+    return failures;
+}
+~~~
+:::
+
+::: {.column width="40%"}
+~~~
+PASS  a new gradebook is empty
+PASS  addScore increases the size by one
+PASS  removeLast decreases the size by one
+PASS  highestScore includes the last score
+PASS  average of 90 85 75 is about 83.333
+PASS  one score is both the average and the highest
+PASS  a gradebook holds exactly CAPACITY scores
+PASS  scores of exactly 0 and 100 are handled
+PASS  a curve never pushes a score past 100
+
+9 tests run, 0 failed
+~~~
+:::
+
+::::
+
+::: notes
+check() replaces assert for testing. NDEBUG cannot remove it, it reports every failure instead of stopping at the first, and it prints each test's name as it runs. That is what testing frameworks do.
+
+tests is an array of function pointers, and the range-based for walks it: both from earlier lectures.
+
+Full program: cpp/gradebook_tests.cpp
+:::
+
+<!-- Slide 67 -->
+
+---
+
+## Compare Doubles Within a Tolerance
+
+average() returns a double, and 250 / 3 cannot be stored exactly. Testing it with == can fail a correct program, so the test asks whether the result is close enough.
+
+~~~cpp
+// Doubles are compared within a tolerance, never with ==
+bool closeEnough(double actual, double expected, double tolerance) {
+    return fabs(actual - expected) <= tolerance;
+}
+
+bool testAverageOfThreeScores() {
+    Gradebook book;
+    book.addScore(90);
+    book.addScore(85);
+    book.addScore(75);
+
+    // 250 / 3 = 83.333..., which a double cannot store exactly
+    return check(closeEnough(book.average(), 83.333, 0.001), "average of 90 85 75 is about 83.333");
+}
+~~~
+
+::: notes
+Connect to the Floating-Point Equality and Threshold Comparison slides in the Lambda and Functor Review. fabs comes from the cmath header.
+
+A true story from building this slide: the first draft used 90, 85, and 76 and expected 83.333. The test failed, because 251 / 3 is 83.667. The test was wrong, not the code. Expected values must be worked out carefully by hand.
+:::
+
+<!-- Slide 68 -->
+
+---
+
+## Which Tests Fail?
+
+The same nine tests run against the original buggy gradebook. Which tests fail, and which bug does each failure point to?
+
+. . .
+
+~~~
+PASS  a new gradebook is empty
+PASS  addScore increases the size by one
+PASS  removeLast decreases the size by one
+FAIL  highestScore includes the last score
+PASS  average of 90 85 75 is about 83.333
+PASS  one score is both the average and the highest
+PASS  a gradebook holds exactly CAPACITY scores
+FAIL  scores of exactly 0 and 100 are handled
+FAIL  a curve never pushes a score past 100
+
+9 tests run, 3 failed
+~~~
+
+::: notes
+Let students commit to an answer before advancing. Two failures come from the highestScore loop that stops early; the limits test also has its largest score last. The third comes from the uncapped curve.
+
+Full program: cpp/gradebook_buggy_tests.cpp
+:::
+
+<!-- Slide 69 -->
+
+---
+
+## Choose Test Cases at the Edges
+
+Bugs gather at boundaries, so test the legal edges: an empty gradebook, one score, a full gradebook, and scores of exactly 0 and 100.
+
+Illegal input such as addScore(101) cannot be tested this way. The class's own assertion aborts the whole test run, so every test must stay inside each function's preconditions. Testing frameworks such as GoogleTest and Catch2 can test that an assertion fires, but this course uses the standard library only.
+
+<!-- Slide 70 -->
+
+---
+
+## Assertions Versus Unit Tests
+
+|  | Assertions | Unit tests |
+|---|---|---|
+| Where they live | Inside the class | In test functions beside it |
+| Who supplies the input | Whatever code runs | The test, chosen on purpose |
+| When they run | Only when that code is reached | Every time the suite runs |
+| What they catch | Callers breaking a rule | A unit giving the wrong answer |
+
+::: notes
+In the gradebook, the tests caught the bugs inside the class: the loop that stopped early and the uncapped curve. The assertions caught the bugs in main: the score of 105, and calling average and removeLast on an empty gradebook. The two tools work together.
+:::
+
+<!-- Slide 71 -->
+
+---
+
+## Write the Test Before the Fix
+
+1. Write a test that reproduces the bug, and watch it fail.
+2. Fix the code.
+3. Rerun the test, and watch it pass.
+4. Keep the test.
+
+A test that has never failed has never proved it can catch anything.
+
+<!-- Slide 72 -->
+
+---
+
+## Kept Tests Become Regression Tests
+
+Regression testing reruns every existing test after every change. A later cleanup changes the highestScore loop back to i < count - 1, and the suite catches it immediately.
+
+|  | highestScore loop | Test results |
+|---|---|---|
+| Before the cleanup | i < count | 9 tests run, 0 failed |
+| After the cleanup | i < count - 1 | 9 tests run, 2 failed |
+
+Once a bug has a test, that bug cannot come back without someone noticing.
+
+::: notes
+The two failures are "highestScore includes the last score" and "scores of exactly 0 and 100 are handled." Teams run their regression suites automatically on every change, often on GitHub, so nobody has to remember.
+
+[Graphic suggestion: a timeline with the fix, the kept test, and a later change. The test fires at the moment of the later change, long before release.]
+:::
+
+<!-- Slide 73 -->
+
+---
+
+## Test a Functor
+
+The same pattern tests the MaxLength functor from 09.01. Each test checks one edge of the limit.
+
+~~~cpp
+bool testAcceptsExactLimit() {
+    MaxLength validUsername(8);
+    return check(validUsername("abcdefgh"), "8 characters is accepted");
+}
+
+bool testRejectsOneOverLimit() {
+    MaxLength validUsername(8);
+    return check(!validUsername("abcdefghi"), "9 characters is rejected");
+}
+
+bool testAcceptsEmptyString() {
+    MaxLength validUsername(8);
+    return check(validUsername(""), "an empty string is accepted");
+}
+~~~
+
+::: notes
+All three pass. Full program: cpp/maxlength_tests.cpp
+:::
+
+<!-- Slide 74 -->
+
+---
+
+## Common Practices
+
+- Give each test one behavior, and name it after that behavior.
+- Build a new object inside every test so no test can affect another.
+- Work out expected values by hand; never copy them from the code under test.
+- Compare doubles within a tolerance, not with ==.
+- Test through public member functions only.
+- Rerun the whole suite after every change, and add a test for every bug you fix.
+
+<!-- Slide 75 -->
+
+---
+
+## Summary
+
+A unit test checks one piece of a program against an answer worked out by hand. Kept and rerun after every change, the tests become a regression suite that stops fixed bugs from returning.
+
+<!-- Slide 76 -->

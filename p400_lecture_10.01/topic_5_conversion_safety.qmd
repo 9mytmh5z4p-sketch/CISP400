@@ -1,123 +1,219 @@
 <!-- Topic 5: Conversion Safety -->
-<!-- Slides 67–76 -->
+<!-- Slides 39–49 -->
+
 # Conversion Safety
+<!-- Slide 38 -->
 
-<!-- Slide 66 -->
+## Conversions Nobody Asked For? {.smaller}
 
-## Unintended Conversions
-
-This slide presents the source material for **Unintended Conversions** from the authoritative lecture deck.
+- Topic 3's constructor ran even though no line called it.
 
 ::: notes
-Slides 67–76
+Slides 39–49
+
+
 :::
 
-<!-- Slide 67 -->
+<!-- Slide 39 -->
 
 ---
 
-## Video
+## What Does showSection Print?
 
-This slide presents the source material for **Video** from the authoritative lecture deck.
+::: {style="font-size: 75%;"}
+~~~cpp
+class Roster {
+private:
+    int seats;
+    int enrolled;
 
-::: notes
+public:
+    Roster(int capacity) { seats = capacity; enrolled = 0; }
 
+    void print() const {
+        cout << enrolled << " students, " << seats << " seats" << endl;
+    }
+};
+
+void showSection(const Roster& roster);
+
+int main() {
+    int sectionNumber = 30;
+    showSection(sectionNumber);    // meant: section 30
+    return 0;
+}
+
+void showSection(const Roster& roster) { roster.print(); }
+~~~
 :::
 
-<!-- Slide 68 -->
+. . .
+
+Output: `0 students, 30 seats`
+
+::: notes
+Roster echoes the student roster from 09.02. Ask what the call prints before revealing.
+
+Full program: cpp/roster_hijack.cpp
+:::
+
+<!-- Slide 40 -->
 
 ---
 
-## Constructor Hijacking
+## The Constructor Hijacked the Call
 
-This slide presents the source material for **Constructor Hijacking** from the authoritative lecture deck.
+- The caller meant section 30.
+- `showSection` needs a `Roster`, and `Roster(int)` can build one from `30`.
+- The compiler built a 30-seat roster and passed it in.
+- No error, no warning, wrong output.
 
 ::: notes
 
 :::
 
-<!-- Slide 69 -->
+<!-- Slide 41 -->
 
 ---
 
-## Strange Conversions
+## explicit Constructors
 
-This slide presents the source material for **Strange Conversions** from the authoritative lecture deck.
+~~~cpp
+explicit Roster(int capacity);
+
+showSection(sectionNumber);    // error: no conversion from int
+showSection(Roster(30));       // fine: the conversion is written out
+~~~
+
+The standard library does the same: `vector<int> v = 10;` does not compile.
 
 ::: notes
-
+g++ reports: invalid initialization of reference of type 'const Roster&' from expression of type 'int'. vector's size constructor is explicit for exactly this reason.
 :::
 
-<!-- Slide 70 -->
+<!-- Slide 42 -->
 
 ---
 
-## Type Safety
+## Delete the Conversion You Forbid
 
-This slide presents the source material for **Type Safety** from the authoritative lecture deck.
+~~~cpp
+explicit Roster(int capacity);
+Roster(double) = delete;
+
+Roster small(2.7);    // error: use of deleted function
+~~~
 
 ::: notes
-
+explicit does not stop direct initialization, so without the deleted overload Roster small(2.7); compiles and builds a 2-seat roster. The deleted constructor is an exact match for double, so the compiler picks it and refuses.
 :::
 
-<!-- Slide 71 -->
+<!-- Slide 43 -->
 
 ---
 
-## Use Explicit or Delete
+## explicit Conversion Operators
 
-This slide presents the source material for **Use Explicit or Delete** from the authoritative lecture deck.
+~~~cpp
+explicit operator double() const { return celsius; }
+
+double a = today;                       // error
+double b = static_cast<double>(today);  // fine
+if (freezing) { }                       // error: zero is no longer false
+~~~
 
 ::: notes
-
+g++ reports the if as: invalid user-defined conversion from 'Temperature' to 'bool'. The cast states the intent, so it is allowed.
 :::
 
-<!-- Slide 72 -->
+<!-- Slide 44 -->
 
 ---
 
-## Desk Check Exercise
+## Why `while (cin >> x)` Still Works
 
-This slide presents the source material for **Desk Check Exercise** from the authoritative lecture deck.
+- `cin >> x` returns `cin`, and streams define an `explicit operator bool()`.
+- An explicit conversion to `bool` still happens in conditions and in `!`, `&&`, `||`, and `?:`.
+- Everywhere else it must be written out: `bool ok = cin;` does not compile.
 
 ::: notes
-
+This is called contextual conversion to bool. The standard library made the stream conversion explicit so that a stream cannot silently become a number or a bool in arithmetic or assignment.
 :::
 
-<!-- Slide 73 -->
+<!-- Slide 45 -->
 
 ---
 
-## Desk Check
+## Two Routes, No Winner?
 
-This slide presents the source material for **Desk Check** from the authoritative lecture deck.
+::: {style="font-size: 80%;"}
+~~~cpp
+class Temperature {
+private:
+    double celsius;
 
-::: notes
+public:
+    Temperature(double value = 0.0) { celsius = value; }
+    operator double() const { return celsius; }
 
+    friend Temperature operator+(const Temperature& a,
+                                 const Temperature& b);
+};
+
+Temperature t(20.0);
+Temperature warmer = t + 5.0;    // compiles?
+~~~
 :::
 
-<!-- Slide 74 -->
+::: notes
+Ask students to name every way the compiler could make t + 5.0 work before revealing the next slide.
+:::
+
+<!-- Slide 46 -->
 
 ---
 
-## Overload Ambiguity
+## Breaking the Tie
 
-This slide presents the source material for **Overload Ambiguity** from the authoritative lecture deck.
+| Route | Converts | Then calls |
+|---|---|---|
+| 1 | `t` to `double` with `operator double()` | Built-in `double + double` |
+| 2 | `5.0` to `Temperature` with `Temperature(double)` | Your `operator+` |
+
+- Each route needs one user-defined conversion, so neither is better and g++ reports an ambiguous overload.
+- Fix: mark `operator double()` `explicit`. Route 1 disappears and `warmer` is 25.
 
 ::: notes
+How the compiler chooses an overload: an exact match beats a promotion, a promotion beats a standard conversion, and a standard conversion beats a user-defined conversion. Two candidates that each need a user-defined conversion on different arguments tie, which is an error.
 
+Full program with the fix: cpp/ambiguous_plus.cpp
 :::
 
-<!-- Slide 75 -->
+<!-- Slide 47 -->
 
 ---
 
-## Choosing an Overload
+## explicit by Default
 
-This slide presents the source material for **Choosing an Overload** from the authoritative lecture deck.
+- Start every one-value constructor and conversion operator as `explicit`.
+- Remove `explicit` only when topic 4's test passes: the target names the meaning and nothing is lost.
+- Use `= delete` for the specific types you want to forbid.
+
+::: notes
+C++ Core Guidelines C.46: by default, declare single-argument constructors explicit. C.164: avoid implicit conversion operators.
+:::
+
+<!-- Slide 48 -->
+
+---
+
+## Summary
+
+- `explicit` turns a silent conversion into one the caller must write.
+- `= delete` forbids a conversion outright; together they make every conversion intentional.
 
 ::: notes
 
 :::
 
-<!-- Slide 76 -->
+<!-- Slide 49 -->

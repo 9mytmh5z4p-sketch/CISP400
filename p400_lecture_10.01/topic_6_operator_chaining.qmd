@@ -1,291 +1,227 @@
 <!-- Topic 6: Operator Chaining -->
-<!-- Slides 78–101 -->
+<!-- Slides 51–60 -->
+
 # Operator Chaining
+<!-- Slide 50 -->
 
-<!-- Slide 77 -->
+## Chains You Already Wrote? {.smaller}
 
-## Convert Constructor Context
-
-This slide presents the source material for **Convert Constructor Context** from the authoritative lecture deck.
+- `Sales total = a + b + c;` (07.01)
+- `cout << a << b;` (07.02)
+- `return *this;` in `operator=` (08.02)
 
 ::: notes
-Slides 78–101
+Slides 51–60
+
+
 :::
 
-<!-- Slide 78 -->
+<!-- Slide 51 -->
 
 ---
 
-## Convert Constructor Context
+## Two Kinds of Chains
 
-This slide presents the source material for **Convert Constructor Context** from the authoritative lecture deck.
+| Operator | Changes its left operand? | Returns |
+|---|---|---|
+| `+` | No | A new object, by value |
+| `=` and `+=` | Yes | The left operand, by reference |
+| `<<` | Yes, the stream | The stream, by reference |
+
+- Each link in a chain works on whatever the previous link returned.
 
 ::: notes
 
 :::
 
-<!-- Slide 79 -->
+<!-- Slide 52 -->
 
 ---
 
-## Task III
+## Why `<<` Must Return a Reference
 
-This slide presents the source material for **Task III** from the authoritative lecture deck.
+- `cout << a << b` groups as `(cout << a) << b`.
+- The second `<<` must write to the same stream as the first.
+- Streams cannot be copied, so returning `ostream` by value does not compile.
 
 ::: notes
-
+g++ rejects an operator<< that takes and returns ostream by value: the stream's copy constructor is not accessible. The reference is not a style choice here; it is the only option.
 :::
 
-<!-- Slide 80 -->
+<!-- Slide 53 -->
 
 ---
 
-## Exercise Goals
+## You Have Written `return *this` Before
 
-This slide presents the source material for **Exercise Goals** from the authoritative lecture deck.
+~~~cpp
+Temperature& operator+=(const Temperature& rhs) {
+    celsius += rhs.celsius;
+    return *this;
+}
+~~~
+
+| Part | Why |
+|---|---|
+| `Temperature&` | Hands back the object itself, not a copy |
+| `const Temperature& rhs` | The right side is read, never changed |
+| `return *this;` | `this` points to the left operand; `*this` is that object |
 
 ::: notes
-
+Students wrote the same three parts in 08.02's copy assignment operator. Frame this as why that code works rather than as new syntax.
 :::
 
-<!-- Slide 81 -->
+<!-- Slide 54 -->
 
 ---
 
-## Task
+## `+=` That Chains
 
-This slide presents the source material for **Task** from the authoritative lecture deck.
+::: {style="font-size: 75%;"}
+~~~cpp
+class Temperature {
+private:
+    double celsius;
 
-::: notes
+public:
+    Temperature(double value = 0.0) { celsius = value; }
 
+    Temperature& operator+=(const Temperature& rhs) {
+        celsius += rhs.celsius;
+        return *this;
+    }
+
+    friend ostream& operator<<(ostream& out, const Temperature& t);
+};
+
+int main() {
+    Temperature a(20.0);
+    Temperature b(5.0);
+
+    cout << (a += b) << " " << a << endl;
+    return 0;
+}
+~~~
 :::
 
-<!-- Slide 82 -->
+Output: `25 25`
+
+::: notes
+Both values are 25 because (a += b) is a itself. The definition of operator<< is in the full program.
+
+Never return a reference to a local variable: an operator+ that returns Temperature& to its local result leaves a dangling reference, and g++ warns with -Wreturn-local-addr.
+
+Full program: cpp/plus_equal_chain.cpp
+:::
+
+<!-- Slide 55 -->
 
 ---
 
-## Task II
+## Chaining Setters
 
-This slide presents the source material for **Task II** from the authoritative lecture deck.
+::: {style="font-size: 75%;"}
+~~~cpp
+class Roster {
+private:
+    string name;
+    int seats;
 
-::: notes
+public:
+    explicit Roster(int capacity) { name = "Unnamed"; seats = capacity; }
 
+    Roster& setName(const string& value) { name = value; return *this; }
+    Roster& setCapacity(int value) { seats = value; return *this; }
+
+    void print() const { cout << name << ": " << seats << " seats" << endl; }
+};
+
+int main() {
+    Roster section(25);
+    section.setName("CISP 400").setCapacity(30);
+    section.print();
+    return 0;
+}
+~~~
 :::
 
-<!-- Slide 83 -->
+::: notes
+Output: CISP 400: 30 seats
+
+The same return *this lets member functions chain. Reading: learncpp 15.1, The hidden this pointer and member function chaining.
+
+Full program: cpp/roster_setters.cpp
+:::
+
+<!-- Slide 56 -->
 
 ---
 
-## Homework 4 Preflight
+## Where Did Capacity 30 Go?
 
-This slide presents the source material for **Homework 4 Preflight** from the authoritative lecture deck.
+~~~cpp
+Roster setName(const string& value) { name = value; return *this; }
+Roster setCapacity(int value) { seats = value; return *this; }
+
+Roster section(25);
+section.setName("CISP 400").setCapacity(30);
+section.print();
+~~~
+
+. . .
+
+Output: `CISP 400: 25 seats`
 
 ::: notes
-
+The only change from the previous slide is the missing & on both return types. Ask students to predict the output.
 :::
 
-<!-- Slide 84 -->
+<!-- Slide 57 -->
 
 ---
 
-## Video
+## The Copy Took the Change
 
-This slide presents the source material for **Video** from the authoritative lecture deck.
+| Call | Runs on | Returns |
+|---|---|---|
+| `setName("CISP 400")` | `section` | A copy of `section` |
+| `.setCapacity(30)` | The copy | Another copy, then discarded |
+
+- `section` got its name but never its capacity.
+- The fix is one character on each return type: `Roster&`.
 
 ::: notes
-
+This bug compiles, runs, and prints a wrong answer, which is exactly the kind of bug the unit tests in the next topic catch.
 :::
 
-<!-- Slide 85 -->
+<!-- Slide 58 -->
 
 ---
 
-## Exercise Transition
+## Value or Reference?
 
-This slide presents the source material for **Exercise Transition** from the authoritative lecture deck.
+| The operator or member function | Returns |
+|---|---|
+| Changes the object it was called on: `=`, `+=`, `<<`, setters | `*this` by reference |
+| Produces a new value: `+`, `-`, `*` | A new object by value |
+
+- Never return a reference to a local variable.
 
 ::: notes
 
 :::
 
-<!-- Slide 86 -->
+<!-- Slide 59 -->
 
 ---
 
-## Programming Exercise
+## Summary
 
-This slide presents the source material for **Programming Exercise** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 87 -->
-
----
-
-## Operator Chaining
-
-This slide presents the source material for **Operator Chaining** from the authoritative lecture deck.
+- Return `*this` by reference when a call changes its object, so the next link works on the same object.
+- Return by value when a call builds a new value; a by-value return in a chain silently works on a copy.
 
 ::: notes
 
 :::
 
-<!-- Slide 88 -->
-
----
-
-## Primitive Output
-
-This slide presents the source material for **Primitive Output** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 89 -->
-
----
-
-## Chaining Example
-
-This slide presents the source material for **Chaining Example** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 90 -->
-
----
-
-## Chaining Example
-
-This slide presents the source material for **Chaining Example** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 91 -->
-
----
-
-## Return Type for Chaining
-
-This slide presents the source material for **Return Type for Chaining** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 92 -->
-
----
-
-## Constant Right-Hand Side
-
-This slide presents the source material for **Constant Right-Hand Side** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 93 -->
-
----
-
-## Why Chaining Matters
-
-This slide presents the source material for **Why Chaining Matters** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 94 -->
-
----
-
-## Chaining Design
-
-This slide presents the source material for **Chaining Design** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 95 -->
-
----
-
-## Return the Calling Object
-
-This slide presents the source material for **Return the Calling Object** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 96 -->
-
----
-
-## Chaining Answer
-
-This slide presents the source material for **Chaining Answer** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 97 -->
-
----
-
-## Desk Check Exercise
-
-This slide presents the source material for **Desk Check Exercise** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 98 -->
-
----
-
-## Desk Check
-
-This slide presents the source material for **Desk Check** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 99 -->
-
----
-
-## Exercise Desk Check
-
-This slide presents the source material for **Exercise Desk Check** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 100 -->
-
----
-
-## What's Wrong?
-
-This slide presents the source material for **What's Wrong?** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 101 -->
+<!-- Slide 60 -->

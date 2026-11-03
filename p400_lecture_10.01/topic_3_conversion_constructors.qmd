@@ -1,147 +1,163 @@
 <!-- Topic 3: Conversion Constructors -->
-<!-- Slides 44–55 -->
+<!-- Slides 20–27 -->
+
 # Conversion Constructors
+<!-- Slide 19 -->
 
-<!-- Slide 43 -->
+## Going the Other Way? {.smaller}
 
-## Conversion Constructors
-
-This slide presents the source material for **Conversion Constructors** from the authoritative lecture deck.
+- `Temperature today = 21.5;` already compiles. Why?
 
 ::: notes
-Slides 44–55
+Slides 20–27
+
+
 :::
 
-<!-- Slide 44 -->
+<!-- Slide 20 -->
 
 ---
 
-## The Opposite Conversion
+## How Many Constructor Calls?
 
-This slide presents the source material for **The Opposite Conversion** from the authoritative lecture deck.
+::: {style="font-size: 80%;"}
+~~~cpp
+class Temperature {
+private:
+    double celsius;
 
-::: notes
+public:
+    Temperature(double value = 0.0) {
+        celsius = value;
+        cout << "Temperature(" << value << ")" << endl;
+    }
+};
 
+int main() {
+    Temperature today = 21.5;
+    cout << "done" << endl;
+    return 0;
+}
+~~~
 :::
 
-<!-- Slide 45 -->
+. . .
+
+Output: `Temperature(21.5)` then `done`
+
+::: notes
+main never names the constructor, yet it runs once. Let students commit to a number before revealing.
+
+Full program: cpp/constructor_count.cpp
+:::
+
+<!-- Slide 21 -->
 
 ---
 
-## Convert Constructors
+## You Already Wrote One
 
-This slide presents the source material for **Convert Constructors** from the authoritative lecture deck.
+- 07.02's constructor: `Temperature(double value = 0.0)`
+- It can be called with one `double`, so the compiler may use it to turn a `double` into a `Temperature`.
+- A constructor that is not `explicit` and can take a single value is a converting constructor.
 
 ::: notes
-
+Reading: textbook section 11.10, Convert Constructors; learncpp 14.16, Converting constructors and the explicit keyword.
 :::
 
-<!-- Slide 46 -->
+<!-- Slide 22 -->
 
 ---
 
-## Conversion Constructor Code
+## Which Constructors Convert from One Value?
 
-This slide presents the source material for **Conversion Constructor Code** from the authoritative lecture deck.
+| Constructor | Converts a single value? |
+|---|---|
+| `Temperature()` | No: takes nothing |
+| `Temperature(double c)` | Yes: `double` to `Temperature` |
+| `Temperature(double c = 0.0)` | Yes: the default does not matter |
+| `Temperature(double c, char unit)` | No: needs two values |
+| `Temperature(double c, char unit = 'C')` | Yes: the second parameter has a default |
 
 ::: notes
-
+Since C++11 any constructor that is not explicit also takes part in brace initialization, so Temperature t = {21.5, 'F'}; uses the two-argument constructor. The table covers conversion from one value, which is the case that happens silently.
 :::
 
-<!-- Slide 47 -->
+<!-- Slide 23 -->
 
 ---
 
-## 11.10 Convert Constructors
+## What the Compiler Builds
 
-This slide presents the source material for **11.10 Convert Constructors** from the authoritative lecture deck.
+- `Temperature today = 21.5;` asks for a `Temperature` built from `21.5`.
+- The compiler calls `Temperature(double)` to build it.
+- No constructor call appears in the source code.
 
 ::: notes
-
+Formally the rule builds a temporary Temperature and initializes today from it. Since C++17 that copy is guaranteed to be skipped, which is why the program printed one constructor call, not two.
 :::
 
-<!-- Slide 48 -->
+<!-- Slide 24 -->
 
 ---
 
-## Convert Constructor
+## You Use This Every Day
 
-This slide presents the source material for **Convert Constructor** from the authoritative lecture deck.
+::: {style="font-size: 80%;"}
+~~~cpp
+#include <iostream>
+#include <string>
+using namespace std;
 
-::: notes
+void greet(const string& name);
 
+int main() {
+    string course = "CISP 400";   // C-string to string
+    greet("Ada");                 // the same conversion, in a call
+    cout << course << endl;
+    return 0;
+}
+
+void greet(const string& name) {
+    cout << "Hello, " << name << endl;
+}
+~~~
 :::
 
-<!-- Slide 49 -->
+::: notes
+string has a converting constructor from a C-string. That conversion is why a string literal works anywhere a string is expected. Here the conversion is convenient on purpose.
+
+Full program: cpp/string_conversion.cpp
+:::
+
+<!-- Slide 25 -->
 
 ---
 
-## Agenda
+## Two Directions, One Class
 
-This slide presents the source material for **Agenda** from the authoritative lecture deck.
+| Direction | Written as | Lives in |
+|---|---|---|
+| `Temperature` to `double` | `operator double() const` | `Temperature` |
+| `double` to `Temperature` | `Temperature(double)` | `Temperature` |
+
+- Add an `operator+` and `today + 5.0` has two possible routes. Topic 5 shows what the compiler does with them.
 
 ::: notes
 
 :::
 
-<!-- Slide 50 -->
+<!-- Slide 26 -->
 
 ---
 
-## Homework 4 Due
+## Summary
 
-This slide presents the source material for **Homework 4 Due** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 51 -->
-
----
-
-## Course Context
-
-This slide presents the source material for **Course Context** from the authoritative lecture deck.
+- A constructor that can take one value converts that value's type into the class.
+- The conversion is convenient when you intend it, as with `string`, and a surprise when you do not.
 
 ::: notes
 
 :::
 
-<!-- Slide 52 -->
-
----
-
-## Key Takeaway
-
-This slide presents the source material for **Key Takeaway** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 53 -->
-
----
-
-## Agenda
-
-This slide presents the source material for **Agenda** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 54 -->
-
----
-
-## What's This Section About?
-
-This slide presents the source material for **What's This Section About?** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 55 -->
+<!-- Slide 27 -->

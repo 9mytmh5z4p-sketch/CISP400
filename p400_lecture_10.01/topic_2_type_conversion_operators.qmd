@@ -1,219 +1,151 @@
 <!-- Topic 2: Type Conversion Operators -->
-<!-- Slides 25–42 -->
+<!-- Slides 12–18 -->
+
 # Type Conversion Operators
+<!-- Slide 11 -->
 
-<!-- Slide 24 -->
+## Teach Temperature to Become a double {.smaller}
 
-## Conversion Operators
-
-This slide presents the source material for **Conversion Operators** from the authoritative lecture deck.
+- `double reading = today;` needs a rule the compiler does not have.
 
 ::: notes
-Slides 25–42
+Slides 12–18
+
+Pick up directly from the error at the end of the review.
 :::
 
-<!-- Slide 25 -->
+<!-- Slide 12 -->
 
 ---
 
-## Writing Conversion Operators
+## Conversion Operator Anatomy
 
-This slide presents the source material for **Writing Conversion Operators** from the authoritative lecture deck.
+| Part | In `operator double() const` |
+|---|---|
+| Keyword | `operator` |
+| Target type | `double` |
+| Return type | None written: the target type is the return type |
+| Parameters | None: the object being converted is the only input |
+| `const` | Converting does not change the object |
+| Body | Returns a value of the target type |
 
 ::: notes
+A conversion operator is a special operator function, like operator() from 09.01. Writing a return type in front of it is a compile error; see the appendix.
 
+Reading: learncpp 21.11, Overloading typecasts.
 :::
 
-<!-- Slide 26 -->
+<!-- Slide 13 -->
 
 ---
 
-## Conversion Example
+## Conversion Operator Anatomy
 
-This slide presents the source material for **Conversion Example** from the authoritative lecture deck.
+::: {style="font-size: 80%;"}
+~~~cpp
+class Temperature {
+private:
+    double celsius;
 
-::: notes
+public:
+    Temperature(double value = 0.0) { celsius = value; }
 
+    // Converts a Temperature to its Celsius value
+    operator double() const { return celsius; }
+};
+
+int main() {
+    Temperature today(21.5);
+
+    double reading = today;          // initialization
+    double warmer = today + 1.5;     // arithmetic
+
+    cout << reading << " " << warmer << endl;
+    return 0;
+}
+~~~
 :::
 
-<!-- Slide 27 -->
+::: notes
+Output: 21.5 23
+
+Temperature has no operator+, so today + 1.5 converts today to double and adds two doubles.
+
+Full program: cpp/temperature_conversion.cpp
+:::
+
+<!-- Slide 14 -->
 
 ---
 
-## Conversion Example
+## Is Zero Degrees False?
 
-This slide presents the source material for **Conversion Example** from the authoritative lecture deck.
+~~~cpp
+Temperature freezing(0.0);
+
+if (freezing) {
+    cout << "warm" << endl;
+} else {
+    cout << "cold" << endl;
+}
+~~~
+
+. . .
+
+Output: `cold`
 
 ::: notes
+Temperature has no operator bool. Ask first whether this compiles at all, then what it prints.
 
+Full program: cpp/zero_degrees.cpp
 :::
 
-<!-- Slide 28 -->
+<!-- Slide 15 -->
 
 ---
 
-## Special Operator Functions
+## One Conversion Leads to Another
 
-This slide presents the source material for **Special Operator Functions** from the authoritative lecture deck.
+| Step | Conversion | Written by |
+|---|---|---|
+| 1 | `Temperature` to `double` | You: `operator double()` |
+| 2 | `double` to `bool` | The compiler: `0.0` is `false` |
+
+- The compiler may add one user-defined conversion to a chain of standard conversions.
 
 ::: notes
-
+The same chain explains int whole = today; dropping the fraction: Temperature to double, then double to int. The compiler never chains two user-defined conversions.
 :::
 
-<!-- Slide 29 -->
+<!-- Slide 16 -->
 
 ---
 
-## Programming Exercise
+## Conversion or Getter?
 
-This slide presents the source material for **Programming Exercise** from the authoritative lecture deck.
+| Ask | Yes | No |
+|---|---|---|
+| Does the object stand for exactly one number? | Conversion operator | Named getter |
+| Would every reader agree which number? | Conversion operator | Named getter |
+
+- `double reading = today;` Celsius or Fahrenheit? The line does not say.
+- `today.getCelsius()` says it.
 
 ::: notes
-
+The decision is about the reader of the calling code. Topic 4 returns to this with a conversion that names its unit in the type.
 :::
 
-<!-- Slide 30 -->
+<!-- Slide 17 -->
 
 ---
 
-## Exercise Goals
+## Summary
 
-This slide presents the source material for **Exercise Goals** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 31 -->
-
----
-
-## Exercise
-
-This slide presents the source material for **Exercise** from the authoritative lecture deck.
+- `operator T() const` teaches a class to become a `T`.
+- Write one only when the result has a single obvious meaning; otherwise use a named getter.
 
 ::: notes
 
 :::
 
-<!-- Slide 32 -->
-
----
-
-## Exercise
-
-This slide presents the source material for **Exercise** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 33 -->
-
----
-
-## Exercise Setup
-
-This slide presents the source material for **Exercise Setup** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 34 -->
-
----
-
-## Primitive Conversion
-
-This slide presents the source material for **Primitive Conversion** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 35 -->
-
----
-
-## What Happens When
-
-This slide presents the source material for **What Happens When** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 36 -->
-
----
-
-## Placeholders
-
-This slide presents the source material for **Placeholders** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 37 -->
-
----
-
-## Segmentation Fault
-
-This slide presents the source material for **Segmentation Fault** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 38 -->
-
----
-
-## Unions and Variants
-
-This slide presents the source material for **Unions and Variants** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 39 -->
-
----
-
-## Video Resource
-
-This slide presents the source material for **Video Resource** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 40 -->
-
----
-
-## Video
-
-This slide presents the source material for **Video** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 41 -->
-
----
-
-## Conversion Boundary
-
-This slide presents the source material for **Conversion Boundary** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 42 -->
+<!-- Slide 18 -->

@@ -1,8 +1,14 @@
 # Last Time
 
 ::: {.incremental}
-+ **Object-oriented programming**
-+ **Operator overloading**
++ **Functor Review**
++ **Lambda Expressions**
++ **Captures and Closures**
++ **Lambdas with STL Algorithms**
+:::
+
+::: notes
+Last time (Oct 22) replaced named functor classes with lambdas. A lambda is an unnamed function object the compiler writes for you; its capture list stores outside values as members of that object. We passed lambdas to count_if, find_if, and sort. Today starts with a short lambda review, then turns to how class objects convert to and from other types.
 :::
 
 <!-- Slide 2 -->
@@ -18,8 +24,6 @@
 - Unit Testing
 
 <!-- Slide 3 -->
-
-{{< include topic_course_framing.qmd >}}
 
 {{< include topic_1_lambda_and_functor_review.qmd >}}
 
@@ -39,23 +43,468 @@
 
 # Key Takeaways
 
-- Conversion syntax must preserve clear type intent; mark one-argument constructors explicit unless the conversion is intended.
-- Operators and constructors should maintain predictable object behavior.
-- A kept unit test is a regression test: it stops a fixed bug from returning.
+- A class converts through `operator T()` or a constructor that takes one value, and both run without being called.
+- Mark conversions `explicit` unless the target names the meaning and nothing is lost.
+- Return `*this` by reference when a call changes its object, so chains keep working on the same object.
+- *Unit* says what a test covers; *regression* says why you keep rerunning it.
 
-<!-- Slide 118 -->
+<!-- Slide 79 -->
 
 ---
 
 # Next Time
 
-<!-- Slide 119 -->
+- Class Relationships, Aggregation, and Composition (Thursday, November 5)
+
+<!-- Slide 80 -->
 
 ---
 
 # Appendix
 
-<!-- Slide 120 -->
+<!-- Slide 81 -->
+
+## Lambda and Functor Review: Good Practices
+
+- Prefer a lambda to a functor class that is used once.
+- Capture only the variables the body uses.
+- Capture by value unless the lambda must change or track the original.
+- State the return type when the branches could deduce different types.
+
+<!-- Slide 82 -->
+
+---
+
+## Lambda and Functor Review: Common Mistakes
+
+- Capturing by reference a variable that is gone before the lambda runs.
+- Expecting a by-value capture to see later changes to the original.
+- Changing a by-value capture without `mutable`.
+- Letting `-> int` silently drop a fraction.
+
+<!-- Slide 83 -->
+
+---
+
+## Lambda and Functor Review: More Examples
+
+~~~cpp
+vector<int> scores = {72, 88, 95, 61, 79};
+int passing = 70;
+
+auto passed = count_if(scores.begin(), scores.end(),
+                       [passing](int s) { return s >= passing; });
+cout << passed << endl;   // 4
+~~~
+
+<!-- Slide 84 -->
+
+---
+
+## Lambda and Functor Review: Practice Problems
+
+1. Rewrite an `IsEven` functor as a lambda passed to `count_if`.
+2. Predict the output when `for_each` runs a lambda that increments a counter captured by reference.
+3. Write a lambda with `-> double` that averages two `int` values, and test it with 3 and 4.
+
+<!-- Slide 85 -->
+
+---
+
+## Lambda and Functor Review: AI Search Terms
+
+- C++ lambda capture by value versus by reference
+- C++ closure object
+- count_if with a lambda predicate
+- C++ lambda trailing return type
+- implicit conversion from double to int truncation
+
+<!-- Slide 86 -->
+
+---
+
+## Lambda and Functor Review: Questions for Reflection
+
+- Why does a by-value capture keep the old value?
+- When would you still write a named functor class?
+- Why does the compiler stay silent when `-> int` drops a fraction?
+
+<!-- Slide 87 -->
+
+---
+
+## Type Conversion Operators: Good Practices
+
+- Mark conversion operators `const`.
+- Write a conversion operator only when the result has one obvious meaning.
+- Use a named getter when the unit or meaning could be misread.
+- Give a class at most one conversion to a built-in type.
+
+<!-- Slide 88 -->
+
+---
+
+## Type Conversion Operators: Common Mistakes
+
+- Writing a return type: `double operator double()` does not compile.
+- Forgetting `const`, so a `const` object cannot convert.
+- Adding both `operator int()` and `operator double()`, which creates ambiguous calls.
+- Relying on an implicit conversion in a condition, as when zero degrees tested false.
+
+<!-- Slide 89 -->
+
+---
+
+## Type Conversion Operators: More Examples
+
+~~~cpp
+class Percent {
+private:
+    int points;
+
+public:
+    Percent(int value) { points = value; }
+    operator double() const { return points / 100.0; }
+};
+
+Percent tax(8);
+double price = 50.0 * (1 + tax);   // 54
+~~~
+
+<!-- Slide 90 -->
+
+---
+
+## Type Conversion Operators: Practice Problems
+
+1. Add `operator double()` to a `Money` class that stores cents, so a `Money` value converts to dollars.
+2. Explain why `if (balance)` compiles for that class and what it means.
+3. Decide between a conversion operator and a getter for a `Distance` class that stores meters, and justify the choice.
+
+<!-- Slide 91 -->
+
+---
+
+## Type Conversion Operators: AI Search Terms
+
+- C++ conversion operator
+- C++ user-defined conversion function
+- C++ overload operator double
+- C++ implicit conversion sequence
+- conversion operator versus getter
+
+<!-- Slide 92 -->
+
+---
+
+## Type Conversion Operators: Questions for Reflection
+
+- Why does a conversion operator have no return type?
+- How did a temperature of zero become `false`?
+- When is a named getter clearer than a conversion?
+
+<!-- Slide 93 -->
+
+---
+
+## Conversion Constructors: Good Practices
+
+- Treat every constructor that takes one value as a conversion.
+- Mark it `explicit` unless the conversion is intended.
+- Check default arguments: a default on the second parameter creates a one-value constructor.
+
+<!-- Slide 94 -->
+
+---
+
+## Conversion Constructors: Common Mistakes
+
+- Adding a default to a second parameter and creating a conversion by accident.
+- Assuming a constructor runs only when it is called by name.
+- Expecting the compiler to chain two user-defined conversions.
+
+<!-- Slide 95 -->
+
+---
+
+## Conversion Constructors: More Examples
+
+~~~cpp
+class Grade {
+private:
+    int score;
+
+public:
+    Grade(int value = 0) { score = value; }
+    int value() const { return score; }
+};
+
+void record(const Grade& g);
+
+record(91);          // 91 becomes a Grade
+Grade final = 88;    // 88 becomes a Grade
+~~~
+
+<!-- Slide 96 -->
+
+---
+
+## Conversion Constructors: Practice Problems
+
+1. For five given constructors, decide which ones convert a single value.
+2. Add a print statement to a converting constructor and count its calls in a program with three conversions.
+3. Explain why `string s = "hi";` compiles.
+
+<!-- Slide 97 -->
+
+---
+
+## Conversion Constructors: AI Search Terms
+
+- C++ converting constructor
+- C++ implicit constructor conversion
+- C++ copy initialization versus direct initialization
+- C++17 guaranteed copy elision
+- std::string constructor from a C-string
+
+<!-- Slide 98 -->
+
+---
+
+## Conversion Constructors: Questions for Reflection
+
+- Did you intend `Temperature(double value = 0.0)` to be a conversion when you wrote it?
+- Why does a default on the second parameter matter?
+- Why is `string`'s conversion helpful when `Roster`'s is not?
+
+<!-- Slide 99 -->
+
+---
+
+## Object Conversions: Good Practices
+
+- Write one conversion between any two classes.
+- Put it in the class you own; when you own both, prefer the converting constructor.
+- Keep a conversion implicit only when the target names the meaning and nothing is lost.
+
+<!-- Slide 100 -->
+
+---
+
+## Object Conversions: Common Mistakes
+
+- Writing both a converting constructor and a conversion operator for the same pair of classes.
+- Forgetting that assignment builds a temporary before it assigns.
+- Converting to a bare built-in type that hides the unit.
+
+<!-- Slide 101 -->
+
+---
+
+## Object Conversions: More Examples
+
+~~~cpp
+class Meters {
+private:
+    double value;
+
+public:
+    Meters(double v = 0.0) { value = v; }
+    double get() const { return value; }
+};
+
+class Feet {
+private:
+    double value;
+
+public:
+    Feet(const Meters& m) { value = m.get() * 3.28084; }
+    double get() const { return value; }
+};
+
+Feet height = Meters(2.0);   // 6.56168
+~~~
+
+<!-- Slide 102 -->
+
+---
+
+## Object Conversions: Practice Problems
+
+1. Write a `Kelvin` class with a converting constructor from `Temperature`.
+2. Label every conversion in a given program as copy initialization, assignment, argument passing, or return.
+3. Decide whether a conversion from `Meters` to `int` should be implicit, and justify the answer.
+
+<!-- Slide 103 -->
+
+---
+
+## Object Conversions: AI Search Terms
+
+- C++ conversion between two classes
+- converting constructor versus conversion operator
+- C++ ambiguous user-defined conversion
+- C++ first-class objects
+- std::chrono duration implicit conversion
+
+<!-- Slide 104 -->
+
+---
+
+## Object Conversions: Questions for Reflection
+
+- Why prefer the constructor when you own both classes?
+- Which of the four conversion places is easiest to miss?
+- What made `Temperature` a first-class object?
+
+<!-- Slide 105 -->
+
+---
+
+## Conversion Safety: Good Practices
+
+- Declare one-value constructors and conversion operators `explicit` by default.
+- Use `= delete` to forbid specific argument types.
+- Use `static_cast` to state an intended conversion.
+- Make `operator bool()` explicit when it reports whether an object is valid.
+
+<!-- Slide 106 -->
+
+---
+
+## Conversion Safety: Common Mistakes
+
+- Expecting `explicit` to stop direct initialization such as `Roster r(2.7);`.
+- Writing a non-explicit `operator bool()`, so the object can sneak into arithmetic.
+- Leaving both conversion directions implicit and then adding an `operator+`.
+
+<!-- Slide 107 -->
+
+---
+
+## Conversion Safety: More Examples
+
+~~~cpp
+class Connection {
+private:
+    bool open;
+
+public:
+    Connection(bool state) { open = state; }
+    explicit operator bool() const { return open; }
+};
+
+Connection link(true);
+if (link) { cout << "connected" << endl; }   // allowed
+// int n = link + 1;                          // error
+~~~
+
+<!-- Slide 108 -->
+
+---
+
+## Conversion Safety: Practice Problems
+
+1. Mark `Roster(int)` explicit and fix every call that stops compiling.
+2. Add a deleted constructor that stops `Roster(2.7)`.
+3. Resolve the `t + 5.0` ambiguity two different ways, and explain which you prefer.
+
+<!-- Slide 109 -->
+
+---
+
+## Conversion Safety: AI Search Terms
+
+- C++ explicit constructor
+- C++ explicit conversion operator
+- C++ contextual conversion to bool
+- C++ deleted functions
+- C++ ambiguous overload with user-defined conversions
+- C++ Core Guidelines C.46
+
+<!-- Slide 110 -->
+
+---
+
+## Conversion Safety: Questions for Reflection
+
+- Why did the standard library make `vector`'s size constructor explicit?
+- Why does an explicit `operator bool()` still work in an `if`?
+- When would you leave a conversion implicit?
+
+<!-- Slide 111 -->
+
+---
+
+## Operator Chaining: Good Practices
+
+- Return `*this` by reference from `=`, `+=`, `<<`, and setters.
+- Return a new object by value from `+`, `-`, and `*`.
+- Take the right-hand side as `const` reference.
+- Compile with `-Wall` so g++ warns about references to locals.
+
+<!-- Slide 112 -->
+
+---
+
+## Operator Chaining: Common Mistakes
+
+- Returning by value from `+=` or a setter, so the next link changes a copy.
+- Returning a reference to a local variable.
+- Returning `ostream` by value from `operator<<`.
+
+<!-- Slide 113 -->
+
+---
+
+## Operator Chaining: More Examples
+
+~~~cpp
+// operator+ built from operator+=
+Temperature operator+(Temperature lhs, const Temperature& rhs) {
+    lhs += rhs;
+    return lhs;
+}
+
+Temperature t(30.0);
+(t -= 5.0) -= 3.0;   // t is 22 when -= returns Temperature&
+~~~
+
+<!-- Slide 114 -->
+
+---
+
+## Operator Chaining: Practice Problems
+
+1. Add `operator*=` to `Temperature` so that it chains.
+2. Write chained setters for a `Course` class with a name, units, and room.
+3. Find the bug in an `operator+` that returns `Temperature&`.
+
+<!-- Slide 115 -->
+
+---
+
+## Operator Chaining: AI Search Terms
+
+- C++ return *this by reference
+- C++ operator chaining
+- C++ method chaining
+- why operator<< returns ostream reference
+- C++ dangling reference to a local variable
+
+<!-- Slide 116 -->
+
+---
+
+## Operator Chaining: Questions for Reflection
+
+- Why can `+` return by value while `+=` should not?
+- What breaks if `operator<<` returned `ostream` by value?
+- How would a unit test catch the setter bug?
+
+<!-- Slide 117 -->
+
+---
 
 ## Unit Testing: Good Practices
 
@@ -64,7 +513,7 @@
 - Print each test's name as it runs so a failure is easy to locate.
 - Set RUN_TESTS back to true and rerun the suite after every change.
 
-<!-- Slide 121 -->
+<!-- Slide 118 -->
 
 ---
 
@@ -74,9 +523,10 @@
 - Comparing doubles with == instead of within a tolerance.
 - Copying the expected value from the program's own output, so the test can never fail.
 - Using assert for test checks, which NDEBUG silently removes.
+- Writing a test that breaks a precondition, which aborts the run or, with NDEBUG, corrupts the object being tested.
 - Making data public just so a test can read it.
 
-<!-- Slide 122 -->
+<!-- Slide 119 -->
 
 ---
 
@@ -102,7 +552,7 @@ bool testCurveNeverExceeds100() {
 }
 ~~~
 
-<!-- Slide 123 -->
+<!-- Slide 120 -->
 
 ---
 
@@ -112,7 +562,7 @@ bool testCurveNeverExceeds100() {
 2. Write three unit tests for the MultiplyBy functor from 09.01.
 3. Add a lowestScore member function to Gradebook. Write its tests first, watch them fail, then write the function.
 
-<!-- Slide 124 -->
+<!-- Slide 121 -->
 
 ---
 
@@ -125,7 +575,7 @@ bool testCurveNeverExceeds100() {
 - test-driven development
 - GoogleTest death tests
 
-<!-- Slide 125 -->
+<!-- Slide 122 -->
 
 ---
 
@@ -135,4 +585,4 @@ bool testCurveNeverExceeds100() {
 - What would happen to the test results if every test shared one Gradebook object?
 - When a test fails, how do you decide whether the code or the test is wrong?
 
-<!-- Slide 126 -->
+<!-- Slide 123 -->

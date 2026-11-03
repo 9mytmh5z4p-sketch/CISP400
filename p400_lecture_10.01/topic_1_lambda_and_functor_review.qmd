@@ -1,147 +1,116 @@
 <!-- Topic 1: Lambda and Functor Review -->
-<!-- Slides 12–23 -->
+<!-- Slides 5–10 -->
+
 # Lambda and Functor Review
+<!-- Slide 4 -->
 
-<!-- Slide 11 -->
+## Behavior You Can Pass Around? {.smaller}
 
-## Lightning Review Questions
-
-This slide presents the source material for **Lightning Review Questions** from the authoritative lecture deck.
+- Two weeks ago we stopped writing functor classes.
 
 ::: notes
-Slides 12–23
+Slides 5–10
+
+The last class met Oct 22. This is retrieval practice after the two cancelled meetings, not a reteach. Keep the topic to about six minutes.
 :::
 
-<!-- Slide 12 -->
+<!-- Slide 5 -->
 
 ---
 
 ## Lightning Review
 
-This slide presents the source material for **Lightning Review** from the authoritative lecture deck.
-
-::: notes
-
+::: {.incremental}
+- What is a functor?
+  - An object whose class overloads `operator()`.
+- What does the compiler build from a lambda?
+  - An unnamed class with an `operator()`, and one object of that class.
+- What goes inside `[ ]`?
+  - The local variables the lambda captures.
+- What does `count_if` need besides a range?
+  - A predicate: a callable that returns `bool`.
 :::
 
-<!-- Slide 13 -->
+::: notes
+Ask each question aloud and give students a few seconds before revealing the answer.
+:::
+
+<!-- Slide 6 -->
 
 ---
 
-## Lightning Review
+## Value or Reference?
 
-This slide presents the source material for **Lightning Review** from the authoritative lecture deck.
+~~~cpp
+int bonus = 5;
+auto byValue = [bonus](int score) { return score + bonus; };
+auto byReference = [&bonus](int score) { return score + bonus; };
+
+bonus = 10;
+cout << byValue(80) << " " << byReference(80) << endl;
+~~~
+
+. . .
+
+Output: `85 90`
 
 ::: notes
+Have students predict before revealing. The by-value closure copied bonus when the lambda was created, so it still holds 5. The by-reference closure reads bonus at the call, after it became 10.
 
+Full program: cpp/lambda_capture.cpp
 :::
 
-<!-- Slide 14 -->
+<!-- Slide 7 -->
 
 ---
 
-## Lambda Threshold Example
+## Where Did the .9 Go?
 
-This slide presents the source material for **Lambda Threshold Example** from the authoritative lecture deck.
+~~~cpp
+auto toWhole = [](double x) -> int { return x; };
+cout << toWhole(3.9) << endl;
+~~~
+
+. . .
+
+Output: `3`
 
 ::: notes
+The trailing return type says int, so the compiler converts the double to int on the way out. The fraction is dropped, not rounded, and with the default warning flags g++ says nothing.
 
+Full program: cpp/lambda_truncate.cpp
 :::
 
-<!-- Slide 15 -->
+<!-- Slide 8 -->
 
 ---
 
-## Generic Lambda Format
+## Silent Conversions
 
-This slide presents the source material for **Generic Lambda Format** from the authoritative lecture deck.
+- Built-in types convert to each other without being asked.
+- Some conversions lose data: `double` to `int` drops the fraction.
+- A class gets no conversions unless you write them:
+
+~~~cpp
+Temperature today(21.5);
+double reading = today;   // error: no conversion to double
+~~~
 
 ::: notes
-
+Temperature is the class from 07.02. This is the question for the rest of today: how does a class convert, and how do we keep its conversions from surprising us?
 :::
 
-<!-- Slide 16 -->
+<!-- Slide 9 -->
 
 ---
 
-## Preferred Lambda Syntax
+## Summary
 
-This slide presents the source material for **Preferred Lambda Syntax** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 17 -->
-
----
-
-## Explicit Conversion
-
-This slide presents the source material for **Explicit Conversion** from the authoritative lecture deck.
+- A lambda is a functor the compiler writes; its captures become members.
+- The compiler converts built-in types silently, and some of those conversions lose data.
 
 ::: notes
 
 :::
 
-<!-- Slide 18 -->
-
----
-
-## Desk Check Exercise
-
-This slide presents the source material for **Desk Check Exercise** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 19 -->
-
----
-
-## Exercise Goals
-
-This slide presents the source material for **Exercise Goals** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 20 -->
-
----
-
-## Desk Check Exercise
-
-This slide presents the source material for **Desk Check Exercise** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 21 -->
-
----
-
-## Double and Integer Output
-
-This slide presents the source material for **Double and Integer Output** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 22 -->
-
----
-
-## Review
-
-This slide presents the source material for **Review** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 23 -->
+<!-- Slide 10 -->
