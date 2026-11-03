@@ -6,6 +6,7 @@
 
 ## Teach Temperature to Become a double {.smaller}
 
+- `Temperature today(21.5);`
 - `double reading = today;` needs a rule the compiler does not have.
 
 ::: notes

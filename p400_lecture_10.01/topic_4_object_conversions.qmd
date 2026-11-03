@@ -6,12 +6,13 @@
 
 ## Can One Class Become Another? {.smaller}
 
+- `Temperature today(20.0);` holds Celsius; a new `Fahrenheit` class holds Fahrenheit.
 - `Fahrenheit report = today;`
 
 ::: notes
 Slides 29–37
 
-Fahrenheit is a new class that stores degrees Fahrenheit. today is still the Celsius Temperature.
+today is the same Celsius Temperature as in the earlier topics. Fahrenheit is new: it stores degrees Fahrenheit. The question is whether one class type can convert to another the way Temperature converted to double.
 :::
 
 <!-- Slide 29 -->

@@ -412,6 +412,7 @@ Dr.&nbsp;Caleb Fowler
 <section id="teach-temperature-to-become-a-double" class="slide level2 smaller">
 <h2>Teach Temperature to Become a double</h2>
 <ul>
+<li><code>Temperature today(21.5);</code></li>
 <li><code>double reading = today;</code> needs a rule the compiler does not have.</li>
 </ul>
 <aside class="notes">
@@ -936,11 +937,12 @@ Dr.&nbsp;Caleb Fowler
 <section id="can-one-class-become-another" class="slide level2 smaller">
 <h2>Can One Class Become Another?</h2>
 <ul>
+<li><code>Temperature today(20.0);</code> holds Celsius; a new <code>Fahrenheit</code> class holds Fahrenheit.</li>
 <li><code>Fahrenheit report = today;</code></li>
 </ul>
 <aside class="notes">
 <p>Slides 29–37</p>
-<p>Fahrenheit is a new class that stores degrees Fahrenheit. today is still the Celsius Temperature.</p>
+<p>today is the same Celsius Temperature as in the earlier topics. Fahrenheit is new: it stores degrees Fahrenheit. The question is whether one class type can convert to another the way Temperature converted to double.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1407,9 +1409,12 @@ Dr.&nbsp;Caleb Fowler
 <h2>explicit Conversion Operators</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href=""></a><span class="kw">explicit</span> <span class="kw">operator</span> <span class="dt">double</span><span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> celsius<span class="op">;</span> <span class="op">}</span></span>
 <span id="cb16-2"><a href=""></a></span>
-<span id="cb16-3"><a href=""></a><span class="dt">double</span> a <span class="op">=</span> today<span class="op">;</span>                       <span class="co">// error</span></span>
-<span id="cb16-4"><a href=""></a><span class="dt">double</span> b <span class="op">=</span> <span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;(</span>today<span class="op">);</span>  <span class="co">// fine</span></span>
-<span id="cb16-5"><a href=""></a><span class="cf">if</span> <span class="op">(</span>freezing<span class="op">)</span> <span class="op">{</span> <span class="op">}</span>                       <span class="co">// error: zero is no longer false</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-3"><a href=""></a>Temperature today<span class="op">(</span><span class="fl">21.5</span><span class="op">);</span></span>
+<span id="cb16-4"><a href=""></a>Temperature freezing<span class="op">(</span><span class="fl">0.0</span><span class="op">);</span></span>
+<span id="cb16-5"><a href=""></a></span>
+<span id="cb16-6"><a href=""></a><span class="dt">double</span> a <span class="op">=</span> today<span class="op">;</span>                       <span class="co">// error</span></span>
+<span id="cb16-7"><a href=""></a><span class="dt">double</span> b <span class="op">=</span> <span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;(</span>today<span class="op">);</span>  <span class="co">// fine</span></span>
+<span id="cb16-8"><a href=""></a><span class="cf">if</span> <span class="op">(</span>freezing<span class="op">)</span> <span class="op">{</span> <span class="op">}</span>                       <span class="co">// error: zero is no longer false</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
 <p>g++ reports the if as: invalid user-defined conversion from ‘Temperature’ to ‘bool’. The cast states the intent, so it is allowed.</p>
 <style type="text/css">

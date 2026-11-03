@@ -117,6 +117,9 @@ explicit does not stop direct initialization, so without the deleted overload Ro
 ~~~cpp
 explicit operator double() const { return celsius; }
 
+Temperature today(21.5);
+Temperature freezing(0.0);
+
 double a = today;                       // error
 double b = static_cast<double>(today);  // fine
 if (freezing) { }                       // error: zero is no longer false
