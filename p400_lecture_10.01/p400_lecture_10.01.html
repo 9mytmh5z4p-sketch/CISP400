@@ -209,9 +209,24 @@ Dr.&nbsp;Caleb Fowler
 <section id="last-time" class="title-slide slide level1 center">
 <h1>Last Time</h1>
 <ul>
-<li class="fragment"><strong>Object-oriented programming</strong></li>
-<li class="fragment"><strong>Operator overloading</strong></li>
+<li class="fragment"><strong>Functor Review</strong></li>
+<li class="fragment"><strong>Lambda Expressions</strong></li>
+<li class="fragment"><strong>Captures and Closures</strong></li>
+<li class="fragment"><strong>Lambdas with STL Algorithms</strong></li>
 </ul>
+<aside class="notes">
+<p>Last time (Oct 22) replaced named functor classes with lambdas. A lambda is an unnamed function object the compiler writes for you; its capture list stores outside values as members of that object. We passed lambdas to count_if, find_if, and sort. Today starts with a short lambda review, then turns to how class objects convert to and from other types.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 2 -->
 </section>
 
@@ -227,20 +242,23 @@ Dr.&nbsp;Caleb Fowler
 <li>Unit Testing</li>
 </ul>
 <!-- Slide 3 -->
-<!-- Course Framing -->
+<!-- Topic 1: Lambda and Functor Review -->
 <!-- Slides 5–10 -->
 </section>
 
 <section>
-<section id="course-framing" class="title-slide slide level1 center">
-<h1>Course Framing</h1>
+<section id="lambda-and-functor-review" class="title-slide slide level1 center">
+<h1>Lambda and Functor Review</h1>
 <!-- Slide 4 -->
 </section>
-<section id="cisp-400" class="slide level2">
-<h2>CISP 400</h2>
-<p>This slide presents the source material for <strong>CISP 400</strong> from the authoritative lecture deck.</p>
+<section id="behavior-you-can-pass-around" class="slide level2 smaller">
+<h2>Behavior You Can Pass Around?</h2>
+<ul>
+<li>Two weeks ago we stopped writing functor classes.</li>
+</ul>
 <aside class="notes">
 <p>Slides 5–10</p>
+<p>The last class met Oct 22. This is retrieval practice after the two cancelled meetings, not a reteach. Keep the topic to about six minutes.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -254,11 +272,28 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 5 -->
 </section>
-<section id="chapter-11-more-oop" class="slide level2">
-<h2>Chapter 11 More OOP</h2>
-<p>This slide presents the source material for <strong>Chapter 11 More OOP</strong> from the authoritative lecture deck.</p>
+<section id="lightning-review" class="slide level2">
+<h2>Lightning Review</h2>
+<ul>
+<li class="fragment">What is a functor?
+<ul>
+<li class="fragment">An object whose class overloads <code>operator()</code>.</li>
+</ul></li>
+<li class="fragment">What does the compiler build from a lambda?
+<ul>
+<li class="fragment">An unnamed class with an <code>operator()</code>, and one object of that class.</li>
+</ul></li>
+<li class="fragment">What goes inside <code>[ ]</code>?
+<ul>
+<li class="fragment">The local variables the lambda captures.</li>
+</ul></li>
+<li class="fragment">What does <code>count_if</code> need besides a range?
+<ul>
+<li class="fragment">A predicate: a callable that returns <code>bool</code>.</li>
+</ul></li>
+</ul>
 <aside class="notes">
-
+<p>Ask each question aloud and give students a few seconds before revealing the answer.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -272,11 +307,19 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 6 -->
 </section>
-<section id="course-context" class="slide level2">
-<h2>Course Context</h2>
-<p>This slide presents the source material for <strong>Course Context</strong> from the authoritative lecture deck.</p>
+<section id="value-or-reference" class="slide level2">
+<h2>Value or Reference?</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a><span class="dt">int</span> bonus <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb1-2"><a href=""></a><span class="kw">auto</span> byValue <span class="op">=</span> <span class="op">[</span>bonus<span class="op">](</span><span class="dt">int</span> score<span class="op">)</span> <span class="op">{</span> <span class="cf">return</span> score <span class="op">+</span> bonus<span class="op">;</span> <span class="op">};</span></span>
+<span id="cb1-3"><a href=""></a><span class="kw">auto</span> byReference <span class="op">=</span> <span class="op">[&amp;</span>bonus<span class="op">](</span><span class="dt">int</span> score<span class="op">)</span> <span class="op">{</span> <span class="cf">return</span> score <span class="op">+</span> bonus<span class="op">;</span> <span class="op">};</span></span>
+<span id="cb1-4"><a href=""></a></span>
+<span id="cb1-5"><a href=""></a>bonus <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb1-6"><a href=""></a>cout <span class="op">&lt;&lt;</span> byValue<span class="op">(</span><span class="dv">80</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> byReference<span class="op">(</span><span class="dv">80</span><span class="op">)</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment">
+<p>Output: <code>85 90</code></p>
 <aside class="notes">
-
+<p>Have students predict before revealing. The by-value closure copied bonus when the lambda was created, so it still holds 5. The by-reference closure reads bonus at the call, after it became 10.</p>
+<p>Full program: cpp/lambda_capture.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -289,12 +332,17 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 7 -->
+</div>
 </section>
-<section id="agenda" class="slide level2">
-<h2>Agenda</h2>
-<p>This slide presents the source material for <strong>Agenda</strong> from the authoritative lecture deck.</p>
+<section id="where-did-the-.9-go" class="slide level2">
+<h2>Where Did the .9 Go?</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a><span class="kw">auto</span> toWhole <span class="op">=</span> <span class="op">[](</span><span class="dt">double</span> x<span class="op">)</span> <span class="op">-&gt;</span> <span class="dt">int</span> <span class="op">{</span> <span class="cf">return</span> x<span class="op">;</span> <span class="op">};</span></span>
+<span id="cb2-2"><a href=""></a>cout <span class="op">&lt;&lt;</span> toWhole<span class="op">(</span><span class="fl">3.9</span><span class="op">)</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment">
+<p>Output: <code>3</code></p>
 <aside class="notes">
-
+<p>The trailing return type says int, so the compiler converts the double to int on the way out. The fraction is dropped, not rounded, and with the default warning flags g++ says nothing.</p>
+<p>Full program: cpp/lambda_truncate.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -307,12 +355,19 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 8 -->
+</div>
 </section>
-<section id="type-conversion-operators" class="slide level2">
-<h2>11.9 Type Conversion Operators</h2>
-<p>This slide presents the source material for <strong>11.9 Type Conversion Operators</strong> from the authoritative lecture deck.</p>
+<section id="silent-conversions" class="slide level2">
+<h2>Silent Conversions</h2>
+<ul>
+<li>Built-in types convert to each other without being asked.</li>
+<li>Some conversions lose data: <code>double</code> to <code>int</code> drops the fraction.</li>
+<li>A class gets no conversions unless you write them:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a>Temperature today<span class="op">(</span><span class="fl">21.5</span><span class="op">);</span></span>
+<span id="cb3-2"><a href=""></a><span class="dt">double</span> reading <span class="op">=</span> today<span class="op">;</span>   <span class="co">// error: no conversion to double</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
-
+<p>Temperature is the class from 07.02. This is the question for the rest of today: how does a class convert, and how do we keep its conversions from surprising us?</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -326,9 +381,12 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 9 -->
 </section>
-<section id="agenda-1" class="slide level2">
-<h2>Agenda</h2>
-<p>This slide presents the source material for <strong>Agenda</strong> from the authoritative lecture deck.</p>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li>A lambda is a functor the compiler writes; its captures become members.</li>
+<li>The compiler converts built-in types silently, and some of those conversions lose data.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -343,19 +401,22 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 10 -->
-<!-- Topic 1: Lambda and Functor Review -->
-<!-- Slides 12–23 -->
+<!-- Topic 2: Type Conversion Operators -->
+<!-- Slides 12–18 -->
 </section></section>
 <section>
-<section id="lambda-and-functor-review" class="title-slide slide level1 center">
-<h1>Lambda and Functor Review</h1>
+<section id="type-conversion-operators" class="title-slide slide level1 center">
+<h1>Type Conversion Operators</h1>
 <!-- Slide 11 -->
 </section>
-<section id="lightning-review-questions" class="slide level2">
-<h2>Lightning Review Questions</h2>
-<p>This slide presents the source material for <strong>Lightning Review Questions</strong> from the authoritative lecture deck.</p>
+<section id="teach-temperature-to-become-a-double" class="slide level2 smaller">
+<h2>Teach Temperature to Become a double</h2>
+<ul>
+<li><code>double reading = today;</code> needs a rule the compiler does not have.</li>
+</ul>
 <aside class="notes">
-<p>Slides 12–23</p>
+<p>Slides 12–18</p>
+<p>Pick up directly from the error at the end of the review.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -369,11 +430,45 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 12 -->
 </section>
-<section id="lightning-review" class="slide level2">
-<h2>Lightning Review</h2>
-<p>This slide presents the source material for <strong>Lightning Review</strong> from the authoritative lecture deck.</p>
+<section id="conversion-operator-anatomy" class="slide level2">
+<h2>Conversion Operator Anatomy</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Part</th>
+<th>In <code>operator double() const</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Keyword</td>
+<td><code>operator</code></td>
+</tr>
+<tr class="even">
+<td>Target type</td>
+<td><code>double</code></td>
+</tr>
+<tr class="odd">
+<td>Return type</td>
+<td>None written: the target type is the return type</td>
+</tr>
+<tr class="even">
+<td>Parameters</td>
+<td>None: the object being converted is the only input</td>
+</tr>
+<tr class="odd">
+<td><code>const</code></td>
+<td>Converting does not change the object</td>
+</tr>
+<tr class="even">
+<td>Body</td>
+<td>Returns a value of the target type</td>
+</tr>
+</tbody>
+</table>
 <aside class="notes">
-
+<p>A conversion operator is a special operator function, like operator() from 09.01. Writing a return type in front of it is a compile error; see the appendix.</p>
+<p>Reading: learncpp 21.11, Overloading typecasts.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -387,11 +482,34 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 13 -->
 </section>
-<section id="lightning-review-1" class="slide level2">
-<h2>Lightning Review</h2>
-<p>This slide presents the source material for <strong>Lightning Review</strong> from the authoritative lecture deck.</p>
+<section id="conversion-operator-anatomy-1" class="slide level2">
+<h2>Conversion Operator Anatomy</h2>
+<div style="font-size: 80%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href=""></a><span class="kw">class</span> Temperature <span class="op">{</span></span>
+<span id="cb4-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb4-3"><a href=""></a>    <span class="dt">double</span> celsius<span class="op">;</span></span>
+<span id="cb4-4"><a href=""></a></span>
+<span id="cb4-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb4-6"><a href=""></a>    Temperature<span class="op">(</span><span class="dt">double</span> value <span class="op">=</span> <span class="fl">0.0</span><span class="op">)</span> <span class="op">{</span> celsius <span class="op">=</span> value<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb4-7"><a href=""></a></span>
+<span id="cb4-8"><a href=""></a>    <span class="co">// Converts a Temperature to its Celsius value</span></span>
+<span id="cb4-9"><a href=""></a>    <span class="kw">operator</span> <span class="dt">double</span><span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> celsius<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb4-10"><a href=""></a><span class="op">};</span></span>
+<span id="cb4-11"><a href=""></a></span>
+<span id="cb4-12"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-13"><a href=""></a>    Temperature today<span class="op">(</span><span class="fl">21.5</span><span class="op">);</span></span>
+<span id="cb4-14"><a href=""></a></span>
+<span id="cb4-15"><a href=""></a>    <span class="dt">double</span> reading <span class="op">=</span> today<span class="op">;</span>          <span class="co">// initialization</span></span>
+<span id="cb4-16"><a href=""></a>    <span class="dt">double</span> warmer <span class="op">=</span> today <span class="op">+</span> <span class="fl">1.5</span><span class="op">;</span>     <span class="co">// arithmetic</span></span>
+<span id="cb4-17"><a href=""></a></span>
+<span id="cb4-18"><a href=""></a>    cout <span class="op">&lt;&lt;</span> reading <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> warmer <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb4-19"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-20"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <aside class="notes">
-
+<p>Output: 21.5 23</p>
+<p>Temperature has no operator+, so today + 1.5 converts today to double and adds two doubles.</p>
+<p>Full program: cpp/temperature_conversion.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -405,11 +523,20 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 14 -->
 </section>
-<section id="lambda-threshold-example" class="slide level2">
-<h2>Lambda Threshold Example</h2>
-<p>This slide presents the source material for <strong>Lambda Threshold Example</strong> from the authoritative lecture deck.</p>
+<section id="is-zero-degrees-false" class="slide level2">
+<h2>Is Zero Degrees False?</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a>Temperature freezing<span class="op">(</span><span class="fl">0.0</span><span class="op">);</span></span>
+<span id="cb5-2"><a href=""></a></span>
+<span id="cb5-3"><a href=""></a><span class="cf">if</span> <span class="op">(</span>freezing<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"warm"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb5-5"><a href=""></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb5-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"cold"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb5-7"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment">
+<p>Output: <code>cold</code></p>
 <aside class="notes">
-
+<p>Temperature has no operator bool. Ask first whether this compiles at all, then what it prints.</p>
+<p>Full program: cpp/zero_degrees.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -422,12 +549,36 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 15 -->
+</div>
 </section>
-<section id="generic-lambda-format" class="slide level2">
-<h2>Generic Lambda Format</h2>
-<p>This slide presents the source material for <strong>Generic Lambda Format</strong> from the authoritative lecture deck.</p>
+<section id="one-conversion-leads-to-another" class="slide level2">
+<h2>One Conversion Leads to Another</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Conversion</th>
+<th>Written by</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><code>Temperature</code> to <code>double</code></td>
+<td>You: <code>operator double()</code></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><code>double</code> to <code>bool</code></td>
+<td>The compiler: <code>0.0</code> is <code>false</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The compiler may add one user-defined conversion to a chain of standard conversions.</li>
+</ul>
 <aside class="notes">
-
+<p>The same chain explains int whole = today; dropping the fraction: Temperature to double, then double to int. The compiler never chains two user-defined conversions.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -441,11 +592,40 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 16 -->
 </section>
-<section id="preferred-lambda-syntax" class="slide level2">
-<h2>Preferred Lambda Syntax</h2>
-<p>This slide presents the source material for <strong>Preferred Lambda Syntax</strong> from the authoritative lecture deck.</p>
+<section id="conversion-or-getter" class="slide level2">
+<h2>Conversion or Getter?</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ask</th>
+<th>Yes</th>
+<th>No</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Does the object stand for exactly one number?</td>
+<td>Conversion operator</td>
+<td>Named getter</td>
+</tr>
+<tr class="even">
+<td>Would every reader agree which number?</td>
+<td>Conversion operator</td>
+<td>Named getter</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>double reading = today;</code> Celsius or Fahrenheit? The line does not say.</li>
+<li><code>today.getCelsius()</code> says it.</li>
+</ul>
 <aside class="notes">
-
+<p>The decision is about the reader of the calling code. Topic 4 returns to this with a conversion that names its unit in the type.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -459,9 +639,12 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 17 -->
 </section>
-<section id="explicit-conversion" class="slide level2">
-<h2>Explicit Conversion</h2>
-<p>This slide presents the source material for <strong>Explicit Conversion</strong> from the authoritative lecture deck.</p>
+<section id="summary-1" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li><code>operator T() const</code> teaches a class to become a <code>T</code>.</li>
+<li>Write one only when the result has a single obvious meaning; otherwise use a named getter.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -476,30 +659,23 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 18 -->
-</section>
-<section id="desk-check-exercise" class="slide level2">
-<h2>Desk Check Exercise</h2>
-<p>This slide presents the source material for <strong>Desk Check Exercise</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<!-- Topic 3: Conversion Constructors -->
+<!-- Slides 20–27 -->
+</section></section>
+<section>
+<section id="conversion-constructors" class="title-slide slide level1 center">
+<h1>Conversion Constructors</h1>
 <!-- Slide 19 -->
 </section>
-<section id="exercise-goals" class="slide level2">
-<h2>Exercise Goals</h2>
-<p>This slide presents the source material for <strong>Exercise Goals</strong> from the authoritative lecture deck.</p>
+<section id="going-the-other-way" class="slide level2 smaller">
+<h2>Going the Other Way?</h2>
+<ul>
+<li>Temperature’s constructor: <code>Temperature(double value = 0.0)</code></li>
+<li><code>Temperature today = 21.5;</code> already compiles. Why?</li>
+</ul>
 <aside class="notes">
-
+<p>Slides 20–27</p>
+<p>The constructor can be called with one double, so the compiler uses it to convert 21.5 into a Temperature. Let students guess; slides 21–22 confirm it.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -513,11 +689,31 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 20 -->
 </section>
-<section id="desk-check-exercise-1" class="slide level2">
-<h2>Desk Check Exercise</h2>
-<p>This slide presents the source material for <strong>Desk Check Exercise</strong> from the authoritative lecture deck.</p>
+<section id="how-many-constructor-calls" class="slide level2">
+<h2>How Many Constructor Calls?</h2>
+<div style="font-size: 80%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href=""></a><span class="kw">class</span> Temperature <span class="op">{</span></span>
+<span id="cb6-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb6-3"><a href=""></a>    <span class="dt">double</span> celsius<span class="op">;</span></span>
+<span id="cb6-4"><a href=""></a></span>
+<span id="cb6-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb6-6"><a href=""></a>    Temperature<span class="op">(</span><span class="dt">double</span> value <span class="op">=</span> <span class="fl">0.0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-7"><a href=""></a>        celsius <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb6-8"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Temperature("</span> <span class="op">&lt;&lt;</span> value <span class="op">&lt;&lt;</span> <span class="st">")"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb6-9"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb6-10"><a href=""></a><span class="op">};</span></span>
+<span id="cb6-11"><a href=""></a></span>
+<span id="cb6-12"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb6-13"><a href=""></a>    Temperature today <span class="op">=</span> <span class="fl">21.5</span><span class="op">;</span></span>
+<span id="cb6-14"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"done"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb6-15"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-16"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<p>Output: <code>Temperature(21.5)</code> then <code>done</code></p>
 <aside class="notes">
-
+<p>main never names the constructor, yet it runs once. Let students commit to a number before revealing.</p>
+<p>Full program: cpp/constructor_count.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -530,12 +726,17 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 21 -->
+</div>
 </section>
-<section id="double-and-integer-output" class="slide level2">
-<h2>Double and Integer Output</h2>
-<p>This slide presents the source material for <strong>Double and Integer Output</strong> from the authoritative lecture deck.</p>
+<section id="you-already-wrote-one" class="slide level2">
+<h2>You Already Wrote One</h2>
+<ul>
+<li>07.02’s constructor: <code>Temperature(double value = 0.0)</code></li>
+<li>It can be called with one <code>double</code>, so the compiler may use it to turn a <code>double</code> into a <code>Temperature</code>.</li>
+<li>A constructor that is not <code>explicit</code> and can take a single value is a converting constructor.</li>
+</ul>
 <aside class="notes">
-
+<p>Reading: textbook section 11.10, Convert Constructors; learncpp 14.16, Converting constructors and the explicit keyword.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -549,11 +750,44 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 22 -->
 </section>
-<section id="review" class="slide level2">
-<h2>Review</h2>
-<p>This slide presents the source material for <strong>Review</strong> from the authoritative lecture deck.</p>
+<section id="which-constructors-convert-from-one-value" class="slide level2">
+<h2>Which Constructors Convert from One Value?</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Constructor</th>
+<th>Converts a single value?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Temperature()</code></td>
+<td>No: takes nothing</td>
+</tr>
+<tr class="even">
+<td><code>Temperature(double c)</code></td>
+<td>Yes: <code>double</code> to <code>Temperature</code></td>
+</tr>
+<tr class="odd">
+<td><code>Temperature(double c = 0.0)</code></td>
+<td>Yes: the default does not matter</td>
+</tr>
+<tr class="even">
+<td><code>Temperature(double c, char unit)</code></td>
+<td>No: needs two values</td>
+</tr>
+<tr class="odd">
+<td><code>Temperature(double c, char unit = 'C')</code></td>
+<td>Yes: the second parameter has a default</td>
+</tr>
+</tbody>
+</table>
 <aside class="notes">
-
+<p>Since C++11 any constructor that is not explicit also takes part in brace initialization, so Temperature t = {21.5, ‘F’}; uses the two-argument constructor. The table covers conversion from one value, which is the case that happens silently.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -566,19 +800,52 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 23 -->
-<!-- Topic 2: Type Conversion Operators -->
-<!-- Slides 25–42 -->
-</section></section>
-<section>
-<section id="type-conversion-operators-1" class="title-slide slide level1 center">
-<h1>Type Conversion Operators</h1>
+</section>
+<section id="what-the-compiler-builds" class="slide level2">
+<h2>What the Compiler Builds</h2>
+<ul>
+<li><code>Temperature today = 21.5;</code> asks for a <code>Temperature</code> built from <code>21.5</code>.</li>
+<li>The compiler calls <code>Temperature(double)</code> to build it.</li>
+<li>No constructor call appears in the source code.</li>
+</ul>
+<aside class="notes">
+<p>Formally the rule builds a temporary Temperature and initializes today from it. Since C++17 that copy is guaranteed to be skipped, which is why the program printed one constructor call, not two.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 24 -->
 </section>
-<section id="conversion-operators" class="slide level2">
-<h2>Conversion Operators</h2>
-<p>This slide presents the source material for <strong>Conversion Operators</strong> from the authoritative lecture deck.</p>
+<section id="you-use-this-every-day" class="slide level2">
+<h2>You Use This Every Day</h2>
+<div style="font-size: 80%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb7-2"><a href=""></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
+<span id="cb7-3"><a href=""></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb7-4"><a href=""></a></span>
+<span id="cb7-5"><a href=""></a><span class="dt">void</span> greet<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> name<span class="op">);</span></span>
+<span id="cb7-6"><a href=""></a></span>
+<span id="cb7-7"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb7-8"><a href=""></a>    string course <span class="op">=</span> <span class="st">"CISP 400"</span><span class="op">;</span>   <span class="co">// C-string to string</span></span>
+<span id="cb7-9"><a href=""></a>    greet<span class="op">(</span><span class="st">"Ada"</span><span class="op">);</span>                 <span class="co">// the same conversion, in a call</span></span>
+<span id="cb7-10"><a href=""></a>    cout <span class="op">&lt;&lt;</span> course <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb7-11"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-12"><a href=""></a><span class="op">}</span></span>
+<span id="cb7-13"><a href=""></a></span>
+<span id="cb7-14"><a href=""></a><span class="dt">void</span> greet<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> name<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-15"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Hello, "</span> <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb7-16"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <aside class="notes">
-<p>Slides 25–42</p>
+<p>string has a converting constructor from a C-string. That conversion is why a string literal works anywhere a string is expected. Here the conversion is convenient on purpose.</p>
+<p>Full program: cpp/string_conversion.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -592,9 +859,37 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 25 -->
 </section>
-<section id="writing-conversion-operators" class="slide level2">
-<h2>Writing Conversion Operators</h2>
-<p>This slide presents the source material for <strong>Writing Conversion Operators</strong> from the authoritative lecture deck.</p>
+<section id="two-directions-one-class" class="slide level2">
+<h2>Two Directions, One Class</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Direction</th>
+<th>Written as</th>
+<th>Lives in</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Temperature</code> to <code>double</code></td>
+<td><code>operator double() const</code></td>
+<td><code>Temperature</code></td>
+</tr>
+<tr class="even">
+<td><code>double</code> to <code>Temperature</code></td>
+<td><code>Temperature(double)</code></td>
+<td><code>Temperature</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Add an <code>operator+</code> and <code>today + 5.0</code> has two possible routes. Topic 5 shows what the compiler does with them.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -610,9 +905,12 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 26 -->
 </section>
-<section id="conversion-example" class="slide level2">
-<h2>Conversion Example</h2>
-<p>This slide presents the source material for <strong>Conversion Example</strong> from the authoritative lecture deck.</p>
+<section id="summary-2" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li>A constructor that can take one value converts that value’s type into the class.</li>
+<li>The conversion is convenient when you intend it, as with <code>string</code>, and a surprise when you do not.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -627,30 +925,22 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 27 -->
-</section>
-<section id="conversion-example-1" class="slide level2">
-<h2>Conversion Example</h2>
-<p>This slide presents the source material for <strong>Conversion Example</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<!-- Topic 4: Object Conversions -->
+<!-- Slides 29–37 -->
+</section></section>
+<section>
+<section id="object-conversions" class="title-slide slide level1 center">
+<h1>Object Conversions</h1>
 <!-- Slide 28 -->
 </section>
-<section id="special-operator-functions" class="slide level2">
-<h2>Special Operator Functions</h2>
-<p>This slide presents the source material for <strong>Special Operator Functions</strong> from the authoritative lecture deck.</p>
+<section id="can-one-class-become-another" class="slide level2 smaller">
+<h2>Can One Class Become Another?</h2>
+<ul>
+<li><code>Fahrenheit report = today;</code></li>
+</ul>
 <aside class="notes">
-
+<p>Slides 29–37</p>
+<p>Fahrenheit is a new class that stores degrees Fahrenheit. today is still the Celsius Temperature.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -664,11 +954,32 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 29 -->
 </section>
-<section id="programming-exercise" class="slide level2">
-<h2>Programming Exercise</h2>
-<p>This slide presents the source material for <strong>Programming Exercise</strong> from the authoritative lecture deck.</p>
+<section id="two-places-to-put-the-conversion" class="slide level2">
+<h2>Two Places to Put the Conversion</h2>
+<div class="columns">
+<div class="column" style="font-size: 50%;">
+<p><strong>In the target: a converting constructor</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a><span class="kw">class</span> Fahrenheit <span class="op">{</span></span>
+<span id="cb8-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb8-3"><a href=""></a>    <span class="dt">double</span> degrees<span class="op">;</span></span>
+<span id="cb8-4"><a href=""></a></span>
+<span id="cb8-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb8-6"><a href=""></a>    <span class="co">// Built from a Temperature</span></span>
+<span id="cb8-7"><a href=""></a>    Fahrenheit<span class="op">(</span><span class="at">const</span> Temperature<span class="op">&amp;</span> t<span class="op">);</span></span>
+<span id="cb8-8"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="font-size: 50%;">
+<p><strong>In the source: a conversion operator</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href=""></a><span class="kw">class</span> Temperature <span class="op">{</span></span>
+<span id="cb9-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb9-3"><a href=""></a>    <span class="dt">double</span> celsius<span class="op">;</span></span>
+<span id="cb9-4"><a href=""></a></span>
+<span id="cb9-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb9-6"><a href=""></a>    <span class="co">// Becomes a Fahrenheit</span></span>
+<span id="cb9-7"><a href=""></a>    <span class="kw">operator</span> Fahrenheit<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb9-8"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
 <aside class="notes">
-
+<p>Both make Fahrenheit report = today; compile. The next slide decides between them.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -682,11 +993,35 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 30 -->
 </section>
-<section id="exercise-goals-1" class="slide level2">
-<h2>Exercise Goals</h2>
-<p>This slide presents the source material for <strong>Exercise Goals</strong> from the authoritative lecture deck.</p>
+<section id="which-one-to-write" class="slide level2">
+<h2>Which One to Write?</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>Converting constructor</th>
+<th>Conversion operator</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lives in</td>
+<td><code>Fahrenheit</code>, the target</td>
+<td><code>Temperature</code>, the source</td>
+</tr>
+<tr class="even">
+<td>You must be able to edit</td>
+<td>The target class</td>
+<td>The source class</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Write both and the compiler may reject <code>Fahrenheit report = today;</code> as ambiguous, or quietly pick one.</li>
+<li>Write one, in the class you own. When you own both, prefer the constructor: the class being built controls how it is built.</li>
+</ul>
 <aside class="notes">
-
+<p>Tested with g++: with only the two conversions, g++ reports the conversion as ambiguous. Add Temperature’s operator double and the same line compiles with no warning and uses the constructor. Either way, the author no longer controls which conversion runs.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -700,11 +1035,42 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 31 -->
 </section>
-<section id="exercise" class="slide level2">
-<h2>Exercise</h2>
-<p>This slide presents the source material for <strong>Exercise</strong> from the authoritative lecture deck.</p>
+<section id="temperature-to-fahrenheit" class="slide level2">
+<h2>Temperature to Fahrenheit</h2>
+<div style="font-size: 70%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href=""></a><span class="kw">class</span> Temperature <span class="op">{</span></span>
+<span id="cb10-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb10-3"><a href=""></a>    <span class="dt">double</span> celsius<span class="op">;</span></span>
+<span id="cb10-4"><a href=""></a></span>
+<span id="cb10-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb10-6"><a href=""></a>    Temperature<span class="op">(</span><span class="dt">double</span> value <span class="op">=</span> <span class="fl">0.0</span><span class="op">)</span> <span class="op">{</span> celsius <span class="op">=</span> value<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb10-7"><a href=""></a>    <span class="kw">operator</span> <span class="dt">double</span><span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> celsius<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb10-8"><a href=""></a><span class="op">};</span></span>
+<span id="cb10-9"><a href=""></a></span>
+<span id="cb10-10"><a href=""></a><span class="kw">class</span> Fahrenheit <span class="op">{</span></span>
+<span id="cb10-11"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb10-12"><a href=""></a>    <span class="dt">double</span> degrees<span class="op">;</span></span>
+<span id="cb10-13"><a href=""></a></span>
+<span id="cb10-14"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb10-15"><a href=""></a>    Fahrenheit<span class="op">(</span><span class="dt">double</span> value <span class="op">=</span> <span class="fl">32.0</span><span class="op">)</span> <span class="op">{</span> degrees <span class="op">=</span> value<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb10-16"><a href=""></a></span>
+<span id="cb10-17"><a href=""></a>    <span class="co">// Converts a Celsius Temperature to Fahrenheit</span></span>
+<span id="cb10-18"><a href=""></a>    Fahrenheit<span class="op">(</span><span class="at">const</span> Temperature<span class="op">&amp;</span> t<span class="op">)</span> <span class="op">{</span> degrees <span class="op">=</span> t <span class="op">*</span> <span class="fl">9.0</span> <span class="op">/</span> <span class="fl">5.0</span> <span class="op">+</span> <span class="fl">32.0</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb10-19"><a href=""></a></span>
+<span id="cb10-20"><a href=""></a>    <span class="dt">double</span> value<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> degrees<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb10-21"><a href=""></a><span class="op">};</span></span>
+<span id="cb10-22"><a href=""></a></span>
+<span id="cb10-23"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb10-24"><a href=""></a>    Temperature today<span class="op">(</span><span class="fl">20.0</span><span class="op">);</span></span>
+<span id="cb10-25"><a href=""></a>    Fahrenheit report <span class="op">=</span> today<span class="op">;</span></span>
+<span id="cb10-26"><a href=""></a>    cout <span class="op">&lt;&lt;</span> report<span class="op">.</span>value<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb10-27"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb10-28"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <aside class="notes">
-
+<p>Output: 68</p>
+<p>The constructor reads the Celsius value through operator double from topic 2: t * 9.0 converts t to double first.</p>
+<p>Full program: cpp/fahrenheit_conversion.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -718,11 +1084,24 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 32 -->
 </section>
-<section id="exercise-1" class="slide level2">
-<h2>Exercise</h2>
-<p>This slide presents the source material for <strong>Exercise</strong> from the authoritative lecture deck.</p>
+<section id="spot-the-conversions" class="slide level2">
+<h2>Spot the Conversions</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href=""></a><span class="dt">void</span> show<span class="op">(</span>Fahrenheit f<span class="op">);</span></span>
+<span id="cb11-2"><a href=""></a>Fahrenheit forecast<span class="op">(</span>Temperature t<span class="op">);</span></span>
+<span id="cb11-3"><a href=""></a></span>
+<span id="cb11-4"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb11-5"><a href=""></a>    Temperature today<span class="op">(</span><span class="fl">20.0</span><span class="op">);</span></span>
+<span id="cb11-6"><a href=""></a>    Fahrenheit a <span class="op">=</span> today<span class="op">;</span></span>
+<span id="cb11-7"><a href=""></a>    Fahrenheit b<span class="op">;</span></span>
+<span id="cb11-8"><a href=""></a>    b <span class="op">=</span> today<span class="op">;</span></span>
+<span id="cb11-9"><a href=""></a>    show<span class="op">(</span>today<span class="op">);</span></span>
+<span id="cb11-10"><a href=""></a>    Fahrenheit c <span class="op">=</span> forecast<span class="op">(</span>today<span class="op">);</span></span>
+<span id="cb11-11"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-12"><a href=""></a><span class="op">}</span></span>
+<span id="cb11-13"><a href=""></a></span>
+<span id="cb11-14"><a href=""></a>Fahrenheit forecast<span class="op">(</span>Temperature t<span class="op">)</span> <span class="op">{</span> <span class="cf">return</span> t<span class="op">;</span> <span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
-
+<p>Ask how many times a Temperature becomes a Fahrenheit. Answer: four. The definition of show is omitted; it prints its argument.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -736,11 +1115,24 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 33 -->
 </section>
-<section id="exercise-setup" class="slide level2">
-<h2>Exercise Setup</h2>
-<p>This slide presents the source material for <strong>Exercise Setup</strong> from the authoritative lecture deck.</p>
+<section id="four-places-conversion-happens" class="slide level2">
+<h2>Four Places Conversion Happens</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb12-2"><a href=""></a>    Temperature today<span class="op">(</span><span class="fl">20.0</span><span class="op">);</span></span>
+<span id="cb12-3"><a href=""></a>    Fahrenheit a <span class="op">=</span> today<span class="op">;</span>              <span class="co">// copy initialization</span></span>
+<span id="cb12-4"><a href=""></a>    Fahrenheit b<span class="op">;</span></span>
+<span id="cb12-5"><a href=""></a>    b <span class="op">=</span> today<span class="op">;</span>                         <span class="co">// assignment</span></span>
+<span id="cb12-6"><a href=""></a>    show<span class="op">(</span>today<span class="op">);</span>                       <span class="co">// passing to a function</span></span>
+<span id="cb12-7"><a href=""></a>    Fahrenheit c <span class="op">=</span> forecast<span class="op">(</span>today<span class="op">);</span></span>
+<span id="cb12-8"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb12-9"><a href=""></a><span class="op">}</span></span>
+<span id="cb12-10"><a href=""></a></span>
+<span id="cb12-11"><a href=""></a>Fahrenheit forecast<span class="op">(</span>Temperature t<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb12-12"><a href=""></a>    <span class="cf">return</span> t<span class="op">;</span>                          <span class="co">// return</span></span>
+<span id="cb12-13"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
-
+<p>None of these lines names the constructor; the compiler generates every call. Assignment builds a temporary Fahrenheit and then uses Fahrenheit’s copy assignment from 08.01. Inside the constructor, t * 9.0 is a fifth, hidden conversion: Temperature to double.</p>
+<p>Full program: cpp/four_places.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -754,11 +1146,39 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 34 -->
 </section>
-<section id="primitive-conversion" class="slide level2">
-<h2>Primitive Conversion</h2>
-<p>This slide presents the source material for <strong>Primitive Conversion</strong> from the authoritative lecture deck.</p>
+<section id="why-this-one-is-safe" class="slide level2">
+<h2>Why This One Is Safe</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Line</th>
+<th>Unit stated?</th>
+<th>Data lost?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>double reading = today;</code></td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td><code>Fahrenheit report = today;</code></td>
+<td>Yes, in the type</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td><code>int whole = today;</code></td>
+<td>No</td>
+<td>Yes, the fraction</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Implicit conversion is safe when the target type names the meaning and nothing is lost.</li>
+</ul>
 <aside class="notes">
-
+<p>This resolves topic 2’s Celsius-or-Fahrenheit problem: that conversion targeted a bare double. The standard library applies the same test in std::chrono: seconds convert to milliseconds implicitly because nothing is lost, while milliseconds to seconds requires duration_cast.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -772,11 +1192,45 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 35 -->
 </section>
-<section id="what-happens-when" class="slide level2">
-<h2>What Happens When</h2>
-<p>This slide presents the source material for <strong>What Happens When</strong> from the authoritative lecture deck.</p>
+<section id="first-class-objects" class="slide level2">
+<h2>First-Class Objects</h2>
+<p><code>Temperature</code> now works everywhere an <code>int</code> does.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>An <code>int</code> can be</th>
+<th><code>Temperature</code> can be, because of</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Initialized and copied</td>
+<td>Constructors and the copy constructor (04.02, 08.01)</td>
+</tr>
+<tr class="even">
+<td>Assigned</td>
+<td>Copy assignment (08.01)</td>
+</tr>
+<tr class="odd">
+<td>Passed and returned</td>
+<td>Copying (08.01)</td>
+</tr>
+<tr class="even">
+<td>Used with operators</td>
+<td>Operator overloading (07.01, 07.02)</td>
+</tr>
+<tr class="odd">
+<td>Converted</td>
+<td>Conversion operators and converting constructors (today)</td>
+</tr>
+</tbody>
+</table>
 <aside class="notes">
-
+<p>A first-class object is a user-defined type that behaves like a built-in type. Conversions were the last missing piece.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -790,9 +1244,12 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 36 -->
 </section>
-<section id="placeholders" class="slide level2">
-<h2>Placeholders</h2>
-<p>This slide presents the source material for <strong>Placeholders</strong> from the authoritative lecture deck.</p>
+<section id="summary-3" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li>One class becomes another through a converting constructor in the target or a conversion operator in the source; write only one.</li>
+<li>Conversions fire in copy initialization, assignment, argument passing, and return, with no call written.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -807,30 +1264,21 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 37 -->
-</section>
-<section id="segmentation-fault" class="slide level2">
-<h2>Segmentation Fault</h2>
-<p>This slide presents the source material for <strong>Segmentation Fault</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<!-- Topic 5: Conversion Safety -->
+<!-- Slides 39–49 -->
+</section></section>
+<section>
+<section id="conversion-safety" class="title-slide slide level1 center">
+<h1>Conversion Safety</h1>
 <!-- Slide 38 -->
 </section>
-<section id="unions-and-variants" class="slide level2">
-<h2>Unions and Variants</h2>
-<p>This slide presents the source material for <strong>Unions and Variants</strong> from the authoritative lecture deck.</p>
+<section id="conversions-nobody-asked-for" class="slide level2 smaller">
+<h2>Conversions Nobody Asked For?</h2>
+<ul>
+<li>Topic 3’s constructor ran even though no line called it.</li>
+</ul>
 <aside class="notes">
-
+<p>Slides 39–49</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -844,11 +1292,37 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 39 -->
 </section>
-<section id="video-resource" class="slide level2">
-<h2>Video Resource</h2>
-<p>This slide presents the source material for <strong>Video Resource</strong> from the authoritative lecture deck.</p>
+<section id="what-does-showsection-print" class="slide level2">
+<h2>What Does showSection Print?</h2>
+<div style="font-size: 75%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href=""></a><span class="kw">class</span> Roster <span class="op">{</span></span>
+<span id="cb13-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb13-3"><a href=""></a>    <span class="dt">int</span> seats<span class="op">;</span></span>
+<span id="cb13-4"><a href=""></a>    <span class="dt">int</span> enrolled<span class="op">;</span></span>
+<span id="cb13-5"><a href=""></a></span>
+<span id="cb13-6"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb13-7"><a href=""></a>    Roster<span class="op">(</span><span class="dt">int</span> capacity<span class="op">)</span> <span class="op">{</span> seats <span class="op">=</span> capacity<span class="op">;</span> enrolled <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb13-8"><a href=""></a></span>
+<span id="cb13-9"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb13-10"><a href=""></a>        cout <span class="op">&lt;&lt;</span> enrolled <span class="op">&lt;&lt;</span> <span class="st">" students, "</span> <span class="op">&lt;&lt;</span> seats <span class="op">&lt;&lt;</span> <span class="st">" seats"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb13-11"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb13-12"><a href=""></a><span class="op">};</span></span>
+<span id="cb13-13"><a href=""></a></span>
+<span id="cb13-14"><a href=""></a><span class="dt">void</span> showSection<span class="op">(</span><span class="at">const</span> Roster<span class="op">&amp;</span> roster<span class="op">);</span></span>
+<span id="cb13-15"><a href=""></a></span>
+<span id="cb13-16"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb13-17"><a href=""></a>    <span class="dt">int</span> sectionNumber <span class="op">=</span> <span class="dv">30</span><span class="op">;</span></span>
+<span id="cb13-18"><a href=""></a>    showSection<span class="op">(</span>sectionNumber<span class="op">);</span>    <span class="co">// meant: section 30</span></span>
+<span id="cb13-19"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb13-20"><a href=""></a><span class="op">}</span></span>
+<span id="cb13-21"><a href=""></a></span>
+<span id="cb13-22"><a href=""></a><span class="dt">void</span> showSection<span class="op">(</span><span class="at">const</span> Roster<span class="op">&amp;</span> roster<span class="op">)</span> <span class="op">{</span> roster<span class="op">.</span>print<span class="op">();</span> <span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<p>Output: <code>0 students, 30 seats</code></p>
 <aside class="notes">
-
+<p>Roster echoes the student roster from 09.02. Ask what the call prints before revealing.</p>
+<p>Full program: cpp/roster_hijack.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -861,10 +1335,16 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 40 -->
+</div>
 </section>
-<section id="video" class="slide level2">
-<h2>Video</h2>
-<p>This slide presents the source material for <strong>Video</strong> from the authoritative lecture deck.</p>
+<section id="the-constructor-hijacked-the-call" class="slide level2">
+<h2>The Constructor Hijacked the Call</h2>
+<ul>
+<li>The caller meant section 30.</li>
+<li><code>showSection</code> needs a <code>Roster</code>, and <code>Roster(int)</code> can build one from <code>30</code>.</li>
+<li>The compiler built a 30-seat roster and passed it in.</li>
+<li>No error, no warning, wrong output.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -880,11 +1360,15 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 41 -->
 </section>
-<section id="conversion-boundary" class="slide level2">
-<h2>Conversion Boundary</h2>
-<p>This slide presents the source material for <strong>Conversion Boundary</strong> from the authoritative lecture deck.</p>
+<section id="explicit-constructors" class="slide level2">
+<h2>explicit Constructors</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href=""></a><span class="kw">explicit</span> Roster<span class="op">(</span><span class="dt">int</span> capacity<span class="op">);</span></span>
+<span id="cb14-2"><a href=""></a></span>
+<span id="cb14-3"><a href=""></a>showSection<span class="op">(</span>sectionNumber<span class="op">);</span>    <span class="co">// error: no conversion from int</span></span>
+<span id="cb14-4"><a href=""></a>showSection<span class="op">(</span>Roster<span class="op">(</span><span class="dv">30</span><span class="op">));</span>       <span class="co">// fine: the conversion is written out</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The standard library does the same: <code>vector&lt;int&gt; v = 10;</code> does not compile.</p>
 <aside class="notes">
-
+<p>g++ reports: invalid initialization of reference of type ‘const Roster&amp;’ from expression of type ‘int’. vector’s size constructor is explicit for exactly this reason.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -897,19 +1381,37 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 42 -->
-<!-- Topic 3: Conversion Constructors -->
-<!-- Slides 44–55 -->
-</section></section>
-<section>
-<section id="conversion-constructors" class="title-slide slide level1 center">
-<h1>Conversion Constructors</h1>
+</section>
+<section id="delete-the-conversion-you-forbid" class="slide level2">
+<h2>Delete the Conversion You Forbid</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href=""></a><span class="kw">explicit</span> Roster<span class="op">(</span><span class="dt">int</span> capacity<span class="op">);</span></span>
+<span id="cb15-2"><a href=""></a>Roster<span class="op">(</span><span class="dt">double</span><span class="op">)</span> <span class="op">=</span> <span class="kw">delete</span><span class="op">;</span></span>
+<span id="cb15-3"><a href=""></a></span>
+<span id="cb15-4"><a href=""></a>Roster small<span class="op">(</span><span class="fl">2.7</span><span class="op">);</span>    <span class="co">// error: use of deleted function</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>explicit does not stop direct initialization, so without the deleted overload Roster small(2.7); compiles and builds a 2-seat roster. The deleted constructor is an exact match for double, so the compiler picks it and refuses.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 43 -->
 </section>
-<section id="conversion-constructors-1" class="slide level2">
-<h2>Conversion Constructors</h2>
-<p>This slide presents the source material for <strong>Conversion Constructors</strong> from the authoritative lecture deck.</p>
+<section id="explicit-conversion-operators" class="slide level2">
+<h2>explicit Conversion Operators</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href=""></a><span class="kw">explicit</span> <span class="kw">operator</span> <span class="dt">double</span><span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> celsius<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb16-2"><a href=""></a></span>
+<span id="cb16-3"><a href=""></a><span class="dt">double</span> a <span class="op">=</span> today<span class="op">;</span>                       <span class="co">// error</span></span>
+<span id="cb16-4"><a href=""></a><span class="dt">double</span> b <span class="op">=</span> <span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">double</span><span class="op">&gt;(</span>today<span class="op">);</span>  <span class="co">// fine</span></span>
+<span id="cb16-5"><a href=""></a><span class="cf">if</span> <span class="op">(</span>freezing<span class="op">)</span> <span class="op">{</span> <span class="op">}</span>                       <span class="co">// error: zero is no longer false</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
-<p>Slides 44–55</p>
+<p>g++ reports the if as: invalid user-defined conversion from ‘Temperature’ to ‘bool’. The cast states the intent, so it is allowed.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -923,11 +1425,15 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 44 -->
 </section>
-<section id="the-opposite-conversion" class="slide level2">
-<h2>The Opposite Conversion</h2>
-<p>This slide presents the source material for <strong>The Opposite Conversion</strong> from the authoritative lecture deck.</p>
+<section id="why-while-cin-x-still-works" class="slide level2">
+<h2>Why <code>while (cin &gt;&gt; x)</code> Still Works</h2>
+<ul>
+<li><code>cin &gt;&gt; x</code> returns <code>cin</code>, and streams define an <code>explicit operator bool()</code>.</li>
+<li>An explicit conversion to <code>bool</code> still happens in conditions and in <code>!</code>, <code>&amp;&amp;</code>, <code>||</code>, and <code>?:</code>.</li>
+<li>Everywhere else it must be written out: <code>bool ok = cin;</code> does not compile.</li>
+</ul>
 <aside class="notes">
-
+<p>This is called contextual conversion to bool. The standard library made the stream conversion explicit so that a stream cannot silently become a number or a bool in arithmetic or assignment.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -941,11 +1447,26 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 45 -->
 </section>
-<section id="convert-constructors" class="slide level2">
-<h2>Convert Constructors</h2>
-<p>This slide presents the source material for <strong>Convert Constructors</strong> from the authoritative lecture deck.</p>
+<section id="two-routes-no-winner" class="slide level2">
+<h2>Two Routes, No Winner?</h2>
+<div style="font-size: 80%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href=""></a><span class="kw">class</span> Temperature <span class="op">{</span></span>
+<span id="cb17-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb17-3"><a href=""></a>    <span class="dt">double</span> celsius<span class="op">;</span></span>
+<span id="cb17-4"><a href=""></a></span>
+<span id="cb17-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb17-6"><a href=""></a>    Temperature<span class="op">(</span><span class="dt">double</span> value <span class="op">=</span> <span class="fl">0.0</span><span class="op">)</span> <span class="op">{</span> celsius <span class="op">=</span> value<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb17-7"><a href=""></a>    <span class="kw">operator</span> <span class="dt">double</span><span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> celsius<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb17-8"><a href=""></a></span>
+<span id="cb17-9"><a href=""></a>    <span class="kw">friend</span> Temperature <span class="kw">operator</span><span class="op">+(</span><span class="at">const</span> Temperature<span class="op">&amp;</span> a<span class="op">,</span></span>
+<span id="cb17-10"><a href=""></a>                                 <span class="at">const</span> Temperature<span class="op">&amp;</span> b<span class="op">);</span></span>
+<span id="cb17-11"><a href=""></a><span class="op">};</span></span>
+<span id="cb17-12"><a href=""></a></span>
+<span id="cb17-13"><a href=""></a>Temperature t<span class="op">(</span><span class="fl">20.0</span><span class="op">);</span></span>
+<span id="cb17-14"><a href=""></a>Temperature warmer <span class="op">=</span> t <span class="op">+</span> <span class="fl">5.0</span><span class="op">;</span>    <span class="co">// compiles?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <aside class="notes">
-
+<p>Ask students to name every way the compiler could make t + 5.0 work before revealing the next slide.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -959,11 +1480,41 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 46 -->
 </section>
-<section id="conversion-constructor-code" class="slide level2">
-<h2>Conversion Constructor Code</h2>
-<p>This slide presents the source material for <strong>Conversion Constructor Code</strong> from the authoritative lecture deck.</p>
+<section id="breaking-the-tie" class="slide level2">
+<h2>Breaking the Tie</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Route</th>
+<th>Converts</th>
+<th>Then calls</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><code>t</code> to <code>double</code> with <code>operator double()</code></td>
+<td>Built-in <code>double + double</code></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><code>5.0</code> to <code>Temperature</code> with <code>Temperature(double)</code></td>
+<td>Your <code>operator+</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Each route needs one user-defined conversion, so neither is better and g++ reports an ambiguous overload.</li>
+<li>Fix: mark <code>operator double()</code> <code>explicit</code>. Route 1 disappears and <code>warmer</code> is 25.</li>
+</ul>
 <aside class="notes">
-
+<p>How the compiler chooses an overload: an exact match beats a promotion, a promotion beats a standard conversion, and a standard conversion beats a user-defined conversion. Two candidates that each need a user-defined conversion on different arguments tie, which is an error.</p>
+<p>Full program with the fix: cpp/ambiguous_plus.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -977,11 +1528,15 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 47 -->
 </section>
-<section id="convert-constructors-1" class="slide level2">
-<h2>11.10 Convert Constructors</h2>
-<p>This slide presents the source material for <strong>11.10 Convert Constructors</strong> from the authoritative lecture deck.</p>
+<section id="explicit-by-default" class="slide level2">
+<h2>explicit by Default</h2>
+<ul>
+<li>Start every one-value constructor and conversion operator as <code>explicit</code>.</li>
+<li>Remove <code>explicit</code> only when topic 4’s test passes: the target names the meaning and nothing is lost.</li>
+<li>Use <code>= delete</code> for the specific types you want to forbid.</li>
+</ul>
 <aside class="notes">
-
+<p>C++ Core Guidelines C.46: by default, declare single-argument constructors explicit. C.164: avoid implicit conversion operators.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -995,9 +1550,12 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 48 -->
 </section>
-<section id="convert-constructor" class="slide level2">
-<h2>Convert Constructor</h2>
-<p>This slide presents the source material for <strong>Convert Constructor</strong> from the authoritative lecture deck.</p>
+<section id="summary-4" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li><code>explicit</code> turns a silent conversion into one the caller must write.</li>
+<li><code>= delete</code> forbids a conversion outright; together they make every conversion intentional.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -1012,30 +1570,23 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 49 -->
-</section>
-<section id="agenda-2" class="slide level2">
-<h2>Agenda</h2>
-<p>This slide presents the source material for <strong>Agenda</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<!-- Topic 6: Operator Chaining -->
+<!-- Slides 51–60 -->
+</section></section>
+<section>
+<section id="operator-chaining" class="title-slide slide level1 center">
+<h1>Operator Chaining</h1>
 <!-- Slide 50 -->
 </section>
-<section id="homework-4-due" class="slide level2">
-<h2>Homework 4 Due</h2>
-<p>This slide presents the source material for <strong>Homework 4 Due</strong> from the authoritative lecture deck.</p>
+<section id="chains-you-already-wrote" class="slide level2 smaller">
+<h2>Chains You Already Wrote?</h2>
+<ul>
+<li><code>Sales total = a + b + c;</code> (07.01)</li>
+<li><code>cout &lt;&lt; a &lt;&lt; b;</code> (07.02)</li>
+<li><code>return *this;</code> in <code>operator=</code> (08.02)</li>
+</ul>
 <aside class="notes">
-
+<p>Slides 51–60</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1049,9 +1600,37 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 51 -->
 </section>
-<section id="course-context-1" class="slide level2">
-<h2>Course Context</h2>
-<p>This slide presents the source material for <strong>Course Context</strong> from the authoritative lecture deck.</p>
+<section id="two-kinds-of-chains" class="slide level2">
+<h2>Two Kinds of Chains</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Changes its left operand?</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>+</code></td>
+<td>No</td>
+<td>A new object, by value</td>
+</tr>
+<tr class="even">
+<td><code>=</code> and <code>+=</code></td>
+<td>Yes</td>
+<td>The left operand, by reference</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;&lt;</code></td>
+<td>Yes, the stream</td>
+<td>The stream, by reference</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Each link in a chain works on whatever the previous link returned.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -1067,11 +1646,15 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 52 -->
 </section>
-<section id="key-takeaway" class="slide level2">
-<h2>Key Takeaway</h2>
-<p>This slide presents the source material for <strong>Key Takeaway</strong> from the authoritative lecture deck.</p>
+<section id="why-must-return-a-reference" class="slide level2">
+<h2>Why <code>&lt;&lt;</code> Must Return a Reference</h2>
+<ul>
+<li><code>cout &lt;&lt; a &lt;&lt; b</code> groups as <code>(cout &lt;&lt; a) &lt;&lt; b</code>.</li>
+<li>The second <code>&lt;&lt;</code> must write to the same stream as the first.</li>
+<li>Streams cannot be copied, so returning <code>ostream</code> by value does not compile.</li>
+</ul>
 <aside class="notes">
-
+<p>g++ rejects an operator&lt;&lt; that takes and returns ostream by value: the stream’s copy constructor is not accessible. The reference is not a style choice here; it is the only option.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1085,11 +1668,40 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 53 -->
 </section>
-<section id="agenda-3" class="slide level2">
-<h2>Agenda</h2>
-<p>This slide presents the source material for <strong>Agenda</strong> from the authoritative lecture deck.</p>
+<section id="you-have-written-return-this-before" class="slide level2">
+<h2>You Have Written <code>return *this</code> Before</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href=""></a>Temperature<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">+=(</span><span class="at">const</span> Temperature<span class="op">&amp;</span> rhs<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb18-2"><a href=""></a>    celsius <span class="op">+=</span> rhs<span class="op">.</span>celsius<span class="op">;</span></span>
+<span id="cb18-3"><a href=""></a>    <span class="cf">return</span> <span class="op">*</span><span class="kw">this</span><span class="op">;</span></span>
+<span id="cb18-4"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Part</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Temperature&amp;</code></td>
+<td>Hands back the object itself, not a copy</td>
+</tr>
+<tr class="even">
+<td><code>const Temperature&amp; rhs</code></td>
+<td>The right side is read, never changed</td>
+</tr>
+<tr class="odd">
+<td><code>return *this;</code></td>
+<td><code>this</code> points to the left operand; <code>*this</code> is that object</td>
+</tr>
+</tbody>
+</table>
 <aside class="notes">
-
+<p>Students wrote the same three parts in 08.02’s copy assignment operator. Frame this as why that code works rather than as new syntax.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1103,11 +1715,37 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 54 -->
 </section>
-<section id="whats-this-section-about" class="slide level2">
-<h2>What’s This Section About?</h2>
-<p>This slide presents the source material for <strong>What’s This Section About?</strong> from the authoritative lecture deck.</p>
+<section id="that-chains" class="slide level2">
+<h2><code>+=</code> That Chains</h2>
+<div style="font-size: 75%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href=""></a><span class="kw">class</span> Temperature <span class="op">{</span></span>
+<span id="cb19-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb19-3"><a href=""></a>    <span class="dt">double</span> celsius<span class="op">;</span></span>
+<span id="cb19-4"><a href=""></a></span>
+<span id="cb19-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb19-6"><a href=""></a>    Temperature<span class="op">(</span><span class="dt">double</span> value <span class="op">=</span> <span class="fl">0.0</span><span class="op">)</span> <span class="op">{</span> celsius <span class="op">=</span> value<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb19-7"><a href=""></a></span>
+<span id="cb19-8"><a href=""></a>    Temperature<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">+=(</span><span class="at">const</span> Temperature<span class="op">&amp;</span> rhs<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb19-9"><a href=""></a>        celsius <span class="op">+=</span> rhs<span class="op">.</span>celsius<span class="op">;</span></span>
+<span id="cb19-10"><a href=""></a>        <span class="cf">return</span> <span class="op">*</span><span class="kw">this</span><span class="op">;</span></span>
+<span id="cb19-11"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb19-12"><a href=""></a></span>
+<span id="cb19-13"><a href=""></a>    <span class="kw">friend</span> ostream<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">&lt;&lt;(</span>ostream<span class="op">&amp;</span> out<span class="op">,</span> <span class="at">const</span> Temperature<span class="op">&amp;</span> t<span class="op">);</span></span>
+<span id="cb19-14"><a href=""></a><span class="op">};</span></span>
+<span id="cb19-15"><a href=""></a></span>
+<span id="cb19-16"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb19-17"><a href=""></a>    Temperature a<span class="op">(</span><span class="fl">20.0</span><span class="op">);</span></span>
+<span id="cb19-18"><a href=""></a>    Temperature b<span class="op">(</span><span class="fl">5.0</span><span class="op">);</span></span>
+<span id="cb19-19"><a href=""></a></span>
+<span id="cb19-20"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="op">(</span>a <span class="op">+=</span> b<span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> a <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb19-21"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb19-22"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Output: <code>25 25</code></p>
 <aside class="notes">
-
+<p>Both values are 25 because (a += b) is a itself. The definition of operator&lt;&lt; is in the full program.</p>
+<p>Never return a reference to a local variable: an operator+ that returns Temperature&amp; to its local result leaves a dangling reference, and g++ warns with -Wreturn-local-addr.</p>
+<p>Full program: cpp/plus_equal_chain.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1120,19 +1758,60 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 55 -->
-<!-- Topic 4: Object Conversions -->
-<!-- Slides 57–65 -->
-</section></section>
-<section>
-<section id="object-conversions" class="title-slide slide level1 center">
-<h1>Object Conversions</h1>
+</section>
+<section id="chaining-setters" class="slide level2">
+<h2>Chaining Setters</h2>
+<div style="font-size: 75%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href=""></a><span class="kw">class</span> Roster <span class="op">{</span></span>
+<span id="cb20-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb20-3"><a href=""></a>    string name<span class="op">;</span></span>
+<span id="cb20-4"><a href=""></a>    <span class="dt">int</span> seats<span class="op">;</span></span>
+<span id="cb20-5"><a href=""></a></span>
+<span id="cb20-6"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb20-7"><a href=""></a>    <span class="kw">explicit</span> Roster<span class="op">(</span><span class="dt">int</span> capacity<span class="op">)</span> <span class="op">{</span> name <span class="op">=</span> <span class="st">"Unnamed"</span><span class="op">;</span> seats <span class="op">=</span> capacity<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb20-8"><a href=""></a></span>
+<span id="cb20-9"><a href=""></a>    Roster<span class="op">&amp;</span> setName<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> value<span class="op">)</span> <span class="op">{</span> name <span class="op">=</span> value<span class="op">;</span> <span class="cf">return</span> <span class="op">*</span><span class="kw">this</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb20-10"><a href=""></a>    Roster<span class="op">&amp;</span> setCapacity<span class="op">(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span> seats <span class="op">=</span> value<span class="op">;</span> <span class="cf">return</span> <span class="op">*</span><span class="kw">this</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb20-11"><a href=""></a></span>
+<span id="cb20-12"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> cout <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> <span class="st">": "</span> <span class="op">&lt;&lt;</span> seats <span class="op">&lt;&lt;</span> <span class="st">" seats"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb20-13"><a href=""></a><span class="op">};</span></span>
+<span id="cb20-14"><a href=""></a></span>
+<span id="cb20-15"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb20-16"><a href=""></a>    Roster section<span class="op">(</span><span class="dv">25</span><span class="op">);</span></span>
+<span id="cb20-17"><a href=""></a>    section<span class="op">.</span>setName<span class="op">(</span><span class="st">"CISP 400"</span><span class="op">).</span>setCapacity<span class="op">(</span><span class="dv">30</span><span class="op">);</span></span>
+<span id="cb20-18"><a href=""></a>    section<span class="op">.</span>print<span class="op">();</span></span>
+<span id="cb20-19"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb20-20"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<p>Output: CISP 400: 30 seats</p>
+<p>The same return *this lets member functions chain. Reading: learncpp 15.1, The hidden this pointer and member function chaining.</p>
+<p>Full program: cpp/roster_setters.cpp</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- Slide 56 -->
 </section>
-<section id="object-conversion" class="slide level2">
-<h2>Object Conversion</h2>
-<p>This slide presents the source material for <strong>Object Conversion</strong> from the authoritative lecture deck.</p>
+<section id="where-did-capacity-30-go" class="slide level2">
+<h2>Where Did Capacity 30 Go?</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb21-1"><a href=""></a>Roster setName<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> value<span class="op">)</span> <span class="op">{</span> name <span class="op">=</span> value<span class="op">;</span> <span class="cf">return</span> <span class="op">*</span><span class="kw">this</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb21-2"><a href=""></a>Roster setCapacity<span class="op">(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span> seats <span class="op">=</span> value<span class="op">;</span> <span class="cf">return</span> <span class="op">*</span><span class="kw">this</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb21-3"><a href=""></a></span>
+<span id="cb21-4"><a href=""></a>Roster section<span class="op">(</span><span class="dv">25</span><span class="op">);</span></span>
+<span id="cb21-5"><a href=""></a>section<span class="op">.</span>setName<span class="op">(</span><span class="st">"CISP 400"</span><span class="op">).</span>setCapacity<span class="op">(</span><span class="dv">30</span><span class="op">);</span></span>
+<span id="cb21-6"><a href=""></a>section<span class="op">.</span>print<span class="op">();</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment">
+<p>Output: <code>CISP 400: 25 seats</code></p>
 <aside class="notes">
-<p>Slides 57–65</p>
+<p>The only change from the previous slide is the missing &amp; on both return types. Ask students to predict the output.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1145,12 +1824,37 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 57 -->
+</div>
 </section>
-<section id="first-class-objects-definition" class="slide level2">
-<h2>First-Class Objects Definition</h2>
-<p>This slide presents the source material for <strong>First-Class Objects Definition</strong> from the authoritative lecture deck.</p>
+<section id="the-copy-took-the-change" class="slide level2">
+<h2>The Copy Took the Change</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Call</th>
+<th>Runs on</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>setName("CISP 400")</code></td>
+<td><code>section</code></td>
+<td>A copy of <code>section</code></td>
+</tr>
+<tr class="even">
+<td><code>.setCapacity(30)</code></td>
+<td>The copy</td>
+<td>Another copy, then discarded</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>section</code> got its name but never its capacity.</li>
+<li>The fix is one character on each return type: <code>Roster&amp;</code>.</li>
+</ul>
 <aside class="notes">
-
+<p>This bug compiles, runs, and prints a wrong answer, which is exactly the kind of bug the unit tests in the next topic catch.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1164,9 +1868,33 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 58 -->
 </section>
-<section id="object-to-object-conversion" class="slide level2">
-<h2>Object-to-Object Conversion</h2>
-<p>This slide presents the source material for <strong>Object-to-Object Conversion</strong> from the authoritative lecture deck.</p>
+<section id="value-or-reference-1" class="slide level2">
+<h2>Value or Reference?</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>The operator or member function</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Changes the object it was called on: <code>=</code>, <code>+=</code>, <code>&lt;&lt;</code>, setters</td>
+<td><code>*this</code> by reference</td>
+</tr>
+<tr class="even">
+<td>Produces a new value: <code>+</code>, <code>-</code>, <code>*</code></td>
+<td>A new object by value</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Never return a reference to a local variable.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -1182,9 +1910,12 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 59 -->
 </section>
-<section id="four-places-for-conversion" class="slide level2">
-<h2>Four Places for Conversion</h2>
-<p>This slide presents the source material for <strong>Four Places for Conversion</strong> from the authoritative lecture deck.</p>
+<section id="summary-5" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li>Return <code>*this</code> by reference when a call changes its object, so the next link works on the same object.</li>
+<li>Return by value when a call builds a new value; a by-value return in a chain silently works on a copy.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -1199,30 +1930,23 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 60 -->
-</section>
-<section id="copy-initialization" class="slide level2">
-<h2>Copy Initialization</h2>
-<p>This slide presents the source material for <strong>Copy Initialization</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<!-- Topic 7: Unit Testing -->
+<!-- Slides 62–78 -->
+</section></section>
+<section>
+<section id="unit-testing" class="title-slide slide level1 center">
+<h1>Unit Testing</h1>
 <!-- Slide 61 -->
 </section>
-<section id="assignment" class="slide level2">
-<h2>Assignment</h2>
-<p>This slide presents the source material for <strong>Assignment</strong> from the authoritative lecture deck.</p>
+<section id="can-you-prove-the-bug-stays-fixed" class="slide level2 smaller">
+<h2>Can You Prove the Bug Stays Fixed?</h2>
+<ul>
+<li>The setter bug from operator chaining compiled, ran, and printed a wrong answer.</li>
+<li>Next month someone tidies the gradebook and changes one loop. Who notices first: you or a user?</li>
+</ul>
 <aside class="notes">
-
+<p>Slides 62–78</p>
+<p>This topic completes the debugging sequence: structured debugging in 08.02, assertions in 09.01, and now tests that rerun the checks on purpose.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1236,717 +1960,14 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 62 -->
 </section>
-<section id="passing-to-a-function" class="slide level2">
-<h2>Passing to a Function</h2>
-<p>This slide presents the source material for <strong>Passing to a Function</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 63 -->
-</section>
-<section id="conversion-on-return" class="slide level2">
-<h2>Conversion on Return</h2>
-<p>This slide presents the source material for <strong>Conversion on Return</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 64 -->
-</section>
-<section id="compiler-generated-conversion" class="slide level2">
-<h2>Compiler-Generated Conversion</h2>
-<p>This slide presents the source material for <strong>Compiler-Generated Conversion</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 65 -->
-<!-- Topic 5: Conversion Safety -->
-<!-- Slides 67–76 -->
-</section></section>
-<section>
-<section id="conversion-safety" class="title-slide slide level1 center">
-<h1>Conversion Safety</h1>
-<!-- Slide 66 -->
-</section>
-<section id="unintended-conversions" class="slide level2">
-<h2>Unintended Conversions</h2>
-<p>This slide presents the source material for <strong>Unintended Conversions</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-<p>Slides 67–76</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 67 -->
-</section>
-<section id="video-1" class="slide level2">
-<h2>Video</h2>
-<p>This slide presents the source material for <strong>Video</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 68 -->
-</section>
-<section id="constructor-hijacking" class="slide level2">
-<h2>Constructor Hijacking</h2>
-<p>This slide presents the source material for <strong>Constructor Hijacking</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 69 -->
-</section>
-<section id="strange-conversions" class="slide level2">
-<h2>Strange Conversions</h2>
-<p>This slide presents the source material for <strong>Strange Conversions</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 70 -->
-</section>
-<section id="type-safety" class="slide level2">
-<h2>Type Safety</h2>
-<p>This slide presents the source material for <strong>Type Safety</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 71 -->
-</section>
-<section id="use-explicit-or-delete" class="slide level2">
-<h2>Use Explicit or Delete</h2>
-<p>This slide presents the source material for <strong>Use Explicit or Delete</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 72 -->
-</section>
-<section id="desk-check-exercise-2" class="slide level2">
-<h2>Desk Check Exercise</h2>
-<p>This slide presents the source material for <strong>Desk Check Exercise</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 73 -->
-</section>
-<section id="desk-check" class="slide level2">
-<h2>Desk Check</h2>
-<p>This slide presents the source material for <strong>Desk Check</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 74 -->
-</section>
-<section id="overload-ambiguity" class="slide level2">
-<h2>Overload Ambiguity</h2>
-<p>This slide presents the source material for <strong>Overload Ambiguity</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 75 -->
-</section>
-<section id="choosing-an-overload" class="slide level2">
-<h2>Choosing an Overload</h2>
-<p>This slide presents the source material for <strong>Choosing an Overload</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 76 -->
-<!-- Topic 6: Operator Chaining -->
-<!-- Slides 78–101 -->
-</section></section>
-<section>
-<section id="operator-chaining" class="title-slide slide level1 center">
-<h1>Operator Chaining</h1>
-<!-- Slide 77 -->
-</section>
-<section id="convert-constructor-context" class="slide level2">
-<h2>Convert Constructor Context</h2>
-<p>This slide presents the source material for <strong>Convert Constructor Context</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-<p>Slides 78–101</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 78 -->
-</section>
-<section id="convert-constructor-context-1" class="slide level2">
-<h2>Convert Constructor Context</h2>
-<p>This slide presents the source material for <strong>Convert Constructor Context</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 79 -->
-</section>
-<section id="task-iii" class="slide level2">
-<h2>Task III</h2>
-<p>This slide presents the source material for <strong>Task III</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 80 -->
-</section>
-<section id="exercise-goals-2" class="slide level2">
-<h2>Exercise Goals</h2>
-<p>This slide presents the source material for <strong>Exercise Goals</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 81 -->
-</section>
-<section id="task" class="slide level2">
-<h2>Task</h2>
-<p>This slide presents the source material for <strong>Task</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 82 -->
-</section>
-<section id="task-ii" class="slide level2">
-<h2>Task II</h2>
-<p>This slide presents the source material for <strong>Task II</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 83 -->
-</section>
-<section id="homework-4-preflight" class="slide level2">
-<h2>Homework 4 Preflight</h2>
-<p>This slide presents the source material for <strong>Homework 4 Preflight</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 84 -->
-</section>
-<section id="video-2" class="slide level2">
-<h2>Video</h2>
-<p>This slide presents the source material for <strong>Video</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 85 -->
-</section>
-<section id="exercise-transition" class="slide level2">
-<h2>Exercise Transition</h2>
-<p>This slide presents the source material for <strong>Exercise Transition</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 86 -->
-</section>
-<section id="programming-exercise-1" class="slide level2">
-<h2>Programming Exercise</h2>
-<p>This slide presents the source material for <strong>Programming Exercise</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 87 -->
-</section>
-<section id="operator-chaining-1" class="slide level2">
-<h2>Operator Chaining</h2>
-<p>This slide presents the source material for <strong>Operator Chaining</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 88 -->
-</section>
-<section id="primitive-output" class="slide level2">
-<h2>Primitive Output</h2>
-<p>This slide presents the source material for <strong>Primitive Output</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 89 -->
-</section>
-<section id="chaining-example" class="slide level2">
-<h2>Chaining Example</h2>
-<p>This slide presents the source material for <strong>Chaining Example</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 90 -->
-</section>
-<section id="chaining-example-1" class="slide level2">
-<h2>Chaining Example</h2>
-<p>This slide presents the source material for <strong>Chaining Example</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 91 -->
-</section>
-<section id="return-type-for-chaining" class="slide level2">
-<h2>Return Type for Chaining</h2>
-<p>This slide presents the source material for <strong>Return Type for Chaining</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 92 -->
-</section>
-<section id="constant-right-hand-side" class="slide level2">
-<h2>Constant Right-Hand Side</h2>
-<p>This slide presents the source material for <strong>Constant Right-Hand Side</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 93 -->
-</section>
-<section id="why-chaining-matters" class="slide level2">
-<h2>Why Chaining Matters</h2>
-<p>This slide presents the source material for <strong>Why Chaining Matters</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 94 -->
-</section>
-<section id="chaining-design" class="slide level2">
-<h2>Chaining Design</h2>
-<p>This slide presents the source material for <strong>Chaining Design</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 95 -->
-</section>
-<section id="return-the-calling-object" class="slide level2">
-<h2>Return the Calling Object</h2>
-<p>This slide presents the source material for <strong>Return the Calling Object</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 96 -->
-</section>
-<section id="chaining-answer" class="slide level2">
-<h2>Chaining Answer</h2>
-<p>This slide presents the source material for <strong>Chaining Answer</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 97 -->
-</section>
-<section id="desk-check-exercise-3" class="slide level2">
-<h2>Desk Check Exercise</h2>
-<p>This slide presents the source material for <strong>Desk Check Exercise</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 98 -->
-</section>
-<section id="desk-check-1" class="slide level2">
-<h2>Desk Check</h2>
-<p>This slide presents the source material for <strong>Desk Check</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 99 -->
-</section>
-<section id="exercise-desk-check" class="slide level2">
-<h2>Exercise Desk Check</h2>
-<p>This slide presents the source material for <strong>Exercise Desk Check</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 100 -->
-</section>
-<section id="whats-wrong" class="slide level2">
-<h2>What’s Wrong?</h2>
-<p>This slide presents the source material for <strong>What’s Wrong?</strong> from the authoritative lecture deck.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 101 -->
-<!-- Topic 7: Unit Testing -->
-<!-- Slides 103–117 -->
-</section></section>
-<section>
-<section id="unit-testing" class="title-slide slide level1 center">
-<h1>Unit Testing</h1>
-<!-- Slide 102 -->
-</section>
-<section id="can-you-prove-the-bug-stays-fixed" class="slide level2">
-<h2>Can You Prove the Bug Stays Fixed?</h2>
-<p>The gradebook now passes every assertion. Next month someone tidies the code and changes one loop. How would you find out that an old bug came back before a user does?</p>
-<aside class="notes">
-<p>Slides 103–117</p>
-<p>This topic completes the debugging sequence: structured debugging in 08.02, assertions in 09.01, and now tests that rerun the checks on purpose.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 103 -->
-</section>
 <section id="you-already-wrote-the-checks" class="slide level2">
 <h2>You Already Wrote the Checks</h2>
-<p>The assertions from the Invariant Lab stop the program when a rule breaks, but only on code the program happens to run. Nothing forces the program to call highestScore when the largest score is last.</p>
-<p>A unit test chooses the inputs on purpose, so the check runs every time the tests run.</p>
-<!-- Slide 104 -->
+<ul>
+<li>The assertions from the Invariant Lab stop the program when a rule breaks.</li>
+<li>They only check code the program happens to run: nothing forces a call to highestScore when the largest score is last.</li>
+<li>A unit test chooses the inputs on purpose, so the check runs every time the tests run.</li>
+</ul>
+<!-- Slide 63 -->
 </section>
 <section id="what-is-a-unit-test" class="slide level2">
 <h2>What Is a Unit Test?</h2>
@@ -1968,42 +1989,42 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 105 -->
+<!-- Slide 64 -->
 </section>
 <section id="parts-of-a-unit-test" class="slide level2">
 <h2>Parts of a Unit Test</h2>
-<p>Arrange builds the situation, Act calls the function under test, and Assert checks the result. Here Assert names the step, not the assert macro; the check() helper does the checking.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a><span class="dt">bool</span> testHighestScoreIncludesLastElement<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb1-2"><a href=""></a>    <span class="co">// Arrange: build a gradebook whose largest score is last</span></span>
-<span id="cb1-3"><a href=""></a>    Gradebook book<span class="op">;</span></span>
-<span id="cb1-4"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">88</span><span class="op">);</span></span>
-<span id="cb1-5"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">72</span><span class="op">);</span></span>
-<span id="cb1-6"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">95</span><span class="op">);</span></span>
-<span id="cb1-7"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">99</span><span class="op">);</span></span>
-<span id="cb1-8"><a href=""></a></span>
-<span id="cb1-9"><a href=""></a>    <span class="co">// Act: call the function under test</span></span>
-<span id="cb1-10"><a href=""></a>    <span class="dt">int</span> result <span class="op">=</span> book<span class="op">.</span>highestScore<span class="op">();</span></span>
-<span id="cb1-11"><a href=""></a></span>
-<span id="cb1-12"><a href=""></a>    <span class="co">// Assert: check the result against the value worked out by hand</span></span>
-<span id="cb1-13"><a href=""></a>    <span class="cf">return</span> check<span class="op">(</span>result <span class="op">==</span> <span class="dv">99</span><span class="op">,</span> <span class="st">"highestScore includes the last score"</span><span class="op">);</span></span>
-<span id="cb1-14"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 106 -->
+<p>Arrange builds the situation, Act calls the function under test, and Assert checks the result. Assert is only the step’s name: <code>check()</code> is an ordinary function, and the <code>assert</code> macro is not involved.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb22-1"><a href=""></a><span class="dt">bool</span> testHighestScoreIncludesLastElement<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb22-2"><a href=""></a>    <span class="co">// Arrange: build a gradebook whose largest score is last</span></span>
+<span id="cb22-3"><a href=""></a>    Gradebook book<span class="op">;</span></span>
+<span id="cb22-4"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">88</span><span class="op">);</span></span>
+<span id="cb22-5"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">72</span><span class="op">);</span></span>
+<span id="cb22-6"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">95</span><span class="op">);</span></span>
+<span id="cb22-7"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">99</span><span class="op">);</span></span>
+<span id="cb22-8"><a href=""></a></span>
+<span id="cb22-9"><a href=""></a>    <span class="co">// Act: call the function under test</span></span>
+<span id="cb22-10"><a href=""></a>    <span class="dt">int</span> result <span class="op">=</span> book<span class="op">.</span>highestScore<span class="op">();</span></span>
+<span id="cb22-11"><a href=""></a></span>
+<span id="cb22-12"><a href=""></a>    <span class="co">// Assert: check the result against the value worked out by hand</span></span>
+<span id="cb22-13"><a href=""></a>    <span class="cf">return</span> check<span class="op">(</span>result <span class="op">==</span> <span class="dv">99</span><span class="op">,</span> <span class="st">"highestScore includes the last score"</span><span class="op">);</span></span>
+<span id="cb22-14"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 65 -->
 </section>
 <section id="keep-the-tests-in-the-same-file" class="slide level2">
 <h2>Keep the Tests in the Same File</h2>
 <p>The class, the tests, and the program share one file, so it compiles in any online compiler. One constant at the top decides what main does.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a><span class="co">// true runs the unit tests, false runs the gradebook program</span></span>
-<span id="cb2-2"><a href=""></a><span class="at">const</span> <span class="dt">bool</span> RUN_TESTS <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb2-3"><a href=""></a></span>
-<span id="cb2-4"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb2-5"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>RUN_TESTS<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb2-6"><a href=""></a>        <span class="dt">int</span> failures <span class="op">=</span> runTests<span class="op">();</span></span>
-<span id="cb2-7"><a href=""></a>        <span class="cf">return</span> failures <span class="op">==</span> <span class="dv">0</span> <span class="op">?</span> <span class="dv">0</span> <span class="op">:</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb2-8"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb2-9"><a href=""></a></span>
-<span id="cb2-10"><a href=""></a>    runProgram<span class="op">();</span></span>
-<span id="cb2-11"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb2-12"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb23-1"><a href=""></a><span class="co">// true runs the unit tests, false runs the gradebook program</span></span>
+<span id="cb23-2"><a href=""></a><span class="at">const</span> <span class="dt">bool</span> RUN_TESTS <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb23-3"><a href=""></a></span>
+<span id="cb23-4"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb23-5"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>RUN_TESTS<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb23-6"><a href=""></a>        <span class="dt">int</span> failures <span class="op">=</span> runTests<span class="op">();</span></span>
+<span id="cb23-7"><a href=""></a>        <span class="cf">return</span> failures <span class="op">==</span> <span class="dv">0</span> <span class="op">?</span> <span class="dv">0</span> <span class="op">:</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb23-8"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb23-9"><a href=""></a></span>
+<span id="cb23-10"><a href=""></a>    runProgram<span class="op">();</span></span>
+<span id="cb23-11"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb23-12"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
 <p>The tests check the real class, not a copy. Pasting the class into a second file would create two versions that drift apart, which defeats the purpose. Professional projects put tests in separate files, which students will see later.</p>
 <p>Full program: cpp/gradebook_tests.cpp</p>
@@ -2018,48 +2039,48 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 107 -->
+<!-- Slide 66 -->
 </section>
 <section id="a-complete-test-program" class="slide level2">
 <h2>A Complete Test Program</h2>
 <div class="columns">
 <div class="column" style="font-size: 50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a><span class="co">// Print one test result and return whether it passed</span></span>
-<span id="cb3-2"><a href=""></a><span class="dt">bool</span> check<span class="op">(</span><span class="dt">bool</span> condition<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> testName<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-3"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>condition<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-4"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"PASS  "</span> <span class="op">&lt;&lt;</span> testName <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
-<span id="cb3-5"><a href=""></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb3-6"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"FAIL  "</span> <span class="op">&lt;&lt;</span> testName <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
-<span id="cb3-7"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb3-8"><a href=""></a>    <span class="cf">return</span> condition<span class="op">;</span></span>
-<span id="cb3-9"><a href=""></a><span class="op">}</span></span>
-<span id="cb3-10"><a href=""></a></span>
-<span id="cb3-11"><a href=""></a><span class="co">// Run every test, keep going after a failure, and report the total</span></span>
-<span id="cb3-12"><a href=""></a><span class="dt">int</span> runTests<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb3-13"><a href=""></a>    <span class="dt">bool</span> <span class="op">(*</span>tests<span class="op">[])()</span> <span class="op">=</span> <span class="op">{</span></span>
-<span id="cb3-14"><a href=""></a>        testNewGradebookIsEmpty<span class="op">,</span></span>
-<span id="cb3-15"><a href=""></a>        testAddScoreIncreasesSize<span class="op">,</span></span>
-<span id="cb3-16"><a href=""></a>        testRemoveLastDecreasesSize<span class="op">,</span></span>
-<span id="cb3-17"><a href=""></a>        testHighestScoreIncludesLastElement<span class="op">,</span></span>
-<span id="cb3-18"><a href=""></a>        testAverageOfThreeScores<span class="op">,</span></span>
-<span id="cb3-19"><a href=""></a>        testOneScore<span class="op">,</span></span>
-<span id="cb3-20"><a href=""></a>        testFullGradebook<span class="op">,</span></span>
-<span id="cb3-21"><a href=""></a>        testScoresAtLimits<span class="op">,</span></span>
-<span id="cb3-22"><a href=""></a>        testCurveNeverExceeds100</span>
-<span id="cb3-23"><a href=""></a>    <span class="op">};</span></span>
-<span id="cb3-24"><a href=""></a></span>
-<span id="cb3-25"><a href=""></a>    <span class="dt">int</span> total <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb3-26"><a href=""></a>    <span class="dt">int</span> failures <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb3-27"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="kw">auto</span> test <span class="op">:</span> tests<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-28"><a href=""></a>        total<span class="op">++;</span></span>
-<span id="cb3-29"><a href=""></a>        <span class="cf">if</span> <span class="op">(!</span>test<span class="op">())</span> <span class="op">{</span></span>
-<span id="cb3-30"><a href=""></a>            failures<span class="op">++;</span></span>
-<span id="cb3-31"><a href=""></a>        <span class="op">}</span></span>
-<span id="cb3-32"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb3-33"><a href=""></a></span>
-<span id="cb3-34"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span> <span class="op">&lt;&lt;</span> total <span class="op">&lt;&lt;</span> <span class="st">" tests run, "</span> <span class="op">&lt;&lt;</span> failures <span class="op">&lt;&lt;</span> <span class="st">" failed</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb3-35"><a href=""></a>    <span class="cf">return</span> failures<span class="op">;</span></span>
-<span id="cb3-36"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb24-1"><a href=""></a><span class="co">// Print one test result and return whether it passed</span></span>
+<span id="cb24-2"><a href=""></a><span class="dt">bool</span> check<span class="op">(</span><span class="dt">bool</span> condition<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> testName<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb24-3"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>condition<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb24-4"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"PASS  "</span> <span class="op">&lt;&lt;</span> testName <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
+<span id="cb24-5"><a href=""></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb24-6"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"FAIL  "</span> <span class="op">&lt;&lt;</span> testName <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
+<span id="cb24-7"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb24-8"><a href=""></a>    <span class="cf">return</span> condition<span class="op">;</span></span>
+<span id="cb24-9"><a href=""></a><span class="op">}</span></span>
+<span id="cb24-10"><a href=""></a></span>
+<span id="cb24-11"><a href=""></a><span class="co">// Run every test, keep going after a failure, and report the total</span></span>
+<span id="cb24-12"><a href=""></a><span class="dt">int</span> runTests<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb24-13"><a href=""></a>    <span class="dt">bool</span> <span class="op">(*</span>tests<span class="op">[])()</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb24-14"><a href=""></a>        testNewGradebookIsEmpty<span class="op">,</span></span>
+<span id="cb24-15"><a href=""></a>        testAddScoreIncreasesSize<span class="op">,</span></span>
+<span id="cb24-16"><a href=""></a>        testRemoveLastDecreasesSize<span class="op">,</span></span>
+<span id="cb24-17"><a href=""></a>        testHighestScoreIncludesLastElement<span class="op">,</span></span>
+<span id="cb24-18"><a href=""></a>        testAverageOfThreeScores<span class="op">,</span></span>
+<span id="cb24-19"><a href=""></a>        testOneScore<span class="op">,</span></span>
+<span id="cb24-20"><a href=""></a>        testFullGradebook<span class="op">,</span></span>
+<span id="cb24-21"><a href=""></a>        testScoresAtLimits<span class="op">,</span></span>
+<span id="cb24-22"><a href=""></a>        testCurveNeverExceeds100</span>
+<span id="cb24-23"><a href=""></a>    <span class="op">};</span></span>
+<span id="cb24-24"><a href=""></a></span>
+<span id="cb24-25"><a href=""></a>    <span class="dt">int</span> total <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb24-26"><a href=""></a>    <span class="dt">int</span> failures <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb24-27"><a href=""></a>    <span class="cf">for</span> <span class="op">(</span><span class="kw">auto</span> test <span class="op">:</span> tests<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb24-28"><a href=""></a>        total<span class="op">++;</span></span>
+<span id="cb24-29"><a href=""></a>        <span class="cf">if</span> <span class="op">(!</span>test<span class="op">())</span> <span class="op">{</span></span>
+<span id="cb24-30"><a href=""></a>            failures<span class="op">++;</span></span>
+<span id="cb24-31"><a href=""></a>        <span class="op">}</span></span>
+<span id="cb24-32"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb24-33"><a href=""></a></span>
+<span id="cb24-34"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span> <span class="op">&lt;&lt;</span> total <span class="op">&lt;&lt;</span> <span class="st">" tests run, "</span> <span class="op">&lt;&lt;</span> failures <span class="op">&lt;&lt;</span> <span class="st">" failed</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb24-35"><a href=""></a>    <span class="cf">return</span> failures<span class="op">;</span></span>
+<span id="cb24-36"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:40%;">
 <pre><code>PASS  a new gradebook is empty
 PASS  addScore increases the size by one
@@ -2088,27 +2109,27 @@ PASS  a curve never pushes a score past 100
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 108 -->
+<!-- Slide 67 -->
 </section>
 <section id="compare-doubles-within-a-tolerance" class="slide level2">
 <h2>Compare Doubles Within a Tolerance</h2>
 <p>average() returns a double, and 250 / 3 cannot be stored exactly. Testing it with == can fail a correct program, so the test asks whether the result is close enough.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a><span class="co">// Doubles are compared within a tolerance, never with ==</span></span>
-<span id="cb5-2"><a href=""></a><span class="dt">bool</span> closeEnough<span class="op">(</span><span class="dt">double</span> actual<span class="op">,</span> <span class="dt">double</span> expected<span class="op">,</span> <span class="dt">double</span> tolerance<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-3"><a href=""></a>    <span class="cf">return</span> fabs<span class="op">(</span>actual <span class="op">-</span> expected<span class="op">)</span> <span class="op">&lt;=</span> tolerance<span class="op">;</span></span>
-<span id="cb5-4"><a href=""></a><span class="op">}</span></span>
-<span id="cb5-5"><a href=""></a></span>
-<span id="cb5-6"><a href=""></a><span class="dt">bool</span> testAverageOfThreeScores<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb5-7"><a href=""></a>    Gradebook book<span class="op">;</span></span>
-<span id="cb5-8"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">90</span><span class="op">);</span></span>
-<span id="cb5-9"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">85</span><span class="op">);</span></span>
-<span id="cb5-10"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">75</span><span class="op">);</span></span>
-<span id="cb5-11"><a href=""></a></span>
-<span id="cb5-12"><a href=""></a>    <span class="co">// 250 / 3 = 83.333..., which a double cannot store exactly</span></span>
-<span id="cb5-13"><a href=""></a>    <span class="cf">return</span> check<span class="op">(</span>closeEnough<span class="op">(</span>book<span class="op">.</span>average<span class="op">(),</span> <span class="fl">83.333</span><span class="op">,</span> <span class="fl">0.001</span><span class="op">),</span> <span class="st">"average of 90 85 75 is about 83.333"</span><span class="op">);</span></span>
-<span id="cb5-14"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb26-1"><a href=""></a><span class="co">// Doubles are compared within a tolerance, never with ==</span></span>
+<span id="cb26-2"><a href=""></a><span class="dt">bool</span> closeEnough<span class="op">(</span><span class="dt">double</span> actual<span class="op">,</span> <span class="dt">double</span> expected<span class="op">,</span> <span class="dt">double</span> tolerance<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb26-3"><a href=""></a>    <span class="cf">return</span> fabs<span class="op">(</span>actual <span class="op">-</span> expected<span class="op">)</span> <span class="op">&lt;=</span> tolerance<span class="op">;</span></span>
+<span id="cb26-4"><a href=""></a><span class="op">}</span></span>
+<span id="cb26-5"><a href=""></a></span>
+<span id="cb26-6"><a href=""></a><span class="dt">bool</span> testAverageOfThreeScores<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb26-7"><a href=""></a>    Gradebook book<span class="op">;</span></span>
+<span id="cb26-8"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">90</span><span class="op">);</span></span>
+<span id="cb26-9"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">85</span><span class="op">);</span></span>
+<span id="cb26-10"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">75</span><span class="op">);</span></span>
+<span id="cb26-11"><a href=""></a></span>
+<span id="cb26-12"><a href=""></a>    <span class="co">// 250 / 3 = 83.333..., which a double cannot store exactly</span></span>
+<span id="cb26-13"><a href=""></a>    <span class="cf">return</span> check<span class="op">(</span>closeEnough<span class="op">(</span>book<span class="op">.</span>average<span class="op">(),</span> <span class="fl">83.333</span><span class="op">,</span> <span class="fl">0.001</span><span class="op">),</span> <span class="st">"average of 90 85 75 is about 83.333"</span><span class="op">);</span></span>
+<span id="cb26-14"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
-<p>Connect to the Floating-Point Equality and Threshold Comparison slides in the Lambda and Functor Review. fabs comes from the cmath header.</p>
+<p>Connect to the lambda review: toWhole(3.9) showed that converting a double can lose information, and comparing doubles with == has the same trap. fabs comes from the cmath header.</p>
 <p>A true story from building this slide: the first draft used 90, 85, and 76 and expected 83.333. The test failed, because 251 / 3 is 83.667. The test was wrong, not the code. Expected values must be worked out carefully by hand.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -2121,7 +2142,7 @@ PASS  a curve never pushes a score past 100
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 109 -->
+<!-- Slide 68 -->
 </section>
 <section id="which-tests-fail" class="slide level2">
 <h2>Which Tests Fail?</h2>
@@ -2152,14 +2173,29 @@ FAIL  a curve never pushes a score past 100
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 110 -->
+<!-- Slide 69 -->
 </div>
 </section>
 <section id="choose-test-cases-at-the-edges" class="slide level2">
 <h2>Choose Test Cases at the Edges</h2>
-<p>Bugs gather at boundaries, so test the legal edges: an empty gradebook, one score, a full gradebook, and scores of exactly 0 and 100.</p>
-<p>Illegal input such as addScore(101) cannot be tested this way. The class’s own assertion aborts the whole test run, so every test must stay inside each function’s preconditions. Testing frameworks such as GoogleTest and Catch2 can test that an assertion fires, but this course uses the standard library only.</p>
-<!-- Slide 111 -->
+<ul>
+<li>Bugs gather at boundaries, so test the legal edges: an empty gradebook, one score, a full gradebook, and scores of exactly 0 and 100.</li>
+<li>Illegal input such as <code>addScore(101)</code> is not a legal edge: every test stays inside each function’s preconditions.</li>
+</ul>
+<aside class="notes">
+<p>Testing frameworks such as GoogleTest and Catch2 can test that an assertion fires, but this course uses the standard library only. The next slides show what goes wrong when a test breaks a precondition.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 70 -->
 </section>
 <section id="assertions-versus-unit-tests" class="slide level2">
 <h2>Assertions Versus Unit Tests</h2>
@@ -2197,6 +2233,11 @@ FAIL  a curve never pushes a score past 100
 <td>Callers breaking a rule</td>
 <td>A unit giving the wrong answer</td>
 </tr>
+<tr class="odd">
+<td>With <code>NDEBUG</code></td>
+<td>Removed</td>
+<td>Unchanged</td>
+</tr>
 </tbody>
 </table>
 <aside class="notes">
@@ -2212,7 +2253,53 @@ FAIL  a curve never pushes a score past 100
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 112 -->
+<!-- Slide 71 -->
+</section>
+<section id="what-if-assertions-are-turned-off" class="slide level2">
+<h2>What If Assertions Are Turned Off?</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test run</th>
+<th>Compiled normally</th>
+<th>Compiled with <code>-DNDEBUG</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Nine tests, all inside the preconditions</td>
+<td>9 run, 0 failed</td>
+<td>9 run, 0 failed</td>
+</tr>
+<tr class="even">
+<td>One test calls <code>addScore(101)</code></td>
+<td>The run aborts at that test, with no summary</td>
+<td>The run finishes, 101 is stored, and the report is misleading</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Tests never rely on <code>assert</code>, and they never break a precondition.</li>
+</ul>
+<aside class="notes">
+<p>Both rows were run with g++. Turning assertions off does not change honest tests, because check() is a function and NDEBUG removes only the assert macro. A test that breaks a precondition either stops the whole suite or, with assertions off, puts bad data into the object and reports failures that point at the wrong place.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 72 -->
 </section>
 <section id="write-the-test-before-the-fix" class="slide level2">
 <h2>Write the Test Before the Fix</h2>
@@ -2222,12 +2309,47 @@ FAIL  a curve never pushes a score past 100
 <li>Rerun the test, and watch it pass.</li>
 <li>Keep the test.</li>
 </ol>
-<p>A test that has never failed has never proved it can catch anything.</p>
-<!-- Slide 113 -->
+<p>A test that has never failed has never proved it can catch anything. A test written for a bug is a regression test from the day it is written.</p>
+<!-- Slide 73 -->
 </section>
-<section id="kept-tests-become-regression-tests" class="slide level2">
-<h2>Kept Tests Become Regression Tests</h2>
-<p>Regression testing reruns every existing test after every change. A later cleanup changes the highestScore loop back to i &lt; count - 1, and the suite catches it immediately.</p>
+<section id="unit-or-regression" class="slide level2">
+<h2>Unit or Regression?</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Answers</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Unit test</td>
+<td>What does it cover?</td>
+<td>One function or member function</td>
+</tr>
+<tr class="even">
+<td>Regression test</td>
+<td>Why is it kept?</td>
+<td>To catch working behavior that breaks again</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The highestScore test is both: it covers one member function and guards a fixed bug.</li>
+<li>A brand-new test for a new feature is a unit test, not yet a regression test.</li>
+<li>Comparing a whole program’s output with last week’s output is a regression test, not a unit test.</li>
+</ul>
+<!-- Slide 74 -->
+</section>
+<section id="regression-testing-in-action" class="slide level2">
+<h2>Regression Testing in Action</h2>
+<p>Regression testing reruns every existing test after every change. A later cleanup changes the highestScore loop back to <code>i &lt; count - 1</code>.</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -2239,19 +2361,18 @@ FAIL  a curve never pushes a score past 100
 <tbody>
 <tr class="odd">
 <td>Before the cleanup</td>
-<td>i &lt; count</td>
+<td><code>i &lt; count</code></td>
 <td>9 tests run, 0 failed</td>
 </tr>
 <tr class="even">
 <td>After the cleanup</td>
-<td>i &lt; count - 1</td>
+<td><code>i &lt; count - 1</code></td>
 <td>9 tests run, 2 failed</td>
 </tr>
 </tbody>
 </table>
-<p>Once a bug has a test, that bug cannot come back without someone noticing.</p>
 <aside class="notes">
-<p>The two failures are “highestScore includes the last score” and “scores of exactly 0 and 100 are handled.” Teams run their regression suites automatically on every change, often on GitHub, so nobody has to remember.</p>
+<p>The two failures are “highestScore includes the last score” and “scores of exactly 0 and 100 are handled.” Once a bug has a test, it cannot come back without someone noticing. Teams run their regression suites automatically on every change, often on GitHub, so nobody has to remember.</p>
 <p>[Graphic suggestion: a timeline with the fix, the kept test, and a later change. The test fires at the moment of the later change, long before release.]</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -2264,25 +2385,25 @@ FAIL  a curve never pushes a score past 100
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 114 -->
+<!-- Slide 75 -->
 </section>
 <section id="test-a-functor" class="slide level2">
 <h2>Test a Functor</h2>
 <p>The same pattern tests the MaxLength functor from 09.01. Each test checks one edge of the limit.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a><span class="dt">bool</span> testAcceptsExactLimit<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb7-2"><a href=""></a>    MaxLength validUsername<span class="op">(</span><span class="dv">8</span><span class="op">);</span></span>
-<span id="cb7-3"><a href=""></a>    <span class="cf">return</span> check<span class="op">(</span>validUsername<span class="op">(</span><span class="st">"abcdefgh"</span><span class="op">),</span> <span class="st">"8 characters is accepted"</span><span class="op">);</span></span>
-<span id="cb7-4"><a href=""></a><span class="op">}</span></span>
-<span id="cb7-5"><a href=""></a></span>
-<span id="cb7-6"><a href=""></a><span class="dt">bool</span> testRejectsOneOverLimit<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb7-7"><a href=""></a>    MaxLength validUsername<span class="op">(</span><span class="dv">8</span><span class="op">);</span></span>
-<span id="cb7-8"><a href=""></a>    <span class="cf">return</span> check<span class="op">(!</span>validUsername<span class="op">(</span><span class="st">"abcdefghi"</span><span class="op">),</span> <span class="st">"9 characters is rejected"</span><span class="op">);</span></span>
-<span id="cb7-9"><a href=""></a><span class="op">}</span></span>
-<span id="cb7-10"><a href=""></a></span>
-<span id="cb7-11"><a href=""></a><span class="dt">bool</span> testAcceptsEmptyString<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb7-12"><a href=""></a>    MaxLength validUsername<span class="op">(</span><span class="dv">8</span><span class="op">);</span></span>
-<span id="cb7-13"><a href=""></a>    <span class="cf">return</span> check<span class="op">(</span>validUsername<span class="op">(</span><span class="st">""</span><span class="op">),</span> <span class="st">"an empty string is accepted"</span><span class="op">);</span></span>
-<span id="cb7-14"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb28-1"><a href=""></a><span class="dt">bool</span> testAcceptsExactLimit<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb28-2"><a href=""></a>    MaxLength validUsername<span class="op">(</span><span class="dv">8</span><span class="op">);</span></span>
+<span id="cb28-3"><a href=""></a>    <span class="cf">return</span> check<span class="op">(</span>validUsername<span class="op">(</span><span class="st">"abcdefgh"</span><span class="op">),</span> <span class="st">"8 characters is accepted"</span><span class="op">);</span></span>
+<span id="cb28-4"><a href=""></a><span class="op">}</span></span>
+<span id="cb28-5"><a href=""></a></span>
+<span id="cb28-6"><a href=""></a><span class="dt">bool</span> testRejectsOneOverLimit<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb28-7"><a href=""></a>    MaxLength validUsername<span class="op">(</span><span class="dv">8</span><span class="op">);</span></span>
+<span id="cb28-8"><a href=""></a>    <span class="cf">return</span> check<span class="op">(!</span>validUsername<span class="op">(</span><span class="st">"abcdefghi"</span><span class="op">),</span> <span class="st">"9 characters is rejected"</span><span class="op">);</span></span>
+<span id="cb28-9"><a href=""></a><span class="op">}</span></span>
+<span id="cb28-10"><a href=""></a></span>
+<span id="cb28-11"><a href=""></a><span class="dt">bool</span> testAcceptsEmptyString<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb28-12"><a href=""></a>    MaxLength validUsername<span class="op">(</span><span class="dv">8</span><span class="op">);</span></span>
+<span id="cb28-13"><a href=""></a>    <span class="cf">return</span> check<span class="op">(</span>validUsername<span class="op">(</span><span class="st">""</span><span class="op">),</span> <span class="st">"an empty string is accepted"</span><span class="op">);</span></span>
+<span id="cb28-14"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
 <p>All three pass. Full program: cpp/maxlength_tests.cpp</p>
 <style type="text/css">
@@ -2296,7 +2417,7 @@ FAIL  a curve never pushes a score past 100
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 115 -->
+<!-- Slide 76 -->
 </section>
 <section id="common-practices" class="slide level2">
 <h2>Common Practices</h2>
@@ -2308,12 +2429,15 @@ FAIL  a curve never pushes a score past 100
 <li>Test through public member functions only.</li>
 <li>Rerun the whole suite after every change, and add a test for every bug you fix.</li>
 </ul>
-<!-- Slide 116 -->
+<!-- Slide 77 -->
 </section>
-<section id="summary" class="slide level2">
+<section id="summary-6" class="slide level2">
 <h2>Summary</h2>
-<p>A unit test checks one piece of a program against an answer worked out by hand. Kept and rerun after every change, the tests become a regression suite that stops fixed bugs from returning.</p>
-<!-- Slide 117 -->
+<ul>
+<li>A unit test checks one piece of a program against an answer worked out by hand.</li>
+<li>A regression test is any test kept and rerun to catch working behavior that breaks again; many unit tests are also regression tests.</li>
+</ul>
+<!-- Slide 78 -->
 </section>
 <section class="slide level2">
 
@@ -2322,11 +2446,12 @@ FAIL  a curve never pushes a score past 100
 <section id="key-takeaways" class="title-slide slide level1 center">
 <h1>Key Takeaways</h1>
 <ul>
-<li>Conversion syntax must preserve clear type intent; mark one-argument constructors explicit unless the conversion is intended.</li>
-<li>Operators and constructors should maintain predictable object behavior.</li>
-<li>A kept unit test is a regression test: it stops a fixed bug from returning.</li>
+<li>A class converts through <code>operator T()</code> or a constructor that takes one value, and both run without being called.</li>
+<li>Mark conversions <code>explicit</code> unless the target names the meaning and nothing is lost.</li>
+<li>Return <code>*this</code> by reference when a call changes its object, so chains keep working on the same object.</li>
+<li><em>Unit</em> says what a test covers; <em>regression</em> says why you keep rerunning it.</li>
 </ul>
-<!-- Slide 118 -->
+<!-- Slide 79 -->
 </section>
 <section class="slide level2">
 
@@ -2334,7 +2459,10 @@ FAIL  a curve never pushes a score past 100
 <section>
 <section id="next-time" class="title-slide slide level1 center">
 <h1>Next Time</h1>
-<!-- Slide 119 -->
+<ul>
+<li>Class Relationships, Aggregation, and Composition (Thursday, November 5)</li>
+</ul>
+<!-- Slide 80 -->
 </section>
 <section class="slide level2">
 
@@ -2342,7 +2470,389 @@ FAIL  a curve never pushes a score past 100
 <section>
 <section id="appendix" class="title-slide slide level1 center">
 <h1>Appendix</h1>
-<!-- Slide 120 -->
+<!-- Slide 81 -->
+</section>
+<section id="lambda-and-functor-review-good-practices" class="slide level2">
+<h2>Lambda and Functor Review: Good Practices</h2>
+<ul>
+<li>Prefer a lambda to a functor class that is used once.</li>
+<li>Capture only the variables the body uses.</li>
+<li>Capture by value unless the lambda must change or track the original.</li>
+<li>State the return type when the branches could deduce different types.</li>
+</ul>
+<!-- Slide 82 -->
+</section>
+<section id="lambda-and-functor-review-common-mistakes" class="slide level2">
+<h2>Lambda and Functor Review: Common Mistakes</h2>
+<ul>
+<li>Capturing by reference a variable that is gone before the lambda runs.</li>
+<li>Expecting a by-value capture to see later changes to the original.</li>
+<li>Changing a by-value capture without <code>mutable</code>.</li>
+<li>Letting <code>-&gt; int</code> silently drop a fraction.</li>
+</ul>
+<!-- Slide 83 -->
+</section>
+<section id="lambda-and-functor-review-more-examples" class="slide level2">
+<h2>Lambda and Functor Review: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb29-1"><a href=""></a>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> scores <span class="op">=</span> <span class="op">{</span><span class="dv">72</span><span class="op">,</span> <span class="dv">88</span><span class="op">,</span> <span class="dv">95</span><span class="op">,</span> <span class="dv">61</span><span class="op">,</span> <span class="dv">79</span><span class="op">};</span></span>
+<span id="cb29-2"><a href=""></a><span class="dt">int</span> passing <span class="op">=</span> <span class="dv">70</span><span class="op">;</span></span>
+<span id="cb29-3"><a href=""></a></span>
+<span id="cb29-4"><a href=""></a><span class="kw">auto</span> passed <span class="op">=</span> count_if<span class="op">(</span>scores<span class="op">.</span>begin<span class="op">(),</span> scores<span class="op">.</span>end<span class="op">(),</span></span>
+<span id="cb29-5"><a href=""></a>                       <span class="op">[</span>passing<span class="op">](</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">{</span> <span class="cf">return</span> s <span class="op">&gt;=</span> passing<span class="op">;</span> <span class="op">});</span></span>
+<span id="cb29-6"><a href=""></a>cout <span class="op">&lt;&lt;</span> passed <span class="op">&lt;&lt;</span> endl<span class="op">;</span>   <span class="co">// 4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 84 -->
+</section>
+<section id="lambda-and-functor-review-practice-problems" class="slide level2">
+<h2>Lambda and Functor Review: Practice Problems</h2>
+<ol type="1">
+<li>Rewrite an <code>IsEven</code> functor as a lambda passed to <code>count_if</code>.</li>
+<li>Predict the output when <code>for_each</code> runs a lambda that increments a counter captured by reference.</li>
+<li>Write a lambda with <code>-&gt; double</code> that averages two <code>int</code> values, and test it with 3 and 4.</li>
+</ol>
+<!-- Slide 85 -->
+</section>
+<section id="lambda-and-functor-review-ai-search-terms" class="slide level2">
+<h2>Lambda and Functor Review: AI Search Terms</h2>
+<ul>
+<li>C++ lambda capture by value versus by reference</li>
+<li>C++ closure object</li>
+<li>count_if with a lambda predicate</li>
+<li>C++ lambda trailing return type</li>
+<li>implicit conversion from double to int truncation</li>
+</ul>
+<!-- Slide 86 -->
+</section>
+<section id="lambda-and-functor-review-questions-for-reflection" class="slide level2">
+<h2>Lambda and Functor Review: Questions for Reflection</h2>
+<ul>
+<li>Why does a by-value capture keep the old value?</li>
+<li>When would you still write a named functor class?</li>
+<li>Why does the compiler stay silent when <code>-&gt; int</code> drops a fraction?</li>
+</ul>
+<!-- Slide 87 -->
+</section>
+<section id="type-conversion-operators-good-practices" class="slide level2">
+<h2>Type Conversion Operators: Good Practices</h2>
+<ul>
+<li>Mark conversion operators <code>const</code>.</li>
+<li>Write a conversion operator only when the result has one obvious meaning.</li>
+<li>Use a named getter when the unit or meaning could be misread.</li>
+<li>Give a class at most one conversion to a built-in type.</li>
+</ul>
+<!-- Slide 88 -->
+</section>
+<section id="type-conversion-operators-common-mistakes" class="slide level2">
+<h2>Type Conversion Operators: Common Mistakes</h2>
+<ul>
+<li>Writing a return type: <code>double operator double()</code> does not compile.</li>
+<li>Forgetting <code>const</code>, so a <code>const</code> object cannot convert.</li>
+<li>Adding both <code>operator int()</code> and <code>operator double()</code>, which creates ambiguous calls.</li>
+<li>Relying on an implicit conversion in a condition, as when zero degrees tested false.</li>
+</ul>
+<!-- Slide 89 -->
+</section>
+<section id="type-conversion-operators-more-examples" class="slide level2">
+<h2>Type Conversion Operators: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb30-1"><a href=""></a><span class="kw">class</span> Percent <span class="op">{</span></span>
+<span id="cb30-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb30-3"><a href=""></a>    <span class="dt">int</span> points<span class="op">;</span></span>
+<span id="cb30-4"><a href=""></a></span>
+<span id="cb30-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb30-6"><a href=""></a>    Percent<span class="op">(</span><span class="dt">int</span> value<span class="op">)</span> <span class="op">{</span> points <span class="op">=</span> value<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb30-7"><a href=""></a>    <span class="kw">operator</span> <span class="dt">double</span><span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> points <span class="op">/</span> <span class="fl">100.0</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb30-8"><a href=""></a><span class="op">};</span></span>
+<span id="cb30-9"><a href=""></a></span>
+<span id="cb30-10"><a href=""></a>Percent tax<span class="op">(</span><span class="dv">8</span><span class="op">);</span></span>
+<span id="cb30-11"><a href=""></a><span class="dt">double</span> price <span class="op">=</span> <span class="fl">50.0</span> <span class="op">*</span> <span class="op">(</span><span class="dv">1</span> <span class="op">+</span> tax<span class="op">);</span>   <span class="co">// 54</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 90 -->
+</section>
+<section id="type-conversion-operators-practice-problems" class="slide level2">
+<h2>Type Conversion Operators: Practice Problems</h2>
+<ol type="1">
+<li>Add <code>operator double()</code> to a <code>Money</code> class that stores cents, so a <code>Money</code> value converts to dollars.</li>
+<li>Explain why <code>if (balance)</code> compiles for that class and what it means.</li>
+<li>Decide between a conversion operator and a getter for a <code>Distance</code> class that stores meters, and justify the choice.</li>
+</ol>
+<!-- Slide 91 -->
+</section>
+<section id="type-conversion-operators-ai-search-terms" class="slide level2">
+<h2>Type Conversion Operators: AI Search Terms</h2>
+<ul>
+<li>C++ conversion operator</li>
+<li>C++ user-defined conversion function</li>
+<li>C++ overload operator double</li>
+<li>C++ implicit conversion sequence</li>
+<li>conversion operator versus getter</li>
+</ul>
+<!-- Slide 92 -->
+</section>
+<section id="type-conversion-operators-questions-for-reflection" class="slide level2">
+<h2>Type Conversion Operators: Questions for Reflection</h2>
+<ul>
+<li>Why does a conversion operator have no return type?</li>
+<li>How did a temperature of zero become <code>false</code>?</li>
+<li>When is a named getter clearer than a conversion?</li>
+</ul>
+<!-- Slide 93 -->
+</section>
+<section id="conversion-constructors-good-practices" class="slide level2">
+<h2>Conversion Constructors: Good Practices</h2>
+<ul>
+<li>Treat every constructor that takes one value as a conversion.</li>
+<li>Mark it <code>explicit</code> unless the conversion is intended.</li>
+<li>Check default arguments: a default on the second parameter creates a one-value constructor.</li>
+</ul>
+<!-- Slide 94 -->
+</section>
+<section id="conversion-constructors-common-mistakes" class="slide level2">
+<h2>Conversion Constructors: Common Mistakes</h2>
+<ul>
+<li>Adding a default to a second parameter and creating a conversion by accident.</li>
+<li>Assuming a constructor runs only when it is called by name.</li>
+<li>Expecting the compiler to chain two user-defined conversions.</li>
+</ul>
+<!-- Slide 95 -->
+</section>
+<section id="conversion-constructors-more-examples" class="slide level2">
+<h2>Conversion Constructors: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb31-1"><a href=""></a><span class="kw">class</span> Grade <span class="op">{</span></span>
+<span id="cb31-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb31-3"><a href=""></a>    <span class="dt">int</span> score<span class="op">;</span></span>
+<span id="cb31-4"><a href=""></a></span>
+<span id="cb31-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb31-6"><a href=""></a>    Grade<span class="op">(</span><span class="dt">int</span> value <span class="op">=</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span> score <span class="op">=</span> value<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb31-7"><a href=""></a>    <span class="dt">int</span> value<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> score<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb31-8"><a href=""></a><span class="op">};</span></span>
+<span id="cb31-9"><a href=""></a></span>
+<span id="cb31-10"><a href=""></a><span class="dt">void</span> record<span class="op">(</span><span class="at">const</span> Grade<span class="op">&amp;</span> g<span class="op">);</span></span>
+<span id="cb31-11"><a href=""></a></span>
+<span id="cb31-12"><a href=""></a>record<span class="op">(</span><span class="dv">91</span><span class="op">);</span>          <span class="co">// 91 becomes a Grade</span></span>
+<span id="cb31-13"><a href=""></a>Grade <span class="kw">final</span> <span class="op">=</span> <span class="dv">88</span><span class="op">;</span>    <span class="co">// 88 becomes a Grade</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 96 -->
+</section>
+<section id="conversion-constructors-practice-problems" class="slide level2">
+<h2>Conversion Constructors: Practice Problems</h2>
+<ol type="1">
+<li>For five given constructors, decide which ones convert a single value.</li>
+<li>Add a print statement to a converting constructor and count its calls in a program with three conversions.</li>
+<li>Explain why <code>string s = "hi";</code> compiles.</li>
+</ol>
+<!-- Slide 97 -->
+</section>
+<section id="conversion-constructors-ai-search-terms" class="slide level2">
+<h2>Conversion Constructors: AI Search Terms</h2>
+<ul>
+<li>C++ converting constructor</li>
+<li>C++ implicit constructor conversion</li>
+<li>C++ copy initialization versus direct initialization</li>
+<li>C++17 guaranteed copy elision</li>
+<li>std::string constructor from a C-string</li>
+</ul>
+<!-- Slide 98 -->
+</section>
+<section id="conversion-constructors-questions-for-reflection" class="slide level2">
+<h2>Conversion Constructors: Questions for Reflection</h2>
+<ul>
+<li>Did you intend <code>Temperature(double value = 0.0)</code> to be a conversion when you wrote it?</li>
+<li>Why does a default on the second parameter matter?</li>
+<li>Why is <code>string</code>’s conversion helpful when <code>Roster</code>’s is not?</li>
+</ul>
+<!-- Slide 99 -->
+</section>
+<section id="object-conversions-good-practices" class="slide level2">
+<h2>Object Conversions: Good Practices</h2>
+<ul>
+<li>Write one conversion between any two classes.</li>
+<li>Put it in the class you own; when you own both, prefer the converting constructor.</li>
+<li>Keep a conversion implicit only when the target names the meaning and nothing is lost.</li>
+</ul>
+<!-- Slide 100 -->
+</section>
+<section id="object-conversions-common-mistakes" class="slide level2">
+<h2>Object Conversions: Common Mistakes</h2>
+<ul>
+<li>Writing both a converting constructor and a conversion operator for the same pair of classes.</li>
+<li>Forgetting that assignment builds a temporary before it assigns.</li>
+<li>Converting to a bare built-in type that hides the unit.</li>
+</ul>
+<!-- Slide 101 -->
+</section>
+<section id="object-conversions-more-examples" class="slide level2">
+<h2>Object Conversions: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb32-1"><a href=""></a><span class="kw">class</span> Meters <span class="op">{</span></span>
+<span id="cb32-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb32-3"><a href=""></a>    <span class="dt">double</span> value<span class="op">;</span></span>
+<span id="cb32-4"><a href=""></a></span>
+<span id="cb32-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb32-6"><a href=""></a>    Meters<span class="op">(</span><span class="dt">double</span> v <span class="op">=</span> <span class="fl">0.0</span><span class="op">)</span> <span class="op">{</span> value <span class="op">=</span> v<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb32-7"><a href=""></a>    <span class="dt">double</span> get<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> value<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb32-8"><a href=""></a><span class="op">};</span></span>
+<span id="cb32-9"><a href=""></a></span>
+<span id="cb32-10"><a href=""></a><span class="kw">class</span> Feet <span class="op">{</span></span>
+<span id="cb32-11"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb32-12"><a href=""></a>    <span class="dt">double</span> value<span class="op">;</span></span>
+<span id="cb32-13"><a href=""></a></span>
+<span id="cb32-14"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb32-15"><a href=""></a>    Feet<span class="op">(</span><span class="at">const</span> Meters<span class="op">&amp;</span> m<span class="op">)</span> <span class="op">{</span> value <span class="op">=</span> m<span class="op">.</span>get<span class="op">()</span> <span class="op">*</span> <span class="fl">3.28084</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb32-16"><a href=""></a>    <span class="dt">double</span> get<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> value<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb32-17"><a href=""></a><span class="op">};</span></span>
+<span id="cb32-18"><a href=""></a></span>
+<span id="cb32-19"><a href=""></a>Feet height <span class="op">=</span> Meters<span class="op">(</span><span class="fl">2.0</span><span class="op">);</span>   <span class="co">// 6.56168</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 102 -->
+</section>
+<section id="object-conversions-practice-problems" class="slide level2">
+<h2>Object Conversions: Practice Problems</h2>
+<ol type="1">
+<li>Write a <code>Kelvin</code> class with a converting constructor from <code>Temperature</code>.</li>
+<li>Label every conversion in a given program as copy initialization, assignment, argument passing, or return.</li>
+<li>Decide whether a conversion from <code>Meters</code> to <code>int</code> should be implicit, and justify the answer.</li>
+</ol>
+<!-- Slide 103 -->
+</section>
+<section id="object-conversions-ai-search-terms" class="slide level2">
+<h2>Object Conversions: AI Search Terms</h2>
+<ul>
+<li>C++ conversion between two classes</li>
+<li>converting constructor versus conversion operator</li>
+<li>C++ ambiguous user-defined conversion</li>
+<li>C++ first-class objects</li>
+<li>std::chrono duration implicit conversion</li>
+</ul>
+<!-- Slide 104 -->
+</section>
+<section id="object-conversions-questions-for-reflection" class="slide level2">
+<h2>Object Conversions: Questions for Reflection</h2>
+<ul>
+<li>Why prefer the constructor when you own both classes?</li>
+<li>Which of the four conversion places is easiest to miss?</li>
+<li>What made <code>Temperature</code> a first-class object?</li>
+</ul>
+<!-- Slide 105 -->
+</section>
+<section id="conversion-safety-good-practices" class="slide level2">
+<h2>Conversion Safety: Good Practices</h2>
+<ul>
+<li>Declare one-value constructors and conversion operators <code>explicit</code> by default.</li>
+<li>Use <code>= delete</code> to forbid specific argument types.</li>
+<li>Use <code>static_cast</code> to state an intended conversion.</li>
+<li>Make <code>operator bool()</code> explicit when it reports whether an object is valid.</li>
+</ul>
+<!-- Slide 106 -->
+</section>
+<section id="conversion-safety-common-mistakes" class="slide level2">
+<h2>Conversion Safety: Common Mistakes</h2>
+<ul>
+<li>Expecting <code>explicit</code> to stop direct initialization such as <code>Roster r(2.7);</code>.</li>
+<li>Writing a non-explicit <code>operator bool()</code>, so the object can sneak into arithmetic.</li>
+<li>Leaving both conversion directions implicit and then adding an <code>operator+</code>.</li>
+</ul>
+<!-- Slide 107 -->
+</section>
+<section id="conversion-safety-more-examples" class="slide level2">
+<h2>Conversion Safety: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb33-1"><a href=""></a><span class="kw">class</span> Connection <span class="op">{</span></span>
+<span id="cb33-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb33-3"><a href=""></a>    <span class="dt">bool</span> open<span class="op">;</span></span>
+<span id="cb33-4"><a href=""></a></span>
+<span id="cb33-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb33-6"><a href=""></a>    Connection<span class="op">(</span><span class="dt">bool</span> state<span class="op">)</span> <span class="op">{</span> open <span class="op">=</span> state<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb33-7"><a href=""></a>    <span class="kw">explicit</span> <span class="kw">operator</span> <span class="dt">bool</span><span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> open<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb33-8"><a href=""></a><span class="op">};</span></span>
+<span id="cb33-9"><a href=""></a></span>
+<span id="cb33-10"><a href=""></a>Connection link<span class="op">(</span><span class="kw">true</span><span class="op">);</span></span>
+<span id="cb33-11"><a href=""></a><span class="cf">if</span> <span class="op">(</span>link<span class="op">)</span> <span class="op">{</span> cout <span class="op">&lt;&lt;</span> <span class="st">"connected"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span> <span class="op">}</span>   <span class="co">// allowed</span></span>
+<span id="cb33-12"><a href=""></a><span class="co">// int n = link + 1;                          // error</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 108 -->
+</section>
+<section id="conversion-safety-practice-problems" class="slide level2">
+<h2>Conversion Safety: Practice Problems</h2>
+<ol type="1">
+<li>Mark <code>Roster(int)</code> explicit and fix every call that stops compiling.</li>
+<li>Add a deleted constructor that stops <code>Roster(2.7)</code>.</li>
+<li>Resolve the <code>t + 5.0</code> ambiguity two different ways, and explain which you prefer.</li>
+</ol>
+<!-- Slide 109 -->
+</section>
+<section id="conversion-safety-ai-search-terms" class="slide level2">
+<h2>Conversion Safety: AI Search Terms</h2>
+<ul>
+<li>C++ explicit constructor</li>
+<li>C++ explicit conversion operator</li>
+<li>C++ contextual conversion to bool</li>
+<li>C++ deleted functions</li>
+<li>C++ ambiguous overload with user-defined conversions</li>
+<li>C++ Core Guidelines C.46</li>
+</ul>
+<!-- Slide 110 -->
+</section>
+<section id="conversion-safety-questions-for-reflection" class="slide level2">
+<h2>Conversion Safety: Questions for Reflection</h2>
+<ul>
+<li>Why did the standard library make <code>vector</code>’s size constructor explicit?</li>
+<li>Why does an explicit <code>operator bool()</code> still work in an <code>if</code>?</li>
+<li>When would you leave a conversion implicit?</li>
+</ul>
+<!-- Slide 111 -->
+</section>
+<section id="operator-chaining-good-practices" class="slide level2">
+<h2>Operator Chaining: Good Practices</h2>
+<ul>
+<li>Return <code>*this</code> by reference from <code>=</code>, <code>+=</code>, <code>&lt;&lt;</code>, and setters.</li>
+<li>Return a new object by value from <code>+</code>, <code>-</code>, and <code>*</code>.</li>
+<li>Take the right-hand side as <code>const</code> reference.</li>
+<li>Compile with <code>-Wall</code> so g++ warns about references to locals.</li>
+</ul>
+<!-- Slide 112 -->
+</section>
+<section id="operator-chaining-common-mistakes" class="slide level2">
+<h2>Operator Chaining: Common Mistakes</h2>
+<ul>
+<li>Returning by value from <code>+=</code> or a setter, so the next link changes a copy.</li>
+<li>Returning a reference to a local variable.</li>
+<li>Returning <code>ostream</code> by value from <code>operator&lt;&lt;</code>.</li>
+</ul>
+<!-- Slide 113 -->
+</section>
+<section id="operator-chaining-more-examples" class="slide level2">
+<h2>Operator Chaining: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb34-1"><a href=""></a><span class="co">// operator+ built from operator+=</span></span>
+<span id="cb34-2"><a href=""></a>Temperature <span class="kw">operator</span><span class="op">+(</span>Temperature lhs<span class="op">,</span> <span class="at">const</span> Temperature<span class="op">&amp;</span> rhs<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb34-3"><a href=""></a>    lhs <span class="op">+=</span> rhs<span class="op">;</span></span>
+<span id="cb34-4"><a href=""></a>    <span class="cf">return</span> lhs<span class="op">;</span></span>
+<span id="cb34-5"><a href=""></a><span class="op">}</span></span>
+<span id="cb34-6"><a href=""></a></span>
+<span id="cb34-7"><a href=""></a>Temperature t<span class="op">(</span><span class="fl">30.0</span><span class="op">);</span></span>
+<span id="cb34-8"><a href=""></a><span class="op">(</span>t <span class="op">-=</span> <span class="fl">5.0</span><span class="op">)</span> <span class="op">-=</span> <span class="fl">3.0</span><span class="op">;</span>   <span class="co">// t is 22 when -= returns Temperature&amp;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 114 -->
+</section>
+<section id="operator-chaining-practice-problems" class="slide level2">
+<h2>Operator Chaining: Practice Problems</h2>
+<ol type="1">
+<li>Add <code>operator*=</code> to <code>Temperature</code> so that it chains.</li>
+<li>Write chained setters for a <code>Course</code> class with a name, units, and room.</li>
+<li>Find the bug in an <code>operator+</code> that returns <code>Temperature&amp;</code>.</li>
+</ol>
+<!-- Slide 115 -->
+</section>
+<section id="operator-chaining-ai-search-terms" class="slide level2">
+<h2>Operator Chaining: AI Search Terms</h2>
+<ul>
+<li>C++ return *this by reference</li>
+<li>C++ operator chaining</li>
+<li>C++ method chaining</li>
+<li>why operator&lt;&lt; returns ostream reference</li>
+<li>C++ dangling reference to a local variable</li>
+</ul>
+<!-- Slide 116 -->
+</section>
+<section id="operator-chaining-questions-for-reflection" class="slide level2">
+<h2>Operator Chaining: Questions for Reflection</h2>
+<ul>
+<li>Why can <code>+</code> return by value while <code>+=</code> should not?</li>
+<li>What breaks if <code>operator&lt;&lt;</code> returned <code>ostream</code> by value?</li>
+<li>How would a unit test catch the setter bug?</li>
+</ul>
+<!-- Slide 117 -->
 </section>
 <section id="unit-testing-good-practices" class="slide level2">
 <h2>Unit Testing: Good Practices</h2>
@@ -2352,7 +2862,7 @@ FAIL  a curve never pushes a score past 100
 <li>Print each test’s name as it runs so a failure is easy to locate.</li>
 <li>Set RUN_TESTS back to true and rerun the suite after every change.</li>
 </ul>
-<!-- Slide 121 -->
+<!-- Slide 118 -->
 </section>
 <section id="unit-testing-common-mistakes" class="slide level2">
 <h2>Unit Testing: Common Mistakes</h2>
@@ -2361,30 +2871,31 @@ FAIL  a curve never pushes a score past 100
 <li>Comparing doubles with == instead of within a tolerance.</li>
 <li>Copying the expected value from the program’s own output, so the test can never fail.</li>
 <li>Using assert for test checks, which NDEBUG silently removes.</li>
+<li>Writing a test that breaks a precondition, which aborts the run or, with NDEBUG, corrupts the object being tested.</li>
 <li>Making data public just so a test can read it.</li>
 </ul>
-<!-- Slide 122 -->
+<!-- Slide 119 -->
 </section>
 <section id="unit-testing-more-examples" class="slide level2">
 <h2>Unit Testing: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a><span class="dt">bool</span> testRemoveLastDecreasesSize<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb8-2"><a href=""></a>    Gradebook book<span class="op">;</span></span>
-<span id="cb8-3"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">70</span><span class="op">);</span></span>
-<span id="cb8-4"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">80</span><span class="op">);</span></span>
-<span id="cb8-5"><a href=""></a>    book<span class="op">.</span>removeLast<span class="op">();</span></span>
-<span id="cb8-6"><a href=""></a>    <span class="cf">return</span> check<span class="op">(</span>book<span class="op">.</span>size<span class="op">()</span> <span class="op">==</span> <span class="dv">1</span><span class="op">,</span> <span class="st">"removeLast decreases the size by one"</span><span class="op">);</span></span>
-<span id="cb8-7"><a href=""></a><span class="op">}</span></span>
-<span id="cb8-8"><a href=""></a></span>
-<span id="cb8-9"><a href=""></a><span class="dt">bool</span> testCurveNeverExceeds100<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb8-10"><a href=""></a>    Gradebook book<span class="op">;</span></span>
-<span id="cb8-11"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">99</span><span class="op">);</span></span>
-<span id="cb8-12"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">50</span><span class="op">);</span></span>
-<span id="cb8-13"><a href=""></a>    book<span class="op">.</span>applyCurve<span class="op">(</span><span class="dv">5</span><span class="op">);</span></span>
-<span id="cb8-14"><a href=""></a></span>
-<span id="cb8-15"><a href=""></a>    <span class="co">// Capped curve: 100 and 55, so the average is 77.5</span></span>
-<span id="cb8-16"><a href=""></a>    <span class="cf">return</span> check<span class="op">(</span>closeEnough<span class="op">(</span>book<span class="op">.</span>average<span class="op">(),</span> <span class="fl">77.5</span><span class="op">,</span> <span class="fl">0.001</span><span class="op">),</span> <span class="st">"a curve never pushes a score past 100"</span><span class="op">);</span></span>
-<span id="cb8-17"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 123 -->
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb35-1"><a href=""></a><span class="dt">bool</span> testRemoveLastDecreasesSize<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb35-2"><a href=""></a>    Gradebook book<span class="op">;</span></span>
+<span id="cb35-3"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">70</span><span class="op">);</span></span>
+<span id="cb35-4"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">80</span><span class="op">);</span></span>
+<span id="cb35-5"><a href=""></a>    book<span class="op">.</span>removeLast<span class="op">();</span></span>
+<span id="cb35-6"><a href=""></a>    <span class="cf">return</span> check<span class="op">(</span>book<span class="op">.</span>size<span class="op">()</span> <span class="op">==</span> <span class="dv">1</span><span class="op">,</span> <span class="st">"removeLast decreases the size by one"</span><span class="op">);</span></span>
+<span id="cb35-7"><a href=""></a><span class="op">}</span></span>
+<span id="cb35-8"><a href=""></a></span>
+<span id="cb35-9"><a href=""></a><span class="dt">bool</span> testCurveNeverExceeds100<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb35-10"><a href=""></a>    Gradebook book<span class="op">;</span></span>
+<span id="cb35-11"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">99</span><span class="op">);</span></span>
+<span id="cb35-12"><a href=""></a>    book<span class="op">.</span>addScore<span class="op">(</span><span class="dv">50</span><span class="op">);</span></span>
+<span id="cb35-13"><a href=""></a>    book<span class="op">.</span>applyCurve<span class="op">(</span><span class="dv">5</span><span class="op">);</span></span>
+<span id="cb35-14"><a href=""></a></span>
+<span id="cb35-15"><a href=""></a>    <span class="co">// Capped curve: 100 and 55, so the average is 77.5</span></span>
+<span id="cb35-16"><a href=""></a>    <span class="cf">return</span> check<span class="op">(</span>closeEnough<span class="op">(</span>book<span class="op">.</span>average<span class="op">(),</span> <span class="fl">77.5</span><span class="op">,</span> <span class="fl">0.001</span><span class="op">),</span> <span class="st">"a curve never pushes a score past 100"</span><span class="op">);</span></span>
+<span id="cb35-17"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 120 -->
 </section>
 <section id="unit-testing-practice-problems" class="slide level2">
 <h2>Unit Testing: Practice Problems</h2>
@@ -2393,7 +2904,7 @@ FAIL  a curve never pushes a score past 100
 <li>Write three unit tests for the MultiplyBy functor from 09.01.</li>
 <li>Add a lowestScore member function to Gradebook. Write its tests first, watch them fail, then write the function.</li>
 </ol>
-<!-- Slide 124 -->
+<!-- Slide 121 -->
 </section>
 <section id="unit-testing-ai-search-terms" class="slide level2">
 <h2>Unit Testing: AI Search Terms</h2>
@@ -2405,7 +2916,7 @@ FAIL  a curve never pushes a score past 100
 <li>test-driven development</li>
 <li>GoogleTest death tests</li>
 </ul>
-<!-- Slide 125 -->
+<!-- Slide 122 -->
 </section>
 <section id="unit-testing-questions-for-reflection" class="slide level2">
 <h2>Unit Testing: Questions for Reflection</h2>
@@ -2414,7 +2925,7 @@ FAIL  a curve never pushes a score past 100
 <li>What would happen to the test results if every test shared one Gradebook object?</li>
 <li>When a test fails, how do you decide whether the code or the test is wrong?</li>
 </ul>
-<!-- Slide 126 -->
+<!-- Slide 123 -->
 
 </section></section>
     </div>

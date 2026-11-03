@@ -6,12 +6,13 @@
 
 ## Going the Other Way? {.smaller}
 
+- Temperature's constructor: `Temperature(double value = 0.0)`
 - `Temperature today = 21.5;` already compiles. Why?
 
 ::: notes
 Slides 20–27
 
-
+The constructor can be called with one double, so the compiler uses it to convert 21.5 into a Temperature. Let students guess; slides 21–22 confirm it.
 :::
 
 <!-- Slide 20 -->
