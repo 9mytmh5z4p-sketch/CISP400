@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 using namespace std;
 
 const int ROSTER_SIZE = 6;
@@ -27,10 +28,24 @@ public:
     bool operator()(const Student& student) const;
 };
 
-void printRoster(const Student roster[], int size);
+void runRoster(ostream& out);
+void printRoster(ostream& out, const Student roster[], int size);
 char letterGrade(int score);
+void checkOutput(const string& actual);
 
 int main() {
+    // Run every job, capturing the output so it can be checked
+    ostringstream captured;
+    runRoster(captured);
+
+    cout << captured.str();
+    checkOutput(captured.str());
+
+    return 0;
+}
+
+// Run every roster job, writing all output to out
+void runRoster(ostream& out) {
     Student roster[ROSTER_SIZE] = {
         {"Ada", 88}, {"Linus", 64}, {"Grace", 93},
         {"Alan", 55}, {"Barbara", 79}, {"Dennis", 71}
@@ -38,8 +53,8 @@ int main() {
     int passing = 70;
     int curve = 3;
 
-    cout << "Roster\n";
-    printRoster(roster, ROSTER_SIZE);
+    out << "Roster\n";
+    printRoster(out, roster, ROSTER_SIZE);
 
     // Count the students at or above the passing score
     int passed = 0;
@@ -48,7 +63,7 @@ int main() {
             passed++;
         }
     }
-    cout << "Passing: " << passed << '\n';
+    out << "Passing: " << passed << '\n';
 
     // Find the first student below the passing score
     int firstFail = -1;
@@ -60,9 +75,9 @@ int main() {
     }
 
     if (firstFail != -1) {
-        cout << "First failing: " << roster[firstFail].getName() << '\n';
+        out << "First failing: " << roster[firstFail].getName() << '\n';
     } else {
-        cout << "Everyone passed\n";
+        out << "Everyone passed\n";
     }
 
     // Add the curve to every student's score
@@ -83,8 +98,8 @@ int main() {
         roster[best] = temp;
     }
 
-    cout << "\nAfter a " << curve << " point curve, highest first\n";
-    printRoster(roster, ROSTER_SIZE);
+    out << "\nAfter a " << curve << " point curve, highest first\n";
+    printRoster(out, roster, ROSTER_SIZE);
 
     // Count the honors students with a functor
     ScoreAtLeast honors(90);
@@ -94,7 +109,7 @@ int main() {
             honorsCount++;
         }
     }
-    cout << "Honors: " << honorsCount << '\n';
+    out << "Honors: " << honorsCount << '\n';
 
     // Tally the letter grades in one pass
     int countA = 0;
@@ -111,10 +126,9 @@ int main() {
             default:  countF++; break;
         }
     }
-    cout << "A: " << countA << "  B: " << countB << "  C: " << countC
+    out << "A: " << countA << "  B: " << countB << "  C: " << countC
          << "  D: " << countD << "  F: " << countF << '\n';
 
-    return 0;
 }
 
 Student::Student(string studentName, int studentScore)
@@ -139,9 +153,9 @@ bool ScoreAtLeast::operator()(const Student& student) const {
 }
 
 // Print each student's name and score on its own line
-void printRoster(const Student roster[], int size) {
+void printRoster(ostream& out, const Student roster[], int size) {
     for (int i = 0; i < size; i++) {
-        cout << "  " << roster[i].getName() << ' ' << roster[i].getScore() << '\n';
+        out << "  " << roster[i].getName() << ' ' << roster[i].getScore() << '\n';
     }
 }
 
@@ -160,4 +174,55 @@ char letterGrade(int score) {
         return 'D';
     }
     return 'F';
+}
+
+// Output check: do not change anything below this line.
+
+// The exact output of the original roster_loops.cpp
+const string EXPECTED_OUTPUT = R"(Roster
+  Ada 88
+  Linus 64
+  Grace 93
+  Alan 55
+  Barbara 79
+  Dennis 71
+Passing: 4
+First failing: Linus
+
+After a 3 point curve, highest first
+  Grace 96
+  Ada 91
+  Barbara 82
+  Dennis 74
+  Linus 67
+  Alan 58
+Honors: 2
+A: 2  B: 1  C: 1  D: 1  F: 1
+)";
+
+// Compare the program's output with the original output, line by line
+void checkOutput(const string& actual) {
+    istringstream expectedLines(EXPECTED_OUTPUT);
+    istringstream actualLines(actual);
+    string expectedLine;
+    string actualLine;
+    int lineNumber = 0;
+
+    while (true) {
+        bool haveExpected = static_cast<bool>(getline(expectedLines, expectedLine));
+        bool haveActual = static_cast<bool>(getline(actualLines, actualLine));
+        lineNumber++;
+
+        if (!haveExpected && !haveActual) {
+            cout << "\nOutput check: PASS. The output matches the original exactly.\n";
+            return;
+        }
+
+        if (!haveExpected || !haveActual || expectedLine != actualLine) {
+            cout << "\nOutput check: FAIL at line " << lineNumber << '\n';
+            cout << "  Expected: " << (haveExpected ? expectedLine : "(no more lines)") << '\n';
+            cout << "  Actual:   " << (haveActual ? actualLine : "(no more lines)") << '\n';
+            return;
+        }
+    }
 }

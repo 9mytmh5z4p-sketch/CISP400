@@ -94,35 +94,34 @@ The assignment schedule and grade plan below provide a high-level overview. Canv
 | Week 7 | 07.01, 07.02 | The `this` pointer, constant member functions, static members, operator overloading, friends of classes, and stream operators | Chapter 11 | [The hidden `this` pointer](https://www.learncpp.com/cpp-tutorial/the-hidden-this-pointer-and-member-function-chaining/); [Chapter 21: Operator overloading](https://www.learncpp.com/cpp-tutorial/introduction-to-operator-overloading/); [I/O streams](https://www.learncpp.com/cpp-tutorial/input-and-output-io-streams/) |
 | Week 8 | 08.01, 08.02 | Copy constructors, memberwise assignment, shallow and deep copies, rvalue references, move operations, the Rule of Five, and structured debugging | Chapter 11 | [Introduction to the copy constructor](https://www.learncpp.com/cpp-tutorial/introduction-to-the-copy-constructor/); [Move semantics and smart pointers](https://www.learncpp.com/cpp-tutorial/introduction-to-smart-pointers-move-semantics/) |
 | Week 9 | 09.01, 09.02 | Functors, range-based loops, `std::for_each`, invariants and assertions, lambda expressions, captures and closures, and lambdas with `count_if`, `find_if`, and `sort` | Chapters 11 and 16 | [Overloading the parenthesis operator](https://www.learncpp.com/cpp-tutorial/overloading-the-parenthesis-operator/); [Standard library algorithms](https://www.learncpp.com/cpp-tutorial/introduction-to-standard-library-algorithms/); [Assert and static_assert](https://www.learncpp.com/cpp-tutorial/assert-and-static_assert/); [Lambdas](https://www.learncpp.com/cpp-tutorial/introduction-to-lambdas-anonymous-functions/); [Lambda captures](https://www.learncpp.com/cpp-tutorial/lambda-captures/) |
-| Week 10 | 10.01, 10.02 | Type conversion operators, conversion constructors, operator chaining, object conversions, and conversion safety | Chapter 11 | [Overloading typecasts](https://www.learncpp.com/cpp-tutorial/overloading-typecasts/); [Implicit type conversion](https://www.learncpp.com/cpp-tutorial/implicit-type-conversion/) |
+| Week 10 | 10.01 | Type conversion operators, conversion constructors, operator chaining, unit testing, regression testing, object conversions, and conversion safety | Chapter 11 | [Overloading typecasts](https://www.learncpp.com/cpp-tutorial/overloading-typecasts/); [Implicit type conversion](https://www.learncpp.com/cpp-tutorial/implicit-type-conversion/) |
 | Week 11 | 11.01, 11.02 | Class relationships, aggregation, composition, inheritance, multiple inheritance, inheritance access control, and virtual inheritance | Chapters 11 and 15 | [Chapter 23: Object relationships](https://www.learncpp.com/cpp-tutorial/object-relationships/); [Chapter 24: Inheritance](https://www.learncpp.com/cpp-tutorial/introduction-to-inheritance/) |
 | Week 12 | 12.01, 12.02 | Base-class construction, overriding, access specifiers, polymorphic data structures, and inheritance applications | Chapter 15 | [Introduction to inheritance](https://www.learncpp.com/cpp-tutorial/introduction-to-inheritance/); [Object relationships](https://www.learncpp.com/cpp-tutorial/object-relationships/) |
 | Week 13 | 13.01, 13.02 | Inheritance and arrays, arrays of class objects, polymorphism, virtual member functions, and type compatibility | Chapter 15 | [Chapter 25: Virtual functions](https://www.learncpp.com/cpp-tutorial/pointers-and-references-to-the-base-class-of-derived-objects/) |
 | Week 14 | 14.01, 14.02 | Abstract base classes, polymorphic arrays, object slicing, dynamic casting, exceptions, exception safety, and exception hierarchies | Chapters 15 and 16 | [Virtual functions](https://www.learncpp.com/cpp-tutorial/pointers-and-references-to-the-base-class-of-derived-objects/); [Chapter 27: Exceptions](https://www.learncpp.com/cpp-tutorial/the-need-for-exceptions/) |
-| Week 15 | 15.01, 15.02 | STL preview, vectors of vectors, function templates, template arguments, specialization, and generic maintenance | Chapters 16 and 17 | [Containers and arrays](https://www.learncpp.com/cpp-tutorial/introduction-to-containers-and-arrays/); [`std::vector`](https://www.learncpp.com/cpp-tutorial/introduction-to-stdvector/); [Templates and classes](https://www.learncpp.com/cpp-tutorial/template-classes/) |
 
 You are free to use the textbook or the online links. I do not expect students to read both. Reading just one should be sufficient.
 
 ### Revised Meeting Schedule
 
-CISP 400 will not meet on October 27, October 29, or November 17, 2026. The later lectures move to the next available Tuesday or Thursday. The final three lectures — 16.01, 16.02, and 17.01 — have been removed from the schedule.
+CISP 400 will not meet on October 27, October 29, November 10, or November 17, 2026, or on Thanksgiving, November 26. The later lectures move to the next available Tuesday or Thursday. Lecture 10.02 has been combined with 10.01, and 14.02 now meets earlier, on November 19. Lectures 15.01 and 15.02 and the final three lectures — 16.01, 16.02, and 17.01 — have been removed from the schedule.
 
 | Date | Schedule |
 | --- | --- |
 | Tuesday, October 27, 2026 | No class — instructor unavailable |
 | Thursday, October 29, 2026 | No class — instructor unavailable |
-| Tuesday, November 3, 2026 | 10.02 — Converting Constructors and Object Conversions |
+| Tuesday, November 3, 2026 | 10.01 — Type Conversion, Conversion Safety, Operator Chaining, and Unit Testing |
 | Thursday, November 5, 2026 | 11.01 — Class Relationships, Aggregation, and Composition |
-| Tuesday, November 10, 2026 | 11.02 — Inheritance and Multiple Inheritance |
-| Thursday, November 12, 2026 | 12.01 — Inheritance Construction and Overriding |
+| Tuesday, November 10, 2026 | No class — instructor unavailable |
+| Thursday, November 12, 2026 | 11.02 — Inheritance and Multiple Inheritance |
 | Tuesday, November 17, 2026 | No class — instructor unavailable |
-| Thursday, November 19, 2026 | 12.02 — Polymorphic Data Structures and Inheritance Applications |
-| Tuesday, November 24, 2026 | 13.01 — Inheritance and Arrays |
-| Thursday, November 26, 2026 | 13.02 — Polymorphism and Virtual Member Functions |
-| Tuesday, December 1, 2026 | 14.01 — Abstract Base Classes and Polymorphic Arrays |
-| Thursday, December 3, 2026 | 14.02 — Exception Handling and Exception Hierarchies |
-| Tuesday, December 8, 2026 | 15.01 — STL Preview and Vectors of Vectors |
-| Thursday, December 10, 2026 | 15.02 — Function Templates and Generic Programming |
+| Thursday, November 19, 2026 | 14.02 — Exception Handling and Exception Hierarchies |
+| Tuesday, November 24, 2026 | 12.01 — Inheritance Construction and Overriding |
+| Thursday, November 26, 2026 | No class — Thanksgiving Recess |
+| Tuesday, December 1, 2026 | 12.02 — Polymorphic Data Structures and Inheritance Applications |
+| Thursday, December 3, 2026 | 13.01 — Inheritance and Arrays |
+| Tuesday, December 8, 2026 | 13.02 — Polymorphism and Virtual Member Functions |
+| Thursday, December 10, 2026 | 14.01 — Abstract Base Classes and Polymorphic Arrays |
 
 
 

@@ -1258,7 +1258,7 @@
           lecture("09.01", "Functors, for_each, and Invariants")
         ]},
         { n: 10, start: "2026-10-26", end: "2026-10-28", section: "control", label: "Files and String Streams", lectures: [
-          lecture("10.01", "File I/O and Assertions"),
+          lecture("10.01", "Type Conversion, Operator Chaining, and Unit Testing"),
           lecture("11.01", "String Streams and Random Access")
         ]},
         { n: 11, start: "2026-11-02", end: "2026-11-04", section: "power", label: "Arrays and Algorithms", lectures: [
@@ -1287,10 +1287,14 @@
         { n: 17, start: "2026-12-14", end: "2026-12-16", section: "power", label: "Finals Period", note: "Exact CISP 400 final exam date and time are not yet assigned", lectures: [] }
       ];
 
-      // CISP 400 meets Tuesdays and Thursdays. These three dates are instructor
-      // cancellations; the remaining lectures move to the next available meeting.
-      const p400NoClassDates = new Set(["2026-10-27", "2026-10-29", "2026-11-17"]);
-      const p400LectureIds = Object.keys(window.P400_LECTURE_TITLES).slice(0, -3);
+      // CISP 400 meets Tuesdays and Thursdays. Oct 27, Oct 29, Nov 10, and Nov 17 are
+      // instructor cancellations and Nov 26 is Thanksgiving; the remaining lectures move
+      // to the next available meeting. 16.01, 16.02, and 17.01 were removed from the
+      // schedule; 15.01 and 15.02 are recorded in the inventory as not taught.
+      // 10.02 was merged into 10.01, and 14.02 runs early; P400_SCHEDULE in p400_inventory.js sets the order.
+      const p400NoClassDates = new Set(["2026-10-27", "2026-10-29", "2026-11-10", "2026-11-17", "2026-11-26"]);
+      const p400RemovedLectures = new Set(["16.01", "16.02", "17.01", ...Object.keys(window.P400_NOT_TAUGHT || {})]);
+      const p400LectureIds = window.P400_SCHEDULE || Object.keys(window.P400_LECTURE_TITLES).filter(id => !p400RemovedLectures.has(id));
       const p400Start = new Date(2026, 7, 25, 12, 0, 0);
       const p400ISO = date => {
         const year = date.getFullYear();
@@ -1393,6 +1397,7 @@
       addEvent("2026-09-07", "holiday", "Labor Day · No class", "No classes; offices closed.");
       addEvent("2026-11-11", "holiday", "Veterans Day · No class", "No classes; offices closed.");
       addEvent("2026-11-08", "homework", "Homework 5 due", "Due date.");
+      addEvent("2026-11-10", "holiday", "No class · Instructor unavailable", "CISP 400 does not meet today.");
       addEvent("2026-11-17", "holiday", "No class · Instructor unavailable", "CISP 400 does not meet today.");
       addEvent("2026-11-17", "deadline", "Withdraw with a “W”", "Last day to withdraw from classes with a “W” notation on record.");
       addEvent("2026-11-22", "homework", "Homework 6 due", "Due date.");
@@ -1743,6 +1748,7 @@
           { date: "2026-10-29", title: "No class · Instructor unavailable", detail: "CISP 400 does not meet" },
           { date: "2026-11-11", title: "Veterans Day · No class", detail: "Campus closed" },
           { date: "2026-11-08", title: "Homework 5 due", detail: "Assignment due" },
+          { date: "2026-11-10", title: "No class · Instructor unavailable", detail: "CISP 400 does not meet" },
           { date: "2026-11-17", title: "No class · Instructor unavailable", detail: "CISP 400 does not meet" },
           { date: "2026-11-17", title: "Withdrawal deadline", detail: "Withdraw with a “W”" },
           { date: "2026-11-22", title: "Homework 6 due", detail: "Assignment due" },

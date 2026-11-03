@@ -1,0 +1,147 @@
+<!-- Topic 1: Lambda and Functor Review -->
+<!-- Slides 12–23 -->
+# Lambda and Functor Review
+
+<!-- Slide 11 -->
+
+## Lightning Review Questions
+
+This slide presents the source material for **Lightning Review Questions** from the authoritative lecture deck.
+
+::: notes
+Slides 12–23
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Lightning Review
+
+This slide presents the source material for **Lightning Review** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## Lightning Review
+
+This slide presents the source material for **Lightning Review** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 14 -->
+
+---
+
+## Lambda Threshold Example
+
+This slide presents the source material for **Lambda Threshold Example** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## Generic Lambda Format
+
+This slide presents the source material for **Generic Lambda Format** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 16 -->
+
+---
+
+## Preferred Lambda Syntax
+
+This slide presents the source material for **Preferred Lambda Syntax** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 17 -->
+
+---
+
+## Explicit Conversion
+
+This slide presents the source material for **Explicit Conversion** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 18 -->
+
+---
+
+## Desk Check Exercise
+
+This slide presents the source material for **Desk Check Exercise** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## Exercise Goals
+
+This slide presents the source material for **Exercise Goals** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## Desk Check Exercise
+
+This slide presents the source material for **Desk Check Exercise** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 21 -->
+
+---
+
+## Double and Integer Output
+
+This slide presents the source material for **Double and Integer Output** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 22 -->
+
+---
+
+## Review
+
+This slide presents the source material for **Review** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 23 -->

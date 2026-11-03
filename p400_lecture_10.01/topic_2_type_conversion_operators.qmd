@@ -1,16 +1,18 @@
 <!-- Topic 2: Type Conversion Operators -->
-<!-- Slides 7–24 -->
+<!-- Slides 25–42 -->
 # Type Conversion Operators
+
+<!-- Slide 24 -->
 
 ## Conversion Operators
 
 This slide presents the source material for **Conversion Operators** from the authoritative lecture deck.
 
 ::: notes
-Slides 7–24
+Slides 25–42
 :::
 
-<!-- Slide 7 -->
+<!-- Slide 25 -->
 
 ---
 
@@ -22,7 +24,7 @@ This slide presents the source material for **Writing Conversion Operators** fro
 
 :::
 
-<!-- Slide 8 -->
+<!-- Slide 26 -->
 
 ---
 
@@ -34,7 +36,7 @@ This slide presents the source material for **Conversion Example** from the auth
 
 :::
 
-<!-- Slide 9 -->
+<!-- Slide 27 -->
 
 ---
 
@@ -46,7 +48,7 @@ This slide presents the source material for **Conversion Example** from the auth
 
 :::
 
-<!-- Slide 10 -->
+<!-- Slide 28 -->
 
 ---
 
@@ -58,7 +60,7 @@ This slide presents the source material for **Special Operator Functions** from 
 
 :::
 
-<!-- Slide 11 -->
+<!-- Slide 29 -->
 
 ---
 
@@ -70,7 +72,7 @@ This slide presents the source material for **Programming Exercise** from the au
 
 :::
 
-<!-- Slide 12 -->
+<!-- Slide 30 -->
 
 ---
 
@@ -82,7 +84,7 @@ This slide presents the source material for **Exercise Goals** from the authorit
 
 :::
 
-<!-- Slide 13 -->
+<!-- Slide 31 -->
 
 ---
 
@@ -94,7 +96,7 @@ This slide presents the source material for **Exercise** from the authoritative 
 
 :::
 
-<!-- Slide 14 -->
+<!-- Slide 32 -->
 
 ---
 
@@ -106,7 +108,7 @@ This slide presents the source material for **Exercise** from the authoritative 
 
 :::
 
-<!-- Slide 15 -->
+<!-- Slide 33 -->
 
 ---
 
@@ -118,7 +120,7 @@ This slide presents the source material for **Exercise Setup** from the authorit
 
 :::
 
-<!-- Slide 16 -->
+<!-- Slide 34 -->
 
 ---
 
@@ -130,7 +132,7 @@ This slide presents the source material for **Primitive Conversion** from the au
 
 :::
 
-<!-- Slide 17 -->
+<!-- Slide 35 -->
 
 ---
 
@@ -142,7 +144,7 @@ This slide presents the source material for **What Happens When** from the autho
 
 :::
 
-<!-- Slide 18 -->
+<!-- Slide 36 -->
 
 ---
 
@@ -154,7 +156,7 @@ This slide presents the source material for **Placeholders** from the authoritat
 
 :::
 
-<!-- Slide 19 -->
+<!-- Slide 37 -->
 
 ---
 
@@ -166,7 +168,7 @@ This slide presents the source material for **Segmentation Fault** from the auth
 
 :::
 
-<!-- Slide 20 -->
+<!-- Slide 38 -->
 
 ---
 
@@ -178,7 +180,7 @@ This slide presents the source material for **Unions and Variants** from the aut
 
 :::
 
-<!-- Slide 21 -->
+<!-- Slide 39 -->
 
 ---
 
@@ -190,7 +192,7 @@ This slide presents the source material for **Video Resource** from the authorit
 
 :::
 
-<!-- Slide 22 -->
+<!-- Slide 40 -->
 
 ---
 
@@ -202,7 +204,7 @@ This slide presents the source material for **Video** from the authoritative lec
 
 :::
 
-<!-- Slide 23 -->
+<!-- Slide 41 -->
 
 ---
 
@@ -214,4 +216,4 @@ This slide presents the source material for **Conversion Boundary** from the aut
 
 :::
 
-<!-- Slide 24 -->
+<!-- Slide 42 -->

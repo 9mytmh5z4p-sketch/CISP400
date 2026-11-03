@@ -1,16 +1,18 @@
-<!-- Topic 5: Lambda and Functor Review -->
-<!-- Slides 61–90 -->
+<!-- Topic 1: Lambda and Functor Review -->
+<!-- Slides 12–40 -->
 # Lambda and Functor Review
+
+<!-- Slide 11 -->
 
 ## Lightning Review Questions
 
 This slide presents the source material for **Lightning Review Questions** from the authoritative lecture deck.
 
 ::: notes
-Slides 61–90
+Slides 12–40
 :::
 
-<!-- Slide 61 -->
+<!-- Slide 12 -->
 
 ---
 
@@ -22,7 +24,7 @@ This slide presents the source material for **Lightning Review** from the author
 
 :::
 
-<!-- Slide 62 -->
+<!-- Slide 13 -->
 
 ---
 
@@ -34,7 +36,7 @@ This slide presents the source material for **Lightning Review** from the author
 
 :::
 
-<!-- Slide 63 -->
+<!-- Slide 14 -->
 
 ---
 
@@ -46,7 +48,7 @@ This slide presents the source material for **Lambda Threshold Example** from th
 
 :::
 
-<!-- Slide 64 -->
+<!-- Slide 15 -->
 
 ---
 
@@ -58,7 +60,7 @@ This slide presents the source material for **Lambda Threshold** from the author
 
 :::
 
-<!-- Slide 65 -->
+<!-- Slide 16 -->
 
 ---
 
@@ -70,7 +72,7 @@ This slide presents the source material for **Lambda Threshold** from the author
 
 :::
 
-<!-- Slide 66 -->
+<!-- Slide 17 -->
 
 ---
 
@@ -82,7 +84,7 @@ This slide presents the source material for **Lambda Threshold** from the author
 
 :::
 
-<!-- Slide 67 -->
+<!-- Slide 18 -->
 
 ---
 
@@ -94,7 +96,7 @@ This slide presents the source material for **Random Float Threshold** from the 
 
 :::
 
-<!-- Slide 68 -->
+<!-- Slide 19 -->
 
 ---
 
@@ -106,7 +108,7 @@ This slide presents the source material for **Float Comparison** from the author
 
 :::
 
-<!-- Slide 69 -->
+<!-- Slide 20 -->
 
 ---
 
@@ -118,7 +120,7 @@ This slide presents the source material for **Floating-Point Equality** from the
 
 :::
 
-<!-- Slide 70 -->
+<!-- Slide 21 -->
 
 ---
 
@@ -130,7 +132,7 @@ This slide presents the source material for **Threshold Comparison** from the au
 
 :::
 
-<!-- Slide 71 -->
+<!-- Slide 22 -->
 
 ---
 
@@ -142,7 +144,7 @@ This slide presents the source material for **Threshold Search** from the author
 
 :::
 
-<!-- Slide 72 -->
+<!-- Slide 23 -->
 
 ---
 
@@ -154,7 +156,7 @@ This slide presents the source material for **Threshold Search** from the author
 
 :::
 
-<!-- Slide 73 -->
+<!-- Slide 24 -->
 
 ---
 
@@ -166,7 +168,7 @@ This slide presents the source material for **Threshold Search** from the author
 
 :::
 
-<!-- Slide 74 -->
+<!-- Slide 25 -->
 
 ---
 
@@ -178,7 +180,7 @@ This slide presents the source material for **Threshold Search** from the author
 
 :::
 
-<!-- Slide 75 -->
+<!-- Slide 26 -->
 
 ---
 
@@ -190,7 +192,7 @@ This slide presents the source material for **Generic Lambda Format** from the a
 
 :::
 
-<!-- Slide 76 -->
+<!-- Slide 27 -->
 
 ---
 
@@ -202,7 +204,7 @@ This slide presents the source material for **Lambda Function Body** from the au
 
 :::
 
-<!-- Slide 77 -->
+<!-- Slide 28 -->
 
 ---
 
@@ -214,7 +216,7 @@ This slide presents the source material for **Lambda in Context** from the autho
 
 :::
 
-<!-- Slide 78 -->
+<!-- Slide 29 -->
 
 ---
 
@@ -226,7 +228,7 @@ This slide presents the source material for **Preferred Lambda Syntax** from the
 
 :::
 
-<!-- Slide 79 -->
+<!-- Slide 30 -->
 
 ---
 
@@ -238,7 +240,7 @@ This slide presents the source material for **Explicit Conversion** from the aut
 
 :::
 
-<!-- Slide 80 -->
+<!-- Slide 31 -->
 
 ---
 
@@ -250,7 +252,7 @@ This slide presents the source material for **Manual Lambda Call** from the auth
 
 :::
 
-<!-- Slide 81 -->
+<!-- Slide 32 -->
 
 ---
 
@@ -262,7 +264,7 @@ This slide presents the source material for **Function Call Example** from the a
 
 :::
 
-<!-- Slide 82 -->
+<!-- Slide 33 -->
 
 ---
 
@@ -274,7 +276,7 @@ This slide presents the source material for **Lambda Example** from the authorit
 
 :::
 
-<!-- Slide 83 -->
+<!-- Slide 34 -->
 
 ---
 
@@ -286,7 +288,7 @@ This slide presents the source material for **Error Code** from the authoritativ
 
 :::
 
-<!-- Slide 84 -->
+<!-- Slide 35 -->
 
 ---
 
@@ -298,7 +300,7 @@ This slide presents the source material for **Desk Check Exercise** from the aut
 
 :::
 
-<!-- Slide 85 -->
+<!-- Slide 36 -->
 
 ---
 
@@ -310,7 +312,7 @@ This slide presents the source material for **Exercise Goals** from the authorit
 
 :::
 
-<!-- Slide 86 -->
+<!-- Slide 37 -->
 
 ---
 
@@ -322,7 +324,7 @@ This slide presents the source material for **Desk Check Exercise** from the aut
 
 :::
 
-<!-- Slide 87 -->
+<!-- Slide 38 -->
 
 ---
 
@@ -334,7 +336,7 @@ This slide presents the source material for **Double and Integer Output** from t
 
 :::
 
-<!-- Slide 88 -->
+<!-- Slide 39 -->
 
 ---
 
@@ -346,16 +348,4 @@ This slide presents the source material for **Review** from the authoritative le
 
 :::
 
-<!-- Slide 89 -->
-
----
-
-## Next Time
-
-This slide presents the source material for **Next Time** from the authoritative lecture deck.
-
-::: notes
-
-:::
-
-<!-- Slide 90 -->
+<!-- Slide 40 -->

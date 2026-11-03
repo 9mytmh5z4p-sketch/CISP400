@@ -11,7 +11,7 @@ The roster program works. Make it shorter and clearer with standard algorithms a
 ::: notes
 Slides 58–61
 
-Have students run the original and save its output before they touch anything. The saved output is the test: any refactor that changes it is wrong, however good the code looks.
+The program checks its own output against the original every time it runs. That check is the test: any refactor that makes it fail is wrong, however good the code looks.
 :::
 
 <!-- Slide 58 -->
@@ -22,14 +22,14 @@ Have students run the original and save its output before they touch anything. T
 
 Lab files: [refactor_lab_prompt.md](assets/refactor_lab_prompt.md){target="_blank"} and [roster_loops.cpp](cpp/roster_loops.cpp){target="_blank"}
 
-1. Compile and run roster_loops.cpp. Save its output with `./roster_loops > before.txt`.
-2. Paste the prompt and your program into an AI assistant. Save the result as roster_lambdas.cpp.
-3. Run `./roster_lambdas > after.txt`, then `diff before.txt after.txt`. If diff prints nothing, the outputs match.
-4. If diff shows a difference, find which job changed and fix it yourself before asking the AI again.
-5. Audit every lambda with the checklist. Fix what it flags, then run diff again.
+1. Copy roster_loops.cpp into main.cpp in Replit and click Run. The last line should read "Output check: PASS."
+2. Paste the prompt and your program into an AI assistant.
+3. Replace main.cpp with the AI's program and click Run.
+4. If the check says FAIL, it shows the first line that differs. Find the job that printed it and fix it yourself before asking the AI again.
+5. Audit every lambda with the checklist. Fix what it flags, then click Run again.
 
 ::: notes
-diff compares two files line by line and prints only the lines that differ. Empty output means identical files.
+Students work in Replit without a shell. The bottom of the file holds the original output and a checkOutput function; main captures the program's output and compares it line by line, printing PASS or the first line that differs. The prompt tells the AI not to touch main or the check.
 
 Instructor answer key: assets/refactor_lab_answer_key.md. Reference solution: cpp/roster_lambdas_reference.cpp.
 :::
@@ -48,7 +48,7 @@ Instructor answer key: assets/refactor_lab_answer_key.md. Reference solution: cp
 - Was any loop forced into an algorithm it does not fit?
 
 ::: notes
-The last question is the trap. The letter-grade tally computes five results in one pass and should stay a loop. AI tools often convert it to for_each with [&] capturing five counters, or to five count_if calls. Both pass diff, and both fail the audit.
+The last question is the trap. The letter-grade tally computes five results in one pass and should stay a loop. AI tools often convert it to for_each with [&] capturing five counters, or to five count_if calls. Both pass the output check, and both fail the audit.
 :::
 
 <!-- Slide 60 -->
@@ -62,7 +62,7 @@ The last question is the trap. The letter-grade tally computes five results in o
 - What did the AI get wrong?
 
 ::: notes
-Collect two or three answers to the last question from the room. The point of the lab is that a refactor passing diff is not finished until a person who understands the rules has checked it.
+Collect two or three answers to the last question from the room. The point of the lab is that a refactor passing its output check is not finished until a person who understands the rules has checked it.
 :::
 
 <!-- Slide 61 -->

@@ -787,7 +787,7 @@
     <section class="intro-row" aria-labelledby="map-title">
       <div>
         <h2 id="map-title">The semester, mapped.</h2>
-        <p>Seventeen Tuesday–Thursday course weeks follow the CISP 400 progression from pointers and dynamic memory through object-oriented design, inheritance, polymorphism, exceptions, and generic programming.</p>
+        <p>Seventeen Tuesday–Thursday course weeks follow the CISP 400 progression from pointers and dynamic memory through object-oriented design, inheritance, polymorphism, and exceptions.</p>
       </div>
       <div class="countdown" id="term-summary" aria-live="polite">
         <strong id="term-summary-value">10</strong>
@@ -959,7 +959,7 @@
         {
           number: 10, unit: 2, title: "Files and String Streams", range: "Mon Oct 26 · Wed Oct 28",
           sessions: [
-            { day: "Mon", date: "Oct 26", iso: "2026-10-26", type: "lecture", code: "10.01", title: "File I/O and Assertions" },
+            { day: "Mon", date: "Oct 26", iso: "2026-10-26", type: "lecture", code: "10.01", title: "Type Conversion, Operator Chaining, and Unit Testing" },
             { day: "Wed", date: "Oct 28", iso: "2026-10-28", type: "lecture", code: "11.01", title: "String Streams and Random Access" }
           ], milestones: []
         },
@@ -1025,8 +1025,19 @@
 
       // CISP 400 meets Tuesdays and Thursdays. These three dates are instructor
       // cancellations; later lectures move to the next available meeting.
-      const p400NoClassDates = new Set(["2026-10-27", "2026-10-29", "2026-11-17"]);
-      const p400LectureIds = Object.keys(lectureTitles).slice(0, -3);
+      // Oct 27, Oct 29, Nov 10, and Nov 17 are instructor cancellations; Nov 26 is Thanksgiving.
+      // 16.01, 16.02, and 17.01 were removed; 15.01 and 15.02 are recorded in the inventory as not taught.
+      // 10.02 was merged into 10.01, and 14.02 runs early; P400_SCHEDULE in p400_inventory.js sets the order.
+      const p400NoClassReasons = {
+        "2026-10-27": ["Instructor unavailable", "CISP 400 does not meet today"],
+        "2026-10-29": ["Instructor unavailable", "CISP 400 does not meet today"],
+        "2026-11-10": ["Instructor unavailable", "CISP 400 does not meet today"],
+        "2026-11-17": ["Instructor unavailable", "CISP 400 does not meet today"],
+        "2026-11-26": ["Thanksgiving Recess", "No classes; offices closed November 26–29"]
+      };
+      const p400NoClassDates = new Set(Object.keys(p400NoClassReasons));
+      const p400RemovedLectures = new Set(["16.01", "16.02", "17.01", ...Object.keys(window.P400_NOT_TAUGHT || {})]);
+      const p400LectureIds = window.P400_SCHEDULE || Object.keys(lectureTitles).filter((id) => !p400RemovedLectures.has(id));
       const p400Start = new Date(2026, 7, 25, 12, 0, 0);
       const p400ISO = (date) => date.toISOString().slice(0, 10);
       const formatP400Date = (date) => date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
@@ -1045,14 +1056,20 @@
         const sessions = dates.map((date) => {
           const iso = p400ISO(date);
           if (p400NoClassDates.has(iso)) {
-            return { day: date.getDay() === 2 ? "Tue" : "Thu", date: formatP400Date(date), iso, type: "no-class", label: "No class", title: "Instructor unavailable", detail: "CISP 400 does not meet today" };
+            const [title, detail] = p400NoClassReasons[iso];
+            return { day: date.getDay() === 2 ? "Tue" : "Thu", date: formatP400Date(date), iso, type: "no-class", label: "No class", title, detail };
+          }
+          if (lectureIndex >= p400LectureIds.length) {
+            return { day: date.getDay() === 2 ? "Tue" : "Thu", date: formatP400Date(date), iso, type: "no-class", label: "Open", title: "No lecture scheduled", detail: "All scheduled lectures are complete" };
           }
           const code = p400LectureIds[lectureIndex++];
           return { day: date.getDay() === 2 ? "Tue" : "Thu", date: formatP400Date(date), iso, type: "lecture", code, title: lectureTitles[code] || code };
         });
         const milestones = [];
-        if (p400NoClassDates.has(p400ISO(tuesday))) milestones.push([formatP400Date(tuesday), "No class · Instructor unavailable", "CISP 400 does not meet.", "break"]);
-        if (p400NoClassDates.has(p400ISO(thursday))) milestones.push([formatP400Date(thursday), "No class · Instructor unavailable", "CISP 400 does not meet.", "break"]);
+        dates.forEach((date) => {
+          const reason = p400NoClassReasons[p400ISO(date)];
+          if (reason) milestones.push([formatP400Date(date), `No class · ${reason[0]}`, `${reason[1]}.`, "break"]);
+        });
         if (p400ISO(tuesday) === "2026-11-17") milestones.push(["Nov 17", "Withdrawal deadline", "Last day to withdraw with a “W” notation.", "deadline"]);
         return {
           number: index + 1,
@@ -1069,7 +1086,10 @@
         title: "Finals Period",
         range: "Tue Dec 15 · Thu Dec 17",
         sessions: [
-          { day: "Tue", date: "Dec 15", iso: "2026-12-15", type: "finals", label: "Finals", title: "Final-exam period", detail: "No exact CISP400 exam date or time assigned" },
+          // A lecture pushed past Dec 10 by the cancellations meets on Tue Dec 15.
+          lectureIndex < p400LectureIds.length
+            ? { day: "Tue", date: "Dec 15", iso: "2026-12-15", type: "lecture", code: p400LectureIds[lectureIndex], title: lectureTitles[p400LectureIds[lectureIndex++]] }
+            : { day: "Tue", date: "Dec 15", iso: "2026-12-15", type: "finals", label: "Finals", title: "Final-exam period", detail: "No exact CISP400 exam date or time assigned" },
           { day: "Thu", date: "Dec 17", iso: "2026-12-17", type: "finals", label: "Finals", title: "Final-exam period", detail: "No exact CISP400 exam date or time assigned" }
         ],
         milestones: []

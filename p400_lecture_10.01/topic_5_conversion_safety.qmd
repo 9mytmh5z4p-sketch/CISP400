@@ -1,0 +1,123 @@
+<!-- Topic 5: Conversion Safety -->
+<!-- Slides 67–76 -->
+# Conversion Safety
+
+<!-- Slide 66 -->
+
+## Unintended Conversions
+
+This slide presents the source material for **Unintended Conversions** from the authoritative lecture deck.
+
+::: notes
+Slides 67–76
+:::
+
+<!-- Slide 67 -->
+
+---
+
+## Video
+
+This slide presents the source material for **Video** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 68 -->
+
+---
+
+## Constructor Hijacking
+
+This slide presents the source material for **Constructor Hijacking** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 69 -->
+
+---
+
+## Strange Conversions
+
+This slide presents the source material for **Strange Conversions** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 70 -->
+
+---
+
+## Type Safety
+
+This slide presents the source material for **Type Safety** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 71 -->
+
+---
+
+## Use Explicit or Delete
+
+This slide presents the source material for **Use Explicit or Delete** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 72 -->
+
+---
+
+## Desk Check Exercise
+
+This slide presents the source material for **Desk Check Exercise** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 73 -->
+
+---
+
+## Desk Check
+
+This slide presents the source material for **Desk Check** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 74 -->
+
+---
+
+## Overload Ambiguity
+
+This slide presents the source material for **Overload Ambiguity** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 75 -->
+
+---
+
+## Choosing an Overload
+
+This slide presents the source material for **Choosing an Overload** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 76 -->

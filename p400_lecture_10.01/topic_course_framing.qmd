@@ -1,16 +1,18 @@
-<!-- Topic 1: Course Framing -->
-<!-- Slides 1–6 -->
+<!-- Course Framing -->
+<!-- Slides 5–10 -->
 # Course Framing
+
+<!-- Slide 4 -->
 
 ## CISP 400
 
 This slide presents the source material for **CISP 400** from the authoritative lecture deck.
 
 ::: notes
-Slides 1–6
+Slides 5–10
 :::
 
-<!-- Slide 1 -->
+<!-- Slide 5 -->
 
 ---
 
@@ -22,7 +24,7 @@ This slide presents the source material for **Chapter 11 More OOP** from the aut
 
 :::
 
-<!-- Slide 2 -->
+<!-- Slide 6 -->
 
 ---
 
@@ -34,7 +36,7 @@ This slide presents the source material for **Course Context** from the authorit
 
 :::
 
-<!-- Slide 3 -->
+<!-- Slide 7 -->
 
 ---
 
@@ -46,7 +48,7 @@ This slide presents the source material for **Agenda** from the authoritative le
 
 :::
 
-<!-- Slide 4 -->
+<!-- Slide 8 -->
 
 ---
 
@@ -58,7 +60,7 @@ This slide presents the source material for **11.9 Type Conversion Operators** f
 
 :::
 
-<!-- Slide 5 -->
+<!-- Slide 9 -->
 
 ---
 
@@ -70,4 +72,4 @@ This slide presents the source material for **Agenda** from the authoritative le
 
 :::
 
-<!-- Slide 6 -->
+<!-- Slide 10 -->

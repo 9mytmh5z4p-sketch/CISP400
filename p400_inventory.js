@@ -18,7 +18,7 @@ window.P400_INVENTORY = {
   "08.02": ["Structured Debugging", "Rule of Five", "Deep Copy", "Rvalue References and Move Operations"],
   "09.01": ["Functors", "Range-Based Loops and std::for_each", "Activities and Desk Check", "Invariants and Assertions", "Invariant Lab"],
   "09.02": ["Functor Review", "Lambda Expressions", "Captures and Closures", "Lambdas with STL Algorithms", "Lambda Lab"],
-  "10.01": ["Type Conversion Operators", "Conversion Constructors", "Operator Chaining", "Lambda and Functor Review"],
+  "10.01": ["Lambda and Functor Review", "Type Conversion Operators", "Conversion Constructors", "Object Conversions", "Conversion Safety", "Operator Chaining", "Unit Testing"],
   "10.02": ["Conversion Constructors", "First-Class Objects", "Object Conversions", "Conversion Safety"],
   "11.01": ["Class Relationships", "Aggregation and Composition", "Conversion Review"],
   "11.02": ["Class Relationships", "Aggregation and Composition", "Inheritance", "Multiple Inheritance", "Inheritance Access Control", "Virtual Inheritance"],
@@ -35,6 +35,22 @@ window.P400_INVENTORY = {
   "17.01": ["Vectors of Objects", "Arrays of Objects"],
   "TBD": ["std::function and Callbacks", "Function Templates", "Class Templates"]
 };
+
+/* Lectures whose topics are recorded in inventory.csv but were not taught.
+   The calendar and course map leave these off the meeting schedule. */
+window.P400_NOT_TAUGHT = {
+  "15.01": "Not taught - dropped after the Nov 10, 2026 class cancellation (board meeting)",
+  "15.02": "Not taught - dropped after the Nov 10, 2026 class cancellation (board meeting)"
+};
+
+/* Fall 2026 meeting order. The calendar, course map, and index.html place these lectures,
+   in this order, on the Tuesday/Thursday meetings that are not cancelled.
+   10.02 was merged into 10.01; 14.02 runs early on Nov 19. */
+window.P400_SCHEDULE = [
+  "01.01", "01.02", "02.01", "02.02", "03.01", "03.02", "04.01", "04.02", "05.01", "05.02",
+  "06.01", "06.02", "07.01", "07.02", "08.01", "08.02", "09.01", "09.02", "10.01", "11.01",
+  "11.02", "14.02", "12.01", "12.02", "13.01", "13.02", "14.01"
+];
 
 window.P400_LECTURE_TITLES = {
   "01.01": "Course Introduction",
@@ -55,7 +71,7 @@ window.P400_LECTURE_TITLES = {
   "08.02": "Deep Copies and Move Operations",
   "09.01": "Functors, for_each, and Invariants",
   "09.02": "Functors to Lambdas",
-  "10.01": "Type Conversion and Operator Chaining",
+  "10.01": "Type Conversion, Conversion Safety, Operator Chaining, and Unit Testing",
   "10.02": "Converting Constructors and Object Conversions",
   "11.01": "Class Relationships, Aggregation, and Composition",
   "11.02": "Inheritance and Multiple Inheritance",

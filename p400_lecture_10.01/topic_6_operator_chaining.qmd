@@ -1,16 +1,18 @@
-<!-- Topic 4: Operator Chaining -->
-<!-- Slides 37–60 -->
+<!-- Topic 6: Operator Chaining -->
+<!-- Slides 78–101 -->
 # Operator Chaining
+
+<!-- Slide 77 -->
 
 ## Convert Constructor Context
 
 This slide presents the source material for **Convert Constructor Context** from the authoritative lecture deck.
 
 ::: notes
-Slides 37–60
+Slides 78–101
 :::
 
-<!-- Slide 37 -->
+<!-- Slide 78 -->
 
 ---
 
@@ -22,7 +24,7 @@ This slide presents the source material for **Convert Constructor Context** from
 
 :::
 
-<!-- Slide 38 -->
+<!-- Slide 79 -->
 
 ---
 
@@ -34,7 +36,7 @@ This slide presents the source material for **Task III** from the authoritative 
 
 :::
 
-<!-- Slide 39 -->
+<!-- Slide 80 -->
 
 ---
 
@@ -46,7 +48,7 @@ This slide presents the source material for **Exercise Goals** from the authorit
 
 :::
 
-<!-- Slide 40 -->
+<!-- Slide 81 -->
 
 ---
 
@@ -58,7 +60,7 @@ This slide presents the source material for **Task** from the authoritative lect
 
 :::
 
-<!-- Slide 41 -->
+<!-- Slide 82 -->
 
 ---
 
@@ -70,7 +72,7 @@ This slide presents the source material for **Task II** from the authoritative l
 
 :::
 
-<!-- Slide 42 -->
+<!-- Slide 83 -->
 
 ---
 
@@ -82,7 +84,7 @@ This slide presents the source material for **Homework 4 Preflight** from the au
 
 :::
 
-<!-- Slide 43 -->
+<!-- Slide 84 -->
 
 ---
 
@@ -94,7 +96,7 @@ This slide presents the source material for **Video** from the authoritative lec
 
 :::
 
-<!-- Slide 44 -->
+<!-- Slide 85 -->
 
 ---
 
@@ -106,7 +108,7 @@ This slide presents the source material for **Exercise Transition** from the aut
 
 :::
 
-<!-- Slide 45 -->
+<!-- Slide 86 -->
 
 ---
 
@@ -118,7 +120,7 @@ This slide presents the source material for **Programming Exercise** from the au
 
 :::
 
-<!-- Slide 46 -->
+<!-- Slide 87 -->
 
 ---
 
@@ -130,7 +132,7 @@ This slide presents the source material for **Operator Chaining** from the autho
 
 :::
 
-<!-- Slide 47 -->
+<!-- Slide 88 -->
 
 ---
 
@@ -142,7 +144,7 @@ This slide presents the source material for **Primitive Output** from the author
 
 :::
 
-<!-- Slide 48 -->
+<!-- Slide 89 -->
 
 ---
 
@@ -154,7 +156,7 @@ This slide presents the source material for **Chaining Example** from the author
 
 :::
 
-<!-- Slide 49 -->
+<!-- Slide 90 -->
 
 ---
 
@@ -166,7 +168,7 @@ This slide presents the source material for **Chaining Example** from the author
 
 :::
 
-<!-- Slide 50 -->
+<!-- Slide 91 -->
 
 ---
 
@@ -178,7 +180,7 @@ This slide presents the source material for **Return Type for Chaining** from th
 
 :::
 
-<!-- Slide 51 -->
+<!-- Slide 92 -->
 
 ---
 
@@ -190,7 +192,7 @@ This slide presents the source material for **Constant Right-Hand Side** from th
 
 :::
 
-<!-- Slide 52 -->
+<!-- Slide 93 -->
 
 ---
 
@@ -202,7 +204,7 @@ This slide presents the source material for **Why Chaining Matters** from the au
 
 :::
 
-<!-- Slide 53 -->
+<!-- Slide 94 -->
 
 ---
 
@@ -214,7 +216,7 @@ This slide presents the source material for **Chaining Design** from the authori
 
 :::
 
-<!-- Slide 54 -->
+<!-- Slide 95 -->
 
 ---
 
@@ -226,7 +228,7 @@ This slide presents the source material for **Return the Calling Object** from t
 
 :::
 
-<!-- Slide 55 -->
+<!-- Slide 96 -->
 
 ---
 
@@ -238,7 +240,7 @@ This slide presents the source material for **Chaining Answer** from the authori
 
 :::
 
-<!-- Slide 56 -->
+<!-- Slide 97 -->
 
 ---
 
@@ -250,7 +252,7 @@ This slide presents the source material for **Desk Check Exercise** from the aut
 
 :::
 
-<!-- Slide 57 -->
+<!-- Slide 98 -->
 
 ---
 
@@ -262,7 +264,7 @@ This slide presents the source material for **Desk Check** from the authoritativ
 
 :::
 
-<!-- Slide 58 -->
+<!-- Slide 99 -->
 
 ---
 
@@ -274,7 +276,7 @@ This slide presents the source material for **Exercise Desk Check** from the aut
 
 :::
 
-<!-- Slide 59 -->
+<!-- Slide 100 -->
 
 ---
 
@@ -286,4 +288,4 @@ This slide presents the source material for **What's Wrong?** from the authorita
 
 :::
 
-<!-- Slide 60 -->
+<!-- Slide 101 -->

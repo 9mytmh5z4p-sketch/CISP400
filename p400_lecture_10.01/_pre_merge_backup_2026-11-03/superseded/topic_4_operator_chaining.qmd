@@ -1,0 +1,291 @@
+<!-- Topic 4: Operator Chaining -->
+<!-- Slides 74–97 -->
+# Operator Chaining
+
+<!-- Slide 73 -->
+
+## Convert Constructor Context
+
+This slide presents the source material for **Convert Constructor Context** from the authoritative lecture deck.
+
+::: notes
+Slides 74–97
+:::
+
+<!-- Slide 74 -->
+
+---
+
+## Convert Constructor Context
+
+This slide presents the source material for **Convert Constructor Context** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 75 -->
+
+---
+
+## Task III
+
+This slide presents the source material for **Task III** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 76 -->
+
+---
+
+## Exercise Goals
+
+This slide presents the source material for **Exercise Goals** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 77 -->
+
+---
+
+## Task
+
+This slide presents the source material for **Task** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 78 -->
+
+---
+
+## Task II
+
+This slide presents the source material for **Task II** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 79 -->
+
+---
+
+## Homework 4 Preflight
+
+This slide presents the source material for **Homework 4 Preflight** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 80 -->
+
+---
+
+## Video
+
+This slide presents the source material for **Video** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 81 -->
+
+---
+
+## Exercise Transition
+
+This slide presents the source material for **Exercise Transition** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 82 -->
+
+---
+
+## Programming Exercise
+
+This slide presents the source material for **Programming Exercise** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 83 -->
+
+---
+
+## Operator Chaining
+
+This slide presents the source material for **Operator Chaining** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 84 -->
+
+---
+
+## Primitive Output
+
+This slide presents the source material for **Primitive Output** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 85 -->
+
+---
+
+## Chaining Example
+
+This slide presents the source material for **Chaining Example** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 86 -->
+
+---
+
+## Chaining Example
+
+This slide presents the source material for **Chaining Example** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 87 -->
+
+---
+
+## Return Type for Chaining
+
+This slide presents the source material for **Return Type for Chaining** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 88 -->
+
+---
+
+## Constant Right-Hand Side
+
+This slide presents the source material for **Constant Right-Hand Side** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 89 -->
+
+---
+
+## Why Chaining Matters
+
+This slide presents the source material for **Why Chaining Matters** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 90 -->
+
+---
+
+## Chaining Design
+
+This slide presents the source material for **Chaining Design** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 91 -->
+
+---
+
+## Return the Calling Object
+
+This slide presents the source material for **Return the Calling Object** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 92 -->
+
+---
+
+## Chaining Answer
+
+This slide presents the source material for **Chaining Answer** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 93 -->
+
+---
+
+## Desk Check Exercise
+
+This slide presents the source material for **Desk Check Exercise** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 94 -->
+
+---
+
+## Desk Check
+
+This slide presents the source material for **Desk Check** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 95 -->
+
+---
+
+## Exercise Desk Check
+
+This slide presents the source material for **Exercise Desk Check** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 96 -->
+
+---
+
+## What's Wrong?
+
+This slide presents the source material for **What's Wrong?** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 97 -->

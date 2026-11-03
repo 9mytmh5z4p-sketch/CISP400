@@ -1,0 +1,111 @@
+<!-- Topic 4: Object Conversions -->
+<!-- Slides 57–65 -->
+# Object Conversions
+
+<!-- Slide 56 -->
+
+## Object Conversion
+
+This slide presents the source material for **Object Conversion** from the authoritative lecture deck.
+
+::: notes
+Slides 57–65
+:::
+
+<!-- Slide 57 -->
+
+---
+
+## First-Class Objects Definition
+
+This slide presents the source material for **First-Class Objects Definition** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 58 -->
+
+---
+
+## Object-to-Object Conversion
+
+This slide presents the source material for **Object-to-Object Conversion** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 59 -->
+
+---
+
+## Four Places for Conversion
+
+This slide presents the source material for **Four Places for Conversion** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 60 -->
+
+---
+
+## Copy Initialization
+
+This slide presents the source material for **Copy Initialization** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 61 -->
+
+---
+
+## Assignment
+
+This slide presents the source material for **Assignment** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 62 -->
+
+---
+
+## Passing to a Function
+
+This slide presents the source material for **Passing to a Function** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 63 -->
+
+---
+
+## Conversion on Return
+
+This slide presents the source material for **Conversion on Return** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 64 -->
+
+---
+
+## Compiler-Generated Conversion
+
+This slide presents the source material for **Compiler-Generated Conversion** from the authoritative lecture deck.
+
+::: notes
+
+:::
+
+<!-- Slide 65 -->

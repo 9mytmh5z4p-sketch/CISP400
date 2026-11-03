@@ -5,30 +5,134 @@
 + **Operator overloading**
 :::
 
+<!-- Slide 2 -->
+
 # Today's Agenda
 
+- Lambda and Functor Review
 - Type Conversion Operators
 - Conversion Constructors
+- Object Conversions
+- Conversion Safety
 - Operator Chaining
-- Lambda and Functor Review
+- Unit Testing
 
-{{< include topic_1_course_framing.qmd >}}
+<!-- Slide 3 -->
+
+{{< include topic_course_framing.qmd >}}
+
+{{< include topic_1_lambda_and_functor_review.qmd >}}
+
 {{< include topic_2_type_conversion_operators.qmd >}}
+
 {{< include topic_3_conversion_constructors.qmd >}}
-{{< include topic_4_operator_chaining.qmd >}}
-{{< include topic_5_lambda_and_functor_review.qmd >}}
+
+{{< include topic_4_object_conversions.qmd >}}
+
+{{< include topic_5_conversion_safety.qmd >}}
+
+{{< include topic_6_operator_chaining.qmd >}}
+
+{{< include topic_7_unit_testing.qmd >}}
 
 ---
 
 # Key Takeaways
 
-- Conversion syntax must preserve clear type intent.
+- Conversion syntax must preserve clear type intent; mark one-argument constructors explicit unless the conversion is intended.
 - Operators and constructors should maintain predictable object behavior.
+- A kept unit test is a regression test: it stops a fixed bug from returning.
+
+<!-- Slide 118 -->
 
 ---
 
 # Next Time
 
+<!-- Slide 119 -->
+
 ---
 
 # Appendix
+
+<!-- Slide 120 -->
+
+## Unit Testing: Good Practices
+
+- Write the failing test first, then fix the code.
+- Keep tests fast so running all of them is never a chore.
+- Print each test's name as it runs so a failure is easy to locate.
+- Set RUN_TESTS back to true and rerun the suite after every change.
+
+<!-- Slide 121 -->
+
+---
+
+## Unit Testing: Common Mistakes
+
+- Sharing one object across tests, so one test's leftovers change another's result.
+- Comparing doubles with == instead of within a tolerance.
+- Copying the expected value from the program's own output, so the test can never fail.
+- Using assert for test checks, which NDEBUG silently removes.
+- Making data public just so a test can read it.
+
+<!-- Slide 122 -->
+
+---
+
+## Unit Testing: More Examples
+
+~~~cpp
+bool testRemoveLastDecreasesSize() {
+    Gradebook book;
+    book.addScore(70);
+    book.addScore(80);
+    book.removeLast();
+    return check(book.size() == 1, "removeLast decreases the size by one");
+}
+
+bool testCurveNeverExceeds100() {
+    Gradebook book;
+    book.addScore(99);
+    book.addScore(50);
+    book.applyCurve(5);
+
+    // Capped curve: 100 and 55, so the average is 77.5
+    return check(closeEnough(book.average(), 77.5, 0.001), "a curve never pushes a score past 100");
+}
+~~~
+
+<!-- Slide 123 -->
+
+---
+
+## Unit Testing: Practice Problems
+
+1. For each of the five gradebook bugs, write a unit test that catches it, or explain why a unit test of Gradebook cannot.
+2. Write three unit tests for the MultiplyBy functor from 09.01.
+3. Add a lowestScore member function to Gradebook. Write its tests first, watch them fail, then write the function.
+
+<!-- Slide 124 -->
+
+---
+
+## Unit Testing: AI Search Terms
+
+- unit testing in C++ for beginners
+- arrange act assert pattern
+- regression testing explained
+- comparing floating-point numbers with a tolerance in C++
+- test-driven development
+- GoogleTest death tests
+
+<!-- Slide 125 -->
+
+---
+
+## Unit Testing: Questions for Reflection
+
+- Why can't a unit test of Gradebook catch the score of 105 typed into main?
+- What would happen to the test results if every test shared one Gradebook object?
+- When a test fails, how do you decide whether the code or the test is wrong?
+
+<!-- Slide 126 -->
