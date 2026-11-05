@@ -1,33 +1,423 @@
 # Last Time
 
 ::: {.incremental}
-+ **Class Relationships**
-+ **Aggregation and Composition**
++ **Type Conversion Operators**
++ **Conversion Constructors**
++ **Object Conversions**
++ **Conversion Safety**
++ **Operator Chaining**
++ **Unit Testing**
 :::
+
+::: notes
+Tuesday taught classes to convert in both directions, controlled those conversions with explicit and = delete, returned *this so calls chain, and kept tests that catch bugs coming back.
+:::
+
+<!-- Slide 2 -->
 
 # Today's Agenda
 
+- Conversion Review
 - Class Relationships
 - Aggregation and Composition
-- Conversion Review
-- Lambda Review
 - Relationship Applications
+- Exception Basics
 
-{{< include topic_1_course_framing.qmd >}}
+::: notes
+Reading: textbook Chapters 11 and 16; learncpp Chapter 23, Object relationships, and lessons 27.1 to 27.3 on exceptions.
+:::
+
+<!-- Slide 3 -->
+
+{{< include topic_1_conversion_review.qmd >}}
+
 {{< include topic_2_class_relationships.qmd >}}
+
 {{< include topic_3_aggregation_and_composition.qmd >}}
-{{< include topic_4_conversion_review.qmd >}}
-{{< include topic_5_lambda_review.qmd >}}
-{{< include topic_6_relationship_applications.qmd >}}
+
+{{< include topic_4_relationship_applications.qmd >}}
+
+{{< include topic_5_exception_basics.qmd >}}
 
 ---
+
 # Key Takeaways
 
-- Model relationships explicitly so ownership and lifetime are clear.
-- Use inheritance only when the derived type truly is-a base type.
+- Ask whether A stores B, whether B is part of A, and whether A creates and destroys B.
+- Parts are built before the constructor body runs; build them in the member initializer list.
+- Member objects copy and clean up for free; an aggregated part must outlive the whole's use of it.
+- Every object has exactly one owner.
+- A constructor that cannot build a valid object throws; unwinding destroys every finished object on the way to the catch.
+
+<!-- Slide 72 -->
 
 ---
+
 # Next Time
 
+- Inheritance and Multiple Inheritance (Thursday, November 12; no class Tuesday, November 10)
+
+<!-- Slide 73 -->
+
 ---
+
 # Appendix
+
+<!-- Slide 74 -->
+
+## Conversion Review: Good Practices
+
+- Mark every constructor that takes one value `explicit` unless the conversion is intended.
+- Remember that a default argument can turn a default constructor into a converting constructor.
+- Keep a conversion implicit only when the target type names the meaning and nothing is lost.
+
+<!-- Slide 75 -->
+
+---
+
+## Conversion Review: Common Mistakes
+
+- Missing that `Fahrenheit(double value = 32.0)` converts a `double`.
+- Expecting `explicit` to block direct initialization such as `Fahrenheit f(20.0);`.
+- Expecting the compiler to chain two user-defined conversions.
+
+<!-- Slide 76 -->
+
+---
+
+## Conversion Review: More Examples
+
+~~~cpp
+class Fahrenheit {
+private:
+    double degrees;
+
+public:
+    explicit Fahrenheit(double value = 32.0) { degrees = value; }
+    Fahrenheit(const Temperature& t) { degrees = t * 9.0 / 5.0 + 32.0; }
+};
+
+Fahrenheit a(20.0);        // fine: direct initialization
+Fahrenheit b = today;      // fine: a Temperature converts
+// Fahrenheit c = 20.0;    // error: the double constructor is explicit
+~~~
+
+<!-- Slide 77 -->
+
+---
+
+## Conversion Review: Practice Problems
+
+1. Find every converting constructor in a class with four constructors, two of them with default arguments.
+2. Mark `Fahrenheit`'s `double` constructor `explicit` and fix every line that stops compiling.
+3. Explain why a `Temperature` never becomes a `Fahrenheit` by way of `double`.
+
+<!-- Slide 78 -->
+
+---
+
+## Conversion Review: AI Search Terms
+
+- C++ explicit constructor with default argument
+- C++ converting constructor
+- C++ user-defined conversion sequence
+- C++ dependency relationship between classes
+
+<!-- Slide 79 -->
+
+---
+
+## Conversion Review: Questions for Reflection
+
+- Why is `20.0` unclear as a temperature when `today` is not?
+- What is the difference between using an object and storing it?
+
+<!-- Slide 80 -->
+
+---
+
+## Class Relationships: Good Practices
+
+- Ask the four questions before you write a member.
+- Default to member objects for parts.
+- When you store a pointer, say in a comment who owns the object.
+
+<!-- Slide 81 -->
+
+---
+
+## Class Relationships: Common Mistakes
+
+- Deciding the relationship from the member's type alone.
+- Deleting a pointer you do not own.
+- Calling every stored pointer aggregation, when the object is not part of the class.
+
+<!-- Slide 82 -->
+
+---
+
+## Class Relationships: More Examples
+
+~~~cpp
+// association: a student works with courses; neither is part of the other
+class Student {
+private:
+    Course* enrolled[6];
+    int count;
+};
+
+// dependency: the printer uses the transcript only during the call
+class Printer {
+public:
+    void print(const Transcript& t);
+};
+~~~
+
+<!-- Slide 83 -->
+
+---
+
+## Class Relationships: Practice Problems
+
+1. Label five given member declarations with their relationships, and justify each with the four questions.
+2. Rewrite a class that composes through an owning pointer so it composes through a member object, and remove the copy and destructor code it no longer needs.
+3. Describe a member that is aggregation in one program and composition in another.
+
+<!-- Slide 84 -->
+
+---
+
+## Class Relationships: AI Search Terms
+
+- C++ object relationships
+- composition versus aggregation versus association
+- C++ rule of zero
+- owning versus non-owning pointer in C++
+
+<!-- Slide 85 -->
+
+---
+
+## Class Relationships: Questions for Reflection
+
+- Why does a member's type not decide the relationship?
+- Which relationship requires the most code from you, and why?
+
+<!-- Slide 86 -->
+
+---
+
+## Aggregation and Composition: Good Practices
+
+- Build every member in the member initializer list, in declaration order.
+- Compile with `-Wall` so g++ reports `-Wreorder`.
+- Prefer member objects for parts.
+- Make sure an aggregated part outlives every use the whole makes of it.
+
+<!-- Slide 87 -->
+
+---
+
+## Aggregation and Composition: Common Mistakes
+
+- Assigning to a member that has no default constructor in the constructor body.
+- Writing the list in a different order than the members are declared.
+- Deleting an aggregated part.
+- Storing the address of a local object that goes out of scope.
+- Declaring an array of member objects whose class has no default constructor.
+
+<!-- Slide 88 -->
+
+---
+
+## Aggregation and Composition: More Examples
+
+~~~cpp
+class Section {
+private:
+    const int number;
+    Teacher& lead;
+
+public:
+    // const and reference members must be built in the list
+    Section(int n, Teacher& t) : number(n), lead(t) { }
+};
+~~~
+
+<!-- Slide 89 -->
+
+---
+
+## Aggregation and Composition: Practice Problems
+
+1. Add a `const int maxSeats` member to `Course` and initialize it.
+2. Predict the construction and destruction order of a class with three members, then check it by adding print statements.
+3. Compile `dangling_teacher.cpp` with `-fsanitize=address`, run it, and explain the report.
+
+<!-- Slide 90 -->
+
+---
+
+## Aggregation and Composition: AI Search Terms
+
+- C++ member initializer list
+- C++ -Wreorder warning
+- C++ member construction order
+- C++ dangling pointer to a local object
+- AddressSanitizer stack-use-after-scope
+
+<!-- Slide 91 -->
+
+---
+
+## Aggregation and Composition: Questions for Reflection
+
+- Why is the constructor body too late to build a `Roster`?
+- Why did the dangling program print the right name?
+- Who should own a `Teacher`, and how would the code show it?
+
+<!-- Slide 92 -->
+
+---
+
+## Relationship Applications: Good Practices
+
+- List what the class connects to, and the relationship for each, before you write code.
+- Comment each pointer member with its relationship.
+- Give every object exactly one owner.
+
+<!-- Slide 93 -->
+
+---
+
+## Relationship Applications: Common Mistakes
+
+- Composing a part that should be shared.
+- Calling `new` inside a class that never deletes the object.
+- Making every member a pointer.
+- Declaring an array of member objects whose class has no default constructor.
+
+<!-- Slide 94 -->
+
+---
+
+## Relationship Applications: More Examples
+
+~~~cpp
+class Wheel {
+public:
+    Wheel() { }            // required for Wheel wheels[4];
+};
+
+class Car {
+private:
+    Engine engine;
+    Wheel wheels[4];       // composition: four member objects
+
+public:
+    Car(int hp) : engine(hp) { }
+};
+~~~
+
+<!-- Slide 95 -->
+
+---
+
+## Relationship Applications: Practice Problems
+
+1. Model a `Library` with books, members, a librarian, and a catalog, and justify each relationship.
+2. Write the `House` and `Fridge` design both ways, and show which class deletes the fridge in each.
+3. Add passengers to `Car` and decide their relationship.
+
+<!-- Slide 96 -->
+
+---
+
+## Relationship Applications: AI Search Terms
+
+- is-a versus has-a in C++
+- UML aggregation, composition, and association
+- object ownership in C++ class design
+
+<!-- Slide 97 -->
+
+---
+
+## Relationship Applications: Questions for Reflection
+
+- Which fridge design would you choose, and why?
+- What changes in the code if two cars share one GPS unit?
+
+<!-- Slide 98 -->
+
+---
+
+## Exception Basics: Good Practices
+
+- Throw by value and catch by `const` reference.
+- Include `<stdexcept>` for `runtime_error` and its relatives.
+- Throw from a constructor that cannot build a valid object.
+- Keep resources in member objects so unwinding cleans them up.
+
+<!-- Slide 99 -->
+
+---
+
+## Exception Basics: Common Mistakes
+
+- Catching by value, which copies the error object.
+- Using exceptions for normal control flow.
+- Using `assert` for user input.
+- Calling `new` in a constructor before a call that can throw.
+- Letting an exception escape `main`: `terminate called after throwing an instance of 'std::runtime_error'`.
+
+<!-- Slide 100 -->
+
+---
+
+## Exception Basics: More Examples
+
+~~~cpp
+try {
+    int seats = stoi(text);      // may throw invalid_argument
+    Roster r(seats);             // may throw runtime_error
+} catch (const invalid_argument& e) {
+    cout << "Bad input: not a number" << endl;
+} catch (const runtime_error& e) {
+    cout << "Bad roster: " << e.what() << endl;
+}
+~~~
+
+<!-- Slide 101 -->
+
+---
+
+## Exception Basics: Practice Problems
+
+1. Give `Roster` an `addStudent` member function that throws when the roster is full, and catch it in `main` and re-prompt.
+2. Predict the output of a `try` block with three statements when the second one throws.
+3. Rewrite a constructor that calls `new` before a call that can throw so that it cannot leak.
+
+<!-- Slide 102 -->
+
+---
+
+## Exception Basics: AI Search Terms
+
+- C++ throw, try, and catch
+- C++ std::runtime_error
+- C++ stack unwinding
+- C++ exception thrown in a constructor
+- C++ catch by const reference
+
+<!-- Slide 103 -->
+
+---
+
+## Exception Basics: Questions for Reflection
+
+- Why can a constructor not report failure with a return value?
+- Why did `Title`'s destructor run but not `Course`'s?
+- When should you use `assert` instead of an exception?
+
+<!-- Slide 104 -->

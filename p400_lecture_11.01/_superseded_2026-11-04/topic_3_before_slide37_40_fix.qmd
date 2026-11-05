@@ -1,0 +1,366 @@
+<!-- Topic 3: Aggregation and Composition -->
+<!-- Slides 36–47 -->
+
+# Aggregation and Composition
+<!-- Slide 35 -->
+
+## Where Do the Parts Come From? {.smaller}
+
+- Composition stores the part as a member object. Who builds it?
+
+::: notes
+Slides 36–47
+
+Topic 2 said composition stores the part as a member object. This topic builds one and finds out when that member is constructed.
+:::
+
+<!-- Slide 36 -->
+
+---
+
+## Does This Compile?
+
+:::: {.columns}
+
+::: {.column width="45%" style="font-size: 50%;"}
+~~~cpp
+class Roster {
+private:
+    int seats;
+
+public:
+    explicit Roster(int capacity) { seats = capacity; }
+    int size() const { return seats; }
+};
+~~~
+:::
+
+::: {.column width="55%" style="font-size: 50%;"}
+~~~cpp
+class Course {
+private:
+    string name;
+    Roster roster;
+
+public:
+    Course(const string& n, int seats) {
+        name = n;
+        roster = Roster(seats);
+    }
+};
+~~~
+:::
+
+::::
+
+::: notes
+Roster is the class from 10.01; its only constructor takes an int. Ask students to commit to yes or no before advancing.
+
+Answer: No. g++ reports no matching function for call to 'Roster::Roster()'. Every member is built before the constructor body runs, so the compiler must build roster with no arguments, and Roster has no constructor that takes none. The assignment in the body never gets a chance. The next slide explains.
+:::
+
+<!-- Slide 37 -->
+
+---
+
+## Members Are Built Before the Body
+
+- g++: `no matching function for call to 'Roster::Roster()'`
+- Every member is constructed before the constructor body runs.
+- The body can only assign to `roster`, and `Roster` cannot be built with no arguments.
+
+::: notes
+The error points at the constructor, not at the assignment line: the compiler tried to default-construct roster before the body started. string has a default constructor, which is why name did not cause an error.
+:::
+
+<!-- Slide 38 -->
+
+---
+
+## Member Initializer List Anatomy
+
+~~~cpp
+Course(const string& n, int seats) : name(n), roster(seats) { }
+~~~
+
+| Part | Meaning |
+|---|---|
+| `:` | Starts the member initializer list |
+| `name(n)` | Builds `name` from the parameter `n` |
+| `roster(seats)` | Builds `roster` by calling `Roster(int)` with `seats` |
+| `,` | Separates the members |
+| `{ }` | The body runs after every member is built; here it has nothing to do |
+
+::: notes
+This is how data reaches the parts: the outer constructor's parameters are passed to each member's constructor. Students saw this syntax in 05.02's examples, such as : name(name), without an explanation. This is the explanation.
+:::
+
+<!-- Slide 39 -->
+
+---
+
+## Member Initializer List Anatomy
+
+::: {style="font-size: 70%;"}
+~~~cpp
+class Roster {
+private:
+    int seats;
+
+public:
+    explicit Roster(int capacity) { seats = capacity; }
+    int size() const { return seats; }
+};
+
+class Course {
+private:
+    string name;
+    Roster roster;
+
+public:
+    Course(const string& n, int seats) : name(n), roster(seats) { }
+
+    void print() const {
+        cout << name << ": " << roster.size() << " seats" << endl;
+    }
+};
+
+int main() {
+    Course cisp("CISP 400", 30);
+    cisp.print();
+    return 0;
+}
+~~~
+:::
+
+::: notes
+Output: CISP 400: 30 seats
+
+Full program: cpp/course_composition.cpp
+:::
+
+<!-- Slide 40 -->
+
+---
+
+## In What Order?
+
+:::: {.columns}
+
+::: {.column width="60%" style="font-size: 50%;"}
+~~~cpp
+class Part {
+private:
+    char id;
+
+public:
+    Part(char c) { id = c; cout << "build " << id << endl; }
+    ~Part() { cout << "destroy " << id << endl; }
+};
+
+class Whole {
+private:
+    Part first;
+    Part second;
+
+public:
+    Whole() : second('B'), first('A') { cout << "Whole body" << endl; }
+    ~Whole() { cout << "~Whole body" << endl; }
+};
+
+int main() {
+    Whole w;
+    return 0;
+}
+~~~
+:::
+
+::: {.column width="40%"}
+. . .
+
+~~~
+build A
+build B
+Whole body
+~Whole body
+destroy B
+destroy A
+~~~
+:::
+
+::::
+
+::: notes
+The list names second first, but members are built in the order they are declared in the class. Destruction runs in reverse, after the destructor body. g++ -Wall warns: 'Whole::second' will be initialized after 'Part Whole::first' [-Wreorder]. Write the list in declaration order.
+
+Full program: cpp/construction_order.cpp
+:::
+
+<!-- Slide 41 -->
+
+---
+
+## When the List Is Required
+
+| Member | Why the list is required |
+|---|---|
+| A class with no default constructor, such as `Roster` | The body is too late to build it |
+| `const int limit;` | A `const` cannot be assigned after it is built |
+| `Teacher& head;` | A reference must be bound when it is created |
+| A base class (11.02) | It is built before the derived part, the same way |
+
+- Everywhere else the list is still preferred: the member is built once instead of built and then assigned.
+
+::: notes
+
+:::
+
+<!-- Slide 42 -->
+
+---
+
+## Copies for Free
+
+~~~cpp
+Course cisp("CISP 400", 30);
+Course copy = cisp;      // copies name and roster
+copy.print();
+~~~
+
+Output: `CISP 400: 30 seats`
+
+- `Course` has no copy constructor, copy assignment, or destructor, and it does not need them.
+
+::: notes
+This pays off topic 2's Why the Label Matters slide: with member objects, the compiler-generated copy constructor copies each member, and each member's destructor runs automatically. string and Roster already know how to copy themselves. Compare the Rule of Five work an owning pointer would need.
+:::
+
+<!-- Slide 43 -->
+
+---
+
+## Aggregation: Store the Pointer
+
+:::: {.columns}
+
+::: {.column width="55%" style="font-size: 50%;"}
+~~~cpp
+// Department does not own its teachers,
+// so it has no destructor
+class Department {
+private:
+    string title;
+    Teacher* teachers[MAX_TEACHERS];
+    int count;
+
+public:
+    Department(const string& t) : title(t), count(0) { }
+
+    void addTeacher(Teacher* t) {
+        if (count < MAX_TEACHERS) {
+            teachers[count] = t;
+            count++;
+        }
+    }
+
+    void print() const {
+        cout << title << ":";
+        for (int i = 0; i < count; i++) {
+            cout << " " << teachers[i]->getName();
+        }
+        cout << endl;
+    }
+};
+~~~
+:::
+
+::: {.column width="45%" style="font-size: 50%;"}
+~~~cpp
+int main() {
+    Teacher lee("Lee");
+    Teacher ruiz("Ruiz");
+
+    {
+        Department math("Math");
+        math.addTeacher(&lee);
+        math.addTeacher(&ruiz);
+        math.print();
+    }                  // math is destroyed here
+
+    cout << lee.getName() << " still exists" << endl;
+    return 0;
+}
+~~~
+:::
+
+::::
+
+::: notes
+Output: Math: Lee Ruiz, then Lee still exists.
+
+Teacher stores a name and has getName(); see the full program. The teachers are created in main, the department only points at them, and they outlive it.
+
+Full program: cpp/department_aggregation.cpp
+:::
+
+<!-- Slide 44 -->
+
+---
+
+## When the Teacher Leaves First
+
+~~~cpp
+int main() {
+    Department math("Math");
+    {
+        Teacher lee("Lee");
+        math.addTeacher(&lee);
+    }                        // lee is destroyed here
+    math.print();            // uses a dangling pointer
+    return 0;
+}
+~~~
+
+. . .
+
+- Output: `Math: Lee`. It looks correct, and the program is still wrong.
+- `lee` no longer exists. Using it is undefined behavior: garbage, a crash, or output that seems fine.
+
+::: notes
+Tested with g++, with and without -O2: both print Math: Lee and exit normally. Compiling with -fsanitize=address reports stack-use-after-scope at the print. Undefined behavior that looks correct is the most dangerous kind, because no test output warns you.
+
+Full program: cpp/dangling_teacher.cpp
+:::
+
+<!-- Slide 45 -->
+
+---
+
+## Composition or Aggregation?
+
+| Choose | When |
+|---|---|
+| Composition, member object | The part lives and dies with the whole and is not shared |
+| Composition, owning pointer | The part can be missing or replaced, and the whole still owns it |
+| Aggregation, stored pointer | The part lives on its own or is shared |
+
+- An aggregated part must outlive every use the whole makes of it.
+
+::: notes
+Prefer the member object; reach for a pointer only when the part can be missing, replaced, or shared. Homework 6, Task 2 asks for an aggregation or composition relationship.
+:::
+
+<!-- Slide 46 -->
+
+---
+
+## Summary
+
+- Members are built before the constructor body, so parts with no default constructor, `const` members, and references are built in the member initializer list.
+- Composition by member object copies and cleans up for free; aggregation stores a pointer that must never outlive the part it points to.
+
+::: notes
+
+:::
+
+<!-- Slide 47 -->

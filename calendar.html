@@ -1290,7 +1290,7 @@
       // CISP 400 meets Tuesdays and Thursdays. Oct 27, Oct 29, Nov 10, and Nov 17 are
       // instructor cancellations and Nov 26 is Thanksgiving; the remaining lectures move
       // to the next available meeting. 16.01, 16.02, and 17.01 were removed from the
-      // schedule; 15.01 and 15.02 are recorded in the inventory as not taught.
+      // schedule.
       // 10.02 was merged into 10.01, and 14.02 runs early; P400_SCHEDULE in p400_inventory.js sets the order.
       const p400NoClassDates = new Set(["2026-10-27", "2026-10-29", "2026-11-10", "2026-11-17", "2026-11-26"]);
       const p400RemovedLectures = new Set(["16.01", "16.02", "17.01", ...Object.keys(window.P400_NOT_TAUGHT || {})]);

@@ -1,0 +1,209 @@
+<!-- Topic 4: Relationship Applications -->
+<!-- Slides 39–47 -->
+
+# Relationship Applications
+<!-- Slide 38 -->
+
+## One Class, Every Relationship? {.smaller}
+
+- A `Car` can hold all four relationships at once.
+
+::: notes
+Slides 39–47
+
+Topics 2 and 3 took the relationships one at a time. This topic puts them in one model and makes the design choices that come with mixing them.
+:::
+
+<!-- Slide 39 -->
+
+---
+
+## Model a Car
+
+| The car connects to | Relationship | Why |
+|---|---|---|
+| Engine | Composition | Built and destroyed with the car |
+| GPS unit | Aggregation | Part of the car while installed; moves to the next car |
+| Driver | Association | Works with the car; not part of it |
+| Gas station | Dependency | Used only while refueling |
+
+::: notes
+Run each row through topic 2's four questions: stored, part of, created and destroyed by the car.
+:::
+
+<!-- Slide 40 -->
+
+---
+
+## The Car in Code
+
+::: {style="font-size: 60%;"}
+~~~cpp
+class Car {
+private:
+    Engine engine;     // composition: built and destroyed with the car
+    GPS* gps;          // aggregation: installed now, moved to the next car later
+    Driver* driver;    // association: works with the car, not part of it
+
+public:
+    Car(int hp) : engine(hp), gps(nullptr), driver(nullptr) { }
+    // no delete: Car owns only its engine
+    ~Car() { cout << "Car destroyed" << endl; }
+
+    void installGPS(GPS* unit) { gps = unit; }
+    void setDriver(Driver* d) { driver = d; }
+
+    // dependency: the station is used only during this call
+    double refuel(const GasStation& station, double gallons) const {
+        return station.pricePerGallon() * gallons;
+    }
+};
+~~~
+:::
+
+::: notes
+Each comment names the relationship and the line that decides it: the member object, the missing delete, and the parameter. The engine is built in the member initializer list from topic 3. Engine, GPS, Driver, and GasStation are small classes whose destructors print; see the full program.
+
+An array of member objects, such as Wheel wheels[4];, needs Wheel to have a default constructor, because each element is built before the Car constructor body runs. See the appendix.
+
+Full program: cpp/car_relationships.cpp
+:::
+
+<!-- Slide 41 -->
+
+---
+
+## What Happens When the Car Is Gone?
+
+:::: {.columns}
+
+::: {.column width="60%" style="font-size: 50%;"}
+~~~cpp
+int main() {
+    GPS unit;
+    Driver ada("Ada");
+    GasStation corner;
+
+    {
+        Car sedan(180);
+        sedan.installGPS(&unit);
+        sedan.setDriver(&ada);
+        cout << "Refuel: $" << sedan.refuel(corner, 10) << endl;
+    }                                  // sedan is destroyed here
+
+    cout << "Car is gone; GPS and " << ada.getName() << " remain" << endl;
+    return 0;
+}
+~~~
+:::
+
+::: {.column width="40%"}
+. . .
+
+~~~
+Refuel: $45
+Car destroyed
+Engine destroyed
+Car is gone; GPS and Ada remain
+Driver destroyed
+GPS destroyed
+~~~
+:::
+
+::::
+
+::: notes
+Ask students which destructors run at the closing brace. The car takes its engine with it; the GPS and the driver belong to main's scope and are destroyed at the end of main, in reverse order of declaration.
+
+Full program: cpp/car_relationships.cpp
+:::
+
+<!-- Slide 42 -->
+
+---
+
+## Label the House
+
+~~~cpp
+class House {
+private:
+    Room rooms[6];
+    Furniture* furniture[20];
+    Resident* residents[8];
+    Fridge* fridge;
+
+public:
+    void repair(const Contractor& who);
+};
+~~~
+
+::: notes
+Students label each member and the repair parameter with the four questions. Expect disagreement on the fridge; that disagreement is the point of the next slide.
+:::
+
+<!-- Slide 43 -->
+
+---
+
+## Label the House: Answers
+
+| Member | Part of the house? | House creates and destroys it? | Relationship |
+|---|---|---|---|
+| `rooms[6]` | Yes | Yes, as member objects | Composition |
+| `furniture` | Yes, while it is there | No: it moves out with the owners | Aggregation |
+| `residents` | No | No | Association |
+| `repair(const Contractor&)` | Not stored | | Dependency |
+| `fridge` | Yes | Depends | Composition if the house deletes it; aggregation if the owners take it |
+
+- Either fridge answer is right, as long as the code matches it: the class that deletes the fridge owns it.
+
+::: notes
+A real-estate contract settles the fridge question one way or the other; a program has to as well. Ask students who would write delete fridge in each design.
+:::
+
+<!-- Slide 44 -->
+
+---
+
+## Design Choices
+
+| Mistake | What goes wrong | Fix |
+|---|---|---|
+| Composing a part that should be shared: `Driver driver;` | Copying the car copies the driver: two cars, two Adas | Store a pointer: association |
+| A pointer with no owner: `gps = new GPS;` and no `delete` | A leak: nobody deletes the GPS | Pick an owner: delete it in `Car`, or create it outside |
+| Making every member a pointer | Every member needs an owner and copy rules | Default to member objects |
+
+- Every object has exactly one owner: a scope, a containing object, or the code that deletes it.
+
+::: notes
+
+:::
+
+<!-- Slide 45 -->
+
+---
+
+## Other Relationships
+
+- Has-a: a `SportsCar` has an `Engine`. That is composition, from today.
+- Is-a: a `SportsCar` is a `Car`. That is inheritance, next lecture.
+- The test: if "B is an A" reads true, consider inheritance; if "A has a B" reads true, consider composition or aggregation.
+
+::: notes
+The base class of an inheritance hierarchy is built in the member initializer list, with the same syntax as topic 3. Realization and friendship from 05.02's table round out the list: realization needs inheritance, and friendship was covered in 07.01 and 07.02.
+:::
+
+<!-- Slide 46 -->
+
+---
+
+## Summary
+
+- One class can hold several relationships at once; each member's code shape and who deletes it decide which.
+- When a choice could go either way, pick one owner and make the code match it.
+
+::: notes
+
+:::
+
+<!-- Slide 47 -->

@@ -1,0 +1,97 @@
+<!-- Topic 1: Conversion Review -->
+<!-- Slides 5–9 -->
+
+# Conversion Review
+<!-- Slide 4 -->
+
+## Which Constructor Converts? {.smaller}
+
+~~~cpp
+Fahrenheit(double value = 32.0) { degrees = value; }
+Fahrenheit(const Temperature& t) { degrees = t * 9.0 / 5.0 + 32.0; }
+~~~
+
+- Tuesday's two `Fahrenheit` constructors. Which one converts?
+
+::: notes
+Slides 5–9
+
+Give students a few seconds to commit. Most will pick the Temperature constructor, because that is the one the slide called a conversion on Tuesday.
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## Both of Them
+
+~~~cpp
+Fahrenheit oops = 20.0;
+cout << oops.value() << endl;
+~~~
+
+. . .
+
+- Output: `20`, meaning 20 degrees Fahrenheit, not Celsius.
+- Any constructor that is not `explicit` and takes one value converts.
+- The fix: `explicit Fahrenheit(double value = 32.0)`
+
+::: notes
+Tested with g++. With explicit, Fahrenheit oops = 20.0; fails with "conversion from 'double' to non-scalar type 'Fahrenheit' requested." Fahrenheit b; and Fahrenheit f(20.0); still compile, because explicit does not block direct initialization.
+
+The Temperature constructor stays implicit: Fahrenheit names the unit and nothing is lost. A bare 20.0 does not say which unit it is, so that constructor fails the test.
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Lightning Review
+
+::: {.incremental}
+- What does `explicit` block?
+  - Implicit conversions in copy initialization, argument passing, and return. Not direct initialization such as `Fahrenheit f(20.0);`
+- How is a conversion operator written?
+  - `operator double() const`, with no return type and no parameters.
+- When is an implicit conversion safe?
+  - When the target type names the meaning and nothing is lost.
+- Why can't `Temperature` become `Fahrenheit` by way of `double`?
+  - That route needs two user-defined conversions, and the compiler never chains two.
+:::
+
+::: notes
+Ask each question aloud and give students a few seconds before revealing the answer. The last question answers why Fahrenheit(double) never fires when a Temperature is converted.
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## Used, Not Kept
+
+~~~cpp
+Fahrenheit(const Temperature& t) { degrees = t * 9.0 / 5.0 + 32.0; }
+~~~
+
+- The constructor reads `t` and keeps only a `double`.
+- Using an object without storing it is a dependency, from 05.02.
+- The rest of today: classes that keep other objects as members.
+
+::: notes
+05.02 defined a dependency as class A using class B temporarily, with B not stored in A. Fahrenheit depends on Temperature only while the constructor runs.
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Summary
+
+- Any constructor that is not `explicit` and takes one value is a conversion; mark the ones you do not intend `explicit`.
+- Using an object without storing it is a dependency; the rest of today is about classes that store objects.
+
+::: notes
+
+:::
+
+<!-- Slide 9 -->

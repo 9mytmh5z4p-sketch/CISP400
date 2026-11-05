@@ -1,0 +1,157 @@
+<!-- Topic 4: Conversion Review -->
+<!-- Slides 59–71 -->
+# Conversion Review
+
+## Last Time Review
+
+This slide develops the authoritative source material on **last time review**.
+
+::: notes
+Slides 59–71
+:::
+
+<!-- Slide 59 -->
+
+---
+
+## Last Time Review
+
+This slide develops the authoritative source material on **last time review**.
+
+::: notes
+
+:::
+
+<!-- Slide 60 -->
+
+---
+
+## Last Time Review
+
+This slide develops the authoritative source material on **last time review**.
+
+::: notes
+
+:::
+
+<!-- Slide 61 -->
+
+---
+
+## Conversion Operators
+
+This slide develops the authoritative source material on **conversion operators**.
+
+::: notes
+
+:::
+
+<!-- Slide 62 -->
+
+---
+
+## Conversion Operators
+
+This slide develops the authoritative source material on **conversion operators**.
+
+::: notes
+
+:::
+
+<!-- Slide 63 -->
+
+---
+
+## Conversion Operators
+
+This slide develops the authoritative source material on **conversion operators**.
+
+::: notes
+
+:::
+
+<!-- Slide 64 -->
+
+---
+
+## Conversion Exercise
+
+This slide develops the authoritative source material on **conversion exercise**.
+
+::: notes
+
+:::
+
+<!-- Slide 65 -->
+
+---
+
+## Conversion Exercise
+
+This slide develops the authoritative source material on **conversion exercise**.
+
+::: notes
+
+:::
+
+<!-- Slide 66 -->
+
+---
+
+## Conversion Exercise
+
+This slide develops the authoritative source material on **conversion exercise**.
+
+::: notes
+
+:::
+
+<!-- Slide 67 -->
+
+---
+
+## Conversion Exercise
+
+This slide develops the authoritative source material on **conversion exercise**.
+
+::: notes
+
+:::
+
+<!-- Slide 68 -->
+
+---
+
+## Conversion Exercise
+
+This slide develops the authoritative source material on **conversion exercise**.
+
+::: notes
+
+:::
+
+<!-- Slide 69 -->
+
+---
+
+## Conversion Exercise
+
+This slide develops the authoritative source material on **conversion exercise**.
+
+::: notes
+
+:::
+
+<!-- Slide 70 -->
+
+---
+
+## Conversion Exercise
+
+This slide develops the authoritative source material on **conversion exercise**.
+
+::: notes
+
+:::
+
+<!-- Slide 71 -->

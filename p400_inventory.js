@@ -20,16 +20,16 @@ window.P400_INVENTORY = {
   "09.02": ["Functor Review", "Lambda Expressions", "Captures and Closures", "Lambdas with STL Algorithms", "Lambda Lab"],
   "10.01": ["Lambda and Functor Review", "Type Conversion Operators", "Conversion Constructors", "Object Conversions", "Conversion Safety", "Operator Chaining", "Unit Testing"],
   "10.02": ["Conversion Constructors", "First-Class Objects", "Object Conversions", "Conversion Safety"],
-  "11.01": ["Class Relationships", "Aggregation and Composition", "Conversion Review"],
-  "11.02": ["Class Relationships", "Aggregation and Composition", "Inheritance", "Multiple Inheritance", "Inheritance Access Control", "Virtual Inheritance"],
-  "12.01": ["Inheritance and Overriding", "Base Class Construction", "Multiple Inheritance", "Access Specifiers", "Inheritance Design"],
+  "11.01": ["Conversion Review", "Class Relationships", "Aggregation and Composition", "Relationship Applications", "Exception Basics"],
+  "11.02": ["Is-a Versus Has-a", "Inheritance Syntax", "Inheritance Access Control", "Base Class Construction", "Construction and Destruction Order"],
+  "12.01": ["Overriding Functions", "Calling Base Class Functions", "Multiple Inheritance", "The Diamond Problem"],
   "12.02": ["Polymorphic Data Structures", "Overriding Functions", "Inheritance and Data Structures", "Inheritance Applications"],
   "13.01": ["Inheritance and Arrays", "Arrays of Class Objects", "Inheritance Design", "Aggregation Review"],
-  "13.02": ["Polymorphism", "Virtual Member Functions", "Type Compatibility", "Polymorphic Data Structures", "Polymorphism Design"],
-  "14.01": ["Abstract Base Classes", "Polymorphic Arrays", "Object Slicing", "Inheritance Versus Composition", "Dynamic Casting"],
-  "14.02": ["Exception Handling", "Exception Safety", "Abstract Classes and Exceptions", "Exception Hierarchies"],
-  "15.01": ["Standard Template Library Preview", "Vectors of Vectors", "Design Exercise"],
-  "15.02": ["Function Templates", "Template Arguments", "Template Specialization", "Generic Program Maintenance"],
+  "13.02": ["Virtual Functions", "Type Compatibility", "override and final", "Virtual Destructors", "Object Slicing"],
+  "14.01": ["Abstract Base Classes", "Pure Virtual Functions", "Polymorphic Data Structures", "Dynamic Casting"],
+  "14.02": ["Exception Hierarchies", "Custom Exception Classes", "Catch Order", "Exception Safety"],
+  "15.01": ["Why STL Was Invented", "std::vector", "Vectors of Vectors", "Algorithms with Lambdas"],
+  "15.02": ["Function Templates", "Template Arguments", "Class Templates Preview"],
   "16.01": ["Fill In the Missing Code", "Object-Oriented Programming", "Defining Member Functions", "Creating and Using Objects", "Introduction to Classes", "Abstract Data Types - Part 2"],
   "16.02": ["Destructor", "Constructor Overloading", "Parameterized Constructor", "Default Constructor", "What is a Constructor"],
   "17.01": ["Vectors of Objects", "Arrays of Objects"],
@@ -37,19 +37,18 @@ window.P400_INVENTORY = {
 };
 
 /* Lectures whose topics are recorded in inventory.csv but were not taught.
-   The calendar and course map leave these off the meeting schedule. */
-window.P400_NOT_TAUGHT = {
-  "15.01": "Not taught - dropped after the Nov 10, 2026 class cancellation (board meeting)",
-  "15.02": "Not taught - dropped after the Nov 10, 2026 class cancellation (board meeting)"
-};
+   The calendar and course map leave these off the meeting schedule.
+   12.02 and 13.01 were merged into 13.02 and 14.01 on Nov 4, 2026. */
+window.P400_NOT_TAUGHT = {};
 
 /* Fall 2026 meeting order. The calendar, course map, and index.html place these lectures,
    in this order, on the Tuesday/Thursday meetings that are not cancelled.
-   10.02 was merged into 10.01; 14.02 runs early on Nov 19. */
+   10.02 was merged into 10.01. 12.02 and 13.01 were merged into 13.02 and 14.01.
+   15.02 (templates) runs before 15.01 (STL) so the course ends with the STL. */
 window.P400_SCHEDULE = [
   "01.01", "01.02", "02.01", "02.02", "03.01", "03.02", "04.01", "04.02", "05.01", "05.02",
   "06.01", "06.02", "07.01", "07.02", "08.01", "08.02", "09.01", "09.02", "10.01", "11.01",
-  "11.02", "14.02", "12.01", "12.02", "13.01", "13.02", "14.01"
+  "11.02", "12.01", "13.02", "14.01", "14.02", "15.02", "15.01"
 ];
 
 window.P400_LECTURE_TITLES = {
@@ -73,16 +72,16 @@ window.P400_LECTURE_TITLES = {
   "09.02": "Functors to Lambdas",
   "10.01": "Type Conversion, Conversion Safety, Operator Chaining, and Unit Testing",
   "10.02": "Converting Constructors and Object Conversions",
-  "11.01": "Class Relationships, Aggregation, and Composition",
-  "11.02": "Inheritance and Multiple Inheritance",
-  "12.01": "Inheritance Construction and Overriding",
+  "11.01": "Class Relationships, Composition, and Exception Basics",
+  "11.02": "Inheritance Basics",
+  "12.01": "Overriding and Multiple Inheritance",
   "12.02": "Polymorphic Data Structures and Inheritance Applications",
   "13.01": "Inheritance and Arrays",
-  "13.02": "Polymorphism and Virtual Member Functions",
-  "14.01": "Abstract Base Classes and Polymorphic Arrays",
-  "14.02": "Exception Handling and Exception Hierarchies",
-  "15.01": "STL Preview and Vectors of Vectors",
-  "15.02": "Function Templates and Generic Programming",
+  "13.02": "Polymorphism and Virtual Functions",
+  "14.01": "Abstract Classes and Polymorphic Data Structures",
+  "14.02": "Exception Hierarchies and Safety",
+  "15.01": "The Standard Template Library: Why STL Was Invented",
+  "15.02": "Function Templates",
   "16.01": "Classes and Member Functions",
   "16.02": "Constructors and Destructors",
   "17.01": "Arrays and Vectors of Objects"

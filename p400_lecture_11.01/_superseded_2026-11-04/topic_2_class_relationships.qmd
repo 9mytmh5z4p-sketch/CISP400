@@ -1,0 +1,203 @@
+<!-- Topic 2: Class Relationships -->
+<!-- Slides 17–24 -->
+
+# Class Relationships
+<!-- Slide 16 -->
+
+## Using or Keeping? {.smaller}
+
+- 05.02 sorted class relationships into types. Today: how to tell them apart in code.
+
+::: notes
+Slides 17–24
+
+Conversions are one way an object interacts with other types. Relationships are the other: an object can use, know about, or contain another object.
+:::
+
+<!-- Slide 17 -->
+
+---
+
+## Relationships and Their Code
+
+| Relationship | Meaning | Code shape |
+|---|---|---|
+| Dependency | A uses B briefly | B is a parameter or a local variable |
+| Association | A works with B over time; neither is part of the other | A stores a pointer or reference to B |
+| Aggregation | B is part of A, but A does not own B | A stores a pointer or reference to B |
+| Composition | B is part of A, and A owns B | A stores B as a member object |
+| Inheritance | A is a kind of B | `class A : public B` (11.02) |
+
+::: notes
+Association and aggregation have the same code shape; the next slide's questions separate them. Realization and friendship from the 05.02 table are not part of today.
+
+Reading: learncpp 23.1, Object relationships.
+:::
+
+<!-- Slide 18 -->
+
+---
+
+## Four Questions
+
+| Ask | If no | If yes |
+|---|---|---|
+| Does A store B? | Dependency | Ask the next question |
+| Is B part of A? | Association | Ask the next question |
+| Does A create and destroy B? | Aggregation | Composition |
+
+- Check the answer: in aggregation B can outlive A; in composition B ends with A.
+
+::: notes
+
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## Name That Relationship
+
+:::: {.columns}
+
+::: {.column width="50%" style="font-size: 60%;"}
+**A**
+
+~~~cpp
+class Printer {
+public:
+    void print(const Document& doc);
+};
+~~~
+
+**B**
+
+~~~cpp
+class Car {
+private:
+    Engine engine;
+};
+~~~
+:::
+
+::: {.column width="50%" style="font-size: 60%;"}
+**C**
+
+~~~cpp
+class Driver {
+private:
+    Car* car;
+};
+~~~
+
+**D**
+
+~~~cpp
+class Department {
+private:
+    Teacher* teachers[10];
+};
+~~~
+:::
+
+::::
+
+::: notes
+Have students label each snippet using the four questions before advancing. C and D have the same code shape, so the answer depends on whether B is part of A.
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## Name That Relationship: Answers
+
+| Snippet | Stores B? | Part of A? | A creates and destroys B? | Relationship |
+|---|---|---|---|---|
+| A: `Printer`, `Document` | No | | | Dependency |
+| B: `Car`, `Engine` | Yes | Yes | Yes, as a member object | Composition |
+| C: `Driver`, `Car` | Yes | No | | Association |
+| D: `Department`, `Teacher` | Yes | Yes | No: teachers are hired elsewhere | Aggregation |
+
+::: notes
+A teacher who leaves the department still exists, which is the test for aggregation. The Department and Teacher example comes from learncpp 23.3, Aggregation.
+:::
+
+<!-- Slide 21 -->
+
+---
+
+## Same Member, Different Relationship
+
+:::: {.columns}
+
+::: {.column width="50%" style="font-size: 60%;"}
+**Car creates and deletes the engine**
+
+~~~cpp
+class Car {
+private:
+    Engine* engine;
+
+public:
+    Car() { engine = new Engine; }
+    ~Car() { delete engine; }
+};
+~~~
+:::
+
+::: {.column width="50%" style="font-size: 60%;"}
+**The engine comes from outside**
+
+~~~cpp
+class Car {
+private:
+    Engine* engine;
+
+public:
+    Car(Engine* e) { engine = e; }
+    // no delete: Car does not own the engine
+};
+~~~
+:::
+
+::::
+
+- The member's type does not decide the relationship. Who deletes the object does.
+
+::: notes
+The left Car is composition and the right Car is aggregation, with identical members. This is ownership from 05.02's RAII topic. The left version also needs a copy constructor and copy assignment, which the next slide explains.
+:::
+
+<!-- Slide 22 -->
+
+---
+
+## Why the Label Matters
+
+| How A holds B | Who builds, copies, and destroys B | What you write |
+|---|---|---|
+| Member object: `Engine engine;` | The compiler, automatically | Nothing extra |
+| Owning pointer: `new` in A | You | Destructor, deep copy, and move (Rule of Five, 08.02), or a `unique_ptr` (05.02) |
+| Non-owning pointer: passed in | Whoever created B | Never `delete`; copying the pointer is intended |
+
+- Pick the wrong row and you get a leak, a double delete, or a dangling pointer.
+
+::: notes
+The first row is sometimes called the Rule of Zero: when every part is a member object, the compiler-generated constructor, copy operations, and destructor are already correct. That is why a member object is the default choice for composition.
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## Summary
+
+- Ask whether A stores B, whether B is part of A, and whether A creates and destroys B; the answers separate dependency, association, aggregation, and composition.
+- Who deletes the object decides the relationship, and the relationship decides which destructor and copy code you write.
+
+::: notes
+
+:::
+
+<!-- Slide 24 -->

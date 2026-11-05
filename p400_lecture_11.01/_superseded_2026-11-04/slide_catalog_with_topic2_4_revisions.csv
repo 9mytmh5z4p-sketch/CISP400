@@ -1,0 +1,108 @@
+Slide Number,Topic,Subject,Title,Category,Filename
+1,Course Framing,,CISP 400 Object-Oriented Programming,Section Divider,
+2,Course Framing,,Last Time,Progression Map,
+3,Course Framing,,Today's Agenda,Agenda,
+4,Topic 1: Conversion Review,,Conversion Review,Section Divider,
+5,Topic 1: Conversion Review,Conversion Review,When Your Object Interacts with Other Types,Motivating Question,
+6,Topic 1: Conversion Review,Conversion Review,Two Ways to Convert,Enumerate,
+7,Topic 1: Conversion Review,Conversion Review,Type Conversion Operator,Text,
+8,Topic 1: Conversion Review,Conversion Review,<Conversion Operator Example>,Code Block,temperature_conversion.cpp
+9,Topic 1: Conversion Review,Conversion Review,Convert Constructor,Text,
+10,Topic 1: Conversion Review,Conversion Review,Examples,Code Block,
+11,Topic 1: Conversion Review,Conversion Review,The Rules,Enumerate,
+12,Topic 1: Conversion Review,Conversion Review,Single Argument Gotcha,Text,
+13,Topic 1: Conversion Review,Conversion Review,Explicit,Text,
+14,Topic 1: Conversion Review,Conversion Review,<Explicit Before and After>,Code Block,
+15,Topic 1: Conversion Review,Conversion Review,Summary,Summary,
+16,Topic 2: Class Relationships,,Class Relationships,Section Divider,
+mod,Topic 2: Class Relationships,Class Relationships,Relationships,Motivating Question,Copy the relationship table from 0502
+add,Topic 2: Class Relationships,Class Relationships,Relationships,Enumerate,"A copy of slide “Relationships and Their Code”, but Just show the relationships in a list"
+add,,,Focus on these 3 Relationships,image,/Users/calebfowler/CPP Lecture Materials/p400 Lectures/p400_lecture_11.01/images/relationships.png
+add,,,Focus on these 3 Relationships,image,/Users/calebfowler/CPP Lecture Materials/p400 Lectures/p400_lecture_11.01/images/relationships-boom.png
+add,,,Front-End and Back-End Classes,image,/Users/calebfowler/CPP Lecture Materials/p400 Lectures/p400_lecture_11.01/images/FE and BE classes.png
+add,,,Composition,definition,
+add,,,What Does Composition Do For Me?,text,Allows us to make use of behavior in other classes.
+add,,,Aggregation,definition,
+add,,,What Does Aggregation Do For Me?,text,"* Allows us to make use of behavior in other classes.
+* We can change this behavior by changing the classes"
+add,,,Inheritance,definition,
+add,,,What Does Inheritance Do For Me?,text,"Inheritance allows us to write code in one class …
+… and use that same exact code in many other classes.
+And we can mix and match what code we want those other classes to use."
+,,,,,
+mod,Topic 2: Class Relationships,Class Relationships,Relationship Algorithm,image,/Users/calebfowler/CPP Lecture Materials/p400 Lectures/p400_lecture_11.01/images/relationship_algorithm.png
+20,Topic 2: Class Relationships,Class Relationships,Name That Relationship,Predict,
+21,Topic 2: Class Relationships,Class Relationships,Name That Relationship: Answers,Trace,
+22,Topic 2: Class Relationships,Class Relationships,"Same Member, Different Relationship",Contrast,
+23,Topic 2: Class Relationships,Class Relationships,Why the Label Matters,Value Added,
+mod,Topic 2: Class Relationships,Class Relationships,Relationships and Their Code,Enumerate,Move this here
+24,Topic 2: Class Relationships,Class Relationships,Summary,Summary,
+25,Topic 3: Aggregation and Composition,,Aggregation and Composition,Section Divider,
+26,Topic 3: Aggregation and Composition,Aggregation and Composition,Where Do the Parts Come From?,Motivating Question,
+27,Topic 3: Aggregation and Composition,Aggregation and Composition,Does This Compile?,Predict,
+28,Topic 3: Aggregation and Composition,Aggregation and Composition,Members Are Built Before the Body,Model,
+29,Topic 3: Aggregation and Composition,Aggregation and Composition,Member Initializer List Anatomy,Anatomy,
+30,Topic 3: Aggregation and Composition,Aggregation and Composition,Member Initializer List Anatomy,Demonstration,course_composition.cpp
+31,Topic 3: Aggregation and Composition,Aggregation and Composition,In What Order?,Trace,construction_order.cpp
+32,Topic 3: Aggregation and Composition,Aggregation and Composition,When the List Is Required,Enumerate,
+33,Topic 3: Aggregation and Composition,Aggregation and Composition,Copies for Free,Value Added,
+34,Topic 3: Aggregation and Composition,Aggregation and Composition,Aggregation: Store the Pointer,Demonstration,department_aggregation.cpp
+35,Topic 3: Aggregation and Composition,Aggregation and Composition,When the Teacher Leaves First,Error Example,dangling_teacher.cpp
+36,Topic 3: Aggregation and Composition,Aggregation and Composition,Composition or Aggregation?,Decision Point,
+37,Topic 3: Aggregation and Composition,Aggregation and Composition,Summary,Summary,
+38,Topic 4: Relationship Applications,,Relationship Applications,Section Divider,
+39,Topic 4: Relationship Applications,Relationship Applications,"One Class, Every Relationship?",Motivating Question,
+40,Topic 4: Relationship Applications,Relationship Applications,Model a Car,Model,
+41,Topic 4: Relationship Applications,Relationship Applications,The Car in Code,Complete Example,car_relationships.cpp
+42,Topic 4: Relationship Applications,Relationship Applications,What Happens When the Car Is Gone?,Predict,car_relationships.cpp
+43,Topic 4: Relationship Applications,Relationship Applications,Label the House,Predict,
+add,Topic 4: Relationship Applications,Relationship Applications,Label the House,Code,"Use the code from the previous slide, but show the relationships as C++ comments"
+44,Topic 4: Relationship Applications,Relationship Applications,Label the House: Answers,Trace,
+45,Topic 4: Relationship Applications,Relationship Applications,Design Choices,Decision Point,
+add,,,Composing a part that should be shared,Code Block,Show the problem from slide 45 on the left and solution of the right
+add,,,A pointer with no owner,Code Block,Show the problem from slide 45 on the left and solution of the right
+add,,,Making every member a pointer,Code Block,Show the problem from slide 45 on the left and solution of the right
+46,Topic 4: Relationship Applications,Relationship Applications,Other Relationships,Progression Map,
+47,Topic 4: Relationship Applications,Relationship Applications,Summary,Summary,
+48,Topic 5: Exception Basics,,Exception Basics,Section Divider,
+49,Topic 5: Exception Basics,Exception Basics,How Does a Constructor Say No?,Motivating Question,
+50,Topic 5: Exception Basics,Exception Basics,"throw, try, catch Anatomy",Anatomy,
+51,Topic 5: Exception Basics,Exception Basics,A Roster That Refuses,Demonstration,roster_exception.cpp
+52,Topic 5: Exception Basics,Exception Basics,What Runs After the Throw?,Predict,after_throw.cpp
+53,Topic 5: Exception Basics,Exception Basics,Stack Unwinding,Trace,stack_unwinding.cpp
+54,Topic 5: Exception Basics,Exception Basics,When the Constructor Throws,Predict,constructor_throws.cpp
+55,Topic 5: Exception Basics,Exception Basics,When to Throw,Decision Point,
+56,Topic 5: Exception Basics,Exception Basics,Summary,Summary,
+57,Course Wrap-Up,,Key Takeaways,Summary,
+58,Course Wrap-Up,,Next Time,Text,
+59,Appendix,,Appendix,Section Divider,
+60,Appendix,Conversion Review,Conversion Review: Good Practices,Appendix - Good Practices,
+61,Appendix,Conversion Review,Conversion Review: Common Mistakes,Appendix - Common Mistakes,
+62,Appendix,Conversion Review,Conversion Review: More Examples,Appendix - More Examples,
+63,Appendix,Conversion Review,Conversion Review: Practice Problems,Appendix - Practice,
+64,Appendix,Conversion Review,Conversion Review: AI Search Terms,Appendix - AI Search Terms,
+65,Appendix,Conversion Review,Conversion Review: Questions for Reflection,Appendix - Reflection,
+66,Appendix,Class Relationships,Class Relationships: Good Practices,Appendix - Good Practices,
+67,Appendix,Class Relationships,Class Relationships: Common Mistakes,Appendix - Common Mistakes,
+68,Appendix,Class Relationships,Class Relationships: More Examples,Appendix - More Examples,
+69,Appendix,Class Relationships,Class Relationships: Practice Problems,Appendix - Practice,
+70,Appendix,Class Relationships,Class Relationships: AI Search Terms,Appendix - AI Search Terms,
+71,Appendix,Class Relationships,Class Relationships: Questions for Reflection,Appendix - Reflection,
+72,Appendix,Aggregation and Composition,Aggregation and Composition: Good Practices,Appendix - Good Practices,
+73,Appendix,Aggregation and Composition,Aggregation and Composition: Common Mistakes,Appendix - Common Mistakes,
+74,Appendix,Aggregation and Composition,Aggregation and Composition: More Examples,Appendix - More Examples,
+75,Appendix,Aggregation and Composition,Aggregation and Composition: Practice Problems,Appendix - Practice,
+76,Appendix,Aggregation and Composition,Aggregation and Composition: AI Search Terms,Appendix - AI Search Terms,
+77,Appendix,Aggregation and Composition,Aggregation and Composition: Questions for Reflection,Appendix - Reflection,
+78,Appendix,Relationship Applications,Relationship Applications: Good Practices,Appendix - Good Practices,
+79,Appendix,Relationship Applications,Relationship Applications: Common Mistakes,Appendix - Common Mistakes,
+80,Appendix,Relationship Applications,Relationship Applications: More Examples,Appendix - More Examples,
+81,Appendix,Relationship Applications,Relationship Applications: Practice Problems,Appendix - Practice,
+82,Appendix,Relationship Applications,Relationship Applications: AI Search Terms,Appendix - AI Search Terms,
+83,Appendix,Relationship Applications,Relationship Applications: Questions for Reflection,Appendix - Reflection,
+84,Appendix,Exception Basics,Exception Basics: Good Practices,Appendix - Good Practices,
+85,Appendix,Exception Basics,Exception Basics: Common Mistakes,Appendix - Common Mistakes,
+86,Appendix,Exception Basics,Exception Basics: More Examples,Appendix - More Examples,
+87,Appendix,Exception Basics,Exception Basics: Practice Problems,Appendix - Practice,
+88,Appendix,Exception Basics,Exception Basics: AI Search Terms,Appendix - AI Search Terms,
+89,Appendix,Exception Basics,Exception Basics: Questions for Reflection,Appendix - Reflection,

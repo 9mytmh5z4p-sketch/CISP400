@@ -1,0 +1,275 @@
+<!-- Topic 5: Exception Basics -->
+<!-- Slides 63–70 -->
+
+# Exception Basics
+<!-- Slide 62 -->
+
+## How Does a Constructor Say No? {.smaller}
+
+- `Roster sections(-5);` should not build a roster.
+- A constructor has no return value. How does it refuse?
+
+::: notes
+Slides 63–70
+
+Students can suggest options: print an error, set a flag, build a roster with 0 seats. Each one leaves a half-valid object behind. The answer is an exception.
+:::
+
+<!-- Slide 63 -->
+
+---
+
+## throw, try, catch Anatomy
+
+~~~cpp
+try {
+    Roster sections(-5);
+} catch (const runtime_error& e) {
+    cout << e.what() << endl;
+}
+~~~
+
+| Part | Meaning |
+|---|---|
+| `throw runtime_error("...");` | Inside `Roster`: stops the constructor and sends an error object out |
+| `try { }` | Runs code that might throw |
+| `catch (const runtime_error& e)` | Handles a `runtime_error` thrown anywhere inside the `try` |
+| `e.what()` | The message the error was built with |
+| `#include <stdexcept>` | Declares `runtime_error` |
+
+::: notes
+Catch by const reference: the handler does not copy the error object. Catching a derived exception by value slices it, which matters once exception hierarchies arrive in 14.02, after slicing is taught in 13.02.
+
+Reading: learncpp 27.1, The need for exceptions; 27.2, Basic exception handling.
+:::
+
+<!-- Slide 64 -->
+
+---
+
+## A Roster That Refuses
+
+::: {style="font-size: 70%;"}
+~~~cpp
+class Roster {
+private:
+    int seats;
+
+public:
+    explicit Roster(int capacity) {
+        if (capacity <= 0) {
+            throw runtime_error("capacity must be positive");
+        }
+        seats = capacity;
+    }
+    int size() const { return seats; }
+};
+
+int main() {
+    try {
+        Roster sections(-5);
+        cout << sections.size() << " seats" << endl;
+    } catch (const runtime_error& e) {
+        cout << "Could not build roster: " << e.what() << endl;
+    }
+
+    cout << "Program continues" << endl;
+    return 0;
+}
+~~~
+:::
+
+::: notes
+Output: Could not build roster: capacity must be positive, then Program continues.
+
+No Roster with -5 seats ever exists. The program recovers in main and keeps running.
+
+Full program: cpp/roster_exception.cpp
+:::
+
+<!-- Slide 65 -->
+
+---
+
+## What Runs After the Throw?
+
+~~~cpp
+try {
+    cout << "A" << endl;
+    Roster r(-5);
+    cout << "B" << endl;
+} catch (const runtime_error& e) {
+    cout << "Error: " << e.what() << endl;
+}
+cout << "C" << endl;
+~~~
+
+. . .
+
+Output: `A`, then `Error: capacity must be positive`, then `C`. `B` never runs.
+
+::: notes
+A throw jumps straight to the matching catch; everything between is skipped.
+
+If nothing catches the exception, the program ends. g++ prints: terminate called after throwing an instance of 'std::runtime_error', followed by what(): capacity must be positive, and the program aborts.
+
+Full program: cpp/after_throw.cpp
+:::
+
+<!-- Slide 66 -->
+
+---
+
+## Stack Unwinding
+
+:::: {.columns}
+
+::: {.column width="60%" style="font-size: 50%;"}
+~~~cpp
+class Engine {
+public:
+    ~Engine() { cout << "Engine destroyed" << endl; }
+};
+
+class Car {
+private:
+    Engine engine;      // composition
+
+public:
+    ~Car() { cout << "Car destroyed" << endl; }
+};
+
+void testDrive(int miles) {
+    Car loaner;
+    if (miles < 0) {
+        throw runtime_error("miles cannot be negative");
+    }
+    cout << "Drove " << miles << " miles" << endl;
+}
+
+int main() {
+    try {
+        testDrive(-10);
+    } catch (const runtime_error& e) {
+        cout << "Caught: " << e.what() << endl;
+    }
+    return 0;
+}
+~~~
+:::
+
+::: {.column width="40%"}
+. . .
+
+~~~
+Car destroyed
+Engine destroyed
+Caught: miles cannot be negative
+~~~
+
+- Leaving `testDrive` destroys its locals, and each local destroys its parts, before the catch runs.
+:::
+
+::::
+
+::: notes
+This is stack unwinding: the exception leaves each function on its way to a matching catch, and every finished local object is destroyed as it goes. The Car's composed Engine goes with it, exactly as in topic 3. The Car and Engine here are simplified from topic 4.
+
+Reading: learncpp 27.3, Exceptions, functions, and stack unwinding.
+
+Full program: cpp/stack_unwinding.cpp
+:::
+
+<!-- Slide 67 -->
+
+---
+
+## When the Constructor Throws
+
+:::: {.columns}
+
+::: {.column width="60%" style="font-size: 50%;"}
+~~~cpp
+class Title {
+private:
+    string text;
+
+public:
+    Title(const string& t) : text(t) { }
+    ~Title() { cout << "Title destroyed" << endl; }
+};
+
+class Course {
+private:
+    Title title;
+    Roster roster;
+
+public:
+    Course(const string& t, int seats) : title(t), roster(seats) { }
+    ~Course() { cout << "Course destroyed" << endl; }
+};
+
+int main() {
+    try {
+        Course empty("CISP 400", 0);
+    } catch (const runtime_error& e) {
+        cout << "Caught: " << e.what() << endl;
+    }
+    return 0;
+}
+~~~
+:::
+
+::: {.column width="40%"}
+. . .
+
+~~~
+Title destroyed
+Caught: capacity must be positive
+~~~
+
+- `title` was finished, so it is destroyed.
+- `~Course` never runs: the `Course` was never finished.
+- Memory the constructor got with `new` before the throw leaks; member objects clean up for free.
+:::
+
+::::
+
+::: notes
+Ask students to predict which destructors print before revealing. Members are built in declaration order, so title exists when roster throws. Only finished objects are destroyed, which is why a constructor that calls new before something that can throw needs a member object or RAII (05.02) instead of a raw pointer.
+
+Full program: cpp/constructor_throws.cpp
+:::
+
+<!-- Slide 68 -->
+
+---
+
+## When to Throw
+
+| Tool | Use for | Why |
+|---|---|---|
+| Return value | Expected results, such as "not found" | Callers can ignore it, and constructors cannot return one |
+| `assert` | Programmer mistakes inside your own code | Removed by `NDEBUG`; never for user input (09.01) |
+| Exception | Runtime conditions the caller cannot prevent, and constructors that cannot build a valid object | Cannot be silently ignored |
+
+- Do not use exceptions for normal control flow, such as ending a loop.
+
+::: notes
+Homework 6, Task 7 asks for at least two exceptional conditions, std::runtime_error or a custom exception class, a throw, and a catch that recovers. Everything except a custom exception class is covered today; custom exception classes come in 14.02.
+:::
+
+<!-- Slide 69 -->
+
+---
+
+## Summary
+
+- A function or constructor that cannot do its job throws; the nearest matching catch handles it, and everything between is skipped.
+- During unwinding every finished object is destroyed, so member objects clean up for free and raw `new` leaks.
+
+::: notes
+
+:::
+
+<!-- Slide 70 -->

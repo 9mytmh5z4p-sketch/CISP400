@@ -28,6 +28,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="p400_lecture_11.01_files/libs/revealjs/dist/theme/quarto-99eeafcedac04850354b682963cedae3.css">
   <link rel="stylesheet" href="../styles/styles.css">
@@ -143,52 +209,15 @@ Dr.&nbsp;Caleb Fowler
 <section id="last-time" class="title-slide slide level1 center">
 <h1>Last Time</h1>
 <ul>
-<li class="fragment"><strong>Class Relationships</strong></li>
-<li class="fragment"><strong>Aggregation and Composition</strong></li>
+<li class="fragment"><strong>Type Conversion Operators</strong></li>
+<li class="fragment"><strong>Conversion Constructors</strong></li>
+<li class="fragment"><strong>Object Conversions</strong></li>
+<li class="fragment"><strong>Conversion Safety</strong></li>
+<li class="fragment"><strong>Operator Chaining</strong></li>
+<li class="fragment"><strong>Unit Testing</strong></li>
 </ul>
-</section>
-
-<section id="todays-agenda" class="title-slide slide level1 center">
-<h1>Today’s Agenda</h1>
-<ul>
-<li>Class Relationships</li>
-<li>Aggregation and Composition</li>
-<li>Conversion Review</li>
-<li>Lambda Review</li>
-<li>Relationship Applications</li>
-</ul>
-<!-- Topic 1: Course Framing -->
-<!-- Slides 1–6 -->
-</section>
-
-<section>
-<section id="course-framing" class="title-slide slide level1 center">
-<h1>Course Framing</h1>
-
-</section>
-<section id="cisp-400" class="slide level2">
-<h2>CISP 400</h2>
-<p>This slide develops the authoritative source material on <strong>cisp 400</strong>.</p>
 <aside class="notes">
-<p>Slides 1–6</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 1 -->
-</section>
-<section id="chapter-11-more-oop" class="slide level2">
-<h2>Chapter 11 More OOP</h2>
-<p>This slide develops the authoritative source material on <strong>chapter 11 more oop</strong>.</p>
-<aside class="notes">
-
+<p>Tuesday taught classes to convert in both directions, controlled those conversions with explicit and = delete, returned *this so calls chain, and kept tests that catch bugs coming back.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -202,11 +231,18 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 2 -->
 </section>
-<section id="course-review" class="slide level2">
-<h2>Course Review</h2>
-<p>This slide develops the authoritative source material on <strong>course review</strong>.</p>
-<aside class="notes">
 
+<section id="todays-agenda" class="title-slide slide level1 center">
+<h1>Today’s Agenda</h1>
+<ul>
+<li>Conversion Review</li>
+<li>Class Relationships</li>
+<li>Aggregation and Composition</li>
+<li>Relationship Applications</li>
+<li>Exception Basics</li>
+</ul>
+<aside class="notes">
+<p>Reading: textbook Chapters 11 and 16; learncpp Chapter 23, Object relationships, and lessons 27.1 to 27.3 on exceptions.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -219,30 +255,24 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 3 -->
+<!-- Topic 1: Conversion Review -->
+<!-- Slides 5–15 -->
 </section>
-<section id="course-review-1" class="slide level2">
-<h2>Course Review</h2>
-<p>This slide develops the authoritative source material on <strong>course review</strong>.</p>
-<aside class="notes">
 
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section>
+<section id="conversion-review" class="title-slide slide level1 center">
+<h1>Conversion Review</h1>
 <!-- Slide 4 -->
 </section>
-<section id="course-review-2" class="slide level2">
-<h2>Course Review</h2>
-<p>This slide develops the authoritative source material on <strong>course review</strong>.</p>
+<section id="when-your-object-interacts-with-other-types" class="slide level2 smaller">
+<h2>When Your Object Interacts with Other Types</h2>
+<ul>
+<li>A <code>Temperature</code> meets a <code>double</code>, a <code>Fahrenheit</code>, or a function that expects something else.</li>
+<li>What do we do?</li>
+</ul>
 <aside class="notes">
-
+<p>Slides 5–15</p>
+<p>Let students answer before advancing. Tuesday’s answer: teach the class to convert, in one of two directions.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -256,9 +286,12 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 5 -->
 </section>
-<section id="course-review-3" class="slide level2">
-<h2>Course Review</h2>
-<p>This slide develops the authoritative source material on <strong>course review</strong>.</p>
+<section id="two-ways-to-convert" class="slide level2">
+<h2>Two Ways to Convert</h2>
+<ul>
+<li><strong>Type conversion operator:</strong> your object becomes another type.</li>
+<li><strong>Conversion constructor:</strong> another type becomes your object.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -273,19 +306,16 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 6 -->
-<!-- Topic 2: Class Relationships -->
-<!-- Slides 7–24 -->
-</section></section>
-<section>
-<section id="class-relationships" class="title-slide slide level1 center">
-<h1>Class Relationships</h1>
-
 </section>
-<section id="relationships" class="slide level2">
-<h2>Relationships</h2>
-<p>This slide develops the authoritative source material on <strong>relationships</strong>.</p>
+<section id="type-conversion-operator" class="slide level2">
+<h2>Type Conversion Operator</h2>
+<ul>
+<li>A member function written <code>operator T() const</code>, where <code>T</code> is the target type.</li>
+<li>No return type is written, and it takes no parameters.</li>
+<li>The compiler calls it wherever your object is used and a <code>T</code> is needed.</li>
+</ul>
 <aside class="notes">
-<p>Slides 7–24</p>
+<p>Reading: learncpp 21.11, Overloading typecasts.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -299,11 +329,41 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 7 -->
 </section>
-<section id="relationship-overview" class="slide level2">
-<h2>Relationship Overview</h2>
-<p>This slide develops the authoritative source material on <strong>relationship overview</strong>.</p>
-<aside class="notes">
+<section class="slide level2">
 
+<div class="columns">
+<div class="column" style="font-size: 50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a><span class="kw">class</span> Temperature <span class="op">{</span></span>
+<span id="cb1-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb1-3"><a href=""></a>    <span class="dt">double</span> celsius<span class="op">;</span></span>
+<span id="cb1-4"><a href=""></a></span>
+<span id="cb1-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb1-6"><a href=""></a>    Temperature<span class="op">(</span><span class="dt">double</span> value <span class="op">=</span> <span class="fl">0.0</span><span class="op">)</span> <span class="op">{</span> celsius <span class="op">=</span> value<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb1-7"><a href=""></a></span>
+<span id="cb1-8"><a href=""></a>    <span class="co">// Converts a Temperature to its Celsius value</span></span>
+<span id="cb1-9"><a href=""></a>    <span class="kw">operator</span> <span class="dt">double</span><span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> celsius<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb1-10"><a href=""></a><span class="op">};</span></span>
+<span id="cb1-11"><a href=""></a></span>
+<span id="cb1-12"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-13"><a href=""></a>    Temperature today<span class="op">(</span><span class="fl">21.5</span><span class="op">);</span></span>
+<span id="cb1-14"><a href=""></a></span>
+<span id="cb1-15"><a href=""></a>    <span class="dt">double</span> reading <span class="op">=</span> today<span class="op">;</span>          <span class="co">// initialization</span></span>
+<span id="cb1-16"><a href=""></a>    <span class="dt">double</span> warmer <span class="op">=</span> today <span class="op">+</span> <span class="fl">1.5</span><span class="op">;</span>     <span class="co">// arithmetic</span></span>
+<span id="cb1-17"><a href=""></a></span>
+<span id="cb1-18"><a href=""></a>    cout <span class="op">&lt;&lt;</span> reading <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> warmer <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb1-19"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-20"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:40%;">
+<p>. . .</p>
+<pre><code>21.5 23</code></pre>
+<ul>
+<li><code>reading</code> gets the Celsius value.</li>
+<li><code>today + 1.5</code> converts <code>today</code> to <code>double</code>, then adds.</li>
+</ul>
+</div></div>
+<aside class="notes">
+<p>Ask students to predict both values before revealing. Temperature has no operator+, so today + 1.5 converts today to double and adds two doubles.</p>
+<p>Full program: ../p400_lecture_10.01/cpp/temperature_conversion.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -317,11 +377,14 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 8 -->
 </section>
-<section id="relationship-overview-1" class="slide level2">
-<h2>Relationship Overview</h2>
-<p>This slide develops the authoritative source material on <strong>relationship overview</strong>.</p>
+<section id="convert-constructor" class="slide level2">
+<h2>Convert Constructor</h2>
+<ul>
+<li>A constructor that builds your class from one value of another type.</li>
+<li>The compiler may call it on its own wherever your class is needed and that other type is supplied.</li>
+</ul>
 <aside class="notes">
-
+<p>The textbook calls it a convert constructor (section 11.10); learncpp calls it a converting constructor (14.16). Same thing.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -335,11 +398,19 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 9 -->
 </section>
-<section id="aggregation-design" class="slide level2">
-<h2>Aggregation Design</h2>
-<p>This slide develops the authoritative source material on <strong>aggregation design</strong>.</p>
+<section id="examples" class="slide level2">
+<h2>Examples</h2>
+<div style="font-size: 80%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a><span class="kw">class</span> Fahrenheit <span class="op">{</span></span>
+<span id="cb3-2"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb3-3"><a href=""></a>    Fahrenheit<span class="op">();</span>                                 <span class="co">// regular: takes no arguments</span></span>
+<span id="cb3-4"><a href=""></a>    Fahrenheit<span class="op">(</span><span class="dt">double</span> value<span class="op">,</span> <span class="dt">char</span> scale<span class="op">);</span>         <span class="co">// regular: needs two values</span></span>
+<span id="cb3-5"><a href=""></a>    <span class="kw">explicit</span> Fahrenheit<span class="op">(</span><span class="dt">int</span> whole<span class="op">);</span>               <span class="co">// regular: explicit</span></span>
+<span id="cb3-6"><a href=""></a>    Fahrenheit<span class="op">(</span><span class="at">const</span> Temperature<span class="op">&amp;</span> t<span class="op">);</span>             <span class="co">// converting: one value, not explicit</span></span>
+<span id="cb3-7"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <aside class="notes">
-
+<p>Only the last constructor can run without being named: Fahrenheit report = today; calls it to convert a Temperature.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -353,9 +424,13 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 10 -->
 </section>
-<section id="aggregation-design-1" class="slide level2">
-<h2>Aggregation Design</h2>
-<p>This slide develops the authoritative source material on <strong>aggregation design</strong>.</p>
+<section id="the-rules" class="slide level2">
+<h2>The Rules</h2>
+<p>A constructor is a conversion constructor when it:</p>
+<ol type="1">
+<li>Can be called with a single argument.</li>
+<li>Is not marked <code>explicit</code>.</li>
+</ol>
 <aside class="notes">
 
 <style type="text/css">
@@ -371,11 +446,14 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 11 -->
 </section>
-<section id="aggregation-design-2" class="slide level2">
-<h2>Aggregation Design</h2>
-<p>This slide develops the authoritative source material on <strong>aggregation design</strong>.</p>
+<section id="single-argument-gotcha" class="slide level2">
+<h2>Single Argument Gotcha</h2>
+<ul>
+<li>A constructor with several parameters still converts if every parameter after the first has a default value.</li>
+<li><code>Fahrenheit(double value, char scale = 'F')</code> can be called with one <code>double</code>, so it converts a <code>double</code>.</li>
+</ul>
 <aside class="notes">
-
+<p>Tuesday’s Fahrenheit(double value = 32.0) is the same gotcha: written as a default constructor, but the default argument makes it callable with one double, so Fahrenheit oops = 20.0; compiles and gives 20 degrees Fahrenheit.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -389,11 +467,14 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 12 -->
 </section>
-<section id="aggregation-design-3" class="slide level2">
-<h2>Aggregation Design</h2>
-<p>This slide develops the authoritative source material on <strong>aggregation design</strong>.</p>
+<section id="explicit" class="slide level2">
+<h2>Explicit</h2>
+<ul>
+<li><code>explicit</code> means the constructor runs only when the code calls it directly.</li>
+<li>It never converts a value on its own, so <code>=</code>, argument passing, and returns cannot use it.</li>
+</ul>
 <aside class="notes">
-
+<p>The same keyword works on conversion operators: explicit operator double() const blocks double d = today; but allows static_cast<double>(today).</double></p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -407,11 +488,32 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 13 -->
 </section>
-<section id="strong-aggregation" class="slide level2">
-<h2>Strong Aggregation</h2>
-<p>This slide develops the authoritative source material on <strong>strong aggregation</strong>.</p>
-<aside class="notes">
+<section class="slide level2">
 
+<div class="columns">
+<div class="column" style="font-size: 50%;">
+<p><strong>Without explicit</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href=""></a><span class="kw">class</span> Fahrenheit <span class="op">{</span></span>
+<span id="cb4-2"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb4-3"><a href=""></a>    Fahrenheit<span class="op">(</span><span class="dt">double</span> value<span class="op">);</span>       <span class="co">// converting</span></span>
+<span id="cb4-4"><a href=""></a><span class="op">};</span></span>
+<span id="cb4-5"><a href=""></a></span>
+<span id="cb4-6"><a href=""></a>Fahrenheit a <span class="op">=</span> <span class="fl">20.0</span><span class="op">;</span>    <span class="co">// compiles: 20.0 is converted</span></span>
+<span id="cb4-7"><a href=""></a>Fahrenheit b<span class="op">(</span><span class="fl">20.0</span><span class="op">);</span>     <span class="co">// compiles: calls the constructor</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="font-size: 50%;">
+<p><strong>With explicit</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a><span class="kw">class</span> Fahrenheit <span class="op">{</span></span>
+<span id="cb5-2"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb5-3"><a href=""></a>    <span class="kw">explicit</span> Fahrenheit<span class="op">(</span><span class="dt">double</span> value<span class="op">);</span>  <span class="co">// regular</span></span>
+<span id="cb5-4"><a href=""></a><span class="op">};</span></span>
+<span id="cb5-5"><a href=""></a></span>
+<span id="cb5-6"><a href=""></a>Fahrenheit a <span class="op">=</span> <span class="fl">20.0</span><span class="op">;</span>    <span class="co">// error: = needs a conversion</span></span>
+<span id="cb5-7"><a href=""></a>Fahrenheit b<span class="op">(</span><span class="fl">20.0</span><span class="op">);</span>     <span class="co">// compiles: calls the constructor</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<aside class="notes">
+<p>Both lines write the type Fahrenheit, so the type name is not the difference. The difference is how the object is initialized.</p>
+<p>Fahrenheit a = 20.0; is copy initialization: the compiler must first convert 20.0 into a Fahrenheit, and that is the implicit conversion explicit forbids. g++ reports “conversion from ‘double’ to non-scalar type ‘Fahrenheit’ requested.”</p>
+<p>Fahrenheit b(20.0); is direct initialization: it calls the constructor with 20.0 as the argument, so no conversion is needed and explicit allows it. Fahrenheit(20.0) and static_cast<fahrenheit>(20.0) also call the constructor directly.</fahrenheit></p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -425,9 +527,12 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 14 -->
 </section>
-<section id="strong-aggregation-1" class="slide level2">
-<h2>Strong Aggregation</h2>
-<p>This slide develops the authoritative source material on <strong>strong aggregation</strong>.</p>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li>A type conversion operator turns your object into another type; a conversion constructor turns another type into your object.</li>
+<li>A constructor that can take one argument and is not <code>explicit</code> converts.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -442,30 +547,65 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 15 -->
-</section>
-<section id="strong-aggregation-2" class="slide level2">
-<h2>Strong Aggregation</h2>
-<p>This slide develops the authoritative source material on <strong>strong aggregation</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<!-- Topic 2: Class Relationships -->
+<!-- Slides 17–34 -->
+</section></section>
+<section>
+<section id="class-relationships" class="title-slide slide level1 center">
+<h1>Class Relationships</h1>
 <!-- Slide 16 -->
 </section>
-<section id="relationship-types" class="slide level2">
-<h2>Relationship Types</h2>
-<p>This slide develops the authoritative source material on <strong>relationship types</strong>.</p>
+<section id="relationships" class="slide level2">
+<h2>Relationships</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Relationship Type</th>
+<th>Relationship Example</th>
+<th>Key Characteristic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Association</td>
+<td>Student ↔︎ Course</td>
+<td>General uses relationship</td>
+</tr>
+<tr class="even">
+<td>Aggregation</td>
+<td>Library → Book</td>
+<td>Weak ownership (has-a)</td>
+</tr>
+<tr class="odd">
+<td>Composition</td>
+<td>Car → Engine</td>
+<td>Strong ownership (part-of)</td>
+</tr>
+<tr class="even">
+<td>Inheritance</td>
+<td>Dog → Animal</td>
+<td>Hierarchical (is-a)</td>
+</tr>
+<tr class="odd">
+<td>Dependency</td>
+<td>Printer → Document</td>
+<td>Temporary use</td>
+</tr>
+<tr class="even">
+<td>Realization</td>
+<td>Bird → Flyable</td>
+<td>Implements behavior</td>
+</tr>
+<tr class="odd">
+<td>Friendship</td>
+<td>Matrix ↔︎ Calculator</td>
+<td>Explicit access granting</td>
+</tr>
+</tbody>
+</table>
 <aside class="notes">
-
+<p>Slides 17–34</p>
+<p>This is the table from 05.02. Conversions are one way an object interacts with other types; relationships are the other: an object can use, know about, or contain another object.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -479,11 +619,17 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 17 -->
 </section>
-<section id="relationship-types-1" class="slide level2">
-<h2>Relationship Types</h2>
-<p>This slide develops the authoritative source material on <strong>relationship types</strong>.</p>
+<section id="relationships-1" class="slide level2">
+<h2>Relationships</h2>
+<ul>
+<li>Dependency</li>
+<li>Association</li>
+<li>Aggregation</li>
+<li>Composition</li>
+<li>Inheritance</li>
+</ul>
 <aside class="notes">
-
+<p>The five relationships this lecture and the next one use. Realization needs inheritance, and friendship was covered in 07.01 and 07.02.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -497,11 +643,12 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 18 -->
 </section>
-<section id="relationship-types-2" class="slide level2">
-<h2>Relationship Types</h2>
-<p>This slide develops the authoritative source material on <strong>relationship types</strong>.</p>
-<aside class="notes">
+<section id="focus-on-these-3-relationships" class="slide level2">
+<h2>Focus on These 3 Relationships</h2>
 
+<img data-src="images/relationships.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%" alt="Student with inheritance to CIS_Student, aggregation to Instructor, and composition to Test"><aside class="notes">
+<p>Inheritance is is-a: a CIS_Student is a Student (11.02). Aggregation and composition are both has-a.</p>
+<p>Discussion: the diagram labels Student to Instructor as aggregation. Come back to it after the relationship algorithm slide and ask students to run it through the questions. An instructor is not part of a student, so the algorithm says association. Let them argue it.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -515,11 +662,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 19 -->
 </section>
-<section id="relationship-types-3" class="slide level2">
-<h2>Relationship Types</h2>
-<p>This slide develops the authoritative source material on <strong>relationship types</strong>.</p>
-<aside class="notes">
+<section id="focus-on-these-3-relationships-1" class="slide level2">
+<h2>Focus on These 3 Relationships</h2>
 
+<img data-src="images/relationships-boom.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%" alt="The same diagram with Student and Test destroyed together"><aside class="notes">
+<p>Destroy the Student and its composed Test goes with it. The Instructor and the CIS_Student class are not destroyed, because the Student does not own them.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -533,11 +680,15 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 20 -->
 </section>
-<section id="modeling-relationships" class="slide level2">
-<h2>Modeling Relationships</h2>
-<p>This slide develops the authoritative source material on <strong>modeling relationships</strong>.</p>
+<section id="front-end-and-back-end-classes" class="slide level2">
+<h2>Front-End and Back-End Classes</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/FE%20and%20BE%20classes.png" class="quarto-figure quarto-figure-center" alt="Front-end class object A pointing to back-end class object B" height="480"></p>
+</figure>
+</div>
 <aside class="notes">
-
+<p>The front-end class is the one you instantiate; the back-end object goes along for the ride as a member. In composition the back-end object lives and dies with the front-end object; in aggregation it exists on its own and the front-end object only points at it.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -551,11 +702,14 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 21 -->
 </section>
-<section id="modeling-relationships-1" class="slide level2">
-<h2>Modeling Relationships</h2>
-<p>This slide develops the authoritative source material on <strong>modeling relationships</strong>.</p>
+<section id="composition" class="slide level2">
+<h2>Composition</h2>
+<ul>
+<li>A class holds an object of another class as a member, and owns it.</li>
+<li>The part is created with the whole and destroyed with the whole.</li>
+</ul>
 <aside class="notes">
-
+<p>Reading: learncpp 23.2, Composition. Topic 3 builds composition with member initializer lists.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -569,9 +723,11 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 22 -->
 </section>
-<section id="modeling-relationships-2" class="slide level2">
-<h2>Modeling Relationships</h2>
-<p>This slide develops the authoritative source material on <strong>modeling relationships</strong>.</p>
+<section id="what-does-composition-do-for-me" class="slide level2">
+<h2>What Does Composition Do For Me?</h2>
+<ul>
+<li>Allows us to make use of behavior in other classes.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -587,11 +743,14 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 23 -->
 </section>
-<section id="modeling-relationships-3" class="slide level2">
-<h2>Modeling Relationships</h2>
-<p>This slide develops the authoritative source material on <strong>modeling relationships</strong>.</p>
+<section id="aggregation" class="slide level2">
+<h2>Aggregation</h2>
+<ul>
+<li>A class stores a pointer or reference to an object of another class that is part of it.</li>
+<li>The class neither creates nor destroys that object; it exists on its own.</li>
+</ul>
 <aside class="notes">
-
+<p>Reading: learncpp 23.3, Aggregation. The part can outlive the whole and can be shared.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -604,19 +763,15 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 24 -->
-<!-- Topic 3: Aggregation and Composition -->
-<!-- Slides 25–58 -->
-</section></section>
-<section>
-<section id="aggregation-and-composition" class="title-slide slide level1 center">
-<h1>Aggregation and Composition</h1>
-
 </section>
-<section id="composition-setup" class="slide level2">
-<h2>Composition Setup</h2>
-<p>This slide develops the authoritative source material on <strong>composition setup</strong>.</p>
+<section id="what-does-aggregation-do-for-me" class="slide level2">
+<h2>What Does Aggregation Do For Me?</h2>
+<ul>
+<li>Allows us to make use of behavior in other classes.</li>
+<li>We can change this behavior by changing the classes.</li>
+</ul>
 <aside class="notes">
-<p>Slides 25–58</p>
+<p>Because the part is supplied from outside, a different object can be plugged in: give the Car a different GPS and its behavior changes without changing the Car.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -630,11 +785,14 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 25 -->
 </section>
-<section id="composition-setup-1" class="slide level2">
-<h2>Composition Setup</h2>
-<p>This slide develops the authoritative source material on <strong>composition setup</strong>.</p>
+<section id="inheritance" class="slide level2">
+<h2>Inheritance</h2>
+<ul>
+<li>A new class is built from an existing class.</li>
+<li>The derived class is a kind of the base class and gets its members.</li>
+</ul>
 <aside class="notes">
-
+<p>Preview only: 11.02 teaches inheritance. Reading: learncpp 24.1, Introduction to inheritance.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -648,9 +806,13 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 26 -->
 </section>
-<section id="composition-setup-2" class="slide level2">
-<h2>Composition Setup</h2>
-<p>This slide develops the authoritative source material on <strong>composition setup</strong>.</p>
+<section id="what-does-inheritance-do-for-me" class="slide level2">
+<h2>What Does Inheritance Do For Me?</h2>
+<ul>
+<li>Inheritance allows us to write code in one class …</li>
+<li>… and use that same exact code in many other classes.</li>
+<li>And we can mix and match what code we want those other classes to use.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -666,11 +828,16 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 27 -->
 </section>
-<section id="composition-context" class="slide level2">
-<h2>Composition Context</h2>
-<p>This slide develops the authoritative source material on <strong>composition context</strong>.</p>
+<section id="relationship-algorithm" class="slide level2">
+<h2>Relationship Algorithm</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/relationship_algorithm.png" class="quarto-figure quarto-figure-center" alt="Flowchart: does A store B, is B part of A, does A create and destroy B" height="500"></p>
+</figure>
+</div>
 <aside class="notes">
-
+<p>The questions in order: Does A store B? No means dependency. Is B part of A? No means association. Does A create and destroy B? Yes means composition; no means aggregation, where A neither creates nor destroys B.</p>
+<p>Revisit the Student to Instructor arrow from the Focus on These 3 Relationships slide with these questions.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -684,11 +851,34 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 28 -->
 </section>
-<section id="composition-context-1" class="slide level2">
-<h2>Composition Context</h2>
-<p>This slide develops the authoritative source material on <strong>composition context</strong>.</p>
+<section id="name-that-relationship" class="slide level2">
+<h2>Name That Relationship</h2>
+<div class="columns">
+<div class="column" style="font-size: 60%;">
+<p><strong>A</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href=""></a><span class="kw">class</span> Printer <span class="op">{</span></span>
+<span id="cb6-2"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb6-3"><a href=""></a>    <span class="dt">void</span> print<span class="op">(</span><span class="at">const</span> Document<span class="op">&amp;</span> doc<span class="op">);</span></span>
+<span id="cb6-4"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>B</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a><span class="kw">class</span> Car <span class="op">{</span></span>
+<span id="cb7-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb7-3"><a href=""></a>    Engine engine<span class="op">;</span></span>
+<span id="cb7-4"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="font-size: 60%;">
+<p><strong>C</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a><span class="kw">class</span> Driver <span class="op">{</span></span>
+<span id="cb8-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb8-3"><a href=""></a>    Car<span class="op">*</span> car<span class="op">;</span></span>
+<span id="cb8-4"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>D</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href=""></a><span class="kw">class</span> Department <span class="op">{</span></span>
+<span id="cb9-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb9-3"><a href=""></a>    Teacher<span class="op">*</span> teachers<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
+<span id="cb9-4"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
 <aside class="notes">
-
+<p>Have students label each snippet using the four questions before advancing. C and D have the same code shape, so the answer depends on whether B is part of A.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -702,11 +892,58 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 29 -->
 </section>
-<section id="composition-context-2" class="slide level2">
-<h2>Composition Context</h2>
-<p>This slide develops the authoritative source material on <strong>composition context</strong>.</p>
+<section id="name-that-relationship-answers" class="slide level2">
+<h2>Name That Relationship: Answers</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Snippet</th>
+<th>Stores B?</th>
+<th>Part of A?</th>
+<th>A creates and destroys B?</th>
+<th>Relationship</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A: <code>Printer</code>, <code>Document</code></td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Dependency</td>
+</tr>
+<tr class="even">
+<td>B: <code>Car</code>, <code>Engine</code></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes, as a member object</td>
+<td>Composition</td>
+</tr>
+<tr class="odd">
+<td>C: <code>Driver</code>, <code>Car</code></td>
+<td>Yes</td>
+<td>No</td>
+<td></td>
+<td>Association</td>
+</tr>
+<tr class="even">
+<td>D: <code>Department</code>, <code>Teacher</code></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No: teachers are hired elsewhere</td>
+<td>Aggregation</td>
+</tr>
+</tbody>
+</table>
 <aside class="notes">
-
+<p>A teacher who leaves the department still exists, which is the test for aggregation. The Department and Teacher example comes from learncpp 23.3, Aggregation.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -720,11 +957,35 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 30 -->
 </section>
-<section id="composition-context-3" class="slide level2">
-<h2>Composition Context</h2>
-<p>This slide develops the authoritative source material on <strong>composition context</strong>.</p>
+<section id="same-member-different-relationship" class="slide level2">
+<h2>Same Member, Different Relationship</h2>
+<div class="columns">
+<div class="column" style="font-size: 60%;">
+<p><strong>Composition: Car creates and deletes the engine</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href=""></a><span class="kw">class</span> Car <span class="op">{</span></span>
+<span id="cb10-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb10-3"><a href=""></a>    Engine<span class="op">*</span> engine<span class="op">;</span></span>
+<span id="cb10-4"><a href=""></a></span>
+<span id="cb10-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb10-6"><a href=""></a>    Car<span class="op">()</span> <span class="op">{</span> engine <span class="op">=</span> <span class="kw">new</span> Engine<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb10-7"><a href=""></a>    <span class="op">~</span>Car<span class="op">()</span> <span class="op">{</span> <span class="kw">delete</span> engine<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb10-8"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="font-size: 60%;">
+<p><strong>Aggregation: the engine comes from outside</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href=""></a><span class="kw">class</span> Car <span class="op">{</span></span>
+<span id="cb11-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb11-3"><a href=""></a>    Engine<span class="op">*</span> engine<span class="op">;</span></span>
+<span id="cb11-4"><a href=""></a></span>
+<span id="cb11-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb11-6"><a href=""></a>    Car<span class="op">(</span>Engine<span class="op">*</span> e<span class="op">)</span> <span class="op">{</span> engine <span class="op">=</span> e<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb11-7"><a href=""></a>    <span class="co">// no delete: Car does not own the engine</span></span>
+<span id="cb11-8"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<ul>
+<li>The member’s type does not decide the relationship. Who deletes the object does.</li>
+</ul>
 <aside class="notes">
-
+<p>Both classes store Engine* engine; the left Car is composition because it creates and deletes the engine, and the right Car is aggregation because the engine is made elsewhere and Car never deletes it. This is ownership from 05.02’s RAII topic. The left version also needs a copy constructor and copy assignment, which the next slide explains.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -738,11 +999,44 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 31 -->
 </section>
-<section id="programming-exercise" class="slide level2">
-<h2>Programming Exercise</h2>
-<p>This slide develops the authoritative source material on <strong>programming exercise</strong>.</p>
+<section id="why-the-label-matters" class="slide level2">
+<h2>Why the Label Matters</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>How A holds B</th>
+<th>Who builds, copies, and destroys B</th>
+<th>What you write</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Member object: <code>Engine engine;</code></td>
+<td>The compiler, automatically</td>
+<td>Nothing extra</td>
+</tr>
+<tr class="even">
+<td>Owning pointer: <code>new</code> in A</td>
+<td>You</td>
+<td>Destructor, deep copy, and move (Rule of Five, 08.02), or a <code>unique_ptr</code> (05.02)</td>
+</tr>
+<tr class="odd">
+<td>Non-owning pointer: passed in</td>
+<td>Whoever created B</td>
+<td>Never <code>delete</code>; copying the pointer is intended</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Pick the wrong row and you get a leak, a double delete, or a dangling pointer.</li>
+</ul>
 <aside class="notes">
-
+<p>The first row is sometimes called the Rule of Zero: when every part is a member object, the compiler-generated constructor, copy operations, and destructor are already correct. That is why a member object is the default choice for composition.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -756,11 +1050,52 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 32 -->
 </section>
-<section id="programming-exercise-1" class="slide level2">
-<h2>Programming Exercise</h2>
-<p>This slide develops the authoritative source material on <strong>programming exercise</strong>.</p>
+<section id="relationships-and-their-code" class="slide level2">
+<h2>Relationships and Their Code</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Relationship</th>
+<th>Meaning</th>
+<th>Code shape</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dependency</td>
+<td>A uses B briefly</td>
+<td>B is a parameter or a local variable</td>
+</tr>
+<tr class="even">
+<td>Association</td>
+<td>A works with B over time; neither is part of the other</td>
+<td>A stores a pointer or reference to B</td>
+</tr>
+<tr class="odd">
+<td>Aggregation</td>
+<td>B is part of A, but A does not own B</td>
+<td>A stores a pointer or reference to B</td>
+</tr>
+<tr class="even">
+<td>Composition</td>
+<td>B is part of A, and A owns B</td>
+<td>A stores B as a member object</td>
+</tr>
+<tr class="odd">
+<td>Inheritance</td>
+<td>A is a kind of B</td>
+<td><code>class A : public B</code> (11.02)</td>
+</tr>
+</tbody>
+</table>
 <aside class="notes">
-
+<p>This pulls the topic together: each relationship and the code it produces. Association and aggregation have the same code shape; the relationship algorithm’s second question separates them.</p>
+<p>Reading: learncpp 23.1, Object relationships.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -774,9 +1109,12 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 33 -->
 </section>
-<section id="exercise-goals" class="slide level2">
-<h2>Exercise Goals</h2>
-<p>This slide develops the authoritative source material on <strong>exercise goals</strong>.</p>
+<section id="summary-1" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li>Ask whether A stores B, whether B is part of A, and whether A creates and destroys B; the answers separate dependency, association, aggregation, and composition.</li>
+<li>Who deletes the object decides the relationship, and the relationship decides which destructor and copy code you write.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -791,30 +1129,22 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 34 -->
-</section>
-<section id="exercise-goals-1" class="slide level2">
-<h2>Exercise Goals</h2>
-<p>This slide develops the authoritative source material on <strong>exercise goals</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<!-- Topic 3: Aggregation and Composition -->
+<!-- Slides 36–47 -->
+</section></section>
+<section>
+<section id="aggregation-and-composition" class="title-slide slide level1 center">
+<h1>Aggregation and Composition</h1>
 <!-- Slide 35 -->
 </section>
-<section id="exercise-goals-2" class="slide level2">
-<h2>Exercise Goals</h2>
-<p>This slide develops the authoritative source material on <strong>exercise goals</strong>.</p>
+<section id="where-do-the-parts-come-from" class="slide level2 smaller">
+<h2>Where Do the Parts Come From?</h2>
+<ul>
+<li>Composition stores the part as a member object. Who builds it?</li>
+</ul>
 <aside class="notes">
-
+<p>Slides 36–47</p>
+<p>Topic 2 said composition stores the part as a member object. This topic builds one and finds out when that member is constructed.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -828,11 +1158,38 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 36 -->
 </section>
-<section id="key-takeaway" class="slide level2">
-<h2>Key Takeaway</h2>
-<p>This slide develops the authoritative source material on <strong>key takeaway</strong>.</p>
+<section id="does-this-compile" class="slide level2">
+<h2>Does This Compile?</h2>
+<div style="font-size: 60%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href=""></a><span class="kw">class</span> Roster <span class="op">{</span></span>
+<span id="cb12-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb12-3"><a href=""></a>    <span class="dt">int</span> seats<span class="op">;</span></span>
+<span id="cb12-4"><a href=""></a></span>
+<span id="cb12-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb12-6"><a href=""></a>    <span class="kw">explicit</span> Roster<span class="op">(</span><span class="dt">int</span> capacity<span class="op">)</span> <span class="op">{</span> seats <span class="op">=</span> capacity<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb12-7"><a href=""></a>    <span class="dt">int</span> size<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> seats<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb12-8"><a href=""></a><span class="op">};</span></span>
+<span id="cb12-9"><a href=""></a></span>
+<span id="cb12-10"><a href=""></a><span class="kw">class</span> Course <span class="op">{</span></span>
+<span id="cb12-11"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb12-12"><a href=""></a>    string name<span class="op">;</span></span>
+<span id="cb12-13"><a href=""></a>    Roster roster<span class="op">;</span></span>
+<span id="cb12-14"><a href=""></a></span>
+<span id="cb12-15"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb12-16"><a href=""></a>    Course<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">int</span> seats<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb12-17"><a href=""></a>        name <span class="op">=</span> n<span class="op">;</span></span>
+<span id="cb12-18"><a href=""></a>        roster <span class="op">=</span> Roster<span class="op">(</span>seats<span class="op">);</span></span>
+<span id="cb12-19"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb12-20"><a href=""></a><span class="op">};</span></span>
+<span id="cb12-21"><a href=""></a></span>
+<span id="cb12-22"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb12-23"><a href=""></a>    Course cisp<span class="op">(</span><span class="st">"CISP 400"</span><span class="op">,</span> <span class="dv">30</span><span class="op">);</span></span>
+<span id="cb12-24"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb12-25"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <aside class="notes">
-
+<p>One file, top to bottom. Roster is the class from 10.01; its only constructor takes an int. Ask students to commit to yes or no before advancing.</p>
+<p>Answer: No.&nbsp;g++ reports no matching function for call to ‘Roster::Roster()’. The next slide shows why.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -846,11 +1203,21 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 37 -->
 </section>
-<section id="homework-and-exercise-tasks" class="slide level2">
-<h2>Homework and Exercise Tasks</h2>
-<p>This slide develops the authoritative source material on <strong>homework and exercise tasks</strong>.</p>
+<section id="members-are-built-before-the-body" class="slide level2">
+<h2>Members Are Built Before the Body</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href=""></a>Course<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">int</span> seats<span class="op">)</span></span>
+<span id="cb13-2"><a href=""></a>    <span class="co">// hidden step 1: build name with string()      fine: string has one</span></span>
+<span id="cb13-3"><a href=""></a>    <span class="co">// hidden step 2: build roster with Roster()    error: there is no Roster()</span></span>
+<span id="cb13-4"><a href=""></a><span class="op">{</span></span>
+<span id="cb13-5"><a href=""></a>    name <span class="op">=</span> n<span class="op">;</span>                  <span class="co">// assignment, not construction</span></span>
+<span id="cb13-6"><a href=""></a>    roster <span class="op">=</span> Roster<span class="op">(</span>seats<span class="op">);</span>    <span class="co">// too late: roster had to exist already</span></span>
+<span id="cb13-7"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>g++: <code>no matching function for call to 'Roster::Roster()'</code></li>
+<li>Every member is built before the body runs. If you do not say how, the compiler uses the constructor with no arguments.</li>
+</ul>
 <aside class="notes">
-
+<p>The comments show what the compiler does that the source code does not say. By the time the body’s first line runs, name and roster must already exist. name can be built empty because string has a default constructor, so name = n is just an assignment. roster cannot be built empty, because Roster’s only constructor needs an int, so the compiler stops before the body is reached. The fix is to tell the compiler how to build roster before the body: the member initializer list on the next slide.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -864,11 +1231,45 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 38 -->
 </section>
-<section id="homework-and-exercise-tasks-1" class="slide level2">
-<h2>Homework and Exercise Tasks</h2>
-<p>This slide develops the authoritative source material on <strong>homework and exercise tasks</strong>.</p>
+<section id="member-initializer-list-anatomy" class="slide level2">
+<h2>Member Initializer List Anatomy</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href=""></a>Course<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">int</span> seats<span class="op">)</span> <span class="op">:</span> name<span class="op">(</span>n<span class="op">),</span> roster<span class="op">(</span>seats<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Part</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>:</code></td>
+<td>Starts the member initializer list</td>
+</tr>
+<tr class="even">
+<td><code>name(n)</code></td>
+<td>Builds <code>name</code> from the parameter <code>n</code></td>
+</tr>
+<tr class="odd">
+<td><code>roster(seats)</code></td>
+<td>Builds <code>roster</code> by calling <code>Roster(int)</code> with <code>seats</code></td>
+</tr>
+<tr class="even">
+<td><code>,</code></td>
+<td>Separates the members</td>
+</tr>
+<tr class="odd">
+<td><code>{ }</code></td>
+<td>The body runs after every member is built; here it has nothing to do</td>
+</tr>
+</tbody>
+</table>
 <aside class="notes">
-
+<p>This is how data reaches the parts: the outer constructor’s parameters are passed to each member’s constructor. Students saw this syntax in 05.02’s examples, such as : name(name), without an explanation. This is the explanation.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -882,11 +1283,44 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 39 -->
 </section>
-<section id="homework-and-exercise-tasks-2" class="slide level2">
-<h2>Homework and Exercise Tasks</h2>
-<p>This slide develops the authoritative source material on <strong>homework and exercise tasks</strong>.</p>
+<section id="member-initializer-list-anatomy-1" class="slide level2">
+<h2>Member Initializer List Anatomy</h2>
+<div style="font-size: 60%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href=""></a><span class="kw">class</span> Roster <span class="op">{</span></span>
+<span id="cb15-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb15-3"><a href=""></a>    <span class="dt">int</span> seats<span class="op">;</span></span>
+<span id="cb15-4"><a href=""></a></span>
+<span id="cb15-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb15-6"><a href=""></a>    <span class="co">// The only constructor: a Roster cannot be built without an int</span></span>
+<span id="cb15-7"><a href=""></a>    <span class="kw">explicit</span> Roster<span class="op">(</span><span class="dt">int</span> capacity<span class="op">)</span> <span class="op">{</span> seats <span class="op">=</span> capacity<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb15-8"><a href=""></a>    <span class="dt">int</span> size<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> seats<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb15-9"><a href=""></a><span class="op">};</span></span>
+<span id="cb15-10"><a href=""></a></span>
+<span id="cb15-11"><a href=""></a><span class="kw">class</span> Course <span class="op">{</span></span>
+<span id="cb15-12"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb15-13"><a href=""></a>    string name<span class="op">;</span>      <span class="co">// built first: declared first</span></span>
+<span id="cb15-14"><a href=""></a>    Roster roster<span class="op">;</span>    <span class="co">// built second</span></span>
+<span id="cb15-15"><a href=""></a></span>
+<span id="cb15-16"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb15-17"><a href=""></a>    <span class="co">// The list builds each member before the body runs:</span></span>
+<span id="cb15-18"><a href=""></a>    <span class="co">//   name(n)        builds name directly from n</span></span>
+<span id="cb15-19"><a href=""></a>    <span class="co">//   roster(seats)  calls Roster(int), so Roster() is never needed</span></span>
+<span id="cb15-20"><a href=""></a>    Course<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">int</span> seats<span class="op">)</span> <span class="op">:</span> name<span class="op">(</span>n<span class="op">),</span> roster<span class="op">(</span>seats<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb15-21"><a href=""></a></span>
+<span id="cb15-22"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb15-23"><a href=""></a>        cout <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> <span class="st">": "</span> <span class="op">&lt;&lt;</span> roster<span class="op">.</span>size<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">" seats"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb15-24"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb15-25"><a href=""></a><span class="op">};</span></span>
+<span id="cb15-26"><a href=""></a></span>
+<span id="cb15-27"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb15-28"><a href=""></a>    Course cisp<span class="op">(</span><span class="st">"CISP 400"</span><span class="op">,</span> <span class="dv">30</span><span class="op">);</span></span>
+<span id="cb15-29"><a href=""></a>    cisp<span class="op">.</span>print<span class="op">();</span></span>
+<span id="cb15-30"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb15-31"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <aside class="notes">
-
+<p>Output: CISP 400: 30 seats</p>
+<p>Full program: cpp/course_composition.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -900,11 +1334,45 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 40 -->
 </section>
-<section id="homework-and-exercise-tasks-3" class="slide level2">
-<h2>Homework and Exercise Tasks</h2>
-<p>This slide develops the authoritative source material on <strong>homework and exercise tasks</strong>.</p>
+<section id="in-what-order" class="slide level2">
+<h2>In What Order?</h2>
+<div class="columns">
+<div class="column" style="font-size: 50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href=""></a><span class="kw">class</span> Part <span class="op">{</span></span>
+<span id="cb16-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb16-3"><a href=""></a>    <span class="dt">char</span> id<span class="op">;</span></span>
+<span id="cb16-4"><a href=""></a></span>
+<span id="cb16-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb16-6"><a href=""></a>    Part<span class="op">(</span><span class="dt">char</span> c<span class="op">)</span> <span class="op">{</span> id <span class="op">=</span> c<span class="op">;</span> cout <span class="op">&lt;&lt;</span> <span class="st">"build "</span> <span class="op">&lt;&lt;</span> id <span class="op">&lt;&lt;</span> endl<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb16-7"><a href=""></a>    <span class="op">~</span>Part<span class="op">()</span> <span class="op">{</span> cout <span class="op">&lt;&lt;</span> <span class="st">"destroy "</span> <span class="op">&lt;&lt;</span> id <span class="op">&lt;&lt;</span> endl<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb16-8"><a href=""></a><span class="op">};</span></span>
+<span id="cb16-9"><a href=""></a></span>
+<span id="cb16-10"><a href=""></a><span class="kw">class</span> Whole <span class="op">{</span></span>
+<span id="cb16-11"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb16-12"><a href=""></a>    Part first<span class="op">;</span></span>
+<span id="cb16-13"><a href=""></a>    Part second<span class="op">;</span></span>
+<span id="cb16-14"><a href=""></a></span>
+<span id="cb16-15"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb16-16"><a href=""></a>    Whole<span class="op">()</span> <span class="op">:</span> second<span class="op">(</span><span class="ch">'B'</span><span class="op">),</span> first<span class="op">(</span><span class="ch">'A'</span><span class="op">)</span> <span class="op">{</span> cout <span class="op">&lt;&lt;</span> <span class="st">"Whole body"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb16-17"><a href=""></a>    <span class="op">~</span>Whole<span class="op">()</span> <span class="op">{</span> cout <span class="op">&lt;&lt;</span> <span class="st">"~Whole body"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb16-18"><a href=""></a><span class="op">};</span></span>
+<span id="cb16-19"><a href=""></a></span>
+<span id="cb16-20"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb16-21"><a href=""></a>    Whole w<span class="op">;</span></span>
+<span id="cb16-22"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb16-23"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:40%;">
+<p>. . .</p>
+<pre><code>build A
+build B
+Whole body
+~Whole body
+destroy B
+destroy A</code></pre>
+</div></div>
 <aside class="notes">
-
+<p>The list names second first, but members are built in the order they are declared in the class. Destruction runs in reverse, after the destructor body. g++ -Wall warns: ‘Whole::second’ will be initialized after ‘Part Whole::first’ [-Wreorder]. Write the list in declaration order.</p>
+<p>Full program: cpp/construction_order.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -918,9 +1386,41 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 41 -->
 </section>
-<section id="homework-and-exercise-tasks-4" class="slide level2">
-<h2>Homework and Exercise Tasks</h2>
-<p>This slide develops the authoritative source material on <strong>homework and exercise tasks</strong>.</p>
+<section id="when-the-list-is-required" class="slide level2">
+<h2>When the List Is Required</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Member</th>
+<th>Why the list is required</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A class with no default constructor, such as <code>Roster</code></td>
+<td>The body is too late to build it</td>
+</tr>
+<tr class="even">
+<td><code>const int limit;</code></td>
+<td>A <code>const</code> cannot be assigned after it is built</td>
+</tr>
+<tr class="odd">
+<td><code>Teacher&amp; head;</code></td>
+<td>A reference must be bound when it is created</td>
+</tr>
+<tr class="even">
+<td>A base class (11.02)</td>
+<td>It is built before the derived part, the same way</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Everywhere else the list is still preferred: the member is built once instead of built and then assigned.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -936,11 +1436,17 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 42 -->
 </section>
-<section id="homework-and-exercise-tasks-5" class="slide level2">
-<h2>Homework and Exercise Tasks</h2>
-<p>This slide develops the authoritative source material on <strong>homework and exercise tasks</strong>.</p>
+<section id="copies-for-free" class="slide level2">
+<h2>Copies for Free</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href=""></a>Course cisp<span class="op">(</span><span class="st">"CISP 400"</span><span class="op">,</span> <span class="dv">30</span><span class="op">);</span></span>
+<span id="cb18-2"><a href=""></a>Course copy <span class="op">=</span> cisp<span class="op">;</span>      <span class="co">// copies name and roster</span></span>
+<span id="cb18-3"><a href=""></a>copy<span class="op">.</span>print<span class="op">();</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Output: <code>CISP 400: 30 seats</code></p>
+<ul>
+<li><code>Course</code> has no copy constructor, copy assignment, or destructor, and it does not need them.</li>
+</ul>
 <aside class="notes">
-
+<p>This pays off topic 2’s Why the Label Matters slide: with member objects, the compiler-generated copy constructor copies each member, and each member’s destructor runs automatically. string and Roster already know how to copy themselves. Compare the Rule of Five work an owning pointer would need.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -954,11 +1460,56 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 43 -->
 </section>
-<section id="aggregation-and-composition-1" class="slide level2">
-<h2>Aggregation and Composition</h2>
-<p>This slide develops the authoritative source material on <strong>aggregation and composition</strong>.</p>
+<section id="aggregation-store-the-pointer" class="slide level2">
+<h2>Aggregation: Store the Pointer</h2>
+<div class="columns">
+<div class="column" style="font-size: 50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href=""></a><span class="co">// Department does not own its teachers,</span></span>
+<span id="cb19-2"><a href=""></a><span class="co">// so it has no destructor</span></span>
+<span id="cb19-3"><a href=""></a><span class="kw">class</span> Department <span class="op">{</span></span>
+<span id="cb19-4"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb19-5"><a href=""></a>    string title<span class="op">;</span></span>
+<span id="cb19-6"><a href=""></a>    Teacher<span class="op">*</span> teachers<span class="op">[</span>MAX_TEACHERS<span class="op">];</span></span>
+<span id="cb19-7"><a href=""></a>    <span class="dt">int</span> count<span class="op">;</span></span>
+<span id="cb19-8"><a href=""></a></span>
+<span id="cb19-9"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb19-10"><a href=""></a>    Department<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> t<span class="op">)</span> <span class="op">:</span> title<span class="op">(</span>t<span class="op">),</span> count<span class="op">(</span><span class="dv">0</span><span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb19-11"><a href=""></a></span>
+<span id="cb19-12"><a href=""></a>    <span class="dt">void</span> addTeacher<span class="op">(</span>Teacher<span class="op">*</span> t<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb19-13"><a href=""></a>        <span class="cf">if</span> <span class="op">(</span>count <span class="op">&lt;</span> MAX_TEACHERS<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb19-14"><a href=""></a>            teachers<span class="op">[</span>count<span class="op">]</span> <span class="op">=</span> t<span class="op">;</span></span>
+<span id="cb19-15"><a href=""></a>            count<span class="op">++;</span></span>
+<span id="cb19-16"><a href=""></a>        <span class="op">}</span></span>
+<span id="cb19-17"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb19-18"><a href=""></a></span>
+<span id="cb19-19"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb19-20"><a href=""></a>        cout <span class="op">&lt;&lt;</span> title <span class="op">&lt;&lt;</span> <span class="st">":"</span><span class="op">;</span></span>
+<span id="cb19-21"><a href=""></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> count<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb19-22"><a href=""></a>            cout <span class="op">&lt;&lt;</span> <span class="st">" "</span> <span class="op">&lt;&lt;</span> teachers<span class="op">[</span>i<span class="op">]-&gt;</span>getName<span class="op">();</span></span>
+<span id="cb19-23"><a href=""></a>        <span class="op">}</span></span>
+<span id="cb19-24"><a href=""></a>        cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb19-25"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb19-26"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="font-size: 50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb20-2"><a href=""></a>    Teacher lee<span class="op">(</span><span class="st">"Lee"</span><span class="op">);</span></span>
+<span id="cb20-3"><a href=""></a>    Teacher ruiz<span class="op">(</span><span class="st">"Ruiz"</span><span class="op">);</span></span>
+<span id="cb20-4"><a href=""></a></span>
+<span id="cb20-5"><a href=""></a>    <span class="op">{</span></span>
+<span id="cb20-6"><a href=""></a>        Department math<span class="op">(</span><span class="st">"Math"</span><span class="op">);</span></span>
+<span id="cb20-7"><a href=""></a>        math<span class="op">.</span>addTeacher<span class="op">(&amp;</span>lee<span class="op">);</span></span>
+<span id="cb20-8"><a href=""></a>        math<span class="op">.</span>addTeacher<span class="op">(&amp;</span>ruiz<span class="op">);</span></span>
+<span id="cb20-9"><a href=""></a>        math<span class="op">.</span>print<span class="op">();</span></span>
+<span id="cb20-10"><a href=""></a>    <span class="op">}</span>                  <span class="co">// math is destroyed here</span></span>
+<span id="cb20-11"><a href=""></a></span>
+<span id="cb20-12"><a href=""></a>    cout <span class="op">&lt;&lt;</span> lee<span class="op">.</span>getName<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">" still exists"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb20-13"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb20-14"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
 <aside class="notes">
-
+<p>Output: Math: Lee Ruiz, then Lee still exists.</p>
+<p>Teacher stores a name and has getName(); see the full program. The teachers are created in main, the department only points at them, and they outlive it.</p>
+<p>Full program: cpp/department_aggregation.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -972,11 +1523,25 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 44 -->
 </section>
-<section id="aggregation-and-composition-2" class="slide level2">
-<h2>Aggregation and Composition</h2>
-<p>This slide develops the authoritative source material on <strong>aggregation and composition</strong>.</p>
+<section id="when-the-teacher-leaves-first" class="slide level2">
+<h2>When the Teacher Leaves First</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb21-1"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb21-2"><a href=""></a>    Department math<span class="op">(</span><span class="st">"Math"</span><span class="op">);</span></span>
+<span id="cb21-3"><a href=""></a>    <span class="op">{</span></span>
+<span id="cb21-4"><a href=""></a>        Teacher lee<span class="op">(</span><span class="st">"Lee"</span><span class="op">);</span></span>
+<span id="cb21-5"><a href=""></a>        math<span class="op">.</span>addTeacher<span class="op">(&amp;</span>lee<span class="op">);</span></span>
+<span id="cb21-6"><a href=""></a>    <span class="op">}</span>                        <span class="co">// lee is destroyed here</span></span>
+<span id="cb21-7"><a href=""></a>    math<span class="op">.</span>print<span class="op">();</span>            <span class="co">// uses a dangling pointer</span></span>
+<span id="cb21-8"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb21-9"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment">
+<ul>
+<li>Output: <code>Math: Lee</code>. It looks correct, and the program is still wrong.</li>
+<li><code>lee</code> no longer exists. Using it is undefined behavior: garbage, a crash, or output that seems fine.</li>
+</ul>
 <aside class="notes">
-
+<p>Tested with g++, with and without -O2: both print Math: Lee and exit normally. Compiling with -fsanitize=address reports stack-use-after-scope at the print. Undefined behavior that looks correct is the most dangerous kind, because no test output warns you.</p>
+<p>Full program: cpp/dangling_teacher.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -989,12 +1554,41 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 45 -->
+</div>
 </section>
-<section id="aggregation-and-composition-3" class="slide level2">
-<h2>Aggregation and Composition</h2>
-<p>This slide develops the authoritative source material on <strong>aggregation and composition</strong>.</p>
+<section id="composition-or-aggregation" class="slide level2">
+<h2>Composition or Aggregation?</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Choose</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Composition, member object</td>
+<td>The part lives and dies with the whole and is not shared</td>
+</tr>
+<tr class="even">
+<td>Composition, owning pointer</td>
+<td>The part can be missing or replaced, and the whole still owns it</td>
+</tr>
+<tr class="odd">
+<td>Aggregation, stored pointer</td>
+<td>The part lives on its own or is shared</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>An aggregated part must outlive every use the whole makes of it.</li>
+</ul>
 <aside class="notes">
-
+<p>Prefer the member object; reach for a pointer only when the part can be missing, replaced, or shared. Homework 6, Task 2 asks for an aggregation or composition relationship.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1008,9 +1602,12 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 46 -->
 </section>
-<section id="passing-data-to-back-end-objects" class="slide level2">
-<h2>Passing Data to Back-End Objects</h2>
-<p>This slide develops the authoritative source material on <strong>passing data to back-end objects</strong>.</p>
+<section id="summary-2" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li>Members are built before the constructor body, so parts with no default constructor, <code>const</code> members, and references are built in the member initializer list.</li>
+<li>Composition by member object copies and cleans up for free; aggregation stores a pointer that must never outlive the part it points to.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -1025,30 +1622,22 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 47 -->
-</section>
-<section id="passing-data-to-back-end-objects-1" class="slide level2">
-<h2>Passing Data to Back-End Objects</h2>
-<p>This slide develops the authoritative source material on <strong>passing data to back-end objects</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<!-- Topic 4: Relationship Applications -->
+<!-- Slides 49–61 -->
+</section></section>
+<section>
+<section id="relationship-applications" class="title-slide slide level1 center">
+<h1>Relationship Applications</h1>
 <!-- Slide 48 -->
 </section>
-<section id="passing-data-to-back-end-objects-2" class="slide level2">
-<h2>Passing Data to Back-End Objects</h2>
-<p>This slide develops the authoritative source material on <strong>passing data to back-end objects</strong>.</p>
+<section id="one-class-every-relationship" class="slide level2 smaller">
+<h2>One Class, Every Relationship?</h2>
+<ul>
+<li>A <code>Car</code> can hold all four relationships at once.</li>
+</ul>
 <aside class="notes">
-
+<p>Slides 49–61</p>
+<p>Topics 2 and 3 took the relationships one at a time. This topic puts them in one model and makes the design choices that come with mixing them.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1062,11 +1651,46 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 49 -->
 </section>
-<section id="passing-data-to-back-end-objects-3" class="slide level2">
-<h2>Passing Data to Back-End Objects</h2>
-<p>This slide develops the authoritative source material on <strong>passing data to back-end objects</strong>.</p>
+<section id="model-a-car" class="slide level2">
+<h2>Model a Car</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>The car connects to</th>
+<th>Relationship</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Engine</td>
+<td>Composition</td>
+<td>Built and destroyed with the car</td>
+</tr>
+<tr class="even">
+<td>GPS unit</td>
+<td>Aggregation</td>
+<td>Part of the car while installed; moves to the next car</td>
+</tr>
+<tr class="odd">
+<td>Driver</td>
+<td>Association</td>
+<td>Works with the car; not part of it</td>
+</tr>
+<tr class="even">
+<td>Gas station</td>
+<td>Dependency</td>
+<td>Used only while refueling</td>
+</tr>
+</tbody>
+</table>
 <aside class="notes">
-
+<p>Run each row through topic 2’s four questions: stored, part of, created and destroyed by the car.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1080,11 +1704,33 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 50 -->
 </section>
-<section id="initialization-lists" class="slide level2">
-<h2>Initialization Lists</h2>
-<p>This slide develops the authoritative source material on <strong>initialization lists</strong>.</p>
+<section id="the-car-in-code" class="slide level2">
+<h2>The Car in Code</h2>
+<div style="font-size: 60%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb22-1"><a href=""></a><span class="kw">class</span> Car <span class="op">{</span></span>
+<span id="cb22-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb22-3"><a href=""></a>    Engine engine<span class="op">;</span>     <span class="co">// composition: built and destroyed with the car</span></span>
+<span id="cb22-4"><a href=""></a>    GPS<span class="op">*</span> gps<span class="op">;</span>          <span class="co">// aggregation: installed now, moved to the next car later</span></span>
+<span id="cb22-5"><a href=""></a>    Driver<span class="op">*</span> driver<span class="op">;</span>    <span class="co">// association: works with the car, not part of it</span></span>
+<span id="cb22-6"><a href=""></a></span>
+<span id="cb22-7"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb22-8"><a href=""></a>    Car<span class="op">(</span><span class="dt">int</span> hp<span class="op">)</span> <span class="op">:</span> engine<span class="op">(</span>hp<span class="op">),</span> gps<span class="op">(</span><span class="kw">nullptr</span><span class="op">),</span> driver<span class="op">(</span><span class="kw">nullptr</span><span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb22-9"><a href=""></a>    <span class="co">// no delete: Car owns only its engine</span></span>
+<span id="cb22-10"><a href=""></a>    <span class="op">~</span>Car<span class="op">()</span> <span class="op">{</span> cout <span class="op">&lt;&lt;</span> <span class="st">"Car destroyed"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb22-11"><a href=""></a></span>
+<span id="cb22-12"><a href=""></a>    <span class="dt">void</span> installGPS<span class="op">(</span>GPS<span class="op">*</span> unit<span class="op">)</span> <span class="op">{</span> gps <span class="op">=</span> unit<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb22-13"><a href=""></a>    <span class="dt">void</span> setDriver<span class="op">(</span>Driver<span class="op">*</span> d<span class="op">)</span> <span class="op">{</span> driver <span class="op">=</span> d<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb22-14"><a href=""></a></span>
+<span id="cb22-15"><a href=""></a>    <span class="co">// dependency: the station is used only during this call</span></span>
+<span id="cb22-16"><a href=""></a>    <span class="dt">double</span> refuel<span class="op">(</span><span class="at">const</span> GasStation<span class="op">&amp;</span> station<span class="op">,</span> <span class="dt">double</span> gallons<span class="op">)</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb22-17"><a href=""></a>        <span class="cf">return</span> station<span class="op">.</span>pricePerGallon<span class="op">()</span> <span class="op">*</span> gallons<span class="op">;</span></span>
+<span id="cb22-18"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb22-19"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <aside class="notes">
-
+<p>Each comment names the relationship and the line that decides it: the member object, the missing delete, and the parameter. The engine is built in the member initializer list from topic 3. Engine, GPS, Driver, and GasStation are small classes whose destructors print; see the full program.</p>
+<p>An array of member objects, such as Wheel wheels[4];, needs Wheel to have a default constructor, because each element is built before the Car constructor body runs. See the appendix.</p>
+<p>Full program: cpp/car_relationships.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1098,11 +1744,43 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 51 -->
 </section>
-<section id="initialization-lists-1" class="slide level2">
-<h2>Initialization Lists</h2>
-<p>This slide develops the authoritative source material on <strong>initialization lists</strong>.</p>
+<section id="what-happens-when-the-car-is-gone" class="slide level2">
+<h2>What Happens When the Car Is Gone?</h2>
+<div class="columns">
+<div class="column" style="font-size: 50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb23-1"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb23-2"><a href=""></a>    GPS unit<span class="op">;</span></span>
+<span id="cb23-3"><a href=""></a>    Driver ada<span class="op">(</span><span class="st">"Ada"</span><span class="op">);</span></span>
+<span id="cb23-4"><a href=""></a>    GasStation corner<span class="op">;</span></span>
+<span id="cb23-5"><a href=""></a></span>
+<span id="cb23-6"><a href=""></a>    <span class="op">{</span></span>
+<span id="cb23-7"><a href=""></a>        Car sedan<span class="op">(</span><span class="dv">180</span><span class="op">);</span></span>
+<span id="cb23-8"><a href=""></a>        sedan<span class="op">.</span>installGPS<span class="op">(&amp;</span>unit<span class="op">);</span></span>
+<span id="cb23-9"><a href=""></a>        sedan<span class="op">.</span>setDriver<span class="op">(&amp;</span>ada<span class="op">);</span></span>
+<span id="cb23-10"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Refuel: $"</span> <span class="op">&lt;&lt;</span> sedan<span class="op">.</span>refuel<span class="op">(</span>corner<span class="op">,</span> <span class="dv">10</span><span class="op">)</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb23-11"><a href=""></a>    <span class="op">}</span>                                  <span class="co">// sedan is destroyed here</span></span>
+<span id="cb23-12"><a href=""></a></span>
+<span id="cb23-13"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Car is gone; GPS and "</span> <span class="op">&lt;&lt;</span> ada<span class="op">.</span>getName<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">" remain"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb23-14"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb23-15"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:40%;">
+<p>. . .</p>
+<pre><code>Refuel: $45
+Car destroyed
+Engine destroyed
+Car is gone; GPS and Ada remain
+Driver destroyed
+GPS destroyed</code></pre>
+<ul>
+<li><code>sedan</code> leaves scope at its closing brace: <code>~Car</code> runs, then its <code>engine</code>.</li>
+<li><code>unit</code> and <code>ada</code> belong to <code>main</code>, so their destructors run when <code>main</code> ends.</li>
+</ul>
+</div></div>
 <aside class="notes">
-
+<p>Ask students which destructors run at the closing brace. Every class here has a destructor that prints, so the output shows each destruction.</p>
+<p>At the inner closing brace, sedan goes out of scope: ~Car runs first, then its member engine is destroyed. The Car only pointed at the GPS and the driver, so they survive.</p>
+<p>unit, ada, and corner are local variables of main. They are destroyed when main returns, in reverse order of declaration: corner first (GasStation prints nothing), then ada (Driver destroyed), then unit (GPS destroyed).</p>
+<p>Full program: cpp/car_relationships.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1116,11 +1794,20 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 52 -->
 </section>
-<section id="initialization-lists-2" class="slide level2">
-<h2>Initialization Lists</h2>
-<p>This slide develops the authoritative source material on <strong>initialization lists</strong>.</p>
+<section id="label-the-house" class="slide level2">
+<h2>Label the House</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb25-1"><a href=""></a><span class="kw">class</span> House <span class="op">{</span></span>
+<span id="cb25-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb25-3"><a href=""></a>    Room rooms<span class="op">[</span><span class="dv">6</span><span class="op">];</span></span>
+<span id="cb25-4"><a href=""></a>    Furniture<span class="op">*</span> furniture<span class="op">[</span><span class="dv">20</span><span class="op">];</span></span>
+<span id="cb25-5"><a href=""></a>    Resident<span class="op">*</span> residents<span class="op">[</span><span class="dv">8</span><span class="op">];</span></span>
+<span id="cb25-6"><a href=""></a>    Fridge<span class="op">*</span> fridge<span class="op">;</span></span>
+<span id="cb25-7"><a href=""></a></span>
+<span id="cb25-8"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb25-9"><a href=""></a>    <span class="dt">void</span> repair<span class="op">(</span><span class="at">const</span> Contractor<span class="op">&amp;</span> who<span class="op">);</span></span>
+<span id="cb25-10"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
-
+<p>Students label each member and the repair parameter with the four questions. Expect disagreement on the fridge; that disagreement is the point of the next slide.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1134,11 +1821,20 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 53 -->
 </section>
-<section id="exercise-debrief" class="slide level2">
-<h2>Exercise Debrief</h2>
-<p>This slide develops the authoritative source material on <strong>exercise debrief</strong>.</p>
+<section id="label-the-house-1" class="slide level2">
+<h2>Label the House</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb26-1"><a href=""></a><span class="kw">class</span> House <span class="op">{</span></span>
+<span id="cb26-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb26-3"><a href=""></a>    Room rooms<span class="op">[</span><span class="dv">6</span><span class="op">];</span>               <span class="co">// composition: built and destroyed with the house</span></span>
+<span id="cb26-4"><a href=""></a>    Furniture<span class="op">*</span> furniture<span class="op">[</span><span class="dv">20</span><span class="op">];</span>    <span class="co">// aggregation: moves out with the owners</span></span>
+<span id="cb26-5"><a href=""></a>    Resident<span class="op">*</span> residents<span class="op">[</span><span class="dv">8</span><span class="op">];</span>      <span class="co">// association: lives here, not part of the house</span></span>
+<span id="cb26-6"><a href=""></a>    Fridge<span class="op">*</span> fridge<span class="op">;</span>              <span class="co">// it depends: composition if the house deletes it</span></span>
+<span id="cb26-7"><a href=""></a></span>
+<span id="cb26-8"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb26-9"><a href=""></a>    <span class="dt">void</span> repair<span class="op">(</span><span class="at">const</span> Contractor<span class="op">&amp;</span> who<span class="op">);</span>   <span class="co">// dependency: used only during the call</span></span>
+<span id="cb26-10"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
-
+<p>The same code with each relationship as a comment. The next slide gives the reasoning for each.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1152,11 +1848,61 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 54 -->
 </section>
-<section id="exercise-debrief-1" class="slide level2">
-<h2>Exercise Debrief</h2>
-<p>This slide develops the authoritative source material on <strong>exercise debrief</strong>.</p>
+<section id="label-the-house-answers" class="slide level2">
+<h2>Label the House: Answers</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Member</th>
+<th>Part of the house?</th>
+<th>House creates and destroys it?</th>
+<th>Relationship</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>rooms[6]</code></td>
+<td>Yes</td>
+<td>Yes, as member objects</td>
+<td>Composition</td>
+</tr>
+<tr class="even">
+<td><code>furniture</code></td>
+<td>Yes, while it is there</td>
+<td>No: it moves out with the owners</td>
+<td>Aggregation</td>
+</tr>
+<tr class="odd">
+<td><code>residents</code></td>
+<td>No</td>
+<td>No</td>
+<td>Association</td>
+</tr>
+<tr class="even">
+<td><code>repair(const Contractor&amp;)</code></td>
+<td>Not stored</td>
+<td></td>
+<td>Dependency</td>
+</tr>
+<tr class="odd">
+<td><code>fridge</code></td>
+<td>Yes</td>
+<td>Depends</td>
+<td>Composition if the house deletes it; aggregation if the owners take it</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Either fridge answer is right, as long as the code matches it: the class that deletes the fridge owns it.</li>
+</ul>
 <aside class="notes">
-
+<p>A real-estate contract settles the fridge question one way or the other; a program has to as well. Ask students who would write delete fridge in each design.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1170,9 +1916,42 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 55 -->
 </section>
-<section id="exercise-debrief-2" class="slide level2">
-<h2>Exercise Debrief</h2>
-<p>This slide develops the authoritative source material on <strong>exercise debrief</strong>.</p>
+<section id="design-choices" class="slide level2">
+<h2>Design Choices</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Mistake</th>
+<th>What goes wrong</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Composing a part that should be shared: <code>Driver driver;</code></td>
+<td>Copying the car copies the driver: two cars, two Adas</td>
+<td>Store a pointer: association</td>
+</tr>
+<tr class="even">
+<td>A pointer with no owner: <code>gps = new GPS;</code> and no <code>delete</code></td>
+<td>A leak: nobody deletes the GPS</td>
+<td>Pick an owner: delete it in <code>Car</code>, or create it outside</td>
+</tr>
+<tr class="odd">
+<td>Making every member a pointer</td>
+<td>Every member needs an owner and copy rules</td>
+<td>Default to member objects</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Every object has exactly one owner: a scope, a containing object, or the code that deletes it.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -1188,11 +1967,36 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 56 -->
 </section>
-<section id="exercise-debrief-3" class="slide level2">
-<h2>Exercise Debrief</h2>
-<p>This slide develops the authoritative source material on <strong>exercise debrief</strong>.</p>
+<section id="composing-a-part-that-should-be-shared" class="slide level2">
+<h2>Composing a Part That Should Be Shared</h2>
+<div class="columns">
+<div class="column" style="font-size: 50%;">
+<p><strong>Problem: the driver is a member object</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb27-1"><a href=""></a><span class="kw">class</span> Car <span class="op">{</span></span>
+<span id="cb27-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb27-3"><a href=""></a>    Driver driver<span class="op">;</span>                  <span class="co">// composition</span></span>
+<span id="cb27-4"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb27-5"><a href=""></a>    Car<span class="op">(</span><span class="at">const</span> Driver<span class="op">&amp;</span> d<span class="op">)</span> <span class="op">:</span> driver<span class="op">(</span>d<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb27-6"><a href=""></a><span class="op">};</span></span>
+<span id="cb27-7"><a href=""></a></span>
+<span id="cb27-8"><a href=""></a>Driver ada<span class="op">(</span><span class="st">"Ada"</span><span class="op">);</span></span>
+<span id="cb27-9"><a href=""></a>Car sedan<span class="op">(</span>ada<span class="op">);</span></span>
+<span id="cb27-10"><a href=""></a>Car truck<span class="op">(</span>ada<span class="op">);</span>     <span class="co">// two cars, two separate copies of Ada</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="font-size: 50%;">
+<p><strong>Solution: store a pointer</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb28-1"><a href=""></a><span class="kw">class</span> Car <span class="op">{</span></span>
+<span id="cb28-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb28-3"><a href=""></a>    Driver<span class="op">*</span> driver<span class="op">;</span>                 <span class="co">// association</span></span>
+<span id="cb28-4"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb28-5"><a href=""></a>    Car<span class="op">(</span>Driver<span class="op">*</span> d<span class="op">)</span> <span class="op">:</span> driver<span class="op">(</span>d<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb28-6"><a href=""></a><span class="op">};</span></span>
+<span id="cb28-7"><a href=""></a></span>
+<span id="cb28-8"><a href=""></a>Driver ada<span class="op">(</span><span class="st">"Ada"</span><span class="op">);</span></span>
+<span id="cb28-9"><a href=""></a>Car sedan<span class="op">(&amp;</span>ada<span class="op">);</span></span>
+<span id="cb28-10"><a href=""></a>Car truck<span class="op">(&amp;</span>ada<span class="op">);</span>    <span class="co">// both cars point at the same Ada</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
 <aside class="notes">
-
+<p>Tested with g++: in the composition version, changing the driver’s name through one car leaves the other car’s copy unchanged. In the association version both cars see the change, because there is only one Ada.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1206,11 +2010,36 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 57 -->
 </section>
-<section id="exercise-debrief-4" class="slide level2">
-<h2>Exercise Debrief</h2>
-<p>This slide develops the authoritative source material on <strong>exercise debrief</strong>.</p>
+<section id="a-pointer-with-no-owner" class="slide level2">
+<h2>A Pointer with No Owner</h2>
+<div class="columns">
+<div class="column" style="font-size: 50%;">
+<p><strong>Problem: nobody deletes the GPS</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb29-1"><a href=""></a><span class="kw">class</span> Car <span class="op">{</span></span>
+<span id="cb29-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb29-3"><a href=""></a>    GPS<span class="op">*</span> gps<span class="op">;</span></span>
+<span id="cb29-4"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb29-5"><a href=""></a>    Car<span class="op">()</span> <span class="op">:</span> gps<span class="op">(</span><span class="kw">new</span> GPS<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb29-6"><a href=""></a>    <span class="co">// no destructor: the GPS leaks</span></span>
+<span id="cb29-7"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="font-size: 50%;">
+<p><strong>Solution: pick an owner</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb30-1"><a href=""></a><span class="co">// Option 1: Car owns it, as a member object</span></span>
+<span id="cb30-2"><a href=""></a><span class="kw">class</span> Car <span class="op">{</span></span>
+<span id="cb30-3"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb30-4"><a href=""></a>    GPS gps<span class="op">;</span></span>
+<span id="cb30-5"><a href=""></a><span class="op">};</span></span>
+<span id="cb30-6"><a href=""></a></span>
+<span id="cb30-7"><a href=""></a><span class="co">// Option 2: someone else owns it</span></span>
+<span id="cb30-8"><a href=""></a><span class="kw">class</span> Car <span class="op">{</span></span>
+<span id="cb30-9"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb30-10"><a href=""></a>    GPS<span class="op">*</span> gps<span class="op">;</span></span>
+<span id="cb30-11"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb30-12"><a href=""></a>    Car<span class="op">(</span>GPS<span class="op">*</span> unit<span class="op">)</span> <span class="op">:</span> gps<span class="op">(</span>unit<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb30-13"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
 <aside class="notes">
-
+<p>Compiled with -fsanitize=address, the problem version reports a memory leak at exit. Option 1 is composition and needs no extra code. Option 2 is aggregation: the GPS is created and deleted elsewhere.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1223,19 +2052,38 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 58 -->
-<!-- Topic 4: Conversion Review -->
-<!-- Slides 59–71 -->
-</section></section>
-<section>
-<section id="conversion-review" class="title-slide slide level1 center">
-<h1>Conversion Review</h1>
-
 </section>
-<section id="last-time-review" class="slide level2">
-<h2>Last Time Review</h2>
-<p>This slide develops the authoritative source material on <strong>last time review</strong>.</p>
+<section id="making-every-member-a-pointer" class="slide level2">
+<h2>Making Every Member a Pointer</h2>
+<div class="columns">
+<div class="column" style="font-size: 50%;">
+<p><strong>Problem: every part is a pointer</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb31-1"><a href=""></a><span class="kw">class</span> Car <span class="op">{</span></span>
+<span id="cb31-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb31-3"><a href=""></a>    Engine<span class="op">*</span> engine<span class="op">;</span></span>
+<span id="cb31-4"><a href=""></a>    GPS<span class="op">*</span> gps<span class="op">;</span></span>
+<span id="cb31-5"><a href=""></a>    Driver<span class="op">*</span> driver<span class="op">;</span></span>
+<span id="cb31-6"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb31-7"><a href=""></a>    Car<span class="op">()</span> <span class="op">:</span> engine<span class="op">(</span><span class="kw">new</span> Engine<span class="op">(</span><span class="dv">180</span><span class="op">)),</span></span>
+<span id="cb31-8"><a href=""></a>            gps<span class="op">(</span><span class="kw">nullptr</span><span class="op">),</span> driver<span class="op">(</span><span class="kw">nullptr</span><span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb31-9"><a href=""></a>    <span class="op">~</span>Car<span class="op">()</span> <span class="op">{</span> <span class="kw">delete</span> engine<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb31-10"><a href=""></a>    <span class="co">// still needs copy and move operations</span></span>
+<span id="cb31-11"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="font-size: 50%;">
+<p><strong>Solution: pointers only where needed</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb32-1"><a href=""></a><span class="kw">class</span> Car <span class="op">{</span></span>
+<span id="cb32-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb32-3"><a href=""></a>    Engine engine<span class="op">;</span>      <span class="co">// owned part: member object</span></span>
+<span id="cb32-4"><a href=""></a>    GPS<span class="op">*</span> gps<span class="op">;</span>           <span class="co">// not owned: pointer</span></span>
+<span id="cb32-5"><a href=""></a>    Driver<span class="op">*</span> driver<span class="op">;</span>     <span class="co">// not owned: pointer</span></span>
+<span id="cb32-6"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb32-7"><a href=""></a>    Car<span class="op">()</span> <span class="op">:</span> engine<span class="op">(</span><span class="dv">180</span><span class="op">),</span></span>
+<span id="cb32-8"><a href=""></a>            gps<span class="op">(</span><span class="kw">nullptr</span><span class="op">),</span> driver<span class="op">(</span><span class="kw">nullptr</span><span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb32-9"><a href=""></a>    <span class="co">// no destructor or copy code needed</span></span>
+<span id="cb32-10"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
 <aside class="notes">
-<p>Slides 59–71</p>
+<p>The problem version owns its engine through a pointer, so copying a Car would copy the pointer and both cars would delete the same engine: it needs the Rule of Five from 08.02. The solution keeps the owned part as a member object, so the compiler-generated copy and destructor are correct.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1249,11 +2097,15 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 59 -->
 </section>
-<section id="last-time-review-1" class="slide level2">
-<h2>Last Time Review</h2>
-<p>This slide develops the authoritative source material on <strong>last time review</strong>.</p>
+<section id="other-relationships" class="slide level2">
+<h2>Other Relationships</h2>
+<ul>
+<li>Has-a: a <code>SportsCar</code> has an <code>Engine</code>. That is composition, from today.</li>
+<li>Is-a: a <code>SportsCar</code> is a <code>Car</code>. That is inheritance, next lecture.</li>
+<li>The test: if “B is an A” reads true, consider inheritance; if “A has a B” reads true, consider composition or aggregation.</li>
+</ul>
 <aside class="notes">
-
+<p>The base class of an inheritance hierarchy is built in the member initializer list, with the same syntax as topic 3. Realization and friendship from 05.02’s table round out the list: realization needs inheritance, and friendship was covered in 07.01 and 07.02.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1267,9 +2119,12 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 60 -->
 </section>
-<section id="last-time-review-2" class="slide level2">
-<h2>Last Time Review</h2>
-<p>This slide develops the authoritative source material on <strong>last time review</strong>.</p>
+<section id="summary-3" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li>One class can hold several relationships at once; each member’s code shape and who deletes it decide which.</li>
+<li>When a choice could go either way, pick one owner and make the code match it.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -1284,30 +2139,33 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 61 -->
-</section>
-<section id="conversion-operators" class="slide level2">
-<h2>Conversion Operators</h2>
-<p>This slide develops the authoritative source material on <strong>conversion operators</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<!-- Topic 5: Exception Basics -->
+<!-- Slides 63–71 -->
+</section></section>
+<section>
+<section id="exception-basics" class="title-slide slide level1 center">
+<h1>Exception Basics</h1>
 <!-- Slide 62 -->
 </section>
-<section id="conversion-operators-1" class="slide level2">
-<h2>Conversion Operators</h2>
-<p>This slide develops the authoritative source material on <strong>conversion operators</strong>.</p>
+<section id="how-does-a-constructor-say-no" class="slide level2 smaller">
+<h2>How Does a Constructor Say No?</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb33-1"><a href=""></a><span class="kw">class</span> Roster <span class="op">{</span></span>
+<span id="cb33-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb33-3"><a href=""></a>    <span class="dt">int</span> seats<span class="op">;</span></span>
+<span id="cb33-4"><a href=""></a></span>
+<span id="cb33-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb33-6"><a href=""></a>    <span class="kw">explicit</span> Roster<span class="op">(</span><span class="dt">int</span> capacity<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb33-7"><a href=""></a>        seats <span class="op">=</span> capacity<span class="op">;</span>          <span class="co">// nothing stops -5</span></span>
+<span id="cb33-8"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb33-9"><a href=""></a><span class="op">};</span></span>
+<span id="cb33-10"><a href=""></a></span>
+<span id="cb33-11"><a href=""></a>Roster sections<span class="op">(-</span><span class="dv">5</span><span class="op">);</span>               <span class="co">// a roster with -5 seats</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>A constructor has no return value. How does it refuse?</li>
+</ul>
 <aside class="notes">
-
+<p>Slides 63–71</p>
+<p>Tested with g++: this compiles and the roster reports -5 seats. Students can suggest options: print an error, set a flag, build a roster with 0 seats. Each one leaves a half-valid object behind. The answer is an exception.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1321,11 +2179,15 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 63 -->
 </section>
-<section id="conversion-operators-2" class="slide level2">
-<h2>Conversion Operators</h2>
-<p>This slide develops the authoritative source material on <strong>conversion operators</strong>.</p>
+<section id="what-are-exceptions" class="slide level2">
+<h2>What Are Exceptions?</h2>
+<ul>
+<li>An exception is an object a function throws to report that it cannot do its job.</li>
+<li>Throwing stops the function immediately, and the program jumps to the nearest code that catches that kind of error.</li>
+<li>If nothing catches it, the program ends.</li>
+</ul>
 <aside class="notes">
-
+<p>Exceptions work in constructors, which have no return value, and they cannot be silently ignored the way a return code can.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1339,11 +2201,39 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 64 -->
 </section>
-<section id="conversion-exercise" class="slide level2">
-<h2>Conversion Exercise</h2>
-<p>This slide develops the authoritative source material on <strong>conversion exercise</strong>.</p>
+<section id="throw-try-catch-anatomy" class="slide level2">
+<h2>throw, try, catch Anatomy</h2>
+<div style="font-size: 70%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb34-1"><a href=""></a><span class="pp">#include </span><span class="im">&lt;stdexcept&gt;</span><span class="pp">                     </span><span class="co">// declares runtime_error</span></span>
+<span id="cb34-2"><a href=""></a></span>
+<span id="cb34-3"><a href=""></a><span class="kw">class</span> Roster <span class="op">{</span></span>
+<span id="cb34-4"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb34-5"><a href=""></a>    <span class="dt">int</span> seats<span class="op">;</span></span>
+<span id="cb34-6"><a href=""></a></span>
+<span id="cb34-7"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb34-8"><a href=""></a>    <span class="kw">explicit</span> Roster<span class="op">(</span><span class="dt">int</span> capacity<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb34-9"><a href=""></a>        <span class="cf">if</span> <span class="op">(</span>capacity <span class="op">&lt;=</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb34-10"><a href=""></a>            <span class="co">// throw: stop the constructor and send out an error object</span></span>
+<span id="cb34-11"><a href=""></a>            <span class="cf">throw</span> runtime_error<span class="op">(</span><span class="st">"capacity must be positive"</span><span class="op">);</span></span>
+<span id="cb34-12"><a href=""></a>        <span class="op">}</span></span>
+<span id="cb34-13"><a href=""></a>        seats <span class="op">=</span> capacity<span class="op">;</span></span>
+<span id="cb34-14"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb34-15"><a href=""></a><span class="op">};</span></span>
+<span id="cb34-16"><a href=""></a></span>
+<span id="cb34-17"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb34-18"><a href=""></a>    <span class="cf">try</span> <span class="op">{</span>                                <span class="co">// try: run code that might throw</span></span>
+<span id="cb34-19"><a href=""></a>        Roster sections<span class="op">(-</span><span class="dv">5</span><span class="op">);</span></span>
+<span id="cb34-20"><a href=""></a>    <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="at">const</span> runtime_error<span class="op">&amp;</span> e<span class="op">)</span> <span class="op">{</span>   <span class="co">// catch: handle a runtime_error</span></span>
+<span id="cb34-21"><a href=""></a>        cout <span class="op">&lt;&lt;</span> e<span class="op">.</span>what<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span>        <span class="co">// what(): the message from the throw</span></span>
+<span id="cb34-22"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb34-23"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb34-24"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <aside class="notes">
-
+<p>Output: capacity must be positive</p>
+<p>The throw is inside the constructor; the try and catch are in the code that creates the Roster. A throw inside a try block jumps straight to the matching catch.</p>
+<p>Catch by const reference: the handler does not copy the error object. Catching a derived exception by value slices it, which matters once exception hierarchies arrive in 14.02, after slicing is taught in 13.02.</p>
+<p>Reading: learncpp 27.1, The need for exceptions; 27.2, Basic exception handling.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1357,11 +2247,40 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 65 -->
 </section>
-<section id="conversion-exercise-1" class="slide level2">
-<h2>Conversion Exercise</h2>
-<p>This slide develops the authoritative source material on <strong>conversion exercise</strong>.</p>
+<section id="a-roster-that-refuses" class="slide level2">
+<h2>A Roster That Refuses</h2>
+<div style="font-size: 70%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb35-1"><a href=""></a><span class="kw">class</span> Roster <span class="op">{</span></span>
+<span id="cb35-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb35-3"><a href=""></a>    <span class="dt">int</span> seats<span class="op">;</span></span>
+<span id="cb35-4"><a href=""></a></span>
+<span id="cb35-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb35-6"><a href=""></a>    <span class="kw">explicit</span> Roster<span class="op">(</span><span class="dt">int</span> capacity<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb35-7"><a href=""></a>        <span class="cf">if</span> <span class="op">(</span>capacity <span class="op">&lt;=</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb35-8"><a href=""></a>            <span class="cf">throw</span> runtime_error<span class="op">(</span><span class="st">"capacity must be positive"</span><span class="op">);</span></span>
+<span id="cb35-9"><a href=""></a>        <span class="op">}</span></span>
+<span id="cb35-10"><a href=""></a>        seats <span class="op">=</span> capacity<span class="op">;</span></span>
+<span id="cb35-11"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb35-12"><a href=""></a>    <span class="dt">int</span> size<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> seats<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb35-13"><a href=""></a><span class="op">};</span></span>
+<span id="cb35-14"><a href=""></a></span>
+<span id="cb35-15"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb35-16"><a href=""></a>    <span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb35-17"><a href=""></a>        Roster sections<span class="op">(-</span><span class="dv">5</span><span class="op">);</span></span>
+<span id="cb35-18"><a href=""></a>        cout <span class="op">&lt;&lt;</span> sections<span class="op">.</span>size<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">" seats"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb35-19"><a href=""></a>    <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="at">const</span> runtime_error<span class="op">&amp;</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb35-20"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Could not build roster: "</span> <span class="op">&lt;&lt;</span> e<span class="op">.</span>what<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb35-21"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb35-22"><a href=""></a></span>
+<span id="cb35-23"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Program continues"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb35-24"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb35-25"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <aside class="notes">
-
+<p>Output: Could not build roster: capacity must be positive, then Program continues.</p>
+<p>No Roster with -5 seats ever exists. The program recovers in main and keeps running.</p>
+<p>explicit is from topic 1 and has nothing to do with the exception: it stops an int from silently becoming a Roster, so a line such as Roster r = 30; does not compile. Roster sections(-5); still works because it calls the constructor directly.</p>
+<p>Full program: cpp/roster_exception.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1375,11 +2294,22 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 66 -->
 </section>
-<section id="conversion-exercise-2" class="slide level2">
-<h2>Conversion Exercise</h2>
-<p>This slide develops the authoritative source material on <strong>conversion exercise</strong>.</p>
+<section id="what-runs-after-the-throw" class="slide level2">
+<h2>What Runs After the Throw?</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb36-1"><a href=""></a><span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb36-2"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"A"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb36-3"><a href=""></a>    Roster r<span class="op">(-</span><span class="dv">5</span><span class="op">);</span></span>
+<span id="cb36-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"B"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb36-5"><a href=""></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="at">const</span> runtime_error<span class="op">&amp;</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb36-6"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Error: "</span> <span class="op">&lt;&lt;</span> e<span class="op">.</span>what<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb36-7"><a href=""></a><span class="op">}</span></span>
+<span id="cb36-8"><a href=""></a>cout <span class="op">&lt;&lt;</span> <span class="st">"C"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment">
+<p>Output: <code>A</code>, then <code>Error: capacity must be positive</code>, then <code>C</code>. <code>B</code> never runs.</p>
 <aside class="notes">
-
+<p>A throw jumps straight to the matching catch; everything between is skipped.</p>
+<p>If nothing catches the exception, the program ends. g++ prints: terminate called after throwing an instance of ‘std::runtime_error’, followed by what(): capacity must be positive, and the program aborts.</p>
+<p>Full program: cpp/after_throw.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1392,12 +2322,54 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 67 -->
+</div>
 </section>
-<section id="conversion-exercise-3" class="slide level2">
-<h2>Conversion Exercise</h2>
-<p>This slide develops the authoritative source material on <strong>conversion exercise</strong>.</p>
+<section id="stack-unwinding" class="slide level2">
+<h2>Stack Unwinding</h2>
+<div class="columns">
+<div class="column" style="font-size: 50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb37-1"><a href=""></a><span class="kw">class</span> Engine <span class="op">{</span></span>
+<span id="cb37-2"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb37-3"><a href=""></a>    <span class="op">~</span>Engine<span class="op">()</span> <span class="op">{</span> cout <span class="op">&lt;&lt;</span> <span class="st">"Engine destroyed"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb37-4"><a href=""></a><span class="op">};</span></span>
+<span id="cb37-5"><a href=""></a></span>
+<span id="cb37-6"><a href=""></a><span class="kw">class</span> Car <span class="op">{</span></span>
+<span id="cb37-7"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb37-8"><a href=""></a>    Engine engine<span class="op">;</span>      <span class="co">// composition</span></span>
+<span id="cb37-9"><a href=""></a></span>
+<span id="cb37-10"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb37-11"><a href=""></a>    <span class="op">~</span>Car<span class="op">()</span> <span class="op">{</span> cout <span class="op">&lt;&lt;</span> <span class="st">"Car destroyed"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb37-12"><a href=""></a><span class="op">};</span></span>
+<span id="cb37-13"><a href=""></a></span>
+<span id="cb37-14"><a href=""></a><span class="dt">void</span> testDrive<span class="op">(</span><span class="dt">int</span> miles<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb37-15"><a href=""></a>    Car loaner<span class="op">;</span></span>
+<span id="cb37-16"><a href=""></a>    <span class="cf">if</span> <span class="op">(</span>miles <span class="op">&lt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb37-17"><a href=""></a>        <span class="cf">throw</span> runtime_error<span class="op">(</span><span class="st">"miles cannot be negative"</span><span class="op">);</span></span>
+<span id="cb37-18"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb37-19"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Drove "</span> <span class="op">&lt;&lt;</span> miles <span class="op">&lt;&lt;</span> <span class="st">" miles"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb37-20"><a href=""></a><span class="op">}</span></span>
+<span id="cb37-21"><a href=""></a></span>
+<span id="cb37-22"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb37-23"><a href=""></a>    <span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb37-24"><a href=""></a>        testDrive<span class="op">(-</span><span class="dv">10</span><span class="op">);</span></span>
+<span id="cb37-25"><a href=""></a>    <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="at">const</span> runtime_error<span class="op">&amp;</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb37-26"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Caught: "</span> <span class="op">&lt;&lt;</span> e<span class="op">.</span>what<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb37-27"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb37-28"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb37-29"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:40%;">
+<p>. . .</p>
+<pre><code>Car destroyed
+Engine destroyed
+Caught: miles cannot be negative</code></pre>
+<ul>
+<li>Leaving <code>testDrive</code> destroys its locals, and each local destroys its parts, before the catch runs.</li>
+</ul>
+</div></div>
 <aside class="notes">
-
+<p>This is stack unwinding: the exception leaves each function on its way to a matching catch, and every finished local object is destroyed as it goes. The Car’s composed Engine goes with it, exactly as in topic 3. The Car and Engine here are simplified from topic 4.</p>
+<p>Reading: learncpp 27.3, Exceptions, functions, and stack unwinding.</p>
+<p>Full program: cpp/stack_unwinding.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1411,11 +2383,50 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 68 -->
 </section>
-<section id="conversion-exercise-4" class="slide level2">
-<h2>Conversion Exercise</h2>
-<p>This slide develops the authoritative source material on <strong>conversion exercise</strong>.</p>
+<section id="when-the-constructor-throws" class="slide level2">
+<h2>When the Constructor Throws</h2>
+<div class="columns">
+<div class="column" style="font-size: 50%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb39-1"><a href=""></a><span class="kw">class</span> Title <span class="op">{</span></span>
+<span id="cb39-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb39-3"><a href=""></a>    string text<span class="op">;</span></span>
+<span id="cb39-4"><a href=""></a></span>
+<span id="cb39-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb39-6"><a href=""></a>    Title<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> t<span class="op">)</span> <span class="op">:</span> text<span class="op">(</span>t<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb39-7"><a href=""></a>    <span class="op">~</span>Title<span class="op">()</span> <span class="op">{</span> cout <span class="op">&lt;&lt;</span> <span class="st">"Title destroyed"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb39-8"><a href=""></a><span class="op">};</span></span>
+<span id="cb39-9"><a href=""></a></span>
+<span id="cb39-10"><a href=""></a><span class="kw">class</span> Course <span class="op">{</span></span>
+<span id="cb39-11"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb39-12"><a href=""></a>    Title title<span class="op">;</span></span>
+<span id="cb39-13"><a href=""></a>    Roster roster<span class="op">;</span></span>
+<span id="cb39-14"><a href=""></a></span>
+<span id="cb39-15"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb39-16"><a href=""></a>    Course<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> t<span class="op">,</span> <span class="dt">int</span> seats<span class="op">)</span> <span class="op">:</span> title<span class="op">(</span>t<span class="op">),</span> roster<span class="op">(</span>seats<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb39-17"><a href=""></a>    <span class="op">~</span>Course<span class="op">()</span> <span class="op">{</span> cout <span class="op">&lt;&lt;</span> <span class="st">"Course destroyed"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb39-18"><a href=""></a><span class="op">};</span></span>
+<span id="cb39-19"><a href=""></a></span>
+<span id="cb39-20"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb39-21"><a href=""></a>    <span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb39-22"><a href=""></a>        Course empty<span class="op">(</span><span class="st">"CISP 400"</span><span class="op">,</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb39-23"><a href=""></a>    <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="at">const</span> runtime_error<span class="op">&amp;</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb39-24"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Caught: "</span> <span class="op">&lt;&lt;</span> e<span class="op">.</span>what<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb39-25"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb39-26"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb39-27"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:40%;">
+<p>. . .</p>
+<pre><code>Title destroyed
+Caught: capacity must be positive</code></pre>
+<ul>
+<li><code>title</code> was finished, so it is destroyed.</li>
+<li><code>~Course</code> never runs: the <code>Course</code> was never finished.</li>
+<li>Memory the constructor got with <code>new</code> before the throw leaks; member objects clean up for free.</li>
+</ul>
+</div></div>
 <aside class="notes">
-
+<p>Ask students to predict which destructors print before revealing. Members are built in declaration order, so title exists when roster throws. Only finished objects are destroyed, which is why a constructor that calls new before something that can throw needs a member object or RAII (05.02) instead of a raw pointer.</p>
+<p>Full program: cpp/constructor_throws.cpp</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1429,11 +2440,44 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 69 -->
 </section>
-<section id="conversion-exercise-5" class="slide level2">
-<h2>Conversion Exercise</h2>
-<p>This slide develops the authoritative source material on <strong>conversion exercise</strong>.</p>
+<section id="when-to-throw" class="slide level2">
+<h2>When to Throw</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Use for</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Return value</td>
+<td>Expected results, such as “not found”</td>
+<td>Callers can ignore it, and constructors cannot return one</td>
+</tr>
+<tr class="even">
+<td><code>assert</code></td>
+<td>Programmer mistakes inside your own code</td>
+<td>Removed by <code>NDEBUG</code>; never for user input (09.01)</td>
+</tr>
+<tr class="odd">
+<td>Exception</td>
+<td>Runtime conditions the caller cannot prevent, and constructors that cannot build a valid object</td>
+<td>Cannot be silently ignored</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Do not use exceptions for normal control flow, such as ending a loop.</li>
+</ul>
 <aside class="notes">
-
+<p>Homework 6, Task 7 asks for at least two exceptional conditions, std::runtime_error or a custom exception class, a throw, and a catch that recovers. Everything except a custom exception class is covered today; custom exception classes come in 14.02.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1447,9 +2491,12 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 70 -->
 </section>
-<section id="conversion-exercise-6" class="slide level2">
-<h2>Conversion Exercise</h2>
-<p>This slide develops the authoritative source material on <strong>conversion exercise</strong>.</p>
+<section id="summary-4" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li>A function or constructor that cannot do its job throws; the nearest matching catch handles it, and everything between is skipped.</li>
+<li>During unwinding every finished object is destroyed, so member objects clean up for free and raw <code>new</code> leaks.</li>
+</ul>
 <aside class="notes">
 
 <style type="text/css">
@@ -1464,454 +2511,351 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 71 -->
-<!-- Topic 5: Lambda Review -->
-<!-- Slides 72–76 -->
+</section>
+<section class="slide level2">
+
 </section></section>
 <section>
-<section id="lambda-review" class="title-slide slide level1 center">
-<h1>Lambda Review</h1>
-
-</section>
-<section id="lambda-review-1" class="slide level2">
-<h2>Lambda Review</h2>
-<p>This slide develops the authoritative source material on <strong>lambda review</strong>.</p>
-<aside class="notes">
-<p>Slides 72–76</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="key-takeaways" class="title-slide slide level1 center">
+<h1>Key Takeaways</h1>
+<ul>
+<li>Ask whether A stores B, whether B is part of A, and whether A creates and destroys B.</li>
+<li>Parts are built before the constructor body runs; build them in the member initializer list.</li>
+<li>Member objects copy and clean up for free; an aggregated part must outlive the whole’s use of it.</li>
+<li>Every object has exactly one owner.</li>
+<li>A constructor that cannot build a valid object throws; unwinding destroys every finished object on the way to the catch.</li>
+</ul>
 <!-- Slide 72 -->
 </section>
-<section id="lambda-review-2" class="slide level2">
-<h2>Lambda Review</h2>
-<p>This slide develops the authoritative source material on <strong>lambda review</strong>.</p>
-<aside class="notes">
+<section class="slide level2">
 
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 73 -->
-</section>
-<section id="lambda-review-3" class="slide level2">
-<h2>Lambda Review</h2>
-<p>This slide develops the authoritative source material on <strong>lambda review</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 74 -->
-</section>
-<section id="lambda-review-4" class="slide level2">
-<h2>Lambda Review</h2>
-<p>This slide develops the authoritative source material on <strong>lambda review</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 75 -->
-</section>
-<section id="code-together" class="slide level2">
-<h2>Code Together</h2>
-<p>This slide develops the authoritative source material on <strong>code together</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 76 -->
-<!-- Topic 6: Relationship Applications -->
-<!-- Slides 77–94 -->
 </section></section>
 <section>
-<section id="relationship-applications" class="title-slide slide level1 center">
-<h1>Relationship Applications</h1>
-
+<section id="next-time" class="title-slide slide level1 center">
+<h1>Next Time</h1>
+<ul>
+<li>Inheritance and Multiple Inheritance (Thursday, November 12; no class Tuesday, November 10)</li>
+</ul>
+<!-- Slide 73 -->
 </section>
-<section id="building-a-car" class="slide level2">
-<h2>Building a Car</h2>
-<p>This slide develops the authoritative source material on <strong>building a car</strong>.</p>
-<aside class="notes">
-<p>Slides 77–94</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 77 -->
-</section>
-<section id="building-a-car-1" class="slide level2">
-<h2>Building a Car</h2>
-<p>This slide develops the authoritative source material on <strong>building a car</strong>.</p>
-<aside class="notes">
+<section class="slide level2">
 
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 78 -->
-</section>
-<section id="building-a-car-2" class="slide level2">
-<h2>Building a Car</h2>
-<p>This slide develops the authoritative source material on <strong>building a car</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 79 -->
-</section>
-<section id="building-a-car-3" class="slide level2">
-<h2>Building a Car</h2>
-<p>This slide develops the authoritative source material on <strong>building a car</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 80 -->
-</section>
-<section id="building-a-house" class="slide level2">
-<h2>Building a House</h2>
-<p>This slide develops the authoritative source material on <strong>building a house</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 81 -->
-</section>
-<section id="building-a-house-1" class="slide level2">
-<h2>Building a House</h2>
-<p>This slide develops the authoritative source material on <strong>building a house</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 82 -->
-</section>
-<section id="building-a-house-2" class="slide level2">
-<h2>Building a House</h2>
-<p>This slide develops the authoritative source material on <strong>building a house</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 83 -->
-</section>
-<section id="building-a-house-3" class="slide level2">
-<h2>Building a House</h2>
-<p>This slide develops the authoritative source material on <strong>building a house</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 84 -->
-</section>
-<section id="building-a-house-4" class="slide level2">
-<h2>Building a House</h2>
-<p>This slide develops the authoritative source material on <strong>building a house</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 85 -->
-</section>
-<section id="building-a-house-5" class="slide level2">
-<h2>Building a House</h2>
-<p>This slide develops the authoritative source material on <strong>building a house</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 86 -->
-</section>
-<section id="building-a-house-6" class="slide level2">
-<h2>Building a House</h2>
-<p>This slide develops the authoritative source material on <strong>building a house</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 87 -->
-</section>
-<section id="relationship-applications-1" class="slide level2">
-<h2>Relationship Applications</h2>
-<p>This slide develops the authoritative source material on <strong>relationship applications</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 88 -->
-</section>
-<section id="relationship-applications-2" class="slide level2">
-<h2>Relationship Applications</h2>
-<p>This slide develops the authoritative source material on <strong>relationship applications</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 89 -->
-</section>
-<section id="relationship-applications-3" class="slide level2">
-<h2>Relationship Applications</h2>
-<p>This slide develops the authoritative source material on <strong>relationship applications</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 90 -->
-</section>
-<section id="relationship-applications-4" class="slide level2">
-<h2>Relationship Applications</h2>
-<p>This slide develops the authoritative source material on <strong>relationship applications</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 91 -->
-</section>
-<section id="relationship-applications-5" class="slide level2">
-<h2>Relationship Applications</h2>
-<p>This slide develops the authoritative source material on <strong>relationship applications</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 92 -->
-</section>
-<section id="other-relationships" class="slide level2">
-<h2>Other Relationships</h2>
-<p>This slide develops the authoritative source material on <strong>other relationships</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 93 -->
-</section>
-<section id="other-relationships-1" class="slide level2">
-<h2>Other Relationships</h2>
-<p>This slide develops the authoritative source material on <strong>other relationships</strong>.</p>
-<aside class="notes">
-
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- Slide 94 -->
-<table class="caption-top" style="width:6%;">
-<colgroup>
-<col style="width: 5%">
-</colgroup>
-<thead>
-<tr class="header">
-<th># Key Takeaways</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td># Next Time</td>
-</tr>
-</tbody>
-</table>
 </section></section>
+<section>
 <section id="appendix" class="title-slide slide level1 center">
 <h1>Appendix</h1>
-
+<!-- Slide 74 -->
 </section>
+<section id="conversion-review-good-practices" class="slide level2">
+<h2>Conversion Review: Good Practices</h2>
+<ul>
+<li>Mark every constructor that takes one value <code>explicit</code> unless the conversion is intended.</li>
+<li>Remember that a default argument can turn a default constructor into a converting constructor.</li>
+<li>Keep a conversion implicit only when the target type names the meaning and nothing is lost.</li>
+</ul>
+<!-- Slide 75 -->
+</section>
+<section id="conversion-review-common-mistakes" class="slide level2">
+<h2>Conversion Review: Common Mistakes</h2>
+<ul>
+<li>Missing that <code>Fahrenheit(double value = 32.0)</code> converts a <code>double</code>.</li>
+<li>Expecting <code>explicit</code> to block direct initialization such as <code>Fahrenheit f(20.0);</code>.</li>
+<li>Expecting the compiler to chain two user-defined conversions.</li>
+</ul>
+<!-- Slide 76 -->
+</section>
+<section id="conversion-review-more-examples" class="slide level2">
+<h2>Conversion Review: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb41-1"><a href=""></a><span class="kw">class</span> Fahrenheit <span class="op">{</span></span>
+<span id="cb41-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb41-3"><a href=""></a>    <span class="dt">double</span> degrees<span class="op">;</span></span>
+<span id="cb41-4"><a href=""></a></span>
+<span id="cb41-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb41-6"><a href=""></a>    <span class="kw">explicit</span> Fahrenheit<span class="op">(</span><span class="dt">double</span> value <span class="op">=</span> <span class="fl">32.0</span><span class="op">)</span> <span class="op">{</span> degrees <span class="op">=</span> value<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb41-7"><a href=""></a>    Fahrenheit<span class="op">(</span><span class="at">const</span> Temperature<span class="op">&amp;</span> t<span class="op">)</span> <span class="op">{</span> degrees <span class="op">=</span> t <span class="op">*</span> <span class="fl">9.0</span> <span class="op">/</span> <span class="fl">5.0</span> <span class="op">+</span> <span class="fl">32.0</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb41-8"><a href=""></a><span class="op">};</span></span>
+<span id="cb41-9"><a href=""></a></span>
+<span id="cb41-10"><a href=""></a>Fahrenheit a<span class="op">(</span><span class="fl">20.0</span><span class="op">);</span>        <span class="co">// fine: direct initialization</span></span>
+<span id="cb41-11"><a href=""></a>Fahrenheit b <span class="op">=</span> today<span class="op">;</span>      <span class="co">// fine: a Temperature converts</span></span>
+<span id="cb41-12"><a href=""></a><span class="co">// Fahrenheit c = 20.0;    // error: the double constructor is explicit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 77 -->
+</section>
+<section id="conversion-review-practice-problems" class="slide level2">
+<h2>Conversion Review: Practice Problems</h2>
+<ol type="1">
+<li>Find every converting constructor in a class with four constructors, two of them with default arguments.</li>
+<li>Mark <code>Fahrenheit</code>’s <code>double</code> constructor <code>explicit</code> and fix every line that stops compiling.</li>
+<li>Explain why a <code>Temperature</code> never becomes a <code>Fahrenheit</code> by way of <code>double</code>.</li>
+</ol>
+<!-- Slide 78 -->
+</section>
+<section id="conversion-review-ai-search-terms" class="slide level2">
+<h2>Conversion Review: AI Search Terms</h2>
+<ul>
+<li>C++ explicit constructor with default argument</li>
+<li>C++ converting constructor</li>
+<li>C++ user-defined conversion sequence</li>
+<li>C++ dependency relationship between classes</li>
+</ul>
+<!-- Slide 79 -->
+</section>
+<section id="conversion-review-questions-for-reflection" class="slide level2">
+<h2>Conversion Review: Questions for Reflection</h2>
+<ul>
+<li>Why is <code>20.0</code> unclear as a temperature when <code>today</code> is not?</li>
+<li>What is the difference between using an object and storing it?</li>
+</ul>
+<!-- Slide 80 -->
+</section>
+<section id="class-relationships-good-practices" class="slide level2">
+<h2>Class Relationships: Good Practices</h2>
+<ul>
+<li>Ask the four questions before you write a member.</li>
+<li>Default to member objects for parts.</li>
+<li>When you store a pointer, say in a comment who owns the object.</li>
+</ul>
+<!-- Slide 81 -->
+</section>
+<section id="class-relationships-common-mistakes" class="slide level2">
+<h2>Class Relationships: Common Mistakes</h2>
+<ul>
+<li>Deciding the relationship from the member’s type alone.</li>
+<li>Deleting a pointer you do not own.</li>
+<li>Calling every stored pointer aggregation, when the object is not part of the class.</li>
+</ul>
+<!-- Slide 82 -->
+</section>
+<section id="class-relationships-more-examples" class="slide level2">
+<h2>Class Relationships: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb42-1"><a href=""></a><span class="co">// association: a student works with courses; neither is part of the other</span></span>
+<span id="cb42-2"><a href=""></a><span class="kw">class</span> Student <span class="op">{</span></span>
+<span id="cb42-3"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb42-4"><a href=""></a>    Course<span class="op">*</span> enrolled<span class="op">[</span><span class="dv">6</span><span class="op">];</span></span>
+<span id="cb42-5"><a href=""></a>    <span class="dt">int</span> count<span class="op">;</span></span>
+<span id="cb42-6"><a href=""></a><span class="op">};</span></span>
+<span id="cb42-7"><a href=""></a></span>
+<span id="cb42-8"><a href=""></a><span class="co">// dependency: the printer uses the transcript only during the call</span></span>
+<span id="cb42-9"><a href=""></a><span class="kw">class</span> Printer <span class="op">{</span></span>
+<span id="cb42-10"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb42-11"><a href=""></a>    <span class="dt">void</span> print<span class="op">(</span><span class="at">const</span> Transcript<span class="op">&amp;</span> t<span class="op">);</span></span>
+<span id="cb42-12"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 83 -->
+</section>
+<section id="class-relationships-practice-problems" class="slide level2">
+<h2>Class Relationships: Practice Problems</h2>
+<ol type="1">
+<li>Label five given member declarations with their relationships, and justify each with the four questions.</li>
+<li>Rewrite a class that composes through an owning pointer so it composes through a member object, and remove the copy and destructor code it no longer needs.</li>
+<li>Describe a member that is aggregation in one program and composition in another.</li>
+</ol>
+<!-- Slide 84 -->
+</section>
+<section id="class-relationships-ai-search-terms" class="slide level2">
+<h2>Class Relationships: AI Search Terms</h2>
+<ul>
+<li>C++ object relationships</li>
+<li>composition versus aggregation versus association</li>
+<li>C++ rule of zero</li>
+<li>owning versus non-owning pointer in C++</li>
+</ul>
+<!-- Slide 85 -->
+</section>
+<section id="class-relationships-questions-for-reflection" class="slide level2">
+<h2>Class Relationships: Questions for Reflection</h2>
+<ul>
+<li>Why does a member’s type not decide the relationship?</li>
+<li>Which relationship requires the most code from you, and why?</li>
+</ul>
+<!-- Slide 86 -->
+</section>
+<section id="aggregation-and-composition-good-practices" class="slide level2">
+<h2>Aggregation and Composition: Good Practices</h2>
+<ul>
+<li>Build every member in the member initializer list, in declaration order.</li>
+<li>Compile with <code>-Wall</code> so g++ reports <code>-Wreorder</code>.</li>
+<li>Prefer member objects for parts.</li>
+<li>Make sure an aggregated part outlives every use the whole makes of it.</li>
+</ul>
+<!-- Slide 87 -->
+</section>
+<section id="aggregation-and-composition-common-mistakes" class="slide level2">
+<h2>Aggregation and Composition: Common Mistakes</h2>
+<ul>
+<li>Assigning to a member that has no default constructor in the constructor body.</li>
+<li>Writing the list in a different order than the members are declared.</li>
+<li>Deleting an aggregated part.</li>
+<li>Storing the address of a local object that goes out of scope.</li>
+<li>Declaring an array of member objects whose class has no default constructor.</li>
+</ul>
+<!-- Slide 88 -->
+</section>
+<section id="aggregation-and-composition-more-examples" class="slide level2">
+<h2>Aggregation and Composition: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb43-1"><a href=""></a><span class="kw">class</span> Section <span class="op">{</span></span>
+<span id="cb43-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb43-3"><a href=""></a>    <span class="at">const</span> <span class="dt">int</span> number<span class="op">;</span></span>
+<span id="cb43-4"><a href=""></a>    Teacher<span class="op">&amp;</span> lead<span class="op">;</span></span>
+<span id="cb43-5"><a href=""></a></span>
+<span id="cb43-6"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb43-7"><a href=""></a>    <span class="co">// const and reference members must be built in the list</span></span>
+<span id="cb43-8"><a href=""></a>    Section<span class="op">(</span><span class="dt">int</span> n<span class="op">,</span> Teacher<span class="op">&amp;</span> t<span class="op">)</span> <span class="op">:</span> number<span class="op">(</span>n<span class="op">),</span> lead<span class="op">(</span>t<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb43-9"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 89 -->
+</section>
+<section id="aggregation-and-composition-practice-problems" class="slide level2">
+<h2>Aggregation and Composition: Practice Problems</h2>
+<ol type="1">
+<li>Add a <code>const int maxSeats</code> member to <code>Course</code> and initialize it.</li>
+<li>Predict the construction and destruction order of a class with three members, then check it by adding print statements.</li>
+<li>Compile <code>dangling_teacher.cpp</code> with <code>-fsanitize=address</code>, run it, and explain the report.</li>
+</ol>
+<!-- Slide 90 -->
+</section>
+<section id="aggregation-and-composition-ai-search-terms" class="slide level2">
+<h2>Aggregation and Composition: AI Search Terms</h2>
+<ul>
+<li>C++ member initializer list</li>
+<li>C++ -Wreorder warning</li>
+<li>C++ member construction order</li>
+<li>C++ dangling pointer to a local object</li>
+<li>AddressSanitizer stack-use-after-scope</li>
+</ul>
+<!-- Slide 91 -->
+</section>
+<section id="aggregation-and-composition-questions-for-reflection" class="slide level2">
+<h2>Aggregation and Composition: Questions for Reflection</h2>
+<ul>
+<li>Why is the constructor body too late to build a <code>Roster</code>?</li>
+<li>Why did the dangling program print the right name?</li>
+<li>Who should own a <code>Teacher</code>, and how would the code show it?</li>
+</ul>
+<!-- Slide 92 -->
+</section>
+<section id="relationship-applications-good-practices" class="slide level2">
+<h2>Relationship Applications: Good Practices</h2>
+<ul>
+<li>List what the class connects to, and the relationship for each, before you write code.</li>
+<li>Comment each pointer member with its relationship.</li>
+<li>Give every object exactly one owner.</li>
+</ul>
+<!-- Slide 93 -->
+</section>
+<section id="relationship-applications-common-mistakes" class="slide level2">
+<h2>Relationship Applications: Common Mistakes</h2>
+<ul>
+<li>Composing a part that should be shared.</li>
+<li>Calling <code>new</code> inside a class that never deletes the object.</li>
+<li>Making every member a pointer.</li>
+<li>Declaring an array of member objects whose class has no default constructor.</li>
+</ul>
+<!-- Slide 94 -->
+</section>
+<section id="relationship-applications-more-examples" class="slide level2">
+<h2>Relationship Applications: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb44-1"><a href=""></a><span class="kw">class</span> Wheel <span class="op">{</span></span>
+<span id="cb44-2"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb44-3"><a href=""></a>    Wheel<span class="op">()</span> <span class="op">{</span> <span class="op">}</span>            <span class="co">// required for Wheel wheels[4];</span></span>
+<span id="cb44-4"><a href=""></a><span class="op">};</span></span>
+<span id="cb44-5"><a href=""></a></span>
+<span id="cb44-6"><a href=""></a><span class="kw">class</span> Car <span class="op">{</span></span>
+<span id="cb44-7"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb44-8"><a href=""></a>    Engine engine<span class="op">;</span></span>
+<span id="cb44-9"><a href=""></a>    Wheel wheels<span class="op">[</span><span class="dv">4</span><span class="op">];</span>       <span class="co">// composition: four member objects</span></span>
+<span id="cb44-10"><a href=""></a></span>
+<span id="cb44-11"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb44-12"><a href=""></a>    Car<span class="op">(</span><span class="dt">int</span> hp<span class="op">)</span> <span class="op">:</span> engine<span class="op">(</span>hp<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb44-13"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 95 -->
+</section>
+<section id="relationship-applications-practice-problems" class="slide level2">
+<h2>Relationship Applications: Practice Problems</h2>
+<ol type="1">
+<li>Model a <code>Library</code> with books, members, a librarian, and a catalog, and justify each relationship.</li>
+<li>Write the <code>House</code> and <code>Fridge</code> design both ways, and show which class deletes the fridge in each.</li>
+<li>Add passengers to <code>Car</code> and decide their relationship.</li>
+</ol>
+<!-- Slide 96 -->
+</section>
+<section id="relationship-applications-ai-search-terms" class="slide level2">
+<h2>Relationship Applications: AI Search Terms</h2>
+<ul>
+<li>is-a versus has-a in C++</li>
+<li>UML aggregation, composition, and association</li>
+<li>object ownership in C++ class design</li>
+</ul>
+<!-- Slide 97 -->
+</section>
+<section id="relationship-applications-questions-for-reflection" class="slide level2">
+<h2>Relationship Applications: Questions for Reflection</h2>
+<ul>
+<li>Which fridge design would you choose, and why?</li>
+<li>What changes in the code if two cars share one GPS unit?</li>
+</ul>
+<!-- Slide 98 -->
+</section>
+<section id="exception-basics-good-practices" class="slide level2">
+<h2>Exception Basics: Good Practices</h2>
+<ul>
+<li>Throw by value and catch by <code>const</code> reference.</li>
+<li>Include <code>&lt;stdexcept&gt;</code> for <code>runtime_error</code> and its relatives.</li>
+<li>Throw from a constructor that cannot build a valid object.</li>
+<li>Keep resources in member objects so unwinding cleans them up.</li>
+</ul>
+<!-- Slide 99 -->
+</section>
+<section id="exception-basics-common-mistakes" class="slide level2">
+<h2>Exception Basics: Common Mistakes</h2>
+<ul>
+<li>Catching by value, which copies the error object.</li>
+<li>Using exceptions for normal control flow.</li>
+<li>Using <code>assert</code> for user input.</li>
+<li>Calling <code>new</code> in a constructor before a call that can throw.</li>
+<li>Letting an exception escape <code>main</code>: <code>terminate called after throwing an instance of 'std::runtime_error'</code>.</li>
+</ul>
+<!-- Slide 100 -->
+</section>
+<section id="exception-basics-more-examples" class="slide level2">
+<h2>Exception Basics: More Examples</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb45-1"><a href=""></a><span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb45-2"><a href=""></a>    <span class="dt">int</span> seats <span class="op">=</span> stoi<span class="op">(</span>text<span class="op">);</span>      <span class="co">// may throw invalid_argument</span></span>
+<span id="cb45-3"><a href=""></a>    Roster r<span class="op">(</span>seats<span class="op">);</span>             <span class="co">// may throw runtime_error</span></span>
+<span id="cb45-4"><a href=""></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="at">const</span> invalid_argument<span class="op">&amp;</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb45-5"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Bad input: not a number"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb45-6"><a href=""></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="at">const</span> runtime_error<span class="op">&amp;</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb45-7"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Bad roster: "</span> <span class="op">&lt;&lt;</span> e<span class="op">.</span>what<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb45-8"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- Slide 101 -->
+</section>
+<section id="exception-basics-practice-problems" class="slide level2">
+<h2>Exception Basics: Practice Problems</h2>
+<ol type="1">
+<li>Give <code>Roster</code> an <code>addStudent</code> member function that throws when the roster is full, and catch it in <code>main</code> and re-prompt.</li>
+<li>Predict the output of a <code>try</code> block with three statements when the second one throws.</li>
+<li>Rewrite a constructor that calls <code>new</code> before a call that can throw so that it cannot leak.</li>
+</ol>
+<!-- Slide 102 -->
+</section>
+<section id="exception-basics-ai-search-terms" class="slide level2">
+<h2>Exception Basics: AI Search Terms</h2>
+<ul>
+<li>C++ throw, try, and catch</li>
+<li>C++ std::runtime_error</li>
+<li>C++ stack unwinding</li>
+<li>C++ exception thrown in a constructor</li>
+<li>C++ catch by const reference</li>
+</ul>
+<!-- Slide 103 -->
+</section>
+<section id="exception-basics-questions-for-reflection" class="slide level2">
+<h2>Exception Basics: Questions for Reflection</h2>
+<ul>
+<li>Why can a constructor not report failure with a return value?</li>
+<li>Why did <code>Title</code>’s destructor run but not <code>Course</code>’s?</li>
+<li>When should you use <code>assert</code> instead of an exception?</li>
+</ul>
+<!-- Slide 104 -->
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

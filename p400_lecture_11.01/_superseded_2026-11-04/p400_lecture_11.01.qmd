@@ -1,0 +1,33 @@
+# Last Time
+
+::: {.incremental}
++ **Class Relationships**
++ **Aggregation and Composition**
+:::
+
+# Today's Agenda
+
+- Class Relationships
+- Aggregation and Composition
+- Conversion Review
+- Lambda Review
+- Relationship Applications
+
+{{< include topic_1_course_framing.qmd >}}
+{{< include topic_2_class_relationships.qmd >}}
+{{< include topic_3_aggregation_and_composition.qmd >}}
+{{< include topic_4_conversion_review.qmd >}}
+{{< include topic_5_lambda_review.qmd >}}
+{{< include topic_6_relationship_applications.qmd >}}
+
+---
+# Key Takeaways
+
+- Model relationships explicitly so ownership and lifetime are clear.
+- Use inheritance only when the derived type truly is-a base type.
+
+---
+# Next Time
+
+---
+# Appendix
