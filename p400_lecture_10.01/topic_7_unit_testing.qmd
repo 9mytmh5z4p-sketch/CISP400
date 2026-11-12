@@ -101,7 +101,8 @@ Full program: cpp/gradebook_tests.cpp
 
 :::: {.columns}
 
-::: {.column width="60%" style="font-size: 50%;"}
+::: {.column width="60%"}
+::: {style="font-size: 50%;"}
 ~~~cpp
 // Print one test result and return whether it passed
 bool check(bool condition, const string& testName) {
@@ -140,6 +141,7 @@ int runTests() {
     return failures;
 }
 ~~~
+:::
 :::
 
 ::: {.column width="40%"}

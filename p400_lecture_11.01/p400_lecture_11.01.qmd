@@ -55,7 +55,7 @@ Reading: textbook Chapters 11 and 16; learncpp Chapter 23, Object relationships,
 
 # Next Time
 
-- Inheritance and Multiple Inheritance (Thursday, November 12; no class Tuesday, November 10)
+- Inheritance Basics (Thursday, November 12; no class Tuesday, November 10)
 
 <!-- Slide 73 -->
 

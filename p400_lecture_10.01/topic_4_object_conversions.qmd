@@ -23,7 +23,8 @@ today is the same Celsius Temperature as in the earlier topics. Fahrenheit is ne
 
 :::: {.columns}
 
-::: {.column width="50%" style="font-size: 50%;"}
+::: {.column width="50%"}
+::: {style="font-size: 50%;"}
 **In the target: a converting constructor**
 
 ~~~cpp
@@ -37,8 +38,10 @@ public:
 };
 ~~~
 :::
+:::
 
-::: {.column width="50%" style="font-size: 50%;"}
+::: {.column width="50%"}
+::: {style="font-size: 50%;"}
 **In the source: a conversion operator**
 
 ~~~cpp
@@ -51,6 +54,7 @@ public:
     operator Fahrenheit() const;
 };
 ~~~
+:::
 :::
 
 ::::

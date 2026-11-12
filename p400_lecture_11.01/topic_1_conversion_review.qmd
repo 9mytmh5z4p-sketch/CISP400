@@ -48,7 +48,8 @@ Reading: learncpp 21.11, Overloading typecasts.
 
 :::: {.columns}
 
-::: {.column width="60%" style="font-size: 50%;"}
+::: {.column width="60%"}
+::: {style="font-size: 50%;"}
 ~~~cpp
 class Temperature {
 private:
@@ -71,6 +72,7 @@ int main() {
     return 0;
 }
 ~~~
+:::
 :::
 
 ::: {.column width="40%"}
@@ -174,7 +176,8 @@ The same keyword works on conversion operators: explicit operator double() const
 
 :::: {.columns}
 
-::: {.column width="50%" style="font-size: 50%;"}
+::: {.column width="50%"}
+::: {style="font-size: 50%;"}
 **Without explicit**
 
 ~~~cpp
@@ -187,8 +190,10 @@ Fahrenheit a = 20.0;    // compiles: 20.0 is converted
 Fahrenheit b(20.0);     // compiles: calls the constructor
 ~~~
 :::
+:::
 
-::: {.column width="50%" style="font-size: 50%;"}
+::: {.column width="50%"}
+::: {style="font-size: 50%;"}
 **With explicit**
 
 ~~~cpp
@@ -200,6 +205,7 @@ public:
 Fahrenheit a = 20.0;    // error: = needs a conversion
 Fahrenheit b(20.0);     // compiles: calls the constructor
 ~~~
+:::
 :::
 
 ::::

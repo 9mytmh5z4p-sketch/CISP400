@@ -1,0 +1,161 @@
+<!-- Topic 2: Inheritance Syntax -->
+<!-- Slides 16–22 -->
+
+# Inheritance Syntax
+<!-- Slide 15 -->
+
+## Two Classes, Same Fields {.smaller}
+
+- Student and Instructor both need a name, an ID, and `print()`. Write them twice?
+
+::: notes
+Slides 16–22
+
+Copying the code means every bug gets fixed twice, or once and forgotten the second time. Inheritance writes the shared part once.
+:::
+
+<!-- Slide 16 -->
+
+---
+
+## Inheritance Anatomy
+
+~~~cpp
+class Student : public Person {
+~~~
+
+| Part | Meaning |
+|---|---|
+| `Person` | The base class, or parent: the general class |
+| `Student` | The derived class, or child: adds what is special |
+| `:` | Starts the list of base classes: "inherits from" |
+| `public` | Person's public members stay public in Student (Topic 3) |
+| `{ ... }` | The body declares only what Student adds |
+
+::: notes
+In a UML class diagram the arrow with the hollow triangle points from Student to Person: the child points at the parent. Read the line as "Student is a Person."
+:::
+
+<!-- Slide 17 -->
+
+---
+
+## Inheritance Anatomy
+
+::: {style="font-size: 55%;"}
+~~~cpp
+class Person {
+private:
+    string name;
+    int id = 0;
+
+public:
+    void setName(const string& n) { name = n; }
+    void setId(int i) { id = i; }
+    string getName() const { return name; }
+
+    void print() const {
+        cout << name << " (" << id << ")" << endl;
+    }
+};
+
+// Student gets everything above and adds a major
+class Student : public Person {
+private:
+    string major;
+
+public:
+    void setMajor(const string& m) { major = m; }
+    string getMajor() const { return major; }
+};
+
+int main() {
+    Student ava;
+    ava.setName("Ava");          // inherited from Person
+    ava.setId(1001);             // inherited from Person
+    ava.setMajor("CS");          // added by Student
+
+    ava.print();                 // inherited: prints name and id only
+    cout << ava.getName() << " studies " << ava.getMajor() << endl;
+    return 0;
+}
+~~~
+:::
+
+::: notes
+Output:
+Ava (1001)
+Ava studies CS
+
+Student never mentions name, id, setName, or print, and ava still has all of them. Point out that print() does not show the major: Person's print() knows nothing about majors. Fixing that is overriding, the opener for 12.01.
+
+Full program: cpp/person_student.cpp
+:::
+
+<!-- Slide 18 -->
+
+---
+
+## What Does a Student Contain?
+
+- `ava` was built from Student. List every data member it holds.
+- List every member function you can call on it.
+
+::: notes
+Give students a minute to write both lists.
+
+Answer: data members name, id, and major. Functions setName, setId, getName, and print from Person; setMajor and getMajor from Student. The next slide draws the object.
+:::
+
+<!-- Slide 19 -->
+
+---
+
+## What Does a Student Contain?
+
+~~~
+ava (a Student)
++-----------------------------+
+| Person part                 |
+|    name    "Ava"            |
+|    id      1001             |
++-----------------------------+
+| Student part                |
+|    major   "CS"             |
++-----------------------------+
+~~~
+
+- Functions: `setName`, `setId`, `getName`, `print` from Person; `setMajor`, `getMajor` from Student.
+
+::: notes
+Every Student carries a complete Person inside it. That Person part is why a Student can be used as a Person, and it is the part that Topic 4 has to build.
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## What Is Not Inherited
+
+- Constructors and the destructor: each class has its own (Topic 4).
+- Access to private members: Student holds `name` but cannot touch it (Topic 3).
+- Friendship: a friend of Person is not a friend of Student.
+
+::: notes
+The first two bullets are the next two topics. Friendship is listed for completeness; students met friend functions with operator overloading.
+:::
+
+<!-- Slide 21 -->
+
+---
+
+## Summary
+
+- `class Student : public Person` gives every Student a complete Person part plus what Student adds.
+- Constructors, the destructor, and access to private members are not inherited.
+
+::: notes
+
+:::
+
+<!-- Slide 22 -->

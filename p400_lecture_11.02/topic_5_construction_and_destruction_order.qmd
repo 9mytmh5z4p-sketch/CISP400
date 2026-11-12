@@ -1,0 +1,185 @@
+<!-- Topic 5: Construction and Destruction Order -->
+<!-- Slides 44–49 -->
+
+# Construction and Destruction Order
+<!-- Slide 43 -->
+
+## Who Is Built First? {.smaller}
+
+- A Student has a Person part and a Transcript member. Which is built first, and which is destroyed first?
+
+::: notes
+Slides 44–49
+
+Students know two rules from 11.01, members before the body and destruction in reverse, and one from Topic 4, the base before the members. This topic puts them together.
+:::
+
+<!-- Slide 44 -->
+
+---
+
+## Predict the Output
+
+:::: {.columns}
+
+::: {.column width="60%"}
+::: {style="font-size: 50%;"}
+~~~cpp
+class Person {
+public:
+    Person() { cout << "Person built" << endl; }
+    ~Person() { cout << "Person destroyed" << endl; }
+};
+
+class Transcript {
+public:
+    Transcript() { cout << "Transcript built" << endl; }
+    ~Transcript() { cout << "Transcript destroyed" << endl; }
+};
+
+class Student : public Person {
+private:
+    Transcript record;
+
+public:
+    Student() { cout << "Student body" << endl; }
+    ~Student() { cout << "~Student body" << endl; }
+};
+
+int main() {
+    Student ava;
+    cout << "--- end of main ---" << endl;
+    return 0;
+}
+~~~
+:::
+:::
+
+::: {.column width="40%"}
+. . .
+
+~~~
+Person built
+Transcript built
+Student body
+--- end of main ---
+~Student body
+Transcript destroyed
+Person destroyed
+~~~
+:::
+
+::::
+
+::: notes
+Have students write all seven lines before revealing them.
+
+Full program: cpp/order.cpp
+:::
+
+<!-- Slide 45 -->
+
+---
+
+## The Rule
+
+| Building | Destroying |
+|---|---|
+| 1. The base class part | 1. The derived destructor body |
+| 2. Members, in declaration order | 2. Members, in reverse declaration order |
+| 3. The derived constructor body | 3. The base class part |
+
+- Destruction is construction run backward.
+
+::: notes
+This is 11.01's member rule with the base class added at the front of building and at the end of destroying.
+:::
+
+<!-- Slide 46 -->
+
+---
+
+## Why Reverse?
+
+- `~Student` may still use its Person part, for example to call `getName()` in a goodbye message.
+- If the Person part went first, `~Student` would read a dead object, like the dangling pointer in 11.01.
+- Last built, first destroyed: every part outlives everything built on top of it.
+
+::: notes
+The same reasoning explains members: Student's destructor body may still use record, so record is destroyed after the body runs.
+:::
+
+<!-- Slide 47 -->
+
+---
+
+## Three Levels
+
+:::: {.columns}
+
+::: {.column width="60%"}
+::: {style="font-size: 50%;"}
+~~~cpp
+class Person {
+public:
+    Person() { cout << "Person" << endl; }
+    ~Person() { cout << "~Person" << endl; }
+};
+
+class Student : public Person {
+public:
+    Student() { cout << "Student" << endl; }
+    ~Student() { cout << "~Student" << endl; }
+};
+
+class GradStudent : public Student {
+public:
+    GradStudent() { cout << "GradStudent" << endl; }
+    ~GradStudent() { cout << "~GradStudent" << endl; }
+};
+
+int main() {
+    GradStudent ava;
+    cout << "--- end of main ---" << endl;
+    return 0;
+}
+~~~
+:::
+:::
+
+::: {.column width="40%"}
+. . .
+
+~~~
+Person
+Student
+GradStudent
+--- end of main ---
+~GradStudent
+~Student
+~Person
+~~~
+:::
+
+::::
+
+::: notes
+Ask students to predict before revealing. The rule repeats at every level: GradStudent's base part is a Student, whose base part is a Person, so the oldest ancestor is built first and destroyed last.
+
+Full program: cpp/three_levels.cpp
+:::
+
+<!-- Slide 48 -->
+
+---
+
+## Summary
+
+- Built: base part, then members in declaration order, then the body.
+- Destroyed: in exactly the reverse order, so every part outlives what was built on top of it.
+
+::: notes
+
+:::
+
+<!-- Slide 49 -->

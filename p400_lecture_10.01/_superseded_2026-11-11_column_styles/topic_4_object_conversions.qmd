@@ -1,0 +1,233 @@
+<!-- Topic 4: Object Conversions -->
+<!-- Slides 29–37 -->
+
+# Object Conversions
+<!-- Slide 28 -->
+
+## Can One Class Become Another? {.smaller}
+
+- `Temperature today(20.0);` holds Celsius; a new `Fahrenheit` class holds Fahrenheit.
+- `Fahrenheit report = today;`
+
+::: notes
+Slides 29–37
+
+today is the same Celsius Temperature as in the earlier topics. Fahrenheit is new: it stores degrees Fahrenheit. The question is whether one class type can convert to another the way Temperature converted to double.
+:::
+
+<!-- Slide 29 -->
+
+---
+
+## Two Places to Put the Conversion
+
+:::: {.columns}
+
+::: {.column width="50%" style="font-size: 50%;"}
+**In the target: a converting constructor**
+
+~~~cpp
+class Fahrenheit {
+private:
+    double degrees;
+
+public:
+    // Built from a Temperature
+    Fahrenheit(const Temperature& t);
+};
+~~~
+:::
+
+::: {.column width="50%" style="font-size: 50%;"}
+**In the source: a conversion operator**
+
+~~~cpp
+class Temperature {
+private:
+    double celsius;
+
+public:
+    // Becomes a Fahrenheit
+    operator Fahrenheit() const;
+};
+~~~
+:::
+
+::::
+
+::: notes
+Both make Fahrenheit report = today; compile. The next slide decides between them.
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## Which One to Write?
+
+| | Converting constructor | Conversion operator |
+|---|---|---|
+| Lives in | `Fahrenheit`, the target | `Temperature`, the source |
+| You must be able to edit | The target class | The source class |
+
+- Write both and the compiler may reject `Fahrenheit report = today;` as ambiguous, or quietly pick one.
+- Write one, in the class you own. When you own both, prefer the constructor: the class being built controls how it is built.
+
+::: notes
+Tested with g++: with only the two conversions, g++ reports the conversion as ambiguous. Add Temperature's operator double and the same line compiles with no warning and uses the constructor. Either way, the author no longer controls which conversion runs.
+:::
+
+<!-- Slide 31 -->
+
+---
+
+## Temperature to Fahrenheit
+
+::: {style="font-size: 70%;"}
+~~~cpp
+class Temperature {
+private:
+    double celsius;
+
+public:
+    Temperature(double value = 0.0) { celsius = value; }
+    operator double() const { return celsius; }
+};
+
+class Fahrenheit {
+private:
+    double degrees;
+
+public:
+    Fahrenheit(double value = 32.0) { degrees = value; }
+
+    // Converts a Celsius Temperature to Fahrenheit
+    Fahrenheit(const Temperature& t) { degrees = t * 9.0 / 5.0 + 32.0; }
+
+    double value() const { return degrees; }
+};
+
+int main() {
+    Temperature today(20.0);
+    Fahrenheit report = today;
+    cout << report.value() << endl;
+    return 0;
+}
+~~~
+:::
+
+::: notes
+Output: 68
+
+The constructor reads the Celsius value through operator double from topic 2: t * 9.0 converts t to double first.
+
+Full program: cpp/fahrenheit_conversion.cpp
+:::
+
+<!-- Slide 32 -->
+
+---
+
+## Spot the Conversions
+
+~~~cpp
+void show(Fahrenheit f);
+Fahrenheit forecast(Temperature t);
+
+int main() {
+    Temperature today(20.0);
+    Fahrenheit a = today;
+    Fahrenheit b;
+    b = today;
+    show(today);
+    Fahrenheit c = forecast(today);
+    return 0;
+}
+
+Fahrenheit forecast(Temperature t) { return t; }
+~~~
+
+::: notes
+Ask how many times a Temperature becomes a Fahrenheit. Answer: four. The definition of show is omitted; it prints its argument.
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## Four Places Conversion Happens
+
+~~~cpp
+int main() {
+    Temperature today(20.0);
+    Fahrenheit a = today;              // copy initialization
+    Fahrenheit b;
+    b = today;                         // assignment
+    show(today);                       // passing to a function
+    Fahrenheit c = forecast(today);
+    return 0;
+}
+
+Fahrenheit forecast(Temperature t) {
+    return t;                          // return
+}
+~~~
+
+::: notes
+None of these lines names the constructor; the compiler generates every call. Assignment builds a temporary Fahrenheit and then uses Fahrenheit's copy assignment from 08.01. Inside the constructor, t * 9.0 is a fifth, hidden conversion: Temperature to double.
+
+Full program: cpp/four_places.cpp
+:::
+
+<!-- Slide 34 -->
+
+---
+
+## Why This One Is Safe
+
+| Line | Unit stated? | Data lost? |
+|---|---|---|
+| `double reading = today;` | No | No |
+| `Fahrenheit report = today;` | Yes, in the type | No |
+| `int whole = today;` | No | Yes, the fraction |
+
+- Implicit conversion is safe when the target type names the meaning and nothing is lost.
+
+::: notes
+This resolves topic 2's Celsius-or-Fahrenheit problem: that conversion targeted a bare double. The standard library applies the same test in std::chrono: seconds convert to milliseconds implicitly because nothing is lost, while milliseconds to seconds requires duration_cast.
+:::
+
+<!-- Slide 35 -->
+
+---
+
+## First-Class Objects
+
+`Temperature` now works everywhere an `int` does.
+
+| An `int` can be | `Temperature` can be, because of |
+|---|---|
+| Initialized and copied | Constructors and the copy constructor (04.02, 08.01) |
+| Assigned | Copy assignment (08.01) |
+| Passed and returned | Copying (08.01) |
+| Used with operators | Operator overloading (07.01, 07.02) |
+| Converted | Conversion operators and converting constructors (today) |
+
+::: notes
+A first-class object is a user-defined type that behaves like a built-in type. Conversions were the last missing piece.
+:::
+
+<!-- Slide 36 -->
+
+---
+
+## Summary
+
+- One class becomes another through a converting constructor in the target or a conversion operator in the source; write only one.
+- Conversions fire in copy initialization, assignment, argument passing, and return, with no call written.
+
+::: notes
+
+:::
+
+<!-- Slide 37 -->

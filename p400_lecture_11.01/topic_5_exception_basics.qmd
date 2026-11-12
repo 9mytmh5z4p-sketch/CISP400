@@ -170,7 +170,8 @@ Full program: cpp/after_throw.cpp
 
 :::: {.columns}
 
-::: {.column width="60%" style="font-size: 50%;"}
+::: {.column width="60%"}
+::: {style="font-size: 50%;"}
 ~~~cpp
 class Engine {
 public:
@@ -203,6 +204,7 @@ int main() {
 }
 ~~~
 :::
+:::
 
 ::: {.column width="40%"}
 . . .
@@ -234,7 +236,8 @@ Full program: cpp/stack_unwinding.cpp
 
 :::: {.columns}
 
-::: {.column width="60%" style="font-size: 50%;"}
+::: {.column width="60%"}
+::: {style="font-size: 50%;"}
 ~~~cpp
 class Title {
 private:
@@ -264,6 +267,7 @@ int main() {
     return 0;
 }
 ~~~
+:::
 :::
 
 ::: {.column width="40%"}

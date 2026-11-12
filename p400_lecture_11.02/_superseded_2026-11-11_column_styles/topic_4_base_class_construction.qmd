@@ -1,0 +1,285 @@
+<!-- Topic 4: Base Class Construction -->
+<!-- Slides 34–42 -->
+
+# Base Class Construction
+<!-- Slide 33 -->
+
+## Who Builds the Person Part? {.smaller}
+
+- Person now has one constructor: `Person(name, id)`. How does a Student pass them up?
+
+::: notes
+Slides 34–42
+
+Topic 2 used setters so we could postpone this question. Real classes build a valid object in the constructor, and Student cannot see Person's private members.
+:::
+
+<!-- Slide 34 -->
+
+---
+
+## Does This Compile?
+
+::: {style="font-size: 60%;"}
+~~~cpp
+class Person {
+private:
+    string name;
+    int id;
+
+public:
+    Person(const string& n, int i) { name = n; id = i; }
+    string getName() const { return name; }
+};
+
+class Student : public Person {
+private:
+    string major;
+
+public:
+    Student(const string& n, int i, const string& m) {
+        name = n;
+        id = i;
+        major = m;
+    }
+};
+
+int main() {
+    Student ava("Ava", 1001, "CS");
+    cout << ava.getName() << endl;
+    return 0;
+}
+~~~
+:::
+
+::: notes
+This is the same shape as 11.01's Roster and Course question. Ask students to commit to yes or no.
+
+Answer: No. g++ reports no matching function for call to 'Person::Person()' first, and then that name and id are private within this context. The next slide shows why the first error happens before the body is even reached.
+
+Full program: cpp/base_body_assign.cpp
+:::
+
+<!-- Slide 35 -->
+
+---
+
+## The Base Is Built Before the Body
+
+~~~cpp
+Student(const string& n, int i, const string& m)
+    // hidden step 1: build the Person part with Person()   error: no Person()
+    // hidden step 2: build major with string()             fine
+{
+    name = n;      // too late, and name is private anyway
+    id = i;
+    major = m;
+}
+~~~
+
+- g++: `no matching function for call to 'Person::Person()'`
+- The base part is built first, before any member. If you do not say how, the compiler calls `Person()`.
+
+::: notes
+This is 11.01's rule with one step added in front: base part, then members, then the body. Person has no constructor without arguments, so the compiler stops at hidden step 1. The fix is the same tool as last time: the member initializer list.
+:::
+
+<!-- Slide 36 -->
+
+---
+
+## Calling the Base Constructor
+
+~~~cpp
+Student(const string& n, int i, const string& m) : Person(n, i), major(m) { }
+~~~
+
+| Part | Meaning |
+|---|---|
+| `Person(n, i)` | Builds the Person part by calling `Person(const string&, int)` |
+| `major(m)` | Builds Student's own member, as in 11.01 |
+| `{ }` | The body runs after the base and every member are built |
+
+- The base class goes first in the list, because it is built first.
+
+::: notes
+The base class is named by its class name, Person, not by a member name. Student never touches name or id: it hands the values to Person and lets Person build its own part.
+:::
+
+<!-- Slide 37 -->
+
+---
+
+## Calling the Base Constructor
+
+::: {style="font-size: 60%;"}
+~~~cpp
+class Person {
+private:
+    string name;
+    int id;
+
+public:
+    Person(const string& n, int i) : name(n), id(i) { }
+
+    void print() const {
+        cout << name << " (" << id << ")" << endl;
+    }
+};
+
+class Student : public Person {
+private:
+    string major;
+
+public:
+    // Person(n, i) builds the Person part first, then major(m) builds major
+    Student(const string& n, int i, const string& m) : Person(n, i), major(m) { }
+
+    string getMajor() const { return major; }
+};
+
+int main() {
+    Student ava("Ava", 1001, "CS");
+    ava.print();
+    cout << "Major: " << ava.getMajor() << endl;
+    return 0;
+}
+~~~
+:::
+
+::: notes
+Output:
+Ava (1001)
+Major: CS
+
+Full program: cpp/base_construction.cpp
+:::
+
+<!-- Slide 38 -->
+
+---
+
+## Student Cannot Build name Itself
+
+~~~cpp
+class Person {
+protected:
+    string name;
+    int id;
+    ...
+};
+
+Student(const string& n, int i, const string& m)
+    : name(n), id(i), major(m) { }
+~~~
+
+- g++: `class 'Student' does not have any field named 'name'`
+- Each class builds its own members, even protected ones. Student asks Person through `Person(n, i)`.
+
+::: notes
+Making name protected does not help here. Student may use name after it is built, but only Person's constructor can build it.
+
+Full program: cpp/base_member_init.cpp
+:::
+
+<!-- Slide 39 -->
+
+---
+
+## When the Person Part Refuses
+
+:::: {.columns}
+
+::: {.column width="60%" style="font-size: 50%;"}
+~~~cpp
+class Person {
+private:
+    string name;
+
+public:
+    Person(const string& n) : name(n) {
+        if (n.empty()) {
+            throw runtime_error("name cannot be empty");
+        }
+        cout << "Person built: " << name << endl;
+    }
+};
+
+class Student : public Person {
+private:
+    string major;
+
+public:
+    Student(const string& n, const string& m) : Person(n), major(m) {
+        cout << "Student built" << endl;
+    }
+};
+
+int main() {
+    try {
+        Student ava("Ava", "CS");
+        Student nobody("", "Math");
+        cout << "after nobody" << endl;
+    }
+    catch (const runtime_error& e) {
+        cout << "Error: " << e.what() << endl;
+    }
+    return 0;
+}
+~~~
+:::
+
+::: {.column width="40%"}
+. . .
+
+~~~
+Person built: Ava
+Student built
+Error: name cannot be empty
+~~~
+:::
+
+::::
+
+::: notes
+Ask students to predict the output before revealing it.
+
+nobody's Person part throws, so the Student body never runs and nobody never exists: no Student built, and no after nobody. This is 11.01's When the Constructor Throws with the base class as the part that refuses. Unwinding destroys ava on the way to the catch.
+
+Full program: cpp/base_throws.cpp
+:::
+
+<!-- Slide 40 -->
+
+---
+
+## Your Turn
+
+- Write `Instructor`, a Person with an `office` string.
+- Give it a constructor that passes name and ID up to Person and builds `office`.
+- In `main`, build `Instructor ng("Ng", 7, "BS 214");`, call `print()`, and print the office.
+
+::: notes
+Five minutes. Students start from Person on slide 38. Walk the room and look for two mistakes: assigning name in the body, and leaving out public.
+
+Expected output:
+Ng (7)
+Office: BS 214
+
+Solution: cpp/instructor_your_turn.cpp
+:::
+
+<!-- Slide 41 -->
+
+---
+
+## Summary
+
+- The base part is built before any member, so pass its arguments in the member initializer list: `: Person(n, i)`.
+- Each class builds its own members; if the base constructor throws, the derived object never exists.
+
+::: notes
+
+:::
+
+<!-- Slide 42 -->

@@ -176,7 +176,8 @@ Revisit the Student to Instructor arrow from the Focus on These 3 Relationships 
 
 :::: {.columns}
 
-::: {.column width="50%" style="font-size: 60%;"}
+::: {.column width="50%"}
+::: {style="font-size: 60%;"}
 **A**
 
 ~~~cpp
@@ -195,8 +196,10 @@ private:
 };
 ~~~
 :::
+:::
 
-::: {.column width="50%" style="font-size: 60%;"}
+::: {.column width="50%"}
+::: {style="font-size: 60%;"}
 **C**
 
 ~~~cpp
@@ -214,6 +217,7 @@ private:
     Teacher* teachers[10];
 };
 ~~~
+:::
 :::
 
 ::::
@@ -247,7 +251,8 @@ A teacher who leaves the department still exists, which is the test for aggregat
 
 :::: {.columns}
 
-::: {.column width="50%" style="font-size: 60%;"}
+::: {.column width="50%"}
+::: {style="font-size: 60%;"}
 **Composition: Car creates and deletes the engine**
 
 ~~~cpp
@@ -261,8 +266,10 @@ public:
 };
 ~~~
 :::
+:::
 
-::: {.column width="50%" style="font-size: 60%;"}
+::: {.column width="50%"}
+::: {style="font-size: 60%;"}
 **Aggregation: the engine comes from outside**
 
 ~~~cpp
@@ -275,6 +282,7 @@ public:
     // no delete: Car does not own the engine
 };
 ~~~
+:::
 :::
 
 ::::

@@ -157,7 +157,8 @@ Full program: cpp/course_composition.cpp
 
 :::: {.columns}
 
-::: {.column width="60%" style="font-size: 50%;"}
+::: {.column width="60%"}
+::: {style="font-size: 50%;"}
 ~~~cpp
 class Part {
 private:
@@ -183,6 +184,7 @@ int main() {
     return 0;
 }
 ~~~
+:::
 :::
 
 ::: {.column width="40%"}
@@ -253,7 +255,8 @@ This pays off topic 2's Why the Label Matters slide: with member objects, the co
 
 :::: {.columns}
 
-::: {.column width="55%" style="font-size: 50%;"}
+::: {.column width="55%"}
+::: {style="font-size: 50%;"}
 ~~~cpp
 // Department does not own its teachers,
 // so it has no destructor
@@ -283,8 +286,10 @@ public:
 };
 ~~~
 :::
+:::
 
-::: {.column width="45%" style="font-size: 50%;"}
+::: {.column width="45%"}
+::: {style="font-size: 50%;"}
 ~~~cpp
 int main() {
     Teacher lee("Lee");
@@ -301,6 +306,7 @@ int main() {
     return 0;
 }
 ~~~
+:::
 :::
 
 ::::

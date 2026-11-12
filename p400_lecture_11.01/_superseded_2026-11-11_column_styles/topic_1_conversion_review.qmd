@@ -1,0 +1,228 @@
+<!-- Topic 1: Conversion Review -->
+<!-- Slides 5–15 -->
+
+# Conversion Review
+<!-- Slide 4 -->
+
+## When Your Object Interacts with Other Types {.smaller}
+
+- A `Temperature` meets a `double`, a `Fahrenheit`, or a function that expects something else.
+- What do we do?
+
+::: notes
+Slides 5–15
+
+Let students answer before advancing. Tuesday's answer: teach the class to convert, in one of two directions.
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## Two Ways to Convert
+
+- **Type conversion operator:** your object becomes another type.
+- **Conversion constructor:** another type becomes your object.
+
+::: notes
+
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Type Conversion Operator
+
+- A member function written `operator T() const`, where `T` is the target type.
+- No return type is written, and it takes no parameters.
+- The compiler calls it wherever your object is used and a `T` is needed.
+
+::: notes
+Reading: learncpp 21.11, Overloading typecasts.
+:::
+
+<!-- Slide 7 -->
+
+---
+
+:::: {.columns}
+
+::: {.column width="60%" style="font-size: 50%;"}
+~~~cpp
+class Temperature {
+private:
+    double celsius;
+
+public:
+    Temperature(double value = 0.0) { celsius = value; }
+
+    // Converts a Temperature to its Celsius value
+    operator double() const { return celsius; }
+};
+
+int main() {
+    Temperature today(21.5);
+
+    double reading = today;          // initialization
+    double warmer = today + 1.5;     // arithmetic
+
+    cout << reading << " " << warmer << endl;
+    return 0;
+}
+~~~
+:::
+
+::: {.column width="40%"}
+. . .
+
+~~~
+21.5 23
+~~~
+
+- `reading` gets the Celsius value.
+- `today + 1.5` converts `today` to `double`, then adds.
+:::
+
+::::
+
+::: notes
+Ask students to predict both values before revealing. Temperature has no operator+, so today + 1.5 converts today to double and adds two doubles.
+
+Full program: ../p400_lecture_10.01/cpp/temperature_conversion.cpp
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Convert Constructor
+
+- A constructor that builds your class from one value of another type.
+- The compiler may call it on its own wherever your class is needed and that other type is supplied.
+
+::: notes
+The textbook calls it a convert constructor (section 11.10); learncpp calls it a converting constructor (14.16). Same thing.
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Examples
+
+::: {style="font-size: 80%;"}
+~~~cpp
+class Fahrenheit {
+public:
+    Fahrenheit();                                 // regular: takes no arguments
+    Fahrenheit(double value, char scale);         // regular: needs two values
+    explicit Fahrenheit(int whole);               // regular: explicit
+    Fahrenheit(const Temperature& t);             // converting: one value, not explicit
+};
+~~~
+:::
+
+::: notes
+Only the last constructor can run without being named: Fahrenheit report = today; calls it to convert a Temperature.
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## The Rules
+
+A constructor is a conversion constructor when it:
+
+1. Can be called with a single argument.
+2. Is not marked `explicit`.
+
+::: notes
+
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## Single Argument Gotcha
+
+- A constructor with several parameters still converts if every parameter after the first has a default value.
+- `Fahrenheit(double value, char scale = 'F')` can be called with one `double`, so it converts a `double`.
+
+::: notes
+Tuesday's Fahrenheit(double value = 32.0) is the same gotcha: written as a default constructor, but the default argument makes it callable with one double, so Fahrenheit oops = 20.0; compiles and gives 20 degrees Fahrenheit.
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Explicit
+
+- `explicit` means the constructor runs only when the code calls it directly.
+- It never converts a value on its own, so `=`, argument passing, and returns cannot use it.
+
+::: notes
+The same keyword works on conversion operators: explicit operator double() const blocks double d = today; but allows static_cast<double>(today).
+:::
+
+<!-- Slide 13 -->
+
+---
+
+:::: {.columns}
+
+::: {.column width="50%" style="font-size: 50%;"}
+**Without explicit**
+
+~~~cpp
+class Fahrenheit {
+public:
+    Fahrenheit(double value);       // converting
+};
+
+Fahrenheit a = 20.0;    // compiles: 20.0 is converted
+Fahrenheit b(20.0);     // compiles: calls the constructor
+~~~
+:::
+
+::: {.column width="50%" style="font-size: 50%;"}
+**With explicit**
+
+~~~cpp
+class Fahrenheit {
+public:
+    explicit Fahrenheit(double value);  // regular
+};
+
+Fahrenheit a = 20.0;    // error: = needs a conversion
+Fahrenheit b(20.0);     // compiles: calls the constructor
+~~~
+:::
+
+::::
+
+::: notes
+Both lines write the type Fahrenheit, so the type name is not the difference. The difference is how the object is initialized.
+
+Fahrenheit a = 20.0; is copy initialization: the compiler must first convert 20.0 into a Fahrenheit, and that is the implicit conversion explicit forbids. g++ reports "conversion from 'double' to non-scalar type 'Fahrenheit' requested."
+
+Fahrenheit b(20.0); is direct initialization: it calls the constructor with 20.0 as the argument, so no conversion is needed and explicit allows it. Fahrenheit(20.0) and static_cast<Fahrenheit>(20.0) also call the constructor directly.
+:::
+
+<!-- Slide 14 -->
+
+---
+
+## Summary
+
+- A type conversion operator turns your object into another type; a conversion constructor turns another type into your object.
+- A constructor that can take one argument and is not `explicit` converts.
+
+::: notes
+
+:::
+
+<!-- Slide 15 -->

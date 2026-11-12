@@ -77,7 +77,8 @@ Full program: cpp/car_relationships.cpp
 
 :::: {.columns}
 
-::: {.column width="60%" style="font-size: 50%;"}
+::: {.column width="60%"}
+::: {style="font-size: 50%;"}
 ~~~cpp
 int main() {
     GPS unit;
@@ -95,6 +96,7 @@ int main() {
     return 0;
 }
 ~~~
+:::
 :::
 
 ::: {.column width="40%"}
@@ -217,7 +219,8 @@ A real-estate contract settles the fridge question one way or the other; a progr
 
 :::: {.columns}
 
-::: {.column width="50%" style="font-size: 50%;"}
+::: {.column width="50%"}
+::: {style="font-size: 50%;"}
 **Problem: the driver is a member object**
 
 ~~~cpp
@@ -233,8 +236,10 @@ Car sedan(ada);
 Car truck(ada);     // two cars, two separate copies of Ada
 ~~~
 :::
+:::
 
-::: {.column width="50%" style="font-size: 50%;"}
+::: {.column width="50%"}
+::: {style="font-size: 50%;"}
 **Solution: store a pointer**
 
 ~~~cpp
@@ -249,6 +254,7 @@ Driver ada("Ada");
 Car sedan(&ada);
 Car truck(&ada);    // both cars point at the same Ada
 ~~~
+:::
 :::
 
 ::::
@@ -265,7 +271,8 @@ Tested with g++: in the composition version, changing the driver's name through 
 
 :::: {.columns}
 
-::: {.column width="50%" style="font-size: 50%;"}
+::: {.column width="50%"}
+::: {style="font-size: 50%;"}
 **Problem: nobody deletes the GPS**
 
 ~~~cpp
@@ -278,8 +285,10 @@ public:
 };
 ~~~
 :::
+:::
 
-::: {.column width="50%" style="font-size: 50%;"}
+::: {.column width="50%"}
+::: {style="font-size: 50%;"}
 **Solution: pick an owner**
 
 ~~~cpp
@@ -298,6 +307,7 @@ public:
 };
 ~~~
 :::
+:::
 
 ::::
 
@@ -313,7 +323,8 @@ Compiled with -fsanitize=address, the problem version reports a memory leak at e
 
 :::: {.columns}
 
-::: {.column width="50%" style="font-size: 50%;"}
+::: {.column width="50%"}
+::: {style="font-size: 50%;"}
 **Problem: every part is a pointer**
 
 ~~~cpp
@@ -330,8 +341,10 @@ public:
 };
 ~~~
 :::
+:::
 
-::: {.column width="50%" style="font-size: 50%;"}
+::: {.column width="50%"}
+::: {style="font-size: 50%;"}
 **Solution: pointers only where needed**
 
 ~~~cpp
@@ -346,6 +359,7 @@ public:
     // no destructor or copy code needed
 };
 ~~~
+:::
 :::
 
 ::::
