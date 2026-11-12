@@ -1,20 +1,20 @@
 <!-- Topic 4: Base Class Construction -->
-<!-- Slides 37–45 -->
+<!-- Slides 42–50 -->
 
 # Base Class Construction
-<!-- Slide 36 -->
+<!-- Slide 41 -->
 
 ## Who Builds the Person Part? {.smaller}
 
 - Person now has one constructor: `Person(name, id)`. How does a Student pass them up?
 
 ::: notes
-Slides 37–45
+Slides 42–50
 
 Topic 2 used setters so we could postpone this question. Real classes build a valid object in the constructor, and Student cannot see Person's private members.
 :::
 
-<!-- Slide 37 -->
+<!-- Slide 42 -->
 
 ---
 
@@ -60,7 +60,7 @@ Answer: No. g++ reports no matching function for call to 'Person::Person()' firs
 Full program: cpp/base_body_assign.cpp
 :::
 
-<!-- Slide 38 -->
+<!-- Slide 43 -->
 
 ---
 
@@ -84,7 +84,7 @@ Student(const string& n, int i, const string& m)
 This is 11.01's rule with one step added in front: base part, then members, then the body. Person has no constructor without arguments, so the compiler stops at hidden step 1. The fix is the same tool as last time: the member initializer list.
 :::
 
-<!-- Slide 39 -->
+<!-- Slide 44 -->
 
 ---
 
@@ -106,7 +106,7 @@ Student(const string& n, int i, const string& m) : Person(n, i), major(m) { }
 The base class is named by its class name, Person, not by a member name. Student never touches name or id: it hands the values to Person and lets Person build its own part.
 :::
 
-<!-- Slide 40 -->
+<!-- Slide 45 -->
 
 ---
 
@@ -155,7 +155,7 @@ Major: CS
 Full program: cpp/base_construction.cpp
 :::
 
-<!-- Slide 41 -->
+<!-- Slide 46 -->
 
 ---
 
@@ -182,7 +182,7 @@ Making name protected does not help here. Student may use name after it is built
 Full program: cpp/base_member_init.cpp
 :::
 
-<!-- Slide 42 -->
+<!-- Slide 47 -->
 
 ---
 
@@ -251,7 +251,7 @@ nobody's Person part throws, so the Student body never runs and nobody never exi
 Full program: cpp/base_throws.cpp
 :::
 
-<!-- Slide 43 -->
+<!-- Slide 48 -->
 
 ---
 
@@ -262,7 +262,7 @@ Full program: cpp/base_throws.cpp
 - In `main`, build `Instructor ng("Ng", 7, "BS 214");`, call `print()`, and print the office.
 
 ::: notes
-Five minutes. Students start from Person on slide 41. Walk the room and look for two mistakes: assigning name in the body, and leaving out public.
+Five minutes. Students start from Person on slide 46. Walk the room and look for two mistakes: assigning name in the body, and leaving out public.
 
 Expected output:
 Ng (7)
@@ -271,7 +271,7 @@ Office: BS 214
 Solution: cpp/instructor_your_turn.cpp
 :::
 
-<!-- Slide 44 -->
+<!-- Slide 49 -->
 
 ---
 
@@ -284,4 +284,4 @@ Solution: cpp/instructor_your_turn.cpp
 
 :::
 
-<!-- Slide 45 -->
+<!-- Slide 50 -->

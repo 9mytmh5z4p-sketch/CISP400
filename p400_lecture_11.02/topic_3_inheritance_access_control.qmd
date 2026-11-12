@@ -1,5 +1,5 @@
 <!-- Topic 3: Inheritance Access Control -->
-<!-- Slides 27–35 -->
+<!-- Slides 27–36 -->
 
 # Inheritance Access Control
 <!-- Slide 26 -->
@@ -9,7 +9,7 @@
 - Every Student holds a `name`. Can Student's own code use it?
 
 ::: notes
-Slides 27–35
+Slides 27–36
 
 Most students will say yes: it is in the object. The next slide tries it.
 :::
@@ -155,7 +155,7 @@ protected sits between the other two: family only. This table assumes public inh
 
 ---
 
-## Does This Compile?
+## Which Compiles?
 
 ::: {style="font-size: 60%;"}
 ~~~cpp
@@ -189,18 +189,60 @@ int main() {
 :::
 
 ::: notes
-Ask students which of A, B, C, and D compile, using the table on the previous slide.
-
-Answers:
-A compiles: name is protected and Officer is a derived class.
-B fails: dues is private to Member. g++: 'int Member::dues' is private within this context.
-C compiles: getName is public.
-D fails: main is outside code. g++: 'std::string Member::name' is protected within this context.
+Ask students which of A, B, C, and D compile, using the table on the previous slide. Have them commit before advancing; the answers are on the next slide.
 
 Full program: cpp/access_predict.cpp
 :::
 
 <!-- Slide 32 -->
+
+---
+
+## Which Compiles?
+
+::: {style="font-size: 60%;"}
+~~~cpp
+class Member {
+private:
+    int dues = 20;
+
+protected:
+    string name = "Ben";
+
+public:
+    string getName() const { return name; }
+};
+
+class Officer : public Member {
+public:
+    void print() const {
+        cout << name << endl;   // A: compiles, protected: Officer is family
+        cout << dues << endl;   // B: error, dues is private to Member
+    }
+};
+
+int main() {
+    Officer ben;
+    ben.print();
+    cout << ben.getName() << endl;   // C: compiles, getName is public
+    cout << ben.name << endl;        // D: error, main is not family
+    return 0;
+}
+~~~
+:::
+
+::: notes
+A compiles: name is protected and Officer is a derived class.
+B fails: dues is private to Member. g++: 'int Member::dues' is private within this context.
+C compiles: getName is public.
+D fails: main is outside code. g++: 'std::string Member::name' is protected within this context.
+
+Only the family line, A, gets through protected. private stops even the family, and protected stops everyone else.
+
+Full program: cpp/access_predict.cpp
+:::
+
+<!-- Slide 33 -->
 
 ---
 
@@ -226,7 +268,7 @@ This is the inheritance bug students will hit in Homework 6. The error points at
 Full program: cpp/forgot_public.cpp
 :::
 
-<!-- Slide 33 -->
+<!-- Slide 34 -->
 
 ---
 
@@ -244,7 +286,7 @@ Full program: cpp/forgot_public.cpp
 If Person later splits name into first and last, Fix 1 changes one getter. With protected name, every derived class that used name breaks. Homework 6 accepts either, but the private-plus-getter version is easier to change.
 :::
 
-<!-- Slide 34 -->
+<!-- Slide 35 -->
 
 ---
 
@@ -257,4 +299,4 @@ If Person later splits name into first and last, Fix 1 changes one getter. With 
 
 :::
 
-<!-- Slide 35 -->
+<!-- Slide 36 -->

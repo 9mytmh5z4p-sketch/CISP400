@@ -34,6 +34,8 @@ Reading: textbook Chapter 15; learncpp Chapter 24, Inheritance, lessons 24.1 to 
 
 {{< include topic_3_inheritance_access_control.qmd >}}
 
+{{< include topic_3x_programming_activity.qmd >}}
+
 {{< include topic_4_base_class_construction.qmd >}}
 
 {{< include topic_5_construction_and_destruction_order.qmd >}}
@@ -47,7 +49,7 @@ Reading: textbook Chapter 15; learncpp Chapter 24, Inheritance, lessons 24.1 to 
 - Build the base part in the member initializer list: `: Person(n, i)`.
 - Built: base, members, body. Destroyed: the exact reverse.
 
-<!-- Slide 53 -->
+<!-- Slide 58 -->
 
 ---
 
@@ -60,13 +62,13 @@ Reading: textbook Chapter 15; learncpp Chapter 24, Inheritance, lessons 24.1 to 
 This is the cliffhanger from Topic 2: Person's print() knows nothing about majors. Overriding answers it in 12.01.
 :::
 
-<!-- Slide 54 -->
+<!-- Slide 59 -->
 
 ---
 
 # Appendix
 
-<!-- Slide 55 -->
+<!-- Slide 60 -->
 
 ## Is-a Versus Has-a: Good Practices
 
@@ -74,7 +76,7 @@ This is the cliffhanger from Topic 2: Person's print() knows nothing about major
 - Check the sentence against every public function of the base, not just its name.
 - When in doubt, start with has-a; changing composition to inheritance later is easier than the reverse.
 
-<!-- Slide 56 -->
+<!-- Slide 61 -->
 
 ---
 
@@ -84,7 +86,7 @@ This is the cliffhanger from Topic 2: Person's print() knows nothing about major
 - Inheriting from `vector` or `string` to add a few functions.
 - Treating "has a lot in common" as "is a."
 
-<!-- Slide 57 -->
+<!-- Slide 62 -->
 
 ---
 
@@ -97,7 +99,7 @@ This is the cliffhanger from Topic 2: Person's print() knows nothing about major
 | Queue, list | Has-a | A queue must hide insertion in the middle |
 | Manager, Employee | Is-a | A manager is paid, reviewed, and listed like any employee |
 
-<!-- Slide 58 -->
+<!-- Slide 63 -->
 
 ---
 
@@ -107,7 +109,7 @@ This is the cliffhanger from Topic 2: Person's print() knows nothing about major
 2. Rewrite `cpp/stack_trap.cpp` so that `s.insert` no longer compiles.
 3. Find a vector function, other than `insert`, that breaks a stack's promise.
 
-<!-- Slide 59 -->
+<!-- Slide 64 -->
 
 ---
 
@@ -118,7 +120,7 @@ This is the cliffhanger from Topic 2: Person's print() knows nothing about major
 - C++ why std::stack is a container adapter
 - Liskov substitution principle
 
-<!-- Slide 60 -->
+<!-- Slide 65 -->
 
 ---
 
@@ -127,7 +129,7 @@ This is the cliffhanger from Topic 2: Person's print() knows nothing about major
 - Why does the is-a test have to hold for everything the base can do?
 - What did the Stack lose by gaining every vector function?
 
-<!-- Slide 61 -->
+<!-- Slide 66 -->
 
 ---
 
@@ -137,7 +139,7 @@ This is the cliffhanger from Topic 2: Person's print() knows nothing about major
 - Name the base for the general idea and the derived class for the specific one.
 - Keep a class hierarchy shallow; two or three levels is plenty.
 
-<!-- Slide 62 -->
+<!-- Slide 67 -->
 
 ---
 
@@ -147,7 +149,7 @@ This is the cliffhanger from Topic 2: Person's print() knows nothing about major
 - Expecting the base class's `print()` to show members the derived class added.
 - Writing the base class after the derived class in the file; the base must be declared first.
 
-<!-- Slide 63 -->
+<!-- Slide 68 -->
 
 ---
 
@@ -168,7 +170,7 @@ ng.setName("Ng");          // inherited from Person
 ng.setOffice("BS 214");    // added by Instructor
 ~~~
 
-<!-- Slide 64 -->
+<!-- Slide 69 -->
 
 ---
 
@@ -178,7 +180,7 @@ ng.setOffice("BS 214");    // added by Instructor
 2. Draw the object diagram for an Instructor, as on slide 23.
 3. Add a `setEmail` function to Person and show that Student and Instructor both gain it.
 
-<!-- Slide 65 -->
+<!-- Slide 70 -->
 
 ---
 
@@ -189,7 +191,7 @@ ng.setOffice("BS 214");    // added by Instructor
 - C++ what is not inherited
 - UML generalization arrow
 
-<!-- Slide 66 -->
+<!-- Slide 71 -->
 
 ---
 
@@ -198,7 +200,7 @@ ng.setOffice("BS 214");    // added by Instructor
 - Where in the object does a Student's name live?
 - Why does `ava.print()` leave out the major?
 
-<!-- Slide 67 -->
+<!-- Slide 72 -->
 
 ---
 
@@ -208,7 +210,7 @@ ng.setOffice("BS 214");    // added by Instructor
 - Give derived classes what they need through public or protected member functions.
 - Always write `public` after the colon.
 
-<!-- Slide 68 -->
+<!-- Slide 73 -->
 
 ---
 
@@ -218,7 +220,7 @@ ng.setOffice("BS 214");    // added by Instructor
 - Expecting protected to open a member to `main`.
 - Leaving out `public` and getting an error that points at `main` instead of the class.
 
-<!-- Slide 69 -->
+<!-- Slide 74 -->
 
 ---
 
@@ -232,7 +234,7 @@ ng.setOffice("BS 214");    // added by Instructor
 
 - Protected and private inheritance mean "implemented using," not "is a." This course uses public inheritance only.
 
-<!-- Slide 70 -->
+<!-- Slide 75 -->
 
 ---
 
@@ -242,7 +244,7 @@ ng.setOffice("BS 214");    // added by Instructor
 2. Fix `cpp/private_name.cpp` both ways, with a getter and with protected.
 3. Remove `public` from `cpp/getter_vs_protected.cpp` and explain each new error.
 
-<!-- Slide 71 -->
+<!-- Slide 76 -->
 
 ---
 
@@ -253,7 +255,7 @@ ng.setOffice("BS 214");    // added by Instructor
 - C++ is inaccessible within this context
 - C++ protected data members design
 
-<!-- Slide 72 -->
+<!-- Slide 77 -->
 
 ---
 
@@ -262,7 +264,7 @@ ng.setOffice("BS 214");    // added by Instructor
 - Why is a derived class treated as an outsider to private members?
 - What would break if Person changed how it stores a protected member?
 
-<!-- Slide 73 -->
+<!-- Slide 78 -->
 
 ---
 
@@ -272,7 +274,7 @@ ng.setOffice("BS 214");    // added by Instructor
 - Let each class build its own members; pass values up instead of reaching in.
 - Validate in the base constructor once instead of in every derived constructor.
 
-<!-- Slide 74 -->
+<!-- Slide 79 -->
 
 ---
 
@@ -282,7 +284,7 @@ ng.setOffice("BS 214");    // added by Instructor
 - Naming base members, such as `name(n)`, in the derived class's initializer list.
 - Expecting a derived class to inherit the base constructor automatically.
 
-<!-- Slide 75 -->
+<!-- Slide 80 -->
 
 ---
 
@@ -301,7 +303,7 @@ public:
 
 - GradStudent calls Student's constructor, which calls Person's. Each class passes values one level up.
 
-<!-- Slide 76 -->
+<!-- Slide 81 -->
 
 ---
 
@@ -311,7 +313,7 @@ public:
 2. Give Person a default constructor and explain what changes in `cpp/base_body_assign.cpp`.
 3. Make Person's constructor throw when the ID is negative and catch it in `main`.
 
-<!-- Slide 77 -->
+<!-- Slide 82 -->
 
 ---
 
@@ -322,7 +324,7 @@ public:
 - C++ no matching function for call to base constructor
 - C++ inheriting constructors using Base::Base
 
-<!-- Slide 78 -->
+<!-- Slide 83 -->
 
 ---
 
@@ -331,7 +333,7 @@ public:
 - Why can Student not build `name` even when it is protected?
 - Why does the base class go first in the initializer list?
 
-<!-- Slide 79 -->
+<!-- Slide 84 -->
 
 ---
 
@@ -341,7 +343,7 @@ public:
 - Keep destructors simple; they run in an order you do not control.
 - Use printing constructors and destructors to check an order you are unsure of.
 
-<!-- Slide 80 -->
+<!-- Slide 85 -->
 
 ---
 
@@ -351,7 +353,7 @@ public:
 - Expecting the order in the initializer list to change the build order.
 - Using a derived member from a base class destructor; it is already gone.
 
-<!-- Slide 81 -->
+<!-- Slide 86 -->
 
 ---
 
@@ -369,7 +371,7 @@ public:
 
 - Built: Person, Student's members, Student body, `thesis`, GradStudent body. Destroyed in reverse.
 
-<!-- Slide 82 -->
+<!-- Slide 87 -->
 
 ---
 
@@ -379,7 +381,7 @@ public:
 2. Give Person a Transcript member too, and predict the full order.
 3. Make the Transcript constructor throw and predict which destructors run.
 
-<!-- Slide 83 -->
+<!-- Slide 88 -->
 
 ---
 
@@ -390,7 +392,7 @@ public:
 - C++ members initialized in declaration order
 - C++ destructor call order
 
-<!-- Slide 84 -->
+<!-- Slide 89 -->
 
 ---
 
@@ -399,4 +401,4 @@ public:
 - Why must destruction run in reverse order?
 - Where does the base part fit in 11.01's member order rule?
 
-<!-- Slide 85 -->
+<!-- Slide 90 -->

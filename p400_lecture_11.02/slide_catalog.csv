@@ -30,57 +30,62 @@ Slide Number,Topic,Subject,Title,Category,Filename
 29,Topic 3: Inheritance Access Control,Inheritance Access Control,private Means This Class Only,Error Example,private_name.cpp
 30,Topic 3: Inheritance Access Control,Inheritance Access Control,Two Ways In,Contrast,getter_vs_protected.cpp
 31,Topic 3: Inheritance Access Control,Inheritance Access Control,Who Can See What?,Model,
-32,Topic 3: Inheritance Access Control,Inheritance Access Control,Does This Compile?,Predict,access_predict.cpp
-33,Topic 3: Inheritance Access Control,Inheritance Access Control,Forgot public,Error Example,forgot_public.cpp
-34,Topic 3: Inheritance Access Control,Inheritance Access Control,When to Use protected,Decision Point,
-35,Topic 3: Inheritance Access Control,Inheritance Access Control,Summary,Summary,
-36,Topic 4: Base Class Construction,,Base Class Construction,Section Divider,
-37,Topic 4: Base Class Construction,Base Class Construction,Who Builds the Person Part?,Motivating Question,
-38,Topic 4: Base Class Construction,Base Class Construction,Does This Compile?,Predict,base_body_assign.cpp
-39,Topic 4: Base Class Construction,Base Class Construction,The Base Is Built Before the Body,Trace,
-40,Topic 4: Base Class Construction,Base Class Construction,Calling the Base Constructor,Anatomy,
-41,Topic 4: Base Class Construction,Base Class Construction,Calling the Base Constructor,Complete Example,base_construction.cpp
-42,Topic 4: Base Class Construction,Base Class Construction,Student Cannot Build name Itself,Error Example,base_member_init.cpp
-43,Topic 4: Base Class Construction,Base Class Construction,When the Person Part Refuses,Predict,base_throws.cpp
-44,Topic 4: Base Class Construction,Base Class Construction,Your Turn,Transfer,instructor_your_turn.cpp
-45,Topic 4: Base Class Construction,Base Class Construction,Summary,Summary,
-46,Topic 5: Construction and Destruction Order,,Construction and Destruction Order,Section Divider,
-47,Topic 5: Construction and Destruction Order,Construction and Destruction Order,Who Is Built First?,Motivating Question,
-48,Topic 5: Construction and Destruction Order,Construction and Destruction Order,Predict the Output,Predict,order.cpp
-49,Topic 5: Construction and Destruction Order,Construction and Destruction Order,The Rule,Process Pattern,
-50,Topic 5: Construction and Destruction Order,Construction and Destruction Order,Why Reverse?,Text,
-51,Topic 5: Construction and Destruction Order,Construction and Destruction Order,Three Levels,Predict,three_levels.cpp
-52,Topic 5: Construction and Destruction Order,Construction and Destruction Order,Summary,Summary,
-53,Course Wrap-Up,,Key Takeaways,Summary,
-54,Course Wrap-Up,,Next Time,Text,
-55,Appendix,,Appendix,Section Divider,
-56,Appendix,Is-a Versus Has-a,Is-a Versus Has-a: Good Practices,Appendix - Good Practices,
-57,Appendix,Is-a Versus Has-a,Is-a Versus Has-a: Common Mistakes,Appendix - Common Mistakes,
-58,Appendix,Is-a Versus Has-a,Is-a Versus Has-a: More Examples,Appendix - More Examples,
-59,Appendix,Is-a Versus Has-a,Is-a Versus Has-a: Practice Problems,Appendix - Practice,
-60,Appendix,Is-a Versus Has-a,Is-a Versus Has-a: AI Search Terms,Appendix - AI Search Terms,
-61,Appendix,Is-a Versus Has-a,Is-a Versus Has-a: Questions for Reflection,Appendix - Reflection,
-62,Appendix,Inheritance Syntax,Inheritance Syntax: Good Practices,Appendix - Good Practices,
-63,Appendix,Inheritance Syntax,Inheritance Syntax: Common Mistakes,Appendix - Common Mistakes,
-64,Appendix,Inheritance Syntax,Inheritance Syntax: More Examples,Appendix - More Examples,
-65,Appendix,Inheritance Syntax,Inheritance Syntax: Practice Problems,Appendix - Practice,
-66,Appendix,Inheritance Syntax,Inheritance Syntax: AI Search Terms,Appendix - AI Search Terms,
-67,Appendix,Inheritance Syntax,Inheritance Syntax: Questions for Reflection,Appendix - Reflection,
-68,Appendix,Inheritance Access Control,Inheritance Access Control: Good Practices,Appendix - Good Practices,
-69,Appendix,Inheritance Access Control,Inheritance Access Control: Common Mistakes,Appendix - Common Mistakes,
-70,Appendix,Inheritance Access Control,Inheritance Access Control: More Examples,Appendix - More Examples,
-71,Appendix,Inheritance Access Control,Inheritance Access Control: Practice Problems,Appendix - Practice,
-72,Appendix,Inheritance Access Control,Inheritance Access Control: AI Search Terms,Appendix - AI Search Terms,
-73,Appendix,Inheritance Access Control,Inheritance Access Control: Questions for Reflection,Appendix - Reflection,
-74,Appendix,Base Class Construction,Base Class Construction: Good Practices,Appendix - Good Practices,
-75,Appendix,Base Class Construction,Base Class Construction: Common Mistakes,Appendix - Common Mistakes,
-76,Appendix,Base Class Construction,Base Class Construction: More Examples,Appendix - More Examples,
-77,Appendix,Base Class Construction,Base Class Construction: Practice Problems,Appendix - Practice,
-78,Appendix,Base Class Construction,Base Class Construction: AI Search Terms,Appendix - AI Search Terms,
-79,Appendix,Base Class Construction,Base Class Construction: Questions for Reflection,Appendix - Reflection,
-80,Appendix,Construction and Destruction Order,Construction and Destruction Order: Good Practices,Appendix - Good Practices,
-81,Appendix,Construction and Destruction Order,Construction and Destruction Order: Common Mistakes,Appendix - Common Mistakes,
-82,Appendix,Construction and Destruction Order,Construction and Destruction Order: More Examples,Appendix - More Examples,
-83,Appendix,Construction and Destruction Order,Construction and Destruction Order: Practice Problems,Appendix - Practice,
-84,Appendix,Construction and Destruction Order,Construction and Destruction Order: AI Search Terms,Appendix - AI Search Terms,
-85,Appendix,Construction and Destruction Order,Construction and Destruction Order: Questions for Reflection,Appendix - Reflection,
+32,Topic 3: Inheritance Access Control,Inheritance Access Control,Which Compiles?,Predict,access_predict.cpp
+33,Topic 3: Inheritance Access Control,Inheritance Access Control,Which Compiles?,Trace,access_predict.cpp
+34,Topic 3: Inheritance Access Control,Inheritance Access Control,Forgot public,Error Example,forgot_public.cpp
+35,Topic 3: Inheritance Access Control,Inheritance Access Control,When to Use protected,Decision Point,
+36,Topic 3: Inheritance Access Control,Inheritance Access Control,Summary,Summary,
+37,Topic 3x: Programming Activity,,Programming Activity,Section Divider,
+38,Topic 3x: Programming Activity,Programming Activity,Programming Activity,Transfer,
+39,Topic 3x: Programming Activity,Programming Activity,Check Your Work,Checklist,
+40,Topic 3x: Programming Activity,Programming Activity,One Possible Answer,Complete Example,activity_vehicle_truck.cpp
+41,Topic 4: Base Class Construction,,Base Class Construction,Section Divider,
+42,Topic 4: Base Class Construction,Base Class Construction,Who Builds the Person Part?,Motivating Question,
+43,Topic 4: Base Class Construction,Base Class Construction,Does This Compile?,Predict,base_body_assign.cpp
+44,Topic 4: Base Class Construction,Base Class Construction,The Base Is Built Before the Body,Trace,
+45,Topic 4: Base Class Construction,Base Class Construction,Calling the Base Constructor,Anatomy,
+46,Topic 4: Base Class Construction,Base Class Construction,Calling the Base Constructor,Complete Example,base_construction.cpp
+47,Topic 4: Base Class Construction,Base Class Construction,Student Cannot Build name Itself,Error Example,base_member_init.cpp
+48,Topic 4: Base Class Construction,Base Class Construction,When the Person Part Refuses,Predict,base_throws.cpp
+49,Topic 4: Base Class Construction,Base Class Construction,Your Turn,Transfer,instructor_your_turn.cpp
+50,Topic 4: Base Class Construction,Base Class Construction,Summary,Summary,
+51,Topic 5: Construction and Destruction Order,,Construction and Destruction Order,Section Divider,
+52,Topic 5: Construction and Destruction Order,Construction and Destruction Order,Who Is Built First?,Motivating Question,
+53,Topic 5: Construction and Destruction Order,Construction and Destruction Order,Predict the Output,Predict,order.cpp
+54,Topic 5: Construction and Destruction Order,Construction and Destruction Order,The Rule,Process Pattern,
+55,Topic 5: Construction and Destruction Order,Construction and Destruction Order,Why Reverse?,Text,
+56,Topic 5: Construction and Destruction Order,Construction and Destruction Order,Three Levels,Predict,three_levels.cpp
+57,Topic 5: Construction and Destruction Order,Construction and Destruction Order,Summary,Summary,
+58,Course Wrap-Up,,Key Takeaways,Summary,
+59,Course Wrap-Up,,Next Time,Text,
+60,Appendix,,Appendix,Section Divider,
+61,Appendix,Is-a Versus Has-a,Is-a Versus Has-a: Good Practices,Appendix - Good Practices,
+62,Appendix,Is-a Versus Has-a,Is-a Versus Has-a: Common Mistakes,Appendix - Common Mistakes,
+63,Appendix,Is-a Versus Has-a,Is-a Versus Has-a: More Examples,Appendix - More Examples,
+64,Appendix,Is-a Versus Has-a,Is-a Versus Has-a: Practice Problems,Appendix - Practice,
+65,Appendix,Is-a Versus Has-a,Is-a Versus Has-a: AI Search Terms,Appendix - AI Search Terms,
+66,Appendix,Is-a Versus Has-a,Is-a Versus Has-a: Questions for Reflection,Appendix - Reflection,
+67,Appendix,Inheritance Syntax,Inheritance Syntax: Good Practices,Appendix - Good Practices,
+68,Appendix,Inheritance Syntax,Inheritance Syntax: Common Mistakes,Appendix - Common Mistakes,
+69,Appendix,Inheritance Syntax,Inheritance Syntax: More Examples,Appendix - More Examples,
+70,Appendix,Inheritance Syntax,Inheritance Syntax: Practice Problems,Appendix - Practice,
+71,Appendix,Inheritance Syntax,Inheritance Syntax: AI Search Terms,Appendix - AI Search Terms,
+72,Appendix,Inheritance Syntax,Inheritance Syntax: Questions for Reflection,Appendix - Reflection,
+73,Appendix,Inheritance Access Control,Inheritance Access Control: Good Practices,Appendix - Good Practices,
+74,Appendix,Inheritance Access Control,Inheritance Access Control: Common Mistakes,Appendix - Common Mistakes,
+75,Appendix,Inheritance Access Control,Inheritance Access Control: More Examples,Appendix - More Examples,
+76,Appendix,Inheritance Access Control,Inheritance Access Control: Practice Problems,Appendix - Practice,
+77,Appendix,Inheritance Access Control,Inheritance Access Control: AI Search Terms,Appendix - AI Search Terms,
+78,Appendix,Inheritance Access Control,Inheritance Access Control: Questions for Reflection,Appendix - Reflection,
+79,Appendix,Base Class Construction,Base Class Construction: Good Practices,Appendix - Good Practices,
+80,Appendix,Base Class Construction,Base Class Construction: Common Mistakes,Appendix - Common Mistakes,
+81,Appendix,Base Class Construction,Base Class Construction: More Examples,Appendix - More Examples,
+82,Appendix,Base Class Construction,Base Class Construction: Practice Problems,Appendix - Practice,
+83,Appendix,Base Class Construction,Base Class Construction: AI Search Terms,Appendix - AI Search Terms,
+84,Appendix,Base Class Construction,Base Class Construction: Questions for Reflection,Appendix - Reflection,
+85,Appendix,Construction and Destruction Order,Construction and Destruction Order: Good Practices,Appendix - Good Practices,
+86,Appendix,Construction and Destruction Order,Construction and Destruction Order: Common Mistakes,Appendix - Common Mistakes,
+87,Appendix,Construction and Destruction Order,Construction and Destruction Order: More Examples,Appendix - More Examples,
+88,Appendix,Construction and Destruction Order,Construction and Destruction Order: Practice Problems,Appendix - Practice,
+89,Appendix,Construction and Destruction Order,Construction and Destruction Order: AI Search Terms,Appendix - AI Search Terms,
+90,Appendix,Construction and Destruction Order,Construction and Destruction Order: Questions for Reflection,Appendix - Reflection,

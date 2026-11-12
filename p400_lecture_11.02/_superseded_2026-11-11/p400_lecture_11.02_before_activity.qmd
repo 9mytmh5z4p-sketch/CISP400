@@ -1,0 +1,402 @@
+# Last Time
+
+::: {.incremental}
++ **Conversion Review**
++ **Class Relationships**
++ **Aggregation and Composition**
++ **Relationship Applications**
++ **Exception Basics**
+:::
+
+::: notes
+Thursday sorted class relationships by asking who stores, who creates, and who destroys; built parts in the member initializer list; and taught a constructor to refuse with throw, try, and catch.
+:::
+
+<!-- Slide 2 -->
+
+# Today's Agenda
+
+- Is-a Versus Has-a
+- Inheritance Syntax
+- Inheritance Access Control
+- Base Class Construction
+- Construction and Destruction Order
+
+::: notes
+Reading: textbook Chapter 15; learncpp Chapter 24, Inheritance, lessons 24.1 to 24.5.
+:::
+
+<!-- Slide 3 -->
+
+{{< include topic_1_is_a_versus_has_a.qmd >}}
+
+{{< include topic_2_inheritance_syntax.qmd >}}
+
+{{< include topic_3_inheritance_access_control.qmd >}}
+
+{{< include topic_4_base_class_construction.qmd >}}
+
+{{< include topic_5_construction_and_destruction_order.qmd >}}
+
+---
+
+# Key Takeaways
+
+- Inherit only when "A ___ is a ___" holds for everything the base can do; otherwise use has-a.
+- A derived class holds the base's private members but cannot touch them; always write `public` when you inherit.
+- Build the base part in the member initializer list: `: Person(n, i)`.
+- Built: base, members, body. Destroyed: the exact reverse.
+
+<!-- Slide 54 -->
+
+---
+
+# Next Time
+
+- Overriding and Multiple Inheritance (Thursday, November 19; no class Tuesday, November 17)
+- `ava.print()` still prints only the name and ID. How do we make a Student's `print()` show the major?
+
+::: notes
+This is the cliffhanger from Topic 2: Person's print() knows nothing about majors. Overriding answers it in 12.01.
+:::
+
+<!-- Slide 55 -->
+
+---
+
+# Appendix
+
+<!-- Slide 56 -->
+
+## Is-a Versus Has-a: Good Practices
+
+- Say "A ___ is a ___" out loud before writing a colon after a class name.
+- Check the sentence against every public function of the base, not just its name.
+- When in doubt, start with has-a; changing composition to inheritance later is easier than the reverse.
+
+<!-- Slide 57 -->
+
+---
+
+## Is-a Versus Has-a: Common Mistakes
+
+- Inheriting from a class to reuse its code when the new class only uses it.
+- Inheriting from `vector` or `string` to add a few functions.
+- Treating "has a lot in common" as "is a."
+
+<!-- Slide 58 -->
+
+---
+
+## Is-a Versus Has-a: More Examples
+
+| Pair | Relationship | Why |
+|---|---|---|
+| SavingsAccount, BankAccount | Is-a | Every account operation applies to a savings account |
+| Car, Engine | Has-a | A car is not an engine; it contains one |
+| Queue, list | Has-a | A queue must hide insertion in the middle |
+| Manager, Employee | Is-a | A manager is paid, reviewed, and listed like any employee |
+
+<!-- Slide 59 -->
+
+---
+
+## Is-a Versus Has-a: Practice Problems
+
+1. Decide is-a or has-a for Dog and Animal, Course and Roster, and Playlist and vector, and justify each.
+2. Rewrite `cpp/stack_trap.cpp` so that `s.insert` no longer compiles.
+3. Find a vector function, other than `insert`, that breaks a stack's promise.
+
+<!-- Slide 60 -->
+
+---
+
+## Is-a Versus Has-a: AI Search Terms
+
+- C++ is-a versus has-a relationship
+- C++ composition over inheritance
+- C++ why std::stack is a container adapter
+- Liskov substitution principle
+
+<!-- Slide 61 -->
+
+---
+
+## Is-a Versus Has-a: Questions for Reflection
+
+- Why does the is-a test have to hold for everything the base can do?
+- What did the Stack lose by gaining every vector function?
+
+<!-- Slide 62 -->
+
+---
+
+## Inheritance Syntax: Good Practices
+
+- Put only what is shared in the base class and only what is special in the derived class.
+- Name the base for the general idea and the derived class for the specific one.
+- Keep a class hierarchy shallow; two or three levels is plenty.
+
+<!-- Slide 63 -->
+
+---
+
+## Inheritance Syntax: Common Mistakes
+
+- Redeclaring a base class's data member in the derived class, which creates a second, separate copy.
+- Expecting the base class's `print()` to show members the derived class added.
+- Writing the base class after the derived class in the file; the base must be declared first.
+
+<!-- Slide 64 -->
+
+---
+
+## Inheritance Syntax: More Examples
+
+~~~cpp
+class Instructor : public Person {
+private:
+    string office;
+
+public:
+    void setOffice(const string& o) { office = o; }
+    string getOffice() const { return office; }
+};
+
+Instructor ng;
+ng.setName("Ng");          // inherited from Person
+ng.setOffice("BS 214");    // added by Instructor
+~~~
+
+<!-- Slide 65 -->
+
+---
+
+## Inheritance Syntax: Practice Problems
+
+1. Add an `Instructor` class to `cpp/person_student.cpp` without changing Person.
+2. Draw the object diagram for an Instructor, as on slide 23.
+3. Add a `setEmail` function to Person and show that Student and Instructor both gain it.
+
+<!-- Slide 66 -->
+
+---
+
+## Inheritance Syntax: AI Search Terms
+
+- C++ base class and derived class
+- C++ public inheritance syntax
+- C++ what is not inherited
+- UML generalization arrow
+
+<!-- Slide 67 -->
+
+---
+
+## Inheritance Syntax: Questions for Reflection
+
+- Where in the object does a Student's name live?
+- Why does `ava.print()` leave out the major?
+
+<!-- Slide 68 -->
+
+---
+
+## Inheritance Access Control: Good Practices
+
+- Keep data members private, even in a base class.
+- Give derived classes what they need through public or protected member functions.
+- Always write `public` after the colon.
+
+<!-- Slide 69 -->
+
+---
+
+## Inheritance Access Control: Common Mistakes
+
+- Making every base member protected so derived classes "can use everything."
+- Expecting protected to open a member to `main`.
+- Leaving out `public` and getting an error that points at `main` instead of the class.
+
+<!-- Slide 70 -->
+
+---
+
+## Inheritance Access Control: More Examples
+
+| Base member | `: public Person` | `: protected Person` | `: private Person` |
+|---|---|---|---|
+| `public` | public | protected | private |
+| `protected` | protected | protected | private |
+| `private` | not accessible | not accessible | not accessible |
+
+- Protected and private inheritance mean "implemented using," not "is a." This course uses public inheritance only.
+
+<!-- Slide 71 -->
+
+---
+
+## Inheritance Access Control: Practice Problems
+
+1. Predict which lines compile in `cpp/access_predict.cpp` if `dues` becomes protected.
+2. Fix `cpp/private_name.cpp` both ways, with a getter and with protected.
+3. Remove `public` from `cpp/getter_vs_protected.cpp` and explain each new error.
+
+<!-- Slide 72 -->
+
+---
+
+## Inheritance Access Control: AI Search Terms
+
+- C++ protected versus private members
+- C++ default inheritance access class versus struct
+- C++ is inaccessible within this context
+- C++ protected data members design
+
+<!-- Slide 73 -->
+
+---
+
+## Inheritance Access Control: Questions for Reflection
+
+- Why is a derived class treated as an outsider to private members?
+- What would break if Person changed how it stores a protected member?
+
+<!-- Slide 74 -->
+
+---
+
+## Base Class Construction: Good Practices
+
+- List the base class first in the member initializer list.
+- Let each class build its own members; pass values up instead of reaching in.
+- Validate in the base constructor once instead of in every derived constructor.
+
+<!-- Slide 75 -->
+
+---
+
+## Base Class Construction: Common Mistakes
+
+- Assigning base members in the derived constructor's body.
+- Naming base members, such as `name(n)`, in the derived class's initializer list.
+- Expecting a derived class to inherit the base constructor automatically.
+
+<!-- Slide 76 -->
+
+---
+
+## Base Class Construction: More Examples
+
+~~~cpp
+class GradStudent : public Student {
+private:
+    string advisor;
+
+public:
+    GradStudent(const string& n, int i, const string& m, const string& a)
+        : Student(n, i, m), advisor(a) { }
+};
+~~~
+
+- GradStudent calls Student's constructor, which calls Person's. Each class passes values one level up.
+
+<!-- Slide 77 -->
+
+---
+
+## Base Class Construction: Practice Problems
+
+1. Add a `GradStudent` with an `advisor` to `cpp/base_construction.cpp`.
+2. Give Person a default constructor and explain what changes in `cpp/base_body_assign.cpp`.
+3. Make Person's constructor throw when the ID is negative and catch it in `main`.
+
+<!-- Slide 78 -->
+
+---
+
+## Base Class Construction: AI Search Terms
+
+- C++ calling base class constructor from derived class
+- C++ member initializer list base class
+- C++ no matching function for call to base constructor
+- C++ inheriting constructors using Base::Base
+
+<!-- Slide 79 -->
+
+---
+
+## Base Class Construction: Questions for Reflection
+
+- Why can Student not build `name` even when it is protected?
+- Why does the base class go first in the initializer list?
+
+<!-- Slide 80 -->
+
+---
+
+## Construction and Destruction Order: Good Practices
+
+- Write the initializer list in the order things are built: base, then members in declaration order.
+- Keep destructors simple; they run in an order you do not control.
+- Use printing constructors and destructors to check an order you are unsure of.
+
+<!-- Slide 81 -->
+
+---
+
+## Construction and Destruction Order: Common Mistakes
+
+- Expecting members to be built before the base part.
+- Expecting the order in the initializer list to change the build order.
+- Using a derived member from a base class destructor; it is already gone.
+
+<!-- Slide 82 -->
+
+---
+
+## Construction and Destruction Order: More Examples
+
+~~~cpp
+class GradStudent : public Student {
+private:
+    Transcript thesis;
+
+public:
+    GradStudent() { cout << "GradStudent body" << endl; }
+};
+~~~
+
+- Built: Person, Student's members, Student body, `thesis`, GradStudent body. Destroyed in reverse.
+
+<!-- Slide 83 -->
+
+---
+
+## Construction and Destruction Order: Practice Problems
+
+1. Add a second member to Student in `cpp/order.cpp` and predict the new output.
+2. Give Person a Transcript member too, and predict the full order.
+3. Make the Transcript constructor throw and predict which destructors run.
+
+<!-- Slide 84 -->
+
+---
+
+## Construction and Destruction Order: AI Search Terms
+
+- C++ order of construction with inheritance
+- C++ order of destruction derived and base
+- C++ members initialized in declaration order
+- C++ destructor call order
+
+<!-- Slide 85 -->
+
+---
+
+## Construction and Destruction Order: Questions for Reflection
+
+- Why must destruction run in reverse order?
+- Where does the base part fit in 11.01's member order rule?
+
+<!-- Slide 86 -->
