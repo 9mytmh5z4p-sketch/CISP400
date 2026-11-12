@@ -1,20 +1,20 @@
 <!-- Topic 5: Construction and Destruction Order -->
-<!-- Slides 44–49 -->
+<!-- Slides 47–52 -->
 
 # Construction and Destruction Order
-<!-- Slide 43 -->
+<!-- Slide 46 -->
 
 ## Who Is Built First? {.smaller}
 
 - A Student has a Person part and a Transcript member. Which is built first, and which is destroyed first?
 
 ::: notes
-Slides 44–49
+Slides 47–52
 
 Students know two rules from 11.01, members before the body and destruction in reverse, and one from Topic 4, the base before the members. This topic puts them together.
 :::
 
-<!-- Slide 44 -->
+<!-- Slide 47 -->
 
 ---
 
@@ -77,7 +77,7 @@ Have students write all seven lines before revealing them.
 Full program: cpp/order.cpp
 :::
 
-<!-- Slide 45 -->
+<!-- Slide 48 -->
 
 ---
 
@@ -95,7 +95,7 @@ Full program: cpp/order.cpp
 This is 11.01's member rule with the base class added at the front of building and at the end of destroying.
 :::
 
-<!-- Slide 46 -->
+<!-- Slide 49 -->
 
 ---
 
@@ -109,7 +109,7 @@ This is 11.01's member rule with the base class added at the front of building a
 The same reasoning explains members: Student's destructor body may still use record, so record is destroyed after the body runs.
 :::
 
-<!-- Slide 47 -->
+<!-- Slide 50 -->
 
 ---
 
@@ -169,7 +169,7 @@ Ask students to predict before revealing. The rule repeats at every level: GradS
 Full program: cpp/three_levels.cpp
 :::
 
-<!-- Slide 48 -->
+<!-- Slide 51 -->
 
 ---
 
@@ -182,4 +182,4 @@ Full program: cpp/three_levels.cpp
 
 :::
 
-<!-- Slide 49 -->
+<!-- Slide 52 -->

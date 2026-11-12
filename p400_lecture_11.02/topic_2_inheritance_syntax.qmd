@@ -1,20 +1,20 @@
 <!-- Topic 2: Inheritance Syntax -->
-<!-- Slides 16–22 -->
+<!-- Slides 19–25 -->
 
 # Inheritance Syntax
-<!-- Slide 15 -->
+<!-- Slide 18 -->
 
 ## Two Classes, Same Fields {.smaller}
 
 - Student and Instructor both need a name, an ID, and `print()`. Write them twice?
 
 ::: notes
-Slides 16–22
+Slides 19–25
 
 Copying the code means every bug gets fixed twice, or once and forgotten the second time. Inheritance writes the shared part once.
 :::
 
-<!-- Slide 16 -->
+<!-- Slide 19 -->
 
 ---
 
@@ -36,7 +36,7 @@ class Student : public Person {
 In a UML class diagram the arrow with the hollow triangle points from Student to Person: the child points at the parent. Read the line as "Student is a Person."
 :::
 
-<!-- Slide 17 -->
+<!-- Slide 20 -->
 
 ---
 
@@ -92,7 +92,7 @@ Student never mentions name, id, setName, or print, and ava still has all of the
 Full program: cpp/person_student.cpp
 :::
 
-<!-- Slide 18 -->
+<!-- Slide 21 -->
 
 ---
 
@@ -107,7 +107,7 @@ Give students a minute to write both lists.
 Answer: data members name, id, and major. Functions setName, setId, getName, and print from Person; setMajor and getMajor from Student. The next slide draws the object.
 :::
 
-<!-- Slide 19 -->
+<!-- Slide 22 -->
 
 ---
 
@@ -131,7 +131,7 @@ ava (a Student)
 Every Student carries a complete Person inside it. That Person part is why a Student can be used as a Person, and it is the part that Topic 4 has to build.
 :::
 
-<!-- Slide 20 -->
+<!-- Slide 23 -->
 
 ---
 
@@ -145,7 +145,7 @@ Every Student carries a complete Person inside it. That Person part is why a Stu
 The first two bullets are the next two topics. Friendship is listed for completeness; students met friend functions with operator overloading.
 :::
 
-<!-- Slide 21 -->
+<!-- Slide 24 -->
 
 ---
 
@@ -158,4 +158,4 @@ The first two bullets are the next two topics. Friendship is listed for complete
 
 :::
 
-<!-- Slide 22 -->
+<!-- Slide 25 -->

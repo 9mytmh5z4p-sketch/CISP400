@@ -5,6 +5,9 @@
 using namespace std;
 
 class Stack : public vector<int> {
+    // no private vector: Stack IS a vector,
+    // so the storage is inherited
+
 public:
     void push(int value) { push_back(value); }
     int pop() {
@@ -12,6 +15,7 @@ public:
         pop_back();
         return top;
     }
+    // no empty() here: it is inherited from vector
 };
 
 int main() {

@@ -255,7 +255,7 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 3 -->
 <!-- Topic 1: Is-a Versus Has-a -->
-<!-- Slides 5–14 -->
+<!-- Slides 5–17 -->
 </section>
 
 <section>
@@ -267,7 +267,7 @@ Dr.&nbsp;Caleb Fowler
 <h2>Remember This Diagram?</h2>
 
 <img data-src="images/relationships-boom.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%" alt="The Student class diagram from 11.01: destroying a Student destroys its composed Test, while the Instructor and CIS_Student are not destroyed"><aside class="notes">
-<p>Slides 5–14</p>
+<p>Slides 5–17</p>
 <p>This is the Student diagram from 11.01. Thursday we followed the composition and aggregation arrows. Today we follow the one we set aside: the inheritance arrow.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -329,7 +329,7 @@ Dr.&nbsp;Caleb Fowler
 <h2>Animal, Dog, and Cat</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/animal_hierarchy.png" class="quarto-figure quarto-figure-center" alt="Class diagram: parent class Animal with int age, string Name, const int mult = 1, Animal(int age2), and calcAge(). Child classes Dog with Bark() and Cat with Meow()." height="416"></p>
+<p><img data-src="images/animal_hierarchy.png" class="quarto-figure quarto-figure-center" style="max-height: 56vh;" alt="Class diagram: parent class Animal with int age, string Name, const int mult = 1, Animal(int age2), and calcAge(). Child classes Dog with Bark() and Cat with Meow()."></p>
 </figure>
 </div>
 <aside class="notes">
@@ -353,7 +353,7 @@ Dr.&nbsp;Caleb Fowler
 <h2>A Child Can Be a Parent</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/animal_hierarchy_coon_cat.png" class="quarto-figure quarto-figure-center" alt="The same diagram with a third level: Coon Cat, with CrazedStare(), is a child of Cat." height="432"></p>
+<p><img data-src="images/animal_hierarchy_coon_cat.png" class="quarto-figure quarto-figure-center" style="max-height: 56vh;" alt="The same diagram with a third level: Coon Cat, with CrazedStare(), is a child of Cat."></p>
 </figure>
 </div>
 <aside class="notes">
@@ -371,6 +371,49 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 9 -->
+</section>
+<section id="another-example" class="slide level2">
+<h2>Another Example</h2>
+<!-- Slide 10 -->
+</section>
+<section class="slide level2">
+
+
+<img data-src="images/inherit2a.png" class="quarto-figure quarto-figure-center r-stretch" alt="inherit.cpp: class TCD, a Traffic Control Device, with public id = 999, device, and Report(). StopSign and StopLight inherit publicly from TCD and set device in their constructors. A diagram shows TCD above Stoplight and Stopsign."><aside class="notes">
+<p>TCD is a Traffic Control Device. Run the is-a test: a stop sign is a traffic control device, and so is a stoplight.</p>
+<p>TCD holds id, device, and Report(). StopSign and StopLight each write one constructor and nothing else. Ask students to predict what sign.Report() and light.Report() print before advancing.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 11 -->
+</section>
+<section class="slide level2">
+
+
+<img data-src="images/inherit2b.png" class="quarto-figure quarto-figure-center r-stretch" alt="The same inherit.cpp program with TCD labeled Parent and Stoplight and Stopsign labeled Child, and the terminal output: Device report for Stopsign 999, Device report for Stoplight 999."><aside class="notes">
+<p>Output: Device report for Stopsign 999 Device report for Stoplight 999</p>
+<p>Neither child wrote Report(), yet both can call it. Both print 999 because id is set once, in TCD.</p>
+<p>Note for Topic 3: TCD’s data is public, which is why the child constructors can assign device directly. Topic 3 makes that data private and shows what breaks.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 12 -->
 </section>
 <section id="the-stack-trap" class="slide level2">
 <h2>The Stack Trap</h2>
@@ -423,7 +466,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 10 -->
+<!-- Slide 13 -->
 </section>
 <section id="the-stack-trap-1" class="slide level2">
 <h2>The Stack Trap</h2>
@@ -458,7 +501,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 11 -->
+<!-- Slide 14 -->
 </section>
 <section id="student-and-instructor-share-a-person" class="slide level2">
 <h2>Student and Instructor Share a Person</h2>
@@ -521,7 +564,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 12 -->
+<!-- Slide 15 -->
 </section>
 <section id="what-does-inheritance-do-for-me" class="slide level2">
 <h2>What Does Inheritance Do For Me?</h2>
@@ -543,7 +586,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 13 -->
+<!-- Slide 16 -->
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
@@ -564,14 +607,14 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 14 -->
+<!-- Slide 17 -->
 <!-- Topic 2: Inheritance Syntax -->
-<!-- Slides 16–22 -->
+<!-- Slides 19–25 -->
 </section></section>
 <section>
 <section id="inheritance-syntax" class="title-slide slide level1 center">
 <h1>Inheritance Syntax</h1>
-<!-- Slide 15 -->
+<!-- Slide 18 -->
 </section>
 <section id="two-classes-same-fields" class="slide level2 smaller">
 <h2>Two Classes, Same Fields</h2>
@@ -579,7 +622,7 @@ Dr.&nbsp;Caleb Fowler
 <li>Student and Instructor both need a name, an ID, and <code>print()</code>. Write them twice?</li>
 </ul>
 <aside class="notes">
-<p>Slides 16–22</p>
+<p>Slides 19–25</p>
 <p>Copying the code means every bug gets fixed twice, or once and forgotten the second time. Inheritance writes the shared part once.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -592,7 +635,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 16 -->
+<!-- Slide 19 -->
 </section>
 <section id="inheritance-anatomy" class="slide level2">
 <h2>Inheritance Anatomy</h2>
@@ -640,7 +683,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 17 -->
+<!-- Slide 20 -->
 </section>
 <section id="inheritance-anatomy-1" class="slide level2">
 <h2>Inheritance Anatomy</h2>
@@ -696,7 +739,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 18 -->
+<!-- Slide 21 -->
 </section>
 <section id="what-does-a-student-contain" class="slide level2">
 <h2>What Does a Student Contain?</h2>
@@ -718,7 +761,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 19 -->
+<!-- Slide 22 -->
 </section>
 <section id="what-does-a-student-contain-1" class="slide level2">
 <h2>What Does a Student Contain?</h2>
@@ -747,7 +790,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 20 -->
+<!-- Slide 23 -->
 </section>
 <section id="what-is-not-inherited" class="slide level2">
 <h2>What Is Not Inherited</h2>
@@ -769,7 +812,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 21 -->
+<!-- Slide 24 -->
 </section>
 <section id="summary-1" class="slide level2">
 <h2>Summary</h2>
@@ -790,14 +833,14 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 22 -->
+<!-- Slide 25 -->
 <!-- Topic 3: Inheritance Access Control -->
-<!-- Slides 24–32 -->
+<!-- Slides 27–35 -->
 </section></section>
 <section>
 <section id="inheritance-access-control" class="title-slide slide level1 center">
 <h1>Inheritance Access Control</h1>
-<!-- Slide 23 -->
+<!-- Slide 26 -->
 </section>
 <section id="can-student-read-its-own-name" class="slide level2 smaller">
 <h2>Can Student Read Its Own Name?</h2>
@@ -805,7 +848,7 @@ Dr.&nbsp;Caleb Fowler
 <li>Every Student holds a <code>name</code>. Can Student’s own code use it?</li>
 </ul>
 <aside class="notes">
-<p>Slides 24–32</p>
+<p>Slides 27–35</p>
 <p>Most students will say yes: it is in the object. The next slide tries it.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -818,7 +861,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 24 -->
+<!-- Slide 27 -->
 </section>
 <section class="slide level2">
 
@@ -838,7 +881,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 25 -->
+<!-- Slide 28 -->
 </section>
 <section id="private-means-this-class-only" class="slide level2">
 <h2>private Means This Class Only</h2>
@@ -880,7 +923,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 26 -->
+<!-- Slide 29 -->
 </section>
 <section id="two-ways-in" class="slide level2">
 <h2>Two Ways In</h2>
@@ -945,7 +988,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 27 -->
+<!-- Slide 30 -->
 </section>
 <section id="who-can-see-what" class="slide level2">
 <h2>Who Can See What?</h2>
@@ -998,7 +1041,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 28 -->
+<!-- Slide 31 -->
 </section>
 <section id="does-this-compile" class="slide level2">
 <h2>Does This Compile?</h2>
@@ -1045,7 +1088,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 29 -->
+<!-- Slide 32 -->
 </section>
 <section id="forgot-public" class="slide level2">
 <h2>Forgot public</h2>
@@ -1075,7 +1118,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 30 -->
+<!-- Slide 33 -->
 </section>
 <section id="when-to-use-protected" class="slide level2">
 <h2>When to Use protected</h2>
@@ -1121,7 +1164,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 31 -->
+<!-- Slide 34 -->
 </section>
 <section id="summary-2" class="slide level2">
 <h2>Summary</h2>
@@ -1142,14 +1185,14 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 32 -->
+<!-- Slide 35 -->
 <!-- Topic 4: Base Class Construction -->
-<!-- Slides 34–42 -->
+<!-- Slides 37–45 -->
 </section></section>
 <section>
 <section id="base-class-construction" class="title-slide slide level1 center">
 <h1>Base Class Construction</h1>
-<!-- Slide 33 -->
+<!-- Slide 36 -->
 </section>
 <section id="who-builds-the-person-part" class="slide level2 smaller">
 <h2>Who Builds the Person Part?</h2>
@@ -1157,7 +1200,7 @@ Dr.&nbsp;Caleb Fowler
 <li>Person now has one constructor: <code>Person(name, id)</code>. How does a Student pass them up?</li>
 </ul>
 <aside class="notes">
-<p>Slides 34–42</p>
+<p>Slides 37–45</p>
 <p>Topic 2 used setters so we could postpone this question. Real classes build a valid object in the constructor, and Student cannot see Person’s private members.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -1170,7 +1213,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 34 -->
+<!-- Slide 37 -->
 </section>
 <section id="does-this-compile-1" class="slide level2">
 <h2>Does This Compile?</h2>
@@ -1218,7 +1261,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 35 -->
+<!-- Slide 38 -->
 </section>
 <section id="the-base-is-built-before-the-body" class="slide level2">
 <h2>The Base Is Built Before the Body</h2>
@@ -1247,7 +1290,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 36 -->
+<!-- Slide 39 -->
 </section>
 <section id="calling-the-base-constructor" class="slide level2">
 <h2>Calling the Base Constructor</h2>
@@ -1294,7 +1337,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 37 -->
+<!-- Slide 40 -->
 </section>
 <section id="calling-the-base-constructor-1" class="slide level2">
 <h2>Calling the Base Constructor</h2>
@@ -1344,7 +1387,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 38 -->
+<!-- Slide 41 -->
 </section>
 <section id="student-cannot-build-name-itself" class="slide level2">
 <h2>Student Cannot Build name Itself</h2>
@@ -1375,7 +1418,7 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 39 -->
+<!-- Slide 42 -->
 </section>
 <section id="when-the-person-part-refuses" class="slide level2">
 <h2>When the Person Part Refuses</h2>
@@ -1438,7 +1481,7 @@ Error: name cannot be empty</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 40 -->
+<!-- Slide 43 -->
 </section>
 <section id="your-turn" class="slide level2">
 <h2>Your Turn</h2>
@@ -1448,7 +1491,7 @@ Error: name cannot be empty</code></pre>
 <li>In <code>main</code>, build <code>Instructor ng("Ng", 7, "BS 214");</code>, call <code>print()</code>, and print the office.</li>
 </ul>
 <aside class="notes">
-<p>Five minutes. Students start from Person on slide 38. Walk the room and look for two mistakes: assigning name in the body, and leaving out public.</p>
+<p>Five minutes. Students start from Person on slide 41. Walk the room and look for two mistakes: assigning name in the body, and leaving out public.</p>
 <p>Expected output: Ng (7) Office: BS 214</p>
 <p>Solution: cpp/instructor_your_turn.cpp</p>
 <style type="text/css">
@@ -1462,7 +1505,7 @@ Error: name cannot be empty</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 41 -->
+<!-- Slide 44 -->
 </section>
 <section id="summary-3" class="slide level2">
 <h2>Summary</h2>
@@ -1483,14 +1526,14 @@ Error: name cannot be empty</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 42 -->
+<!-- Slide 45 -->
 <!-- Topic 5: Construction and Destruction Order -->
-<!-- Slides 44–49 -->
+<!-- Slides 47–52 -->
 </section></section>
 <section>
 <section id="construction-and-destruction-order" class="title-slide slide level1 center">
 <h1>Construction and Destruction Order</h1>
-<!-- Slide 43 -->
+<!-- Slide 46 -->
 </section>
 <section id="who-is-built-first" class="slide level2 smaller">
 <h2>Who Is Built First?</h2>
@@ -1498,7 +1541,7 @@ Error: name cannot be empty</code></pre>
 <li>A Student has a Person part and a Transcript member. Which is built first, and which is destroyed first?</li>
 </ul>
 <aside class="notes">
-<p>Slides 44–49</p>
+<p>Slides 47–52</p>
 <p>Students know two rules from 11.01, members before the body and destruction in reverse, and one from Topic 4, the base before the members. This topic puts them together.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -1511,7 +1554,7 @@ Error: name cannot be empty</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 44 -->
+<!-- Slide 47 -->
 </section>
 <section id="predict-the-output" class="slide level2">
 <h2>Predict the Output</h2>
@@ -1569,7 +1612,7 @@ Person destroyed</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 45 -->
+<!-- Slide 48 -->
 </section>
 <section id="the-rule" class="slide level2">
 <h2>The Rule</h2>
@@ -1615,7 +1658,7 @@ Person destroyed</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 46 -->
+<!-- Slide 49 -->
 </section>
 <section id="why-reverse" class="slide level2">
 <h2>Why Reverse?</h2>
@@ -1637,7 +1680,7 @@ Person destroyed</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 47 -->
+<!-- Slide 50 -->
 </section>
 <section id="three-levels" class="slide level2">
 <h2>Three Levels</h2>
@@ -1692,7 +1735,7 @@ GradStudent
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 48 -->
+<!-- Slide 51 -->
 </section>
 <section id="summary-4" class="slide level2">
 <h2>Summary</h2>
@@ -1713,7 +1756,7 @@ GradStudent
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 49 -->
+<!-- Slide 52 -->
 </section>
 <section class="slide level2">
 
@@ -1727,7 +1770,7 @@ GradStudent
 <li>Build the base part in the member initializer list: <code>: Person(n, i)</code>.</li>
 <li>Built: base, members, body. Destroyed: the exact reverse.</li>
 </ul>
-<!-- Slide 50 -->
+<!-- Slide 53 -->
 </section>
 <section class="slide level2">
 
@@ -1752,7 +1795,7 @@ GradStudent
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 51 -->
+<!-- Slide 54 -->
 </section>
 <section class="slide level2">
 
@@ -1760,7 +1803,7 @@ GradStudent
 <section>
 <section id="appendix" class="title-slide slide level1 center">
 <h1>Appendix</h1>
-<!-- Slide 52 -->
+<!-- Slide 55 -->
 </section>
 <section id="is-a-versus-has-a-good-practices" class="slide level2">
 <h2>Is-a Versus Has-a: Good Practices</h2>
@@ -1769,7 +1812,7 @@ GradStudent
 <li>Check the sentence against every public function of the base, not just its name.</li>
 <li>When in doubt, start with has-a; changing composition to inheritance later is easier than the reverse.</li>
 </ul>
-<!-- Slide 53 -->
+<!-- Slide 56 -->
 </section>
 <section id="is-a-versus-has-a-common-mistakes" class="slide level2">
 <h2>Is-a Versus Has-a: Common Mistakes</h2>
@@ -1778,7 +1821,7 @@ GradStudent
 <li>Inheriting from <code>vector</code> or <code>string</code> to add a few functions.</li>
 <li>Treating “has a lot in common” as “is a.”</li>
 </ul>
-<!-- Slide 54 -->
+<!-- Slide 57 -->
 </section>
 <section id="is-a-versus-has-a-more-examples" class="slide level2">
 <h2>Is-a Versus Has-a: More Examples</h2>
@@ -1818,7 +1861,7 @@ GradStudent
 </tr>
 </tbody>
 </table>
-<!-- Slide 55 -->
+<!-- Slide 58 -->
 </section>
 <section id="is-a-versus-has-a-practice-problems" class="slide level2">
 <h2>Is-a Versus Has-a: Practice Problems</h2>
@@ -1827,7 +1870,7 @@ GradStudent
 <li>Rewrite <code>cpp/stack_trap.cpp</code> so that <code>s.insert</code> no longer compiles.</li>
 <li>Find a vector function, other than <code>insert</code>, that breaks a stack’s promise.</li>
 </ol>
-<!-- Slide 56 -->
+<!-- Slide 59 -->
 </section>
 <section id="is-a-versus-has-a-ai-search-terms" class="slide level2">
 <h2>Is-a Versus Has-a: AI Search Terms</h2>
@@ -1837,7 +1880,7 @@ GradStudent
 <li>C++ why std::stack is a container adapter</li>
 <li>Liskov substitution principle</li>
 </ul>
-<!-- Slide 57 -->
+<!-- Slide 60 -->
 </section>
 <section id="is-a-versus-has-a-questions-for-reflection" class="slide level2">
 <h2>Is-a Versus Has-a: Questions for Reflection</h2>
@@ -1845,7 +1888,7 @@ GradStudent
 <li>Why does the is-a test have to hold for everything the base can do?</li>
 <li>What did the Stack lose by gaining every vector function?</li>
 </ul>
-<!-- Slide 58 -->
+<!-- Slide 61 -->
 </section>
 <section id="inheritance-syntax-good-practices" class="slide level2">
 <h2>Inheritance Syntax: Good Practices</h2>
@@ -1854,7 +1897,7 @@ GradStudent
 <li>Name the base for the general idea and the derived class for the specific one.</li>
 <li>Keep a class hierarchy shallow; two or three levels is plenty.</li>
 </ul>
-<!-- Slide 59 -->
+<!-- Slide 62 -->
 </section>
 <section id="inheritance-syntax-common-mistakes" class="slide level2">
 <h2>Inheritance Syntax: Common Mistakes</h2>
@@ -1863,7 +1906,7 @@ GradStudent
 <li>Expecting the base class’s <code>print()</code> to show members the derived class added.</li>
 <li>Writing the base class after the derived class in the file; the base must be declared first.</li>
 </ul>
-<!-- Slide 60 -->
+<!-- Slide 63 -->
 </section>
 <section id="inheritance-syntax-more-examples" class="slide level2">
 <h2>Inheritance Syntax: More Examples</h2>
@@ -1879,16 +1922,16 @@ GradStudent
 <span id="cb23-10"><a href=""></a>Instructor ng<span class="op">;</span></span>
 <span id="cb23-11"><a href=""></a>ng<span class="op">.</span>setName<span class="op">(</span><span class="st">"Ng"</span><span class="op">);</span>          <span class="co">// inherited from Person</span></span>
 <span id="cb23-12"><a href=""></a>ng<span class="op">.</span>setOffice<span class="op">(</span><span class="st">"BS 214"</span><span class="op">);</span>    <span class="co">// added by Instructor</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Slide 61 -->
+<!-- Slide 64 -->
 </section>
 <section id="inheritance-syntax-practice-problems" class="slide level2">
 <h2>Inheritance Syntax: Practice Problems</h2>
 <ol type="1">
 <li>Add an <code>Instructor</code> class to <code>cpp/person_student.cpp</code> without changing Person.</li>
-<li>Draw the object diagram for an Instructor, as on slide 20.</li>
+<li>Draw the object diagram for an Instructor, as on slide 23.</li>
 <li>Add a <code>setEmail</code> function to Person and show that Student and Instructor both gain it.</li>
 </ol>
-<!-- Slide 62 -->
+<!-- Slide 65 -->
 </section>
 <section id="inheritance-syntax-ai-search-terms" class="slide level2">
 <h2>Inheritance Syntax: AI Search Terms</h2>
@@ -1898,7 +1941,7 @@ GradStudent
 <li>C++ what is not inherited</li>
 <li>UML generalization arrow</li>
 </ul>
-<!-- Slide 63 -->
+<!-- Slide 66 -->
 </section>
 <section id="inheritance-syntax-questions-for-reflection" class="slide level2">
 <h2>Inheritance Syntax: Questions for Reflection</h2>
@@ -1906,7 +1949,7 @@ GradStudent
 <li>Where in the object does a Student’s name live?</li>
 <li>Why does <code>ava.print()</code> leave out the major?</li>
 </ul>
-<!-- Slide 64 -->
+<!-- Slide 67 -->
 </section>
 <section id="inheritance-access-control-good-practices" class="slide level2">
 <h2>Inheritance Access Control: Good Practices</h2>
@@ -1915,7 +1958,7 @@ GradStudent
 <li>Give derived classes what they need through public or protected member functions.</li>
 <li>Always write <code>public</code> after the colon.</li>
 </ul>
-<!-- Slide 65 -->
+<!-- Slide 68 -->
 </section>
 <section id="inheritance-access-control-common-mistakes" class="slide level2">
 <h2>Inheritance Access Control: Common Mistakes</h2>
@@ -1924,7 +1967,7 @@ GradStudent
 <li>Expecting protected to open a member to <code>main</code>.</li>
 <li>Leaving out <code>public</code> and getting an error that points at <code>main</code> instead of the class.</li>
 </ul>
-<!-- Slide 66 -->
+<!-- Slide 69 -->
 </section>
 <section id="inheritance-access-control-more-examples" class="slide level2">
 <h2>Inheritance Access Control: More Examples</h2>
@@ -1967,7 +2010,7 @@ GradStudent
 <ul>
 <li>Protected and private inheritance mean “implemented using,” not “is a.” This course uses public inheritance only.</li>
 </ul>
-<!-- Slide 67 -->
+<!-- Slide 70 -->
 </section>
 <section id="inheritance-access-control-practice-problems" class="slide level2">
 <h2>Inheritance Access Control: Practice Problems</h2>
@@ -1976,7 +2019,7 @@ GradStudent
 <li>Fix <code>cpp/private_name.cpp</code> both ways, with a getter and with protected.</li>
 <li>Remove <code>public</code> from <code>cpp/getter_vs_protected.cpp</code> and explain each new error.</li>
 </ol>
-<!-- Slide 68 -->
+<!-- Slide 71 -->
 </section>
 <section id="inheritance-access-control-ai-search-terms" class="slide level2">
 <h2>Inheritance Access Control: AI Search Terms</h2>
@@ -1986,7 +2029,7 @@ GradStudent
 <li>C++ is inaccessible within this context</li>
 <li>C++ protected data members design</li>
 </ul>
-<!-- Slide 69 -->
+<!-- Slide 72 -->
 </section>
 <section id="inheritance-access-control-questions-for-reflection" class="slide level2">
 <h2>Inheritance Access Control: Questions for Reflection</h2>
@@ -1994,7 +2037,7 @@ GradStudent
 <li>Why is a derived class treated as an outsider to private members?</li>
 <li>What would break if Person changed how it stores a protected member?</li>
 </ul>
-<!-- Slide 70 -->
+<!-- Slide 73 -->
 </section>
 <section id="base-class-construction-good-practices" class="slide level2">
 <h2>Base Class Construction: Good Practices</h2>
@@ -2003,7 +2046,7 @@ GradStudent
 <li>Let each class build its own members; pass values up instead of reaching in.</li>
 <li>Validate in the base constructor once instead of in every derived constructor.</li>
 </ul>
-<!-- Slide 71 -->
+<!-- Slide 74 -->
 </section>
 <section id="base-class-construction-common-mistakes" class="slide level2">
 <h2>Base Class Construction: Common Mistakes</h2>
@@ -2012,7 +2055,7 @@ GradStudent
 <li>Naming base members, such as <code>name(n)</code>, in the derived class’s initializer list.</li>
 <li>Expecting a derived class to inherit the base constructor automatically.</li>
 </ul>
-<!-- Slide 72 -->
+<!-- Slide 75 -->
 </section>
 <section id="base-class-construction-more-examples" class="slide level2">
 <h2>Base Class Construction: More Examples</h2>
@@ -2027,7 +2070,7 @@ GradStudent
 <ul>
 <li>GradStudent calls Student’s constructor, which calls Person’s. Each class passes values one level up.</li>
 </ul>
-<!-- Slide 73 -->
+<!-- Slide 76 -->
 </section>
 <section id="base-class-construction-practice-problems" class="slide level2">
 <h2>Base Class Construction: Practice Problems</h2>
@@ -2036,7 +2079,7 @@ GradStudent
 <li>Give Person a default constructor and explain what changes in <code>cpp/base_body_assign.cpp</code>.</li>
 <li>Make Person’s constructor throw when the ID is negative and catch it in <code>main</code>.</li>
 </ol>
-<!-- Slide 74 -->
+<!-- Slide 77 -->
 </section>
 <section id="base-class-construction-ai-search-terms" class="slide level2">
 <h2>Base Class Construction: AI Search Terms</h2>
@@ -2046,7 +2089,7 @@ GradStudent
 <li>C++ no matching function for call to base constructor</li>
 <li>C++ inheriting constructors using Base::Base</li>
 </ul>
-<!-- Slide 75 -->
+<!-- Slide 78 -->
 </section>
 <section id="base-class-construction-questions-for-reflection" class="slide level2">
 <h2>Base Class Construction: Questions for Reflection</h2>
@@ -2054,7 +2097,7 @@ GradStudent
 <li>Why can Student not build <code>name</code> even when it is protected?</li>
 <li>Why does the base class go first in the initializer list?</li>
 </ul>
-<!-- Slide 76 -->
+<!-- Slide 79 -->
 </section>
 <section id="construction-and-destruction-order-good-practices" class="slide level2">
 <h2>Construction and Destruction Order: Good Practices</h2>
@@ -2063,7 +2106,7 @@ GradStudent
 <li>Keep destructors simple; they run in an order you do not control.</li>
 <li>Use printing constructors and destructors to check an order you are unsure of.</li>
 </ul>
-<!-- Slide 77 -->
+<!-- Slide 80 -->
 </section>
 <section id="construction-and-destruction-order-common-mistakes" class="slide level2">
 <h2>Construction and Destruction Order: Common Mistakes</h2>
@@ -2072,7 +2115,7 @@ GradStudent
 <li>Expecting the order in the initializer list to change the build order.</li>
 <li>Using a derived member from a base class destructor; it is already gone.</li>
 </ul>
-<!-- Slide 78 -->
+<!-- Slide 81 -->
 </section>
 <section id="construction-and-destruction-order-more-examples" class="slide level2">
 <h2>Construction and Destruction Order: More Examples</h2>
@@ -2086,7 +2129,7 @@ GradStudent
 <ul>
 <li>Built: Person, Student’s members, Student body, <code>thesis</code>, GradStudent body. Destroyed in reverse.</li>
 </ul>
-<!-- Slide 79 -->
+<!-- Slide 82 -->
 </section>
 <section id="construction-and-destruction-order-practice-problems" class="slide level2">
 <h2>Construction and Destruction Order: Practice Problems</h2>
@@ -2095,7 +2138,7 @@ GradStudent
 <li>Give Person a Transcript member too, and predict the full order.</li>
 <li>Make the Transcript constructor throw and predict which destructors run.</li>
 </ol>
-<!-- Slide 80 -->
+<!-- Slide 83 -->
 </section>
 <section id="construction-and-destruction-order-ai-search-terms" class="slide level2">
 <h2>Construction and Destruction Order: AI Search Terms</h2>
@@ -2105,7 +2148,7 @@ GradStudent
 <li>C++ members initialized in declaration order</li>
 <li>C++ destructor call order</li>
 </ul>
-<!-- Slide 81 -->
+<!-- Slide 84 -->
 </section>
 <section id="construction-and-destruction-order-questions-for-reflection" class="slide level2">
 <h2>Construction and Destruction Order: Questions for Reflection</h2>
@@ -2113,7 +2156,7 @@ GradStudent
 <li>Why must destruction run in reverse order?</li>
 <li>Where does the base part fit in 11.01’s member order rule?</li>
 </ul>
-<!-- Slide 82 -->
+<!-- Slide 85 -->
 
 </section></section>
     </div>

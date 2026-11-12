@@ -1,20 +1,20 @@
 <!-- Topic 3: Inheritance Access Control -->
-<!-- Slides 24–32 -->
+<!-- Slides 27–35 -->
 
 # Inheritance Access Control
-<!-- Slide 23 -->
+<!-- Slide 26 -->
 
 ## Can Student Read Its Own Name? {.smaller}
 
 - Every Student holds a `name`. Can Student's own code use it?
 
 ::: notes
-Slides 24–32
+Slides 27–35
 
 Most students will say yes: it is in the object. The next slide tries it.
 :::
 
-<!-- Slide 24 -->
+<!-- Slide 27 -->
 
 ---
 
@@ -28,7 +28,7 @@ Private: everything bounces off, including the child. Protected: outside code bo
 The next slide shows the private case in code, and the Who Can See What? table puts the whole picture in rows.
 :::
 
-<!-- Slide 25 -->
+<!-- Slide 28 -->
 
 ---
 
@@ -66,7 +66,7 @@ private protects Person's invariants from everyone, including its children. If a
 Full program: cpp/private_name.cpp
 :::
 
-<!-- Slide 26 -->
+<!-- Slide 29 -->
 
 ---
 
@@ -135,7 +135,7 @@ Both print Ava, CS. Fix 1 changes nothing about Person's data; Fix 2 opens name 
 Full program: cpp/getter_vs_protected.cpp
 :::
 
-<!-- Slide 27 -->
+<!-- Slide 30 -->
 
 ---
 
@@ -151,7 +151,7 @@ Full program: cpp/getter_vs_protected.cpp
 protected sits between the other two: family only. This table assumes public inheritance, which is the only kind this course uses. The appendix shows what protected and private inheritance change.
 :::
 
-<!-- Slide 28 -->
+<!-- Slide 31 -->
 
 ---
 
@@ -200,7 +200,7 @@ D fails: main is outside code. g++: 'std::string Member::name' is protected with
 Full program: cpp/access_predict.cpp
 :::
 
-<!-- Slide 29 -->
+<!-- Slide 32 -->
 
 ---
 
@@ -226,7 +226,7 @@ This is the inheritance bug students will hit in Homework 6. The error points at
 Full program: cpp/forgot_public.cpp
 :::
 
-<!-- Slide 30 -->
+<!-- Slide 33 -->
 
 ---
 
@@ -244,7 +244,7 @@ Full program: cpp/forgot_public.cpp
 If Person later splits name into first and last, Fix 1 changes one getter. With protected name, every derived class that used name breaks. Homework 6 accepts either, but the private-plus-getter version is easier to change.
 :::
 
-<!-- Slide 31 -->
+<!-- Slide 34 -->
 
 ---
 
@@ -257,4 +257,4 @@ If Person later splits name into first and last, Fix 1 changes one getter. With 
 
 :::
 
-<!-- Slide 32 -->
+<!-- Slide 35 -->

@@ -1,5 +1,5 @@
 <!-- Topic 1: Is-a Versus Has-a -->
-<!-- Slides 5–14 -->
+<!-- Slides 5–17 -->
 
 # Is-a Versus Has-a
 <!-- Slide 4 -->
@@ -9,7 +9,7 @@
 ![](images/relationships-boom.png){width="80%" fig-align="center" fig-alt="The Student class diagram from 11.01: destroying a Student destroys its composed Test, while the Instructor and CIS_Student are not destroyed"}
 
 ::: notes
-Slides 5–14
+Slides 5–17
 
 This is the Student diagram from 11.01. Thursday we followed the composition and aggregation arrows. Today we follow the one we set aside: the inheritance arrow.
 :::
@@ -75,6 +75,40 @@ Cat is now both a child of Animal and a parent of Coon Cat. Topic 5 comes back t
 
 ---
 
+## Another Example
+
+<!-- Slide 10 -->
+
+---
+
+![](images/inherit2a.png){fig-align="center" fig-alt="inherit.cpp: class TCD, a Traffic Control Device, with public id = 999, device, and Report(). StopSign and StopLight inherit publicly from TCD and set device in their constructors. A diagram shows TCD above Stoplight and Stopsign."}
+
+::: notes
+TCD is a Traffic Control Device. Run the is-a test: a stop sign is a traffic control device, and so is a stoplight.
+
+TCD holds id, device, and Report(). StopSign and StopLight each write one constructor and nothing else. Ask students to predict what sign.Report() and light.Report() print before advancing.
+:::
+
+<!-- Slide 11 -->
+
+---
+
+![](images/inherit2b.png){fig-align="center" fig-alt="The same inherit.cpp program with TCD labeled Parent and Stoplight and Stopsign labeled Child, and the terminal output: Device report for Stopsign 999, Device report for Stoplight 999."}
+
+::: notes
+Output:
+Device report for Stopsign 999
+Device report for Stoplight 999
+
+Neither child wrote Report(), yet both can call it. Both print 999 because id is set once, in TCD.
+
+Note for Topic 3: TCD's data is public, which is why the child constructors can assign device directly. Topic 3 makes that data private and shows what breaks.
+:::
+
+<!-- Slide 12 -->
+
+---
+
 ## The Stack Trap
 
 :::: {.columns}
@@ -83,6 +117,9 @@ Cat is now both a child of Animal and a parent of Coon Cat. Topic 5 comes back t
 ::: {style="font-size: 55%;"}
 ~~~cpp
 class Stack : public vector<int> {
+    // no private vector: Stack IS a vector,
+    // so the storage is inherited
+
 public:
     void push(int value) { push_back(value); }
     int pop() {
@@ -90,6 +127,7 @@ public:
         pop_back();
         return top;
     }
+    // no empty() here: it is inherited from vector
 };
 
 int main() {
@@ -125,7 +163,7 @@ Answer: it compiles and prints 2 42 99. insert and operator[] were inherited fro
 Full program: cpp/stack_trap.cpp
 :::
 
-<!-- Slide 10 -->
+<!-- Slide 13 -->
 
 ---
 
@@ -156,7 +194,7 @@ With composition, s.insert(s.begin(), 99) no longer compiles: Stack has no membe
 Full program: cpp/stack_has_a.cpp
 :::
 
-<!-- Slide 11 -->
+<!-- Slide 14 -->
 
 ---
 
@@ -219,7 +257,7 @@ A preview: the syntax is Topic 2. For now, read : public Person as "is a Person.
 Full program: cpp/student_instructor.cpp
 :::
 
-<!-- Slide 12 -->
+<!-- Slide 15 -->
 
 ---
 
@@ -233,7 +271,7 @@ Full program: cpp/student_instructor.cpp
 The third bullet is the big one, and it is why the is-a test must hold for everything: code written for a Person will be handed a Student and must still work.
 :::
 
-<!-- Slide 13 -->
+<!-- Slide 16 -->
 
 ---
 
@@ -246,4 +284,4 @@ The third bullet is the big one, and it is why the is-a test must hold for every
 
 :::
 
-<!-- Slide 14 -->
+<!-- Slide 17 -->
