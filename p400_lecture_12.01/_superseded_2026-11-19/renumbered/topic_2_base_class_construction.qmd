@@ -1,0 +1,195 @@
+<!-- Topic 2: Base Class Construction -->
+<!-- Slides 25–40 -->
+# Base Class Construction
+<!-- Slide 24 -->
+
+
+## Passing Arguments to Base Constructors
+
+This slide develops the authoritative source material on **passing arguments to base constructors**.
+
+::: notes
+Slides 25–40
+:::
+
+<!-- Slide 25 -->
+
+---
+
+## Passing Arguments to Base Constructors
+
+This slide develops the authoritative source material on **passing arguments to base constructors**.
+
+::: notes
+
+:::
+
+<!-- Slide 26 -->
+
+---
+
+## Passing Arguments to Base Constructors
+
+This slide develops the authoritative source material on **passing arguments to base constructors**.
+
+::: notes
+
+:::
+
+<!-- Slide 27 -->
+
+---
+
+## Passing Arguments to Base Constructors
+
+This slide develops the authoritative source material on **passing arguments to base constructors**.
+
+::: notes
+
+:::
+
+<!-- Slide 28 -->
+
+---
+
+## Passing Arguments to Base Constructors
+
+This slide develops the authoritative source material on **passing arguments to base constructors**.
+
+::: notes
+
+:::
+
+<!-- Slide 29 -->
+
+---
+
+## Passing Arguments to Base Constructors
+
+This slide develops the authoritative source material on **passing arguments to base constructors**.
+
+::: notes
+
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## Passing Arguments to Base Constructors
+
+This slide develops the authoritative source material on **passing arguments to base constructors**.
+
+::: notes
+
+:::
+
+<!-- Slide 31 -->
+
+---
+
+## Passing Arguments to Base Constructors
+
+This slide develops the authoritative source material on **passing arguments to base constructors**.
+
+::: notes
+
+:::
+
+<!-- Slide 32 -->
+
+---
+
+## Passing Arguments to Base Constructors
+
+This slide develops the authoritative source material on **passing arguments to base constructors**.
+
+::: notes
+
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## Inheritance Specialization
+
+This slide develops the authoritative source material on **inheritance specialization**.
+
+::: notes
+
+:::
+
+<!-- Slide 34 -->
+
+---
+
+## Inheritance Specialization
+
+This slide develops the authoritative source material on **inheritance specialization**.
+
+::: notes
+
+:::
+
+<!-- Slide 35 -->
+
+---
+
+## Inheritance Specialization
+
+This slide develops the authoritative source material on **inheritance specialization**.
+
+::: notes
+
+:::
+
+<!-- Slide 36 -->
+
+---
+
+## Inheritance Specialization
+
+This slide develops the authoritative source material on **inheritance specialization**.
+
+::: notes
+
+:::
+
+<!-- Slide 37 -->
+
+---
+
+## Inheritance Specialization
+
+This slide develops the authoritative source material on **inheritance specialization**.
+
+::: notes
+
+:::
+
+<!-- Slide 38 -->
+
+---
+
+## Inheritance Specialization
+
+This slide develops the authoritative source material on **inheritance specialization**.
+
+::: notes
+
+:::
+
+<!-- Slide 39 -->
+
+---
+
+## Inheritance Specialization
+
+This slide develops the authoritative source material on **inheritance specialization**.
+
+::: notes
+
+:::
+
+<!-- Slide 40 -->

@@ -1,0 +1,182 @@
+<!-- Topic 0x: Style and Design - Meyers -->
+<!-- Slides 5–9 -->
+
+# Style and Design: Scott Meyers
+<!-- Slide 4 -->
+
+## Style and Design: Scott Meyers
+
+:::: {.columns}
+
+::: {.column width="35%"}
+![](images/myers.jpg){style="max-height: 55vh;" fig-alt="Scott Meyers"}
+:::
+
+::: {.column width="65%"}
+- Scott Meyers wrote *Effective C++*, design advice given as short, numbered items.
+- His design philosophy: make interfaces easy to use correctly and hard to use incorrectly. If a mistake is possible, arrange for the compiler to catch it.
+:::
+
+::::
+
+::: notes
+Slides 5–9
+
+A review of 11.02 before today's material. Hand out assets/Style_and_Design_-_Scott_Meyers.md. Students work in pairs for about 15 minutes, then discuss. The answer sheet is assets/Instructor_s_Answer_Sheet_-_Scott_Meyers.md.
+
+The design philosophy is Meyers's Item 18, "Make interfaces easy to use correctly and hard to use incorrectly." Today's programs apply it to inheritance through Item 32: public inheritance means is-a, so everything true of the base class must be true of the derived class. Two programs model a penguin; both compile and run. Ask which one tells the truth.
+
+The programs are illustrations inspired by Meyers's items, not code he wrote.
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## Program 1
+
+::: {style="font-size: 55%;"}
+~~~cpp
+class Bird {
+private:
+    string name;
+
+public:
+    Bird(const string& n) : name(n) { }
+    string getName() const { return name; }
+
+    void fly() const {
+        cout << name << " flaps its wings and flies" << endl;
+    }
+};
+
+class Penguin : public Bird {
+public:
+    Penguin(const string& n) : Bird(n) { }
+
+    void swim() const {
+        cout << getName() << " swims" << endl;
+    }
+};
+
+int main() {
+    Penguin pingu("Pingu");
+    pingu.swim();
+    pingu.fly();
+    return 0;
+}
+~~~
+:::
+
+::: notes
+Output:
+Pingu swims
+Pingu flaps its wings and flies
+
+It compiles and runs, and it says something false. Penguin never mentions fly(), but inheriting from Bird brought it along.
+
+Full program: cpp/meyers_program1.cpp
+:::
+
+<!-- Slide 6 -->
+
+---
+
+## Program 2
+
+::: {style="font-size: 50%;"}
+~~~cpp
+class Bird {
+private:
+    string name;
+
+public:
+    Bird(const string& n) : name(n) { }
+    string getName() const { return name; }
+};
+
+class FlyingBird : public Bird {
+public:
+    FlyingBird(const string& n) : Bird(n) { }
+
+    void fly() const {
+        cout << getName() << " flaps its wings and flies" << endl;
+    }
+};
+
+class Penguin : public Bird {
+public:
+    Penguin(const string& n) : Bird(n) { }
+
+    void swim() const {
+        cout << getName() << " swims" << endl;
+    }
+};
+
+class Sparrow : public FlyingBird {
+public:
+    Sparrow(const string& n) : FlyingBird(n) { }
+};
+
+int main() {
+    Penguin pingu("Pingu");
+    Sparrow jack("Jack");
+    pingu.swim();
+    jack.fly();
+    return 0;
+}
+~~~
+:::
+
+::: notes
+Output:
+Pingu swims
+Jack flaps its wings and flies
+
+Adding pingu.fly() does not compile: 'class Penguin' has no member named 'fly'. Bird makes no promise about flying, so the compiler rejects the impossible request.
+
+Full program: cpp/meyers_program2.cpp
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## Questions
+
+::: {style="font-size: 80%;"}
+1. In Program 1, list every member a `Penguin` has, and where each one came from.
+2. Predict the output of each program. Do they match?
+3. Is "A Penguin is a Bird" true in biology? Is it true in Program 1?
+4. What happens if Program 2's `main` calls `pingu.fly()`? Is that better or worse than Program 1?
+5. How does a `Penguin` give its name to the `Bird` part? In what order are the parts of `jack` built?
+6. `name` is private. How does `swim()` print it?
+7. A zoo adds an Ostrich, an Eagle, and a Duck that flies and swims. Which design do you extend, and how?
+:::
+
+::: notes
+Short answers (the answer sheet has the full versions):
+1. name (private, inaccessible), getName(), and fly() from Bird; the constructor and swim() from Penguin.
+2. Program 1: Pingu swims / Pingu flaps its wings and flies. Program 2: Pingu swims / Jack flaps its wings and flies.
+3. True in biology; false in Program 1, because Bird promises fly().
+4. Compile error: 'class Penguin' has no member named 'fly'. Better: the compiler catches the mistake.
+5. : Bird(n) in the initializer list. Bird, then FlyingBird, then Sparrow.
+6. Through the inherited public getName(); private means this class only.
+7. Extend Program 2: Eagle from FlyingBird, Ostrich from Bird. The Duck exposes the limit of the hierarchy and points toward multiple inheritance or has-a, later today.
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Discussion
+
+- Should a class hierarchy model the real world, or the promises a program makes to the code that uses it?
+
+::: notes
+Ask which program students would rather maintain, then what is actually wrong with Program 1. Nothing is wrong with its C++; Bird makes a promise Penguin cannot keep.
+
+Meyers's point: public inheritance is a promise. Bridge to Topic 1: overriding lets a derived class change how an inherited function behaves. An override that changes what the function promises is the penguin mistake in a new form, and Topic 1's Keep the Promise slide comes back to it.
+:::
+
+<!-- Slide 9 -->

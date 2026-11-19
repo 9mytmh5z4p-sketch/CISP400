@@ -1,0 +1,378 @@
+<!-- Topic 3: Multiple Inheritance and the Diamond Problem -->
+<!-- Slides 30–39 -->
+
+# Multiple Inheritance and the Diamond Problem
+<!-- Slide 29 -->
+
+## Can a Class Have Two Parents? {.smaller}
+
+- A teaching assistant takes classes and gets paid. Is a TA a Student or an Employee?
+
+::: notes
+Slides 30–39
+
+Run the is-a test both ways: a TA is a Student, and a TA is an Employee. Both pass. C++ lets a class have both parents.
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## Multiple Inheritance Anatomy
+
+~~~cpp
+class TeachingAssistant : public Student, public Employee {
+~~~
+
+| Part | Meaning |
+|---|---|
+| `public Student` | The first parent |
+| `,` | Separates the parents |
+| `public Employee` | The second parent, with its own `public` |
+| `{ ... }` | The body declares only what a TA adds |
+
+- Leave out the second `public` and Employee becomes a private parent: 11.02's Forgot public, in a new place.
+
+::: notes
+A TA gets every public member of both parents. Each parent is listed with its own access specifier; the first public does not carry over to the second.
+:::
+
+<!-- Slide 31 -->
+
+---
+
+## Multiple Inheritance Anatomy
+
+::: {style="font-size: 50%;"}
+~~~cpp
+class Student {
+private:
+    string name;
+    string major;
+
+public:
+    Student(const string& n, const string& m) : name(n), major(m) {
+        cout << "Student built" << endl;
+    }
+    string getMajor() const { return major; }
+};
+
+class Employee {
+private:
+    string name;
+    double salary;
+
+public:
+    Employee(const string& n, double s) : name(n), salary(s) {
+        cout << "Employee built" << endl;
+    }
+    double getSalary() const { return salary; }
+};
+
+// two parents, each with its own public
+class TeachingAssistant : public Student, public Employee {
+public:
+    TeachingAssistant(const string& n, const string& m, double s)
+        : Student(n, m), Employee(n, s) { }
+};
+
+int main() {
+    TeachingAssistant sam("Sam", "CS", 1200.00);
+    cout << "Major: " << sam.getMajor() << endl;     // from Student
+    cout << "Salary: " << sam.getSalary() << endl;   // from Employee
+    return 0;
+}
+~~~
+:::
+
+::: notes
+Output:
+Student built
+Employee built
+Major: CS
+Salary: 1200
+
+The constructor passes arguments up to each parent, as in 11.02. The parents are built in the order the class line lists them, Student then Employee, whatever order the initializer list uses. Destruction runs in reverse.
+
+Point out that the name is passed to both parents, so a TA stores it twice. What If Both Parents Are People? comes back to that.
+
+Full program: cpp/ta_basic.cpp
+:::
+
+<!-- Slide 32 -->
+
+---
+
+## Same Name, Two Parents
+
+~~~cpp
+class Student {
+    ...
+    void print() const { cout << name << ", " << major << endl; }
+};
+
+class Employee {
+    ...
+    void print() const { cout << name << ", paid " << salary << endl; }
+};
+
+TeachingAssistant sam("Sam", "CS", 1200.00);
+sam.print();      // error
+~~~
+
+- g++: `request for member 'print' is ambiguous`
+- Both versions are equally close, and the compiler will not guess.
+
+::: notes
+In Topic 1, GradStudent found the nearest print() up a single line of parents. With two parents at the same distance, there is no nearest one. Callers can pick with sam.Student::print(), but the class should decide, which is the next slide.
+
+Full program: cpp/ta_ambiguous.cpp
+:::
+
+<!-- Slide 33 -->
+
+---
+
+## Fix: Override and Call Both
+
+:::: {.columns}
+
+::: {.column width="60%"}
+::: {style="font-size: 50%;"}
+~~~cpp
+class TeachingAssistant : public Student, public Employee {
+public:
+    TeachingAssistant(const string& n, const string& m, double s)
+        : Student(n, m), Employee(n, s) { }
+
+    // TA's own print() ends the ambiguity
+    void print() const {
+        Student::print();
+        Employee::print();
+    }
+};
+
+int main() {
+    TeachingAssistant sam("Sam", "CS", 1200.00);
+    sam.print();
+    return 0;
+}
+~~~
+:::
+:::
+
+::: {.column width="40%"}
+. . .
+
+~~~
+Sam, CS
+Sam, paid 1200
+~~~
+:::
+
+::::
+
+::: notes
+Topic 2 put to work: TA overrides print() and extends both parents' versions. Now sam.print() has one nearest version, TA's own.
+
+Full program: cpp/ta_print_both.cpp
+:::
+
+<!-- Slide 34 -->
+
+---
+
+## What If Both Parents Are People?
+
+:::: {.columns}
+
+::: {.column width="45%"}
+~~~
+          Person
+         /      \
+   Student    Employee
+         \      /
+    TeachingAssistant
+~~~
+:::
+
+::: {.column width="55%"}
+~~~
+sam (a TeachingAssistant)
++-----------------------------+
+| Student part                |
+|    Person part: "Sam"       |
+|    major: "CS"              |
++-----------------------------+
+| Employee part               |
+|    Person part: "Sam"       |
+|    salary: 1200             |
++-----------------------------+
+~~~
+:::
+
+::::
+
+::: notes
+Real Students and Employees share a name, so both should inherit from Person. The class diagram is a diamond; that is where the name comes from.
+
+The object is the problem: each parent brings its own complete Person part (11.02 Topic 2), so sam holds two Persons and two names. Ask students what sam.getName() should return.
+:::
+
+<!-- Slide 35 -->
+
+---
+
+## Two Persons, One TA
+
+:::: {.columns}
+
+::: {.column width="60%"}
+::: {style="font-size: 50%;"}
+~~~cpp
+class Person {
+private:
+    string name;
+
+public:
+    Person(const string& n) : name(n) { cout << "Person built: " << name << endl; }
+    string getName() const { return name; }
+};
+
+class Student : public Person {
+    ...
+    Student(const string& n, const string& m) : Person(n), major(m) { }
+};
+
+class Employee : public Person {
+    ...
+    Employee(const string& n, double s) : Person(n), salary(s) { }
+};
+
+int main() {
+    TeachingAssistant sam("Sam", "CS", 1200.00);
+    cout << sam.getName() << endl;
+    return 0;
+}
+~~~
+:::
+:::
+
+::: {.column width="40%"}
+. . .
+
+- `sam.getName()`: `request for member 'getName' is ambiguous`
+
+. . .
+
+- Without that line:
+
+~~~
+Person built: Sam
+Person built: Sam
+~~~
+:::
+
+::::
+
+::: notes
+Ask two questions before revealing: does the last line compile, and how many times does Person built print?
+
+getName() exists in both Person parts, so it is ambiguous, exactly like print() on Same Name, Two Parents. With the line removed, the program builds two Persons, one for each parent. TeachingAssistant is as in the complete example, passing the name to both parents.
+
+Full programs: cpp/diamond_ambiguous.cpp and cpp/diamond_twice.cpp
+:::
+
+<!-- Slide 36 -->
+
+---
+
+## The Escape Hatch: virtual Inheritance
+
+~~~cpp
+class Student : virtual public Person { ... };
+class Employee : virtual public Person { ... };
+
+class TeachingAssistant : public Student, public Employee {
+public:
+    TeachingAssistant(const string& n, const string& m, double s)
+        : Person(n), Student(n, m), Employee(n, s) { }
+};
+~~~
+
+- Now `Person built: Sam` prints once, and `sam.getName()` compiles.
+- This `virtual` is not Tuesday's. 13.02's `virtual` functions are a different feature that uses the same keyword.
+
+::: notes
+virtual public Person means Student and Employee agree to share one Person part. Because the Person is shared, the most derived class, TeachingAssistant, must build it itself with Person(n); the Person(n) calls inside Student and Employee are skipped when a TA is built. Homework 6 does not need virtual inheritance. The appendix has the full program.
+
+Output of the full program:
+Person built: Sam
+Sam
+
+Full program: cpp/diamond_virtual.cpp
+:::
+
+<!-- Slide 37 -->
+
+---
+
+## Has-a Instead
+
+:::: {.columns}
+
+::: {.column width="60%"}
+::: {style="font-size: 50%;"}
+~~~cpp
+class Job {
+private:
+    string title;
+    double salary;
+
+public:
+    Job(const string& t, double s) : title(t), salary(s) { }
+    double getSalary() const { return salary; }
+};
+
+class TeachingAssistant : public Student {     // is a Student
+private:
+    Job job;                                    // has a Job
+
+public:
+    TeachingAssistant(const string& n, const string& m, double s)
+        : Student(n, m), job("TA", s) { }
+
+    double getSalary() const { return job.getSalary(); }
+};
+~~~
+:::
+:::
+
+::: {.column width="40%"}
+- A TA is a Student and has a job.
+- One Person, no ambiguity, no `virtual`.
+- Output: `Sam, CS, paid 1200`, with `Person built: Sam` once.
+:::
+
+::::
+
+::: notes
+The is-a and has-a tests from 11.02 settle it: "a TA has a job" is at least as true as "a TA is an employee," and it removes the diamond. Reach for multiple inheritance only when both is-a sentences hold for everything each parent does. Java and C# allow only one base class for this reason.
+
+Full program: cpp/ta_has_a.cpp
+:::
+
+<!-- Slide 38 -->
+
+---
+
+## Summary
+
+- A class can inherit from two parents, each with its own `public`; a name both parents have is ambiguous until the class overrides it.
+- When both parents share a base, the object holds two copies. `virtual` inheritance patches it, and has-a usually avoids it.
+
+::: notes
+
+:::
+
+<!-- Slide 39 -->

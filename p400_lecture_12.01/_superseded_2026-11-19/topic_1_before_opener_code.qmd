@@ -1,0 +1,284 @@
+<!-- Topic 1: Overriding Functions -->
+<!-- Slides 8–16 -->
+
+# Overriding Functions
+<!-- Slide 7 -->
+
+## Can a Student Print Its Major? {.smaller}
+
+- Last week `ava.print()` printed `Ava (1001)` and no major.
+- How does Student change what a function it inherited does?
+
+::: notes
+Slides 8–16
+
+This is the cliffhanger from 11.02's Next Time slide. Person's print() knows nothing about majors, and Student cannot edit Person.
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## What Is Overriding?
+
+- **Overriding:** a derived class writes its own version of a function it inherited, with the same name, parameters, and `const`.
+- A Student object then uses Student's version. A Person object still uses Person's.
+- Person's `print()` shows the name and ID. Student's `print()` shows the name, ID, and major.
+
+::: notes
+The base class is not changed. The derived class replaces the behavior for its own objects only.
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Overriding Anatomy
+
+~~~cpp
+void print() const;    // in Person
+void print() const;    // in Student: overrides Person::print()
+~~~
+
+| Part | Must it match? |
+|---|---|
+| Name, `print` | Yes |
+| Parameter list, `()` | Yes. A different list hides the base version instead |
+| `const` | Yes |
+| Return type, `void` | Yes |
+| Body | No. A new body is the whole point |
+
+::: notes
+Students meet the override keyword in 13.02, where it asks the compiler to check this table for you. It only works with virtual functions, so it waits until then.
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## Overriding Anatomy
+
+::: {style="font-size: 55%;"}
+~~~cpp
+class Person {
+private:
+    string name;
+    int id;
+
+public:
+    Person(const string& n, int i) : name(n), id(i) { }
+    string getName() const { return name; }
+    int getId() const { return id; }
+
+    void print() const {
+        cout << name << " (" << id << ")" << endl;
+    }
+};
+
+class Student : public Person {
+private:
+    string major;
+
+public:
+    Student(const string& n, int i, const string& m) : Person(n, i), major(m) { }
+
+    // same name, same parameters, same const: this overrides Person::print()
+    void print() const {
+        cout << getName() << " (" << getId() << "), " << major << endl;
+    }
+};
+
+int main() {
+    Person lee("Lee", 7);
+    Student ava("Ava", 1001, "CS");
+
+    lee.print();    // Person's version
+    ava.print();    // Student's version
+    return 0;
+}
+~~~
+:::
+
+::: notes
+Output:
+Lee (7)
+Ava (1001), CS
+
+Student's print() uses getName() and getId() because name and id are private to Person (11.02, Topic 3). It also repeats the work Person's print() already does. Topic 2 fixes that.
+
+Full program: cpp/override_print.cpp
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## Which print() Runs?
+
+:::: {.columns}
+
+::: {.column width="60%"}
+::: {style="font-size: 50%;"}
+~~~cpp
+// Person and Student as on the previous slide
+
+class GradStudent : public Student {
+private:
+    string advisor;
+
+public:
+    GradStudent(const string& n, int i, const string& m, const string& a)
+        : Student(n, i, m), advisor(a) { }
+    // no print() here
+};
+
+int main() {
+    Person lee("Lee", 7);
+    Student ava("Ava", 1001, "CS");
+    GradStudent raj("Raj", 2002, "Math", "Ng");
+
+    lee.print();
+    ava.print();
+    raj.print();
+    return 0;
+}
+~~~
+:::
+:::
+
+::: {.column width="40%"}
+. . .
+
+~~~
+Lee (7)
+Ava (1001), CS
+Raj (2002), Math
+~~~
+:::
+
+::::
+
+::: notes
+Ask students to predict the third line before revealing. GradStudent has no print(), so the compiler looks up the family: Student has one, so Student's runs. The nearest version wins, and Person's is never reached. The advisor does not appear, because Student's print() knows nothing about advisors.
+
+Full program: cpp/which_print.cpp
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Close, But Not an Override
+
+~~~cpp
+class Student : public Person {
+    ...
+    void print(bool showMajor) const {     // different parameters
+        ...
+    }
+};
+
+int main() {
+    Student ava("Ava", 1001, "CS");
+    ava.print(true);
+    ava.print();       // error
+}
+~~~
+
+- g++: `no matching function for call to 'Student::print()'`
+- A `print` in Student with different parameters hides every `print` from Person. Fix it by matching the signature or renaming the function.
+
+::: notes
+Students expect ava.print() to fall back to Person's version, because it is still there. It is, but once Student declares any function named print, the compiler stops looking in Person. The error points at a call that looks correct, which is why this bug is hard to find. Renaming to printWithMajor is often the clearer fix.
+
+Full program: cpp/name_hiding.cpp
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## Overloading vs. Overriding
+
+| | Overloading | Overriding |
+|---|---|---|
+| Where | The same class | A base class and a derived class |
+| Name | Same | Same |
+| Parameters | Different | Same, including `const` |
+| Which one runs | Chosen by the arguments | Chosen by the object's class |
+| Example | `print()` and `print(ostream&)` in Person | `Person::print()` and `Student::print()` |
+
+::: notes
+Overloading is from the operator overloading and constructor lectures: several functions, one name, told apart by their arguments. Overriding replaces an inherited function for a derived class. The previous slide showed what happens when the two get mixed: a different parameter list in a derived class hides the base version instead of overloading it.
+:::
+
+<!-- Slide 14 -->
+
+---
+
+## Keep the Promise
+
+:::: {.columns}
+
+::: {.column width="60%"}
+::: {style="font-size: 50%;"}
+~~~cpp
+class BankAccount {
+protected:
+    double balance;
+
+public:
+    // the promise: never take out more than is there
+    bool withdraw(double amount) {
+        if (amount > balance) {
+            return false;
+        }
+        balance -= amount;
+        return true;
+    }
+};
+
+class SavingsAccount : public BankAccount {
+public:
+    // charges a 2.00 fee, but forgot the check
+    bool withdraw(double amount) {
+        balance -= amount + 2.00;
+        return true;
+    }
+};
+~~~
+:::
+:::
+
+::: {.column width="40%"}
+- Both start at 50.00 and try to withdraw 100.00. Checking refuses and stays at 50; savings ends at −52.
+- It compiles. Every caller that trusted `withdraw()` to refuse is now wrong.
+- Override to change *how* the request is handled, never *what* the base promised.
+:::
+
+::::
+
+::: notes
+Output of the full program:
+Checking: 50
+Savings: -52
+
+This is the is-a test from 11.02 applied to behavior: a SavingsAccount that can be overdrawn is no longer a BankAccount in the way callers rely on. The fee is a fine reason to override; dropping the check is not. Practice Problem 3 in the appendix asks students to fix it. balance is protected here so the override can change it; 11.02's advice to keep data private still stands, and Topic 2 shows how calling the base version avoids touching balance at all.
+
+Full program: cpp/broken_promise.cpp
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## Summary
+
+- Override an inherited function by writing one with the same name, parameters, and `const`; the object's class decides which runs.
+- A different parameter list hides the base version, and an override must keep the base's promise.
+
+::: notes
+
+:::
+
+<!-- Slide 16 -->

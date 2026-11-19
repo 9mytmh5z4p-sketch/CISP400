@@ -1,0 +1,5 @@
+<!-- Topic 3: Multiple Inheritance -->
+<!-- Slides pending approval -->
+
+# Multiple Inheritance
+<!-- Slide 25 -->

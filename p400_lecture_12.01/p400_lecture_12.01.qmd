@@ -1,37 +1,286 @@
 # Last Time
 
 ::: {.incremental}
-+ **Inheritance**
-+ **Class relationships**
++ **Is-a Versus Has-a**
++ **Inheritance Syntax**
++ **Inheritance Access Control**
++ **Base Class Construction**
++ **Construction and Destruction Order**
 :::
+
+::: notes
+Last week a Student became a Person: public inheritance, private versus protected, passing arguments up with : Person(n, i), and building base first and destroying it last. It ended on a cliffhanger: ava.print() showed only the name and ID.
+:::
+
+<!-- Slide 2 -->
 
 # Today's Agenda
 
-- Inheritance and Overriding
-- Base Class Construction
-- Relationship Summary
-- Practice and Review
-- Multiple Inheritance
-- Access Specifiers
-- Inheritance Design
+- Overriding Functions
+- Calling Base Class Functions
+- Multiple Inheritance and the Diamond Problem
 
-{{< include topic_1_course_framing.qmd >}}
-{{< include topic_2_inheritance_and_overriding.qmd >}}
-{{< include topic_3_base_class_construction.qmd >}}
-{{< include topic_4_relationship_summary.qmd >}}
-{{< include topic_5_practice_and_review.qmd >}}
-{{< include topic_6_multiple_inheritance.qmd >}}
-{{< include topic_7_access_specifiers.qmd >}}
-{{< include topic_8_inheritance_design.qmd >}}
+::: notes
+Reading: textbook Chapter 15; learncpp lessons 24.7 to 24.9, on calling inherited functions, hiding inherited functions, and multiple inheritance.
+:::
+
+<!-- Slide 3 -->
+
+{{< include topic_0x_style_and_design_meyers.qmd >}}
+
+{{< include topic_1_overriding_functions.qmd >}}
+
+{{< include topic_2_calling_base_class_functions.qmd >}}
+
+{{< include topic_2x_programming_activity.qmd >}}
+
+{{< include topic_3_multiple_inheritance_and_the_diamond_problem.qmd >}}
 
 ---
+
 # Key Takeaways
 
-- Constructors, access rules, and overrides define how derived classes behave.
-- Inheritance is most useful when shared behavior and substitutability are clear.
+- Override a function by giving the derived class one with the same name, parameters, and `const`; a different parameter list hides the base version instead.
+- Extend an override by calling the base version, `Person::print()`; without `Person::` the override calls itself forever.
+- An override changes how a request is handled, never what the base promised.
+- Two parents with a shared base give an object two copies of that base; prefer has-a to a diamond.
+
+<!-- Slide 40 -->
 
 ---
+
 # Next Time
 
+- Polymorphism and Virtual Functions (Tuesday, November 24)
+- A `Person*` can point at `ava`, because a Student is a Person. Call `print()` through it. Which version runs?
+
+::: notes
+The hook for 13.02: without virtual, the pointer's type decides, so Person's print() runs. Do not answer it today.
+:::
+
+<!-- Slide 41 -->
+
 ---
+
 # Appendix
+
+<!-- Slide 42 -->
+
+## Overriding Functions: Good Practices
+
+- Copy the base function's declaration exactly, then change only the body.
+- Override only when the derived class must handle the same request differently.
+- Keep every promise the base version makes.
+
+<!-- Slide 43 -->
+
+---
+
+## Overriding Functions: Common Mistakes
+
+- Changing the parameter list and hiding the base version instead of overriding it.
+- Leaving off `const` and getting a second, separate function.
+- Overriding a function so it does something the base version never did.
+
+<!-- Slide 44 -->
+
+---
+
+## Overriding Functions: More Examples
+
+~~~cpp
+class Instructor : public Person {
+private:
+    string office;
+
+public:
+    Instructor(const string& n, int i, const string& o)
+        : Person(n, i), office(o) { }
+
+    void print() const {
+        cout << getName() << " (" << getId() << "), office " << office << endl;
+    }
+};
+~~~
+
+- `ng.print()` shows the office; a Person or a Student still prints its own way.
+
+<!-- Slide 45 -->
+
+---
+
+## Overriding Functions: Practice Problems
+
+1. Give `GradStudent` in `cpp/which_print.cpp` its own `print()` that also shows the advisor, and predict the new output.
+2. Fix `cpp/name_hiding.cpp` two ways: by matching the signature, and by renaming the function.
+3. Fix `SavingsAccount::withdraw()` in `cpp/broken_promise.cpp` so it keeps the base class's promise.
+
+<!-- Slide 46 -->
+
+---
+
+## Overriding Functions: AI Search Terms
+
+- C++ function overriding in a derived class
+- C++ name hiding in inheritance
+- C++ overloading versus overriding
+- Liskov substitution principle example
+
+<!-- Slide 47 -->
+
+---
+
+## Overriding Functions: Questions for Reflection
+
+- Why does `raj.print()` use Student's version and not Person's?
+- Why is an override that drops a check worse than one that does not compile?
+
+<!-- Slide 48 -->
+
+---
+
+## Calling Base Class Functions: Good Practices
+
+- Extend the base version when the derived class adds to its behavior; replace it only when the behavior is truly different.
+- Call the base version first unless the derived part must happen before it.
+- Let the base class keep its own checks instead of copying them into the override.
+
+<!-- Slide 49 -->
+
+---
+
+## Calling Base Class Functions: Common Mistakes
+
+- Leaving off `Person::` and calling the override itself until the program crashes.
+- Copying the base function's body into the override instead of calling it.
+- Forgetting that the base version may already end the line.
+
+<!-- Slide 50 -->
+
+---
+
+## Calling Base Class Functions: More Examples
+
+~~~cpp
+class GradStudent : public Student {
+private:
+    string advisor;
+
+public:
+    GradStudent(const string& n, int i, const string& m, const string& a)
+        : Student(n, i, m), advisor(a) { }
+
+    void print() const {
+        Student::print();                           // which calls Person::print()
+        cout << "Advisor: " << advisor << endl;
+    }
+};
+~~~
+
+- Each level calls the one directly above it. Outside a class, `raj.Person::print()` also works, but it is rarely needed.
+
+<!-- Slide 51 -->
+
+---
+
+## Calling Base Class Functions: Practice Problems
+
+1. Change `cpp/extend_print.cpp` so the major appears on its own labeled line.
+2. Add the GradStudent above to `cpp/extend_print.cpp` and predict the output of `raj.print()`.
+3. Give SavingsAccount in `cpp/promise_fixed.cpp` a `deposit()` override that adds a 1.00 bonus by calling the base version.
+
+<!-- Slide 52 -->
+
+---
+
+## Calling Base Class Functions: AI Search Terms
+
+- C++ call base class function from derived class
+- C++ scope resolution operator base class method
+- C++ infinite recursion in overridden function
+- C++ extend versus replace overridden method
+
+<!-- Slide 53 -->
+
+---
+
+## Calling Base Class Functions: Questions for Reflection
+
+- Why does extending a base function make a derived class easier to keep correct?
+- Who should decide where a line of output ends, the base class or the derived class?
+
+<!-- Slide 54 -->
+
+---
+
+## Multiple Inheritance and the Diamond Problem: Good Practices
+
+- Use multiple inheritance only when both is-a sentences hold for everything each parent does.
+- Write `public` in front of every parent.
+- When two parents share a base, redesign with has-a before reaching for `virtual` inheritance.
+
+<!-- Slide 55 -->
+
+---
+
+## Multiple Inheritance and the Diamond Problem: Common Mistakes
+
+- Writing `public` only before the first parent.
+- Calling a function both parents have and expecting the compiler to choose.
+- Expecting the initializer list to change the order the parents are built.
+
+<!-- Slide 56 -->
+
+---
+
+## Multiple Inheritance and the Diamond Problem: More Examples
+
+~~~cpp
+class Student : virtual public Person {
+private:
+    string major;
+
+public:
+    Student(const string& n, const string& m) : Person(n), major(m) { }
+};
+
+class TeachingAssistant : public Student, public Employee {
+public:
+    TeachingAssistant(const string& n, const string& m, double s)
+        : Person(n), Student(n, m), Employee(n, s) { }
+};
+~~~
+
+- With a virtual base, the most derived class builds it. Student's `Person(n)` runs only when a plain Student is built.
+
+<!-- Slide 57 -->
+
+---
+
+## Multiple Inheritance and the Diamond Problem: Practice Problems
+
+1. Swap the order of the parents in `cpp/ta_basic.cpp` and predict the new output.
+2. Fix `cpp/ta_ambiguous.cpp` in `main` alone, without changing any class.
+3. Rewrite `cpp/diamond_twice.cpp` with has-a so a TA holds one Person.
+
+<!-- Slide 58 -->
+
+---
+
+## Multiple Inheritance and the Diamond Problem: AI Search Terms
+
+- C++ multiple inheritance syntax
+- C++ request for member is ambiguous
+- C++ diamond problem
+- C++ virtual inheritance most derived class constructor
+
+<!-- Slide 59 -->
+
+---
+
+## Multiple Inheritance and the Diamond Problem: Questions for Reflection
+
+- Why can the compiler not choose between two parents' versions of `print()`?
+- Is a teaching assistant an employee, or does a teaching assistant have a job?
+
+<!-- Slide 60 -->

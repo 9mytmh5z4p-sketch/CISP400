@@ -1,0 +1,87 @@
+<!-- Topic 5: Multiple Inheritance -->
+<!-- Slides 67–73 -->
+# Multiple Inheritance
+<!-- Slide 66 -->
+
+
+## Multiple Inheritance
+
+This slide develops the authoritative source material on **multiple inheritance**.
+
+::: notes
+Slides 67–73
+:::
+
+<!-- Slide 67 -->
+
+---
+
+## Multiple Inheritance
+
+This slide develops the authoritative source material on **multiple inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 68 -->
+
+---
+
+## Multiple Inheritance
+
+This slide develops the authoritative source material on **multiple inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 69 -->
+
+---
+
+## Multiple Inheritance
+
+This slide develops the authoritative source material on **multiple inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 70 -->
+
+---
+
+## Multiple Inheritance
+
+This slide develops the authoritative source material on **multiple inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 71 -->
+
+---
+
+## Multiple Inheritance
+
+This slide develops the authoritative source material on **multiple inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 72 -->
+
+---
+
+## Multiple Inheritance
+
+This slide develops the authoritative source material on **multiple inheritance**.
+
+::: notes
+
+:::
+
+<!-- Slide 73 -->
