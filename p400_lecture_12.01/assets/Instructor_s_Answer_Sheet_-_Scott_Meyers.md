@@ -48,27 +48,32 @@ Related item: Item 38, "Model 'has-a' or 'is-implemented-in-terms-of' through co
 
 **Potential misconception:** Students may list `name` as missing because `Penguin` cannot touch it. It is present in every `Penguin` object; it is only inaccessible.
 
-## Question 2 — Predicting Program Behavior
+### Private Data
+
+**Expected answer**
+
+`swim()` calls the public `getName()` that `Penguin` inherited from `Bird`.
+
+It cannot use `name` directly. `name` is private, and private means this class only; a derived class is an outsider too.
+
+**Teaching point:** Keeping `name` private and sharing a getter is 11.02's recommended design. Making `name` protected would also work, but every derived class would then depend on how `Bird` stores it.
+
+## Question 2 — Applying the Is-a Test
 
 **Expected output**
 
-Program 1:
+Program 1 prints:
 
 ```text
 Pingu swims
 Pingu flaps its wings and flies
 ```
 
-Program 2:
-
-```text
-Pingu swims
-Jack flaps its wings and flies
-```
+The second line is false: penguins cannot fly. For reference, Program 2 prints `Pingu swims` and `Jack flaps its wings and flies`.
 
 **Teaching point:** Both programs compile and run. Program 1 is not a compile error or a crash; it is a program that confidently says something false.
 
-## Question 3 — Applying the Is-a Test to Program 1
+### Is the Output True?
 
 **Expected answer**
 
@@ -78,7 +83,7 @@ The is-a test from last lecture must hold for everything the base class can do, 
 
 **Teaching point:** The base class's public interface is a list of promises. A derived class that cannot keep one of them is not a true is-a.
 
-## Question 4 — Understanding Program 2
+## Question 3 — Understanding Program 2
 
 **Expected answer**
 
@@ -100,29 +105,19 @@ Ask students whether Program 2 is "more correct biology."
 
 **Expected response:** Not really. Program 2 is more accurate about what this program needs: some birds fly and some do not. A program that never mentions flying would be correct with a single `Bird` class.
 
-## Question 5 — Building the Bird Part
+## Question 4 — Building the Bird Part
 
 **Expected answer**
 
 `Penguin(const string& n) : Bird(n) { }` passes the name up to `Bird`'s constructor in the member initializer list.
 
-If `Penguin`'s constructor assigned `name = n;` in its body, the program would not compile, for two reasons: `Bird` has no default constructor, so the `Bird` part cannot be built before the body runs, and `name` is private to `Bird`.
+**Extension, if time allows:** ask what would happen if `Penguin`'s constructor assigned `name = n;` in its body. It would not compile, for two reasons: `Bird` has no default constructor, so the `Bird` part cannot be built before the body runs, and `name` is private to `Bird`.
 
 The parts of `jack` are built in this order: `Bird`, then `FlyingBird`, then `Sparrow`. They are destroyed in the reverse order.
 
 **Teaching point:** This reviews 11.02's base class construction and construction order.
 
-## Question 6 — Private Data
-
-**Expected answer**
-
-`swim()` calls the public `getName()` that `Penguin` inherited from `Bird`.
-
-It cannot use `name` directly. `name` is private, and private means this class only; a derived class is an outsider too.
-
-**Teaching point:** Keeping `name` private and sharing a getter is 11.02's recommended design. Making `name` protected would also work, but every derived class would then depend on how `Bird` stores it.
-
-## Question 7 — Making a Design Decision
+## Question 5 — Making a Design Decision
 
 **Expected answer**
 

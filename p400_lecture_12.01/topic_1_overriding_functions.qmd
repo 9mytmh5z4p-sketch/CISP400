@@ -1,8 +1,8 @@
 <!-- Topic 1: Overriding Functions -->
-<!-- Slides 8–17 -->
+<!-- Slides 9–18 -->
 
 # Overriding Functions
-<!-- Slide 7 -->
+<!-- Slide 8 -->
 
 ## Can a Student Print Its Major? {.smaller}
 
@@ -35,14 +35,14 @@ int main() {
 - How does Student change what a function it inherited does?
 
 ::: notes
-Slides 8–17
+Slides 9–18
 
 This is the cliffhanger from 11.02's Next Time slide, using last week's program. Person's print() knows nothing about majors, and Student cannot edit Person.
 
 Full program: 11.02 cpp/person_student.cpp
 :::
 
-<!-- Slide 8 -->
+<!-- Slide 9 -->
 
 ---
 
@@ -58,7 +58,7 @@ The base class is not changed. The derived class replaces the behavior for its o
 If Student writes void print() without const, it is a separate function that hides Person's print() const. Tested with g++: ava.print() still compiles and runs Student's version, but calling print() on a const Student, for example through a const Student& parameter, fails with: passing 'const Student' as 'this' argument discards qualifiers. In 13.02, with virtual functions, a missing const means the function does not override at all.
 :::
 
-<!-- Slide 9 -->
+<!-- Slide 10 -->
 
 ---
 
@@ -72,7 +72,7 @@ Animal, Dog, and Cat from 11.02, now with behavior. Every Animal can speak(), an
 Ask: what does a plain Animal say? Whatever Animal's own speak() does; overriding in Dog and Cat does not change it. The next two slides show the same idea in code with Person and Student.
 :::
 
-<!-- Slide 10 -->
+<!-- Slide 11 -->
 
 ---
 
@@ -95,7 +95,7 @@ void print() const;    // in Student: overrides Person::print()
 Students meet the override keyword in 13.02, where it asks the compiler to check this table for you. It only works with virtual functions, so it waits until then.
 :::
 
-<!-- Slide 11 -->
+<!-- Slide 12 -->
 
 ---
 
@@ -152,7 +152,7 @@ Student's print() uses getName() and getId() because name and id are private to 
 Full program: cpp/override_print.cpp
 :::
 
-<!-- Slide 12 -->
+<!-- Slide 13 -->
 
 ---
 
@@ -207,7 +207,7 @@ Ask students to predict the third line before revealing. GradStudent has no prin
 Full program: cpp/which_print.cpp
 :::
 
-<!-- Slide 13 -->
+<!-- Slide 14 -->
 
 ---
 
@@ -237,7 +237,7 @@ Students expect ava.print() to fall back to Person's version, because it is stil
 Full program: cpp/name_hiding.cpp
 :::
 
-<!-- Slide 14 -->
+<!-- Slide 15 -->
 
 ---
 
@@ -255,7 +255,7 @@ Full program: cpp/name_hiding.cpp
 Overloading is from the operator overloading and constructor lectures: several functions, one name, told apart by their arguments. Overriding replaces an inherited function for a derived class. The previous slide showed what happens when the two get mixed: a different parameter list in a derived class hides the base version instead of overloading it.
 :::
 
-<!-- Slide 15 -->
+<!-- Slide 16 -->
 
 ---
 
@@ -311,7 +311,7 @@ This is the is-a test from 11.02 applied to behavior: a SavingsAccount that can 
 Full program: cpp/broken_promise.cpp
 :::
 
-<!-- Slide 16 -->
+<!-- Slide 17 -->
 
 ---
 
@@ -324,4 +324,4 @@ Full program: cpp/broken_promise.cpp
 
 :::
 
-<!-- Slide 17 -->
+<!-- Slide 18 -->

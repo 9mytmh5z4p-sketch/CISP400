@@ -45,7 +45,7 @@ Reading: textbook Chapter 15; learncpp lessons 24.7 to 24.9, on calling inherite
 - An override changes how a request is handled, never what the base promised.
 - Two parents with a shared base give an object two copies of that base; prefer has-a to a diamond.
 
-<!-- Slide 40 -->
+<!-- Slide 41 -->
 
 ---
 
@@ -58,13 +58,13 @@ Reading: textbook Chapter 15; learncpp lessons 24.7 to 24.9, on calling inherite
 The hook for 13.02: without virtual, the pointer's type decides, so Person's print() runs. Do not answer it today.
 :::
 
-<!-- Slide 41 -->
+<!-- Slide 42 -->
 
 ---
 
 # Appendix
 
-<!-- Slide 42 -->
+<!-- Slide 43 -->
 
 ## Overriding Functions: Good Practices
 
@@ -72,7 +72,7 @@ The hook for 13.02: without virtual, the pointer's type decides, so Person's pri
 - Override only when the derived class must handle the same request differently.
 - Keep every promise the base version makes.
 
-<!-- Slide 43 -->
+<!-- Slide 44 -->
 
 ---
 
@@ -82,7 +82,7 @@ The hook for 13.02: without virtual, the pointer's type decides, so Person's pri
 - Leaving off `const` and getting a second, separate function.
 - Overriding a function so it does something the base version never did.
 
-<!-- Slide 44 -->
+<!-- Slide 45 -->
 
 ---
 
@@ -105,7 +105,7 @@ public:
 
 - `ng.print()` shows the office; a Person or a Student still prints its own way.
 
-<!-- Slide 45 -->
+<!-- Slide 46 -->
 
 ---
 
@@ -115,7 +115,7 @@ public:
 2. Fix `cpp/name_hiding.cpp` two ways: by matching the signature, and by renaming the function.
 3. Fix `SavingsAccount::withdraw()` in `cpp/broken_promise.cpp` so it keeps the base class's promise.
 
-<!-- Slide 46 -->
+<!-- Slide 47 -->
 
 ---
 
@@ -126,7 +126,7 @@ public:
 - C++ overloading versus overriding
 - Liskov substitution principle example
 
-<!-- Slide 47 -->
+<!-- Slide 48 -->
 
 ---
 
@@ -135,7 +135,7 @@ public:
 - Why does `raj.print()` use Student's version and not Person's?
 - Why is an override that drops a check worse than one that does not compile?
 
-<!-- Slide 48 -->
+<!-- Slide 49 -->
 
 ---
 
@@ -145,7 +145,7 @@ public:
 - Call the base version first unless the derived part must happen before it.
 - Let the base class keep its own checks instead of copying them into the override.
 
-<!-- Slide 49 -->
+<!-- Slide 50 -->
 
 ---
 
@@ -155,7 +155,7 @@ public:
 - Copying the base function's body into the override instead of calling it.
 - Forgetting that the base version may already end the line.
 
-<!-- Slide 50 -->
+<!-- Slide 51 -->
 
 ---
 
@@ -179,7 +179,7 @@ public:
 
 - Each level calls the one directly above it. Outside a class, `raj.Person::print()` also works, but it is rarely needed.
 
-<!-- Slide 51 -->
+<!-- Slide 52 -->
 
 ---
 
@@ -189,7 +189,7 @@ public:
 2. Add the GradStudent above to `cpp/extend_print.cpp` and predict the output of `raj.print()`.
 3. Give SavingsAccount in `cpp/promise_fixed.cpp` a `deposit()` override that adds a 1.00 bonus by calling the base version.
 
-<!-- Slide 52 -->
+<!-- Slide 53 -->
 
 ---
 
@@ -200,7 +200,7 @@ public:
 - C++ infinite recursion in overridden function
 - C++ extend versus replace overridden method
 
-<!-- Slide 53 -->
+<!-- Slide 54 -->
 
 ---
 
@@ -209,7 +209,7 @@ public:
 - Why does extending a base function make a derived class easier to keep correct?
 - Who should decide where a line of output ends, the base class or the derived class?
 
-<!-- Slide 54 -->
+<!-- Slide 55 -->
 
 ---
 
@@ -219,7 +219,7 @@ public:
 - Write `public` in front of every parent.
 - When two parents share a base, redesign with has-a before reaching for `virtual` inheritance.
 
-<!-- Slide 55 -->
+<!-- Slide 56 -->
 
 ---
 
@@ -229,7 +229,7 @@ public:
 - Calling a function both parents have and expecting the compiler to choose.
 - Expecting the initializer list to change the order the parents are built.
 
-<!-- Slide 56 -->
+<!-- Slide 57 -->
 
 ---
 
@@ -253,7 +253,7 @@ public:
 
 - With a virtual base, the most derived class builds it. Student's `Person(n)` runs only when a plain Student is built.
 
-<!-- Slide 57 -->
+<!-- Slide 58 -->
 
 ---
 
@@ -263,7 +263,7 @@ public:
 2. Fix `cpp/ta_ambiguous.cpp` in `main` alone, without changing any class.
 3. Rewrite `cpp/diamond_twice.cpp` with has-a so a TA holds one Person.
 
-<!-- Slide 58 -->
+<!-- Slide 59 -->
 
 ---
 
@@ -274,7 +274,7 @@ public:
 - C++ diamond problem
 - C++ virtual inheritance most derived class constructor
 
-<!-- Slide 59 -->
+<!-- Slide 60 -->
 
 ---
 
@@ -283,4 +283,4 @@ public:
 - Why can the compiler not choose between two parents' versions of `print()`?
 - Is a teaching assistant an employee, or does a teaching assistant have a job?
 
-<!-- Slide 60 -->
+<!-- Slide 61 -->

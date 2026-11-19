@@ -1,5 +1,5 @@
 <!-- Topic 0x: Style and Design - Meyers -->
-<!-- Slides 5–6 -->
+<!-- Slides 5–7 -->
 
 # Style and Design: Scott Meyers
 <!-- Slide 4 -->
@@ -15,21 +15,37 @@
 ::: {.column width="65%"}
 - Scott Meyers wrote *Effective C++*, design advice given as short, numbered items.
 - His design philosophy: make interfaces easy to use correctly and hard to use incorrectly. If a mistake is possible, arrange for the compiler to catch it.
+- Today, what that means for inheritance (Item 32): public inheritance means is-a, so everything true of the base class must be true of the derived class.
 :::
 
 ::::
 
 ::: notes
-Slides 5–6
+Slides 5–7
 
-A review of 11.02 before today's material. Hand out assets/Style_and_Design_-_Scott_Meyers.md. Students work in pairs for about 15 minutes, then discuss. The answer sheet is assets/Instructor_s_Answer_Sheet_-_Scott_Meyers.md.
+A review of 11.02 before today's material. Hand out assets/Style_and_Design_-_Scott_Meyers.md. Students work in pairs on the five questions for about 10 minutes, then debrief. The answer sheet is assets/Instructor_s_Answer_Sheet_-_Scott_Meyers.md.
 
-The design philosophy is Meyers's Item 18, "Make interfaces easy to use correctly and hard to use incorrectly." Today's programs apply it to inheritance through Item 32: public inheritance means is-a, so everything true of the base class must be true of the derived class. Two programs model a penguin; both compile and run. Ask which one tells the truth.
+The design philosophy is Meyers's Item 18, "Make interfaces easy to use correctly and hard to use incorrectly." Item 32 is the same idea applied to inheritance, and it is what the handout is built on. Two programs model a penguin; both compile and run. Ask which one tells the truth.
 
 The programs are illustrations inspired by Meyers's items, not code he wrote.
 :::
 
 <!-- Slide 5 -->
+
+---
+
+## Debrief
+
+~~~cpp
+pingu.fly();   // Program 1: "Pingu flaps its wings and flies"
+pingu.fly();   // Program 2: error: 'class Penguin' has no member named 'fly'
+~~~
+
+::: notes
+The whole activity in two lines. Program 1 compiles and says something false at run time. Program 2 refuses to compile the impossible request: Item 18 and Item 32 together. Walk through the five questions using the answer sheet, then move to the discussion question.
+:::
+
+<!-- Slide 6 -->
 
 ---
 
@@ -43,4 +59,4 @@ Ask which program students would rather maintain, then what is actually wrong wi
 Meyers's point: public inheritance is a promise. Bridge to Topic 1: overriding lets a derived class change how an inherited function behaves. An override that changes what the function promises is the penguin mistake in a new form, and Topic 1's Keep the Promise slide comes back to it.
 :::
 
-<!-- Slide 6 -->
+<!-- Slide 7 -->

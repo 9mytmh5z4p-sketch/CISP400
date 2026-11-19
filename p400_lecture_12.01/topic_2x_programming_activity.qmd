@@ -1,8 +1,8 @@
 <!-- Topic 2x: Programming Activity -->
-<!-- Slides 26–28 -->
+<!-- Slides 27–29 -->
 
 # Programming Activity
-<!-- Slide 25 -->
+<!-- Slide 26 -->
 
 ## Programming Activity
 
@@ -12,12 +12,12 @@
 4. In `main`, call the function on a parent object and on a child object.
 
 ::: notes
-Slides 26–28
+Slides 27–29
 
 Ten minutes. Students who lost last week's program can start from cpp/activity_vehicle_truck.cpp in 11.02 or write a new pair. The goal is only to confirm the syntax of overriding and calling the base version.
 :::
 
-<!-- Slide 26 -->
+<!-- Slide 27 -->
 
 ---
 
@@ -32,7 +32,7 @@ Ten minutes. Students who lost last week's program can start from cpp/activity_v
 Walk the room. Look for a signature that does not match, which hides the parent's version, and a missing Parent::, which recurses until it crashes. If output appears on an unexpected line, it is the endl issue from Topic 2.
 :::
 
-<!-- Slide 27 -->
+<!-- Slide 28 -->
 
 ---
 
@@ -97,4 +97,4 @@ Show this after students have tried their own. The car prints one line; the truc
 Full program: cpp/activity_extend_truck.cpp
 :::
 
-<!-- Slide 28 -->
+<!-- Slide 29 -->

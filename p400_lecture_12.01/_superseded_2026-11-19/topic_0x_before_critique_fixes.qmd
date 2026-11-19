@@ -1,0 +1,46 @@
+<!-- Topic 0x: Style and Design - Meyers -->
+<!-- Slides 5–6 -->
+
+# Style and Design: Scott Meyers
+<!-- Slide 4 -->
+
+## Style and Design: Scott Meyers
+
+:::: {.columns}
+
+::: {.column width="35%"}
+![](images/myers.jpg){style="max-height: 55vh;" fig-alt="Scott Meyers"}
+:::
+
+::: {.column width="65%"}
+- Scott Meyers wrote *Effective C++*, design advice given as short, numbered items.
+- His design philosophy: make interfaces easy to use correctly and hard to use incorrectly. If a mistake is possible, arrange for the compiler to catch it.
+:::
+
+::::
+
+::: notes
+Slides 5–6
+
+A review of 11.02 before today's material. Hand out assets/Style_and_Design_-_Scott_Meyers.md. Students work in pairs for about 15 minutes, then discuss. The answer sheet is assets/Instructor_s_Answer_Sheet_-_Scott_Meyers.md.
+
+The design philosophy is Meyers's Item 18, "Make interfaces easy to use correctly and hard to use incorrectly." Today's programs apply it to inheritance through Item 32: public inheritance means is-a, so everything true of the base class must be true of the derived class. Two programs model a penguin; both compile and run. Ask which one tells the truth.
+
+The programs are illustrations inspired by Meyers's items, not code he wrote.
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## Discussion
+
+- Should a class hierarchy model the real world, or the promises a program makes to the code that uses it?
+
+::: notes
+Ask which program students would rather maintain, then what is actually wrong with Program 1. Nothing is wrong with its C++; Bird makes a promise Penguin cannot keep.
+
+Meyers's point: public inheritance is a promise. Bridge to Topic 1: overriding lets a derived class change how an inherited function behaves. An override that changes what the function promises is the penguin mistake in a new form, and Topic 1's Keep the Promise slide comes back to it.
+:::
+
+<!-- Slide 6 -->

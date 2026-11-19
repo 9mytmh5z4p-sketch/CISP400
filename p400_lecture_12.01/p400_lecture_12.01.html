@@ -253,7 +253,7 @@ Dr.&nbsp;Caleb Fowler
       }</style></aside>
 <!-- Slide 3 -->
 <!-- Topic 0x: Style and Design - Meyers -->
-<!-- Slides 5–6 -->
+<!-- Slides 5–7 -->
 </section>
 
 <section>
@@ -270,12 +270,13 @@ Dr.&nbsp;Caleb Fowler
 <ul>
 <li>Scott Meyers wrote <em>Effective C++</em>, design advice given as short, numbered items.</li>
 <li>His design philosophy: make interfaces easy to use correctly and hard to use incorrectly. If a mistake is possible, arrange for the compiler to catch it.</li>
+<li>Today, what that means for inheritance (Item 32): public inheritance means is-a, so everything true of the base class must be true of the derived class.</li>
 </ul>
 </div></div>
 <aside class="notes">
-<p>Slides 5–6</p>
-<p>A review of 11.02 before today’s material. Hand out assets/Style_and_Design_-<em>Scott_Meyers.md. Students work in pairs for about 15 minutes, then discuss. The answer sheet is assets/Instructor_s_Answer_Sheet</em>-_Scott_Meyers.md.</p>
-<p>The design philosophy is Meyers’s Item 18, “Make interfaces easy to use correctly and hard to use incorrectly.” Today’s programs apply it to inheritance through Item 32: public inheritance means is-a, so everything true of the base class must be true of the derived class. Two programs model a penguin; both compile and run. Ask which one tells the truth.</p>
+<p>Slides 5–7</p>
+<p>A review of 11.02 before today’s material. Hand out assets/Style_and_Design_-<em>Scott_Meyers.md. Students work in pairs on the five questions for about 10 minutes, then debrief. The answer sheet is assets/Instructor_s_Answer_Sheet</em>-_Scott_Meyers.md.</p>
+<p>The design philosophy is Meyers’s Item 18, “Make interfaces easy to use correctly and hard to use incorrectly.” Item 32 is the same idea applied to inheritance, and it is what the handout is built on. Two programs model a penguin; both compile and run. Ask which one tells the truth.</p>
 <p>The programs are illustrations inspired by Meyers’s items, not code he wrote.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -289,6 +290,25 @@ Dr.&nbsp;Caleb Fowler
           display:block!important;
       }</style></aside>
 <!-- Slide 5 -->
+</section>
+<section id="debrief" class="slide level2">
+<h2>Debrief</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a>pingu<span class="op">.</span>fly<span class="op">();</span>   <span class="co">// Program 1: "Pingu flaps its wings and flies"</span></span>
+<span id="cb1-2"><a href=""></a>pingu<span class="op">.</span>fly<span class="op">();</span>   <span class="co">// Program 2: error: 'class Penguin' has no member named 'fly'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>The whole activity in two lines. Program 1 compiles and says something false at run time. Program 2 refuses to compile the impossible request: Item 18 and Item 32 together. Walk through the five questions using the answer sheet, then move to the discussion question.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 6 -->
 </section>
 <section id="discussion" class="slide level2">
 <h2>Discussion</h2>
@@ -309,45 +329,45 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 6 -->
+<!-- Slide 7 -->
 <!-- Topic 1: Overriding Functions -->
-<!-- Slides 8–16 -->
+<!-- Slides 9–18 -->
 </section></section>
 <section>
 <section id="overriding-functions" class="title-slide slide level1 center">
 <h1>Overriding Functions</h1>
-<!-- Slide 7 -->
+<!-- Slide 8 -->
 </section>
 <section id="can-a-student-print-its-major" class="slide level2 smaller">
 <h2>Can a Student Print Its Major?</h2>
 <div style="font-size: 60%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href=""></a><span class="kw">class</span> Person <span class="op">{</span></span>
-<span id="cb1-2"><a href=""></a>    <span class="op">...</span></span>
-<span id="cb1-3"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
-<span id="cb1-4"><a href=""></a>        cout <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> <span class="st">" ("</span> <span class="op">&lt;&lt;</span> id <span class="op">&lt;&lt;</span> <span class="st">")"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb1-5"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb1-6"><a href=""></a><span class="op">};</span></span>
-<span id="cb1-7"><a href=""></a></span>
-<span id="cb1-8"><a href=""></a><span class="kw">class</span> Student <span class="op">:</span> <span class="kw">public</span> Person <span class="op">{</span></span>
-<span id="cb1-9"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb1-10"><a href=""></a>    string major<span class="op">;</span></span>
-<span id="cb1-11"><a href=""></a>    <span class="op">...</span>                          <span class="co">// no print() here</span></span>
-<span id="cb1-12"><a href=""></a><span class="op">};</span></span>
-<span id="cb1-13"><a href=""></a></span>
-<span id="cb1-14"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb1-15"><a href=""></a>    Student ava<span class="op">;</span></span>
-<span id="cb1-16"><a href=""></a>    ava<span class="op">.</span>setName<span class="op">(</span><span class="st">"Ava"</span><span class="op">);</span></span>
-<span id="cb1-17"><a href=""></a>    ava<span class="op">.</span>setId<span class="op">(</span><span class="dv">1001</span><span class="op">);</span></span>
-<span id="cb1-18"><a href=""></a>    ava<span class="op">.</span>setMajor<span class="op">(</span><span class="st">"CS"</span><span class="op">);</span></span>
-<span id="cb1-19"><a href=""></a>    ava<span class="op">.</span>print<span class="op">();</span>                 <span class="co">// inherited: prints Ava (1001)</span></span>
-<span id="cb1-20"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a><span class="kw">class</span> Person <span class="op">{</span></span>
+<span id="cb2-2"><a href=""></a>    <span class="op">...</span></span>
+<span id="cb2-3"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb2-4"><a href=""></a>        cout <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> <span class="st">" ("</span> <span class="op">&lt;&lt;</span> id <span class="op">&lt;&lt;</span> <span class="st">")"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb2-5"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb2-6"><a href=""></a><span class="op">};</span></span>
+<span id="cb2-7"><a href=""></a></span>
+<span id="cb2-8"><a href=""></a><span class="kw">class</span> Student <span class="op">:</span> <span class="kw">public</span> Person <span class="op">{</span></span>
+<span id="cb2-9"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb2-10"><a href=""></a>    string major<span class="op">;</span></span>
+<span id="cb2-11"><a href=""></a>    <span class="op">...</span>                          <span class="co">// no print() here</span></span>
+<span id="cb2-12"><a href=""></a><span class="op">};</span></span>
+<span id="cb2-13"><a href=""></a></span>
+<span id="cb2-14"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-15"><a href=""></a>    Student ava<span class="op">;</span></span>
+<span id="cb2-16"><a href=""></a>    ava<span class="op">.</span>setName<span class="op">(</span><span class="st">"Ava"</span><span class="op">);</span></span>
+<span id="cb2-17"><a href=""></a>    ava<span class="op">.</span>setId<span class="op">(</span><span class="dv">1001</span><span class="op">);</span></span>
+<span id="cb2-18"><a href=""></a>    ava<span class="op">.</span>setMajor<span class="op">(</span><span class="st">"CS"</span><span class="op">);</span></span>
+<span id="cb2-19"><a href=""></a>    ava<span class="op">.</span>print<span class="op">();</span>                 <span class="co">// inherited: prints Ava (1001)</span></span>
+<span id="cb2-20"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Last week <code>ava.print()</code> printed <code>Ava (1001)</code> and no major.</li>
 <li>How does Student change what a function it inherited does?</li>
 </ul>
 <aside class="notes">
-<p>Slides 8–16</p>
+<p>Slides 9–18</p>
 <p>This is the cliffhanger from 11.02’s Next Time slide, using last week’s program. Person’s print() knows nothing about majors, and Student cannot edit Person.</p>
 <p>Full program: 11.02 cpp/person_student.cpp</p>
 <style type="text/css">
@@ -361,17 +381,18 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 8 -->
+<!-- Slide 9 -->
 </section>
 <section id="what-is-overriding" class="slide level2">
 <h2>What Is Overriding?</h2>
 <ul>
 <li><strong>Overriding:</strong> a derived class writes its own version of a function it inherited, with the same name, parameters, and <code>const</code>.</li>
+<li><code>const</code> is part of the function’s signature, and it does not carry down. Student must write <code>const</code> again, or its <code>print()</code> is a different function.</li>
 <li>A Student object then uses Student’s version. A Person object still uses Person’s.</li>
-<li>Person’s <code>print()</code> shows the name and ID. Student’s <code>print()</code> shows the name, ID, and major.</li>
 </ul>
 <aside class="notes">
-<p>The base class is not changed. The derived class replaces the behavior for its own objects only.</p>
+<p>The base class is not changed. The derived class replaces the behavior for its own objects only: Person’s print() shows the name and ID, and Student’s shows the name, ID, and major.</p>
+<p>If Student writes void print() without const, it is a separate function that hides Person’s print() const. Tested with g++: ava.print() still compiles and runs Student’s version, but calling print() on a const Student, for example through a const Student&amp; parameter, fails with: passing ‘const Student’ as ‘this’ argument discards qualifiers. In 13.02, with virtual functions, a missing const means the function does not override at all.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -383,12 +404,35 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 9 -->
+<!-- Slide 10 -->
+</section>
+<section id="one-name-different-behavior" class="slide level2">
+<h2>One Name, Different Behavior</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/override.png" class="quarto-figure quarto-figure-center" style="max-height: 55vh;" alt="Class diagram: Animal with Speak(), and two children, Dog and Cat, each with its own Speak(). Dog says Woof, woof; Cat says Meow."></p>
+</figure>
+</div>
+<aside class="notes">
+<p>Animal, Dog, and Cat from 11.02, now with behavior. Every Animal can speak(), and Dog and Cat each write their own speak() with the same name, parameters, and const. A Dog says “Woof, woof,” a Cat says “Meow.”</p>
+<p>Ask: what does a plain Animal say? Whatever Animal’s own speak() does; overriding in Dog and Cat does not change it. The next two slides show the same idea in code with Person and Student.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<!-- Slide 11 -->
 </section>
 <section id="overriding-anatomy" class="slide level2">
 <h2>Overriding Anatomy</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href=""></a><span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span><span class="op">;</span>    <span class="co">// in Person</span></span>
-<span id="cb2-2"><a href=""></a><span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span><span class="op">;</span>    <span class="co">// in Student: overrides Person::print()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a><span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span><span class="op">;</span>    <span class="co">// in Person</span></span>
+<span id="cb3-2"><a href=""></a><span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span><span class="op">;</span>    <span class="co">// in Student: overrides Person::print()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <table class="caption-top">
 <colgroup>
 <col style="width: 50%">
@@ -436,47 +480,47 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 10 -->
+<!-- Slide 12 -->
 </section>
 <section id="overriding-anatomy-1" class="slide level2">
 <h2>Overriding Anatomy</h2>
 <div style="font-size: 55%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href=""></a><span class="kw">class</span> Person <span class="op">{</span></span>
-<span id="cb3-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb3-3"><a href=""></a>    string name<span class="op">;</span></span>
-<span id="cb3-4"><a href=""></a>    <span class="dt">int</span> id<span class="op">;</span></span>
-<span id="cb3-5"><a href=""></a></span>
-<span id="cb3-6"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb3-7"><a href=""></a>    Person<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">int</span> i<span class="op">)</span> <span class="op">:</span> name<span class="op">(</span>n<span class="op">),</span> id<span class="op">(</span>i<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
-<span id="cb3-8"><a href=""></a>    string getName<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> name<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb3-9"><a href=""></a>    <span class="dt">int</span> getId<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> id<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb3-10"><a href=""></a></span>
-<span id="cb3-11"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
-<span id="cb3-12"><a href=""></a>        cout <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> <span class="st">" ("</span> <span class="op">&lt;&lt;</span> id <span class="op">&lt;&lt;</span> <span class="st">")"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb3-13"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb3-14"><a href=""></a><span class="op">};</span></span>
-<span id="cb3-15"><a href=""></a></span>
-<span id="cb3-16"><a href=""></a><span class="kw">class</span> Student <span class="op">:</span> <span class="kw">public</span> Person <span class="op">{</span></span>
-<span id="cb3-17"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb3-18"><a href=""></a>    string major<span class="op">;</span></span>
-<span id="cb3-19"><a href=""></a></span>
-<span id="cb3-20"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb3-21"><a href=""></a>    Student<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">int</span> i<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">)</span> <span class="op">:</span> Person<span class="op">(</span>n<span class="op">,</span> i<span class="op">),</span> major<span class="op">(</span>m<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
-<span id="cb3-22"><a href=""></a></span>
-<span id="cb3-23"><a href=""></a>    <span class="co">// same name, same parameters, same const: this overrides Person::print()</span></span>
-<span id="cb3-24"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
-<span id="cb3-25"><a href=""></a>        cout <span class="op">&lt;&lt;</span> getName<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">" ("</span> <span class="op">&lt;&lt;</span> getId<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">"), "</span> <span class="op">&lt;&lt;</span> major <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb3-26"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb3-27"><a href=""></a><span class="op">};</span></span>
-<span id="cb3-28"><a href=""></a></span>
-<span id="cb3-29"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb3-30"><a href=""></a>    Person lee<span class="op">(</span><span class="st">"Lee"</span><span class="op">,</span> <span class="dv">7</span><span class="op">);</span></span>
-<span id="cb3-31"><a href=""></a>    Student ava<span class="op">(</span><span class="st">"Ava"</span><span class="op">,</span> <span class="dv">1001</span><span class="op">,</span> <span class="st">"CS"</span><span class="op">);</span></span>
-<span id="cb3-32"><a href=""></a></span>
-<span id="cb3-33"><a href=""></a>    lee<span class="op">.</span>print<span class="op">();</span>    <span class="co">// Person's version</span></span>
-<span id="cb3-34"><a href=""></a>    ava<span class="op">.</span>print<span class="op">();</span>    <span class="co">// Student's version</span></span>
-<span id="cb3-35"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb3-36"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href=""></a><span class="kw">class</span> Person <span class="op">{</span></span>
+<span id="cb4-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb4-3"><a href=""></a>    string name<span class="op">;</span></span>
+<span id="cb4-4"><a href=""></a>    <span class="dt">int</span> id<span class="op">;</span></span>
+<span id="cb4-5"><a href=""></a></span>
+<span id="cb4-6"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb4-7"><a href=""></a>    Person<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">int</span> i<span class="op">)</span> <span class="op">:</span> name<span class="op">(</span>n<span class="op">),</span> id<span class="op">(</span>i<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb4-8"><a href=""></a>    string getName<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> name<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb4-9"><a href=""></a>    <span class="dt">int</span> getId<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> id<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb4-10"><a href=""></a></span>
+<span id="cb4-11"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb4-12"><a href=""></a>        cout <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> <span class="st">" ("</span> <span class="op">&lt;&lt;</span> id <span class="op">&lt;&lt;</span> <span class="st">")"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb4-13"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb4-14"><a href=""></a><span class="op">};</span></span>
+<span id="cb4-15"><a href=""></a></span>
+<span id="cb4-16"><a href=""></a><span class="kw">class</span> Student <span class="op">:</span> <span class="kw">public</span> Person <span class="op">{</span></span>
+<span id="cb4-17"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb4-18"><a href=""></a>    string major<span class="op">;</span></span>
+<span id="cb4-19"><a href=""></a></span>
+<span id="cb4-20"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb4-21"><a href=""></a>    Student<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">int</span> i<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">)</span> <span class="op">:</span> Person<span class="op">(</span>n<span class="op">,</span> i<span class="op">),</span> major<span class="op">(</span>m<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb4-22"><a href=""></a></span>
+<span id="cb4-23"><a href=""></a>    <span class="co">// same name, same parameters, same const: this overrides Person::print()</span></span>
+<span id="cb4-24"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb4-25"><a href=""></a>        cout <span class="op">&lt;&lt;</span> getName<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">" ("</span> <span class="op">&lt;&lt;</span> getId<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">"), "</span> <span class="op">&lt;&lt;</span> major <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb4-26"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb4-27"><a href=""></a><span class="op">};</span></span>
+<span id="cb4-28"><a href=""></a></span>
+<span id="cb4-29"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-30"><a href=""></a>    Person lee<span class="op">(</span><span class="st">"Lee"</span><span class="op">,</span> <span class="dv">7</span><span class="op">);</span></span>
+<span id="cb4-31"><a href=""></a>    Student ava<span class="op">(</span><span class="st">"Ava"</span><span class="op">,</span> <span class="dv">1001</span><span class="op">,</span> <span class="st">"CS"</span><span class="op">);</span></span>
+<span id="cb4-32"><a href=""></a></span>
+<span id="cb4-33"><a href=""></a>    lee<span class="op">.</span>print<span class="op">();</span>    <span class="co">// Person's version</span></span>
+<span id="cb4-34"><a href=""></a>    ava<span class="op">.</span>print<span class="op">();</span>    <span class="co">// Student's version</span></span>
+<span id="cb4-35"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-36"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <p>Output: Lee (7) Ava (1001), CS</p>
@@ -493,35 +537,35 @@ Dr.&nbsp;Caleb Fowler
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 11 -->
+<!-- Slide 13 -->
 </section>
 <section id="which-print-runs" class="slide level2">
 <h2>Which print() Runs?</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div style="font-size: 50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href=""></a><span class="co">// Person and Student as on the previous slide</span></span>
-<span id="cb4-2"><a href=""></a></span>
-<span id="cb4-3"><a href=""></a><span class="kw">class</span> GradStudent <span class="op">:</span> <span class="kw">public</span> Student <span class="op">{</span></span>
-<span id="cb4-4"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb4-5"><a href=""></a>    string advisor<span class="op">;</span></span>
-<span id="cb4-6"><a href=""></a></span>
-<span id="cb4-7"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb4-8"><a href=""></a>    GradStudent<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">int</span> i<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> a<span class="op">)</span></span>
-<span id="cb4-9"><a href=""></a>        <span class="op">:</span> Student<span class="op">(</span>n<span class="op">,</span> i<span class="op">,</span> m<span class="op">),</span> advisor<span class="op">(</span>a<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
-<span id="cb4-10"><a href=""></a>    <span class="co">// no print() here</span></span>
-<span id="cb4-11"><a href=""></a><span class="op">};</span></span>
-<span id="cb4-12"><a href=""></a></span>
-<span id="cb4-13"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb4-14"><a href=""></a>    Person lee<span class="op">(</span><span class="st">"Lee"</span><span class="op">,</span> <span class="dv">7</span><span class="op">);</span></span>
-<span id="cb4-15"><a href=""></a>    Student ava<span class="op">(</span><span class="st">"Ava"</span><span class="op">,</span> <span class="dv">1001</span><span class="op">,</span> <span class="st">"CS"</span><span class="op">);</span></span>
-<span id="cb4-16"><a href=""></a>    GradStudent raj<span class="op">(</span><span class="st">"Raj"</span><span class="op">,</span> <span class="dv">2002</span><span class="op">,</span> <span class="st">"Math"</span><span class="op">,</span> <span class="st">"Ng"</span><span class="op">);</span></span>
-<span id="cb4-17"><a href=""></a></span>
-<span id="cb4-18"><a href=""></a>    lee<span class="op">.</span>print<span class="op">();</span></span>
-<span id="cb4-19"><a href=""></a>    ava<span class="op">.</span>print<span class="op">();</span></span>
-<span id="cb4-20"><a href=""></a>    raj<span class="op">.</span>print<span class="op">();</span></span>
-<span id="cb4-21"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb4-22"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href=""></a><span class="co">// Person and Student as on the previous slide</span></span>
+<span id="cb5-2"><a href=""></a></span>
+<span id="cb5-3"><a href=""></a><span class="kw">class</span> GradStudent <span class="op">:</span> <span class="kw">public</span> Student <span class="op">{</span></span>
+<span id="cb5-4"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb5-5"><a href=""></a>    string advisor<span class="op">;</span></span>
+<span id="cb5-6"><a href=""></a></span>
+<span id="cb5-7"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb5-8"><a href=""></a>    GradStudent<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">int</span> i<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> a<span class="op">)</span></span>
+<span id="cb5-9"><a href=""></a>        <span class="op">:</span> Student<span class="op">(</span>n<span class="op">,</span> i<span class="op">,</span> m<span class="op">),</span> advisor<span class="op">(</span>a<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb5-10"><a href=""></a>    <span class="co">// no print() here</span></span>
+<span id="cb5-11"><a href=""></a><span class="op">};</span></span>
+<span id="cb5-12"><a href=""></a></span>
+<span id="cb5-13"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb5-14"><a href=""></a>    Person lee<span class="op">(</span><span class="st">"Lee"</span><span class="op">,</span> <span class="dv">7</span><span class="op">);</span></span>
+<span id="cb5-15"><a href=""></a>    Student ava<span class="op">(</span><span class="st">"Ava"</span><span class="op">,</span> <span class="dv">1001</span><span class="op">,</span> <span class="st">"CS"</span><span class="op">);</span></span>
+<span id="cb5-16"><a href=""></a>    GradStudent raj<span class="op">(</span><span class="st">"Raj"</span><span class="op">,</span> <span class="dv">2002</span><span class="op">,</span> <span class="st">"Math"</span><span class="op">,</span> <span class="st">"Ng"</span><span class="op">);</span></span>
+<span id="cb5-17"><a href=""></a></span>
+<span id="cb5-18"><a href=""></a>    lee<span class="op">.</span>print<span class="op">();</span></span>
+<span id="cb5-19"><a href=""></a>    ava<span class="op">.</span>print<span class="op">();</span></span>
+<span id="cb5-20"><a href=""></a>    raj<span class="op">.</span>print<span class="op">();</span></span>
+<span id="cb5-21"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-22"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:40%;">
 <p>. . .</p>
@@ -543,22 +587,22 @@ Raj (2002), Math</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 12 -->
+<!-- Slide 14 -->
 </section>
 <section id="close-but-not-an-override" class="slide level2">
 <h2>Close, But Not an Override</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href=""></a><span class="kw">class</span> Student <span class="op">:</span> <span class="kw">public</span> Person <span class="op">{</span></span>
-<span id="cb6-2"><a href=""></a>    <span class="op">...</span></span>
-<span id="cb6-3"><a href=""></a>    <span class="dt">void</span> print<span class="op">(</span><span class="dt">bool</span> showMajor<span class="op">)</span> <span class="at">const</span> <span class="op">{</span>     <span class="co">// different parameters</span></span>
-<span id="cb6-4"><a href=""></a>        <span class="op">...</span></span>
-<span id="cb6-5"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb6-6"><a href=""></a><span class="op">};</span></span>
-<span id="cb6-7"><a href=""></a></span>
-<span id="cb6-8"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb6-9"><a href=""></a>    Student ava<span class="op">(</span><span class="st">"Ava"</span><span class="op">,</span> <span class="dv">1001</span><span class="op">,</span> <span class="st">"CS"</span><span class="op">);</span></span>
-<span id="cb6-10"><a href=""></a>    ava<span class="op">.</span>print<span class="op">(</span><span class="kw">true</span><span class="op">);</span></span>
-<span id="cb6-11"><a href=""></a>    ava<span class="op">.</span>print<span class="op">();</span>       <span class="co">// error</span></span>
-<span id="cb6-12"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a><span class="kw">class</span> Student <span class="op">:</span> <span class="kw">public</span> Person <span class="op">{</span></span>
+<span id="cb7-2"><a href=""></a>    <span class="op">...</span></span>
+<span id="cb7-3"><a href=""></a>    <span class="dt">void</span> print<span class="op">(</span><span class="dt">bool</span> showMajor<span class="op">)</span> <span class="at">const</span> <span class="op">{</span>     <span class="co">// different parameters</span></span>
+<span id="cb7-4"><a href=""></a>        <span class="op">...</span></span>
+<span id="cb7-5"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb7-6"><a href=""></a><span class="op">};</span></span>
+<span id="cb7-7"><a href=""></a></span>
+<span id="cb7-8"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb7-9"><a href=""></a>    Student ava<span class="op">(</span><span class="st">"Ava"</span><span class="op">,</span> <span class="dv">1001</span><span class="op">,</span> <span class="st">"CS"</span><span class="op">);</span></span>
+<span id="cb7-10"><a href=""></a>    ava<span class="op">.</span>print<span class="op">(</span><span class="kw">true</span><span class="op">);</span></span>
+<span id="cb7-11"><a href=""></a>    ava<span class="op">.</span>print<span class="op">();</span>       <span class="co">// error</span></span>
+<span id="cb7-12"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>g++: <code>no matching function for call to 'Student::print()'</code></li>
 <li>A <code>print</code> in Student with different parameters hides every <code>print</code> from Person. Fix it by matching the signature or renaming the function.</li>
@@ -577,7 +621,7 @@ Raj (2002), Math</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 13 -->
+<!-- Slide 15 -->
 </section>
 <section id="overloading-vs.-overriding" class="slide level2">
 <h2>Overloading vs.&nbsp;Overriding</h2>
@@ -635,36 +679,36 @@ Raj (2002), Math</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 14 -->
+<!-- Slide 16 -->
 </section>
 <section id="keep-the-promise" class="slide level2">
 <h2>Keep the Promise</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div style="font-size: 50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href=""></a><span class="kw">class</span> BankAccount <span class="op">{</span></span>
-<span id="cb7-2"><a href=""></a><span class="kw">protected</span><span class="op">:</span></span>
-<span id="cb7-3"><a href=""></a>    <span class="dt">double</span> balance<span class="op">;</span></span>
-<span id="cb7-4"><a href=""></a></span>
-<span id="cb7-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb7-6"><a href=""></a>    <span class="co">// the promise: never take out more than is there</span></span>
-<span id="cb7-7"><a href=""></a>    <span class="dt">bool</span> withdraw<span class="op">(</span><span class="dt">double</span> amount<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb7-8"><a href=""></a>        <span class="cf">if</span> <span class="op">(</span>amount <span class="op">&gt;</span> balance<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb7-9"><a href=""></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
-<span id="cb7-10"><a href=""></a>        <span class="op">}</span></span>
-<span id="cb7-11"><a href=""></a>        balance <span class="op">-=</span> amount<span class="op">;</span></span>
-<span id="cb7-12"><a href=""></a>        <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb7-13"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb7-14"><a href=""></a><span class="op">};</span></span>
-<span id="cb7-15"><a href=""></a></span>
-<span id="cb7-16"><a href=""></a><span class="kw">class</span> SavingsAccount <span class="op">:</span> <span class="kw">public</span> BankAccount <span class="op">{</span></span>
-<span id="cb7-17"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb7-18"><a href=""></a>    <span class="co">// charges a 2.00 fee, but forgot the check</span></span>
-<span id="cb7-19"><a href=""></a>    <span class="dt">bool</span> withdraw<span class="op">(</span><span class="dt">double</span> amount<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb7-20"><a href=""></a>        balance <span class="op">-=</span> amount <span class="op">+</span> <span class="fl">2.00</span><span class="op">;</span></span>
-<span id="cb7-21"><a href=""></a>        <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb7-22"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb7-23"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a><span class="kw">class</span> BankAccount <span class="op">{</span></span>
+<span id="cb8-2"><a href=""></a><span class="kw">protected</span><span class="op">:</span></span>
+<span id="cb8-3"><a href=""></a>    <span class="dt">double</span> balance<span class="op">;</span></span>
+<span id="cb8-4"><a href=""></a></span>
+<span id="cb8-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb8-6"><a href=""></a>    <span class="co">// the promise: never take out more than is there</span></span>
+<span id="cb8-7"><a href=""></a>    <span class="dt">bool</span> withdraw<span class="op">(</span><span class="dt">double</span> amount<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-8"><a href=""></a>        <span class="cf">if</span> <span class="op">(</span>amount <span class="op">&gt;</span> balance<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-9"><a href=""></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb8-10"><a href=""></a>        <span class="op">}</span></span>
+<span id="cb8-11"><a href=""></a>        balance <span class="op">-=</span> amount<span class="op">;</span></span>
+<span id="cb8-12"><a href=""></a>        <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb8-13"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb8-14"><a href=""></a><span class="op">};</span></span>
+<span id="cb8-15"><a href=""></a></span>
+<span id="cb8-16"><a href=""></a><span class="kw">class</span> SavingsAccount <span class="op">:</span> <span class="kw">public</span> BankAccount <span class="op">{</span></span>
+<span id="cb8-17"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb8-18"><a href=""></a>    <span class="co">// charges a 2.00 fee, but forgot the check</span></span>
+<span id="cb8-19"><a href=""></a>    <span class="dt">bool</span> withdraw<span class="op">(</span><span class="dt">double</span> amount<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-20"><a href=""></a>        balance <span class="op">-=</span> amount <span class="op">+</span> <span class="fl">2.00</span><span class="op">;</span></span>
+<span id="cb8-21"><a href=""></a>        <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb8-22"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb8-23"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:40%;">
 <ul>
@@ -688,7 +732,7 @@ Raj (2002), Math</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 15 -->
+<!-- Slide 17 -->
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
@@ -709,14 +753,14 @@ Raj (2002), Math</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 16 -->
+<!-- Slide 18 -->
 <!-- Topic 2: Calling Base Class Functions -->
-<!-- Slides 18–23 -->
+<!-- Slides 20–25 -->
 </section></section>
 <section>
 <section id="calling-base-class-functions" class="title-slide slide level1 center">
 <h1>Calling Base Class Functions</h1>
-<!-- Slide 17 -->
+<!-- Slide 19 -->
 </section>
 <section id="replace-or-extend" class="slide level2 smaller">
 <h2>Replace or Extend?</h2>
@@ -725,7 +769,7 @@ Raj (2002), Math</code></pre>
 <li>What if Student only wants to <em>add</em> the major?</li>
 </ul>
 <aside class="notes">
-<p>Slides 18–23</p>
+<p>Slides 20–25</p>
 <p>Topic 1 showed the normal case: an override replaces the base version completely. This topic shows the other choice.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -738,27 +782,27 @@ Raj (2002), Math</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 18 -->
+<!-- Slide 20 -->
 </section>
 <section id="replace-vs.-extend" class="slide level2">
 <h2>Replace vs.&nbsp;Extend</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div style="font-size: 70%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href=""></a><span class="co">// Replace: Topic 1's version</span></span>
-<span id="cb8-2"><a href=""></a><span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
-<span id="cb8-3"><a href=""></a>    cout <span class="op">&lt;&lt;</span> getName<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">" ("</span></span>
-<span id="cb8-4"><a href=""></a>         <span class="op">&lt;&lt;</span> getId<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">"), "</span></span>
-<span id="cb8-5"><a href=""></a>         <span class="op">&lt;&lt;</span> major <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb8-6"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href=""></a><span class="co">// Replace: Topic 1's version</span></span>
+<span id="cb9-2"><a href=""></a><span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb9-3"><a href=""></a>    cout <span class="op">&lt;&lt;</span> getName<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">" ("</span></span>
+<span id="cb9-4"><a href=""></a>         <span class="op">&lt;&lt;</span> getId<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">"), "</span></span>
+<span id="cb9-5"><a href=""></a>         <span class="op">&lt;&lt;</span> major <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb9-6"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div style="font-size: 70%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href=""></a><span class="co">// Extend: run Person's version first</span></span>
-<span id="cb9-2"><a href=""></a><span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
-<span id="cb9-3"><a href=""></a>    Person<span class="op">::</span>print<span class="op">();</span></span>
-<span id="cb9-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">", "</span> <span class="op">&lt;&lt;</span> major <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb9-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href=""></a><span class="co">// Extend: run Person's version first</span></span>
+<span id="cb10-2"><a href=""></a><span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb10-3"><a href=""></a>    Person<span class="op">::</span>print<span class="op">();</span></span>
+<span id="cb10-4"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">", "</span> <span class="op">&lt;&lt;</span> major <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb10-5"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 <aside class="notes">
@@ -776,44 +820,44 @@ Raj (2002), Math</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 19 -->
+<!-- Slide 21 -->
 </section>
 <section id="predict-the-output" class="slide level2">
 <h2>Predict the Output</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div style="font-size: 50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href=""></a><span class="kw">class</span> Person <span class="op">{</span></span>
-<span id="cb10-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb10-3"><a href=""></a>    string name<span class="op">;</span></span>
-<span id="cb10-4"><a href=""></a>    <span class="dt">int</span> id<span class="op">;</span></span>
-<span id="cb10-5"><a href=""></a></span>
-<span id="cb10-6"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb10-7"><a href=""></a>    Person<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">int</span> i<span class="op">)</span> <span class="op">:</span> name<span class="op">(</span>n<span class="op">),</span> id<span class="op">(</span>i<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
-<span id="cb10-8"><a href=""></a></span>
-<span id="cb10-9"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
-<span id="cb10-10"><a href=""></a>        cout <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> <span class="st">" ("</span> <span class="op">&lt;&lt;</span> id <span class="op">&lt;&lt;</span> <span class="st">")"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb10-11"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb10-12"><a href=""></a><span class="op">};</span></span>
-<span id="cb10-13"><a href=""></a></span>
-<span id="cb10-14"><a href=""></a><span class="kw">class</span> Student <span class="op">:</span> <span class="kw">public</span> Person <span class="op">{</span></span>
-<span id="cb10-15"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb10-16"><a href=""></a>    string major<span class="op">;</span></span>
-<span id="cb10-17"><a href=""></a></span>
-<span id="cb10-18"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb10-19"><a href=""></a>    Student<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">int</span> i<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">)</span> <span class="op">:</span> Person<span class="op">(</span>n<span class="op">,</span> i<span class="op">),</span> major<span class="op">(</span>m<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
-<span id="cb10-20"><a href=""></a></span>
-<span id="cb10-21"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
-<span id="cb10-22"><a href=""></a>        Person<span class="op">::</span>print<span class="op">();</span>                 <span class="co">// run Person's version first</span></span>
-<span id="cb10-23"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">", "</span> <span class="op">&lt;&lt;</span> major <span class="op">&lt;&lt;</span> endl<span class="op">;</span>   <span class="co">// then add Student's part</span></span>
-<span id="cb10-24"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb10-25"><a href=""></a><span class="op">};</span></span>
-<span id="cb10-26"><a href=""></a></span>
-<span id="cb10-27"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb10-28"><a href=""></a>    Student ava<span class="op">(</span><span class="st">"Ava"</span><span class="op">,</span> <span class="dv">1001</span><span class="op">,</span> <span class="st">"CS"</span><span class="op">);</span></span>
-<span id="cb10-29"><a href=""></a>    ava<span class="op">.</span>print<span class="op">();</span></span>
-<span id="cb10-30"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb10-31"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href=""></a><span class="kw">class</span> Person <span class="op">{</span></span>
+<span id="cb11-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb11-3"><a href=""></a>    string name<span class="op">;</span></span>
+<span id="cb11-4"><a href=""></a>    <span class="dt">int</span> id<span class="op">;</span></span>
+<span id="cb11-5"><a href=""></a></span>
+<span id="cb11-6"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb11-7"><a href=""></a>    Person<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">int</span> i<span class="op">)</span> <span class="op">:</span> name<span class="op">(</span>n<span class="op">),</span> id<span class="op">(</span>i<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb11-8"><a href=""></a></span>
+<span id="cb11-9"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb11-10"><a href=""></a>        cout <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> <span class="st">" ("</span> <span class="op">&lt;&lt;</span> id <span class="op">&lt;&lt;</span> <span class="st">")"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb11-11"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb11-12"><a href=""></a><span class="op">};</span></span>
+<span id="cb11-13"><a href=""></a></span>
+<span id="cb11-14"><a href=""></a><span class="kw">class</span> Student <span class="op">:</span> <span class="kw">public</span> Person <span class="op">{</span></span>
+<span id="cb11-15"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb11-16"><a href=""></a>    string major<span class="op">;</span></span>
+<span id="cb11-17"><a href=""></a></span>
+<span id="cb11-18"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb11-19"><a href=""></a>    Student<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">int</span> i<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">)</span> <span class="op">:</span> Person<span class="op">(</span>n<span class="op">,</span> i<span class="op">),</span> major<span class="op">(</span>m<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb11-20"><a href=""></a></span>
+<span id="cb11-21"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb11-22"><a href=""></a>        Person<span class="op">::</span>print<span class="op">();</span>                 <span class="co">// run Person's version first</span></span>
+<span id="cb11-23"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">", "</span> <span class="op">&lt;&lt;</span> major <span class="op">&lt;&lt;</span> endl<span class="op">;</span>   <span class="co">// then add Student's part</span></span>
+<span id="cb11-24"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb11-25"><a href=""></a><span class="op">};</span></span>
+<span id="cb11-26"><a href=""></a></span>
+<span id="cb11-27"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb11-28"><a href=""></a>    Student ava<span class="op">(</span><span class="st">"Ava"</span><span class="op">,</span> <span class="dv">1001</span><span class="op">,</span> <span class="st">"CS"</span><span class="op">);</span></span>
+<span id="cb11-29"><a href=""></a>    ava<span class="op">.</span>print<span class="op">();</span></span>
+<span id="cb11-30"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb11-31"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:40%;">
 <p>. . .</p>
@@ -835,14 +879,14 @@ Raj (2002), Math</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 20 -->
+<!-- Slide 22 -->
 </section>
 <section id="forgetting-person" class="slide level2">
 <h2>Forgetting Person::</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href=""></a><span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
-<span id="cb12-2"><a href=""></a>    print<span class="op">();</span>                         <span class="co">// meant Person::print()</span></span>
-<span id="cb12-3"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">", "</span> <span class="op">&lt;&lt;</span> major <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb12-4"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href=""></a><span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb13-2"><a href=""></a>    print<span class="op">();</span>                         <span class="co">// meant Person::print()</span></span>
+<span id="cb13-3"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">", "</span> <span class="op">&lt;&lt;</span> major <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb13-4"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>It compiles. Running it prints nothing and crashes: <code>Segmentation fault</code>.</li>
 <li>Without <code>Person::</code>, <code>print()</code> is Student’s own <code>print()</code>, which calls itself until the program runs out of stack.</li>
@@ -861,35 +905,35 @@ Raj (2002), Math</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 21 -->
+<!-- Slide 23 -->
 </section>
 <section id="keeping-the-promise-fixed" class="slide level2">
 <h2>Keeping the Promise, Fixed</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div style="font-size: 50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href=""></a><span class="kw">class</span> BankAccount <span class="op">{</span></span>
-<span id="cb13-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb13-3"><a href=""></a>    <span class="dt">double</span> balance<span class="op">;</span>       <span class="co">// private again</span></span>
-<span id="cb13-4"><a href=""></a></span>
-<span id="cb13-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb13-6"><a href=""></a>    <span class="co">// the promise: never take out more than is there</span></span>
-<span id="cb13-7"><a href=""></a>    <span class="dt">bool</span> withdraw<span class="op">(</span><span class="dt">double</span> amount<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb13-8"><a href=""></a>        <span class="cf">if</span> <span class="op">(</span>amount <span class="op">&gt;</span> balance<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb13-9"><a href=""></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
-<span id="cb13-10"><a href=""></a>        <span class="op">}</span></span>
-<span id="cb13-11"><a href=""></a>        balance <span class="op">-=</span> amount<span class="op">;</span></span>
-<span id="cb13-12"><a href=""></a>        <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb13-13"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb13-14"><a href=""></a><span class="op">};</span></span>
-<span id="cb13-15"><a href=""></a></span>
-<span id="cb13-16"><a href=""></a><span class="kw">class</span> SavingsAccount <span class="op">:</span> <span class="kw">public</span> BankAccount <span class="op">{</span></span>
-<span id="cb13-17"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb13-18"><a href=""></a>    <span class="co">// adds the 2.00 fee, then lets BankAccount do the checking</span></span>
-<span id="cb13-19"><a href=""></a>    <span class="dt">bool</span> withdraw<span class="op">(</span><span class="dt">double</span> amount<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb13-20"><a href=""></a>        <span class="cf">return</span> BankAccount<span class="op">::</span>withdraw<span class="op">(</span>amount <span class="op">+</span> <span class="fl">2.00</span><span class="op">);</span></span>
-<span id="cb13-21"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb13-22"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href=""></a><span class="kw">class</span> BankAccount <span class="op">{</span></span>
+<span id="cb14-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb14-3"><a href=""></a>    <span class="dt">double</span> balance<span class="op">;</span>       <span class="co">// private again</span></span>
+<span id="cb14-4"><a href=""></a></span>
+<span id="cb14-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb14-6"><a href=""></a>    <span class="co">// the promise: never take out more than is there</span></span>
+<span id="cb14-7"><a href=""></a>    <span class="dt">bool</span> withdraw<span class="op">(</span><span class="dt">double</span> amount<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb14-8"><a href=""></a>        <span class="cf">if</span> <span class="op">(</span>amount <span class="op">&gt;</span> balance<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb14-9"><a href=""></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb14-10"><a href=""></a>        <span class="op">}</span></span>
+<span id="cb14-11"><a href=""></a>        balance <span class="op">-=</span> amount<span class="op">;</span></span>
+<span id="cb14-12"><a href=""></a>        <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb14-13"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb14-14"><a href=""></a><span class="op">};</span></span>
+<span id="cb14-15"><a href=""></a></span>
+<span id="cb14-16"><a href=""></a><span class="kw">class</span> SavingsAccount <span class="op">:</span> <span class="kw">public</span> BankAccount <span class="op">{</span></span>
+<span id="cb14-17"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb14-18"><a href=""></a>    <span class="co">// adds the 2.00 fee, then lets BankAccount do the checking</span></span>
+<span id="cb14-19"><a href=""></a>    <span class="dt">bool</span> withdraw<span class="op">(</span><span class="dt">double</span> amount<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb14-20"><a href=""></a>        <span class="cf">return</span> BankAccount<span class="op">::</span>withdraw<span class="op">(</span>amount <span class="op">+</span> <span class="fl">2.00</span><span class="op">);</span></span>
+<span id="cb14-21"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb14-22"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:40%;">
 <ul>
@@ -912,7 +956,7 @@ Raj (2002), Math</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 22 -->
+<!-- Slide 24 -->
 </section>
 <section id="summary-1" class="slide level2">
 <h2>Summary</h2>
@@ -933,14 +977,14 @@ Raj (2002), Math</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 23 -->
+<!-- Slide 25 -->
 <!-- Topic 2x: Programming Activity -->
-<!-- Slides 25–27 -->
+<!-- Slides 27–29 -->
 </section></section>
 <section>
 <section id="programming-activity" class="title-slide slide level1 center">
 <h1>Programming Activity</h1>
-<!-- Slide 24 -->
+<!-- Slide 26 -->
 </section>
 <section id="programming-activity-1" class="slide level2">
 <h2>Programming Activity</h2>
@@ -951,7 +995,7 @@ Raj (2002), Math</code></pre>
 <li>In <code>main</code>, call the function on a parent object and on a child object.</li>
 </ol>
 <aside class="notes">
-<p>Slides 25–27</p>
+<p>Slides 27–29</p>
 <p>Ten minutes. Students who lost last week’s program can start from cpp/activity_vehicle_truck.cpp in 11.02 or write a new pair. The goal is only to confirm the syntax of overriding and calling the base version.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -964,7 +1008,7 @@ Raj (2002), Math</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 25 -->
+<!-- Slide 27 -->
 </section>
 <section id="check-your-work" class="slide level2">
 <h2>Check Your Work</h2>
@@ -987,44 +1031,44 @@ Raj (2002), Math</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 26 -->
+<!-- Slide 28 -->
 </section>
 <section id="one-possible-answer" class="slide level2">
 <h2>One Possible Answer</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div style="font-size: 50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href=""></a><span class="kw">class</span> Vehicle <span class="op">{</span></span>
-<span id="cb14-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb14-3"><a href=""></a>    <span class="dt">int</span> wheels <span class="op">=</span> <span class="dv">4</span><span class="op">;</span></span>
-<span id="cb14-4"><a href=""></a></span>
-<span id="cb14-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb14-6"><a href=""></a>    <span class="dt">void</span> describe<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
-<span id="cb14-7"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"A vehicle with "</span> <span class="op">&lt;&lt;</span> wheels <span class="op">&lt;&lt;</span> <span class="st">" wheels"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb14-8"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb14-9"><a href=""></a><span class="op">};</span></span>
-<span id="cb14-10"><a href=""></a></span>
-<span id="cb14-11"><a href=""></a><span class="kw">class</span> Truck <span class="op">:</span> <span class="kw">public</span> Vehicle <span class="op">{</span></span>
-<span id="cb14-12"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb14-13"><a href=""></a>    <span class="dt">int</span> bedFeet <span class="op">=</span> <span class="dv">6</span><span class="op">;</span></span>
-<span id="cb14-14"><a href=""></a></span>
-<span id="cb14-15"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb14-16"><a href=""></a>    <span class="co">// same name, parameters, and const: overrides Vehicle::describe()</span></span>
-<span id="cb14-17"><a href=""></a>    <span class="dt">void</span> describe<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
-<span id="cb14-18"><a href=""></a>        Vehicle<span class="op">::</span>describe<span class="op">();</span></span>
-<span id="cb14-19"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Truck bed: "</span> <span class="op">&lt;&lt;</span> bedFeet <span class="op">&lt;&lt;</span> <span class="st">" feet"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb14-20"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb14-21"><a href=""></a><span class="op">};</span></span>
-<span id="cb14-22"><a href=""></a></span>
-<span id="cb14-23"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb14-24"><a href=""></a>    Vehicle car<span class="op">;</span></span>
-<span id="cb14-25"><a href=""></a>    Truck pickup<span class="op">;</span></span>
-<span id="cb14-26"><a href=""></a></span>
-<span id="cb14-27"><a href=""></a>    car<span class="op">.</span>describe<span class="op">();</span></span>
-<span id="cb14-28"><a href=""></a>    cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb14-29"><a href=""></a>    pickup<span class="op">.</span>describe<span class="op">();</span></span>
-<span id="cb14-30"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb14-31"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href=""></a><span class="kw">class</span> Vehicle <span class="op">{</span></span>
+<span id="cb15-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb15-3"><a href=""></a>    <span class="dt">int</span> wheels <span class="op">=</span> <span class="dv">4</span><span class="op">;</span></span>
+<span id="cb15-4"><a href=""></a></span>
+<span id="cb15-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb15-6"><a href=""></a>    <span class="dt">void</span> describe<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb15-7"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"A vehicle with "</span> <span class="op">&lt;&lt;</span> wheels <span class="op">&lt;&lt;</span> <span class="st">" wheels"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb15-8"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb15-9"><a href=""></a><span class="op">};</span></span>
+<span id="cb15-10"><a href=""></a></span>
+<span id="cb15-11"><a href=""></a><span class="kw">class</span> Truck <span class="op">:</span> <span class="kw">public</span> Vehicle <span class="op">{</span></span>
+<span id="cb15-12"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb15-13"><a href=""></a>    <span class="dt">int</span> bedFeet <span class="op">=</span> <span class="dv">6</span><span class="op">;</span></span>
+<span id="cb15-14"><a href=""></a></span>
+<span id="cb15-15"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb15-16"><a href=""></a>    <span class="co">// same name, parameters, and const: overrides Vehicle::describe()</span></span>
+<span id="cb15-17"><a href=""></a>    <span class="dt">void</span> describe<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb15-18"><a href=""></a>        Vehicle<span class="op">::</span>describe<span class="op">();</span></span>
+<span id="cb15-19"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Truck bed: "</span> <span class="op">&lt;&lt;</span> bedFeet <span class="op">&lt;&lt;</span> <span class="st">" feet"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb15-20"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb15-21"><a href=""></a><span class="op">};</span></span>
+<span id="cb15-22"><a href=""></a></span>
+<span id="cb15-23"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb15-24"><a href=""></a>    Vehicle car<span class="op">;</span></span>
+<span id="cb15-25"><a href=""></a>    Truck pickup<span class="op">;</span></span>
+<span id="cb15-26"><a href=""></a></span>
+<span id="cb15-27"><a href=""></a>    car<span class="op">.</span>describe<span class="op">();</span></span>
+<span id="cb15-28"><a href=""></a>    cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb15-29"><a href=""></a>    pickup<span class="op">.</span>describe<span class="op">();</span></span>
+<span id="cb15-30"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb15-31"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:40%;">
 <p>. . .</p>
@@ -1047,14 +1091,14 @@ Truck bed: 6 feet</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 27 -->
+<!-- Slide 29 -->
 <!-- Topic 3: Multiple Inheritance and the Diamond Problem -->
-<!-- Slides 29–38 -->
+<!-- Slides 31–40 -->
 </section></section>
 <section>
 <section id="multiple-inheritance-and-the-diamond-problem" class="title-slide slide level1 center">
 <h1>Multiple Inheritance and the Diamond Problem</h1>
-<!-- Slide 28 -->
+<!-- Slide 30 -->
 </section>
 <section id="can-a-class-have-two-parents" class="slide level2 smaller">
 <h2>Can a Class Have Two Parents?</h2>
@@ -1062,7 +1106,7 @@ Truck bed: 6 feet</code></pre>
 <li>A teaching assistant takes classes and gets paid. Is a TA a Student or an Employee?</li>
 </ul>
 <aside class="notes">
-<p>Slides 29–38</p>
+<p>Slides 31–40</p>
 <p>Run the is-a test both ways: a TA is a Student, and a TA is an Employee. Both pass. C++ lets a class have both parents.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -1075,11 +1119,11 @@ Truck bed: 6 feet</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 29 -->
+<!-- Slide 31 -->
 </section>
 <section id="multiple-inheritance-anatomy" class="slide level2">
 <h2>Multiple Inheritance Anatomy</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href=""></a><span class="kw">class</span> TeachingAssistant <span class="op">:</span> <span class="kw">public</span> Student<span class="op">,</span> <span class="kw">public</span> Employee <span class="op">{</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href=""></a><span class="kw">class</span> TeachingAssistant <span class="op">:</span> <span class="kw">public</span> Student<span class="op">,</span> <span class="kw">public</span> Employee <span class="op">{</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -1122,48 +1166,48 @@ Truck bed: 6 feet</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 30 -->
+<!-- Slide 32 -->
 </section>
 <section id="multiple-inheritance-anatomy-1" class="slide level2">
 <h2>Multiple Inheritance Anatomy</h2>
 <div style="font-size: 50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href=""></a><span class="kw">class</span> Student <span class="op">{</span></span>
-<span id="cb17-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb17-3"><a href=""></a>    string name<span class="op">;</span></span>
-<span id="cb17-4"><a href=""></a>    string major<span class="op">;</span></span>
-<span id="cb17-5"><a href=""></a></span>
-<span id="cb17-6"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb17-7"><a href=""></a>    Student<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">)</span> <span class="op">:</span> name<span class="op">(</span>n<span class="op">),</span> major<span class="op">(</span>m<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb17-8"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Student built"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb17-9"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb17-10"><a href=""></a>    string getMajor<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> major<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb17-11"><a href=""></a><span class="op">};</span></span>
-<span id="cb17-12"><a href=""></a></span>
-<span id="cb17-13"><a href=""></a><span class="kw">class</span> Employee <span class="op">{</span></span>
-<span id="cb17-14"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb17-15"><a href=""></a>    string name<span class="op">;</span></span>
-<span id="cb17-16"><a href=""></a>    <span class="dt">double</span> salary<span class="op">;</span></span>
-<span id="cb17-17"><a href=""></a></span>
-<span id="cb17-18"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb17-19"><a href=""></a>    Employee<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">double</span> s<span class="op">)</span> <span class="op">:</span> name<span class="op">(</span>n<span class="op">),</span> salary<span class="op">(</span>s<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb17-20"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Employee built"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb17-21"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb17-22"><a href=""></a>    <span class="dt">double</span> getSalary<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> salary<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb17-23"><a href=""></a><span class="op">};</span></span>
-<span id="cb17-24"><a href=""></a></span>
-<span id="cb17-25"><a href=""></a><span class="co">// two parents, each with its own public</span></span>
-<span id="cb17-26"><a href=""></a><span class="kw">class</span> TeachingAssistant <span class="op">:</span> <span class="kw">public</span> Student<span class="op">,</span> <span class="kw">public</span> Employee <span class="op">{</span></span>
-<span id="cb17-27"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb17-28"><a href=""></a>    TeachingAssistant<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">,</span> <span class="dt">double</span> s<span class="op">)</span></span>
-<span id="cb17-29"><a href=""></a>        <span class="op">:</span> Student<span class="op">(</span>n<span class="op">,</span> m<span class="op">),</span> Employee<span class="op">(</span>n<span class="op">,</span> s<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
-<span id="cb17-30"><a href=""></a><span class="op">};</span></span>
-<span id="cb17-31"><a href=""></a></span>
-<span id="cb17-32"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb17-33"><a href=""></a>    TeachingAssistant sam<span class="op">(</span><span class="st">"Sam"</span><span class="op">,</span> <span class="st">"CS"</span><span class="op">,</span> <span class="fl">1200.00</span><span class="op">);</span></span>
-<span id="cb17-34"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Major: "</span> <span class="op">&lt;&lt;</span> sam<span class="op">.</span>getMajor<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span>     <span class="co">// from Student</span></span>
-<span id="cb17-35"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Salary: "</span> <span class="op">&lt;&lt;</span> sam<span class="op">.</span>getSalary<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span>   <span class="co">// from Employee</span></span>
-<span id="cb17-36"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb17-37"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href=""></a><span class="kw">class</span> Student <span class="op">{</span></span>
+<span id="cb18-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb18-3"><a href=""></a>    string name<span class="op">;</span></span>
+<span id="cb18-4"><a href=""></a>    string major<span class="op">;</span></span>
+<span id="cb18-5"><a href=""></a></span>
+<span id="cb18-6"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb18-7"><a href=""></a>    Student<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">)</span> <span class="op">:</span> name<span class="op">(</span>n<span class="op">),</span> major<span class="op">(</span>m<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb18-8"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Student built"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb18-9"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb18-10"><a href=""></a>    string getMajor<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> major<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb18-11"><a href=""></a><span class="op">};</span></span>
+<span id="cb18-12"><a href=""></a></span>
+<span id="cb18-13"><a href=""></a><span class="kw">class</span> Employee <span class="op">{</span></span>
+<span id="cb18-14"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb18-15"><a href=""></a>    string name<span class="op">;</span></span>
+<span id="cb18-16"><a href=""></a>    <span class="dt">double</span> salary<span class="op">;</span></span>
+<span id="cb18-17"><a href=""></a></span>
+<span id="cb18-18"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb18-19"><a href=""></a>    Employee<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">double</span> s<span class="op">)</span> <span class="op">:</span> name<span class="op">(</span>n<span class="op">),</span> salary<span class="op">(</span>s<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb18-20"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Employee built"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb18-21"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb18-22"><a href=""></a>    <span class="dt">double</span> getSalary<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> salary<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb18-23"><a href=""></a><span class="op">};</span></span>
+<span id="cb18-24"><a href=""></a></span>
+<span id="cb18-25"><a href=""></a><span class="co">// two parents, each with its own public</span></span>
+<span id="cb18-26"><a href=""></a><span class="kw">class</span> TeachingAssistant <span class="op">:</span> <span class="kw">public</span> Student<span class="op">,</span> <span class="kw">public</span> Employee <span class="op">{</span></span>
+<span id="cb18-27"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb18-28"><a href=""></a>    TeachingAssistant<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">,</span> <span class="dt">double</span> s<span class="op">)</span></span>
+<span id="cb18-29"><a href=""></a>        <span class="op">:</span> Student<span class="op">(</span>n<span class="op">,</span> m<span class="op">),</span> Employee<span class="op">(</span>n<span class="op">,</span> s<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb18-30"><a href=""></a><span class="op">};</span></span>
+<span id="cb18-31"><a href=""></a></span>
+<span id="cb18-32"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb18-33"><a href=""></a>    TeachingAssistant sam<span class="op">(</span><span class="st">"Sam"</span><span class="op">,</span> <span class="st">"CS"</span><span class="op">,</span> <span class="fl">1200.00</span><span class="op">);</span></span>
+<span id="cb18-34"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Major: "</span> <span class="op">&lt;&lt;</span> sam<span class="op">.</span>getMajor<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span>     <span class="co">// from Student</span></span>
+<span id="cb18-35"><a href=""></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Salary: "</span> <span class="op">&lt;&lt;</span> sam<span class="op">.</span>getSalary<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span>   <span class="co">// from Employee</span></span>
+<span id="cb18-36"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb18-37"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
 <p>Output: Student built Employee built Major: CS Salary: 1200</p>
@@ -1181,22 +1225,22 @@ Truck bed: 6 feet</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 31 -->
+<!-- Slide 33 -->
 </section>
 <section id="same-name-two-parents" class="slide level2">
 <h2>Same Name, Two Parents</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href=""></a><span class="kw">class</span> Student <span class="op">{</span></span>
-<span id="cb18-2"><a href=""></a>    <span class="op">...</span></span>
-<span id="cb18-3"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> cout <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> <span class="st">", "</span> <span class="op">&lt;&lt;</span> major <span class="op">&lt;&lt;</span> endl<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb18-4"><a href=""></a><span class="op">};</span></span>
-<span id="cb18-5"><a href=""></a></span>
-<span id="cb18-6"><a href=""></a><span class="kw">class</span> Employee <span class="op">{</span></span>
-<span id="cb18-7"><a href=""></a>    <span class="op">...</span></span>
-<span id="cb18-8"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> cout <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> <span class="st">", paid "</span> <span class="op">&lt;&lt;</span> salary <span class="op">&lt;&lt;</span> endl<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb18-9"><a href=""></a><span class="op">};</span></span>
-<span id="cb18-10"><a href=""></a></span>
-<span id="cb18-11"><a href=""></a>TeachingAssistant sam<span class="op">(</span><span class="st">"Sam"</span><span class="op">,</span> <span class="st">"CS"</span><span class="op">,</span> <span class="fl">1200.00</span><span class="op">);</span></span>
-<span id="cb18-12"><a href=""></a>sam<span class="op">.</span>print<span class="op">();</span>      <span class="co">// error</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href=""></a><span class="kw">class</span> Student <span class="op">{</span></span>
+<span id="cb19-2"><a href=""></a>    <span class="op">...</span></span>
+<span id="cb19-3"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> cout <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> <span class="st">", "</span> <span class="op">&lt;&lt;</span> major <span class="op">&lt;&lt;</span> endl<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb19-4"><a href=""></a><span class="op">};</span></span>
+<span id="cb19-5"><a href=""></a></span>
+<span id="cb19-6"><a href=""></a><span class="kw">class</span> Employee <span class="op">{</span></span>
+<span id="cb19-7"><a href=""></a>    <span class="op">...</span></span>
+<span id="cb19-8"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> cout <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> <span class="st">", paid "</span> <span class="op">&lt;&lt;</span> salary <span class="op">&lt;&lt;</span> endl<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb19-9"><a href=""></a><span class="op">};</span></span>
+<span id="cb19-10"><a href=""></a></span>
+<span id="cb19-11"><a href=""></a>TeachingAssistant sam<span class="op">(</span><span class="st">"Sam"</span><span class="op">,</span> <span class="st">"CS"</span><span class="op">,</span> <span class="fl">1200.00</span><span class="op">);</span></span>
+<span id="cb19-12"><a href=""></a>sam<span class="op">.</span>print<span class="op">();</span>      <span class="co">// error</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>g++: <code>request for member 'print' is ambiguous</code></li>
 <li>Both versions are equally close, and the compiler will not guess.</li>
@@ -1215,30 +1259,30 @@ Truck bed: 6 feet</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 32 -->
+<!-- Slide 34 -->
 </section>
 <section id="fix-override-and-call-both" class="slide level2">
 <h2>Fix: Override and Call Both</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div style="font-size: 50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href=""></a><span class="kw">class</span> TeachingAssistant <span class="op">:</span> <span class="kw">public</span> Student<span class="op">,</span> <span class="kw">public</span> Employee <span class="op">{</span></span>
-<span id="cb19-2"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb19-3"><a href=""></a>    TeachingAssistant<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">,</span> <span class="dt">double</span> s<span class="op">)</span></span>
-<span id="cb19-4"><a href=""></a>        <span class="op">:</span> Student<span class="op">(</span>n<span class="op">,</span> m<span class="op">),</span> Employee<span class="op">(</span>n<span class="op">,</span> s<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
-<span id="cb19-5"><a href=""></a></span>
-<span id="cb19-6"><a href=""></a>    <span class="co">// TA's own print() ends the ambiguity</span></span>
-<span id="cb19-7"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
-<span id="cb19-8"><a href=""></a>        Student<span class="op">::</span>print<span class="op">();</span></span>
-<span id="cb19-9"><a href=""></a>        Employee<span class="op">::</span>print<span class="op">();</span></span>
-<span id="cb19-10"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb19-11"><a href=""></a><span class="op">};</span></span>
-<span id="cb19-12"><a href=""></a></span>
-<span id="cb19-13"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb19-14"><a href=""></a>    TeachingAssistant sam<span class="op">(</span><span class="st">"Sam"</span><span class="op">,</span> <span class="st">"CS"</span><span class="op">,</span> <span class="fl">1200.00</span><span class="op">);</span></span>
-<span id="cb19-15"><a href=""></a>    sam<span class="op">.</span>print<span class="op">();</span></span>
-<span id="cb19-16"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb19-17"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href=""></a><span class="kw">class</span> TeachingAssistant <span class="op">:</span> <span class="kw">public</span> Student<span class="op">,</span> <span class="kw">public</span> Employee <span class="op">{</span></span>
+<span id="cb20-2"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb20-3"><a href=""></a>    TeachingAssistant<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">,</span> <span class="dt">double</span> s<span class="op">)</span></span>
+<span id="cb20-4"><a href=""></a>        <span class="op">:</span> Student<span class="op">(</span>n<span class="op">,</span> m<span class="op">),</span> Employee<span class="op">(</span>n<span class="op">,</span> s<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb20-5"><a href=""></a></span>
+<span id="cb20-6"><a href=""></a>    <span class="co">// TA's own print() ends the ambiguity</span></span>
+<span id="cb20-7"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb20-8"><a href=""></a>        Student<span class="op">::</span>print<span class="op">();</span></span>
+<span id="cb20-9"><a href=""></a>        Employee<span class="op">::</span>print<span class="op">();</span></span>
+<span id="cb20-10"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb20-11"><a href=""></a><span class="op">};</span></span>
+<span id="cb20-12"><a href=""></a></span>
+<span id="cb20-13"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb20-14"><a href=""></a>    TeachingAssistant sam<span class="op">(</span><span class="st">"Sam"</span><span class="op">,</span> <span class="st">"CS"</span><span class="op">,</span> <span class="fl">1200.00</span><span class="op">);</span></span>
+<span id="cb20-15"><a href=""></a>    sam<span class="op">.</span>print<span class="op">();</span></span>
+<span id="cb20-16"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb20-17"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:40%;">
 <p>. . .</p>
@@ -1259,7 +1303,7 @@ Sam, paid 1200</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 33 -->
+<!-- Slide 35 -->
 </section>
 <section id="what-if-both-parents-are-people" class="slide level2">
 <h2>What If Both Parents Are People?</h2>
@@ -1296,37 +1340,37 @@ Sam, paid 1200</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 34 -->
+<!-- Slide 36 -->
 </section>
 <section id="two-persons-one-ta" class="slide level2">
 <h2>Two Persons, One TA</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div style="font-size: 50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb23-1"><a href=""></a><span class="kw">class</span> Person <span class="op">{</span></span>
-<span id="cb23-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb23-3"><a href=""></a>    string name<span class="op">;</span></span>
-<span id="cb23-4"><a href=""></a></span>
-<span id="cb23-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb23-6"><a href=""></a>    Person<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">)</span> <span class="op">:</span> name<span class="op">(</span>n<span class="op">)</span> <span class="op">{</span> cout <span class="op">&lt;&lt;</span> <span class="st">"Person built: "</span> <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> endl<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb23-7"><a href=""></a>    string getName<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> name<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb23-8"><a href=""></a><span class="op">};</span></span>
-<span id="cb23-9"><a href=""></a></span>
-<span id="cb23-10"><a href=""></a><span class="kw">class</span> Student <span class="op">:</span> <span class="kw">public</span> Person <span class="op">{</span></span>
-<span id="cb23-11"><a href=""></a>    <span class="op">...</span></span>
-<span id="cb23-12"><a href=""></a>    Student<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">)</span> <span class="op">:</span> Person<span class="op">(</span>n<span class="op">),</span> major<span class="op">(</span>m<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
-<span id="cb23-13"><a href=""></a><span class="op">};</span></span>
-<span id="cb23-14"><a href=""></a></span>
-<span id="cb23-15"><a href=""></a><span class="kw">class</span> Employee <span class="op">:</span> <span class="kw">public</span> Person <span class="op">{</span></span>
-<span id="cb23-16"><a href=""></a>    <span class="op">...</span></span>
-<span id="cb23-17"><a href=""></a>    Employee<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">double</span> s<span class="op">)</span> <span class="op">:</span> Person<span class="op">(</span>n<span class="op">),</span> salary<span class="op">(</span>s<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
-<span id="cb23-18"><a href=""></a><span class="op">};</span></span>
-<span id="cb23-19"><a href=""></a></span>
-<span id="cb23-20"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb23-21"><a href=""></a>    TeachingAssistant sam<span class="op">(</span><span class="st">"Sam"</span><span class="op">,</span> <span class="st">"CS"</span><span class="op">,</span> <span class="fl">1200.00</span><span class="op">);</span></span>
-<span id="cb23-22"><a href=""></a>    cout <span class="op">&lt;&lt;</span> sam<span class="op">.</span>getName<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb23-23"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb23-24"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb24-1"><a href=""></a><span class="kw">class</span> Person <span class="op">{</span></span>
+<span id="cb24-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb24-3"><a href=""></a>    string name<span class="op">;</span></span>
+<span id="cb24-4"><a href=""></a></span>
+<span id="cb24-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb24-6"><a href=""></a>    Person<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">)</span> <span class="op">:</span> name<span class="op">(</span>n<span class="op">)</span> <span class="op">{</span> cout <span class="op">&lt;&lt;</span> <span class="st">"Person built: "</span> <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> endl<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb24-7"><a href=""></a>    string getName<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> name<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb24-8"><a href=""></a><span class="op">};</span></span>
+<span id="cb24-9"><a href=""></a></span>
+<span id="cb24-10"><a href=""></a><span class="kw">class</span> Student <span class="op">:</span> <span class="kw">public</span> Person <span class="op">{</span></span>
+<span id="cb24-11"><a href=""></a>    <span class="op">...</span></span>
+<span id="cb24-12"><a href=""></a>    Student<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">)</span> <span class="op">:</span> Person<span class="op">(</span>n<span class="op">),</span> major<span class="op">(</span>m<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb24-13"><a href=""></a><span class="op">};</span></span>
+<span id="cb24-14"><a href=""></a></span>
+<span id="cb24-15"><a href=""></a><span class="kw">class</span> Employee <span class="op">:</span> <span class="kw">public</span> Person <span class="op">{</span></span>
+<span id="cb24-16"><a href=""></a>    <span class="op">...</span></span>
+<span id="cb24-17"><a href=""></a>    Employee<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">double</span> s<span class="op">)</span> <span class="op">:</span> Person<span class="op">(</span>n<span class="op">),</span> salary<span class="op">(</span>s<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb24-18"><a href=""></a><span class="op">};</span></span>
+<span id="cb24-19"><a href=""></a></span>
+<span id="cb24-20"><a href=""></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb24-21"><a href=""></a>    TeachingAssistant sam<span class="op">(</span><span class="st">"Sam"</span><span class="op">,</span> <span class="st">"CS"</span><span class="op">,</span> <span class="fl">1200.00</span><span class="op">);</span></span>
+<span id="cb24-22"><a href=""></a>    cout <span class="op">&lt;&lt;</span> sam<span class="op">.</span>getName<span class="op">()</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb24-23"><a href=""></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb24-24"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:40%;">
 <p>. . .</p>
@@ -1355,18 +1399,18 @@ Person built: Sam</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 35 -->
+<!-- Slide 37 -->
 </section>
 <section id="the-escape-hatch-virtual-inheritance" class="slide level2">
 <h2>The Escape Hatch: virtual Inheritance</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb25-1"><a href=""></a><span class="kw">class</span> Student <span class="op">:</span> <span class="kw">virtual</span> <span class="kw">public</span> Person <span class="op">{</span> <span class="op">...</span> <span class="op">};</span></span>
-<span id="cb25-2"><a href=""></a><span class="kw">class</span> Employee <span class="op">:</span> <span class="kw">virtual</span> <span class="kw">public</span> Person <span class="op">{</span> <span class="op">...</span> <span class="op">};</span></span>
-<span id="cb25-3"><a href=""></a></span>
-<span id="cb25-4"><a href=""></a><span class="kw">class</span> TeachingAssistant <span class="op">:</span> <span class="kw">public</span> Student<span class="op">,</span> <span class="kw">public</span> Employee <span class="op">{</span></span>
-<span id="cb25-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb25-6"><a href=""></a>    TeachingAssistant<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">,</span> <span class="dt">double</span> s<span class="op">)</span></span>
-<span id="cb25-7"><a href=""></a>        <span class="op">:</span> Person<span class="op">(</span>n<span class="op">),</span> Student<span class="op">(</span>n<span class="op">,</span> m<span class="op">),</span> Employee<span class="op">(</span>n<span class="op">,</span> s<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
-<span id="cb25-8"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb26-1"><a href=""></a><span class="kw">class</span> Student <span class="op">:</span> <span class="kw">virtual</span> <span class="kw">public</span> Person <span class="op">{</span> <span class="op">...</span> <span class="op">};</span></span>
+<span id="cb26-2"><a href=""></a><span class="kw">class</span> Employee <span class="op">:</span> <span class="kw">virtual</span> <span class="kw">public</span> Person <span class="op">{</span> <span class="op">...</span> <span class="op">};</span></span>
+<span id="cb26-3"><a href=""></a></span>
+<span id="cb26-4"><a href=""></a><span class="kw">class</span> TeachingAssistant <span class="op">:</span> <span class="kw">public</span> Student<span class="op">,</span> <span class="kw">public</span> Employee <span class="op">{</span></span>
+<span id="cb26-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb26-6"><a href=""></a>    TeachingAssistant<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">,</span> <span class="dt">double</span> s<span class="op">)</span></span>
+<span id="cb26-7"><a href=""></a>        <span class="op">:</span> Person<span class="op">(</span>n<span class="op">),</span> Student<span class="op">(</span>n<span class="op">,</span> m<span class="op">),</span> Employee<span class="op">(</span>n<span class="op">,</span> s<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb26-8"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Now <code>Person built: Sam</code> prints once, and <code>sam.getName()</code> compiles.</li>
 <li>This <code>virtual</code> is not Tuesday’s. 13.02’s <code>virtual</code> functions are a different feature that uses the same keyword.</li>
@@ -1386,33 +1430,33 @@ Person built: Sam</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 36 -->
+<!-- Slide 38 -->
 </section>
 <section id="has-a-instead" class="slide level2">
 <h2>Has-a Instead</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div style="font-size: 50%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb26-1"><a href=""></a><span class="kw">class</span> Job <span class="op">{</span></span>
-<span id="cb26-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb26-3"><a href=""></a>    string title<span class="op">;</span></span>
-<span id="cb26-4"><a href=""></a>    <span class="dt">double</span> salary<span class="op">;</span></span>
-<span id="cb26-5"><a href=""></a></span>
-<span id="cb26-6"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb26-7"><a href=""></a>    Job<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> t<span class="op">,</span> <span class="dt">double</span> s<span class="op">)</span> <span class="op">:</span> title<span class="op">(</span>t<span class="op">),</span> salary<span class="op">(</span>s<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
-<span id="cb26-8"><a href=""></a>    <span class="dt">double</span> getSalary<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> salary<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb26-9"><a href=""></a><span class="op">};</span></span>
-<span id="cb26-10"><a href=""></a></span>
-<span id="cb26-11"><a href=""></a><span class="kw">class</span> TeachingAssistant <span class="op">:</span> <span class="kw">public</span> Student <span class="op">{</span>     <span class="co">// is a Student</span></span>
-<span id="cb26-12"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb26-13"><a href=""></a>    Job job<span class="op">;</span>                                    <span class="co">// has a Job</span></span>
-<span id="cb26-14"><a href=""></a></span>
-<span id="cb26-15"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb26-16"><a href=""></a>    TeachingAssistant<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">,</span> <span class="dt">double</span> s<span class="op">)</span></span>
-<span id="cb26-17"><a href=""></a>        <span class="op">:</span> Student<span class="op">(</span>n<span class="op">,</span> m<span class="op">),</span> job<span class="op">(</span><span class="st">"TA"</span><span class="op">,</span> s<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
-<span id="cb26-18"><a href=""></a></span>
-<span id="cb26-19"><a href=""></a>    <span class="dt">double</span> getSalary<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> job<span class="op">.</span>getSalary<span class="op">();</span> <span class="op">}</span></span>
-<span id="cb26-20"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb27-1"><a href=""></a><span class="kw">class</span> Job <span class="op">{</span></span>
+<span id="cb27-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb27-3"><a href=""></a>    string title<span class="op">;</span></span>
+<span id="cb27-4"><a href=""></a>    <span class="dt">double</span> salary<span class="op">;</span></span>
+<span id="cb27-5"><a href=""></a></span>
+<span id="cb27-6"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb27-7"><a href=""></a>    Job<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> t<span class="op">,</span> <span class="dt">double</span> s<span class="op">)</span> <span class="op">:</span> title<span class="op">(</span>t<span class="op">),</span> salary<span class="op">(</span>s<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb27-8"><a href=""></a>    <span class="dt">double</span> getSalary<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> salary<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb27-9"><a href=""></a><span class="op">};</span></span>
+<span id="cb27-10"><a href=""></a></span>
+<span id="cb27-11"><a href=""></a><span class="kw">class</span> TeachingAssistant <span class="op">:</span> <span class="kw">public</span> Student <span class="op">{</span>     <span class="co">// is a Student</span></span>
+<span id="cb27-12"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb27-13"><a href=""></a>    Job job<span class="op">;</span>                                    <span class="co">// has a Job</span></span>
+<span id="cb27-14"><a href=""></a></span>
+<span id="cb27-15"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb27-16"><a href=""></a>    TeachingAssistant<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">,</span> <span class="dt">double</span> s<span class="op">)</span></span>
+<span id="cb27-17"><a href=""></a>        <span class="op">:</span> Student<span class="op">(</span>n<span class="op">,</span> m<span class="op">),</span> job<span class="op">(</span><span class="st">"TA"</span><span class="op">,</span> s<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb27-18"><a href=""></a></span>
+<span id="cb27-19"><a href=""></a>    <span class="dt">double</span> getSalary<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> job<span class="op">.</span>getSalary<span class="op">();</span> <span class="op">}</span></span>
+<span id="cb27-20"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:40%;">
 <ul>
@@ -1435,7 +1479,7 @@ Person built: Sam</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 37 -->
+<!-- Slide 39 -->
 </section>
 <section id="summary-2" class="slide level2">
 <h2>Summary</h2>
@@ -1456,7 +1500,7 @@ Person built: Sam</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 38 -->
+<!-- Slide 40 -->
 </section>
 <section class="slide level2">
 
@@ -1470,7 +1514,7 @@ Person built: Sam</code></pre>
 <li>An override changes how a request is handled, never what the base promised.</li>
 <li>Two parents with a shared base give an object two copies of that base; prefer has-a to a diamond.</li>
 </ul>
-<!-- Slide 39 -->
+<!-- Slide 41 -->
 </section>
 <section class="slide level2">
 
@@ -1495,7 +1539,7 @@ Person built: Sam</code></pre>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- Slide 40 -->
+<!-- Slide 42 -->
 </section>
 <section class="slide level2">
 
@@ -1503,7 +1547,7 @@ Person built: Sam</code></pre>
 <section>
 <section id="appendix" class="title-slide slide level1 center">
 <h1>Appendix</h1>
-<!-- Slide 41 -->
+<!-- Slide 43 -->
 </section>
 <section id="overriding-functions-good-practices" class="slide level2">
 <h2>Overriding Functions: Good Practices</h2>
@@ -1512,7 +1556,7 @@ Person built: Sam</code></pre>
 <li>Override only when the derived class must handle the same request differently.</li>
 <li>Keep every promise the base version makes.</li>
 </ul>
-<!-- Slide 42 -->
+<!-- Slide 44 -->
 </section>
 <section id="overriding-functions-common-mistakes" class="slide level2">
 <h2>Overriding Functions: Common Mistakes</h2>
@@ -1521,26 +1565,26 @@ Person built: Sam</code></pre>
 <li>Leaving off <code>const</code> and getting a second, separate function.</li>
 <li>Overriding a function so it does something the base version never did.</li>
 </ul>
-<!-- Slide 43 -->
+<!-- Slide 45 -->
 </section>
 <section id="overriding-functions-more-examples" class="slide level2">
 <h2>Overriding Functions: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb27-1"><a href=""></a><span class="kw">class</span> Instructor <span class="op">:</span> <span class="kw">public</span> Person <span class="op">{</span></span>
-<span id="cb27-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb27-3"><a href=""></a>    string office<span class="op">;</span></span>
-<span id="cb27-4"><a href=""></a></span>
-<span id="cb27-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb27-6"><a href=""></a>    Instructor<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">int</span> i<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> o<span class="op">)</span></span>
-<span id="cb27-7"><a href=""></a>        <span class="op">:</span> Person<span class="op">(</span>n<span class="op">,</span> i<span class="op">),</span> office<span class="op">(</span>o<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
-<span id="cb27-8"><a href=""></a></span>
-<span id="cb27-9"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
-<span id="cb27-10"><a href=""></a>        cout <span class="op">&lt;&lt;</span> getName<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">" ("</span> <span class="op">&lt;&lt;</span> getId<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">"), office "</span> <span class="op">&lt;&lt;</span> office <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb27-11"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb27-12"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb28-1"><a href=""></a><span class="kw">class</span> Instructor <span class="op">:</span> <span class="kw">public</span> Person <span class="op">{</span></span>
+<span id="cb28-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb28-3"><a href=""></a>    string office<span class="op">;</span></span>
+<span id="cb28-4"><a href=""></a></span>
+<span id="cb28-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb28-6"><a href=""></a>    Instructor<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">int</span> i<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> o<span class="op">)</span></span>
+<span id="cb28-7"><a href=""></a>        <span class="op">:</span> Person<span class="op">(</span>n<span class="op">,</span> i<span class="op">),</span> office<span class="op">(</span>o<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb28-8"><a href=""></a></span>
+<span id="cb28-9"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb28-10"><a href=""></a>        cout <span class="op">&lt;&lt;</span> getName<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">" ("</span> <span class="op">&lt;&lt;</span> getId<span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">"), office "</span> <span class="op">&lt;&lt;</span> office <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb28-11"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb28-12"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><code>ng.print()</code> shows the office; a Person or a Student still prints its own way.</li>
 </ul>
-<!-- Slide 44 -->
+<!-- Slide 46 -->
 </section>
 <section id="overriding-functions-practice-problems" class="slide level2">
 <h2>Overriding Functions: Practice Problems</h2>
@@ -1549,7 +1593,7 @@ Person built: Sam</code></pre>
 <li>Fix <code>cpp/name_hiding.cpp</code> two ways: by matching the signature, and by renaming the function.</li>
 <li>Fix <code>SavingsAccount::withdraw()</code> in <code>cpp/broken_promise.cpp</code> so it keeps the base class’s promise.</li>
 </ol>
-<!-- Slide 45 -->
+<!-- Slide 47 -->
 </section>
 <section id="overriding-functions-ai-search-terms" class="slide level2">
 <h2>Overriding Functions: AI Search Terms</h2>
@@ -1559,7 +1603,7 @@ Person built: Sam</code></pre>
 <li>C++ overloading versus overriding</li>
 <li>Liskov substitution principle example</li>
 </ul>
-<!-- Slide 46 -->
+<!-- Slide 48 -->
 </section>
 <section id="overriding-functions-questions-for-reflection" class="slide level2">
 <h2>Overriding Functions: Questions for Reflection</h2>
@@ -1567,7 +1611,7 @@ Person built: Sam</code></pre>
 <li>Why does <code>raj.print()</code> use Student’s version and not Person’s?</li>
 <li>Why is an override that drops a check worse than one that does not compile?</li>
 </ul>
-<!-- Slide 47 -->
+<!-- Slide 49 -->
 </section>
 <section id="calling-base-class-functions-good-practices" class="slide level2">
 <h2>Calling Base Class Functions: Good Practices</h2>
@@ -1576,7 +1620,7 @@ Person built: Sam</code></pre>
 <li>Call the base version first unless the derived part must happen before it.</li>
 <li>Let the base class keep its own checks instead of copying them into the override.</li>
 </ul>
-<!-- Slide 48 -->
+<!-- Slide 50 -->
 </section>
 <section id="calling-base-class-functions-common-mistakes" class="slide level2">
 <h2>Calling Base Class Functions: Common Mistakes</h2>
@@ -1585,27 +1629,27 @@ Person built: Sam</code></pre>
 <li>Copying the base function’s body into the override instead of calling it.</li>
 <li>Forgetting that the base version may already end the line.</li>
 </ul>
-<!-- Slide 49 -->
+<!-- Slide 51 -->
 </section>
 <section id="calling-base-class-functions-more-examples" class="slide level2">
 <h2>Calling Base Class Functions: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb28-1"><a href=""></a><span class="kw">class</span> GradStudent <span class="op">:</span> <span class="kw">public</span> Student <span class="op">{</span></span>
-<span id="cb28-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb28-3"><a href=""></a>    string advisor<span class="op">;</span></span>
-<span id="cb28-4"><a href=""></a></span>
-<span id="cb28-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb28-6"><a href=""></a>    GradStudent<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">int</span> i<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> a<span class="op">)</span></span>
-<span id="cb28-7"><a href=""></a>        <span class="op">:</span> Student<span class="op">(</span>n<span class="op">,</span> i<span class="op">,</span> m<span class="op">),</span> advisor<span class="op">(</span>a<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
-<span id="cb28-8"><a href=""></a></span>
-<span id="cb28-9"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
-<span id="cb28-10"><a href=""></a>        Student<span class="op">::</span>print<span class="op">();</span>                           <span class="co">// which calls Person::print()</span></span>
-<span id="cb28-11"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Advisor: "</span> <span class="op">&lt;&lt;</span> advisor <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb28-12"><a href=""></a>    <span class="op">}</span></span>
-<span id="cb28-13"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb29-1"><a href=""></a><span class="kw">class</span> GradStudent <span class="op">:</span> <span class="kw">public</span> Student <span class="op">{</span></span>
+<span id="cb29-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb29-3"><a href=""></a>    string advisor<span class="op">;</span></span>
+<span id="cb29-4"><a href=""></a></span>
+<span id="cb29-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb29-6"><a href=""></a>    GradStudent<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="dt">int</span> i<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> a<span class="op">)</span></span>
+<span id="cb29-7"><a href=""></a>        <span class="op">:</span> Student<span class="op">(</span>n<span class="op">,</span> i<span class="op">,</span> m<span class="op">),</span> advisor<span class="op">(</span>a<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb29-8"><a href=""></a></span>
+<span id="cb29-9"><a href=""></a>    <span class="dt">void</span> print<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb29-10"><a href=""></a>        Student<span class="op">::</span>print<span class="op">();</span>                           <span class="co">// which calls Person::print()</span></span>
+<span id="cb29-11"><a href=""></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Advisor: "</span> <span class="op">&lt;&lt;</span> advisor <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb29-12"><a href=""></a>    <span class="op">}</span></span>
+<span id="cb29-13"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Each level calls the one directly above it. Outside a class, <code>raj.Person::print()</code> also works, but it is rarely needed.</li>
 </ul>
-<!-- Slide 50 -->
+<!-- Slide 52 -->
 </section>
 <section id="calling-base-class-functions-practice-problems" class="slide level2">
 <h2>Calling Base Class Functions: Practice Problems</h2>
@@ -1614,7 +1658,7 @@ Person built: Sam</code></pre>
 <li>Add the GradStudent above to <code>cpp/extend_print.cpp</code> and predict the output of <code>raj.print()</code>.</li>
 <li>Give SavingsAccount in <code>cpp/promise_fixed.cpp</code> a <code>deposit()</code> override that adds a 1.00 bonus by calling the base version.</li>
 </ol>
-<!-- Slide 51 -->
+<!-- Slide 53 -->
 </section>
 <section id="calling-base-class-functions-ai-search-terms" class="slide level2">
 <h2>Calling Base Class Functions: AI Search Terms</h2>
@@ -1624,7 +1668,7 @@ Person built: Sam</code></pre>
 <li>C++ infinite recursion in overridden function</li>
 <li>C++ extend versus replace overridden method</li>
 </ul>
-<!-- Slide 52 -->
+<!-- Slide 54 -->
 </section>
 <section id="calling-base-class-functions-questions-for-reflection" class="slide level2">
 <h2>Calling Base Class Functions: Questions for Reflection</h2>
@@ -1632,7 +1676,7 @@ Person built: Sam</code></pre>
 <li>Why does extending a base function make a derived class easier to keep correct?</li>
 <li>Who should decide where a line of output ends, the base class or the derived class?</li>
 </ul>
-<!-- Slide 53 -->
+<!-- Slide 55 -->
 </section>
 <section id="multiple-inheritance-and-the-diamond-problem-good-practices" class="slide level2">
 <h2>Multiple Inheritance and the Diamond Problem: Good Practices</h2>
@@ -1641,7 +1685,7 @@ Person built: Sam</code></pre>
 <li>Write <code>public</code> in front of every parent.</li>
 <li>When two parents share a base, redesign with has-a before reaching for <code>virtual</code> inheritance.</li>
 </ul>
-<!-- Slide 54 -->
+<!-- Slide 56 -->
 </section>
 <section id="multiple-inheritance-and-the-diamond-problem-common-mistakes" class="slide level2">
 <h2>Multiple Inheritance and the Diamond Problem: Common Mistakes</h2>
@@ -1650,27 +1694,27 @@ Person built: Sam</code></pre>
 <li>Calling a function both parents have and expecting the compiler to choose.</li>
 <li>Expecting the initializer list to change the order the parents are built.</li>
 </ul>
-<!-- Slide 55 -->
+<!-- Slide 57 -->
 </section>
 <section id="multiple-inheritance-and-the-diamond-problem-more-examples" class="slide level2">
 <h2>Multiple Inheritance and the Diamond Problem: More Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb29-1"><a href=""></a><span class="kw">class</span> Student <span class="op">:</span> <span class="kw">virtual</span> <span class="kw">public</span> Person <span class="op">{</span></span>
-<span id="cb29-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb29-3"><a href=""></a>    string major<span class="op">;</span></span>
-<span id="cb29-4"><a href=""></a></span>
-<span id="cb29-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb29-6"><a href=""></a>    Student<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">)</span> <span class="op">:</span> Person<span class="op">(</span>n<span class="op">),</span> major<span class="op">(</span>m<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
-<span id="cb29-7"><a href=""></a><span class="op">};</span></span>
-<span id="cb29-8"><a href=""></a></span>
-<span id="cb29-9"><a href=""></a><span class="kw">class</span> TeachingAssistant <span class="op">:</span> <span class="kw">public</span> Student<span class="op">,</span> <span class="kw">public</span> Employee <span class="op">{</span></span>
-<span id="cb29-10"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb29-11"><a href=""></a>    TeachingAssistant<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">,</span> <span class="dt">double</span> s<span class="op">)</span></span>
-<span id="cb29-12"><a href=""></a>        <span class="op">:</span> Person<span class="op">(</span>n<span class="op">),</span> Student<span class="op">(</span>n<span class="op">,</span> m<span class="op">),</span> Employee<span class="op">(</span>n<span class="op">,</span> s<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
-<span id="cb29-13"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb30-1"><a href=""></a><span class="kw">class</span> Student <span class="op">:</span> <span class="kw">virtual</span> <span class="kw">public</span> Person <span class="op">{</span></span>
+<span id="cb30-2"><a href=""></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb30-3"><a href=""></a>    string major<span class="op">;</span></span>
+<span id="cb30-4"><a href=""></a></span>
+<span id="cb30-5"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb30-6"><a href=""></a>    Student<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">)</span> <span class="op">:</span> Person<span class="op">(</span>n<span class="op">),</span> major<span class="op">(</span>m<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb30-7"><a href=""></a><span class="op">};</span></span>
+<span id="cb30-8"><a href=""></a></span>
+<span id="cb30-9"><a href=""></a><span class="kw">class</span> TeachingAssistant <span class="op">:</span> <span class="kw">public</span> Student<span class="op">,</span> <span class="kw">public</span> Employee <span class="op">{</span></span>
+<span id="cb30-10"><a href=""></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb30-11"><a href=""></a>    TeachingAssistant<span class="op">(</span><span class="at">const</span> string<span class="op">&amp;</span> n<span class="op">,</span> <span class="at">const</span> string<span class="op">&amp;</span> m<span class="op">,</span> <span class="dt">double</span> s<span class="op">)</span></span>
+<span id="cb30-12"><a href=""></a>        <span class="op">:</span> Person<span class="op">(</span>n<span class="op">),</span> Student<span class="op">(</span>n<span class="op">,</span> m<span class="op">),</span> Employee<span class="op">(</span>n<span class="op">,</span> s<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb30-13"><a href=""></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>With a virtual base, the most derived class builds it. Student’s <code>Person(n)</code> runs only when a plain Student is built.</li>
 </ul>
-<!-- Slide 56 -->
+<!-- Slide 58 -->
 </section>
 <section id="multiple-inheritance-and-the-diamond-problem-practice-problems" class="slide level2">
 <h2>Multiple Inheritance and the Diamond Problem: Practice Problems</h2>
@@ -1679,7 +1723,7 @@ Person built: Sam</code></pre>
 <li>Fix <code>cpp/ta_ambiguous.cpp</code> in <code>main</code> alone, without changing any class.</li>
 <li>Rewrite <code>cpp/diamond_twice.cpp</code> with has-a so a TA holds one Person.</li>
 </ol>
-<!-- Slide 57 -->
+<!-- Slide 59 -->
 </section>
 <section id="multiple-inheritance-and-the-diamond-problem-ai-search-terms" class="slide level2">
 <h2>Multiple Inheritance and the Diamond Problem: AI Search Terms</h2>
@@ -1689,7 +1733,7 @@ Person built: Sam</code></pre>
 <li>C++ diamond problem</li>
 <li>C++ virtual inheritance most derived class constructor</li>
 </ul>
-<!-- Slide 58 -->
+<!-- Slide 60 -->
 </section>
 <section id="multiple-inheritance-and-the-diamond-problem-questions-for-reflection" class="slide level2">
 <h2>Multiple Inheritance and the Diamond Problem: Questions for Reflection</h2>
@@ -1697,7 +1741,7 @@ Person built: Sam</code></pre>
 <li>Why can the compiler not choose between two parents’ versions of <code>print()</code>?</li>
 <li>Is a teaching assistant an employee, or does a teaching assistant have a job?</li>
 </ul>
-<!-- Slide 59 -->
+<!-- Slide 61 -->
 
 </section></section>
     </div>

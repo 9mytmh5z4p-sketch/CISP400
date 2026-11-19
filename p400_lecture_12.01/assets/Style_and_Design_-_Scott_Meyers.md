@@ -123,23 +123,17 @@ int main()
 
 ### Question 1 — What Does a Penguin Contain?
 
-In Program 1, list every data member and every member function a `Penguin` object has.
+In Program 1, list every data member and every member function a `Penguin` object has. For each one, state whether it was written in `Penguin` or inherited from `Bird`.
 
-For each one, state whether it was written in `Penguin` or inherited from `Bird`.
+`name` is private in `Bird`. How does `Penguin::swim()` print the penguin's name? Could `swim()` use `name` directly? Why or why not?
 
-### Question 2 — Predicting Program Behavior
+### Question 2 — Applying the Is-a Test
 
-Without compiling or executing either program, predict the output of each.
+Without compiling it, predict what Program 1 prints. Is the output true?
 
-Do the programs produce the same results? Explain your reasoning.
+Say the sentence "A Penguin is a Bird." Is it true in biology? Is it true for everything a `Bird` can do *in Program 1*? Explain the difference.
 
-### Question 3 — Applying the Is-a Test to Program 1
-
-Say the sentence "A Penguin is a Bird."
-
-Is it true in biology? Is it true for everything a `Bird` can do *in Program 1*? Explain the difference.
-
-### Question 4 — Understanding Program 2
+### Question 3 — Understanding Program 2
 
 Suppose a programmer adds this line to the end of `main` in Program 2:
 
@@ -149,21 +143,13 @@ pingu.fly();
 
 What happens, and why? Is that result better or worse than what Program 1 does? Explain.
 
-### Question 5 — Building the Bird Part
+### Question 4 — Building the Bird Part
 
 Explain how a `Penguin` gives its name to the `Bird` part of the object.
 
-What would happen if `Penguin`'s constructor tried to assign `name = n;` in its body instead?
-
 In Program 2, list the order in which the parts of `jack` are built.
 
-### Question 6 — Private Data
-
-`name` is private in `Bird`. How does `Penguin::swim()` print the penguin's name?
-
-Could `swim()` use `name` directly? Why or why not?
-
-### Question 7 — Making a Design Decision
+### Question 5 — Making a Design Decision
 
 A zoo application must add an `Ostrich`, an `Eagle`, and a `Duck`, which both flies and swims.
 

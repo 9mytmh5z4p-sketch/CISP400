@@ -4,58 +4,59 @@ Slide Number,Topic,Subject,Title,Category,Filename
 3,Course Framing,,Today's Agenda,Agenda,
 4,Topic 0x: Style and Design - Meyers,,Style and Design - Meyers,Section Divider,
 5,Topic 0x: Style and Design - Meyers,Style and Design - Meyers,Style and Design: Scott Meyers,Text,myers.jpg
-6,Topic 0x: Style and Design - Meyers,Style and Design - Meyers,Discussion,Text,
-7,Topic 1: Overriding Functions,,Overriding Functions,Section Divider,
-8,Topic 1: Overriding Functions,Overriding Functions,Can a Student Print Its Major?,Motivating Question,person_student.cpp
-9,Topic 1: Overriding Functions,Overriding Functions,What Is Overriding?,Define,
-10,Topic 1: Overriding Functions,Overriding Functions,"One Name, Different Behavior",Image,override.png
-11,Topic 1: Overriding Functions,Overriding Functions,Overriding Anatomy,Anatomy,
-12,Topic 1: Overriding Functions,Overriding Functions,Overriding Anatomy,Complete Example,override_print.cpp
-13,Topic 1: Overriding Functions,Overriding Functions,Which print() Runs?,Predict,which_print.cpp
-14,Topic 1: Overriding Functions,Overriding Functions,"Close, But Not an Override",Error Example,name_hiding.cpp
-15,Topic 1: Overriding Functions,Overriding Functions,Overloading vs. Overriding,Contrast,
-16,Topic 1: Overriding Functions,Overriding Functions,Keep the Promise,Decision Point,broken_promise.cpp
-17,Topic 1: Overriding Functions,Overriding Functions,Summary,Summary,
-18,Topic 2: Calling Base Class Functions,,Calling Base Class Functions,Section Divider,
-19,Topic 2: Calling Base Class Functions,Calling Base Class Functions,Replace or Extend?,Motivating Question,
-20,Topic 2: Calling Base Class Functions,Calling Base Class Functions,Replace vs. Extend,Contrast,
-21,Topic 2: Calling Base Class Functions,Calling Base Class Functions,Predict the Output,Predict,extend_print.cpp
-22,Topic 2: Calling Base Class Functions,Calling Base Class Functions,Forgetting Person::,Error Example,infinite_print.cpp
-23,Topic 2: Calling Base Class Functions,Calling Base Class Functions,"Keeping the Promise, Fixed",Trace,promise_fixed.cpp
-24,Topic 2: Calling Base Class Functions,Calling Base Class Functions,Summary,Summary,
-25,Topic 2x: Programming Activity,,Programming Activity,Section Divider,
-26,Topic 2x: Programming Activity,Programming Activity,Programming Activity,Transfer,activity_vehicle_truck.cpp
-27,Topic 2x: Programming Activity,Programming Activity,Check Your Work,Checklist,
-28,Topic 2x: Programming Activity,Programming Activity,One Possible Answer,Complete Example,activity_extend_truck.cpp
-29,Topic 3: Multiple Inheritance and the Diamond Problem,,Multiple Inheritance and the Diamond Problem,Section Divider,
-30,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,Can a Class Have Two Parents?,Motivating Question,
-31,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,Multiple Inheritance Anatomy,Anatomy,
-32,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,Multiple Inheritance Anatomy,Complete Example,ta_basic.cpp
-33,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,"Same Name, Two Parents",Error Example,ta_ambiguous.cpp
-34,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,Fix: Override and Call Both,Code Block w/output,ta_print_both.cpp
-35,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,What If Both Parents Are People?,Model,
-36,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,"Two Persons, One TA",Predict,diamond_ambiguous.cpp; diamond_twice.cpp
-37,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,The Escape Hatch: virtual Inheritance,Anatomy,diamond_virtual.cpp
-38,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,Has-a Instead,Decision Point,ta_has_a.cpp
-39,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,Summary,Summary,
-40,Course Wrap-Up,,Key Takeaways,Summary,
-41,Course Wrap-Up,,Next Time,Text,
-42,Appendix,,Appendix,Section Divider,
-43,Appendix,Overriding Functions,Overriding Functions: Good Practices,Appendix - Good Practices,
-44,Appendix,Overriding Functions,Overriding Functions: Common Mistakes,Appendix - Common Mistakes,
-45,Appendix,Overriding Functions,Overriding Functions: More Examples,Appendix - More Examples,
-46,Appendix,Overriding Functions,Overriding Functions: Practice Problems,Appendix - Practice,
-47,Appendix,Overriding Functions,Overriding Functions: AI Search Terms,Appendix - AI Search Terms,
-48,Appendix,Overriding Functions,Overriding Functions: Questions for Reflection,Appendix - Reflection,
-49,Appendix,Calling Base Class Functions,Calling Base Class Functions: Good Practices,Appendix - Good Practices,
-50,Appendix,Calling Base Class Functions,Calling Base Class Functions: Common Mistakes,Appendix - Common Mistakes,
-51,Appendix,Calling Base Class Functions,Calling Base Class Functions: More Examples,Appendix - More Examples,
-52,Appendix,Calling Base Class Functions,Calling Base Class Functions: Practice Problems,Appendix - Practice,
-53,Appendix,Calling Base Class Functions,Calling Base Class Functions: AI Search Terms,Appendix - AI Search Terms,
-54,Appendix,Calling Base Class Functions,Calling Base Class Functions: Questions for Reflection,Appendix - Reflection,
-55,Appendix,Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem: Good Practices,Appendix - Good Practices,
-56,Appendix,Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem: Common Mistakes,Appendix - Common Mistakes,
-57,Appendix,Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem: More Examples,Appendix - More Examples,
-58,Appendix,Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem: Practice Problems,Appendix - Practice,
-59,Appendix,Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem: AI Search Terms,Appendix - AI Search Terms,
-60,Appendix,Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem: Questions for Reflection,Appendix - Reflection,
+6,Topic 0x: Style and Design - Meyers,Style and Design - Meyers,Debrief,Code Block,
+7,Topic 0x: Style and Design - Meyers,Style and Design - Meyers,Discussion,Text,
+8,Topic 1: Overriding Functions,,Overriding Functions,Section Divider,
+9,Topic 1: Overriding Functions,Overriding Functions,Can a Student Print Its Major?,Motivating Question,person_student.cpp
+10,Topic 1: Overriding Functions,Overriding Functions,What Is Overriding?,Define,
+11,Topic 1: Overriding Functions,Overriding Functions,"One Name, Different Behavior",Image,override.png
+12,Topic 1: Overriding Functions,Overriding Functions,Overriding Anatomy,Anatomy,
+13,Topic 1: Overriding Functions,Overriding Functions,Overriding Anatomy,Complete Example,override_print.cpp
+14,Topic 1: Overriding Functions,Overriding Functions,Which print() Runs?,Predict,which_print.cpp
+15,Topic 1: Overriding Functions,Overriding Functions,"Close, But Not an Override",Error Example,name_hiding.cpp
+16,Topic 1: Overriding Functions,Overriding Functions,Overloading vs. Overriding,Contrast,
+17,Topic 1: Overriding Functions,Overriding Functions,Keep the Promise,Decision Point,broken_promise.cpp
+18,Topic 1: Overriding Functions,Overriding Functions,Summary,Summary,
+19,Topic 2: Calling Base Class Functions,,Calling Base Class Functions,Section Divider,
+20,Topic 2: Calling Base Class Functions,Calling Base Class Functions,Replace or Extend?,Motivating Question,
+21,Topic 2: Calling Base Class Functions,Calling Base Class Functions,Replace vs. Extend,Contrast,
+22,Topic 2: Calling Base Class Functions,Calling Base Class Functions,Predict the Output,Predict,extend_print.cpp
+23,Topic 2: Calling Base Class Functions,Calling Base Class Functions,Forgetting Person::,Error Example,infinite_print.cpp
+24,Topic 2: Calling Base Class Functions,Calling Base Class Functions,"Keeping the Promise, Fixed",Trace,promise_fixed.cpp
+25,Topic 2: Calling Base Class Functions,Calling Base Class Functions,Summary,Summary,
+26,Topic 2x: Programming Activity,,Programming Activity,Section Divider,
+27,Topic 2x: Programming Activity,Programming Activity,Programming Activity,Transfer,activity_vehicle_truck.cpp
+28,Topic 2x: Programming Activity,Programming Activity,Check Your Work,Checklist,
+29,Topic 2x: Programming Activity,Programming Activity,One Possible Answer,Complete Example,activity_extend_truck.cpp
+30,Topic 3: Multiple Inheritance and the Diamond Problem,,Multiple Inheritance and the Diamond Problem,Section Divider,
+31,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,Can a Class Have Two Parents?,Motivating Question,
+32,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,Multiple Inheritance Anatomy,Anatomy,
+33,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,Multiple Inheritance Anatomy,Complete Example,ta_basic.cpp
+34,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,"Same Name, Two Parents",Error Example,ta_ambiguous.cpp
+35,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,Fix: Override and Call Both,Code Block w/output,ta_print_both.cpp
+36,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,What If Both Parents Are People?,Model,
+37,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,"Two Persons, One TA",Predict,diamond_ambiguous.cpp; diamond_twice.cpp
+38,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,The Escape Hatch: virtual Inheritance,Anatomy,diamond_virtual.cpp
+39,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,Has-a Instead,Decision Point,ta_has_a.cpp
+40,Topic 3: Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem,Summary,Summary,
+41,Course Wrap-Up,,Key Takeaways,Summary,
+42,Course Wrap-Up,,Next Time,Text,
+43,Appendix,,Appendix,Section Divider,
+44,Appendix,Overriding Functions,Overriding Functions: Good Practices,Appendix - Good Practices,
+45,Appendix,Overriding Functions,Overriding Functions: Common Mistakes,Appendix - Common Mistakes,
+46,Appendix,Overriding Functions,Overriding Functions: More Examples,Appendix - More Examples,
+47,Appendix,Overriding Functions,Overriding Functions: Practice Problems,Appendix - Practice,
+48,Appendix,Overriding Functions,Overriding Functions: AI Search Terms,Appendix - AI Search Terms,
+49,Appendix,Overriding Functions,Overriding Functions: Questions for Reflection,Appendix - Reflection,
+50,Appendix,Calling Base Class Functions,Calling Base Class Functions: Good Practices,Appendix - Good Practices,
+51,Appendix,Calling Base Class Functions,Calling Base Class Functions: Common Mistakes,Appendix - Common Mistakes,
+52,Appendix,Calling Base Class Functions,Calling Base Class Functions: More Examples,Appendix - More Examples,
+53,Appendix,Calling Base Class Functions,Calling Base Class Functions: Practice Problems,Appendix - Practice,
+54,Appendix,Calling Base Class Functions,Calling Base Class Functions: AI Search Terms,Appendix - AI Search Terms,
+55,Appendix,Calling Base Class Functions,Calling Base Class Functions: Questions for Reflection,Appendix - Reflection,
+56,Appendix,Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem: Good Practices,Appendix - Good Practices,
+57,Appendix,Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem: Common Mistakes,Appendix - Common Mistakes,
+58,Appendix,Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem: More Examples,Appendix - More Examples,
+59,Appendix,Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem: Practice Problems,Appendix - Practice,
+60,Appendix,Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem: AI Search Terms,Appendix - AI Search Terms,
+61,Appendix,Multiple Inheritance and the Diamond Problem,Multiple Inheritance and the Diamond Problem: Questions for Reflection,Appendix - Reflection,

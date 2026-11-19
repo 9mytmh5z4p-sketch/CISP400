@@ -1,8 +1,8 @@
 <!-- Topic 2: Calling Base Class Functions -->
-<!-- Slides 19–24 -->
+<!-- Slides 20–25 -->
 
 # Calling Base Class Functions
-<!-- Slide 18 -->
+<!-- Slide 19 -->
 
 ## Replace or Extend? {.smaller}
 
@@ -10,12 +10,12 @@
 - What if Student only wants to *add* the major?
 
 ::: notes
-Slides 19–24
+Slides 20–25
 
 Topic 1 showed the normal case: an override replaces the base version completely. This topic shows the other choice.
 :::
 
-<!-- Slide 19 -->
+<!-- Slide 20 -->
 
 ---
 
@@ -58,7 +58,7 @@ Person:: is the scope resolution operator from member function definitions: it n
 Replace repeats Person's work, so if Person changes how it prints a name, Student is out of date. Extend reuses it: Student no longer needs getName() or getId() at all. Use extend when the derived class adds to the base behavior, and replace when it truly does something different.
 :::
 
-<!-- Slide 20 -->
+<!-- Slide 21 -->
 
 ---
 
@@ -123,7 +123,7 @@ Ask: whose job is the end of the line? Two fixes: print the major as its own lab
 Full program: cpp/extend_print.cpp
 :::
 
-<!-- Slide 21 -->
+<!-- Slide 22 -->
 
 ---
 
@@ -145,7 +145,7 @@ Tested with g++ 11 and -Wall: no warning, and the program exits with a segmentat
 Full program: cpp/infinite_print.cpp
 :::
 
-<!-- Slide 22 -->
+<!-- Slide 23 -->
 
 ---
 
@@ -196,7 +196,7 @@ This is Topic 1's Keep the Promise slide repaired. The fee was a good reason to 
 Full program: cpp/promise_fixed.cpp
 :::
 
-<!-- Slide 23 -->
+<!-- Slide 24 -->
 
 ---
 
@@ -209,4 +209,4 @@ Full program: cpp/promise_fixed.cpp
 
 :::
 
-<!-- Slide 24 -->
+<!-- Slide 25 -->

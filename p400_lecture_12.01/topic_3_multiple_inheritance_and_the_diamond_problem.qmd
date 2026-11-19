@@ -1,20 +1,20 @@
 <!-- Topic 3: Multiple Inheritance and the Diamond Problem -->
-<!-- Slides 30–39 -->
+<!-- Slides 31–40 -->
 
 # Multiple Inheritance and the Diamond Problem
-<!-- Slide 29 -->
+<!-- Slide 30 -->
 
 ## Can a Class Have Two Parents? {.smaller}
 
 - A teaching assistant takes classes and gets paid. Is a TA a Student or an Employee?
 
 ::: notes
-Slides 30–39
+Slides 31–40
 
 Run the is-a test both ways: a TA is a Student, and a TA is an Employee. Both pass. C++ lets a class have both parents.
 :::
 
-<!-- Slide 30 -->
+<!-- Slide 31 -->
 
 ---
 
@@ -37,7 +37,7 @@ class TeachingAssistant : public Student, public Employee {
 A TA gets every public member of both parents. Each parent is listed with its own access specifier; the first public does not carry over to the second.
 :::
 
-<!-- Slide 31 -->
+<!-- Slide 32 -->
 
 ---
 
@@ -99,7 +99,7 @@ Point out that the name is passed to both parents, so a TA stores it twice. What
 Full program: cpp/ta_basic.cpp
 :::
 
-<!-- Slide 32 -->
+<!-- Slide 33 -->
 
 ---
 
@@ -129,7 +129,7 @@ In Topic 1, GradStudent found the nearest print() up a single line of parents. W
 Full program: cpp/ta_ambiguous.cpp
 :::
 
-<!-- Slide 33 -->
+<!-- Slide 34 -->
 
 ---
 
@@ -178,7 +178,7 @@ Topic 2 put to work: TA overrides print() and extends both parents' versions. No
 Full program: cpp/ta_print_both.cpp
 :::
 
-<!-- Slide 34 -->
+<!-- Slide 35 -->
 
 ---
 
@@ -219,7 +219,7 @@ Real Students and Employees share a name, so both should inherit from Person. Th
 The object is the problem: each parent brings its own complete Person part (11.02 Topic 2), so sam holds two Persons and two names. Ask students what sam.getName() should return.
 :::
 
-<!-- Slide 35 -->
+<!-- Slide 36 -->
 
 ---
 
@@ -283,7 +283,7 @@ getName() exists in both Person parts, so it is ambiguous, exactly like print() 
 Full programs: cpp/diamond_ambiguous.cpp and cpp/diamond_twice.cpp
 :::
 
-<!-- Slide 36 -->
+<!-- Slide 37 -->
 
 ---
 
@@ -313,7 +313,7 @@ Sam
 Full program: cpp/diamond_virtual.cpp
 :::
 
-<!-- Slide 37 -->
+<!-- Slide 38 -->
 
 ---
 
@@ -362,7 +362,7 @@ The is-a and has-a tests from 11.02 settle it: "a TA has a job" is at least as t
 Full program: cpp/ta_has_a.cpp
 :::
 
-<!-- Slide 38 -->
+<!-- Slide 39 -->
 
 ---
 
@@ -375,4 +375,4 @@ Full program: cpp/ta_has_a.cpp
 
 :::
 
-<!-- Slide 39 -->
+<!-- Slide 40 -->
