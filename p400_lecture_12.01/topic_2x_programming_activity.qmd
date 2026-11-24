@@ -79,7 +79,7 @@ int main() {
 :::
 
 ::: {.column width="40%"}
-. . .
+::: {.fragment}
 
 ~~~
 A vehicle with 4 wheels
@@ -87,6 +87,7 @@ A vehicle with 4 wheels
 A vehicle with 4 wheels
 Truck bed: 6 feet
 ~~~
+:::
 :::
 
 ::::

@@ -1,38 +1,322 @@
 # Last Time
 
 ::: {.incremental}
-+ **Inheritance**
-+ **Class relationships**
++ **Overriding Functions**
++ **Calling Base Class Functions**
++ **Multiple Inheritance and the Diamond Problem**
 :::
+
+::: notes
+Thursday a derived class replaced an inherited function by overriding it, extended it with Person::print(), and inherited from two parents. It ended on a question: point a Person* at ava and call print(). Which version runs?
+:::
+
+<!-- Slide 2 -->
 
 # Today's Agenda
 
-- Polymorphism Overview
-- Polymorphism Problem
-- Virtual Member Functions
-- Polymorphism and Arrays
-- Inheritance Access Review
-- Enumerations Review
-- Polymorphism Design
-- Practice and Exercise
+- The Polymorphism Problem
+- Object Slicing
+- Polymorphic Arrays
+- Virtual Functions
 
-{{< include topic_1_polymorphism_overview.qmd >}}
-{{< include topic_2_polymorphism_problem.qmd >}}
-{{< include topic_3_virtual_member_functions.qmd >}}
-{{< include topic_4_polymorphism_and_arrays.qmd >}}
-{{< include topic_5_inheritance_access_review.qmd >}}
-{{< include topic_6_enumerations_review.qmd >}}
-{{< include topic_7_polymorphism_design.qmd >}}
-{{< include topic_8_practice_and_exercise.qmd >}}
+::: notes
+Reading: textbook sections 15.1 and 15.2; learncpp lessons 25.1 to 25.4 and 25.9, on virtual functions and object slicing.
+:::
+
+<!-- Slide 3 -->
+
+{{< include topic_1_the_polymorphism_problem.qmd >}}
+
+{{< include topic_2_object_slicing.qmd >}}
+
+{{< include topic_3_polymorphic_arrays.qmd >}}
+
+{{< include topic_4_virtual_functions.qmd >}}
+
+{{< include topic_4x_programming_activity.qmd >}}
+
 
 ---
+
 # Key Takeaways
 
-- Arrays of related objects expose important type-compatibility and design constraints.
-- Virtual functions let the program select behavior through a common interface.
+- A child can be assigned to its parent, but copying it into a parent object slices off the child part.
+- An array of parent pointers holds every kind of child without slicing.
+- In C++ polymorphism is off by default; `virtual` in the base class turns it on.
+- Make a function virtual if a derived class might need to override it.
+
+<!-- Slide 49 -->
 
 ---
+
 # Next Time
 
+- Abstract Classes and Polymorphic Data Structures (Tuesday, December 1; no class Thursday, November 26)
+- The pointer array never deleted its objects. Deleting through a `Hash*` has its own trap.
+
+<!-- Slide 50 -->
+
 ---
+
 # Appendix
+
+<!-- Slide 51 -->
+
+## The Polymorphism Problem: Good Practices
+
+- Store objects of one class in an array of that class.
+- Expect a child assigned into a parent object to behave like the parent.
+- Check a cast from parent to child; it is only safe when the object really is that child.
+
+<!-- Slide 52 -->
+
+---
+
+## The Polymorphism Problem: Common Mistakes
+
+- Expecting an array of the parent class to remember what each element was.
+- Expecting a Student to fit in an array of Faculty because both are Persons.
+- Reading the `Hash` constructor's blank lines as part of a hash.
+
+<!-- Slide 53 -->
+
+---
+
+## The Polymorphism Problem: More Examples
+
+~~~cpp
+Toy t("Semper Fi");
+Hash h = t;        // compiles: a Toy can be assigned to a Hash
+h.Display();       // Base text: Semper Fi
+t.Display();       // Toy Hash of 'Semper Fi': 1492142785
+~~~
+
+- The assignment copies only the Hash part of `t`; `t` itself is unchanged.
+
+<!-- Slide 54 -->
+
+---
+
+## The Polymorphism Problem: Practice Problems
+
+1. Add a fourth Toy to `cpp/hash_toy_array.cpp` and predict its line of output.
+2. Change `cpp/hash_parent_array.cpp` to an array of SHA256 objects holding SHA3s, and predict the output.
+3. Remove the `cout << endl;` from Hash's constructor and explain the change in the output.
+
+<!-- Slide 55 -->
+
+---
+
+## The Polymorphism Problem: AI Search Terms
+
+- C++ polymorphism definition
+- C++ type compatibility derived to base
+- C++ array of base class objects
+- C++ upcasting and downcasting
+
+<!-- Slide 56 -->
+
+---
+
+## The Polymorphism Problem: Questions for Reflection
+
+- Why does an array of Faculty refuse a Student when both are Persons?
+- What should "different behavior from different data" look like in a loop?
+
+<!-- Slide 57 -->
+
+---
+
+## Object Slicing: Good Practices
+
+- Pass and store objects of a hierarchy by pointer or reference, never by value.
+- Use `const Hash&` for function parameters that take any kind of hash.
+- When a copy of a parent is really what you want, make it obvious in the code.
+
+<!-- Slide 58 -->
+
+---
+
+## Object Slicing: Common Mistakes
+
+- Declaring an array or vector of the parent class to hold a mix of children.
+- Passing a child to a function whose parameter is the parent by value.
+- Writing `for (auto h : myToys)`, which copies each element, when a reference was intended.
+
+<!-- Slide 59 -->
+
+---
+
+## Object Slicing: More Examples
+
+~~~cpp
+void show(Hash h) { h.Display(); }          // by value: slices
+void showRef(const Hash& h) { h.Display(); } // by reference: no slicing
+
+Toy t("Semper Fi");
+show(t);       // a Hash copy of t
+showRef(t);    // t itself; with virtual Display(), Toy's version runs
+~~~
+
+<!-- Slide 60 -->
+
+---
+
+## Object Slicing: Practice Problems
+
+1. Add a Bird to `cpp/polyEx1.cpp` and predict the output.
+2. Print `sizeof(Animal)` and `sizeof(Dog)` after giving Dog a `string name;` member, and explain the difference.
+3. Rewrite the Animal array in `cpp/polyEx1.cpp` as an array of `Animal*` and predict the output.
+
+<!-- Slide 61 -->
+
+---
+
+## Object Slicing: AI Search Terms
+
+- C++ object slicing
+- C++ pass by value derived class
+- C++ vector of base class objects
+- C++ why Java does not have object slicing
+
+<!-- Slide 62 -->
+
+---
+
+## Object Slicing: Questions for Reflection
+
+- Why is a pointer the same size no matter what it points to?
+- Why don't Java and C# programmers worry about slicing?
+
+<!-- Slide 63 -->
+
+---
+
+## Polymorphic Arrays: Good Practices
+
+- Use an array or vector of parent pointers to hold a mix of children.
+- Prefer `vector<shared_ptr<Base>>` so the objects are deleted for you.
+- Remember that pointers alone do not turn on polymorphism.
+
+<!-- Slide 64 -->
+
+---
+
+## Polymorphic Arrays: Common Mistakes
+
+- Using `.` instead of `->` on an array of pointers.
+- Creating objects with `new` and never deleting them.
+- Expecting the pointer array to call each child's function without `virtual`.
+
+<!-- Slide 65 -->
+
+---
+
+## Polymorphic Arrays: More Examples
+
+~~~cpp
+vector<Hash*> myToys{new Hash("Hello World"), new Toy("Semper Fi")};
+for (Hash* h : myToys) h->Display();
+for (Hash* h : myToys) delete h;    // safe only once Hash has a virtual destructor
+~~~
+
+<!-- Slide 66 -->
+
+---
+
+## Polymorphic Arrays: Practice Problems
+
+1. Rewrite `cpp/hash_pointer_array.cpp` with `vector<shared_ptr<Hash>>` and `make_shared`.
+2. Point a `Hash*` at a stack object, `Toy t("Hi");`, and call `Display()` through it.
+3. Explain why the comment in the loop says "remember to change me".
+
+<!-- Slide 67 -->
+
+---
+
+## Polymorphic Arrays: AI Search Terms
+
+- C++ array of base class pointers
+- C++ static binding versus dynamic binding
+- C++ vector of shared_ptr to base class
+- C++ why is polymorphism off by default
+
+<!-- Slide 68 -->
+
+---
+
+## Polymorphic Arrays: Questions for Reflection
+
+- The objects are whole on the heap. Why does Hash's `Display()` still run?
+- What does the compiler know about `myToys[1]`, and what does it not know?
+
+<!-- Slide 69 -->
+
+---
+
+## Virtual Functions: Good Practices
+
+- Declare a function `virtual` in the base class when a derived class might override it.
+- Match the base function's signature exactly in every override, including `const`.
+- Hold polymorphic objects through base pointers, references, or `shared_ptr`.
+
+<!-- Slide 70 -->
+
+---
+
+## Virtual Functions: Common Mistakes
+
+- Putting `virtual` only in the child class, which does not affect calls through a base pointer.
+- Changing the parameters or `const` in the child, which creates a new function instead of an override.
+- Adding `virtual` but still storing objects by value, so slicing still wins.
+
+<!-- Slide 71 -->
+
+---
+
+## Virtual Functions: More Examples
+
+~~~cpp
+class Student : public Person {
+    ...
+    virtual void print() const {    // virtual here is optional
+        Person::print();
+        cout << ", " << major << endl;
+    }
+};
+
+Person* p = &ava;
+p->print();     // with print() virtual in Person: Student's version runs
+~~~
+
+<!-- Slide 72 -->
+
+---
+
+## Virtual Functions: Practice Problems
+
+1. Make `print()` virtual in 12.01's `cpp/override_print.cpp` and call it through a `Person*` pointing at a Student.
+2. In `cpp/polyEx2.cpp`, remove `virtual` but keep the pointers, then keep `virtual` but go back to an Animal array. Predict both outputs.
+3. Add a Bird to `cpp/polyEx2.cpp` without changing Animal or the loop.
+
+<!-- Slide 73 -->
+
+---
+
+## Virtual Functions: AI Search Terms
+
+- C++ virtual member function
+- C++ dynamic binding
+- C++ virtual function table vtable
+- C++ polymorphism with shared_ptr
+
+<!-- Slide 74 -->
+
+---
+
+## Virtual Functions: Questions for Reflection
+
+- Why does polymorphism need both `virtual` and a pointer or reference?
+- Why do you think C++ turns polymorphism off by default?
+
+<!-- Slide 75 -->

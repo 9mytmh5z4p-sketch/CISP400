@@ -100,7 +100,7 @@ int main() {
 :::
 
 ::: {.column width="40%"}
-. . .
+::: {.fragment}
 
 ~~~
 Refuel: $45
@@ -113,6 +113,7 @@ GPS destroyed
 
 - `sedan` leaves scope at its closing brace: `~Car` runs, then its `engine`.
 - `unit` and `ada` belong to `main`, so their destructors run when `main` ends.
+:::
 :::
 
 ::::

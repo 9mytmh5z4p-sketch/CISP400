@@ -1,0 +1,38 @@
+# Last Time
+
+::: {.incremental}
++ **Inheritance**
++ **Class relationships**
+:::
+
+# Today's Agenda
+
+- Polymorphism Overview
+- Polymorphism Problem
+- Virtual Member Functions
+- Polymorphism and Arrays
+- Inheritance Access Review
+- Enumerations Review
+- Polymorphism Design
+- Practice and Exercise
+
+{{< include topic_1_polymorphism_overview.qmd >}}
+{{< include topic_2_polymorphism_problem.qmd >}}
+{{< include topic_3_virtual_member_functions.qmd >}}
+{{< include topic_4_polymorphism_and_arrays.qmd >}}
+{{< include topic_5_inheritance_access_review.qmd >}}
+{{< include topic_6_enumerations_review.qmd >}}
+{{< include topic_7_polymorphism_design.qmd >}}
+{{< include topic_8_practice_and_exercise.qmd >}}
+
+---
+# Key Takeaways
+
+- Arrays of related objects expose important type-compatibility and design constraints.
+- Virtual functions let the program select behavior through a common interface.
+
+---
+# Next Time
+
+---
+# Appendix

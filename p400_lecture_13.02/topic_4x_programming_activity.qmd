@@ -1,0 +1,156 @@
+<!-- Topic 4x: Programming Activity -->
+<!-- Slides 44–48 -->
+
+# Programming Activity
+<!-- Slide 43 -->
+
+## Part 1: Build It
+
+1. Write a base class with one `virtual` member function that prints a line, and two child classes that inherit publicly and override it. Use your own idea, or Instrument, Guitar, and Drum.
+2. In `main`, create one object of each class.
+3. Build an array of pointers to the base class that points at all three objects.
+4. Loop over the array and call the function through each pointer.
+
+::: notes
+Slides 44–48
+
+About 10 minutes. The goal of Part 1 is to see what a working polymorphic array looks like before breaking it. Students who are stuck can model it on Topic 4's Dogs and Cats, Fixed.
+
+Pointing at objects in main, with &, avoids new and delete. Deleting through a base pointer needs a virtual destructor, which is 14.01.
+:::
+
+<!-- Slide 44 -->
+
+---
+
+## Part 1: Check Your Work
+
+- Each object prints its own line, including the base class object.
+- The function is `virtual` in the base class.
+- Each child's function matches the base's name, parameters, and `const` exactly.
+- The array holds pointers to the base class, and the loop uses `->`.
+
+::: notes
+Walk the room. Every student should have a program that prints three different lines before starting Part 2; they will break that program on purpose.
+:::
+
+<!-- Slide 45 -->
+
+---
+
+## Part 1: One Possible Answer
+
+:::: {.columns}
+
+::: {.column width="60%"}
+::: {style="font-size: 50%;"}
+~~~cpp
+class Instrument {
+public:
+    virtual void play() const {
+        cout << "An instrument makes a sound" << endl;
+    }
+};
+
+class Guitar : public Instrument {
+public:
+    void play() const {
+        cout << "Guitar strums: twang" << endl;
+    }
+};
+
+class Drum : public Instrument {
+public:
+    void play() const {
+        cout << "Drum beats: boom boom" << endl;
+    }
+};
+
+int main() {
+    Instrument horn;
+    Guitar guitar;
+    Drum drum;
+
+    Instrument* band[3] = {&horn, &guitar, &drum};
+
+    for (int i = 0; i < 3; i++) {
+        band[i]->play();
+    }
+    return 0;
+}
+~~~
+:::
+:::
+
+::: {.column width="40%"}
+::: {style="font-size: 60%;"}
+::: {.fragment}
+
+~~~
+An instrument makes a sound
+Guitar strums: twang
+Drum beats: boom boom
+~~~
+:::
+:::
+:::
+
+::::
+
+::: notes
+Show this after students have tried their own. Students without a working program use this one for Part 2.
+
+Full program: cpp/activity_band_solution.cpp
+:::
+
+<!-- Slide 46 -->
+
+---
+
+## Part 2: Break It
+
+::: {style="font-size: 75%;"}
+Make one change at a time. Predict the result, compile and run, then put the change back before the next one.
+
+| # | Change |
+|:-:|---|
+| 1 | Remove `virtual` from the base class function |
+| 2 | Make the array hold objects instead of pointers, and call with `.` |
+| 3 | Remove `const` from one child's function |
+| 4 | Move `virtual` from the base class to one child's function |
+| 5 | Remove `public` from one child's class line |
+| 6 | Keep the pointer array, but call with `.` instead of `->` |
+:::
+
+::: notes
+About 15 minutes. Have students write each prediction before running it: compile error, wrong output, or no change. The point is to connect a symptom to its cause, so the next time their own program prints the base class's line, they know where to look.
+
+For change 2 with the solution code: Instrument band[3] = {horn, guitar, drum}; and band[i].play().
+
+The answer sheet is assets/polymorphism_activity_instructor.md; each broken program is in cpp/activity_breaks/.
+:::
+
+<!-- Slide 47 -->
+
+---
+
+## Part 2: What Happened
+
+::: {style="font-size: 65%;"}
+| # | Change | Result | Why |
+|:-:|---|---|---|
+| 1 | No `virtual` | All three print the base line | Polymorphism is off; the pointer type picks the function |
+| 2 | Array of objects | All three print the base line | Object slicing: each slot holds only the base part |
+| 3 | Child loses `const` | That child prints the base line | A different signature is a new function, not an override |
+| 4 | `virtual` only in a child | All three print the base line | `virtual` must be in the base class |
+| 5 | No `public` | Compile error: `'Instrument' is an inaccessible base of 'Guitar'` | Private inheritance hides the is-a from `main` |
+| 6 | `.` instead of `->` | Compile error: `request for member 'play' in 'band[i]', which is of pointer type` | `band[i]` is a pointer |
+:::
+
+::: notes
+Ask students what changes 1, 2, and 4 have in common: three different mistakes, the same symptom. When a program prints the base class's version, check three things: is the base function virtual, is the call through a pointer or reference, and do the signatures match.
+
+Change 3 compiles silently with g++ 11, even with -Wall -Wextra. clang warns that the child's play() hides the overloaded virtual function, and 14.01's override keyword turns this mistake into a compile error.
+:::
+
+<!-- Slide 48 -->

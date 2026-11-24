@@ -56,7 +56,7 @@ int main() {
 :::
 
 ::: {.column width="40%"}
-. . .
+::: {.fragment}
 
 ~~~
 Person built
@@ -67,6 +67,7 @@ Student body
 Transcript destroyed
 Person destroyed
 ~~~
+:::
 :::
 
 ::::
@@ -148,7 +149,7 @@ int main() {
 :::
 
 ::: {.column width="40%"}
-. . .
+::: {.fragment}
 
 ~~~
 Person
@@ -159,6 +160,7 @@ GradStudent
 ~Student
 ~Person
 ~~~
+:::
 :::
 
 ::::

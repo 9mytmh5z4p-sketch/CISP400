@@ -1,0 +1,492 @@
+<!-- Topic 1: The Polymorphism Problem -->
+<!-- Slides 5–17 -->
+
+# The Polymorphism Problem
+<!-- Slide 4 -->
+
+## Big Idea {.smaller}
+
+- The computer should be able to choose which function to use with which class.
+- We need everything covered so far to understand this.
+
+::: notes
+Slides 5–17
+
+Thursday ended on a question: point a Person* at ava and call print(). Which version runs? Today answers it. Inheritance, overriding, pointers, and arrays of objects all come together here.
+:::
+
+<!-- Slide 5 -->
+
+---
+
+## What's Going On Here?
+
+:::: {.columns}
+
+::: {.column width="60%"}
+::: {style="font-size: 60%;"}
+~~~cpp
+// inhComp.cpp -- inherit compposition?
+#include <iostream>
+using namespace std;
+
+class comp {
+public:
+    comp() { cout << "Comp class\n";}
+};
+
+class base {
+public:
+  comp test;
+};
+
+class child : base {
+
+};
+
+int main() {
+  child s;
+}
+~~~
+:::
+:::
+
+::: {.column width="40%"}
+::: {style="font-size: 60%;"}
+::: {.fragment}
+
+~~~
+Comp class
+~~~
+:::
+:::
+:::
+
+::::
+
+::: notes
+A refresher on an inheritance hierarchy before today's material. Ask students to predict the output: main only builds a child, and child is empty.
+
+Building a child builds its base part first (11.02); base has a comp member, so building base builds test, and comp's constructor prints. child has-a nothing of its own, yet it gets base's composed member through inheritance: composition and inheritance working together.
+
+Bonus question: class child : base has no public, so child inherits privately (11.02's Forgot public). It still builds the same way; only access changes.
+
+Full program: cpp/inhComp.cpp
+:::
+
+<!-- Slide 6 -->
+
+---
+
+
+
+:::: {.columns}
+
+::: {.column width="62%"}
+::: {style="font-size: 45%;"}
+~~~cpp
+enum class Discipline { ARCHEOLOGY, BIOLOGY, COMPUTER_SCIENCE, };
+
+class Person {
+protected:
+    string name;
+public:
+    Person() { setName("");}
+    Person(const string& pName) {setName(pName);}
+    void setName(const string& pName) {name = pName;}
+    string getName() const {return name; }
+};
+
+class Student : public Person{ ... };
+
+class Faculty : public Person{
+  private:
+    Discipline department;
+  public:
+    void setDepartment(Discipline d) {department = d; }
+    Discipline getDepartment() const {return department; }
+};
+
+int main(){
+    // Setup arrays to print enumerations
+    const string dName[] = {"Archelogy", "Biology", "Computer Science"};
+
+    Faculty* prof = new Faculty();                   // instantiate faculty
+    prof->setName("Indiana Jones");                  // Msg to set name
+    prof->setDepartment(Discipline::ARCHEOLOGY);     // Msg to set department
+
+    cout << "Professor " << prof->getName()
+        << " teaches in the " << "Department of ";
+
+    Discipline dept = prof->getDepartment();             // Msg to get department
+    cout << dName[static_cast<int>(dept)] << endl;       // Print Dpt in string form
+
+    delete prof;                                     // we called new, so we delete
+    return 0;
+}
+~~~
+:::
+:::
+
+::: {.column width="38%"}
+::: {style="font-size: 60%;"}
+::: {.fragment}
+
+~~~
+Professor Indiana Jones
+teaches in the Department
+of Archelogy
+~~~
+
+- Recall: this worked because we set up a pointer of the proper type.
+:::
+:::
+:::
+
+::::
+
+::: notes
+Review of the Person hierarchy from inheritance week. prof is a Faculty*, pointing at a Faculty, so every -> call finds the function it expects. setName() and getName() come from Person; setDepartment() and getDepartment() from Faculty. The enum class Discipline is printed through the dName array, indexed by static_cast<int>.
+
+This version uses a raw pointer, so it must delete prof; the original used shared_ptr, which deletes for you. Keep "a pointer of the proper type" in mind: Topic 3 points a parent pointer at child objects.
+
+Full program: cpp/faculty_pointer.cpp
+:::
+
+<!-- Slide 7 -->
+
+---
+
+## Arrays of Class Objects
+
+::: {style="font-size: 50%;"}
+~~~cpp
+class Faculty : public Person{
+  private:
+    Discipline department;
+  public:
+    Faculty();    // total waste
+    Faculty(const string& fname, Discipline d) : Person(fname){
+        department = d;
+    }
+    void setDepartment(Discipline d) {department = d; }
+    Discipline getDepartment() const {return department; }
+};
+
+int main(){
+  Faculty arrFac[] = {Faculty("Bob Smith", Discipline::BIOLOGY),
+                      Faculty("Indiana Jones", Discipline::ARCHEOLOGY),
+                      Faculty("Ida Lovelace", Discipline::COMPUTER_SCIENCE),
+                      };
+  PrintLine(arrFac[0]);
+  PrintLine(arrFac[1]);
+  PrintLine(arrFac[2]);
+  return 0;
+}
+
+void PrintLine(const Faculty& fac) {
+  // Setup arrays to print enumerations
+  const string dName[] = {"Archelogy", "Biology", "Computer Science"};
+  cout << "Professor " << fac.getName()
+      << " teaches in the " << "Department of ";
+  cout << dName[static_cast<int>(fac.getDepartment())] << endl;
+}
+~~~
+:::
+
+- Still worked because all the objects are in the same class.
+
+::: notes
+Next: an array of Faculty objects is not much of a leap. Other languages do this. Person and Student are in the full program.
+
+Output:
+Professor Bob Smith teaches in the Department of Biology
+Professor Indiana Jones teaches in the Department of Archelogy
+Professor Ida Lovelace teaches in the Department of Computer Science
+
+Full program: cpp/faculty_array.cpp (11-22m2.cpp)
+:::
+
+<!-- Slide 8 -->
+
+---
+
+## Add a Student to the Array
+
+~~~cpp
+Faculty arrFac[] = {Faculty("Bob Smith", Discipline::BIOLOGY),
+                    Faculty("Indiana Jones", Discipline::ARCHEOLOGY),
+                    Faculty("Ida Lovelace", Discipline::COMPUTER_SCIENCE),
+                    Student("Sam", Discipline::BIOLOGY, nullptr)
+                    };
+~~~
+
+- g++: `conversion from 'Student' to non-scalar type 'Faculty' requested`
+- Didn't compile because the array is not the same type as the Student object.
+
+::: notes
+Then we got the bright idea to add students to our array. Now we have two different kinds of objects, but they are related by inheritance: both are Persons. We have an inheritance hierarchy going on. Can we use that?
+
+Full program: cpp/faculty_student_array.cpp
+:::
+
+<!-- Slide 9 -->
+
+---
+
+## Point
+
+- You can have arrays and vectors of class objects.
+- However, you cannot take advantage of the inheritance hierarchy if you do so.
+
+> Polymorphic code produces different behavior from different data.
+>
+> — Textbook, p. 955
+
+::: notes
+This is the rest of the lecture in one line: one piece of code, a loop over an array, that does the right thing for each kind of object in it.
+:::
+
+<!-- Slide 10 -->
+
+---
+
+## The Problem
+
+:::: {.columns}
+
+::: {.column width="45%"}
+- We want to be able to call ANY of these objects AND have them execute behavior specific to that object.
+:::
+
+::: {.column width="55%"}
+![](images/person_hierarchy.png){style="max-height: 50vh;" fig-alt="Inheritance hierarchy: Person at the top, with Faculty and Student below it, and TFaculty below Faculty."}
+:::
+
+::::
+
+::: notes
+TFaculty is faculty with a title, such as Dr. or Professor. Topic 4 comes back to this hierarchy with inheritance4.h and inheritance5.h.
+:::
+
+<!-- Slide 11 -->
+
+---
+
+## How?
+
+- Each class can be assigned to arrays of its own type.
+- The Child Class can always be **assigned** to the Parent class.
+- The Parent Class can be **cast** to the Child Class.
+- **Polymorphism** can be used for all members of the inheritance hierarchy.
+
+::: notes
+This is type compatibility in an inheritance hierarchy, textbook section 15.1. A Student is a Person, so a Student can be assigned to a Person. Watch what that assignment keeps: only the Person part. Topic 2 shows why that matters.
+
+Casting a Parent to a Child compiles with static_cast, but it is only safe when the object really is that child. 14.01 covers dynamic_cast, which checks.
+:::
+
+<!-- Slide 12 -->
+
+---
+
+## Security Hierarchy
+
+![](images/security_hierarchy.png){style="max-height: 60vh;" fig-align="center" fig-alt="Inheritance hierarchy: HASH at the top, with TOY and SHA-256 below it, and SHA-3 below SHA-256."}
+
+::: notes
+A second hierarchy, with less baggage than Person. Every hash takes plain text and displays a hash of it; each kind of hash does that differently. The SHA classes print a placeholder instead of a real hash.
+:::
+
+<!-- Slide 13 -->
+
+---
+
+## The Security Hierarchy in Code
+
+:::: {.columns}
+
+::: {.column width="62%"}
+::: {style="font-size: 50%;"}
+~~~cpp
+class Hash {
+protected:
+  string plainText;
+public:
+  Hash(string str = "Empty") {plainText = str;
+      cout << endl;  // prints a blank line each time a Hash is built
+                     }
+  void Display(){cout << "Base text: " << plainText << endl;};
+};
+
+class Toy : public Hash {
+public:
+    Toy(const string& s) : Hash(s){};
+  void Display() {
+    unsigned int hash = 0;
+    for (char c : plainText)
+      hash = hash * 31 + c;  // Simple multiplicative hash algorithm
+    cout << "Toy Hash of '" << plainText << "': " << hash << endl;
+  }
+};
+
+class SHA256 : public Hash { ... };
+
+class SHA3 : public SHA256 { ... };
+
+int main() {
+  Hash h("Welcome");
+  h.Display();
+
+  Toy t("Complex text");
+  t.Display();
+
+  SHA256 sha("More text");
+  sha.Display();
+
+  SHA3 sha3("Almost done");
+  sha3.Display();
+
+return 0;
+}
+~~~
+:::
+:::
+
+::: {.column width="38%"}
+::: {style="font-size: 50%;"}
+::: {.fragment}
+
+~~~
+Base text: Welcome
+
+Toy Hash of 'Complex text': 4101018301
+
+SHA-256 Hash of 'More text': ***SHA-256***
+
+SHA-3 Hash of 'Almost done': ***SHA-3***
+~~~
+:::
+:::
+:::
+
+::::
+
+::: notes
+Each child overrides Display(), as in 12.01. Called on its own object, each one runs its own version.
+
+The blank lines come from the cout << endl in Hash's constructor, which runs every time any of these objects is built.
+
+SHA256 and SHA3 each have a constructor that passes the text up and a Display() that prints a placeholder; see the full code.
+
+Full code: cpp/hash_classes.h and cpp/hash_demo.cpp
+:::
+
+<!-- Slide 14 -->
+
+---
+
+## Now, Put It into an Array
+
+:::: {.columns}
+
+::: {.column width="55%"}
+::: {style="font-size: 55%;"}
+~~~cpp
+int main() {
+  Toy myToys[3]{Toy("Hello World"), Toy("Semper Fi"),
+    Toy("The happiness of your life depends upon the quality of your thoughts.")};
+
+  for (auto h : myToys) h.Display();
+
+return 0;
+}
+~~~
+:::
+:::
+
+::: {.column width="45%"}
+::: {style="font-size: 50%;"}
+::: {.fragment}
+
+~~~
+Toy Hash of 'Hello World': 3432422020
+Toy Hash of 'Semper Fi': 1492142785
+Toy Hash of 'The happiness of your life
+depends upon the quality of your
+thoughts.': 2918282123
+~~~
+:::
+:::
+:::
+
+::::
+
+::: notes
+An array of Toys, displayed by Toy's Display(). Every object is the same class, so this works, just like the Faculty array.
+
+The output also starts with blank lines from Hash's constructor.
+
+Full program: cpp/hash_toy_array.cpp
+:::
+
+<!-- Slide 15 -->
+
+---
+
+## Now, Put It into an Array of the Parent Class
+
+:::: {.columns}
+
+::: {.column width="55%"}
+::: {style="font-size: 55%;"}
+~~~cpp
+int main() {
+  Hash myToys[3]{Toy("Hello World"), Toy("Semper Fi"),
+    Toy("The happiness of your life depends upon the quality of your thoughts.")};
+
+  for (auto h : myToys) h.Display();
+
+return 0;
+}
+~~~
+:::
+:::
+
+::: {.column width="45%"}
+::: {style="font-size: 50%;"}
+::: {.fragment}
+
+~~~
+Base text: Hello World
+Base text: Semper Fi
+Base text: The happiness of your life
+depends upon the quality of your
+thoughts.
+~~~
+:::
+:::
+:::
+
+::::
+
+::: notes
+Ask students to predict before revealing. The only change is Toy myToys[3] to Hash myToys[3]. It compiles, because a child can always be assigned to its parent, but every object now runs Hash's Display(). The Toys are no longer Toys.
+
+Full program: cpp/hash_parent_array.cpp
+:::
+
+<!-- Slide 16 -->
+
+---
+
+## Summary
+
+- An array of one class works; a child can be assigned into an array of its parent, but then each element behaves like the parent.
+- Polymorphic code should produce different behavior from different data, and so far it does not.
+
+::: notes
+
+:::
+
+<!-- Slide 17 -->

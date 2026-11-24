@@ -76,7 +76,7 @@ int main() {
 :::
 
 ::: {.column width="40%"}
-. . .
+::: {.fragment}
 
 ~~~
 21.5 23
@@ -84,6 +84,7 @@ int main() {
 
 - `reading` gets the Celsius value.
 - `today + 1.5` converts `today` to `double`, then adds.
+:::
 :::
 
 ::::

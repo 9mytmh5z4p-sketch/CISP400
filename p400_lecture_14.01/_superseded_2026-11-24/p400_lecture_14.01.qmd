@@ -1,0 +1,40 @@
+# Last Time
+
+::: {.incremental}
++ **Polymorphism**
++ **Inheritance design**
+:::
+
+# Today's Agenda
+
+- Abstract Base Classes
+- Inheritance Versus Composition
+- Practice and Review
+- Polymorphic Arrays
+- Object Slicing
+- Abstract Operators
+- Sealing Classes and Functions
+- Abstract Class Applications
+- Dynamic Casting
+
+{{< include topic_1_abstract_base_classes.qmd >}}
+{{< include topic_2_inheritance_versus_composition.qmd >}}
+{{< include topic_3_practice_and_review.qmd >}}
+{{< include topic_4_polymorphic_arrays.qmd >}}
+{{< include topic_5_object_slicing.qmd >}}
+{{< include topic_6_abstract_operators.qmd >}}
+{{< include topic_7_sealing_classes_and_functions.qmd >}}
+{{< include topic_8_abstract_class_applications.qmd >}}
+{{< include topic_9_dynamic_casting.qmd >}}
+
+---
+# Key Takeaways
+
+- Abstract interfaces enforce the behavior a hierarchy requires.
+- Exceptions separate error detection from the code that handles an unusual event.
+
+---
+# Next Time
+
+---
+# Appendix

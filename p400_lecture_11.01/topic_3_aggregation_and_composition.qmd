@@ -188,7 +188,7 @@ int main() {
 :::
 
 ::: {.column width="40%"}
-. . .
+::: {.fragment}
 
 ~~~
 build A
@@ -198,6 +198,7 @@ Whole body
 destroy B
 destroy A
 ~~~
+:::
 :::
 
 ::::

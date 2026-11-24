@@ -162,12 +162,13 @@ int main() {
 :::
 
 ::: {.column width="40%"}
-. . .
+::: {.fragment}
 
 ~~~
 Sam, CS
 Sam, paid 1200
 ~~~
+:::
 :::
 
 ::::
@@ -259,18 +260,18 @@ int main() {
 :::
 
 ::: {.column width="40%"}
-. . .
-
+::: {.fragment}
 - `sam.getName()`: `request for member 'getName' is ambiguous`
+:::
 
-. . .
-
+::: {.fragment}
 - Without that line:
 
 ~~~
 Person built: Sam
 Person built: Sam
 ~~~
+:::
 :::
 
 ::::

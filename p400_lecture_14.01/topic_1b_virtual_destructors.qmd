@@ -1,0 +1,5 @@
+<!-- Topic 1b: Virtual Destructors -->
+<!-- Slides pending approval -->
+
+# Virtual Destructors
+<!-- Slide 0 -->

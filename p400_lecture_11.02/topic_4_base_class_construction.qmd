@@ -232,13 +232,14 @@ int main() {
 :::
 
 ::: {.column width="40%"}
-. . .
+::: {.fragment}
 
 ~~~
 Person built: Ava
 Student built
 Error: name cannot be empty
 ~~~
+:::
 :::
 
 ::::

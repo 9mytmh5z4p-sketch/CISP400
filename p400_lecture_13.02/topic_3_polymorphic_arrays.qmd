@@ -1,0 +1,135 @@
+<!-- Topic 3: Polymorphic Arrays -->
+<!-- Slides 27–32 -->
+
+# Polymorphic Arrays
+<!-- Slide 26 -->
+
+## An Array of Parent Pointers {.smaller}
+
+- A `Hash*` can point at a Toy, a SHA256, or a SHA3, and nothing is sliced.
+- Will each object finally display itself?
+
+::: notes
+Slides 27–32
+
+Students should expect yes. That expectation is the point of this topic.
+:::
+
+<!-- Slide 27 -->
+
+---
+
+## An Array of Parent Pointers
+
+:::: {.columns}
+
+::: {.column width="58%"}
+::: {style="font-size: 55%;"}
+~~~cpp
+int main() {
+  Hash* myToys[4];
+  myToys[0] = new Hash("Hello World");
+  myToys[1] = new Toy("Semper Fi");
+  myToys[2] = new SHA256(
+    "The happiness of your life depends upon the quality of your thoughts.");
+  myToys[3] = new SHA3("Done!");
+
+
+  for (auto h : myToys) h->Display();    // remember to change me
+
+return 0;
+}
+~~~
+:::
+:::
+
+::: {.column width="42%"}
+::: {style="font-size: 50%;"}
+::: {.fragment}
+
+~~~
+Base text: Hello World
+Base text: Semper Fi
+Base text: The happiness of your life
+depends upon the quality of your
+thoughts.
+Base text: Done!
+~~~
+:::
+:::
+:::
+
+::::
+
+::: notes
+Each object is built whole on the heap with new, and the array holds only addresses, so nothing is sliced. The loop uses -> because h is a pointer.
+
+This program never deletes the four objects. Deleting through a Hash* correctly needs a virtual destructor, which is in 14.01.
+
+Full program: cpp/hash_pointer_array.cpp
+:::
+
+<!-- Slide 28 -->
+
+---
+
+## Wait a Minute!
+
+![](images/wait_a_minute.png){style="max-height: 55vh;" fig-align="center" fig-alt="Two confused students at a desk in front of a chalkboard covered in question marks."}
+
+::: notes
+Let the room react. Nothing is sliced, and it is still wrong.
+:::
+
+<!-- Slide 29 -->
+
+---
+
+## Still Not Working
+
+- No!
+- It still isn't working!
+- Why?
+
+. . .
+
+- In C++, polymorphism is turned **off** by DEFAULT.
+
+::: notes
+The objects are intact. Every Toy is still a whole Toy on the heap. The problem is which function the compiler chooses, which is the next slide.
+:::
+
+<!-- Slide 30 -->
+
+---
+
+## The Compiler Only Sees the Type
+
+~~~cpp
+Hash* h = myToys[1];   // points at a Toy
+h->Display();          // the compiler sees Hash*, so it calls Hash::Display()
+~~~
+
+- The function is chosen when the program is compiled, from the pointer's type. The compiler never looks at the object. This is called static binding.
+- Thursday's question gets the same answer: a `Person*` pointing at `ava` calls Person's `print()`.
+
+::: notes
+At compile time the compiler does not know what myToys[1] will point at; it only knows the pointer is a Hash*. So it picks Hash::Display() and builds that call into the program.
+
+To get Toy::Display(), the choice has to wait until the program runs and can look at the object. That is what virtual turns on, in Topic 4.
+:::
+
+<!-- Slide 31 -->
+
+---
+
+## Summary
+
+- An array of parent pointers holds every kind of child without slicing.
+- Without `virtual`, the pointer's type picks the function at compile time, so every element still runs the parent's version.
+
+::: notes
+
+:::
+
+<!-- Slide 32 -->

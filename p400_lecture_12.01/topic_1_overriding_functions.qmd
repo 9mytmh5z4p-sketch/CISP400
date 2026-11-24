@@ -92,7 +92,7 @@ void print() const;    // in Student: overrides Person::print()
 | Body | No. A new body is the whole point |
 
 ::: notes
-Students meet the override keyword in 13.02, where it asks the compiler to check this table for you. It only works with virtual functions, so it waits until then.
+Students meet the override keyword in 14.01, where it asks the compiler to check this table for you. It only works with virtual functions (13.02), so it waits until then.
 :::
 
 <!-- Slide 12 -->
@@ -190,13 +190,14 @@ int main() {
 :::
 
 ::: {.column width="40%"}
-. . .
+::: {.fragment}
 
 ~~~
 Lee (7)
 Ava (1001), CS
 Raj (2002), Math
 ~~~
+:::
 :::
 
 ::::

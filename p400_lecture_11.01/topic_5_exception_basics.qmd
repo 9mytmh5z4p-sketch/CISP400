@@ -207,7 +207,7 @@ int main() {
 :::
 
 ::: {.column width="40%"}
-. . .
+::: {.fragment}
 
 ~~~
 Car destroyed
@@ -216,6 +216,7 @@ Caught: miles cannot be negative
 ~~~
 
 - Leaving `testDrive` destroys its locals, and each local destroys its parts, before the catch runs.
+:::
 :::
 
 ::::
@@ -271,7 +272,7 @@ int main() {
 :::
 
 ::: {.column width="40%"}
-. . .
+::: {.fragment}
 
 ~~~
 Title destroyed
@@ -281,6 +282,7 @@ Caught: capacity must be positive
 - `title` was finished, so it is destroyed.
 - `~Course` never runs: the `Course` was never finished.
 - Memory the constructor got with `new` before the throw leaks; member objects clean up for free.
+:::
 :::
 
 ::::

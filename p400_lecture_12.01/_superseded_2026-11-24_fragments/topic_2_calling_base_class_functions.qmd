@@ -1,0 +1,212 @@
+<!-- Topic 2: Calling Base Class Functions -->
+<!-- Slides 20–25 -->
+
+# Calling Base Class Functions
+<!-- Slide 19 -->
+
+## Replace or Extend? {.smaller}
+
+- Topic 1's `Student::print()` replaced Person's version and rebuilt the name and ID by hand.
+- What if Student only wants to *add* the major?
+
+::: notes
+Slides 20–25
+
+Topic 1 showed the normal case: an override replaces the base version completely. This topic shows the other choice.
+:::
+
+<!-- Slide 20 -->
+
+---
+
+## Replace vs. Extend
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {style="font-size: 70%;"}
+~~~cpp
+// Replace: Topic 1's version
+void print() const {
+    cout << getName() << " ("
+         << getId() << "), "
+         << major << endl;
+}
+~~~
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="font-size: 70%;"}
+~~~cpp
+// Extend: run Person's version first
+void print() const {
+    Person::print();
+    cout << ", " << major << endl;
+}
+~~~
+:::
+:::
+
+::::
+
+::: notes
+Both are overrides of Person::print(); they differ only in the body.
+
+Person:: is the scope resolution operator from member function definitions: it names whose print() to run. Without it, print() inside Student means Student's own print().
+
+Replace repeats Person's work, so if Person changes how it prints a name, Student is out of date. Extend reuses it: Student no longer needs getName() or getId() at all. Use extend when the derived class adds to the base behavior, and replace when it truly does something different.
+:::
+
+<!-- Slide 21 -->
+
+---
+
+## Predict the Output
+
+:::: {.columns}
+
+::: {.column width="60%"}
+::: {style="font-size: 50%;"}
+~~~cpp
+class Person {
+private:
+    string name;
+    int id;
+
+public:
+    Person(const string& n, int i) : name(n), id(i) { }
+
+    void print() const {
+        cout << name << " (" << id << ")" << endl;
+    }
+};
+
+class Student : public Person {
+private:
+    string major;
+
+public:
+    Student(const string& n, int i, const string& m) : Person(n, i), major(m) { }
+
+    void print() const {
+        Person::print();                 // run Person's version first
+        cout << ", " << major << endl;   // then add Student's part
+    }
+};
+
+int main() {
+    Student ava("Ava", 1001, "CS");
+    ava.print();
+    return 0;
+}
+~~~
+:::
+:::
+
+::: {.column width="40%"}
+. . .
+
+~~~
+Ava (1001)
+, CS
+~~~
+:::
+
+::::
+
+::: notes
+Most students predict Ava (1001), CS on one line. Person's print() ends with endl, so the major lands on a line of its own.
+
+Ask: whose job is the end of the line? Two fixes: print the major as its own labeled line, cout << "Major: " << major, or have Person print without endl and let each caller end the line. Extending a base function means living with exactly what it prints.
+
+Full program: cpp/extend_print.cpp
+:::
+
+<!-- Slide 22 -->
+
+---
+
+## Forgetting Person::
+
+~~~cpp
+void print() const {
+    print();                         // meant Person::print()
+    cout << ", " << major << endl;
+}
+~~~
+
+- It compiles. Running it prints nothing and crashes: `Segmentation fault`.
+- Without `Person::`, `print()` is Student's own `print()`, which calls itself until the program runs out of stack.
+
+::: notes
+Tested with g++ 11 and -Wall: no warning, and the program exits with a segmentation fault. clang and g++ 12 or later warn with -Winfinite-recursion that every path through the function calls itself. The crash happens before the first cout, which is why nothing prints.
+
+Full program: cpp/infinite_print.cpp
+:::
+
+<!-- Slide 23 -->
+
+---
+
+## Keeping the Promise, Fixed
+
+:::: {.columns}
+
+::: {.column width="60%"}
+::: {style="font-size: 50%;"}
+~~~cpp
+class BankAccount {
+private:
+    double balance;       // private again
+
+public:
+    // the promise: never take out more than is there
+    bool withdraw(double amount) {
+        if (amount > balance) {
+            return false;
+        }
+        balance -= amount;
+        return true;
+    }
+};
+
+class SavingsAccount : public BankAccount {
+public:
+    // adds the 2.00 fee, then lets BankAccount do the checking
+    bool withdraw(double amount) {
+        return BankAccount::withdraw(amount + 2.00);
+    }
+};
+~~~
+:::
+:::
+
+::: {.column width="40%"}
+- Starting at 50.00, withdrawing 100.00 is refused and the balance stays 50. Withdrawing 20.00 is paid and leaves 28.
+- SavingsAccount adds the fee and lets BankAccount do the checking.
+- `balance` is private again: the override never touches it.
+:::
+
+::::
+
+::: notes
+This is Topic 1's Keep the Promise slide repaired. The fee was a good reason to override; the check had to stay. Calling the base version keeps the check in one place, so a later fix to BankAccount::withdraw() reaches SavingsAccount for free.
+
+Full program: cpp/promise_fixed.cpp
+:::
+
+<!-- Slide 24 -->
+
+---
+
+## Summary
+
+- Extend an override by calling the base version, `Person::print()`, and adding to it; replace it only when the behavior is truly different.
+- Leave off `Person::` and the override calls itself until the program crashes.
+
+::: notes
+
+:::
+
+<!-- Slide 25 -->

@@ -105,12 +105,13 @@ int main() {
 :::
 
 ::: {.column width="40%"}
-. . .
+::: {.fragment}
 
 ~~~
 Ava (1001)
 , CS
 ~~~
+:::
 :::
 
 ::::

@@ -468,7 +468,7 @@ Dr.&nbsp;Caleb Fowler
 </tbody>
 </table>
 <aside class="notes">
-<p>Students meet the override keyword in 13.02, where it asks the compiler to check this table for you. It only works with virtual functions, so it waits until then.</p>
+<p>Students meet the override keyword in 14.01, where it asks the compiler to check this table for you. It only works with virtual functions (13.02), so it waits until then.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -568,10 +568,11 @@ Dr.&nbsp;Caleb Fowler
 <span id="cb5-22"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:40%;">
-<p>. . .</p>
+<div class="fragment">
 <pre><code>Lee (7)
 Ava (1001), CS
 Raj (2002), Math</code></pre>
+</div>
 </div></div>
 <aside class="notes">
 <p>Ask students to predict the third line before revealing. GradStudent has no print(), so the compiler looks up the family: Student has one, so Student’s runs. The nearest version wins, and Person’s is never reached. The advisor does not appear, because Student’s print() knows nothing about advisors.</p>
@@ -860,9 +861,10 @@ Raj (2002), Math</code></pre>
 <span id="cb11-31"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:40%;">
-<p>. . .</p>
+<div class="fragment">
 <pre><code>Ava (1001)
 , CS</code></pre>
+</div>
 </div></div>
 <aside class="notes">
 <p>Most students predict Ava (1001), CS on one line. Person’s print() ends with endl, so the major lands on a line of its own.</p>
@@ -1071,11 +1073,12 @@ Raj (2002), Math</code></pre>
 <span id="cb15-31"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:40%;">
-<p>. . .</p>
+<div class="fragment">
 <pre><code>A vehicle with 4 wheels
 
 A vehicle with 4 wheels
 Truck bed: 6 feet</code></pre>
+</div>
 </div></div>
 <aside class="notes">
 <p>Show this after students have tried their own. The car prints one line; the truck prints Vehicle’s line through Vehicle::describe() and then its own.</p>
@@ -1285,9 +1288,10 @@ Truck bed: 6 feet</code></pre>
 <span id="cb20-17"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:40%;">
-<p>. . .</p>
+<div class="fragment">
 <pre><code>Sam, CS
 Sam, paid 1200</code></pre>
+</div>
 </div></div>
 <aside class="notes">
 <p>Topic 2 put to work: TA overrides print() and extends both parents’ versions. Now sam.print() has one nearest version, TA’s own.</p>
@@ -1373,16 +1377,18 @@ Sam, paid 1200</code></pre>
 <span id="cb24-24"><a href=""></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:40%;">
-<p>. . .</p>
+<div class="fragment">
 <ul>
 <li><code>sam.getName()</code>: <code>request for member 'getName' is ambiguous</code></li>
 </ul>
-<p>. . .</p>
+</div>
+<div class="fragment">
 <ul>
 <li>Without that line:</li>
 </ul>
 <pre><code>Person built: Sam
 Person built: Sam</code></pre>
+</div>
 </div></div>
 <aside class="notes">
 <p>Ask two questions before revealing: does the last line compile, and how many times does Person built print?</p>

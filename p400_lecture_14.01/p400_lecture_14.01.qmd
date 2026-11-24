@@ -1,28 +1,34 @@
 # Last Time
 
 ::: {.incremental}
-+ **Polymorphism**
-+ **Inheritance design**
++ **The Polymorphism Problem**
++ **Object Slicing**
++ **Polymorphic Arrays**
++ **Virtual Functions**
 :::
 
 # Today's Agenda
 
 - Abstract Base Classes
+- Virtual Destructors
 - Inheritance Versus Composition
 - Practice and Review
-- Polymorphic Arrays
-- Object Slicing
+- Polymorphism Design
+- Enumerations Review
 - Abstract Operators
+- The override Keyword
 - Sealing Classes and Functions
 - Abstract Class Applications
 - Dynamic Casting
 
 {{< include topic_1_abstract_base_classes.qmd >}}
+{{< include topic_1b_virtual_destructors.qmd >}}
 {{< include topic_2_inheritance_versus_composition.qmd >}}
 {{< include topic_3_practice_and_review.qmd >}}
-{{< include topic_4_polymorphic_arrays.qmd >}}
-{{< include topic_5_object_slicing.qmd >}}
+{{< include topic_7_polymorphism_design.qmd >}}
+{{< include topic_6_enumerations_review.qmd >}}
 {{< include topic_6_abstract_operators.qmd >}}
+{{< include topic_7a_the_override_keyword.qmd >}}
 {{< include topic_7_sealing_classes_and_functions.qmd >}}
 {{< include topic_8_abstract_class_applications.qmd >}}
 {{< include topic_9_dynamic_casting.qmd >}}
